@@ -1,0 +1,493 @@
+---
+/**
+ * T3 city page — Big Spring, Howard County. The far south-eastern edge of
+ * the route, about 95 road miles from Seminole.
+ *
+ * VERIFIED facts used here:
+ *  - Code structure: Big Spring Code ch. 36 "Nuisances". Article I is
+ *    "PROPERTY MAINTENANCE" (title amended by Ord. 003-2022, 25 Jan 2022).
+ *    Article III is "VECTOR CONTROL" and includes sec. 36-61, "General
+ *    prohibition against rat harborage". Article IV covers junked motor
+ *    vehicles (sec. 36-118 notice/rehearing). Ch. 36 carries state-law
+ *    references to Tex. Local Gov't Code §217.042 and Tex. Health & Safety
+ *    Code ch. 344. There is a SEPARATE Structural Standards and Nuisance
+ *    Abatement Ordinance, amended in its entirety by Ord. 023-2023
+ *    (28 Mar 2023), which defines SEPROs — "Sanitation and Exterior
+ *    Premises Rules and Orders" — at §B-3.01. Code current through
+ *    Ord. 042-2025 (9 Dec 2025).
+ *  - Population 26,144 (2020 census); 22,290 (2025 estimate). ACS 5-year
+ *    23,975. Housing units 10,462; households 9,061; owner-occupied 64.7%.
+ *  - Geography: Big Spring lies in a rocky gorge between two high foothills
+ *    of the Caprock escarpment. Howard County has the Caprock / Llano
+ *    Estacado to the NORTH and an escarpment marking the beginning of the
+ *    EDWARDS PLATEAU to the SOUTH. County elevation 2,200–2,550 ft. Soils:
+ *    light to very dark loams with some deep clayey subsoils, LIMESTONE
+ *    BEDROCK OUTCROPPINGS in the south-central county, considerable lime
+ *    accumulation in subsoils. Rainfall 15.88 in/yr, growing season 217
+ *    days.
+ *  - The spring itself: pool historically ~15 ft deep, discharging over
+ *    100,000 gallons a day in the railroad era; the water table dropped
+ *    below the outlet and it was depleted by the mid-1920s; the city now
+ *    maintains it artificially with water from Comanche Trail Lake.
+ *  - Comanche Trail Park: 400-acre city park with a 6,900-seat limestone
+ *    amphitheatre. Big Spring State Park: 382 acres on Scenic Mountain
+ *    with a 200-foot bluff, built by the CCC in 1934–35.
+ *  - Beals Creek: intermittent, forms at Salt Lake just west of Big Spring
+ *    where Sulphur Springs Draw meets Mustang Draw, flows east to the
+ *    Colorado.
+ *  - Economy: refinery built 1929, owned by Delek US since 2017; Big Spring
+ *    State Hospital opened 1939; FCI Big Spring and Big Spring Correctional
+ *    Center; Howard College; VA Medical Center; former Webb AFB, now the
+ *    McMahon-Wrinkle Industrial Airpark. Oil from the Howard-Glasscock
+ *    field, 1925–26. County farm receipts ~90% cotton, wheat and sorghum.
+ *  - Big Spring Downtown Historic District listed on the National Register
+ *    12 September 2024; oldest buildings concentrated on South Main and
+ *    First Streets; includes early gas stations and auto dealerships tied
+ *    to the Bankhead Highway. Hotel Settles. Hangar 25 Air Museum.
+ *  - City area 19.226 sq mi.
+ *
+ * NOT FOUND — MUST NOT BE STATED:
+ *  - Big Spring's exact maximum grass/weed height in inches.
+ *  - Its exact notice period in days.
+ *  - Whether it charges/liens abatement costs, and any annual-notice rule.
+ *  (Municode renders via JavaScript; mybigspring.com robots.txt timed out;
+ *   American Legal chapter pages do not expand. The page says so openly and
+ *   sends people to code enforcement rather than guessing.)
+ *  - Median year structure built; published vacancy rate.
+ *  - The refinery's individual bpd capacity.
+ *  - Any flooding/drainage history.
+ *  - The city's official elevation (sources conflict: 2,532 ft point lookup,
+ *    TSHA county range 2,200–2,550, TPWD state park 2,810).
+ *
+ * HONESTY — THE CENTRAL FACT OF THIS PAGE: unlike Andrews, Seagraves and
+ * Denver City, Big Spring HAS an established local pest control industry —
+ * four companies listed at Big Spring addresses, one of them operating
+ * since 1954. This page must not run any version of the "nobody is based
+ * here" argument, and must be candid that we are the furthest option.
+ *
+ * TODO(fact): Highland South, Edwards Heights, Kentwood Addition and
+ * Alderman appear ONLY in real-estate listings, not in any municipal or
+ * census source, and D-09 named no Big Spring neighbourhoods. They are
+ * deliberately NOT published on this page. Do not add them.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Big Spring', path: '/locations/big-spring/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Big Spring, Texas from a base in Seminole, at the far south-eastern edge of our route. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482. Big Spring is the one town on this route with an established local pest control industry, so this page is about what we offer rather than about being closest — because we are not.';
+
+const faqs = [
+  {
+    q: 'How tall can grass and weeds get in Big Spring?',
+    a: 'We are not going to give you a number we have not verified. Big Spring publishes its nuisance provisions in chapter 36 of the city code and in a separate Structural Standards and Nuisance Abatement Ordinance, and the specific height standard sits inside documents we could not retrieve in full. Call city code enforcement and ask directly. Every other town page on this site quotes the exact figure because we could read the ordinance; this one does not, because we could not, and inventing it would be worse than admitting it.',
+  },
+  {
+    q: 'Does Big Spring have a rodent ordinance?',
+    a: 'Yes, and it is unusually direct about it. Chapter 36, article III is headed Vector Control, and section 36-61 is a general prohibition against rat harborage. A city that legislates harbourage rather than just the animal is legislating the condition that sustains it — stored material, accumulations, structures left open — which is exactly where the durable part of rodent work lives.',
+  },
+  {
+    q: 'What is the Structural Standards and Nuisance Abatement Ordinance?',
+    a: 'A separate instrument from the main code, published alongside the zoning and subdivision ordinances and amended in its entirety in March 2023. It defines something it calls SEPROs — Sanitation and Exterior Premises Rules and Orders. If you have received correspondence from the city about the condition of a property, this is very likely the document behind it, and it is worth asking which section applies.',
+  },
+  {
+    q: 'Are there pest control companies based in Big Spring?',
+    a: 'Yes, several, including one that has been operating since 1954. This is the most established local pest control market on our route by a wide margin, and we are not going to pretend otherwise or imply you are short of options. What we bring is a published licence number you can verify, guarantee terms written out in full, and the licence holder doing the work personally. Compare on that, not on proximity, because on proximity we lose.',
+  },
+  {
+    q: 'Why is Big Spring different from the rest of your service area?',
+    a: 'Geology. Every other town on this route sits on sand, on the flat of the Llano Estacado. Big Spring sits in a rocky gorge between foothills of the Caprock escarpment, with limestone at or near the surface and the Edwards Plateau beginning to the south. Rock, crevices and limestone outcrop are a completely different scorpion and spider environment from windblown sand, and treatments aimed at a sandy perimeter do not transfer directly.',
+  },
+  {
+    q: 'Do I have fire ants in Big Spring?',
+    a: 'Possibly, and this is one of the few places on our route where the answer changes. Howard County IS on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101, along with Midland, Ector and Winkler — unlike Gaines, Yoakum, Andrews, Dawson and Terry. If you are moving soil, hay, nursery stock or used soil-moving equipment out of Howard County, the quarantine rules apply to you.',
+  },
+  {
+    q: 'How far is Big Spring from you?',
+    a: 'Around ninety-five road miles south-east, which puts it at the outer edge of the area we cover. It runs as a planned day rather than on demand. If you are in Big Spring, a call with a few days of notice gets a far better answer than a call on the morning you want someone.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Big Spring?',
+    a: 'Sí. El servicio se ofrece en español sin intérprete, porque el dueño lo habla. Big Spring se atiende por día programado, así que conviene llamar con anticipación al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Big Spring TX | Howard County"
+  description="Scorpion, termite and rodent work in Big Spring, at the far edge of our route from Seminole. Licensed TPCL 0918482, published terms, no contracts."
+  path="/locations/big-spring/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Big Spring, Texas',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes and businesses in Big Spring and Howard County.',
+    areaServed: ['Howard County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Howard County · the far edge of the route</p>
+      <h1>Pest Control in Big Spring, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Several other pages on this site make an argument about distance — that we are closer than the
+          companies running a town from Odessa or Lubbock, and that closeness buys you callbacks, interim
+          visits and follow-ups that actually happen.
+        </p>
+        <p>
+          That argument does not work in Big Spring, so we are not going to make it. Big Spring is at the
+          far south-eastern edge of what we cover, it has a genuinely established local pest control
+          industry including a company that has been operating here since the 1950s, and on proximity we
+          are the last option rather than the first.
+        </p>
+        <p>
+          What follows is therefore a different kind of page: what is actually distinctive about pest
+          control on this ground, what we can and cannot tell you about the city's own rules, and what we
+          offer that is worth weighing against being nearby.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The only town on this route built on rock</h2>
+      <div class="measure">
+        <p>
+          Everything else we serve sits on the flat of the Llano Estacado: windblown sand over clay
+          subsoil, no relief, no stone, no permanent water. Big Spring is a different landform entirely,
+          and it is the single most important thing to understand about pest work here.
+        </p>
+        <p>
+          The town lies in a rocky gorge between two high foothills of the Caprock escarpment. Howard
+          County has the Caprock and the edge of the Llano Estacado to the north, and to the south an
+          escarpment marking the beginning of the <strong>Edwards Plateau</strong>. That is a genuine
+          geological boundary running through the county, and Big Spring sits on the seam.
+        </p>
+        <p>
+          The soils reflect it. Where the plains towns are sand, here you get light to very dark loams
+          with some deep clayey subsoils, considerable accumulations of lime, and
+          <strong>limestone bedrock outcropping at the surface</strong> across the south-central part of
+          the county. County elevations run roughly 2,200 to 2,550 feet, which is lower than anywhere else
+          on this route — Brownfield is a thousand feet higher.
+        </p>
+        <p>
+          <strong>What rock does to a scorpion problem.</strong> On sandy ground, scorpion harbourage is
+          things people put there: woodpiles, stacked material, storage against a wall, landscape timbers.
+          Remove them and you have removed most of the habitat. On limestone, the harbourage is the ground
+          itself — crevices, fractures, outcrop, rock retaining walls, stone landscaping and the gaps
+          under and behind all of it. You cannot remove it, which shifts the entire approach toward
+          exclusion at the structure and treatment of the routes between the rock and the building.
+        </p>
+        <p>
+          <strong>What limestone does to moisture.</strong> Rock does not absorb; it sheds and it channels.
+          Water that would soak away into sand runs across stone and collects wherever the geometry says
+          it should. That produces reliable damp points in a semi-arid landscape, and reliable damp is the
+          most valuable resource on the property as far as everything living there is concerned.
+        </p>
+        <p>
+          <strong>What it does to foundations.</strong> Building on or near rock is not building on sand.
+          Slabs bear differently, crawl spaces behave differently, and the junctions where a structure
+          meets uneven bedrock are entry points that do not exist on the plains. It also means a termite
+          barrier established in one town on this route is not established the same way in this one.
+        </p>
+        <p>
+          Rainfall here averages a little under sixteen inches with a growing season of about two hundred
+          and seventeen days — slightly drier and slightly longer-growing than the towns north of here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we can and cannot tell you about the city's rules</h2>
+      <div class="measure">
+        <p>
+          Every other town page on this site quotes the local vegetation ordinance precisely — the height
+          in inches, the notice period in days, the abatement and lien mechanics, the section numbers. We
+          do that because those ordinances are published in a form we can actually read, and because a
+          number you can check is worth more than a paragraph of reassurance.
+        </p>
+        <p>
+          <strong>For Big Spring we could not read them, and so we are not going to quote them.</strong>
+          The city's nuisance provisions live in chapter 36 of the code and in a separate Structural
+          Standards and Nuisance Abatement Ordinance, and the specific standards sit inside documents that
+          did not render in retrievable form. Publishing a height and a notice period we had inferred
+          rather than read would be exactly the kind of confident-sounding invention this site exists to
+          avoid.
+        </p>
+        <p>
+          What we can tell you is the structure, because that much is verifiable.
+        </p>
+        <p>
+          <strong>Chapter 36 is titled Nuisances.</strong> Article I is Property Maintenance, its title
+          amended in January 2022. Article III is Vector Control. Article IV covers junked motor vehicles,
+          with its own notice and rehearing provisions. The chapter carries references to the Texas Local
+          Government Code and to chapter 344 of the Health and Safety Code.
+        </p>
+        <p>
+          <strong>There is a second, separate instrument.</strong> The Structural Standards and Nuisance
+          Abatement Ordinance is published alongside the zoning and subdivision ordinances rather than in
+          the main code, and it was amended in its entirety in March 2023. It defines a term the city uses
+          in correspondence — SEPROs, meaning Sanitation and Exterior Premises Rules and Orders. If you
+          have had a letter about the condition of a property in Big Spring, that is very likely the
+          document behind it, and asking which section applies is a better question than asking what the
+          rule is in general.
+        </p>
+        <p>
+          The practical advice: call code enforcement directly and get the standard from them. If you have
+          a notice in hand, read it to us when you call — the date and the cited provision drive how the
+          work gets scheduled, exactly as they do everywhere else on this route.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A city that legislates rat harbourage</h2>
+      <div class="measure">
+        <p>
+          One provision we could read is worth singling out. Chapter 36, article III is headed
+          <strong>Vector Control</strong>, and section 36-61 is a
+          <strong>general prohibition against rat harborage</strong>.
+        </p>
+        <p>
+          That wording is more sophisticated than it looks. A city can prohibit rats, which achieves
+          nothing because nobody chooses to have them. Or it can prohibit <em>harbourage</em> — the
+          conditions that sustain a population — which is a thing a property owner actually controls.
+          Stored material against a structure. Accumulations that provide cover. Openings left in a
+          building. Anything holding food.
+        </p>
+        <p>
+          That is also, precisely, where the durable part of rodent control lives. Bait and traps remove
+          the animals present. They do nothing about the reason the property supported them, which is why
+          a rodent job done as trapping alone becomes an annual subscription. Exclusion and harbourage
+          removal are what change the outcome, and Big Spring has written that principle into its code.
+        </p>
+        <p>
+          On a practical job here, that means the work is: find the entries and close them, identify what
+          is sustaining the population and change it, and remove what is currently inside. In that order
+          of importance, whatever order they happen in. If a neighbouring property is the source and you
+          are being re-colonised across a fence line, article III is a more useful instrument than
+          anything we can apply on your side of it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>A spring that ran dry, and water that is not where it looks</h2>
+      <div class="measure">
+        <p>
+          The town is named for an actual spring, in a small gorge between the base of Scenic Mountain and
+          a neighbouring hill. In the railroad era the pool was around fifteen feet deep and discharging
+          more than a hundred thousand gallons a day. The water table dropped below the outlet and the
+          spring was completely depleted by the mid-1920s. The city now maintains it artificially, fed
+          with water from Comanche Trail Lake.
+        </p>
+        <p>
+          That history is a useful way into how water works here, because it is not intuitive.
+        </p>
+        <p>
+          Beals Creek, which the town sits in the valley of, is <strong>intermittent</strong>. It forms at
+          Salt Lake just west of Big Spring where Sulphur Springs Draw meets Mustang Draw, and runs east
+          to the Colorado. Intermittent is the key word: dry for long stretches, then carrying, then dry
+          again.
+        </p>
+        <p>
+          For mosquito work, that means pressure here is event-driven rather than continuous, but the
+          events are more pronounced than on the plains, because there is defined drainage collecting
+          water rather than flat ground absorbing it. Pressure climbs in the week to ten days following
+          real rain and falls away again. Treating on a fixed schedule misses that window; treating in
+          response to weather does not.
+        </p>
+        <p>
+          The two large parks matter too, and not as scenery. Comanche Trail Park is a four-hundred-acre
+          city park containing the spring and a limestone amphitheatre seating some six thousand nine
+          hundred. Big Spring State Park is three hundred and eighty-two acres on Scenic Mountain, with a
+          two-hundred-foot bluff, its loop road and pavilion built by the Civilian Conservation Corps in
+          the mid-1930s. Properties adjacent to either are properties adjacent to permanent undeveloped
+          habitat, and the pressure arriving at their perimeter is continuous rather than seasonal. That is
+          not a problem to be solved; it is a condition to be treated for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Fire ants — the one place on our route where the answer changes</h2>
+      <div class="measure">
+        <p>
+          On almost every other page on this site the honest answer to "do I have fire ants" is no. Gaines,
+          Yoakum, Andrews, Dawson and Terry counties are not on the Texas Department of Agriculture red
+          imported fire ant quarantine list under 4 TAC §19.101, and what people find there is nearly
+          always a red harvester ant mound instead.
+        </p>
+        <p>
+          <strong>Howard County is on the list</strong>, along with Midland, Ector and Winkler. That is a
+          real difference and it has consequences beyond the sting.
+        </p>
+        <p>
+          The quarantine regulates the movement of articles capable of carrying the ant out of a
+          quarantined county — soil, hay and baled straw, nursery stock, sod, and used soil-moving
+          equipment. If you are hauling any of that from Big Spring to somewhere outside the quarantined
+          area, the rules apply to you, and they apply whether or not you have ever seen a fire ant on
+          your property.
+        </p>
+        <p>
+          Identification matters more here than in the towns north of us, because two things people call
+          fire ants are present in the region and behave completely differently. A red harvester ant mound
+          is a bare circular clearing several feet across with foraging trails radiating out from it; per
+          AgriLife they do not invade structures. Imported fire ants build a mounded nest without a
+          central opening, respond aggressively and immediately to disturbance, and do enter structures
+          and equipment. The treatments are not interchangeable, and treating one as though it were the
+          other wastes money and sometimes makes things worse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we get called about in Big Spring</h2>
+      <div class="measure">
+        <p>
+          <strong>Scorpions, and a harder version of the problem.</strong> The limestone and rock described
+          above give them permanent harbourage nobody can remove. Peak is July and August, and AgriLife
+          entomologists note they move indoors when it becomes excessively dry outside. On rocky ground the
+          work is almost entirely exclusion at the structure plus treatment of the approach routes, because
+          the source itself is not going anywhere.
+        </p>
+        <p>
+          <strong>Spiders in stone.</strong> Black widows in particular do extremely well in rock walls,
+          stone landscaping, meter boxes and anything with a permanent crevice. Brown recluse are present
+          across Texas and shelter in firewood stacks, stored boxes in attics and low-traffic crevices;
+          bites are rare and accidental.
+        </p>
+        <p>
+          <strong>Rodents, on an urban rather than an agricultural pattern.</strong> This is the largest
+          town we serve at this end of the route, with commercial density, institutional buildings and an
+          industrial base — and a city that wrote a harbourage article for a reason. The driver here is
+          structural and stored-material harbourage more than harvest displacement.
+        </p>
+        <p>
+          <strong>Termites, on a different profile from the plains.</strong> Clayey subsoils and lime
+          accumulation behave differently from sand over caliche, and building against rock produces
+          junctions that do not occur further north. The dry-climate assumption that persuades people they
+          cannot have termites is wrong here for the same reason it is wrong everywhere else on this
+          route: subterranean termites work below grade where the moisture is.
+        </p>
+        <p>
+          <strong>Ants, including the identification question above.</strong> Getting that right before
+          treating is not pedantry; it determines the product and the method.
+        </p>
+        <p>
+          <strong>Mosquitoes after rain events</strong>, following the intermittent-drainage pattern rather
+          than a continuous season.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Big Spring</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the size
+          of the property, the pressure and the frequency, with a higher initial visit. Termite, bed bug,
+          mosquito, lawn, brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why you might call us anyway — and when you should not</h2>
+      <div class="measure">
+        <p>
+          Big Spring has an established local pest control industry. Several companies operate from Big
+          Spring addresses and at least one has been doing so since 1954. That is genuinely a long time,
+          and a business that has survived seventy years in a town this size has done something right.
+        </p>
+        <p>
+          So this section is not a pitch about being closest. It is an honest account of the trade you
+          would be making.
+        </p>
+        <p>
+          <strong>When you should not call us.</strong> If you need somebody on site within a couple of
+          hours, call a local company. Ninety-five miles is ninety-five miles, and no amount of goodwill
+          shortens it. If you have an active stinging-insect emergency, a same-day commercial requirement,
+          or anything where response time is the whole requirement, we are the wrong answer and we will
+          tell you so on the phone rather than after taking the booking.
+        </p>
+        <p>
+          <strong>When it may be worth the call.</strong> Planned work — termite treatment, a scheduled
+          inspection, recurring service on a property that is not on fire this week, a job at a rental
+          between tenants, or work at several properties that can be grouped. Big Spring runs as a planned
+          day rather than on demand, and planned work is exactly what a planned day is good at.
+        </p>
+        <p>
+          <strong>What you get either way.</strong> A licence number published on every page of this site —
+          TPCL 0918482 — that you can check against the Texas Department of Agriculture's own records in
+          about two minutes, including whether the categories cover the work being quoted. Guarantee terms
+          written out in full, with a duration, a covered scope, a stated remedy and an explicit list of
+          exclusions. No contract, no term and no cancellation fee. And the licence holder doing the work
+          personally, which means the person who quotes the job is the person who finds out whether the
+          quote was right.
+        </p>
+        <p>
+          <strong>What to ask everybody, including us.</strong> The licence number and its categories. The
+          guarantee, in terms of how long, against what and what they actually do about it. Who physically
+          performs the work. And the scope behind the price — covered pests, whether outbuildings are
+          included, exterior only or interior as well, and the recurring figure rather than the
+          introductory one.
+        </p>
+        <p>
+          If a local company answers those better for your situation, use them. A market with real
+          competition in it is a market where the customer wins, and Big Spring is the only town on this
+          route that genuinely has one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Big Spring pest control questions" />
+  <Cta
+    market="Big Spring"
+    line="At the far edge of the route, so this one runs as a planned day. If the work can be scheduled rather than needing somebody this afternoon, call and we will find a day that works."
+  />
+</BaseLayout>

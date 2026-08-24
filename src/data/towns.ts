@@ -224,7 +224,7 @@ export const TOWNS: Town[] = [
     name: 'Odessa',
     county: 'Ector County',
     distanceMiApprox: 65,
-    direction: 'south',
+    direction: 'southeast',
     tier: 'full',
     neighborhoods: ['Mission Estates', 'Parks Bell Ranch'],
     housing:

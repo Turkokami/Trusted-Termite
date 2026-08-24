@@ -22,7 +22,7 @@ export function getStaticPaths() {
   /** Hand-written town pages have their own files and are excluded here or the
    *  routes collide. Add to this list as each town is written to depth.
    *  Declared INSIDE the function — Astro hoists getStaticPaths. */
-  const WRITTEN = ['seminole', 'midland', 'odessa', 'lubbock', 'andrews', 'seagraves', 'denver-city', 'lamesa'];
+  const WRITTEN = ['seminole', 'midland', 'odessa', 'lubbock', 'andrews', 'seagraves', 'denver-city', 'lamesa', 'brownfield', 'big-spring', 'stanton'];
   return TOWNS.filter(t => !WRITTEN.includes(t.slug))
     .map(t => ({ params: { slug: t.slug }, props: { town: t } }));
 }

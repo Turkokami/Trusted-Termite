@@ -1,0 +1,471 @@
+---
+/**
+ * T3 city page — Stanton, Martin County. About 65 miles south-east of
+ * Seminole, on Interstate 20 between Midland and Big Spring.
+ *
+ * VERIFIED facts used here:
+ *  - Ordinance: Stanton Code ch. 7 art. 7.03, "Stagnant Water, Filth and
+ *    Tall Weeds and Grass" (eCode360, current through 8 July 2024),
+ *    §§ 7.03.001–7.03.008. Enforcement by the city administrator-secretary
+ *    at 7.03.001. 7.03.002 deems weeds or grass at TWELVE INCHES OR MORE
+ *    unsanitary, and covers stagnant water, carrion, filth and other impure
+ *    or unwholesome matter in the same breath. SEVEN days' notice at
+ *    7.03.004, which also carries the one-year repeat-violation provision.
+ *    City correction and charge at 7.03.005. Statement of expenses filed
+ *    with the COUNTY CLERK by the mayor at 7.03.006. PRIVILEGED LIEN
+ *    "second only to tax liens" at TEN PERCENT per annum from filing, at
+ *    7.03.007. Misdemeanour penalty at 7.03.008.
+ *  - 7.03.003 — the sight-line and clearance standard, unique on this
+ *    route: vegetation may not obstruct pedestrian or motorist safety or
+ *    traffic visibility within 100 FEET; bushes in parkways may not exceed
+ *    TWO AND A HALF FEET above gutter elevation; trees must keep SEVEN feet
+ *    of clearance above ground and EIGHT feet above sidewalks.
+ *  - Population 2,657 (2020 census); ACS 5-year 2,638. Housing units 994;
+ *    households 939; homeownership 78.4% — the HIGHEST on this route.
+ *    Below the 5,000 threshold, so no Census QuickFacts page exists.
+ *  - Geography: elevation 2,664 ft. Total area 1.99 sq mi. On I-20 between
+ *    Midland and Big Spring; Martin County is ~25 miles north-east of
+ *    Midland on the southern High Plains, above the escarpment Big Spring
+ *    sits below. Soils primarily RED SANDY LOAM, with hackberry, mesquite
+ *    and willow. County elevation 2,550–3,000 ft. Rainfall 15.72 in/yr;
+ *    January lows average 30°F, July highs 95°F.
+ *  - Economy: agriculture and oil and gas. Crops cotton, small grains and
+ *    corn; county agriculture ~$36M annually, ~90% from those three.
+ *    Stanton oilfield production began 1951; Martin County oil peaked at
+ *    11.8 million barrels in 1974. Martin County Hospital District.
+ *  - History: established 1881 as Grelton by German Catholic settlers led
+ *    by John Jacob Konz and Father Christian D. Peters; renamed Marienfeld
+ *    1885; renamed Stanton 1890 for Edwin McMasters Stanton. First Catholic
+ *    church in West Texas built within months of arrival. Sisters of Mercy
+ *    founded the Convent and Academy of Our Lady of Mercy in 1894, for
+ *    years the only Catholic academy between Fort Worth and El Paso; the
+ *    monastery relocated to Louisiana in 1897. John Scharbauer established
+ *    a cattle ranch nearby in 1887. A $40,000 courthouse dates to 1910.
+ *    Incorporated mid-1920s (TSHA says 1925, the chamber says 1926 — the
+ *    page says "the mid-1920s"). Old Sorehead Trade Days runs twice a year,
+ *    the second weekend in April and October, ~615 booths, ~30,000
+ *    visitors. Town tagline: "3,000 Friendly People and a few Old
+ *    Soreheads."
+ *  - NO pest control company is listed at a Stanton street address. Yellow
+ *    Pages returns 15 Midland firms, 6 Odessa firms, Southwestern A-1 from
+ *    Big Spring, plus Lubbock, Abilene, Amarillo and Pecos. Stanton is
+ *    served entirely from out of town — a defensible, verifiable claim.
+ *
+ * NOT FOUND — MUST NOT BE STATED:
+ *  - Median year structure built; published vacancy rate.
+ *  - Named employers.
+ *  - Named neighbourhoods or subdivisions (explicitly none documented).
+ *  - Flooding or drainage history.
+ *  - Exact I-20 mileage from Stanton to Midland or Big Spring.
+ *  - Precise road mileage from Seminole (65 mi is straight-line, so the
+ *    page says "about sixty-five miles" as distance, not road mileage).
+ *
+ * TODO(fact): D-09 named no Stanton neighbourhoods. Do not invent any.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Stanton', path: '/locations/stanton/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Stanton, Texas from a base in Seminole, sixty-five miles away. Stanton sits south-east of Seminole, on Interstate 20 between Midland and Big Spring. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, spiders, termites and rodents across Martin County. No pest control company is listed at a Stanton street address — the town is served entirely from elsewhere.';
+
+const faqs = [
+  {
+    q: 'How tall can grass and weeds get in Stanton?',
+    a: 'Twelve inches. Section 7.03.002 deems weeds or grass growing to a height of twelve inches or more to be unsanitary, and the same section covers stagnant water and the accumulation of carrion, filth or other impure or unwholesome matter. The article is headed "Stagnant Water, Filth and Tall Weeds and Grass," which tells you the city treats all three as one problem.',
+  },
+  {
+    q: 'How long do I get after a notice in Stanton?',
+    a: 'Seven days, under section 7.03.004. The same section allows the notice to state that repeated violations within one year may be corrected by the city at your expense without additional notice — so one letter can cover twelve months.',
+  },
+  {
+    q: 'What happens if the city has to do the work?',
+    a: 'Under 7.03.005 the city may correct the condition and charge you the expenses. Under 7.03.006 the mayor files a statement of those expenses with the county clerk. Under 7.03.007 the city then holds a privileged lien on the property, second only to tax liens, bearing ten percent per annum from the date of filing. It is a misdemeanour as well, under 7.03.008.',
+  },
+  {
+    q: 'Are there rules about trees and bushes in Stanton?',
+    a: 'Yes, and they are more specific than anywhere else on our route. Section 7.03.003 prohibits vegetation that obstructs pedestrian or motorist safety or traffic visibility within one hundred feet. Bushes in parkways may not exceed two and a half feet above gutter elevation. Trees must maintain seven feet of clearance above the ground and eight feet above sidewalks. If you have a shrub at a corner or a low branch over a walk, those are the actual numbers.',
+  },
+  {
+    q: 'Is there a pest control company based in Stanton?',
+    a: 'No. Directory searches return no business with a Stanton street address — every listing is a company serving Stanton from Midland, Odessa, Big Spring, Lubbock, Abilene, Amarillo or Pecos. Stanton is served entirely from out of town, which means the honest question is not who is local but who is willing to actually come back when you need them again.',
+  },
+  {
+    q: 'Do I have fire ants in Stanton?',
+    a: 'Martin County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101, though neighbouring Midland, Ector and Howard counties are — so Stanton sits right on the edge of it. What most people find here is a red harvester ant mound: a bare circle several feet across with foraging trails running out from it. They sting, and it can be more serious than most, but per AgriLife they do not invade structures. Getting the identification right matters more here than further north.',
+  },
+  {
+    q: 'How far is Stanton from you?',
+    a: 'About sixty-five miles to the south-east. That puts it in the planned-day part of our route rather than the same-day part, so a call with a couple of days of notice gets a much better slot than a call on the morning you want somebody.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Stanton?',
+    a: 'Sí. Valentin habla español con fluidez y hace el trabajo él mismo. Stanton se atiende por día programado, así que unos días de aviso ayudan mucho. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Stanton TX | Martin County"
+  description="Scorpion, termite and rodent work in Stanton, Martin County, from our Seminole base. Licensed TPCL 0918482, published terms, no contracts."
+  path="/locations/stanton/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Stanton, Texas',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, acreage and businesses in Stanton and Martin County.',
+    areaServed: ['Martin County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Martin County · about 65 miles from Seminole</p>
+      <h1>Pest Control in Stanton, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Stanton is a town of roughly twenty-six hundred people occupying about two square miles, sitting
+          on Interstate 20 between Midland and Big Spring. Almost eight in ten households own their home —
+          the highest rate of any town on this route by a clear margin.
+        </p>
+        <p>
+          Those three facts together describe a particular kind of place, and they explain most of what is
+          distinctive about pest work here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The ordinance that treats weeds, filth and standing water as one thing</h2>
+      <div class="measure">
+        <p>
+          Stanton's article on property condition is headed <strong>"Stagnant Water, Filth and Tall Weeds
+          and Grass,"</strong> and that heading is the most informative thing about it. Most towns split
+          vegetation into one article and sanitation into another. Stanton put them together, which is
+          closer to how the problem actually behaves.
+        </p>
+        <p>
+          <strong>Twelve inches.</strong> Section 7.03.002 deems weeds or grass growing to a height of
+          twelve inches or more to be unsanitary, and the same section covers stagnant water and the
+          accumulation of carrion, filth or any other impure or unwholesome matter. Enforcement runs
+          through the city administrator-secretary under 7.03.001.
+        </p>
+        <p>
+          <strong>Seven days.</strong> Section 7.03.004. Alongside Seagraves, Brownfield and Lamesa, this
+          is the short end of the range — Denver City and Andrews both allow ten.
+        </p>
+        <p>
+          <strong>One notice covers a year.</strong> The same section permits the notice to state that
+          repeated violations within one year may be corrected by the city at the owner's expense without
+          additional notice. Every town on this route has some version of this and it catches people out
+          in all of them.
+        </p>
+        <p>
+          <strong>The lien.</strong> If the city does the work under 7.03.005, the mayor files a statement
+          of expenses with the county clerk under 7.03.006, and under 7.03.007 the city holds a privileged
+          lien on the property, <strong>second only to tax liens</strong>, carrying <strong>ten percent
+          per annum</strong> from the date of filing. There is a misdemeanour penalty on top, under
+          7.03.008.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Two and a half feet, seven feet, eight feet, a hundred feet</h2>
+      <div class="measure">
+        <p>
+          Section 7.03.003 contains something no other ordinance on this route has: an actual dimensional
+          standard for landscaping, rather than a general prohibition on overgrowth. It is worth setting
+          out in full, because these are numbers people can measure and almost nobody knows.
+        </p>
+        <p>
+          <strong>Sight lines: one hundred feet.</strong> Vegetation may not obstruct pedestrian or
+          motorist safety or traffic visibility within a hundred feet. That is the corner shrub, the
+          hedge at the end of a driveway, the ornamental grass that has got away from you beside an
+          intersection.
+        </p>
+        <p>
+          <strong>Bushes in parkways: two and a half feet above gutter elevation.</strong> The parkway is
+          the strip between the sidewalk and the kerb — the piece most people assume belongs to the city
+          and is therefore somebody else's problem. Anything planted there has a thirty-inch ceiling
+          measured from the gutter, not from wherever the soil happens to sit.
+        </p>
+        <p>
+          <strong>Trees: seven feet above ground, eight feet above sidewalks.</strong> Low branches over a
+          walk are the single most common version of this, and they are also, incidentally, a pest issue.
+          A branch touching or overhanging a structure is a bridge, and one of the standard exclusion
+          recommendations on any property is to keep vegetation clear of the roofline and walls. Here the
+          city has already told you the clearance it wants.
+        </p>
+        <p>
+          That overlap is worth dwelling on, because it is unusual for a code requirement and a pest
+          recommendation to point the same direction so precisely. Trimming to the ordinance in Stanton
+          also happens to be trimming to good exclusion practice, and the same afternoon's work satisfies
+          both.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A town of owners</h2>
+      <div class="measure">
+        <p>
+          About seventy-eight percent of occupied housing in Stanton is owner-occupied. Compare that with
+          roughly sixty per cent in Seagraves, sixty-six in Brownfield and sixty-five in Big Spring. On
+          fewer than a thousand housing units in under two square miles, that is a town where most people
+          own the building they are standing in.
+        </p>
+        <p>
+          That changes the work in ways worth being straight about.
+        </p>
+        <p>
+          <strong>Maintenance actually happens.</strong> Owners fix things. There is no split incentive
+          where the person experiencing the problem is not the person who pays to solve it, and no
+          question of who authorises the job. Problems get noticed early because somebody has been in the
+          house for years and knows what is normal.
+        </p>
+        <p>
+          <strong>People here do a lot of it themselves.</strong> Which is fine, and we are not going to
+          pretend otherwise or be sniffy about it. A homeowner who keeps the vegetation back, replaces a
+          worn door sweep, keeps storage off the wall and fixes the irrigation head that throws against
+          the foundation has done more for their pest outcome than most treatments would. Those are the
+          highest-value items on almost any property and none of them require a licence.
+        </p>
+        <p>
+          <strong>Where the line actually sits.</strong> The things worth calling somebody for are the
+          ones where doing it yourself does not work or makes things worse. Termite treatment, which
+          requires equipment, product and a barrier established correctly the first time. Rodent
+          exclusion, where finding the entries is the skill and closing the obvious one while missing the
+          real one is the usual outcome. Scorpion work, which is mostly about harbourage and entry rather
+          than about spraying anything. And identification, where the wrong product on the wrong ant
+          scatters a colony instead of eliminating it.
+        </p>
+        <p>
+          <strong>And retail product has real limits.</strong> Not because it is fake — much of it works —
+          but because the label rates, the formulations and the placement options are different, and
+          because a repellent sprayed on a band can push activity away from a treatment rather than into
+          it. If you have already applied something, say so when you call. It is information, not a
+          confession.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>On the interstate, and what that brings</h2>
+      <div class="measure">
+        <p>
+          Stanton is the only town on this route sitting directly on Interstate 20, roughly twenty-five
+          miles from Midland on the southern High Plains side of the escarpment. A small town on a major
+          freight corridor has a commercial pest profile that a comparably sized farm town does not.
+        </p>
+        <p>
+          <strong>Transient occupancy.</strong> Lodging, travel-related premises and anything serving a
+          passing population sees a rate of introduction that a residential town does not. Bed bugs in
+          particular are an introduction problem rather than a sanitation problem — they arrive in
+          luggage, and the cleanest premises are as exposed as any other. Early detection is the whole
+          game, and the operators who handle it well are the ones inspecting rather than reacting.
+        </p>
+        <p>
+          <strong>Food service and fuel.</strong> Continuous throughput, waste handling at volume, and
+          exterior areas that stay warm and lit through the night. Commercial rodent pressure on a
+          corridor property is structural rather than seasonal.
+        </p>
+        <p>
+          <strong>Documentation matters more.</strong> Any premises subject to inspection needs the service
+          record as much as the service — it is the thing an inspector asks to see. If you are buying pest
+          control for a business here, say so on the first call so the paperwork side gets sorted before
+          rather than after, including a certificate of insurance if your entity requires one on file.
+        </p>
+        <p>
+          <strong>Residential property near the corridor</strong> inherits some of it. Structures near
+          continuous commercial activity, waste handling or open lots along the highway see steadier
+          pressure than a comparable house on the other side of town.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Red sandy loam, and where Stanton sits on the map</h2>
+      <div class="measure">
+        <p>
+          Stanton is at about 2,664 feet, with county elevations running roughly 2,550 to 3,000. Martin
+          County lies on the southern High Plains, which puts Stanton above the escarpment that Big Spring
+          sits below — the two towns are close together on the interstate and on different landforms.
+        </p>
+        <p>
+          Soils here are primarily <strong>red sandy loam</strong>, supporting hackberry, mesquite and
+          willow. Rainfall averages a little under sixteen inches, with January lows around thirty degrees
+          and July highs around ninety-five.
+        </p>
+        <p>
+          Sandy loam matters for the same reason it matters everywhere on the plains, and it is worth
+          repeating because it is the most actionable piece of ground information anybody can give you.
+          Sand drains fast. In a climate with sixteen inches of rain a year, that means the ground holds
+          almost no reliable moisture — which in turn means that <em>any</em> artificial moisture source on
+          a property becomes the dominant feature of its pest picture.
+        </p>
+        <p>
+          An irrigation head throwing against a foundation. A downspout discharging at the wall. An air
+          conditioning condensate line running to the same patch of dirt every summer. A swamp cooler
+          overflow. A leaking spigot. In a wetter part of the country these are minor maintenance items.
+          Here, they are frequently the only consistent water within a hundred feet, and everything that
+          needs water knows where they are.
+        </p>
+        <p>
+          Willow in the native vegetation list is a small tell of its own: willows indicate water. Where
+          they are growing, something is holding moisture, and that is worth knowing about a property
+          before treating it.
+        </p>
+        <p>
+          The wider county runs on agriculture and oil together — cotton, small grains and corn making up
+          around ninety percent of a county agricultural income of roughly thirty-six million a year, with
+          oilfield production dating from 1951. That combination produces the two overlapping calendars
+          described below.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we get called about in Stanton</h2>
+      <div class="measure">
+        <p>
+          <strong>Scorpions, June through September.</strong> Striped bark scorpions. AgriLife
+          entomologists note they move indoors when it becomes excessively dry outside, so a long dry June
+          is a reliable predictor of a difficult July. Nocturnal, good climbers, and in attics more often
+          than people expect. Harbourage and exclusion do more here than spraying.
+        </p>
+        <p>
+          <strong>Rodents on two calendars at once.</strong> The agricultural one — cotton, grain and corn
+          coming off, displacing populations toward whatever structures are nearest — and the corridor one,
+          which runs year-round wherever commercial activity provides continuous food and warmth. The
+          first cold nights of autumn compound both.
+        </p>
+        <p>
+          <strong>Termites, and the assumption that hides them.</strong> Plenty of people out here have
+          been told the climate is too dry. It is not. Subterranean termites work below grade where the
+          moisture is, and slab construction conceals the evidence rather than preventing the problem.
+        </p>
+        <p>
+          <strong>Spiders, black widow especially.</strong> Meter boxes, well houses, pump enclosures,
+          under-shed spaces — anything small, dark and opened once a season. Brown recluse are present
+          across Texas and shelter in firewood stacks, stored boxes in attics and low-traffic crevices;
+          bites are rare and accidental.
+        </p>
+        <p>
+          <strong>Ant identification, which matters more here.</strong> Martin County is not on the fire
+          ant quarantine list, but Midland, Ector and Howard counties on three sides of it are. That makes
+          Stanton an edge case, and getting the identification right before treating is not pedantry — a
+          harvester ant mound and an imported fire ant nest need different products and different methods.
+        </p>
+        <p>
+          <strong>Mosquitoes after rain.</strong> Episodic rather than continuous, climbing roughly a week
+          to ten days after a real rain event and falling away again. Fixed-calendar treatment misses the
+          window; weather-responsive treatment does not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Stanton</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the size
+          of the property, the pressure and the frequency, with a higher initial visit. Termite, bed bug,
+          mosquito, lawn, brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Everybody drives past Stanton</h2>
+      <div class="measure">
+        <p>
+          No pest control company is listed at a Stanton street address. Directory searches return fifteen
+          firms in Midland, six in Odessa, one in Big Spring and others in Lubbock, Abilene, Amarillo and
+          Pecos. Every one of them serves Stanton from somewhere else.
+        </p>
+        <p>
+          That is an unusual position for a town this size. It is not underserved in the sense of being
+          hard to reach — it sits on an interstate twenty-five miles from a city with fifteen pest control
+          companies in it. Getting to Stanton is easy for a great many operators.
+        </p>
+        <p>
+          Which means the question here is not who is closest, because we are not, and it is not who is
+          able to reach you, because most of them are. It is who treats a two-thousand-person town on the
+          way to somewhere else as real work rather than as a stop to be fitted in.
+        </p>
+        <p>
+          <strong>What that looks like in practice.</strong> Whether the inspection gets the time it
+          needs, or gets compressed because the route is full. Whether the guarantee callback happens
+          promptly or gets attached to the next time somebody is out that way. Whether the second visit
+          that termite and rodent work genuinely requires lands on the interval the biology needs or the
+          interval the schedule prefers. Those are the differences that show up on the third visit rather
+          than the first.
+        </p>
+        <p>
+          <strong>What we offer.</strong> A licence number published on every page here — TPCL 0918482 —
+          verifiable against the Texas Department of Agriculture's own records in about two minutes,
+          including whether the categories cover the work being quoted. Guarantee terms written out in
+          full with a duration, a covered scope, a stated remedy and explicit exclusions. No contract, no
+          term, no cancellation fee. And the licence holder doing the work personally, which means the
+          person who quotes the job is the person who finds out whether the quote was right.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> Sixty-five miles puts Stanton in the planned-day
+          part of the route rather than the same-day part. If you need somebody within two hours, a Midland
+          company is the right call and we will say so. If the work can be scheduled — termite treatment,
+          a recurring service, a job between tenants, several properties grouped together — then a planned
+          day is exactly what a planned day is good at.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Stanton pest control questions" />
+  <Cta
+    market="Stanton"
+    line="Sixty-five miles up the road, run as a planned day. Tell him what you are seeing and whether there is a deadline attached — a couple of days of notice gets a much better slot than a call the same morning."
+  />
+</BaseLayout>

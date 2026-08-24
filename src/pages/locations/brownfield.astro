@@ -1,0 +1,485 @@
+---
+/**
+ * T3 city page — Brownfield, Terry County. About 41 miles north-north-east
+ * of Seminole on US 62/385, with Seagraves roughly halfway.
+ *
+ * Verified local facts used here:
+ *  - Ordinance: Brownfield Code ch. 6 art. 6.900 "Weeds, Rubbish, Etc."
+ *    (eCode360). 12-inch limit at 6.901(a), which also sweeps in household
+ *    trash, building materials, appliances, toxic materials, stagnant water,
+ *    dead animals, brush piles, debris, rubbish and fire hazards. SEVEN
+ *    days' notice at 6.902(a). One-year single-notice rule at 6.903(a)(1),
+ *    by certified mail. Right to a hearing at 6.904. 48-inch emergency
+ *    abatement at 6.905(a). Lien with 10% annual interest at 6.906.
+ *  - SEPARATE art. 6.500 "Offensive Conditions": carrion, filth, impure
+ *    matter, stagnant water, wastewater escape, refuse dumping. TEN days at
+ *    6.506 (NOT seven — do not conflate). City work and charge at 6.508;
+ *    privilege lien at 10% at 6.510. No height standard, no annual rule.
+ *  - Art. 6.600 "RAT CONTROL" — a standalone rodent article, genuinely
+ *    unusual for a town this size. Its internal text was not retrieved, so
+ *    the page notes that it exists and does NOT quote provisions from it.
+ *  - Population 8,936 (2020 census); 8,762 (2025 est) — near-stable, unlike
+ *    Lamesa. Peak 10,286 in 1960.
+ *  - Housing (ACS 2019–2023): 3,808 units, 3,531 occupied, 66.4% owner-
+ *    occupied, VACANCY 7.3% (less than half Lamesa's), median year built
+ *    1964, mobile homes 5.9%, single-family detached 87.9%.
+ *  - Economy: cotton (Terry among the leading Texas cotton counties);
+ *    peanuts, over 20,000 acres harvested annually; grapes — 20+ vineyards,
+ *    3,000+ acres, over 80% of the Texas wine grape crop, "Grape Capital of
+ *    Texas" (the authority behind that title is NOT documented — do not
+ *    attribute it to the Legislature); oil since the 1940s. Birdsong
+ *    Peanuts shelling plant, described as the largest west of the
+ *    Mississippi.
+ *  - Geography: elevation 3,310 ft, ON the Llano Estacado with the Caprock
+ *    Escarpment roughly 50 miles EAST. Blackwater Draw Formation windblown
+ *    deposits over caliche, Ogallala Aquifer beneath. Lost Draw. Distinctive
+ *    red, iron-oxide-rich soil. Sandy loam, level, broken by draws and
+ *    playas, sand hills in the north-east. NO rivers or streams.
+ *  - USDA "Brownfield" soil series: sandy surface over a clay-enriched
+ *    argillic horizon beginning about 28 INCHES down, well drained. Type
+ *    location is Yoakum County, so describe the series, not the town.
+ *  - Founded 1903 by W. G. Hardin and A. F. Small, named for rancher
+ *    A. M. "Dick" Brownfield. County seat from Gomez, 28 June 1904.
+ *    Railroad 1917, incorporated October 1920. Terry County Courthouse
+ *    1925 with a 1951 addition. Skip-Bo production began here in 1967.
+ *    Terry County Harvest Festival, October, since 1947.
+ *
+ * HONESTY NOTES:
+ *  - BCC Inc (1305 Stockton St) is marked CLOSED on Yelp. Chemical Weed
+ *    Control (606 S 14th St) appears under a pest category but is likely
+ *    agricultural vegetation work — unconfirmed. So the page says no ACTIVE
+ *    locally based structural operator could be confirmed, and does NOT
+ *    state a definitive count of zero.
+ *  - The Jim Rudd Unit's current operating status is unconfirmed (reported
+ *    shut down for staffing in 2021). NOT mentioned on this page.
+ *  - Vineyard and peanut ground appear here only as landscape drivers of
+ *    pressure on nearby structures. This business does not do agricultural
+ *    crop application and the page must not imply that it does.
+ *
+ * TODO(fact): no Brownfield neighbourhoods documented. D-09 named none.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Brownfield', path: '/locations/brownfield/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Brownfield, Texas from a base in Seminole, forty-one miles away. Brownfield sits north-north-east of Seminole on US 62/385, with Seagraves roughly halfway. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, spiders, termites and rodents across Terry County.';
+
+const faqs = [
+  {
+    q: 'How tall can weeds and grass get in Brownfield?',
+    a: 'Twelve inches. Section 6.901(a) requires property to be kept free of weeds, grass and undergrowth over twelve inches tall, and the same section covers household trash, garbage, used building materials, discarded appliances, toxic materials, stagnant water, dead animals, brush piles, debris, rubbish and fire hazards.',
+  },
+  {
+    q: 'How long do I get after a notice in Brownfield?',
+    a: 'Seven days under the weeds article, section 6.902(a). Be careful here, because Brownfield has two different clocks: the separate "offensive conditions" article at 6.500 — carrion, filth, stagnant water, wastewater escape — runs on ten days under 6.506. Which article your notice cites determines how long you have.',
+  },
+  {
+    q: 'Can the city clear my property without notifying me again?',
+    a: 'Within a year of a notice, yes. Section 6.903(a)(1) allows the city to state in the notice that a further violation of the same kind posing a danger to public health and safety, on or before the first anniversary, may be corrected without further notice at your expense and assessed against the property. Notice goes by certified mail, and there is a right to a hearing under 6.904.',
+  },
+  {
+    q: 'What does an unpaid abatement cost?',
+    a: 'A lien on the property carrying ten percent annual interest, under section 6.906 for weeds and section 6.510 for offensive conditions. Above forty-eight inches, section 6.905(a) permits emergency abatement with no notice at all where growth poses an immediate danger.',
+  },
+  {
+    q: 'Does Brownfield have a rodent ordinance?',
+    a: 'It does. Chapter 6 carries a standalone article on rat control — article 6.600 — which is unusual for a town this size and tells you something about the local history of the problem. We would rather point you at the city than paraphrase provisions we have not read in full, so if you have a rodent complaint involving a neighbouring property, call code enforcement and ask about that article specifically.',
+  },
+  {
+    q: 'Is there a pest control company based in Brownfield?',
+    a: 'We could not confirm an active one. There is a Brownfield-addressed business listed in directories that appears to be closed, and another whose name suggests agricultural vegetation work rather than structural pest control. That is not the same as saying nobody is there, and we are not going to claim more certainty than we have. What we can tell you is that Seminole is forty-one miles away and that the route runs through Seagraves.',
+  },
+  {
+    q: 'Do I have fire ants in Brownfield?',
+    a: 'Almost certainly not. Terry County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101. What most people find here is a red harvester ant mound — a bare circle several feet across with foraging trails running out from it. The sting is worse than most, but per AgriLife they stay outdoors and do not enter buildings.',
+  },
+  {
+    q: 'Do you spray vineyards or peanut fields?',
+    a: 'No. This is a structural pest control business — homes, outbuildings and commercial premises — not an agricultural applicator. Terry County grows an enormous share of the state’s wine grapes and a great deal of peanut ground, and both matter here because of what they do to pest pressure on the buildings beside them. The buildings are the work.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Brownfield?',
+    a: 'Sí. Valentin habla español con fluidez y atiende cada trabajo personalmente. Brownfield queda a cuarenta y una millas por la 62/385. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Brownfield TX | Terry County"
+  description="Scorpion, termite and rodent control in Brownfield, forty-one miles from our Seminole base through Seagraves. Licensed TPCL 0918482, no contracts."
+  path="/locations/brownfield/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Brownfield, Texas',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, farm property and businesses in Brownfield and Terry County.',
+    areaServed: ['Terry County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Terry County · about 41 miles from Seminole</p>
+      <h1>Pest Control in Brownfield, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          The run to Brownfield goes north out of Seminole on US 62/385 through Seagraves, which sits
+          roughly halfway. That matters practically rather than decoratively: it means Brownfield is on a
+          road we are already on, and that work in the two towns can be grouped on the same day.
+        </p>
+        <p>
+          Brownfield is also the town on this route with the most distinctive agriculture — cotton,
+          peanuts and an extraordinary concentration of vineyards — and a chapter of city code that
+          contains something no other town on the route has.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Two ordinances, two different clocks</h2>
+      <div class="measure">
+        <p>
+          Brownfield runs property condition through two separate articles of its health and sanitation
+          chapter, and they carry different notice periods. Getting them confused is the most common way
+          people misjudge how long they have.
+        </p>
+        <p>
+          <strong>Article 6.900 — weeds and rubbish.</strong> Section 6.901(a) requires property to be
+          kept free of weeds, grass and undergrowth <strong>over twelve inches tall</strong>, and the same
+          section sweeps in household trash and garbage, used building materials, discarded fixtures and
+          appliances, toxic materials, stagnant water, dead animals, brush piles, debris, rubbish and
+          fire-hazard material. <strong>Seven days' notice</strong> under 6.902(a) before the city may act.
+        </p>
+        <p>
+          <strong>Article 6.500 — offensive conditions.</strong> A broader and older-feeling article
+          covering carrion, filth, impure or unwholesome matter, stagnant water, the escape of wastewater
+          and refuse dumping. It contains no height standard and no annual-notice provision, and the
+          period here is <strong>ten days</strong> under 6.506, not seven. The city may then do the work
+          and charge the owner under 6.508, with a privilege lien at ten percent annual interest under
+          6.510.
+        </p>
+        <p>
+          So the first thing to check on a Brownfield notice is which article it cites, because that is
+          three days of difference and people routinely assume the shorter one applies to everything.
+        </p>
+        <p>
+          <strong>The one-year rule is here too.</strong> Section 6.903(a)(1) allows the notice to state
+          that a further violation of the same kind posing a danger to public health and safety, on or
+          before the first anniversary of the notice, may be corrected by the city without further notice
+          at your expense and assessed against the property. Notice goes by certified mail, and there is a
+          right to a hearing under 6.904.
+        </p>
+        <p>
+          <strong>Above forty-eight inches there is no notice.</strong> Section 6.905(a) covers weeds
+          grown higher than four feet that pose an immediate danger, and permits abatement without any
+          prior notice at all.
+        </p>
+        <p>
+          <strong>The weed lien also runs at ten percent</strong> under 6.906, and violations are
+          misdemeanours under 6.907.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Brownfield has an entire ordinance about rats</h2>
+      <div class="measure">
+        <p>
+          Buried in the same chapter is article 6.600, headed <strong>Rat Control</strong>. A standalone
+          rodent article is not something you find in most West Texas towns of nine thousand people, and
+          the fact that Brownfield has one is worth knowing about.
+        </p>
+        <p>
+          We are not going to paraphrase provisions we have not read in full, and the article's own text
+          was not retrievable when this page was written. What we will say is that its existence is
+          informative on its own. Municipalities do not write dedicated rodent ordinances speculatively.
+          They write them after a period in which rodents were enough of a public problem to require a
+          legal instrument, and the instrument tends to outlast the crisis.
+        </p>
+        <p>
+          The practical relevance is this: if your rodent problem is being driven by a neighbouring
+          property — an unmanaged structure, an accumulation, a derelict building — you may have a route
+          available in Brownfield that you would not have elsewhere. Call city code enforcement and ask
+          about article 6.600 specifically rather than filing a general complaint. A named article gets a
+          different response from a general one.
+        </p>
+        <p>
+          On our side, the work is your structure: finding where they are entering, closing it, and
+          removing the population. Exclusion is the durable part. Trapping without it produces vacancies
+          that refill, and on a property with an external source it refills quickly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cotton, peanuts, and three thousand acres of grapes</h2>
+      <div class="measure">
+        <p>
+          Terry County's agriculture is unlike anywhere else on this route, and it drives the pest calendar
+          in ways that are worth understanding even though none of it is work we do.
+        </p>
+        <p>
+          To be explicit about that: this is a structural pest control business. Houses, outbuildings and
+          commercial premises. We do not do agricultural crop application, we are not a vineyard service,
+          and nothing below is an offer to spray a field. The reason the agriculture matters is that it
+          sets what arrives at the buildings.
+        </p>
+        <p>
+          <strong>Cotton.</strong> Terry is among the leading cotton counties in Texas, with well over a
+          hundred thousand irrigated acres. Harvest is the event that matters: a crop that supported a
+          population all season comes off in days, and everything living in it relocates to whatever
+          structures are nearest.
+        </p>
+        <p>
+          <strong>Peanuts.</strong> More than twenty thousand acres harvested annually, and a shelling
+          plant in Brownfield described as the largest west of the Mississippi. Stored product is a
+          different pest situation from growing product. Anything holding, moving or processing a
+          commodity attracts and sustains rodents and stored-product insects continuously rather than
+          seasonally, and buildings in the vicinity of that activity inherit some of it.
+        </p>
+        <p>
+          <strong>Grapes.</strong> More than twenty vineyards and something over three thousand acres,
+          producing the large majority of the wine grapes grown in Texas — which is why Terry County is
+          called the Grape Capital of Texas. For structural work the relevance is straightforward:
+          vineyard rows are permanent cover with permanent irrigation, and a house or an outbuilding
+          sitting next to one is sitting next to continuous harbourage and continuous moisture in a region
+          where both are otherwise scarce. Rodents in particular do very well in it, and the pressure at
+          the perimeter is steady rather than seasonal.
+        </p>
+        <p>
+          <strong>Oil,</strong> produced here since the 1940s, adds the same occupancy cycling that shapes
+          Denver City: buildings that empty and refill, and vacancy as a pest condition in its own right.
+        </p>
+        <p>
+          What all of that adds up to on a Brownfield property is that the perimeter is the working line.
+          A treatment aimed at the walls of a house whose real pressure is arriving from the ground beside
+          it is a treatment aimed at the wrong place.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Sand over clay, twenty-eight inches down</h2>
+      <div class="measure">
+        <p>
+          There is a United States Department of Agriculture soil series named <strong>Brownfield</strong>,
+          and its description contains the single most useful piece of ground information on this page.
+        </p>
+        <p>
+          The series describes a sandy surface layer sitting over a clay-enriched horizon that begins about
+          <strong>twenty-eight inches down</strong>, formed in windblown sands of the Blackwater Draw
+          Formation, well drained, on nearly level to gently sloping plains. The series is named for the
+          town rather than typified in Terry County, so it does not describe the ground under any
+          particular address — but it characterises this country accurately.
+        </p>
+        <p>
+          Why twenty-eight inches matters: a sandy surface over a denser clay layer is a two-speed profile.
+          Water moves down through the sand quickly and then slows sharply at the clay. That produces a
+          zone of retained moisture at depth in a region where surface moisture is almost nonexistent, and
+          it is exactly the condition subterranean termites are looking for.
+        </p>
+        <p>
+          It also explains a pattern people find counter-intuitive. A property can look bone dry at the
+          surface all summer — nothing green, nothing damp, sand that pours through your fingers — while
+          holding a reliable moisture layer two feet below the slab. The dry-climate assumption that
+          persuades people they cannot have termites out here is looking at the top two inches of a profile
+          whose relevant part is at twenty-eight.
+        </p>
+        <p>
+          Beneath all of it sits the Ogallala Aquifer, and cutting across the surface is Lost Draw, a
+          channel formed more than ten thousand years ago. The county drains through draws and playas
+          rather than to any river; there are no permanent streams. Sand hills occupy the north-east of
+          the county, and the soil carries a distinctive red cast from its iron oxide content.
+        </p>
+        <p>
+          Elevation is about 3,310 feet. Brownfield sits well out on the Llano Estacado, with the Caprock
+          Escarpment roughly fifty miles east — which is to say the land here is flat in a way that
+          conditions everything about the wind, and wind is what wears out the seals on a building.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Old houses that are still occupied</h2>
+      <div class="measure">
+        <p>
+          Brownfield's numbers look superficially like Lamesa's and behave completely differently, and the
+          difference is worth setting out because it changes what the right service actually is.
+        </p>
+        <p>
+          Both towns peaked around 1960. Both have a median construction year in the early sixties —
+          Brownfield's is <strong>1964</strong>. But Brownfield's population has held near nine thousand
+          rather than falling away, and its housing <strong>vacancy rate is about seven percent</strong>,
+          less than half Lamesa's.
+        </p>
+        <p>
+          An old, occupied housing stock is a very different proposition from an old, partly empty one. In
+          Lamesa a substantial share of the pressure on any given property originates in structures nobody
+          is managing. Here the buildings have people in them, which means problems get noticed early,
+          maintenance actually happens, and a treatment is not fighting continuous re-supply from next
+          door.
+        </p>
+        <p>
+          What remains is the age itself, and a 1964 house has a predictable set of openings. Door sweeps
+          flattened by sixty years of this wind. Weatherstripping that hardened and cracked. Utility
+          penetrations from three generations of work — plumbing, electrical, a swamp cooler fitted and
+          later removed, cable then satellite then internet — most of them never sealed. Weep holes without
+          screens, which are a designed feature that should not be blocked but should be screened.
+          Settlement cracks where the slab meets the perimeter beam, which on termite work are the routes
+          that matter.
+        </p>
+        <p>
+          Around six percent of the housing stock is mobile or manufactured. Those carry their own
+          profile: the void beneath the floor is the real perimeter, the gap between the skirting and the
+          ground is the main entry, and the utility penetrations come up through the floor into cabinets
+          rather than through a wall.
+        </p>
+        <p>
+          The practical read on all of this is that Brownfield is a strong candidate for exclusion work
+          rather than for heavier treatment. On an occupied house of this age, closing the openings usually
+          buys more than anything you can spray around them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we get called about in Brownfield</h2>
+      <div class="measure">
+        <p>
+          <strong>Rodents, on the agricultural calendar.</strong> Cotton and peanut ground running up to
+          the edge of town, vineyards providing year-round cover, and a shelling operation moving stored
+          commodity. Harvest displaces populations toward structures at roughly the same point each year,
+          and the first cold nights of autumn finish the job. This is the most predictable pest event on
+          the Brownfield calendar and the one most worth getting ahead of.
+        </p>
+        <p>
+          <strong>Scorpions through the summer.</strong> Striped bark scorpions, peaking in July and
+          August. AgriLife entomologists note that they move indoors when it becomes excessively dry
+          outside, so a long dry June reliably predicts a difficult July. Nocturnal, good climbers, and in
+          attics more often than people expect. Harbourage and exclusion do more here than spraying.
+        </p>
+        <p>
+          <strong>Termites, hidden by the surface.</strong> The sand-over-clay profile described above is
+          the reason. Activity out here is frequently well established before anything is visible from
+          inside, because subterranean termites work below grade and a slab conceals the evidence.
+        </p>
+        <p>
+          <strong>Ants in forms that get mistaken for one another.</strong> Harvester ants outdoors with
+          the bare circular mound and foraging trails, nuisance ants indoors following a moisture route,
+          and occasionally something needing identification first — the wrong product on the wrong ant
+          scatters a colony instead of eliminating it.
+        </p>
+        <p>
+          <strong>Spiders, black widow and brown recluse.</strong> Present, worth taking seriously, not
+          worth panic. AgriLife notes brown recluse shelter in firewood stacks, stored boxes in attics and
+          low-traffic crevices, and that bites are rare and accidental. The treatment is the harbourage,
+          not the web you can see.
+        </p>
+        <p>
+          <strong>Mosquitoes in bursts.</strong> No permanent streams here — the water is in draws and
+          playas and it is episodic. Pressure climbs roughly a week to ten days after real rain and falls
+          away again. Fixed-calendar treatment misses the window; weather-responsive treatment does not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Brownfield</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the size
+          of the property, the pressure and the frequency, with a higher initial visit. Termite, bed bug,
+          mosquito, lawn, brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Who is actually available in Brownfield</h2>
+      <div class="measure">
+        <p>
+          On some pages of this site we say plainly that no pest control company is based in the town. In
+          Brownfield we cannot say that with confidence, so we are not going to.
+        </p>
+        <p>
+          What the record shows is a Brownfield-addressed business listed in directories that appears to be
+          closed, and a second listed under a pest category whose name suggests agricultural vegetation
+          work rather than structural pest control. Neither of those adds up to a confirmed active local
+          operator, and neither adds up to a confirmed absence. The honest statement is that we could not
+          verify one, and that is what this page says.
+        </p>
+        <p>
+          It is worth noticing what that means about the search results you are probably looking at. A
+          great many of the pages returned for pest control in Brownfield belong to national lead
+          generators and referral networks with no address in the town, no licence displayed and no
+          relationship to whoever eventually turns up. If a website will not tell you which business you
+          are hiring, that is the finding.
+        </p>
+        <p>
+          <strong>What to check, on us and on anybody.</strong> The licence number, against the Texas
+          Department of Agriculture's own records, including whether the categories cover the work being
+          quoted. Ours is TPCL 0918482 and it is published on every page here. The guarantee, in terms of
+          duration, covered scope and remedy. Who physically does the work. And the scope behind the
+          number — covered pests, whether outbuildings are included, exterior only or interior as well, and
+          the recurring price rather than the introductory one.
+        </p>
+        <p>
+          <strong>What forty-one miles buys.</strong> Not a claim to be local, because we are not. What it
+          buys is that Brownfield is on a road we already run, through Seagraves, which makes callbacks
+          under the guarantee ordinary rather than a scheduling negotiation, and makes the second visit
+          that termite and rodent work genuinely requires happen on the interval the biology needs rather
+          than the interval the route prefers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Brownfield pest control questions" />
+  <Cta
+    market="Brownfield"
+    line="Forty-one miles up 62/385 through Seagraves. Tell him what you are seeing, what is on the ground around you, and if a city notice has arrived, read him the date and which article it cites."
+  />
+</BaseLayout>
