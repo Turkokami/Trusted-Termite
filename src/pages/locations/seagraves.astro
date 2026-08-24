@@ -1,0 +1,462 @@
+---
+/**
+ * T3 city page — Seagraves. The nearest town on the route (about 16 miles
+ * north-east of Seminole) and the one with the strictest notice period.
+ *
+ * Verified local facts used here:
+ *  - Ordinance: Seagraves Code of Ordinances ch. 7 art. 7.02 (eCode360).
+ *    12-inch limit at 7.02.001(a); duty extends to the curb line and to the
+ *    centre of the alley at 7.02.001(b); SEVEN days' notice at 7.02.002;
+ *    one-year single-notice rule at 7.02.003(a)-(b); 48-inch immediate
+ *    abatement with no prior notice at 7.02.005; lien filed with the county
+ *    clerk at 10% per annum, inferior only to tax and street-improvement
+ *    liens, at 7.02.006; courtesy notice discretionary at 7.02.008.
+ *  - Housing: ACS — 1,077 units, median year built 1969, 211 mobile homes
+ *    (19.6%), 54.3% owner-occupied of all units.
+ *  - Population: 2,153 at the 2020 census (Wikipedia; a second republisher
+ *    says 2,172 — page says "about 2,150" rather than a precise figure).
+ *  - Elevation 3,353 ft (two sources agree).
+ *  - USDA soil series named SEAGRAVES: playa-basin soils, sandy eolian over
+ *    loamy lacustrine, ponds briefly in some years. Type location is Lynn
+ *    County, so the page describes the series, not the town's own soil.
+ *  - History: renamed for Santa Fe agent Charles L. Seagraves in the late
+ *    1910s; 1928 fire destroyed the business district, rebuilt in brick;
+ *    "The City that Oil Built"; largest town in Gaines County until c. 1950.
+ *  - No pest control company is listed at a Seagraves street address
+ *    (Yellow Pages, 32 companies "serving" the town, none located there).
+ *
+ * TODO(fact): no Seagraves neighbourhoods documented anywhere. D-09 named
+ * none. Do not invent subdivision names for this town.
+ * TODO(fact): Cedar Lake's bearing from Seagraves is contested across
+ * sources — the page says "north-eastern Gaines County" and gives no bearing.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Seagraves', path: '/locations/seagraves/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Seagraves, Texas from a base in Seminole, sixteen miles away. Seagraves sits north-east of Seminole on US 62/385. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, spiders, termites and rodents across Gaines County. Seagraves gives property owners only seven days from notice on weeds — the shortest window on this route.';
+
+const faqs = [
+  {
+    q: 'How tall can grass and weeds get in Seagraves before the city acts?',
+    a: 'Twelve inches. Article 7.02 of the Seagraves Code of Ordinances makes it unlawful to fail to keep property free of weeds, grass and undergrowth over twelve inches tall, and the duty runs out to the curb line and to the centre of the adjacent alley — not just to your property line. Seven days from notice, and then the city can do the work and bill you.',
+  },
+  {
+    q: 'How long do I get after a notice in Seagraves?',
+    a: 'Seven days. That is the shortest notice period of any town on this route — Denver City allows ten, Andrews allows ten. If you have received a notice in Seagraves, the clock is genuinely short, so read us the date when you call rather than after the visit is booked.',
+  },
+  {
+    q: 'Can the city cut my lot without telling me?',
+    a: 'In two situations, yes. Section 7.02.005 lets the city abate weeds higher than forty-eight inches with no prior notice at all where they are an immediate danger to health, life or safety — you are notified within ten days afterwards. And under 7.02.003, if you commit another violation of the same kind within one year of a notice, the city may correct it without further notice and assess the expense against the property. One notice can cover a whole year.',
+  },
+  {
+    q: 'What happens if I do not pay the abatement bill?',
+    a: 'The city files a statement of expenses with the county clerk and takes a lien on the property. Section 7.02.006 puts interest at ten percent per annum from the date the city pays, makes the lien inferior only to tax liens and liens for street improvements, and allows the city to foreclose. The filed statement is prima facie proof of the expenses, which means the burden of disputing it sits with you.',
+  },
+  {
+    q: 'Is there a pest control company based in Seagraves?',
+    a: 'Not one that is listed at a Seagraves street address. Directory listings return more than thirty companies serving the town, and their addresses are in Lubbock, Odessa, Amarillo, Abilene, Shallowater, Brownfield, Slaton and Seminole. So whoever you call is driving in. At sixteen miles, Seminole is about as close as that gets.',
+  },
+  {
+    q: 'Do you work on mobile and manufactured homes?',
+    a: 'Yes, and it matters here — roughly one in five housing units in Seagraves is a mobile or manufactured home. They are a different structure to treat: skirting rather than a foundation, an accessible underside, utility penetrations through the floor rather than through a wall, and in a lot of cases a gap between the skirting and the ground that functions as an open door. The perimeter treatment on a manufactured home is not the same job as on a slab house.',
+  },
+  {
+    q: 'Do I have fire ants in Seagraves?',
+    a: 'Almost certainly not. Gaines County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101. What most people find here is a red harvester ant mound, which is a different problem with a different treatment — a bare circle several feet across with foraging trails running out from it. They sting, and it can be more serious than most stings, but per AgriLife they do not invade structures.',
+  },
+  {
+    q: 'How far is Seagraves from you?',
+    a: 'About sixteen miles, which makes it the closest town on the route after Seminole itself. There is no trip fee, and it is close enough that same-day work is often genuinely possible rather than aspirational.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Seagraves?',
+    a: 'Sí. Valentin habla español con fluidez y atiende personalmente. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Seagraves TX | Scorpions &amp; Termites"
+  description="Scorpion, termite, rodent and weed work in Seagraves, sixteen miles from our Seminole base. Licensed TPCL 0918482, no contracts, no trip fee."
+  path="/locations/seagraves/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Seagraves, Texas',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, manufactured homes, acreage and businesses in Seagraves and northern Gaines County.',
+    areaServed: ['Gaines County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Gaines County · about 16 miles from Seminole</p>
+      <h1>Pest Control in Seagraves, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Seagraves is the closest town on this route to our base, and the same county. That is not a
+          marketing line — it changes what is actually possible. Sixteen miles is a twenty-minute drive.
+          It means a call in the morning can become a visit in the afternoon, it means a callback under
+          the guarantee is not a scheduling negotiation, and it means the follow-up visit that termite
+          and rodent work depends on actually happens on time.
+        </p>
+        <p>
+          It also means the ground is familiar. Same county, same soil, same fields, same weather, same
+          ordinance framework running out of the same county courthouse. Nothing about a Seagraves
+          property is a surprise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Seven days — the shortest notice on the route</h2>
+      <div class="measure">
+        <p>
+          Every town out here enforces a maximum vegetation height, and people move between these towns
+          constantly assuming the rule travels with them. It does not, and Seagraves is the one where
+          getting it wrong costs you the most time.
+        </p>
+        <p>
+          <strong>The limit is twelve inches.</strong> Article 7.02 of the Seagraves Code of Ordinances
+          makes it unlawful to fail to keep property free of weeds, grass and undergrowth over twelve
+          inches tall. The same section sweeps in household trash, garbage, used building materials,
+          discarded fixtures and appliances, stagnant water, dead animals, brush piles, debris and
+          fire-hazard material — all of it grouped as objectionable material.
+        </p>
+        <p>
+          <strong>The duty does not stop at your property line.</strong> Section 7.02.001(b) extends it
+          out to the curb line or the edge of the pavement, and to the centre of the adjacent alley. The
+          strip most people think of as the city's is yours to keep, and alleys are where this catches
+          people most often, because nobody looks at them.
+        </p>
+        <p>
+          <strong>You get seven days.</strong> Not ten, as in Denver City and Andrews. Seven. Notice is
+          given personally in writing, or by certified mail with return receipt, and if personal service
+          fails the city can publish in the newspaper and post on the property. After seven days the city
+          may do the work, pay for it, charge you the expense and file a lien statement.
+        </p>
+        <p>
+          <strong>Above forty-eight inches there is no notice at all.</strong> Section 7.02.005 permits
+          immediate abatement of weeds higher than four feet where they are an immediate danger to health,
+          life or safety. You are notified within ten days afterwards and can request a hearing within
+          thirty. That is a very different thing from a warning letter.
+        </p>
+        <p>
+          <strong>And one notice can cover a year.</strong> Under section 7.02.003, if you commit another
+          violation of the same kind on or before the first anniversary of a notice, the city may correct
+          it without further notice and assess the expense against the property, provided it has not been
+          told the ownership changed. This is the single most commonly misunderstood provision in West
+          Texas weed enforcement. People assume every abatement comes with its own warning. For twelve
+          months after the first one, it does not have to.
+        </p>
+        <p>
+          <strong>The lien has teeth.</strong> Section 7.02.006 puts interest at ten percent per annum
+          from the date the city pays, files the statement with the county clerk, makes the lien inferior
+          only to tax liens and liens for street improvements, permits foreclosure, and makes the filed
+          statement prima facie proof of the expenses.
+        </p>
+        <p>
+          One more detail worth knowing: section 7.02.008 says the city may, but is not required to, send
+          a courtesy notice before the formal one. If you have had a courtesy notice in the past and are
+          expecting another, that expectation is not written into the ordinance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>One in five homes here is manufactured</h2>
+      <div class="measure">
+        <p>
+          American Community Survey figures put Seagraves at about 1,077 housing units, of which roughly
+          211 — near enough one in five — are mobile or manufactured homes. That is a materially higher
+          share than the towns further south on this route, and it changes the work.
+        </p>
+        <p>
+          <strong>The underside is the perimeter.</strong> On a slab house the treatment band runs around
+          the foundation. On a manufactured home there is an accessible void beneath the floor, enclosed
+          by skirting that was fitted years ago and has usually shifted since. The gap between the
+          skirting and the ground is the single most productive entry point on the property, and it is
+          almost never the thing people point at when they call.
+        </p>
+        <p>
+          <strong>Penetrations come up through the floor.</strong> Water, waste and electrical enter from
+          below rather than through a wall. Those openings are frequently oversized and rarely sealed
+          properly, and they put a route from the void directly into a cabinet or a closet. A mouse in the
+          kitchen of a manufactured home is very often a mouse that never went outside.
+        </p>
+        <p>
+          <strong>Moisture collects where you cannot see it.</strong> The void under a manufactured home
+          is shaded, sheltered and slower to dry than open ground. In a region this dry that makes it a
+          destination. A leaking supply line or a condensate discharge under there will support a
+          population year-round that no perimeter spray reaches.
+        </p>
+        <p>
+          <strong>Scorpions do very well in it.</strong> Dark, undisturbed, cool relative to the ground
+          outside, and connected to the interior by every one of those floor penetrations. Scorpion work
+          on a manufactured home is mostly about that void and the skirting, and comparatively little
+          about the walls you are looking at.
+        </p>
+        <p>
+          None of that makes a manufactured home harder to keep clear. It makes it a different job, and
+          the companies that quote it as though it were a small slab house are the ones you end up calling
+          twice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A town built in 1969 and rebuilt in 1928</h2>
+      <div class="measure">
+        <p>
+          Two dates explain most of the structural pest picture in Seagraves.
+        </p>
+        <p>
+          The median year of construction for housing here is <strong>1969</strong>. That is a stock now
+          well past fifty years old, built before modern sealing practice, and it shows up in the same
+          handful of places on almost every property: door thresholds that no longer seat, weatherstripping
+          that has hardened and cracked in fifty summers of this sun, utility penetrations cut and never
+          sealed, weep holes without screens, and garage door bottoms that have compressed.
+        </p>
+        <p>
+          None of those are defects in the sense of anything being wrong with the house. They are what
+          fifty years of West Texas wind, dust and heat does to seals. But they are entry points, and on
+          a house of this vintage the exclusion work is usually worth more than the treatment.
+        </p>
+        <p>
+          The other date is <strong>1928</strong>, when a fire destroyed much of the Seagraves business
+          district. What went back up went up in brick, which is why the commercial core reads the way it
+          does. Masonry commercial buildings of that era have their own pest profile — deep wall cavities,
+          historic penetrations from utilities that have been rerouted twice since, and gaps at the
+          junction between the original structure and everything added later.
+        </p>
+        <p>
+          It is worth remembering that Seagraves was the largest town in Gaines County until around 1950,
+          when Seminole passed it. The building stock reflects a town that was substantial earlier than
+          its current population suggests, and older commercial property carries older problems.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Playa ground, and a soil series named after the town</h2>
+      <div class="measure">
+        <p>
+          There is a genuine curiosity here that turns out to be useful. The United States Department of
+          Agriculture maintains an official soil series called <strong>Seagraves</strong> — sandy eolian
+          deposits over loamy lacustrine material, occurring on the nearly level floors of playa basins
+          across the Southern High Plains, moderately well drained, slowly permeable, and ponding briefly
+          in some years.
+        </p>
+        <p>
+          The series is named for the town rather than typified in Gaines County, so it would be wrong to
+          say that this is the soil under Seagraves. What it describes accurately is the kind of ground
+          that characterises this part of the plains, and the phrase that matters for pest work is
+          <em>ponds briefly in some years</em>.
+        </p>
+        <p>
+          Gaines County drains to scattered playas and draws rather than to any river. There are no
+          permanent streams. What that means practically is that surface water out here is episodic: dry
+          for long stretches, then holding for days or weeks after a real rain, then dry again. Mosquito
+          pressure follows that pattern rather than running continuously, and the useful thing to know is
+          that the count climbs roughly a week to ten days after a significant rain and falls away again.
+          Treating on a fixed calendar misses it; treating in response to the weather does not.
+        </p>
+        <p>
+          The county soils themselves are sandy loam and sand over a red clay subsoil, supporting mesquite,
+          shinnery and catclaw. Sand matters for two reasons. It drains fast, which means moisture
+          concentrates wherever something artificial holds it — an irrigation head, a downspout, a
+          condensate line — and those concentration points become the whole story on a property. And it
+          moves, which is why a termite barrier established in sand is a different proposition from one in
+          heavy clay, and why grade changes around a foundation deserve more attention here than they get.
+        </p>
+        <p>
+          Elevation is about 3,353 feet. Cedar Lake, the largest salt lake on the Texas plains, sits in
+          north-eastern Gaines County. Annual rainfall runs around sixteen inches with a growing season a
+          little over two hundred days.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we get called about in Seagraves</h2>
+      <div class="measure">
+        <p>
+          <strong>Scorpions, from June through September.</strong> Striped bark scorpions, and they are
+          the defining residential pest of this whole region. AgriLife entomologists note that scorpions
+          move indoors when it gets excessively dry outside, which makes a long dry June a reliable
+          predictor of a bad July. They are nocturnal, they climb well, and they turn up in attics far
+          more often than people expect. The work is harbourage and exclusion far more than spraying.
+        </p>
+        <p>
+          <strong>Field-driven rodents, especially after harvest.</strong> Seagraves sits in cotton,
+          peanut, sorghum and grain country — Gaines County is among the leading cotton producers in
+          Texas, with something like four hundred thousand irrigated acres in the county. When a field
+          comes off, the population that was living in it goes somewhere, and the somewhere is whatever
+          structures are nearest. Properties on the edge of town see this as a sudden event rather than a
+          gradual increase, at roughly the same point every year.
+        </p>
+        <p>
+          <strong>Ants, in several forms that get confused with each other.</strong> Harvester ants
+          outdoors with their bare circular mounds and foraging trails, ordinary nuisance ants indoors on
+          a moisture trail, and occasionally something that needs identifying before it is treated because
+          the wrong product on the wrong ant scatters a colony rather than eliminating it.
+        </p>
+        <p>
+          <strong>Spiders, including black widows and brown recluse.</strong> Both are present in this
+          region and both are worth taking seriously without panic. AgriLife notes brown recluse are found
+          throughout Texas, sheltering in firewood stacks, stored boxes in attics and low-traffic
+          crevices, and that bites are rare and accidental. The treatment is the harbourage — the stacked
+          material — rather than the web you can see.
+        </p>
+        <p>
+          <strong>Termites, which most people here have been told they do not have.</strong> The
+          assumption that West Texas is too dry for termites is wrong and it is the reason activity so
+          often goes unnoticed until it is substantial. Subterranean termites work below grade where the
+          moisture is, and on a slab they can be into a wall for a long time before anything is visible
+          from inside.
+        </p>
+        <p>
+          <strong>Weeds and lot condition, on a seven-day clock.</strong> More of this work than you might
+          expect is people who have received a notice, or who own a lot in town and live somewhere else.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>If you own property in Seagraves and live elsewhere</h2>
+      <div class="measure">
+        <p>
+          A meaningful share of the residential property in a town this size is owned by people who are
+          not standing in front of it. Roughly forty percent of occupied housing here is rented, and
+          beyond that there are vacant lots, inherited houses and property held by people who moved to
+          Lubbock or Midland or out of state years ago.
+        </p>
+        <p>
+          The ordinance mechanics above are aimed squarely at you, and they are less forgiving at a
+          distance. Notice can be served by certified mail to the address of record — which is only useful
+          if that address is current with the appraisal district. Where personal service fails, the city
+          can publish in the newspaper and post a notice on the property itself, and neither of those
+          reaches somebody living three hundred miles away. The seven days run regardless.
+        </p>
+        <p>
+          Then the one-year rule compounds it. The first notice you may never have seen starts a twelve
+          month period in which further abatement needs no notice at all, and the first you hear of any of
+          it can be a lien statement filed with the county clerk accruing ten percent.
+        </p>
+        <p>
+          The practical answer is a standing arrangement rather than a reaction. A lot kept on a schedule
+          through the growing season costs a fraction of an abatement plus interest, and it removes the
+          entire enforcement question from your life. If you own several properties here, they can be run
+          on one visit and one invoice.
+        </p>
+        <p>
+          If a notice has already arrived, read us the date printed on it when you call. In Seagraves that
+          date is worth more than anything else you can tell us.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Seagraves</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the
+          size of the property, the pressure and the frequency, with a higher initial visit. Termite, bed
+          bug, mosquito, lawn, brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why sixteen miles is the whole argument</h2>
+      <div class="measure">
+        <p>
+          No pest control company is listed at a Seagraves street address. Directory searches return more
+          than thirty companies serving the town, and their addresses are in Lubbock, Odessa, Amarillo,
+          Abilene, Shallowater, Brownfield, Slaton — and Seminole. Whoever you call is driving in.
+        </p>
+        <p>
+          That reframes the question. It is not who is local, because nobody is. It is who is closest, and
+          what closeness actually buys you.
+        </p>
+        <p>
+          <strong>It buys response.</strong> A company running Seagraves from Lubbock is covering
+          seventy-odd miles and will reasonably want to batch the trip. From Seminole it is sixteen, and
+          a same-day call is a normal request rather than a favour.
+        </p>
+        <p>
+          <strong>It buys follow-up.</strong> This is where distance really shows. The thirty-day
+          guarantee and the interim visits on a recurring plan are worth exactly as much as somebody's
+          willingness to make the drive for them. A callback that costs an operator half a day tends to
+          become a scheduling problem. A callback that costs twenty minutes does not.
+        </p>
+        <p>
+          <strong>It buys the follow-up visits the work actually needs.</strong> Termite and rodent jobs
+          are not single-visit work. They involve returning at a specific interval to check what happened,
+          and the interval is not negotiable with the biology. Distance is the most common reason those
+          return visits slip.
+        </p>
+        <p>
+          <strong>And it buys knowing the ground.</strong> Same county, same soil, same fields, same
+          ordinance, same weather. The person quoting your property grew up eighteen minutes down the
+          road. That is not a substitute for competence, but combined with it, it means the inspection
+          starts from a real understanding of what a property in this town is likely to be doing.
+        </p>
+        <p>
+          None of that makes an Odessa or Lubbock company a bad choice. It does mean the question worth
+          asking any of them is how often they are out this way anyway.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Seagraves pest control questions" />
+  <Cta
+    market="Seagraves"
+    line="Sixteen miles up the road, same county. Tell him what you are seeing and whether you are working to a deadline — and if a city notice has arrived, read him the date on it."
+  />
+</BaseLayout>

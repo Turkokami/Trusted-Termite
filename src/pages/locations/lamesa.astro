@@ -1,0 +1,500 @@
+---
+/**
+ * T3 city page — Lamesa, Dawson County. About 41 miles east of Seminole on
+ * US 180.
+ *
+ * Verified local facts used here:
+ *  - Ordinance: Lamesa Code ch. 6 art. 6.02 "Property Maintenance"
+ *    (eCode360), §§ 6.02.001–6.02.008. The 12-inch limit at 6.02.003 applies
+ *    inside the corporate limits AND WITHIN 5,000 FEET OF THEM — genuinely
+ *    unusual — and is scoped to vegetation within 100 feet of any property
+ *    line or 50 feet of any structure. SEVEN days' written notice from the
+ *    city secretary at 6.02.004. One-year single-notice rule at 6.02.004(c).
+ *    City abatement at 6.02.006; privileged lien if unpaid within 30 days.
+ *    48-inch dangerous weeds at 6.02.007. General penalty up to $2,000 for
+ *    public health/sanitation violations at 1.01.009(b).
+ *  - Code Enforcement & Inspections, 601 S. 1st St., 806-872-4329.
+ *  - Population 8,674 (2020 census); 8,103 (2025 estimate) — DECLINING.
+ *    Peak was 12,438 in 1960.
+ *  - Housing (ACS 2019–2023): 4,073 units, 3,409 occupied, 69.3% owner-
+ *    occupied, VACANCY 16.3%, median year built 1963, mobile homes only
+ *    2.6%, single-family detached 88.9%.
+ *  - Economy: cotton and sorghum (Dawson County — NOT peanuts, that is
+ *    Terry County), oil since 1934. Employers per Lamesa EDC: Lamesa ISD
+ *    250, TDCJ Preston E. Smith Unit 200, West Texas Opportunities 171,
+ *    Medical Arts Hospital 135, Dawson County 110, U.S. Silica 104, City of
+ *    Lamesa 90. Smith Unit opened Oct 1992, capacity 2,234.
+ *  - Geography: elevation 2,992 ft — the LOWEST town on the northern half
+ *    of this route. Dawson County is on the EASTERN EDGE of the Llano
+ *    Estacado. Sandy and loam soils, drainage to playas, NO permanent
+ *    streams, Sulphur Springs Draw crosses the county. Rainfall 17.6 in.
+ *  - USDA "Lamesa" soil series: Aeric Endoaqualfs on playa basin floors
+ *    1.5–9 m below the surrounding plain, FREQUENT PROLONGED PONDING.
+ *    Type location is Lynn County, so describe the series, not the town.
+ *  - Buildings: Dawson County Courthouse 1916 (remodelled with addition
+ *    1952); Dal Paso Hotel 1926 at 310 South 1st St, now the Dal Paso
+ *    Museum and Chamber of Commerce.
+ *
+ * IMPORTANT — HONESTY: unlike Andrews, Seagraves and Denver City, there ARE
+ * pest control companies with Lamesa street addresses (Teague Pest Control,
+ * 204 N Austin Ave; M & M Exterminators, 2007 Seminole Rd). Their current
+ * operating status is not confirmed. This page must NOT claim nobody is
+ * based here.
+ *
+ * TODO(fact): no Lamesa neighbourhoods documented. D-09 named none.
+ * TODO(fact): the Lamesa Farm Workers Community Historic District is in Los
+ * Ybañez, NOT in Lamesa. Do not attribute it to the city.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Lamesa', path: '/locations/lamesa/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Lamesa, Texas from a base in Seminole, forty-one miles away. Lamesa sits due east of Seminole on US 180. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, spiders, termites and rodents across Dawson County. Lamesa is the only town on this route whose weed ordinance reaches five thousand feet beyond the city limits.';
+
+const faqs = [
+  {
+    q: 'How tall can grass and weeds get in Lamesa?',
+    a: 'Twelve inches. Section 6.02.003 of the city code makes it unlawful to allow objectionable or unsightly vegetation above twelve inches within one hundred feet of any property line or within fifty feet of any structure. The scoping to property lines and structures is worth reading carefully — it is not a blanket rule over an entire tract.',
+  },
+  {
+    q: 'Does the Lamesa weed ordinance apply outside the city limits?',
+    a: 'Yes, and this is unusual. Section 6.02.003 applies to property "located within the corporate limits of the city or in an area lying within 5,000 feet of the corporate limits." Just under a mile of extraterritorial reach. If you own property on the edge of Lamesa and have assumed the city rules stop at the sign, they do not.',
+  },
+  {
+    q: 'How long do I get after a notice in Lamesa?',
+    a: 'A minimum of seven days’ written notice, given by the city secretary. If you do not comply the city may go onto the property and do the work, and charge the expenses to you. Unpaid after thirty days, the city takes a privileged lien on the property.',
+  },
+  {
+    q: 'How much can a weed violation cost in Lamesa?',
+    a: 'A violation of the property maintenance article is a misdemeanour, and under the general penalty at section 1.01.009(b) violations of provisions governing public health and sanitation carry a fine of up to two thousand dollars, rather than the five hundred that applies to ordinary provisions. That is before the abatement cost and the lien.',
+  },
+  {
+    q: 'Are there pest control companies actually based in Lamesa?',
+    a: 'Yes — unlike Andrews, Seagraves or Denver City, Lamesa has businesses listed at Lamesa street addresses. We are not going to tell you there is nobody local when there is. What we offer instead is a licence number you can verify with the Texas Department of Agriculture, published guarantee terms, and the owner doing the work personally. Compare on those, not on who is nearest.',
+  },
+  {
+    q: 'Do I have fire ants in Lamesa?',
+    a: 'Almost certainly not. Dawson County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101. What most people find here is a red harvester ant mound, which is a different problem with a different treatment — a bare circle several feet across with foraging trails running out from it.',
+  },
+  {
+    q: 'Why does Lamesa get more mosquitoes than the towns west of it?',
+    a: 'Ground and elevation. Lamesa sits near the eastern edge of the Llano Estacado at about 2,992 feet, lower than every town north and west of it on this route, and Dawson County drains entirely to playas with no permanent streams. Playa basins here sit well below the surrounding plain and hold water longer than the shallower basins further west. Longer holding means more breeding time after a rain.',
+  },
+  {
+    q: 'How far is Lamesa from you?',
+    a: 'About forty-one miles east on US 180, which runs directly between the two towns. There is no trip fee. It is a regular run rather than an occasional trip.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Lamesa?',
+    a: 'Sí. Valentin habla español con fluidez y atiende personalmente. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Lamesa TX | Dawson County"
+  description="Scorpion, termite, rodent and weed work in Lamesa, forty-one miles east of our Seminole base on US 180. Licensed TPCL 0918482, no contracts."
+  path="/locations/lamesa/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Lamesa, Texas',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, vacant property, farm ground and businesses in Lamesa and Dawson County.',
+    areaServed: ['Dawson County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Dawson County · about 41 miles east of Seminole</p>
+      <h1>Pest Control in Lamesa, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          US 180 runs directly from Seminole to Lamesa, which makes this one of the simplest runs on the
+          route — forty-one miles of straight road with nothing to navigate. Lamesa is a regular
+          destination rather than an occasional one.
+        </p>
+        <p>
+          It is also the town on this route with the oldest housing stock, the highest vacancy rate and
+          the weed ordinance with the longest reach. Those three facts explain most of the work here, and
+          they are worth taking in order.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Five thousand feet past the city limit</h2>
+      <div class="measure">
+        <p>
+          Lamesa's property maintenance article contains a provision that does not appear in any other
+          ordinance on this route, and people who own ground on the edge of town regularly do not know
+          about it.
+        </p>
+        <p>
+          Section 6.02.003 applies to property <strong>"located within the corporate limits of the city or
+          in an area lying within 5,000 feet of the corporate limits."</strong> Just under a mile of
+          extraterritorial reach. If your assumption has been that city rules stop at the city limit sign,
+          in Lamesa that assumption is wrong by nearly a mile in every direction.
+        </p>
+        <p>
+          <strong>The limit is twelve inches</strong>, and it is scoped rather than blanket: objectionable
+          or unsightly vegetation above twelve inches <em>within one hundred feet of any property line or
+          within fifty feet of any structure</em>. That scoping matters and is worth reading properly. On
+          a large tract, the middle is not the issue. The boundaries and the buildings are.
+        </p>
+        <p>
+          <strong>You get a minimum of seven days' written notice</strong>, issued by the city secretary
+          under section 6.02.004. If the condition is not corrected the city may go onto the property, do
+          the work or make the improvements necessary, and charge the expenses to the owner. Unpaid after
+          <strong>thirty days</strong>, the city takes a privileged lien on the property.
+        </p>
+        <p>
+          <strong>Above forty-eight inches the rules change.</strong> Section 6.02.007 covers dangerous
+          weeds and permits abatement without notice where there is immediate danger.
+        </p>
+        <p>
+          <strong>And one notice covers a year.</strong> Section 6.02.004(c) provides that a further
+          violation of the same kind on or before the first anniversary of the notice may be corrected by
+          the city without further notice, at the owner's expense, and assessed against the property.
+        </p>
+        <p>
+          The penalty band is worth knowing too. Violations of the property maintenance article are
+          misdemeanours, and the general penalty at section 1.01.009(b) sets a ceiling of
+          <strong>two thousand dollars</strong> for provisions governing public health and sanitation,
+          rather than the five hundred that applies to ordinary provisions. That is a fine, separate from
+          the abatement cost and separate from the lien.
+        </p>
+        <p>
+          The city's Code Enforcement and Inspections office is at 601 South 1st Street. Its own published
+          list of common violations is weeds and trash in yards and alleys, abandoned houses and buildings,
+          and junk or abandoned vehicles — which is a fair summary of what the work here actually looks
+          like.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The vacancy problem, and why it is a pest problem</h2>
+      <div class="measure">
+        <p>
+          Lamesa's population peaked at 12,438 in 1960. The 2020 census counted 8,674, and the most recent
+          estimate is lower again. Survey figures put the housing stock at about 4,073 units with a
+          <strong>vacancy rate of roughly sixteen percent</strong> — more than double what Brownfield
+          shows, and among the highest on this route.
+        </p>
+        <p>
+          Six hundred-odd empty structures in a town this size is not an abstract statistic. It is a
+          distributed pest reservoir, and it is the single most important thing to understand about pest
+          pressure in Lamesa.
+        </p>
+        <p>
+          <strong>An empty building supports a population nobody is managing.</strong> Nobody is running
+          water, so plumbing traps dry out and open a direct path from the sewer into the structure.
+          Nobody opens a door, so nothing gets noticed. Nobody sees droppings, hears anything in the
+          ceiling, or spots the gap that opened at the threshold last winter. Rodents that would be
+          discovered in week one in an occupied house have a season.
+        </p>
+        <p>
+          <strong>And populations do not respect a property line.</strong> If the house next to yours has
+          been empty for two years, some meaningful share of what you are dealing with originates there.
+          You can treat your side of the fence perfectly and still be re-colonised, which is the honest
+          explanation for a lot of the "the treatment did not hold" calls in a town with this profile.
+        </p>
+        <p>
+          What you can actually do about it: the derelict-property route is municipal code enforcement,
+          which has authority we do not. The city's own violation list names abandoned houses and
+          buildings specifically. If a neighbouring structure is the source, a code complaint is a more
+          effective instrument than any amount of treatment on your side.
+        </p>
+        <p>
+          What we can do is treat the boundary as the working line rather than the wall of your house, and
+          be honest about the pressure. On a property adjacent to a long-vacant structure, an exterior
+          perimeter on a schedule is doing continuous work against continuous re-supply. That is a
+          recurring service situation rather than a one-time treatment, and pretending otherwise would just
+          be selling you a visit.
+        </p>
+        <p>
+          If you own one of the vacant properties: an empty building is enormously easier and cheaper to
+          treat than an occupied one. Full access, nothing to work around, no occupancy constraints. It is
+          also the property most likely to be generating a code complaint, and the two problems have the
+          same answer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>1963 — the oldest housing stock on the route</h2>
+      <div class="measure">
+        <p>
+          The median year of construction for housing in Lamesa is <strong>1963</strong>. That is older
+          than Seagraves at 1969, older than Brownfield at 1964, and a full twelve years older than Denver
+          City. Almost nine in ten units are single-family detached, and mobile and manufactured homes are
+          only about two and a half percent of the stock — the lowest share on this route by a wide
+          margin.
+        </p>
+        <p>
+          What that means is a town of conventional houses, most of them past sixty years old, built before
+          modern sealing practice, and now well into the phase where the original envelope has degraded in
+          predictable ways.
+        </p>
+        <p>
+          <strong>Thresholds and sweeps.</strong> Sixty years of this sun and wind flattens a door sweep
+          and hardens weatherstripping until it cracks. On a house of this age the gap under an exterior
+          door is usually measurable, and it is the most productive single entry point on most properties.
+        </p>
+        <p>
+          <strong>Penetrations from three generations of work.</strong> A 1963 house has had its plumbing
+          worked on, its electrical extended, a swamp cooler fitted and later removed, cable and then
+          satellite and then internet run through the wall. Every one of those left a hole. Most of them
+          were never sealed, and several are now behind something.
+        </p>
+        <p>
+          <strong>Weep holes without screens.</strong> Standard on brick veneer of this era and standard
+          for them to be open. They are a designed feature and they should not be blocked, but screening
+          them is a well-established piece of exclusion work and it closes a route that runs straight up
+          the cavity.
+        </p>
+        <p>
+          <strong>Foundations that have moved.</strong> Six decades on this ground, through drought cycles
+          and irrigation, means slabs and perimeter beams that are not where they started. Cracks at the
+          junction of the slab and the wall are entry points, and on termite work they are the routes that
+          matter.
+        </p>
+        <p>
+          The upside of an older stock is that everything about it is legible. There are no surprises in a
+          1963 house — the failure points are the same failure points on every street, and an inspection
+          knows where to look before it starts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lower ground, and what it holds</h2>
+      <div class="measure">
+        <p>
+          Lamesa sits at about 2,992 feet, near the <strong>eastern edge</strong> of the Llano Estacado
+          where the plain begins to break. That is lower than Seminole, lower than Seagraves at 3,353 feet,
+          lower than Brownfield at 3,310 and lower than Denver City. It is the lowest of the plains towns
+          on this route, and the difference shows up in the water.
+        </p>
+        <p>
+          Dawson County has <strong>no permanent streams</strong>. It drains entirely to playas, with
+          Sulphur Springs Draw crossing the county. Rainfall averages a little under eighteen inches, which
+          is more than the towns west of here.
+        </p>
+        <p>
+          There is a United States Department of Agriculture soil series named <strong>Lamesa</strong>, and
+          its description is the useful part. It occupies the nearly level floors of playa basins sitting
+          roughly five to thirty feet below the surrounding plain, formed in sandy wind-blown deposits over
+          loamy lake-bed material, and it is characterised by <em>frequent prolonged ponding</em>. The
+          series is named for the town rather than typified in Dawson County, so it does not describe the
+          ground under any particular Lamesa address — but it describes the kind of basin that
+          characterises this country, and the phrase that matters is <em>prolonged</em>.
+        </p>
+        <p>
+          Compare that with the equivalent series named after Seagraves, which ponds <em>briefly in some
+          years</em>. Deeper basins, higher rainfall and lower ground together mean surface water that
+          stays longer here after a rain than it does forty miles west.
+        </p>
+        <p>
+          <strong>The practical consequence is mosquitoes.</strong> Not continuous pressure — this is still
+          a semi-arid region and the water is episodic — but a longer and heavier burst following a real
+          rain event than the towns west of here experience. Pressure typically climbs about a week to ten
+          days after the rain and then falls away. Treating on a fixed calendar misses that window
+          entirely. Treating in response to the weather does not.
+        </p>
+        <p>
+          The soils themselves are sandy and loam. Sand drains fast, which concentrates the pest picture
+          around whatever artificial moisture exists on a property — an irrigation head against a
+          foundation, a condensate line discharging in one spot all summer, a leaking spigot. In this
+          climate those are not maintenance trivia. They are usually the whole explanation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we get called about in Lamesa</h2>
+      <div class="measure">
+        <p>
+          <strong>Rodents, more than anywhere else on the route.</strong> The combination is unusual:
+          heavy cotton and sorghum ground right up to the edge of town, an old housing stock full of
+          openings, and hundreds of vacant structures providing harbourage nobody manages. Harvest is a
+          pest event here in a way it is not in an oil town, and the first cold nights of autumn do the
+          rest.
+        </p>
+        <p>
+          <strong>Scorpions through the summer.</strong> Striped bark scorpions, peaking in July and
+          August. AgriLife entomologists note they move indoors when it becomes excessively dry outside,
+          so a long dry June predicts a difficult July. On a house of this age with this many entry
+          points, exclusion does more than spraying.
+        </p>
+        <p>
+          <strong>Termites, and the dry-climate myth that hides them.</strong> Plenty of people here have
+          been told West Texas is too dry for termites. It is not. Subterranean termites work below grade
+          where the moisture is, and a sixty-year-old slab with settlement cracks at the perimeter beam
+          gives them exactly the route they need. Older housing plus a longer moisture window is a worse
+          combination than most people here realise.
+        </p>
+        <p>
+          <strong>Ants, in forms that get mistaken for one another.</strong> Harvester ants outdoors with
+          the characteristic bare mound and foraging trails, nuisance ants indoors following a moisture
+          route, and occasionally something that needs identifying first, because the wrong product on the
+          wrong ant scatters a colony instead of eliminating it.
+        </p>
+        <p>
+          <strong>Spiders, black widow and brown recluse both.</strong> Present, worth taking seriously,
+          not worth panicking about. AgriLife notes brown recluse shelter in firewood stacks, stored boxes
+          in attics and low-traffic crevices, and that bites are rare and accidental. Old houses with old
+          storage are their preferred situation, which describes a lot of Lamesa.
+        </p>
+        <p>
+          <strong>Weeds, lots and abandoned property.</strong> A larger share of the work here than in any
+          other town on the route, and it is where the ordinance section above becomes practical rather
+          than academic.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cotton, sorghum, and what the calendar does</h2>
+      <div class="measure">
+        <p>
+          Dawson County has grown cotton since the mid-1910s and had well over a hundred and eighty
+          thousand acres of it by 1960, with sorghum co-dominant from the 1940s and irrigation arriving in
+          the late forties. Oil has been produced here since 1934. Employment now runs across the school
+          district, the state prison unit north of town, a regional non-profit, the hospital, the county,
+          an industrial minerals operation and the city itself.
+        </p>
+        <p>
+          One correction worth making because it appears on a lot of regional pages: <strong>peanuts are a
+          Terry County crop, not a Dawson County one.</strong> Lamesa is cotton and sorghum country. It
+          matters because different crops mean different harvest timing and different displaced
+          populations.
+        </p>
+        <p>
+          What the agricultural calendar does to a property on the edge of town is more predictable than
+          almost anything else in this trade. Irrigation coming on after a dry stretch moves things. A crop
+          maturing changes the cover available. And harvest is the event: a field that supported a
+          population all season comes off in a matter of days, and everything that lived in it goes to
+          whatever structures are nearest.
+        </p>
+        <p>
+          Properties on the town boundary experience that as a sudden arrival rather than a gradual
+          increase, and they experience it at roughly the same point each year. Which means it can be
+          planned for. Exclusion work done in late summer, before the fields come off, is worth
+          considerably more than trapping done in October after the population is already inside.
+        </p>
+        <p>
+          Commercial and institutional property runs on its own logic. Food service, healthcare and
+          anything with a public inspection regime needs documentation as much as it needs treatment — the
+          service record is the thing an inspector asks to see. If you are buying service for a business
+          here, say so on the first call, because the paperwork side is worth sorting before rather than
+          after.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Lamesa</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the size
+          of the property, the pressure and the frequency, with a higher initial visit. Termite, bed bug,
+          mosquito, lawn, brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>There are local companies here, and we are not going to pretend otherwise</h2>
+      <div class="measure">
+        <p>
+          On several other pages on this site we point out that no pest control company is physically
+          based in the town. In Lamesa that would not be true, and saying it would be the sort of thing
+          this whole site exists not to do. There are businesses listed at Lamesa street addresses.
+        </p>
+        <p>
+          So the argument here has to be different, and it has to be about something other than proximity.
+        </p>
+        <p>
+          <strong>Check the licence.</strong> Ours is TPCL 0918482, published on every page of this site,
+          and it can be verified against the Texas Department of Agriculture's own records by anybody in
+          about two minutes. Do it for us and do it for whoever else you are considering, and check that
+          the categories on the licence cover the work being quoted — a termite job needs the termite
+          category. That is the only piece of due diligence in this trade that is both free and
+          conclusive.
+        </p>
+        <p>
+          <strong>Read the guarantee.</strong> Ours is written out in full on its own page, with a
+          duration, a covered scope, a stated remedy and an explicit list of exclusions. Ask for the same
+          from anyone else. A guarantee without a number in it is not a guarantee.
+        </p>
+        <p>
+          <strong>Ask who does the work.</strong> Here it is the owner and licence holder personally, on
+          every job. That is not automatically better than a company with technicians, but it is a real
+          difference and it is worth knowing which you are buying.
+        </p>
+        <p>
+          <strong>Compare the scope, not the number.</strong> Covered pests, whether outbuildings are
+          included, exterior only or interior as well, and the recurring price rather than the
+          introductory one. Two quotes that look ten percent apart are frequently not describing the same
+          job at all.
+        </p>
+        <p>
+          If somebody else is the better fit for your property after all that, take them. A fair
+          comparison lost is a better outcome for everybody than a job won because the customer could not
+          see what they were buying.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Lamesa pest control questions" />
+  <Cta
+    market="Lamesa"
+    line="Forty-one miles east on 180. Tell him what you are seeing, whether the property is occupied or has been sitting, and if a city notice has arrived, read him the date on it."
+  />
+</BaseLayout>

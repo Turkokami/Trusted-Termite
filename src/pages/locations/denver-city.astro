@@ -1,0 +1,474 @@
+---
+/**
+ * T3 city page — Denver City, Yoakum County (a small part of the city
+ * extends into Gaines County).
+ *
+ * Verified local facts used here:
+ *  - Ordinance: Denver City Code ch. 6 art. 6.06 "Weeds" (eCode360, current
+ *    through Ord. 2024-0715). 12-inch limit at 6.06.004, extending to curb,
+ *    gutter, sidewalk and the middle of the adjacent alley. Definition at
+ *    6.06.003 NAMES the species: pigweed, Russian thistle, ragweed,
+ *    lambsquarter, kochia, prickly lettuce, London rocket mustard, Canadian
+ *    thistle, Johnson grass — and EXEMPTS undisturbed climax vegetation of
+ *    natural grasses, mesquite and shinnery oak. 6.06.005 applies the same
+ *    limit to unimproved platted land of 2+ contiguous lots over half an
+ *    acre. TEN days' notice at 6.06.007, which also carries the one-year
+ *    single-notice rule. 48-inch immediate abatement at 6.06.008. Control
+ *    methods at 6.06.010 — scraping and tilling need prior city manager
+ *    authorisation. Abatement and 5-day payment window at 6.06.009.
+ *  - Article 6.05 Health Nuisances enumerates 19 conditions incl. stagnant
+ *    water in receptacles (4) and pooled wastewater in alleys/gutters (13);
+ *    10 days to abate; unpaid cost becomes a personal liability to the city.
+ *    NOTE: 6.05.002 does NOT name mosquitoes, rodents or vermin — the page
+ *    must not attribute those words to the ordinance.
+ *  - Housing (ACS): 1,625 units, median year built 1975, 31.4% of the stock
+ *    built in the 1970s, 175 mobile homes (10.8%), 60.7% owner-occupied.
+ *  - Population 4,470 (2020 census). Median household income $85,250.
+ *  - Founded 1939 by C. S. Ameen and Ben Eggink; incorporated March 1940.
+ *    Oil discovery 1935 (No. 1-678 Ruth E. Bennett, 10 Oct 1935). Wasson
+ *    Field discovered 1936, San Andres dolomite at ~5,000 ft. Oxy Denver
+ *    Unit CO2 flood since 1983, ~2,200 wells. Petroleum ~75% of local
+ *    economic activity per the city. Home rule city.
+ *  - Elevation approx. 3,580 ft — sources disagree, so the page hedges.
+ *  - McKenzie Draw and Sulphur Springs Draw are the verified landforms.
+ *    NO playa lakes are documented for Yoakum County — do not claim them.
+ *  - No pest control company is listed at a Denver City street address.
+ *
+ * TODO(fact): no Denver City neighbourhoods documented. D-09 named none.
+ * The lettered-avenue grid is an observation, not a district. Do not invent.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Denver City', path: '/locations/denver-city/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Denver City, Texas from a base in Seminole, twenty miles away. Denver City sits north-west of Seminole on State Highway 214. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, spiders, termites and rodents across Yoakum County. Denver City is one of the very few towns in Texas whose weed ordinance names the specific plants it regulates.';
+
+const faqs = [
+  {
+    q: 'How tall can weeds get in Denver City?',
+    a: 'Twelve inches. Section 6.06.004 of the city code makes it unlawful to permit weeds above twelve inches, and the duty extends to the curb, the gutter, the sidewalk and the area from your property line to the middle of the adjacent alley. Vacant platted land of two or more contiguous lots over half an acre is covered by the same limit under 6.06.005.',
+  },
+  {
+    q: 'Which plants does the Denver City ordinance actually name?',
+    a: 'Section 6.06.003 names pigweed, Russian thistle, ragweed, lambsquarter, kochia, prickly lettuce, London rocket mustard, Canadian thistle and Johnson grass. That is unusually specific — most West Texas weed ordinances just say "weeds" and leave the argument for later. The city manager can add plants to the list after a hearing.',
+  },
+  {
+    q: 'Is native mesquite and shinnery oak covered by the ordinance?',
+    a: 'Not if it is undisturbed. Section 6.06.003 explicitly excludes climax vegetation — the natural growth of native grasses, mesquite and shinnery oak on ground that has not been broken. That is a genuinely sensible carve-out and it means a natural lot is treated differently from a disturbed one that has grown up in pigweed and kochia.',
+  },
+  {
+    q: 'How long do I get after a notice in Denver City?',
+    a: 'Ten days. Notice can be given personally, by letter to the owner’s post office address, or — if personal service fails — by publication twice within ten consecutive days or by posting on the property. After that the city manager may have the weeds cut and bill you the actual cost plus any other penalties or costs allowed by law, and you have five days to pay before a lien follows.',
+  },
+  {
+    q: 'Can the city clear my lot without notice?',
+    a: 'Above forty-eight inches, yes. Section 6.06.008 permits immediate abatement with no notice to the owner where weeds in excess of four feet are an immediate danger to health, life or safety. And under 6.06.007, a further violation of the same kind within a year of a notice can be corrected without further notice at your expense.',
+  },
+  {
+    q: 'Is there a pest control company based in Denver City?',
+    a: 'Not one listed at a Denver City street address. Directory searches return companies serving the town from Odessa, Midland, Lubbock, Amarillo, Abilene and Pecos. Seminole is about twenty miles away, which makes it one of the closest bases to Denver City on that list.',
+  },
+  {
+    q: 'Do I have fire ants in Denver City?',
+    a: 'Almost certainly not. Yoakum County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101, and neither are Gaines, Andrews or Dawson. What most people find here is a red harvester ant mound — a bare circle with foraging trails running out from it. They sting, and it can be more serious than most, but per AgriLife they do not invade structures.',
+  },
+  {
+    q: 'How far is Denver City from you?',
+    a: 'About twenty miles north-west of Seminole, straight up State Highway 214. It is one of the closest towns on the route, with no trip fee, and close enough that same-day work is frequently possible.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Denver City?',
+    a: 'Sí. Valentin habla español con fluidez y atiende personalmente. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Denver City TX | Yoakum County"
+  description="Scorpion, termite, rodent and weed work in Denver City, twenty miles from our Seminole base. Licensed TPCL 0918482, no contracts, no trip fee."
+  path="/locations/denver-city/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Denver City, Texas',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, oilfield property and businesses in Denver City and Yoakum County.',
+    areaServed: ['Yoakum County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Yoakum County · about 20 miles from Seminole</p>
+      <h1>Pest Control in Denver City, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Denver City is about twenty miles up State Highway 214 from our base, which puts it among the
+          two or three closest towns on this route. That distance is the practical argument for calling
+          us rather than a company running the town from Odessa or Lubbock, and it matters most for the
+          things people never think about when they book the first visit: the callback under the
+          guarantee, the second visit that termite and rodent work actually requires, and the interim
+          call in July when something turns up between scheduled services.
+        </p>
+        <p>
+          It is also worth knowing that Denver City has one of the more carefully written weed ordinances
+          in this part of Texas, and it works differently from Seminole's and from Andrews'. If you own
+          property here, that is the section below worth reading.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The ordinance that names the plants</h2>
+      <div class="measure">
+        <p>
+          Most municipal weed ordinances in West Texas say "weeds" and leave it at that, which means the
+          argument about what counts happens later, between a property owner and a code officer, with no
+          text to settle it. Denver City wrote its list down.
+        </p>
+        <p>
+          Section 6.06.003 defines weeds as rank, noxious, poisonous, harmful or unhealthful vegetation
+          deleterious to health, and then <strong>names them</strong>: pigweed, Russian thistle, ragweed,
+          lambsquarter, kochia, prickly lettuce, London rocket mustard, Canadian thistle and Johnson
+          grass. The city manager can add to that list after a hearing.
+        </p>
+        <p>
+          Just as usefully, the same section <strong>exempts undisturbed climax vegetation</strong> — the
+          natural growth of native grasses, mesquite and shinnery oak on ground that has not been broken.
+          That is a genuinely sensible distinction, and it is one very few small-town ordinances draw. A
+          natural lot that has never been ploughed is not the same thing as a disturbed lot that has come
+          up in kochia and Russian thistle, and here the code says so.
+        </p>
+        <p>
+          <strong>The height is twelve inches.</strong> Section 6.06.004, and the duty runs out to the
+          curb, the gutter, the sidewalk and the area between your property line and the middle of the
+          adjacent alley. Section 6.06.005 applies the same twelve-inch standard to vacant, platted but
+          unimproved land where two or more contiguous lots exceed half an acre — the provision aimed at
+          people holding raw lots.
+        </p>
+        <p>
+          <strong>You get ten days.</strong> Notice can be personal, by letter to your post office
+          address, or, where personal service fails, by publication twice within ten consecutive days in
+          the city newspaper or by posting on the property.
+        </p>
+        <p>
+          <strong>Above forty-eight inches there is no notice.</strong> Section 6.06.008 permits immediate
+          abatement of weeds in excess of four feet deemed an immediate danger to health, life or safety.
+        </p>
+        <p>
+          <strong>And one notice covers a year.</strong> Section 6.06.007 lets the city tell you that a
+          further violation of the same kind on or before the first anniversary of the notice may be
+          corrected without further notice at your expense. This is the provision that catches people out
+          across every town on this route, and it is worth reading twice.
+        </p>
+        <p>
+          <strong>Abatement, payment and lien.</strong> Under 6.06.009 the city manager may have the weeds
+          cut where the owner is a non-resident, cannot be determined, or has failed to comply within ten
+          days. You pay the actual cost of cutting or removal plus any other penalties or costs allowed by
+          law, and you have <strong>five days</strong> to pay after being billed before a lien attaches to
+          the property.
+        </p>
+        <p>
+          One more provision that surprises people: section 6.06.010 governs <em>how</em> vegetation may
+          be controlled. Mowing, cutting, digging and chemical treatment are all fine.
+          <strong>Scraping and tilling require prior authorisation from the city manager</strong>, except
+          as part of ordinary construction, agricultural preparation or landscaping. If your plan for a
+          lot is to run a blade over it, that is a phone call to the city before it is a job.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Stagnant water is its own ordinance here</h2>
+      <div class="measure">
+        <p>
+          Separately from the weed article, Denver City maintains Article 6.05 on health nuisances, which
+          enumerates nineteen specific conditions. Several of them are directly relevant to pest work and
+          they are worth knowing about, because they are enforced independently of anything to do with
+          vegetation height.
+        </p>
+        <p>
+          The code names any can or receptacle holding water that is stagnant, offensive or unwholesome
+          from any cause. It names the discharge of wastewater into an alley or gutter in a way that may
+          produce a pool of stagnant water. It names carrion, decaying flesh, fish, fowl, fruit or
+          vegetables and filthy or offensive water. It names allowing weeds, filth or rubbish to remain in
+          the street, and sweeping or throwing trash, paper or rubbish into streets, alleys, sidewalks or
+          public thoroughfares.
+        </p>
+        <p>
+          Abatement under this article runs on ten days after notice, and if the owner does not comply the
+          city may do the work and charge the expense — which the code makes a <strong>personal liability
+          of the owner to the city</strong>, a different mechanism from the property lien under the weed
+          article.
+        </p>
+        <p>
+          It is worth being precise about what this article does not say. It does not name mosquitoes,
+          rodents or vermin. It regulates the conditions rather than the animals. But those conditions are
+          exactly the ones that produce mosquito breeding and rodent harbourage on a residential lot, and
+          a property owner dealing with a standing-water complaint is nearly always also dealing with a
+          pest problem, whether or not the notice mentions one.
+        </p>
+        <p>
+          In practical terms: in a region this dry, any reliable standing water is a destination for
+          everything. A container that holds water for a week after a rain, a low spot in an alley that a
+          washing machine discharge keeps wet, a swamp cooler line running to the same patch of dirt all
+          summer. These are the highest-value things to fix on a Denver City property, and two of them are
+          also code issues.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A town where a third of the houses were built in one decade</h2>
+      <div class="measure">
+        <p>
+          Denver City was founded in 1939 to serve the Wasson oil pool, incorporated the following March,
+          and is one of the youngest towns in Texas. Its housing stock reflects a very particular history:
+          survey estimates put the median year of construction at <strong>1975</strong>, with roughly
+          thirty-one percent of the entire stock built during the 1970s and very little going up since
+          2000.
+        </p>
+        <p>
+          A town where a third of the houses went up in the same decade is a town where a third of the
+          houses reach the same failure points at the same time, and that is genuinely useful to know.
+          What fifty years does to a West Texas house is predictable: door sweeps compress and stop
+          sealing, weatherstripping hardens and cracks, garage door bottoms flatten, weep hole screens
+          disappear, and utility penetrations that were cut for one thing and reused for another never get
+          closed properly.
+        </p>
+        <p>
+          None of that is a defect. It is what wind, dust, heat and fifty summers of sun do to seals. But
+          those gaps are the entry points, and on a house of this vintage the exclusion work — closing the
+          openings — is very often worth more than any treatment applied around them.
+        </p>
+        <p>
+          The other thing the numbers show is money. Median household income here runs well above the
+          Texas figure, which is what an oil town at full production looks like, and it means Denver City
+          houses tend to be better maintained than their age would predict. The maintenance that gets done
+          is roofs, paint, HVAC and interiors. The maintenance that almost never gets done anywhere is the
+          half-inch gap under a door and the unscreened weep hole, because nobody looks at them and no
+          contractor volunteers them.
+        </p>
+        <p>
+          About one in nine housing units here is a mobile or manufactured home — a lower share than
+          Seagraves but still substantial. Those carry their own profile: the void beneath the floor is the
+          real perimeter, the skirting gap is the main entry, and the utility penetrations come up through
+          the floor into cabinets rather than through a wall.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Oilfield country, and what that does to buildings</h2>
+      <div class="measure">
+        <p>
+          Petroleum accounts for something like seventy-five percent of Denver City's economic activity by
+          the city's own account, with roughly a quarter of a million barrels a day coming out of a field
+          of about forty-four square miles. The Wasson Field was discovered in 1936 and produces from the
+          San Andres dolomite at around five thousand feet. The Denver Unit has been under carbon dioxide
+          flood since 1983 across something like twenty-two hundred wells.
+        </p>
+        <p>
+          That is not pest control trivia. It is the explanation for a set of pest conditions you do not
+          see in an agricultural town of the same size.
+        </p>
+        <p>
+          <strong>Occupancy moves in cycles.</strong> Denver City's population history is a series of
+          steps — around three thousand people and a hundred and twenty businesses by 1940, down to two
+          thousand and fifty-five businesses by 1944, back to thirty-eight hundred by 1955, peaking above
+          five thousand in 1990. A town that has done that repeatedly has a building stock that empties
+          and refills, and vacancy is a pest condition in its own right.
+        </p>
+        <p>
+          A structure that has sat closed through a summer is a completely different inspection from the
+          same structure occupied. Traps dry out and let sewer gas and insects up through the drains.
+          Nobody has been running water, opening doors or noticing anything. Rodent activity that would
+          have been caught in week one in an occupied house has had four months. Re-opening a building
+          that has been closed is one of the most productive single visits available, and almost nobody
+          books it.
+        </p>
+        <p>
+          <strong>Work buildings are not houses.</strong> Shops, yards, equipment storage and offices
+          attached to operations carry their own problems — roll-up doors with a gap at the threshold,
+          stored material, and the fact that nobody sleeps there and so nobody notices. The rodent
+          population in a shop is frequently the source of the rodent problem in the house eighty feet
+          away.
+        </p>
+        <p>
+          <strong>And rental turnover is fast.</strong> The window between tenants is the single best
+          opportunity a rental property gets: full access, nothing to work around, and no occupancy
+          constraints. It is also short, which is why it works better planned than reacted to.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we get called about in Denver City</h2>
+      <div class="measure">
+        <p>
+          <strong>Scorpions, June through September.</strong> Striped bark scorpions, and they are the
+          defining residential complaint across this whole region. AgriLife entomologists note they move
+          indoors when conditions outside become excessively dry, which makes a long dry June a reliable
+          predictor of a difficult July. Nocturnal, good climbers, and found in attics more often than
+          people expect. The work is harbourage and exclusion much more than spraying.
+        </p>
+        <p>
+          <strong>Rodents, on the oilfield and agricultural calendar both.</strong> Yoakum County runs
+          sorghum, cotton, alfalfa, watermelons and castor beans alongside the oil, and cattle ranching
+          preceded both. Field activity displaces populations toward structures; so does anything sitting
+          empty. The first genuinely cold nights of autumn do the rest.
+        </p>
+        <p>
+          <strong>Spiders, black widow especially.</strong> Well houses, pump enclosures, meter boxes,
+          under-shed spaces and anything small, dark and rarely opened. On oilfield property these
+          enclosures are everywhere and they get opened once a season, which is the whole problem.
+        </p>
+        <p>
+          <strong>Ants in several forms.</strong> Harvester ants outdoors with the characteristic bare
+          circular mound and foraging trails, ordinary nuisance ants indoors following a moisture trail,
+          and occasionally something needing identification before treatment, because the wrong product on
+          the wrong ant scatters a colony instead of eliminating it.
+        </p>
+        <p>
+          <strong>Termites, which the dry-climate assumption keeps hidden.</strong> Plenty of people out
+          here have been told there are no termites in West Texas. There are. Subterranean termites work
+          below grade where the moisture is, and slab construction conceals evidence rather than
+          preventing the problem.
+        </p>
+        <p>
+          <strong>Mosquitoes, in bursts rather than continuously.</strong> This country drains to draws
+          rather than to any permanent stream — McKenzie Draw runs near Denver City, and Sulphur Springs
+          Draw crosses Yoakum County. Surface water is episodic. Pressure climbs roughly a week to ten
+          days after a real rain and falls away again, which means treating on a fixed calendar misses it
+          and treating in response to the weather does not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Sandy ground and shinnery oak</h2>
+      <div class="measure">
+        <p>
+          Yoakum County sits on sandy soils supporting prairie grasses, mesquite, yucca and shinnery oak,
+          at elevations around three and a half thousand feet. There are aeolian sands around Denver City
+          — the Quanah Parker Trail marker notes Comanche and Kiowa camps at water sites in them.
+        </p>
+        <p>
+          Two things follow for pest work. Sand drains fast, which means artificial moisture sources
+          dominate completely. An irrigation head throwing against a foundation, a condensate line
+          discharging in the same spot all summer, a leaking spigot — in wetter country these are minor
+          maintenance items. Here they are the single most reliable predictor of where the problem will
+          be, because they are frequently the only consistent water on the property.
+        </p>
+        <p>
+          And sand moves. A termite barrier established in sandy ground behaves differently from one in
+          heavy clay, and grade changes around a foundation deserve more attention here than they usually
+          get. If you have had landscaping done, a trench dug for a line, or fill brought in, that is worth
+          mentioning during an inspection.
+        </p>
+        <p>
+          Shinnery oak matters too, and not only because the ordinance exempts it. Undisturbed native
+          growth is habitat, and where a lot backs onto it the pressure arriving at the perimeter is
+          continuous rather than seasonal. That is not a reason to clear it — the code specifically
+          protects it — but it is a reason to treat the boundary as the working line rather than the wall
+          of the house.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Denver City</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the size
+          of the property, the pressure and the frequency, with a higher initial visit. Termite, bed bug,
+          mosquito, lawn, brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Nobody is based here either</h2>
+      <div class="measure">
+        <p>
+          Directory searches for pest control in Denver City return companies serving the town from
+          Odessa, Midland, Lubbock, Amarillo, Abilene and Pecos. None is listed at a Denver City street
+          address. Whoever you call is driving in, and the only question is how far.
+        </p>
+        <p>
+          From Seminole it is about twenty miles. From Odessa it is roughly four times that; from Lubbock
+          further still. That difference does not show up on the first visit, which everybody makes
+          willingly. It shows up on the third.
+        </p>
+        <p>
+          <strong>Guarantee callbacks.</strong> A thirty-day service guarantee is worth exactly what
+          somebody's willingness to drive for it is worth. A callback that costs an operator a whole
+          afternoon becomes a scheduling conversation. One that costs half an hour does not.
+        </p>
+        <p>
+          <strong>Sequenced work.</strong> Termite and rodent jobs are not single visits. They require
+          returning at a specific interval to see what happened, and the interval is set by the biology
+          rather than by the route. Distance is the most common reason that return slips.
+        </p>
+        <p>
+          <strong>Interim calls.</strong> On a recurring plan, the visits between scheduled services are
+          the real value — the July call when something turns up. Those only work if the drive is short
+          enough to make them ordinary.
+        </p>
+        <p>
+          None of this makes an Odessa or Lubbock company a poor choice, and several of them are good.
+          It does mean the question worth asking any of them is how often they are up this way anyway,
+          and what happens when you need them back.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Denver City pest control questions" />
+  <Cta
+    market="Denver City"
+    line="Twenty miles down 214. Tell him what you are seeing, whether the property is occupied or has been sitting, and if a city notice has arrived, read him the date on it."
+  />
+</BaseLayout>
