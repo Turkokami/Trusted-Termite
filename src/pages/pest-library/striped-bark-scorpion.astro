@@ -1,0 +1,470 @@
+---
+/**
+ * Pest library — striped bark scorpion, Centruroides vittatus.
+ *
+ * All facts below verified Aug 2026 against Texas A&M AgriLife Extension:
+ *  texasinsects.tamu.edu/striped-bark-scorpion; AgriLife E-362 "Scorpions";
+ *  mytexas.ag.tamu.edu "Scorpions: Identification, Habitat and Control in
+ *  Texas"; texasinsects.tamu.edu/scorpionida; "Venomous Terrestrial Animals of
+ *  Texas"; AgriLife Today 30 Jun 2018 and 11 Sep 2023 (Molly Keck).
+ *
+ * ID: adults ~2 3/8 in (60 mm), up to ~2.5 in. Yellowish-tan, TWO broad
+ *   blackish longitudinal stripes on the upper abdomen, dark triangular mark on
+ *   the head over the eyes. Slender pedipalps, long slender tail; males longer
+ *   tails. Juveniles lighter with dark pedipalp bases and dark terminal tail
+ *   segment. Fluoresces under UV.
+ * Life cycle: mate fall/spring/early summer; gestation ~8 MONTHS; LIVE BIRTH of
+ *   13-47 young, average 31; young ride the mother's back 3-7 days through a
+ *   molt; 5-6 molts to maturity; E-362 gives lifespan ~4 years (Field Guide
+ *   says 3-8, some sources 20-25 — cite 4 and note variation).
+ * Texas has ~18 species. C. vittatus occurs throughout the state and is the
+ *   only species in the eastern half. Diversity rises westward: AgriLife counts
+ *   4 near Amarillo, 3 near Abilene, 5 near Fort Stockton, 8 near Fort Davis,
+ *   14 in Big Bend.
+ *
+ * ⚠️ NOT FOUND — do not write: a named species list for our ten counties.
+ *   AgriLife gives counts for Amarillo/Abilene/Fort Stockton but NOT for
+ *   Lubbock or Midland-Odessa. Do NOT name additional Permian Basin species.
+ *
+ * SEVERITY — must stay accurate and non-alarmist. AgriLife: "The stings from
+ *   Texas scorpions produce only moderate reactions in most people because the
+ *   poison has little effect on the nervous system." And: "None of the
+ *   scorpions in Texas are considered 'deadly.'" The dangerous US species is
+ *   the ARIZONA bark scorpion, C. sculpturatus — a different animal.
+ *   No page on this site may imply a Texas species is lethal.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Striped bark scorpion', path: '/pest-library/striped-bark-scorpion/' },
+];
+
+const quickAnswer =
+  'The striped bark scorpion, Centruroides vittatus, is the scorpion you are almost certainly looking at in West Texas — yellowish-tan with two broad dark stripes down the back and a dark triangle on the head. Per Texas A&M AgriLife, no scorpion in Texas is considered deadly, and stings produce only moderate reactions in most people. They enter buildings seeking cooler temperatures and moisture, which is why a long dry June reliably predicts a difficult July.';
+
+const faqs = [
+  {
+    q: 'Are Texas scorpions deadly?',
+    a: 'No. Texas A&M AgriLife states plainly that none of the scorpions in Texas are considered deadly, and that stings from Texas scorpions produce only moderate reactions in most people because the venom has little effect on the nervous system. The genuinely dangerous species in the United States is the Arizona bark scorpion, which is a different animal. That said, a sting hurts sharply, local swelling can persist for days, individual reaction varies, and allergic reactions are possible with any arthropod venom — so young children and anyone with a known allergy warrant more caution.',
+  },
+  {
+    q: 'How do I know it is a striped bark scorpion?',
+    a: 'Two broad blackish stripes running lengthwise down the upper abdomen, on a yellowish-tan body, with a dark triangular mark on the head over the eyes. Adults run around two and a third inches, up to about two and a half. The pedipalps — the pincers — are slender rather than heavy, and the tail is long and slender, longer still on males. Juveniles are paler with dark bases to the pedipalps and a dark last tail segment.',
+  },
+  {
+    q: 'Why are they suddenly in my house?',
+    a: 'Heat and water. AgriLife’s own guidance is that during periods of hot weather scorpions may move into living areas to escape high temperatures in attics, and extension entomologists describe them seeking water and cooler conditions in hot dry weather — squeezing in where they feel a temperature difference under a door or through a small crack. So the pattern is: they enter low, live high, and drop into living space when the attic overheats. A long dry stretch in June is the most reliable predictor of a bad July there is.',
+  },
+  {
+    q: 'Do they glow under a blacklight?',
+    a: 'Yes. The cuticle fluoresces under ultraviolet light, which makes a UV torch a genuinely effective survey tool after dark. It is the single most useful thing a homeowner can buy for this problem, and walking the perimeter with one on a warm night tells you more about your property than any amount of daytime looking.',
+  },
+  {
+    q: 'How many are there? I only ever see one at a time.',
+    a: 'Scorpions give live birth rather than laying eggs, and a female carries for roughly eight months before producing between thirteen and forty-seven young, averaging about thirty-one. The young ride on her back for three to seven days through their first molt. It takes five or six molts to reach maturity and AgriLife gives a lifespan around four years, so a property with breeding scorpions has overlapping generations rather than a flush.',
+  },
+  {
+    q: 'Does spraying work?',
+    a: 'Less than people hope, on its own. Scorpions have a waxy cuticle, they spend the day in harbourage rather than crossing treated surfaces, and they can go a long time between meals. AgriLife’s own management guidance leads with non-chemical measures — removing harbourage, mowing short at the foundation, pruning shrubs and overhanging branches, weather-stripping doors, plugging weep holes and sealing eaves and pipe penetrations. Treatment supports that work rather than replacing it.',
+  },
+  {
+    q: 'What do I do about a sting?',
+    a: 'Clean the site and apply an ice pack for the pain. Sharp immediate pain and localised swelling are the usual course, and the swelling and itching may last several days. Seek medical care if pain or swelling persists, if there is any difficulty breathing, or for a young child. We are a pest control company rather than a medical one, and anything beyond first aid belongs to a doctor or poison control.',
+  },
+  {
+    q: '¿Los alacranes de Texas son mortales?',
+    a: 'No. Texas A&M AgriLife indica que ninguna especie de alacrán en Texas se considera mortal, y que las picaduras producen reacciones moderadas en la mayoría de las personas. Aun así duelen bastante, la hinchazón puede durar varios días, y las reacciones alérgicas son posibles. Con niños pequeños o personas alérgicas, consulte a un médico.',
+  },
+];
+---
+
+<BaseLayout
+  title="Striped Bark Scorpion | West Texas Pest Library"
+  description="Identification, biology, why they come indoors and what actually works, sourced to Texas A&amp;M AgriLife. The defining household pest of the Permian Basin."
+  path="/pest-library/striped-bark-scorpion/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Centruroides vittatus</em></p>
+      <h1>Striped bark scorpion</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          This is the defining household pest of the Permian Basin and the southern Llano Estacado. More
+          summer calls come in about scorpions than about everything else combined, and more bad
+          information circulates about them than about any other pest we deal with.
+        </p>
+        <p>
+          So this page is sourced. Everything below comes from Texas A&amp;M AgriLife Extension
+          publications, and where AgriLife and popular belief disagree, we have said so and gone with
+          AgriLife.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Start here: they are not deadly</h2>
+      <div class="measure">
+        <p>
+          AgriLife's position could not be plainer. <strong>"None of the scorpions in Texas are considered
+          'deadly.'"</strong> And: <strong>"The stings from Texas scorpions produce only moderate
+          reactions in most people because the poison has little effect on the nervous system."</strong>
+        </p>
+        <p>
+          The species people are actually thinking of when they worry about this is the
+          <strong>Arizona bark scorpion</strong>, <em>Centruroides sculpturatus</em>, which is a genuinely
+          medically significant animal and a different one. It is not the scorpion in your garage in
+          Seminole.
+        </p>
+        <p>
+          <strong>What a sting is actually like.</strong> Sharp, immediate pain. Localised swelling that
+          often persists for days. Itching. Individual reaction varies considerably, and as with any
+          arthropod venom an allergic reaction is possible. An ice pack handles the pain for most people.
+        </p>
+        <p>
+          <strong>When to take it further.</strong> If pain or swelling persists, if there is any
+          difficulty breathing, or if the person stung is a young child or has a known allergy. That is a
+          medical decision and it belongs to a doctor or to poison control, not to us.
+        </p>
+        <p>
+          <strong>Why we lead with this.</strong> Because fear is the standard sales lever in this trade
+          and we would rather not use it. Scorpions are a real nuisance, they are genuinely unpleasant to
+          find in a bed or a boot, and there are good reasons to deal with them. Lethality is not one of
+          them, and a company that implies otherwise is contradicting the state's own extension service.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Identification</h2>
+      <div class="measure">
+        <p>
+          <strong>Size.</strong> Adults around two and three-eighths inches, occasionally up to about two
+          and a half.
+        </p>
+        <p>
+          <strong>Colour and markings.</strong> Yellowish-tan overall, with <strong>two broad blackish
+          stripes running lengthwise down the upper abdomen</strong> — the feature the common name refers
+          to — and a <strong>dark triangular mark on the head, over the eyes</strong>. That triangle is the
+          detail most people miss and it is diagnostic.
+        </p>
+        <p>
+          <strong>Shape.</strong> Slender pedipalps — the pincers — rather than heavy crab-like ones, and a
+          long slender tail. Males have longer tails than females.
+        </p>
+        <p>
+          <strong>Juveniles</strong> are lighter overall, with dark brown or black bases to the pedipalps
+          and a dark terminal tail segment.
+        </p>
+        <p>
+          <strong>Under ultraviolet light the whole animal fluoresces</strong>, which is genuinely useful
+          rather than a curiosity — see the survey section below.
+        </p>
+        <p>
+          <strong>What it gets confused with.</strong> Pseudoscorpions, which are tiny and have no tail at
+          all, and are harmless. Further west in Texas there are other species — AgriLife's El Paso office
+          documents the Arizona stripetail, <em>Paravaejovis spinigerus</em> — but that is a far-west
+          Texas record rather than a Permian Basin one.
+        </p>
+        <p>
+          <strong>How many species are there?</strong> Texas has around eighteen. <em>C. vittatus</em>
+          occurs throughout the state and is the only species in the eastern half, with diversity rising as
+          you go west: AgriLife gives counts of four species near Amarillo, three near Abilene, five near
+          Fort Stockton, eight near Fort Davis and fourteen in Big Bend. We are not going to name
+          additional species for Gaines County or the Midland–Odessa area, because AgriLife does not
+          publish a species list for those counties and we are not going to invent one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Biology, and why it explains the pattern you are seeing</h2>
+      <div class="measure">
+        <p>
+          <strong>They give live birth.</strong> Not eggs. Mating occurs in autumn, spring or early
+          summer, gestation runs around <strong>eight months</strong>, and the female produces between
+          thirteen and forty-seven live young, averaging about thirty-one.
+        </p>
+        <p>
+          <strong>The young ride on her back</strong> for three to seven days, through their first molt,
+          before dispersing. If you have ever turned over a board and found what looked like one large
+          scorpion wearing a pale crust, that is what you were looking at.
+        </p>
+        <p>
+          <strong>Five or six molts to maturity</strong>, and AgriLife's E-362 gives a lifespan of around
+          four years. Other sources range higher — the Field Guide says three to eight — so treat four as
+          the working figure and expect variation.
+        </p>
+        <p>
+          <strong>Why this matters practically.</strong> An eight-month gestation and a four-year lifespan
+          mean a property with an established population has overlapping generations rather than a
+          seasonal flush. That is why a single heavy treatment does not clear a property permanently, and
+          why the honest recommendation on a badly affected property is a programme rather than a visit.
+        </p>
+        <p>
+          <strong>They are nocturnal, and that is thermoregulation rather than preference.</strong>
+          AgriLife notes that hiding by day helps them manage temperature and water balance — functions
+          that matter enormously for survival in dry habitat. Everything about their behaviour follows from
+          the need not to dry out.
+        </p>
+        <p>
+          <strong>And they climb well.</strong> AgriLife records that they "often are found in the attics
+          of homes." People consistently underestimate this and search at floor level.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why they come indoors here</h2>
+      <div class="measure">
+        <p>
+          This is the part that makes scorpions a regional story rather than a generic one, and the
+          extension sources are unusually direct about it.
+        </p>
+        <p>
+          <strong>AgriLife's E-362:</strong> "During periods of hot weather, scorpions may move into living
+          areas to escape the high temperatures in attics."
+        </p>
+        <p>
+          <strong>Molly Keck, AgriLife Extension entomologist:</strong> during hot, dry weather "they may
+          seek out water and/or a more hospitable environment." And, during the 2023 drought, that
+          scorpions pursue "water and cooler temperatures and when they feel that temperature difference
+          below a door or by another small crack, they can squeeze their way inside."
+        </p>
+        <p>
+          <strong>Put those together and you get the actual sequence</strong>, which explains almost every
+          call we take:
+        </p>
+        <p>
+          <strong>They enter low.</strong> Under a door with a worn sweep, through a gap at a threshold,
+          around a utility penetration — anywhere they can feel a temperature or humidity gradient. Their
+          flattened body, as Wizzie Brown of AgriLife notes, lets them get into small cracks and under
+          stones, bark and wood.
+        </p>
+        <p>
+          <strong>They live high.</strong> Wall voids and attics, where it is dark and undisturbed.
+        </p>
+        <p>
+          <strong>Then the attic overheats</strong>, in the worst weeks of a Permian Basin summer, and they
+          come down into the living space. Which is why people find them in July and August, in bedrooms
+          and bathrooms, having seen nothing all spring.
+        </p>
+        <p>
+          <strong>The predictive value of this is real.</strong> A long dry stretch in June, with no rain
+          and sustained heat, is the most reliable forecast available for a difficult July. If you have had
+          six weeks of dry heat and you are on a property with history, that is the moment to act rather
+          than the moment to wait and see.
+        </p>
+        <p>
+          <strong>And it explains the moisture paradox.</strong> In a region this dry, any reliable water
+          on a property — an irrigation head against a foundation, a condensate line, a leaking spigot, a
+          swamp cooler overflow — is a destination. Fixing it does more for a scorpion problem than most
+          treatments will, and it is free.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Surveying with ultraviolet light</h2>
+      <div class="measure">
+        <p>
+          Because the cuticle fluoresces, a UV torch turns an invisible problem into a visible one, and it
+          is the single most useful thing a homeowner in this region can buy.
+        </p>
+        <p>
+          <strong>Go out after full dark</strong>, on a warm night, when they are active. Cool nights and
+          daylight both produce misleadingly clean results.
+        </p>
+        <p>
+          <strong>Walk the perimeter of the house first</strong>, slowly, sweeping the beam along the
+          foundation line, the base of walls, around door thresholds and up the lower part of the
+          structure. Then the obvious harbourage: woodpiles, stacked material, landscape timbers, rock
+          features, the edges of beds, anything sitting on the ground.
+        </p>
+        <p>
+          <strong>Then look up.</strong> Fence tops, the lower courses of brick, tree trunks, and the wall
+          up toward the roofline. They climb, and a survey conducted entirely at ankle height understates
+          what is there.
+        </p>
+        <p>
+          <strong>Then inside</strong>, if you are willing: the garage, the utility room, the corners of
+          rooms where they meet the skirting, and — carefully, and only if it is safe to be up there — the
+          attic.
+        </p>
+        <p>
+          <strong>What the survey is for.</strong> Not for killing what you find, though you may. It is for
+          learning <em>where they are</em>, which is the information that determines everything about how
+          the property should be treated. A survey that shows heavy activity along one fence line and
+          nothing elsewhere describes a completely different job from one showing scattered activity all
+          round.
+        </p>
+        <p>
+          If you do this before we come out, tell us what you found and where. It is genuinely more useful
+          than anything else you can give us, and it costs the price of a torch.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What actually works</h2>
+      <div class="measure">
+        <p>
+          AgriLife's management guidance leads with non-chemical measures, and so do we, because on this
+          particular pest the ranking is not close.
+        </p>
+        <p>
+          <strong>Remove the harbourage.</strong> Trash, logs, boards, stones and bricks around the
+          structure. This is the highest-value action available and it is free. Everything stacked against
+          or near a wall is habitat, and scorpions are found under exactly these things.
+        </p>
+        <p>
+          <strong>Mow short near the foundation</strong>, and prune shrubs and overhanging branches back
+          from the building.
+        </p>
+        <p>
+          <strong>Keep garbage above ground level.</strong>
+        </p>
+        <p>
+          <strong>Never bring firewood indoors</strong> unless it is going straight onto the fire.
+          AgriLife is explicit about this and it is one of the most common ways a scorpion gets into a
+          living room.
+        </p>
+        <p>
+          <strong>Weather-strip loose doors and windows.</strong> The gap under an exterior door is the
+          principal entry on most properties, and a worn sweep on a house past twenty years old in this
+          climate is close to universal.
+        </p>
+        <p>
+          <strong>Plug weep holes</strong> — AgriLife suggests steel wool, copper mesh, a nylon scouring
+          pad or squares of screen wire. Weep holes are a designed drainage feature and should not be
+          sealed shut, but they should be screened, because they open straight into the wall cavity.
+        </p>
+        <p>
+          <strong>Seal roof eaves and pipe penetrations</strong>, and keep window screens in repair.
+        </p>
+        <p>
+          <strong>Where treatment fits.</strong> After all of that, not instead of it. A residual
+          application aimed at the routes between harbourage and structure, at entry points, and at the
+          places the UV survey showed activity does real work. The same product broadcast across a lawn
+          does very little, because that is not where they are.
+        </p>
+        <p>
+          <strong>What we will tell you honestly.</strong> On a property backing onto open ground, rock or
+          heavy landscaping, the source is not going anywhere and elimination is not the goal. Suppression
+          plus exclusion is, and it works. Anyone promising you a scorpion-free property is describing
+          something they cannot deliver.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The scorpion year in West Texas</h2>
+      <div class="measure">
+        <p>
+          <strong>Winter.</strong> Not gone — sheltered. Scorpions overwinter in protected harbourage,
+          including inside structures, and a warm spell can produce a sighting in February that people find
+          baffling. This is the best time of year to do the exclusion work, because you can see the ground
+          and nobody is trying to do it in a hundred degrees.
+        </p>
+        <p>
+          <strong>Spring.</strong> Activity resumes as nights warm. Mating occurs in this window as well as
+          in autumn. The first calls of the year usually come in April or May and they are the useful ones,
+          because acting then is acting ahead of the problem.
+        </p>
+        <p>
+          <strong>Early summer.</strong> Activity climbing steadily. This is the window where a UV survey
+          is most informative, because there is enough movement to map and not yet enough pressure to panic
+          about.
+        </p>
+        <p>
+          <strong>High summer — July and August.</strong> Peak. Attics reach their maximum temperature,
+          the ground outside is at its driest, and both drivers AgriLife identifies are pushing the same
+          direction at once. This is when scorpions come down out of wall voids into living space, and it
+          is when the calendar genuinely fills.
+        </p>
+        <p>
+          <strong>After a rain event.</strong> Worth watching. A heavy rain floods harbourage and pushes
+          activity around in ways that can produce a sudden cluster of sightings on a property that had
+          been quiet.
+        </p>
+        <p>
+          <strong>Autumn.</strong> Declining, but this is also a mating period, and cooling nights give
+          another reason to move toward the warmth of a structure. The exclusion work done now pays
+          through the winter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Living with them sensibly</h2>
+      <div class="measure">
+        <p>
+          A few habits worth having in this part of Texas, none of which cost anything.
+        </p>
+        <p>
+          <strong>Shake out boots and shoes</strong> left in a garage, a mudroom or by a door. This is the
+          single most common sting scenario out here.
+        </p>
+        <p>
+          <strong>Check bedding and towels</strong> in a property with known activity, particularly in
+          July and August.
+        </p>
+        <p>
+          <strong>Do not put hands into places you cannot see</strong> — under stacked material, behind
+          stored boxes in an attic, into a woodpile. Gloves for that work.
+        </p>
+        <p>
+          <strong>Watch the doorway at night.</strong> They come to lit thresholds because the light
+          attracts the insects they eat. A porch light on all night beside a door with a worn sweep is an
+          arrangement working against you.
+        </p>
+        <p>
+          <strong>Deal with the insects.</strong> Scorpions are predators and a property with heavy insect
+          pressure supports more of them. General pest control on the perimeter reduces the food supply,
+          which is an indirect but genuine part of the answer.
+        </p>
+        <p>
+          <strong>And keep the moisture off the building.</strong> The irrigation head, the condensate
+          line, the dripping spigot. In this climate that fix does more than it would anywhere wetter.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          Biology, severity and management guidance on this page follow Texas A&amp;M AgriLife Extension
+          publications, including E-362 and the Texas Insects field guide. Medical questions about a sting
+          belong to a doctor or to poison control rather than to a pest control company.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Scorpion questions" />
+  <Cta
+    line="Walk the perimeter with a UV torch after dark and tell him what lit up and where. That map is worth more than anything else you can describe over the phone."
+  />
+</BaseLayout>

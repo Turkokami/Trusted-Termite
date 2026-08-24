@@ -1,0 +1,446 @@
+---
+/**
+ * Pest library — subterranean termites, Reticulitermes spp.
+ *
+ * Verified Aug 2026 against AgriLife E-368 "Subterranean Termites",
+ * texasinsects.tamu.edu/termite, citybugs ENT-2002, urbanentomology.tamu.edu,
+ * texasinsects.tamu.edu/desert-termite and mytexas.ag.tamu.edu.
+ *
+ * SPECIES DISCIPLINE:
+ *  - Write about Reticulitermes / native subterranean termites generically, or
+ *    R. flavipes. E-368: "The major termite populations are in the coastal
+ *    areas of Texas, but they are found throughout the state."
+ *  - DO NOT claim Formosan termites. Coptotermes formosanus is Houston-
+ *    Galveston and Beaumont-Port Arthur only.
+ *  - R. virginicus stops at Uvalde/Tom Green; R. hageni at Bexar/Eastland.
+ *    Both stop east of here.
+ *  ⚠️ NOT VERIFIED — do not write: R. tibialis (arid-land subterranean) in
+ *    Texas. Documented for AZ and CO; no Texas extension source found.
+ *
+ * ⚠️ NOT FOUND — do not write: any AgriLife publication quantifying termite
+ *   pressure for the High Plains / Permian Basin, or saying the region is
+ *   lower-risk than east Texas. The gradient statement above is all we have.
+ *
+ * 🚩 POPULAR-BELIEF CONFLICT, the core of this page: "it's too dry for termites
+ *   out here" is unsupported by any extension source. E-368 is explicit that if
+ *   moisture is available termites can be away from soil for extended periods,
+ *   and names defective plumbing, leaky roofs, AC condenser leaks and poorly
+ *   maintained gutters. Colorado State Extension is the strongest analogue and
+ *   says termite problems there INCREASED because of landscape irrigation and
+ *   poor drainage, with the belief that "there are no termites in Colorado"
+ *   itself driving under-protection. Flagged on the page AS an analogue.
+ *
+ * 🚩 THE REGIONAL DIFFERENTIATOR: DESERT TERMITE, Gnathamitermes tubiformans.
+ *   "Common in south and west Texas", conspicuous May-September on shortgrass
+ *   pasture, builds fragile mud tubes and sheets around herbaceous and woody
+ *   plants, litter, dung and fence posts. Workers 3/8 in, creamy white with
+ *   brown heads. DOES NOT tunnel into wood, no structural damage, "medically
+ *   harmless to man and animals". A rangeland issue, worse on overgrazed or
+ *   drought-stressed ground.
+ *
+ * Swarm window for these counties: APRIL-MAY (Panhandle timing per E-368 and
+ *   urbanentomology). South Texas is Jan-Feb. Flights in daylight, often after
+ *   rain. Do not print the statewide Feb-May window as if it were local.
+ *
+ * Economics: ~$500M/yr Texas damage, ~70% chance of damage in 25 years for an
+ *   unprotected home — STATE-LEVEL figures, and the page labels them as such.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Subterranean termites', path: '/pest-library/subterranean-termite/' },
+];
+
+const quickAnswer =
+  'Native subterranean termites occur throughout Texas, including here. The belief that West Texas is too dry for them is not supported by any extension source — Texas A&M AgriLife is explicit that where moisture is available termites can be away from soil for extended periods, and irrigation, plumbing leaks and air conditioning condensate supply exactly that. In this region swarms come in April and May, later than anywhere else in the state.';
+
+const faqs = [
+  {
+    q: 'Is it too dry for termites in West Texas?',
+    a: 'No, and this belief is the reason activity so often goes unnoticed until it is substantial. AgriLife’s position is that the major termite populations are in the coastal areas of Texas but that they are found throughout the state — a gradient, not a boundary. More to the point, E-368 states that where moisture is available termites can be away from the soil for extended periods, and names defective plumbing, leaky roofs, air conditioning condenser leaks and poorly maintained gutters as sources. Landscape irrigation in dry country creates exactly the conditions they need.',
+  },
+  {
+    q: 'When do termites swarm here?',
+    a: 'April and May. This is genuinely regional: AgriLife states that swarming begins in South Texas in January and February, while in the Panhandle region swarms do not occur until April and May. Statewide guidance quoting February to May is not the local window. Flights happen during daylight hours, usually after rain, and heat, day length and moisture are the triggers.',
+  },
+  {
+    q: 'I found mud tubes on my fence posts and in the pasture. Is that termites in my house?',
+    a: 'Almost certainly not, and this is the most useful thing on this page for anybody with land. What you are describing is very likely the desert termite, Gnathamitermes tubiformans — common in south and west Texas, conspicuous from May to September, and it builds fragile mud tubes and sheets of mud around herbaceous and woody plants, litter, dung and fence posts. It does not tunnel into wood, causes no structural damage, and AgriLife describes it as medically harmless to man and animals. It is a rangeland forage issue, worse on overgrazed or drought-stressed ground, not a threat to your house.',
+  },
+  {
+    q: 'How do I tell a termite swarmer from a flying ant?',
+    a: 'Two things. A termite has no pinched waist — the body is straight-sided — while an ant has an obvious narrow waist. And a termite’s four wings are all the same length, while an ant’s front wings are noticeably longer than the back pair. Termite swarmers run about a quarter to three-eighths of an inch, coal black to pale yellow-brown, with pale or smoky-grey wings.',
+  },
+  {
+    q: 'What does the evidence look like?',
+    a: 'Usually the first sign is swarmers themselves, or discarded wings on windowsills, in spider webs, or near indoor lights. Then mud tubes on piers, foundation walls, slabs and near utility openings — built from soil, wood particles and debris held together by salivary and faecal secretions. AgriLife is specific that the presence of shelter tubes and mud within galleries indicates an active infestation. Damage follows the wood grain, attacking the soft spring growth, and galleries are lined with mud or show a pale spotted appearance from soft faecal material.',
+  },
+  {
+    q: 'What are the actual construction standards for a crawl space?',
+    a: 'AgriLife gives figures. A minimum eighteen inches of clearance between floor joists and soil, and at least twelve inches between floor beams and soil. Cover at least seventy percent of the crawl space soil with six-mil polyethylene. Cross-ventilate at one square foot of vent per one hundred and fifty square feet of crawl space, with vents opposite each other and near the corners.',
+  },
+  {
+    q: 'How long before a colony produces swarmers?',
+    a: 'Two to four years, with E-368 giving colony maturity at three to five years. A mature native colony is described as around two hundred and fifty thousand workers, though many are considerably smaller. The practical implication is that swarmers in your house are evidence of something that has been established for years, not of something that arrived last month.',
+  },
+  {
+    q: '¿Hay termitas en el oeste de Texas?',
+    a: 'Sí. La creencia de que aquí es demasiado seco para las termitas no está respaldada por ninguna fuente de extensión. AgriLife señala que las poblaciones principales están en la costa pero que se encuentran en todo el estado, y que donde hay humedad disponible las termitas pueden permanecer lejos del suelo por períodos prolongados — riego, fugas de plomería y condensado del aire acondicionado la proporcionan. Aquí los enjambres salen en abril y mayo.',
+  },
+];
+---
+
+<BaseLayout
+  title="Subterranean Termites | West Texas Pest Library"
+  description="Why the dry-climate assumption is wrong, when they swarm here, and how to tell a desert termite from a structural threat. Sourced to Texas A&amp;M AgriLife."
+  path="/pest-library/subterranean-termite/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Reticulitermes</em> species</p>
+      <h1>Subterranean termites</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          There is a belief out here that this country is too dry for termites. It is the single most
+          expensive misconception in West Texas property ownership, and it is not supported by any
+          extension source we can find.
+        </p>
+        <p>
+          It is also self-reinforcing in an unusually damaging way. People who believe there are no
+          termites do not have inspections, do not correct conducive conditions, and do not look at the
+          foundation line — so activity runs undetected for years, and by the time anybody notices, the
+          finding confirms nothing except that nobody was looking.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What the extension sources actually say</h2>
+      <div class="measure">
+        <p>
+          <strong>On distribution.</strong> AgriLife's E-368 is a gradient statement rather than a
+          boundary: "The major termite populations are in the coastal areas of Texas, but they are found
+          throughout the state." Fewer than the Gulf coast. Not none.
+        </p>
+        <p>
+          <strong>On the dryness argument, directly.</strong> E-368 notes that termites become dehydrated
+          easily and need soil contact <em>or another moisture source</em> — and then names them: defective
+          plumbing, leaky roofs, leaks from air conditioning condensers, poorly maintained gutters. It goes
+          further and corrects an older belief explicitly: <strong>"if moisture is available, termites can
+          be away from the soil for extended times."</strong>
+        </p>
+        <p>
+          <strong>Read that against what a West Texas property actually looks like.</strong> Landscape
+          irrigation running through a summer. Air conditioning condensate discharging to the same patch of
+          dirt for four months. A swamp cooler line. In a region with sixteen inches of annual rainfall,
+          those artificial sources are not marginal — they are frequently the only reliable moisture within
+          a hundred feet, and everything that needs water knows where they are.
+        </p>
+        <p>
+          <strong>The closest documented analogue is Colorado</strong>, and we flag it as an analogue
+          rather than as Texas evidence. Colorado State Extension is explicit that termite problems there
+          have <em>increased</em> because of elevated moisture from landscape irrigation and poor drainage,
+          buried wood, and inadequate termite-proofing driven by the misconception that there are no
+          termites in Colorado. The belief causes the under-protection, and the under-protection causes the
+          damage.
+        </p>
+        <p>
+          <strong>What we will not claim.</strong> We could not find any AgriLife publication that
+          quantifies termite pressure for the High Plains or the Permian Basin specifically, and none that
+          says this region is lower-risk than east Texas. So we are not going to give you a regional
+          percentage, and anybody who does is inventing it. What we can tell you is that the dry-climate
+          reasoning does not hold, and that the sources say so.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The desert termite — what you probably have in the pasture</h2>
+      <div class="measure">
+        <p>
+          This is the most useful piece of local knowledge on this page, and it is one that saves people
+          money rather than costing them any.
+        </p>
+        <p>
+          If you have land out here, you have very likely seen thin sheets and fragile tubes of dried mud
+          on fence posts, on dead grass, on cow dung, on the base of mesquite. It looks alarming and it is
+          routinely mistaken for a structural termite problem.
+        </p>
+        <p>
+          <strong>It is almost certainly the desert termite,</strong> <em>Gnathamitermes tubiformans</em>,
+          and AgriLife's description is unambiguous. Common in south and west Texas. Conspicuous from May
+          through September on shortgrass pasture. Builds fragile mud tubes and sheets of mud around the
+          surfaces of herbaceous and woody plants, litter, dung, fence posts and similar objects. Workers
+          about three-eighths of an inch, creamy white with brown heads.
+        </p>
+        <p>
+          <strong>And the three facts that matter:</strong> it does not tunnel into wood, it causes no
+          structural damage, and AgriLife describes it as medically harmless to man and animals.
+        </p>
+        <p>
+          <strong>What it actually is</strong> is a rangeland forage issue. It feeds on living and dry
+          forage grasses, and it is worse on overgrazed or drought-stressed ground — which makes its
+          presence a grazing-management signal rather than a pest control emergency.
+        </p>
+        <p>
+          <strong>How to tell them apart in practice.</strong> Location and material. Desert termite
+          workings are out in the open on vegetation, litter and dung, in pasture, and they are fragile —
+          they crumble at a touch. Subterranean termite shelter tubes are on structures: piers, foundation
+          walls, slab edges, near utility penetrations, running vertically toward wood, and they are
+          tougher and more purposeful. Mud on your fence line is one thing. Mud on your foundation is
+          another.
+        </p>
+        <p>
+          <strong>Why a pest company tells you this.</strong> Because the alternative is quoting a termite
+          job on a pasture phenomenon that was never going to hurt anything. That happens, and it should
+          not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Which species are actually here</h2>
+      <div class="measure">
+        <p>
+          Worth being precise about, because national content generalises badly.
+        </p>
+        <p>
+          <strong>Native subterranean termites,</strong> <em>Reticulitermes</em> — principally the eastern
+          subterranean termite <em>R. flavipes</em> — are what we write about for this region, and what we
+          treat for.
+        </p>
+        <p>
+          <strong>Two other Texas <em>Reticulitermes</em> species stop east of here.</strong>
+          <em>R. virginicus</em> is recorded from east Texas west to Uvalde and Tom Green counties.
+          <em>R. hageni</em> reaches Bexar and Eastland. Neither range extends into the Permian Basin or
+          onto the Llano Estacado.
+        </p>
+        <p>
+          <strong>Formosan termites are not here.</strong> <em>Coptotermes formosanus</em> is recorded in
+          Texas from the Houston-Galveston and Beaumont-Port Arthur areas. It is a genuinely more
+          aggressive animal and it gets invoked in marketing far outside its range. If a company mentions
+          Formosan termites in Gaines County, that is a flag.
+        </p>
+        <p>
+          <strong>And one we deliberately do not claim.</strong> The arid-land subterranean termite,
+          <em>R. tibialis</em>, is well documented for Arizona and Colorado, and it would be a tidy fit for
+          this region. We could not find a Texas extension source placing it in Texas, so we are not going
+          to assert it. If that changes, this page changes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The colony, and what the castes tell you</h2>
+      <div class="measure">
+        <p>
+          <strong>Workers</strong> are blind, wingless, white to creamy white, a quarter to three-eighths
+          of an inch. They do all the feeding and all the damage.
+        </p>
+        <p>
+          <strong>Soldiers</strong> look like workers but with well-developed brownish heads and strong
+          mandibles. They make up only one to five percent of a colony, which is why finding one is
+          informative — there are a great many workers behind it.
+        </p>
+        <p>
+          <strong>Swarmers</strong> — the reproductives — run about a quarter to three-eighths of an inch,
+          coal black through to pale yellow-brown, with pale or smoky-grey wings.
+        </p>
+        <p>
+          <strong>Timing tells you about age.</strong> A colony takes two to four years to produce
+          swarmers, and E-368 puts maturity at three to five years. A mature native colony is described as
+          around two hundred and fifty thousand workers, though many are much smaller. So a swarm inside
+          your house is evidence of something established years ago, not something that arrived recently —
+          which is the argument for inspection rather than for waiting to see whether it recurs.
+        </p>
+        <p>
+          <strong>What mud tubes are made of, and why that matters.</strong> AgriLife describes shelter
+          tubes as particles of soil or wood and bits of debris held together by salivary and faecal
+          secretions. They serve three purposes: protection while foraging above ground, bridging masonry
+          barriers the termites cannot eat through, and carrying moist soil up into the structure so the
+          colony can work away from the ground. That third function is the one that connects back to the
+          dryness argument — the tube is how they take their humidity with them.
+        </p>
+        <p>
+          <strong>Termite or flying ant?</strong> Two checks and they are both easy. A termite has no
+          pinched waist; an ant does. A termite's four wings are equal in length; an ant's front wings are
+          longer than the rear pair. Keep a few in a bag or take a close photograph — identification off a
+          swarmer is straightforward and it settles the question immediately.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>April and May — the local swarm window</h2>
+      <div class="measure">
+        <p>
+          Swarm timing in Texas runs on a strong north-south gradient, and this is one of the places where
+          statewide advice actively misleads.
+        </p>
+        <p>
+          <strong>AgriLife:</strong> "Swarming begins in South Texas in January and February; in the
+          Panhandle region of Texas, swarms do not occur until April and May."
+        </p>
+        <p>
+          <strong>So the defensible window for these counties is April and May.</strong> If you read
+          statewide guidance saying February to May, that range is the whole state stacked together and the
+          early end of it belongs to the Rio Grande Valley.
+        </p>
+        <p>
+          <strong>The triggers are heat, day length and moisture.</strong> Flights occur during daylight
+          hours, and typically after rain.
+        </p>
+        <p>
+          <strong>What to do with that.</strong> A termite inspection in late winter or very early spring —
+          February or March — sits ahead of the local swarm rather than behind it. That is also the
+          quietest part of our year and the easiest time to get scheduled, which is a useful coincidence
+          rather than a sales pitch.
+        </p>
+        <p>
+          <strong>And if you do see a swarm indoors</strong>, collect some. Swarmers inside a structure are
+          the strongest single piece of evidence available, far better than a description, and they are
+          gone within hours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Slab and pier-and-beam behave differently</h2>
+      <div class="measure">
+        <p>
+          <strong>On a slab</strong>, AgriLife's account is that termites enter through wood in direct
+          contact with soil, and by building shelter tubes over or through cracks in foundations. The
+          specific vulnerabilities are bath traps and utility penetrations — the openings cut through the
+          slab for plumbing, which are frequently oversized and rarely sealed. Removable access hatches at
+          bath traps are recommended, and post-construction treatment often requires drilling.
+        </p>
+        <p>
+          <strong>The problem with a slab is not that it prevents termites. It is that it hides them.</strong>
+          Activity can run inside a wall for a long time with nothing visible from the interior, which is
+          why the exterior foundation line and the penetrations matter so much on an inspection.
+        </p>
+        <p>
+          <strong>On pier-and-beam</strong>, AgriLife gives construction figures worth knowing: a minimum
+          of eighteen inches of clearance between floor joists and soil, and at least twelve inches between
+          floor beams and soil. Cover at least seventy percent of the crawl space soil with six-mil
+          polyethylene. Cross-ventilate at one square foot of vent per hundred and fifty square feet of
+          crawl space, with vents opposite one another and near the corners.
+        </p>
+        <p>
+          <strong>The advantage of a crawl space is that it can be inspected.</strong> The disadvantage is
+          that it usually is not, and a crawl space with poor ventilation and no vapour barrier is a
+          humidity chamber under your floor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Conducive conditions — the free half of the job</h2>
+      <div class="measure">
+        <p>
+          AgriLife's cultural measures, which cost far less than treatment and make treatment work harder.
+        </p>
+        <p>
+          <strong>Grade sloping away from the structure on all sides.</strong> Water should leave the
+          building, not collect against it.
+        </p>
+        <p>
+          <strong>Soil level at least six to eight inches below the top of the foundation.</strong> Raised
+          beds and added fill that bury the foundation line are one of the most common faults we find, and
+          they defeat both the barrier and the inspection.
+        </p>
+        <p>
+          <strong>Remove all wood-to-soil contact.</strong> AgriLife names fence posts, stair carriages,
+          trellises and door facings. Every one of those is a bridge over whatever barrier exists.
+        </p>
+        <p>
+          <strong>Remove form stakes, wood scraps and stumps</strong> left from construction. Buried wood
+          against a new building is a starter colony with a delivery address.
+        </p>
+        <p>
+          <strong>Avoid dense shrubbery against the house.</strong> AgriLife gives two reasons and both
+          matter: it raises humidity at the wall, and it blocks inspection of the foundation line. A
+          property you cannot inspect is a property with no early warning.
+        </p>
+        <p>
+          <strong>Separate porches and steps from soil</strong> by at least six inches of solid concrete —
+          the junction between a slab porch and the house is a classic hidden entry, because nobody can see
+          it and nothing about it looks wrong from outside.
+        </p>
+        <p>
+          <strong>And fix the water.</strong> Defective plumbing, leaky roofs, air conditioning condenser
+          leaks, poorly maintained gutters. In this climate these are not maintenance trivia — they are
+          frequently the entire reason a termite problem is possible on a property that would otherwise be
+          too dry to support one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What the numbers do and do not tell you</h2>
+      <div class="measure">
+        <p>
+          AgriLife's E-368 puts termite damage in Texas at roughly five hundred million dollars a year,
+          and states that an unprotected home has approximately a seventy percent chance of termite damage
+          within twenty-five years.
+        </p>
+        <p>
+          <strong>Those are state-level figures and we are labelling them as such.</strong> Texas includes
+          the Gulf coast, where pressure is at its highest and where Formosan termites occur. Applying a
+          statewide percentage to a property in Gaines County as though it were a local risk figure would
+          be exactly the kind of move this site exists not to make.
+        </p>
+        <p>
+          <strong>What the figures are genuinely useful for</strong> is the shape of the problem rather
+          than its local magnitude: termite damage is slow, cumulative, and largely invisible until it is
+          substantial, which is why it is measured over twenty-five years rather than in incidents.
+        </p>
+        <p>
+          <strong>And the honest local position</strong> is the one this page opened with. We do not know
+          the West Texas number, nobody has published it, the dry-climate reasoning does not hold, and the
+          cost of finding out the hard way is structural. An inspection is cheap by comparison, and if it
+          finds nothing at all, that is a good outcome rather than a wasted visit.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          Biology, construction standards and management guidance on this page follow Texas A&amp;M
+          AgriLife Extension publications, principally E-368, together with the Texas Insects field guide
+          and AgriLife urban entomology material. Where a claim could not be sourced for this region, the
+          page says so rather than filling the gap.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Termite questions" />
+  <Cta
+    line="If you have found mud on a fence post rather than on a foundation, say so — that is very likely a desert termite and a much shorter conversation. Swarmers indoors are the ones worth keeping in a bag."
+  />
+</BaseLayout>

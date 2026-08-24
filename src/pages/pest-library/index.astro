@@ -1,0 +1,431 @@
+---
+/**
+ * Pest library hub. Like the compliance hub, it carries its own substance
+ * rather than being a thin index — the identification-first argument, the
+ * regional pest calendar, and the set of popular beliefs that the extension
+ * sources actually contradict.
+ *
+ * The `written` flag controls whether an entry links out or renders as a
+ * plain listing. Species pages ship as they are researched and written to
+ * depth; naming a species here does not require a page to exist yet, but it
+ * must never link to one that does not.
+ *
+ * ALL claims below are sourced to Texas A&M AgriLife Extension. The four
+ * popular-belief conflicts flagged in research and carried here:
+ *  1. "Texas scorpions are deadly" — AgriLife: none of the scorpions in Texas
+ *     are considered deadly. The dangerous species is the ARIZONA bark
+ *     scorpion, a different animal.
+ *  2. "It's too dry for termites out here" — unsupported by any extension
+ *     source; E-368 says the opposite where moisture is available.
+ *  3. "Fire ants are everywhere in Texas" — they infest the eastern two-thirds
+ *     plus some urban areas in western Texas, and western expansion depends
+ *     largely on availability of surface or ground water. In our northern
+ *     counties, harvester ants are the usual answer.
+ *  4. Brown recluse risk is routinely overstated — see the species page when
+ *     written; do not overstate it here either.
+ *
+ * ⚠️ Item 15 of the research: AgriLife publishes no structural-pest regional
+ *    guide for the High Plains / Permian Basin. Its regional publications for
+ *    the South Plains are agricultural. Do not cite one that does not exist.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+];
+
+/** written: true entries link out. Everything else lists without a link. */
+const entries = [
+  {
+    slug: 'striped-bark-scorpion',
+    name: 'Striped bark scorpion',
+    latin: 'Centruroides vittatus',
+    blurb: 'The defining household pest of the Permian Basin — and not deadly, whatever you have been told.',
+    written: true,
+  },
+  {
+    slug: 'subterranean-termite',
+    name: 'Subterranean termites',
+    latin: 'Reticulitermes spp.',
+    blurb: 'Why the dry-climate assumption is wrong, when they swarm here, and how to tell a desert termite from a structural threat.',
+    written: true,
+  },
+  { slug: 'red-harvester-ant', name: 'Red harvester ant', latin: 'Pogonomyrmex barbatus', blurb: 'The bare circular mound with foraging trails. Stings hard, does not come indoors.', written: false },
+  { slug: 'red-imported-fire-ant', name: 'Red imported fire ant', latin: 'Solenopsis invicta', blurb: 'At the western edge of its range here, and mostly a Basin problem rather than a Llano one.', written: false },
+  { slug: 'brown-recluse', name: 'Brown recluse', latin: 'Loxosceles reclusa', blurb: 'Present, worth respecting, and the most consistently over-reported spider in Texas.', written: false },
+  { slug: 'black-widow', name: 'Black widow', latin: 'Latrodectus spp.', blurb: 'Meter boxes, well houses and anything opened twice a year.', written: false },
+  { slug: 'house-mouse', name: 'House mouse', latin: 'Mus musculus', blurb: 'The autumn arrival, and the gap you never looked at.', written: false },
+  { slug: 'roof-rat-and-norway-rat', name: 'Roof rat and Norway rat', latin: 'Rattus rattus, R. norvegicus', blurb: 'Two animals with different habits, nesting in different parts of the same building.', written: false },
+  { slug: 'german-cockroach', name: 'German cockroach', latin: 'Blattella germanica', blurb: 'The one that is genuinely different, and the one where sanitation beats spraying.', written: false },
+  { slug: 'field-cricket', name: 'Field crickets', latin: 'Gryllus spp.', blurb: 'The West Texas autumn phenomenon, and the lights that cause it.', written: false },
+  { slug: 'paper-wasp', name: 'Paper wasps and yellowjackets', latin: 'Polistes spp., Vespula spp.', blurb: 'When a nest is genuinely urgent and when it can wait for winter.', written: false },
+  { slug: 'mosquito', name: 'Mosquitoes', latin: 'Culicidae', blurb: 'Floodwater breeders in a country with no permanent streams.', written: false },
+];
+
+const ready = entries.filter((e) => e.written);
+const upcoming = entries.filter((e) => !e.written);
+
+const quickAnswer =
+  'A reference library for the pests that actually matter in West Texas, sourced to Texas A&M AgriLife Extension rather than to national pest control copy. Identification comes first, because several of the most common calls out here turn out to be an animal that does no harm — and because a treatment aimed at the wrong species is money spent on the wrong problem.';
+
+const faqs = [
+  {
+    q: 'Why does identification matter so much?',
+    a: 'Because out here a surprising share of calls turn out to be something harmless. Mud on a fence post is usually a desert termite rather than a structural threat. A bare circular mound with foraging trails is a harvester ant, which does not enter buildings. Getting that right saves the customer a treatment they never needed, and getting it wrong means the actual problem goes unaddressed while somebody sprays the wrong thing.',
+  },
+  {
+    q: 'Where does the information on these pages come from?',
+    a: 'Texas A&M AgriLife Extension, principally — its publications, its field guides, its urban entomology material and its extension entomologists. Where AgriLife and popular belief disagree, we say so and go with AgriLife. Where we could not find a source for a claim about this region specifically, we say that too rather than filling the gap.',
+  },
+  {
+    q: 'Are Texas scorpions dangerous?',
+    a: 'Not in the way people fear. AgriLife states that none of the scorpions in Texas are considered deadly and that stings produce only moderate reactions in most people. The genuinely dangerous species in the United States is the Arizona bark scorpion, which is a different animal from the striped bark scorpion you have in your garage. Stings hurt sharply and swelling can last days, and allergic reactions are possible — but lethality is not the concern.',
+  },
+  {
+    q: 'Is it really too dry for termites here?',
+    a: 'No, and no extension source supports that belief. AgriLife notes that the major populations are in coastal Texas but that termites are found throughout the state, and is explicit that where moisture is available they can be away from soil for extended periods — naming defective plumbing, leaky roofs, air conditioning condenser leaks and poorly maintained gutters. Landscape irrigation in dry country supplies exactly that.',
+  },
+  {
+    q: 'Do I have fire ants?',
+    a: 'It depends which county you are in, and the answer is genuinely different across our service area. AgriLife notes that fire ants infest the eastern two-thirds of Texas plus some urban areas in western Texas, and that western expansion depends largely on the availability of surface or ground water. In practice that means they are a Midland, Odessa, Big Spring and pockets-of-Lubbock problem far more than a Gaines, Yoakum, Terry, Dawson or Andrews one — where what you are looking at is almost always a harvester ant instead.',
+  },
+  {
+    q: 'Is there an AgriLife guide specifically for this region?',
+    a: 'Not for structural pests. AgriLife’s regional publications for the South Plains and Permian Basin are agricultural — cotton, sorghum, corn, wheat. That gap is part of why these pages exist: the statewide structural material has to be read against local conditions, and nobody has published that reading for this region.',
+  },
+  {
+    q: 'Can you identify something from a photograph?',
+    a: 'Usually, and it is free. Phone camera, as close as it will focus, with something for scale beside it — a coin, a pencil tip, a grain of rice. Text it to (432) 278-7294. A photograph resolves in ten seconds what five minutes of description cannot, and about half the time the answer is that you do not need us.',
+  },
+  {
+    q: '¿Pueden identificar un insecto por fotografía?',
+    a: 'Sí, y es gratis. Tome la foto lo más cerca posible y ponga algo al lado para dar escala — una moneda, la punta de un lápiz. Mándela por mensaje al (432) 278-7294. Muchas veces la respuesta es que no necesita ningún tratamiento.',
+  },
+];
+---
+
+<BaseLayout
+  title="West Texas Pest Library"
+  description="Identification, biology and honest management for the pests that matter in the Permian Basin and on the Llano Estacado, sourced to Texas A&amp;M AgriLife."
+  path="/pest-library/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Reference</p>
+      <h1>West Texas pest library</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Most pest library pages on the internet are the same twelve articles rewritten, describing
+          species as though the whole country were one place. That is not much use in a region where the
+          honest answer to several of the most common questions is "that is not what you think it is, and
+          it is not going to hurt anything."
+        </p>
+        <p>
+          These pages are sourced to Texas A&amp;M AgriLife Extension, written against the conditions here,
+          and explicit about the places where what the sources say and what everybody believes are not the
+          same thing.
+        </p>
+      </div>
+
+      <div class="grid c2" style="margin-top:2.4rem">
+        {ready.map((e) => (
+          <a class="card" href={`/pest-library/${e.slug}/`}>
+            <h3>{e.name}</h3>
+            <p><em>{e.latin}</em> — {e.blurb}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Four things everybody believes that the sources contradict</h2>
+      <div class="measure">
+        <p>
+          These are the ones worth knowing before anything else, because each of them changes a decision
+          somebody is about to make.
+        </p>
+        <p>
+          <strong>One — "Texas scorpions can kill you."</strong> AgriLife's wording is that none of the
+          scorpions in Texas are considered deadly, and that stings produce only moderate reactions in most
+          people because the venom has little effect on the nervous system. The dangerous North American
+          species is the Arizona bark scorpion, and it is a different animal. Stings hurt, swelling lasts
+          days, allergic reactions happen, and young children warrant caution — but the fear is out of
+          proportion to the animal, and it gets used to sell things.
+        </p>
+        <p>
+          <strong>Two — "It is too dry for termites out here."</strong> No extension source supports this,
+          and AgriLife says the opposite: where moisture is available, termites can be away from soil for
+          extended periods, and defective plumbing, leaky roofs, air conditioning condenser leaks and poor
+          gutters supply it. In a region with sixteen inches of rain, landscape irrigation may be the only
+          reliable water for a hundred feet. The belief itself is what causes the under-protection.
+        </p>
+        <p>
+          <strong>Three — "Fire ants are everywhere in Texas."</strong> AgriLife records that they infest
+          the eastern two-thirds of the state plus some urban areas in western Texas, and that western
+          expansion depends largely on the availability of surface or ground water. That puts our service
+          area on the edge of the range, with fire ants chiefly in irrigated urban and municipal landscapes
+          — Midland, Odessa, Big Spring, parts of Lubbock — and largely absent from dryland caliche further
+          north and west. In Gaines, Yoakum, Terry, Dawson and Andrews, the answer is nearly always a
+          harvester ant.
+        </p>
+        <p>
+          <strong>Four — mud in the pasture is a termite emergency.</strong> Fragile mud sheets and tubes on
+          fence posts, dead grass and dung across shortgrass pasture from May to September are the desert
+          termite, <em>Gnathamitermes tubiformans</em> — common in south and west Texas, does not tunnel
+          into wood, causes no structural damage, and described by AgriLife as medically harmless to man
+          and animals. It is a rangeland forage issue and a grazing signal, not a threat to a building.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Identify first — it is the cheapest step</h2>
+      <div class="measure">
+        <p>
+          Everything on this site argues that inspection comes before treatment. Identification is the
+          front half of that, and it is the step most often skipped because it feels like a delay.
+        </p>
+        <p>
+          <strong>The wrong product on the wrong species does not just fail.</strong> A repellent applied to
+          a species that responds by scattering turns one contained population into three. A bait aimed at a
+          seed-harvesting ant is a bait that never gets taken. A general perimeter spray on a scorpion
+          problem misses the harbourage that is actually producing them.
+        </p>
+        <p>
+          <strong>And a surprising share of calls need no treatment at all.</strong> The mud on the fence
+          line. The mound in the back pasture. The large dark roach that came in from outside and will not
+          establish. The single spider. Telling somebody that costs us a job and it is the correct answer.
+        </p>
+        <p>
+          <strong>How to give us a usable identification over the phone.</strong> Size against something
+          known — a grain of rice, a sesame seed, a pencil eraser, a quarter. Where exactly, and how many.
+          What time of day. What else is there: droppings, shed skins, wings on a windowsill, mud, a smell,
+          a sound at a particular hour. Those secondary signs are frequently more diagnostic than the
+          animal.
+        </p>
+        <p>
+          <strong>And say what you have already done.</strong> Store-bought spray, bait, a fogger, a
+          previous company, a neighbour's treatment. None of that is a judgement and all of it changes what
+          the evidence means — a population that has been pushed around by a repellent reads completely
+          differently from one that has not been touched.
+        </p>
+        <p>
+          <strong>Better still, photograph it.</strong> Phone camera, as close as it will focus, with
+          something beside it for scale. It resolves in ten seconds what five minutes of description
+          cannot, and it means the visit arrives already knowing what it is dealing with. Text it to us —
+          identification is free and always will be, whether or not it turns into a job. That is not a
+          loss leader — it is that half of the value we can add to a property is telling somebody they do
+          not have the problem they think they have.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What makes this region different</h2>
+      <div class="measure">
+        <p>
+          National pest content assumes a wetter, milder, more forested country. Almost every structural
+          fact about pest pressure here follows from four conditions that content does not account for.
+        </p>
+        <p>
+          <strong>There is almost no permanent surface water.</strong> Gaines, Terry, Dawson and Yoakum
+          counties have no permanent streams at all. The country drains to playa basins and draws that fill
+          after rain and are dry the rest of the year. Beals Creek at Big Spring is intermittent. That makes
+          mosquito pressure a series of events rather than a season, and it means anything artificial that
+          holds water on a property becomes the dominant feature of its pest picture.
+        </p>
+        <p>
+          <strong>The soil drains fast.</strong> Sandy loam and sand over clay subsoil across most of the
+          route. Water moves through it and away, which concentrates everything around whatever holds
+          moisture — the irrigation head against the foundation, the condensate line discharging in one
+          spot all summer, the leaking spigot. In wetter country those are minor maintenance items. Here
+          they are frequently the whole explanation for a problem.
+        </p>
+        <p>
+          <strong>The wind and dust wear out seals.</strong> Door sweeps flatten, weatherstripping hardens
+          and cracks, screens tear, and weep hole screening disappears. Combined with a housing stock whose
+          median construction year across most of these towns sits in the 1960s and 1970s, that produces a
+          predictable set of entry points on property after property — and it is why exclusion so often does
+          more here than treatment.
+        </p>
+        <p>
+          <strong>And agriculture sets the calendar.</strong> Cotton, peanuts, sorghum, grain and corn
+          across enormous acreages running up to the edge of the towns. A field in production is habitat.
+          Harvest removes it in a matter of days and relocates everything living in it to whatever
+          structures are nearest, at roughly the same point every year.
+        </p>
+        <p>
+          On top of those four, the oilfield economy adds a fifth in the southern half of the route:
+          buildings that empty and refill on their own cycle, making vacancy a pest condition in its own
+          right.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The West Texas pest year</h2>
+      <div class="measure">
+        <p>
+          Pressure here is strongly seasonal and more predictable than most people expect, which means it
+          can be planned for rather than reacted to.
+        </p>
+        <p>
+          <strong>Late winter.</strong> The quietest stretch and the most useful. Exclusion work, perimeter
+          establishment, lot clearing while vegetation is down, and termite inspection ahead of the local
+          swarm. It is the least popular time to call and the easiest to get scheduled.
+        </p>
+        <p>
+          <strong>April and May.</strong> Termite swarm season for this region specifically — AgriLife
+          notes South Texas swarms begin in January and February while Panhandle swarms do not occur until
+          April and May. Ants become active, weeds move fast after any rain, and the first scorpion calls
+          arrive.
+        </p>
+        <p>
+          <strong>Early summer.</strong> The heaviest general pest period. Ants, roaches, spiders, crickets,
+          and scorpion activity climbing steadily. Mosquito pressure follows rain events rather than running
+          continuously, because this country drains to playas and draws with no permanent streams.
+        </p>
+        <p>
+          <strong>July and August.</strong> Peak scorpion season and the busiest weeks of our year. Attics
+          reach maximum temperature and the ground outside is at its driest, so both of the drivers AgriLife
+          identifies push the same direction at once.
+        </p>
+        <p>
+          <strong>Late summer into harvest.</strong> Agricultural activity displaces rodents and field
+          insects toward structures. Properties on the edge of town experience it as a sudden arrival at
+          roughly the same point each year, which makes it the single most predictable pest event on the
+          calendar.
+        </p>
+        <p>
+          <strong>Autumn.</strong> Rodent season proper, as the first cold nights move mice and rats
+          indoors. Also cricket season, and a second scorpion mating period. Exclusion done in September is
+          worth several visits in December.
+        </p>
+        <p>
+          <strong>Any week following real rain.</strong> Worth calling out separately because it cuts
+          across the seasons. Rain floods harbourage and moves populations around, fills the containers and
+          low ground that produce mosquitoes about a week to ten days later, and can put scorpions and ants
+          somewhere they were not the week before. A property that had been quiet can produce a cluster of
+          sightings within days of a storm, and that is behaviour rather than a new infestation.
+        </p>
+        <p>
+          <strong>Winter.</strong> Quieter, not empty. Rodents already inside stay inside and keep breeding
+          in a warm building. It is the right period for the deliberate work — clearing, removal, and the
+          structural fixes nobody wants to do in August.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How integrated pest management actually works</h2>
+      <div class="measure">
+        <p>
+          The phrase gets used loosely enough to be nearly meaningless in marketing, which is a shame,
+          because as a working method it is exactly what these pages are built on.
+        </p>
+        <p>
+          <strong>It starts with identification</strong> — knowing precisely what you have, because
+          everything downstream depends on it.
+        </p>
+        <p>
+          <strong>Then monitoring</strong>, which means establishing where the activity actually is rather
+          than where it is being noticed. On scorpion work that is a UV survey after dark. On rodent work it
+          is reading droppings, rub marks and gnaw damage. On termite work it is the foundation line and the
+          penetrations.
+        </p>
+        <p>
+          <strong>Then the question of whether action is warranted at all.</strong> Some findings do not
+          need treatment. A harvester ant colony out in a pasture, a single occasional invader, a desert
+          termite working a fence post. Deciding not to treat is a legitimate outcome and it is part of the
+          method rather than a failure of it.
+        </p>
+        <p>
+          <strong>Then non-chemical measures first.</strong> Exclusion, harbourage removal, moisture
+          correction, sanitation, storage. On several of the pests that matter most here — scorpions,
+          rodents, termites — these do more of the work than any product does, and AgriLife's own management
+          guidance leads with them for exactly that reason.
+        </p>
+        <p>
+          <strong>Then targeted treatment where it is needed</strong>, aimed at the harbourage and the
+          routes the monitoring identified, at label rate. The label in pesticide application is legally
+          binding rather than advisory, and placement matters as much as product choice.
+        </p>
+        <p>
+          <strong>Then follow-up</strong>, to find out whether any of it worked — which is the step most
+          often skipped, and the one that separates a job from a visit.
+        </p>
+        <p>
+          Texas takes this seriously enough to have written it into regulation: 4 TAC chapter 7 subchapter H
+          carries an entire division on the integrated pest management programme for school districts, and
+          continuing education for certified applicators requires general training that may cover IPM among
+          laws, pesticide safety and environmental protection.
+        </p>
+        <p>
+          <strong>Why it matters commercially, and honestly.</strong> IPM produces smaller invoices than
+          calendar spraying does. That is the whole tension in this industry, and it is worth naming rather
+          than pretending it does not exist.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Still to be written</h2>
+      <div class="measure">
+        <p>
+          These pages are researched but not yet written to the depth that the rest of this site holds itself to, which is three thousand words of real local substance.
+          They are listed rather than linked, because a thin page under a heading that promises a reference
+          is worse than an honest gap. They ship as they are finished.
+        </p>
+        <ul class="tight">
+          {upcoming.map((e) => (
+            <li><strong>{e.name}</strong> <em>({e.latin})</em> — {e.blurb}</li>
+          ))}
+        </ul>
+        <p style="margin-top:1.4rem">
+          In the meantime, all of them are covered practically on the relevant
+          <a href="/services/">service pages</a>, and the ant identification question specifically is dealt
+          with at length on the <a href="/compliance/fire-ant-quarantine/">fire ant quarantine page</a>.
+        </p>
+        <p>
+          <strong>One structural note.</strong> There is no Texas A&amp;M AgriLife structural pest guide
+          for the High Plains or the Permian Basin as a distinct region — its regional publications here
+          are agricultural. So the statewide material has to be read against local conditions, and nobody
+          has published that reading. Doing it properly is why these pages take a while.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          Biology, identification and management guidance throughout this library follow Texas A&amp;M
+          AgriLife Extension publications. Medical questions about a bite or sting belong to a doctor or
+          poison control rather than to a pest control company.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Pest identification questions" />
+  <Cta
+    line="Text a photograph with something beside it for scale. Identification is free, it takes ten seconds, and a fair share of the time the answer is that you do not need anybody out."
+  />
+</BaseLayout>
