@@ -1,0 +1,424 @@
+---
+/**
+ * T2 money page — J-05 priority 2 ("Recurring for sure then termites").
+ *
+ * The strategic point of this page: it is HONEST about West Texas termite
+ * pressure in a way no competitor is. AgriLife's own range data says
+ * subterranean termites thin out inland; Formosan and drywood do not occur
+ * here; the desert termite eats grass, not structures. Saying so costs a sale
+ * occasionally and buys the credibility the rest of the site runs on.
+ *
+ * NOTE — WDI / T-5 reports are HELD. B-05 confirms he is licensed in the
+ * termite category; C-09 says he would rather not perform WDI inspections.
+ * Nothing on this page offers, implies or advertises a WDI report until that
+ * decision is confirmed in writing.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+import { BUSINESS } from '../../data/business';
+
+const svc = serviceBySlug('termite-control')!;
+const t = BUSINESS.termiteWarranty;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Termite Treatment', path: '/services/termite-control/' },
+];
+
+const quickAnswer =
+  'Termite treatment in West Texas is individually quoted after an inspection, because linear footage, foundation type, soil and access all change the job. Trusted Termite and Pest Solutions uses Termidor liquid, Trelona bait systems and Bora-Care, and carries a one-year re-treatment warranty.';
+
+const faqs = [
+  {
+    q: 'Do we even get termites in West Texas?',
+    a: 'Yes, but less than most people assume, and not the species the internet warns about. Texas A&M AgriLife notes that subterranean termites decrease from the Gulf Coast inland and are noticed less often in the High Plains and far West Texas. Formosan termites are concentrated around Houston-Galveston and Beaumont-Port Arthur and have no West Texas records. Drywood termites are a coastal and south-central problem. What we actually have here is the arid-land subterranean termite and the desert termite.',
+  },
+  {
+    q: 'What is the white sheeting on my lawn after a storm?',
+    a: 'Almost always desert termite, Gnathamitermes tubiformans — one of the most common species in western Texas, New Mexico and Arizona. It eats dead grass and plant material, not structures, and it throws up carton sheeting on turf after summer rain. It looks alarming and it is not a structural problem. If somebody quotes you a full treatment off a photograph of lawn sheeting, get a second opinion.',
+  },
+  {
+    q: 'How much does termite treatment cost?',
+    a: 'It is individually quoted, and any company giving you a number over the phone without asking anything is guessing. The price depends heavily on the linear footage of the structure, the foundation and construction type, the severity and location of the activity, accessibility, soil conditions, and whether we are using a liquid treatment, a baiting system or another method. We inspect first and recommend what makes sense for that particular structure.',
+  },
+  {
+    q: 'Liquid barrier or bait system — which do I need?',
+    a: 'It depends on the structure and the situation rather than on which one we prefer. A liquid treatment with Termidor establishes a continuous treated zone in the soil around and under the structure and suits most conventional slab work here. A Trelona bait system suits properties where drilling and trenching is impractical, where the construction makes a continuous barrier hard to achieve, or where an owner wants ongoing monitoring rather than a single treatment. Sometimes the answer is both, in different areas.',
+  },
+  {
+    q: 'What does the warranty actually cover?',
+    a: 'One year of re-treatment. If active termites are found in an area covered by the original treatment during the warranty period, we inspect and re-treat the affected area at no additional charge. It covers re-treatment only — it does not cover existing termite damage, repairs to the structure, or damage caused by future termite activity, and it is subject to the original treatment agreement and the property remaining reasonably unchanged. After the first year you can renew annually, which includes an inspection and continued re-treatment coverage.',
+  },
+  {
+    q: 'Do you do pre-treats for new construction?',
+    a: 'Yes. Texas rules on pre-construction treatment are specific: 4 TAC §7.173 requires a continuous horizontal and vertical pesticide barrier for a full treatment, a return visit after the slab is poured and piers are placed to complete the vertical barrier, and final application within 30 days of landscaping completion or one year from construction completion, whichever comes first. Partial treatments are allowed where construction physically prevents a complete one, but they require a signed attestation from the property owner and amended diagrams delivered within seven days.',
+  },
+  {
+    q: 'How long does a termite treatment take?',
+    a: 'A conventional liquid treatment on a residential slab is usually a day, sometimes less, depending on the linear footage and how much drilling is involved through patios, porches, sidewalks and attached slabs. Bait system installation is faster to place and slower to work, because the point is for the colony to find and share the material. We will tell you which one you are getting and roughly how long before you should expect to see a change.',
+  },
+  {
+    q: 'Does soil really change the answer?',
+    a: 'Yes, more than almost anything else. The soil across this service area runs from very loose sand to extremely hard caliche, sometimes on the same street, and new construction often has disturbed or imported fill packed around the foundation. Moisture retention, drainage, soil movement and how the structure meets the ground all affect both termite activity and how a treatment has to be applied. It is the main reason we do not treat termite protection as a one-size-fits-all service.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/termite-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{ name: svc.name, description: svc.summary }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Termite Control · licensed category · TPCL 0918482</p>
+      <h1>Termite Treatment</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Termite work is the easiest thing in this trade to sell dishonestly, because the fear does the
+          selling for you. Nobody wants to hear the word and most people have no way to check whether
+          what they have been told is true.
+        </p>
+        <p>
+          So this page starts with the part that costs us money: <strong>West Texas has less termite
+          pressure than almost anywhere else in the state, and a good share of what gets called termite
+          damage out here is not.</strong> That does not mean the risk is zero. It means you should know
+          what you actually have before anybody quotes you.
+        </p>
+        <p>
+          What follows is the species that genuinely occur here and the two that do not, why the ground
+          under a house decides more than almost anything else, how liquid and bait treatments differ and
+          when each is the right call, what the warranty covers and — plainly — what it does not, and the
+          questions worth asking any termite company before you agree to anything.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What termites we actually have</h2>
+      <div class="measure">
+        <p>
+          Texas A&amp;M AgriLife's own guidance is that subterranean termites decrease from the Gulf
+          Coast inland, and are <em>noticed less often in the High Plains and far West Texas</em>. Two of
+          the three species people most fear do not occur here at all.
+        </p>
+      </div>
+      <div class="grid c2" style="margin-top:1.4rem">
+        <div class="card">
+          <h3>Arid-land subterranean termite</h3>
+          <p>
+            <em>Reticulitermes tibialis</em> — the subterranean species that actually lives out here,
+            adapted to deserts and arid locations with hard-packed or alkaline soil. It is a real
+            structural pest and it is the one worth inspecting for. It is also documented as doing
+            relatively little damage to structures compared with its eastern cousins.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Desert termite</h3>
+          <p>
+            <em>Gnathamitermes tubiformans</em> — abundant here, and <strong>not a structural pest.</strong>
+            It eats dead grass and plant material. It throws up carton sheeting on lawns after summer
+            storms, which is what most "I think I have termites" photographs actually show. AgriLife also
+            notes its abundance tracks range condition and early spring rainfall, so it comes and goes.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Formosan termite — not here</h3>
+          <p>
+            Detected in around thirty Texas counties, primarily the greater Houston-Galveston area and
+            Beaumont-Port Arthur. There are no West Texas records. If a company is talking to you about
+            Formosan termites in Gaines County, they are reading from a script written for somewhere
+            else.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Drywood termite — not here</h3>
+          <p>
+            A coastal-counties problem with scattered spots into south-central Texas. Not a Permian Basin
+            pest. Worth knowing because drywood and subterranean termites need completely different
+            treatments, and being sold the wrong one is expensive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why soil decides most of it</h2>
+      <div class="measure">
+        <p>
+          This is the part almost nobody in this market writes about, and it is the single most
+          defensible thing a termite company can talk about.
+        </p>
+        <p>
+          The ground across this service area changes considerably town to town. Around Seminole,
+          Seagraves, Andrews and much of West Texas it is sandy soil, caliche, and areas with a mix of
+          clay. Some properties sit on very loose sand. Others have extremely hard caliche layers a
+          spade will not go through. New construction and developed property frequently has disturbed or
+          imported fill packed around the foundation, which behaves differently again from the native
+          ground three feet away.
+        </p>
+        <p>
+          From a termite standpoint that matters because <strong>moisture retention, drainage, soil
+          movement and how the structure meets the soil</strong> all affect both whether termites are
+          active and how a treatment has to be applied. A continuous treated zone means something
+          different in loose sand than it does through caliche. Where the fill line sits changes where
+          you drill.
+        </p>
+        <p>
+          It also means the honest answer to "do I need termite treatment" is genuinely
+          property-specific. Two houses on the same street, one on native caliche and one on imported
+          fill, are not the same risk.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>How the work is done</h2>
+      <div class="measure">
+        <p><strong>Inspection first, always.</strong> Foundation type, construction, linear footage,
+        access, soil, moisture, conducive conditions, and where any activity actually is. The quote comes
+        after that, because every one of those changes the number.</p>
+
+        <p><strong>Liquid barrier — Termidor HE and Termidor SC.</strong> The conventional approach for
+        most slab work here: establishing a treated zone in the soil around and beneath the structure,
+        which on a slab means drilling and injecting through the slab, porches, patios, fireplaces and
+        adjacent sidewalks where they abut the foundation. Termidor is non-repellent, which is the point
+        — termites move through the treated zone rather than avoiding it.</p>
+
+        <p><strong>Trelona bait systems.</strong> In-ground stations around the structure, monitored and
+        maintained. This suits properties where trenching and drilling is impractical, where construction
+        makes a continuous barrier hard to achieve, or where an owner would rather have ongoing
+        monitoring than a single event. It works more slowly by design, because the colony has to find
+        the material and share it.</p>
+
+        <p><strong>Bora-Care.</strong> A borate applied to bare wood framing — most useful during
+        construction or where framing is accessible, treating the wood itself rather than the soil.
+        Texas rules allow borate treatment of primary wood framing as an alternative in pre-construction
+        work, applied per label to at least two feet above slab contact.</p>
+
+        <p><strong>New-construction pre-treats.</strong> Texas is specific about these under 4 TAC
+        §7.173: a continuous horizontal and vertical barrier for a full treatment, a required return
+        visit after the slab is poured and piers are placed to complete the vertical barrier, and final
+        application within 30 days of landscaping completion or one year from construction completion,
+        whichever is earlier. Partial treatments are permitted where construction physically prevents a
+        complete one — but only with a signed attestation from the property owner, treated areas
+        documented on amended diagrams, and copies to the owner within seven days. Records are kept two
+        years.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The warranty, stated plainly</h2>
+      <div class="measure">
+        <p>
+          <strong>A {t.termMonths}-month re-treatment warranty on qualifying termite treatments.</strong>
+          {' '}{t.covers}
+        </p>
+        <p>
+          <strong>What it does not cover.</strong> {t.excludes} Coverage is subject to the conditions of
+          the original termite treatment agreement and to the property remaining reasonably unchanged
+          from the time of treatment.
+        </p>
+        <p>
+          After the first year, termite protection can be renewed annually, which includes an inspection
+          and continued re-treatment coverage.
+        </p>
+        <p>
+          That exclusion list is the part most companies keep vague, and it is worth being blunt about:
+          <strong>a re-treatment warranty is not a damage warranty.</strong> If a company implies
+          otherwise, ask them to put the damage cover in writing and watch what happens.
+          <a href="/our-guarantee/"> Full terms →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What to ask any termite company, including this one</h2>
+      <div class="measure">
+        <ul class="tight">
+          <li><strong>Which species do you think this is, and how do you know?</strong> "Termites" is not an answer in a region where one of the common species does not eat wood.</li>
+          <li><strong>Are you licensed in the termite control category specifically?</strong> A Texas pest control licence does not authorise termite work — they are separate categories. Ours is TPCL 0918482 and it covers both.</li>
+          <li><strong>What is the linear footage, and how did you measure it?</strong> It is the main driver of the price.</li>
+          <li><strong>Liquid or bait, and why this one for my house?</strong> If the answer is the same for every property, it was not a decision.</li>
+          <li><strong>What exactly does the warranty cover — re-treatment, or damage?</strong> Get it in writing either way.</li>
+          <li><strong>What am I being given before treatment?</strong> Texas requires a written estimate carrying the business licence number, a diagram with perimeter measurements, product labels and concentrations, complete warranty details and a consumer information sheet before treatment begins.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where we do termite work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.filter((t2) => t2.tier !== 'scaffold').map((t2) => (
+          <a class="card" href={`/locations/${t2.slug}/`}>
+            <h3>{t2.name}, TX</h3>
+            <p>{t2.county}{t2.distanceMiApprox > 0 ? ` · about ${t2.distanceMiApprox} miles ${t2.direction}` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What termite evidence actually looks like</h2>
+      <div class="measure">
+        <p>
+          Most people never see a termite. What they see is one of these, and knowing the difference
+          saves everybody a trip.
+        </p>
+        <p>
+          <strong>Mud tubes.</strong> Pencil-width earthen tubes running up a foundation wall, a pier or
+          the inside of a crawlspace. Subterranean termites build them to keep moisture around themselves
+          while they travel between soil and wood. An intact tube with live insects inside is active
+          evidence. An old dry tube on its own tells you there was activity, not that there is now.
+        </p>
+        <p>
+          <strong>Swarmers and discarded wings.</strong> Winged reproductives leaving a colony, usually
+          in spring here. Small piles of identical shed wings on a windowsill or near a light are one of
+          the more reliable indicators. Worth distinguishing from flying ants — termite wings are equal
+          in length, ant wings are not, and a termite has a straight waist where an ant has a pinched one.
+        </p>
+        <p>
+          <strong>Hollow-sounding or blistered wood.</strong> Termites eat wood from the inside, following
+          the grain, so a surface can look sound and give under a screwdriver. Trim, door frames and
+          skirting near the slab are the usual places to check.
+        </p>
+        <p>
+          <strong>Carton sheeting on a lawn.</strong> Desert termite, not a structural problem. Covered
+          above, and worth repeating because it produces more unnecessary quotes than anything else here.
+        </p>
+      </div>
+
+      <h3 style="margin-top:2rem">Conducive conditions — what invites them</h3>
+      <div class="measure">
+        <p>
+          Termites need moisture and a route. Most of what makes a property attractive is fixable
+          without a treatment at all:
+        </p>
+        <ul class="tight">
+          <li>Soil or mulch piled against the siding, above the slab line</li>
+          <li>Wood-to-ground contact — fence posts, deck supports, trim, stored lumber</li>
+          <li>Leaking hose bibs, condensate lines and irrigation running against the foundation</li>
+          <li>Poor drainage holding water at the perimeter after rain</li>
+          <li>Firewood or lumber stacked against the wall — the same mistake that feeds a scorpion problem</li>
+          <li>Blocked weep holes and covered vents on pier-and-beam construction</li>
+        </ul>
+        <p>
+          Texas requires those conditions to be documented on the diagram a customer receives before
+          treatment, which is a rule worth knowing exists.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Foundation type changes the whole job</h2>
+      <div class="measure">
+        <p>
+          Every type of home in this area presents different termite challenges, and the treatment
+          follows the construction rather than a standard procedure.
+        </p>
+        <p>
+          <strong>Slab-on-grade</strong> — the majority of newer construction here. Risk concentrates at
+          plumbing penetrations, expansion joints and the foundation perimeter. A full liquid treatment
+          means drilling and injecting through the slab and through attached patios, porches, fireplaces
+          and adjacent sidewalks, because a barrier with a gap in it is not a barrier.
+        </p>
+        <p>
+          <strong>Pier-and-beam</strong> — common in the older parts of town. Crawlspace moisture,
+          accessible framing and rodent activity underneath all come together. The advantage is that you
+          can actually inspect and treat what you can see; the disadvantage is that moisture control
+          matters as much as the treatment does.
+        </p>
+        <p>
+          <strong>Manufactured and mobile homes</strong> — their own set of problems underneath,
+          especially around skirting, utility penetrations, moisture and where the structure meets the
+          ground. Frequently overlooked entirely, and a large part of the housing stock across Gaines
+          County and the smaller towns.
+        </p>
+        <p>
+          <strong>New construction</strong> — where a pre-treat belongs, and where imported fill around
+          the foundation behaves differently from the native ground next to it.
+        </p>
+        <p>
+          That is why the inspection looks at how a house was built, its age, its foundation and what is
+          happening around and underneath it before anybody recommends anything.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>When you probably do not need us</h2>
+      <div class="measure">
+        <p>
+          A termite page that only argues for treatment is a sales page. Here is the other half, which is
+          just as true:
+        </p>
+        <p>
+          <strong>Carton sheeting on the lawn after a storm.</strong> Desert termite. Not structural.
+          Nothing to buy. It comes and goes with rainfall and range condition, and it will most likely
+          disappear on its own.
+        </p>
+        <p>
+          <strong>Winged insects around a light in spring, with unequal wings and a pinched waist.</strong>
+          Flying ants, not termites. Worth treating if the ants are a problem in their own right, but it
+          is a general pest job rather than a termite job and should be priced as one.
+        </p>
+        <p>
+          <strong>One old, dry mud tube with nothing in it.</strong> Evidence of previous activity. That
+          is worth a proper look to establish whether anything is live, but previous activity on its own
+          is not an active infestation and should not be quoted as one.
+        </p>
+        <p>
+          <strong>A newer home with a documented pre-treat and no evidence.</strong> Worth an inspection
+          on a sensible interval. Not worth a full treatment because somebody knocked on the door.
+        </p>
+        <p>
+          The honest position on West Texas termite risk is that it is real, lower than most of the state,
+          and highly property-specific. If the inspection says you do not need anything, that is what you
+          will be told — and the inspection is where the value is either way.
+        </p>
+        <p>
+          There is a reasonable middle option people rarely get offered, too. On a property with no
+          current activity but genuinely conducive conditions — poor drainage at the perimeter, wood in
+          ground contact, soil above the slab line — the right answer is often to fix the conditions and
+          re-inspect on a sensible interval rather than to treat. That costs you almost nothing and it
+          removes the reason the problem would have started. Ask for it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Termite questions" />
+  <Cta line="If you have found something and you are not sure what it is, send a photograph before you do anything else. Half the time the honest answer is that it is not what you think, and that conversation costs nothing." />
+</BaseLayout>
