@@ -168,7 +168,7 @@ export const TOWNS: Town[] = [
     neighborhoods: [],
     housing: 'In-town residential and surrounding agricultural property.',
     soil: 'Sandy Terry County soils with caliche layers.',
-    fireAnt: 'unverified', // Terry County not confirmed on the TDA list — do not claim either way
+    fireAnt: 'not-quarantined', // VERIFIED Aug 2026 against the APHIS regulated-areas list adopted by 4 TAC §19.101
     pestPressures: ['Scorpions', 'Ants and rodents from surrounding farmland'],
     weedOrdinance: null,
     population: 9000,
@@ -223,7 +223,7 @@ export const TOWNS: Town[] = [
     slug: 'odessa',
     name: 'Odessa',
     county: 'Ector County',
-    distanceMiApprox: 65,
+    distanceMiApprox: 90,
     direction: 'southeast',
     tier: 'full',
     neighborhoods: ['Mission Estates', 'Parks Bell Ranch'],
@@ -292,8 +292,10 @@ export const TOWNS: Town[] = [
     neighborhoods: [],
     housing: 'Small-town residential with surrounding farm and ranch property.',
     soil: 'Martin County farmed soils with caliche.',
-    fireAnt: 'unverified',
-    pestPressures: ['Scorpions', 'Field-driven ants and rodents'],
+    // CORRECTED Aug 2026: Martin County IS quarantined on the APHIS regulated-areas
+    // list that 4 TAC §19.101 adopts by reference. An earlier draft said otherwise.
+    fireAnt: 'quarantined',
+    pestPressures: ['Fire ants — Martin County IS quarantined', 'Scorpions', 'Field-driven ants and rodents'],
     weedOrdinance: null,
     population: 2500,
     character: 'On the road between Midland and Big Spring, and squarely on the route east.',

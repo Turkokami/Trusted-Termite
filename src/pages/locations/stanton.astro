@@ -1,7 +1,16 @@
 ---
 /**
- * T3 city page — Stanton, Martin County. About 65 miles south-east of
+ * T3 city page — Stanton, Martin County. About 90 road miles south-east of
  * Seminole, on Interstate 20 between Midland and Big Spring.
+ *
+ * ############################################################################
+ * HELD AT NOINDEX. CONTENT_BRIEF section 11 holds the Kermit and Stanton city
+ * pages because D-07 says the owner WANTS these towns but does not yet serve
+ * them. Publishing a service-area claim he cannot honour is a coverage lie and
+ * breaks doctrine 6, so this page is written, verified and parked. To ship it,
+ * delete `noindex={true}` from the BaseLayout call below and strike the row
+ * from the CONTENT_BRIEF held table. Nothing else needs to change.
+ * ############################################################################
  *
  * VERIFIED facts used here:
  *  - Ordinance: Stanton Code ch. 7 art. 7.03, "Stagnant Water, Filth and
@@ -46,6 +55,9 @@
  *    the second weekend in April and October, ~615 booths, ~30,000
  *    visitors. Town tagline: "3,000 Friendly People and a few Old
  *    Soreheads."
+ *  - Martin County IS on the red imported fire ant quarantine adopted by
+ *    reference at 4 TAC §19.101 (APHIS regulated-areas list). An earlier draft
+ *    of this page said the opposite. CORRECTED Aug 2026.
  *  - NO pest control company is listed at a Stanton street address. Yellow
  *    Pages returns 15 Midland firms, 6 Odessa firms, Southwestern A-1 from
  *    Big Spring, plus Lubbock, Abilene, Amarillo and Pecos. Stanton is
@@ -57,8 +69,9 @@
  *  - Named neighbourhoods or subdivisions (explicitly none documented).
  *  - Flooding or drainage history.
  *  - Exact I-20 mileage from Stanton to Midland or Big Spring.
- *  - Precise road mileage from Seminole (65 mi is straight-line, so the
- *    page says "about sixty-five miles" as distance, not road mileage).
+ *  - Exact road mileage from Seminole. 64.5 mi is the STRAIGHT-LINE figure and
+ *    must not be published as a drive; the road route runs out through Andrews
+ *    and back east, so the page says "about ninety miles by road" instead.
  *
  * TODO(fact): D-09 named no Stanton neighbourhoods. Do not invent any.
  */
@@ -77,7 +90,7 @@ const crumbs = [
 ];
 
 const quickAnswer =
-  'Trusted Termite and Pest Solutions covers Stanton, Texas from a base in Seminole, sixty-five miles away. Stanton sits south-east of Seminole, on Interstate 20 between Midland and Big Spring. The licence holder, Valentin Moriel, does the work himself under TPCL 0918482 — scorpions, spiders, termites and rodents throughout Martin County. No pest control company is listed at a Stanton street address — the town is served entirely from elsewhere.';
+  'Trusted Termite and Pest Solutions covers Stanton, Texas from a base in Seminole, about ninety miles away by road. Stanton sits south-east of Seminole on Interstate 20, between Midland and Big Spring. The licence holder, Valentin Moriel, does the work himself under TPCL 0918482 — scorpions, spiders, termites and rodents throughout Martin County. No pest control company is listed at a Stanton street address — the town is served entirely from elsewhere.';
 
 const faqs = [
   {
@@ -102,11 +115,11 @@ const faqs = [
   },
   {
     q: 'Do I have fire ants in Stanton?',
-    a: 'Martin County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101, though neighbouring Midland, Ector and Howard counties are — so Stanton sits right on the edge of it. What most people find here is a red harvester ant mound: a bare circle several feet across with foraging trails running out from it. They sting, and it can be more serious than most, but per AgriLife they do not invade structures. Getting the identification right matters more here than further north.',
+    a: 'Yes, possibly — and Stanton is one of the few places on our route where that answer is not no. Martin County is on the red imported fire ant quarantine, along with Midland, Ector and Howard around it. The quarantine is federal: 4 TAC §19.101 adopts the current APHIS regulated-areas list by reference rather than naming counties itself, so the live list is the one that governs. Practically it means two things. Fire ants are a genuine possibility here rather than a misidentification, and if you are moving soil, sod, nursery stock, baled hay stored on the ground or used soil-moving equipment out of Martin County into a non-quarantined area, the movement rules apply to you.',
   },
   {
     q: 'How far is Stanton from you?',
-    a: 'About sixty-five miles to the south-east. That puts it in the planned-day part of our route rather than the same-day part, so a call with a couple of days of notice gets a much better slot than a call on the morning you want somebody.',
+    a: 'About ninety miles by road to the south-east — the straight line is shorter, but the route runs out through Andrews and back east. That puts it in the planned-day part of our route rather than the same-day part, so a call with a couple of days of notice gets a much better slot than a call on the morning you want somebody.',
   },
   {
     q: '¿Ofrecen servicio en español en Stanton?',
@@ -119,6 +132,7 @@ const faqs = [
   title="Pest Control Stanton TX | Martin County"
   description="Scorpion, termite and rodent work in Stanton, Martin County, from our Seminole base. Licensed TPCL 0918482, published terms, no contracts."
   path="/locations/stanton/"
+  noindex={true}
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}
   faqs={faqs}
@@ -132,7 +146,7 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Martin County · about 65 miles from Seminole</p>
+      <p class="eyebrow">Martin County · about 90 road miles from Seminole</p>
       <h1>Pest Control in Stanton, Texas</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
@@ -378,10 +392,13 @@ const faqs = [
           bites are rare and accidental.
         </p>
         <p>
-          <strong>Ant identification, which matters more here.</strong> Martin County is not on the fire
-          ant quarantine list, but Midland, Ector and Howard counties on three sides of it are. That makes
-          Stanton an edge case, and getting the identification right before treating is not pedantry — a
-          harvester ant mound and an imported fire ant nest need different products and different methods.
+          <strong>Fire ants, which most of this route does not have.</strong> Martin County is on the red
+          imported fire ant quarantine, and so are Midland, Ector and Howard around it. That is a real
+          difference from Gaines, Yoakum, Terry, Dawson and Andrews to the north and west, where the honest
+          answer to a fire ant question is almost always that it is a harvester ant instead. Here it may
+          not be. Getting the identification right before treating is not pedantry — a harvester ant mound
+          and an imported fire ant nest need different products and different methods, and one of the two
+          also carries movement restrictions on soil, sod and hay leaving the county.
         </p>
         <p>
           <strong>Mosquitoes after rain.</strong> Episodic rather than continuous, climbing roughly a week
@@ -453,7 +470,7 @@ const faqs = [
           person who quotes the job is the person who finds out whether the quote was right.
         </p>
         <p>
-          <strong>And the honest limitation.</strong> Sixty-five miles puts Stanton in the planned-day
+          <strong>And the honest limitation.</strong> Ninety road miles puts Stanton in the planned-day
           part of the route rather than the same-day part. If you need somebody within two hours, a Midland
           company is the right call and we will say so. If the work can be scheduled — termite treatment,
           a recurring service, a job between tenants, several properties grouped together — then a planned
@@ -466,6 +483,6 @@ const faqs = [
   <Faq items={faqs} heading="Stanton pest control questions" />
   <Cta
     market="Stanton"
-    line="Sixty-five miles up the road, run as a planned day. Tell him what you are seeing and whether there is a deadline attached — a couple of days of notice gets a much better slot than a call the same morning."
+    line="Ninety miles out, run as a planned day. Tell him what you are seeing and whether there is a deadline attached — a couple of days of notice gets a much better slot than a call the same morning."
   />
 </BaseLayout>
