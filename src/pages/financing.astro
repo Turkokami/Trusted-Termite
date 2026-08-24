@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Cta from '../components/Cta.astro';
+import { BUSINESS } from '../data/business';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Financing', path: '/financing/' }];
+const quickAnswer = 'Trusted Termite and Pest Solutions offers financing on larger jobs such as termite treatments, on agreed terms. We also take cash, check, card in person or online, and Venmo, CashApp or Zelle. There are no contracts on any service.';
+---
+<BaseLayout
+  title="Financing &amp; Payment | Trusted Termite &amp; Pest"
+  description="Financing available on larger jobs like termite treatment, on agreed terms. Cash, check, card, Venmo, CashApp and Zelle accepted. No contracts."
+  path="/financing/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+>
+  <section class="band">
+    <div class="narrow">
+      <p class="eyebrow">Paying for the work</p>
+      <h1>Financing and payment</h1>
+      <AnswerBox text={quickAnswer} />
+      <h2 style="margin-top:2.2rem">Financing</h2>
+      <p>Financing is available on larger jobs — termite treatments in particular — {BUSINESS.financing.note}. A termite job is rarely a small number, and spreading it should not be the thing that stops the work getting done. Ask when you call.</p>
+      <h2 style="margin-top:2.2rem">How you can pay</h2>
+      <ul class="tight">{BUSINESS.payments.map(p => <li>{p}</li>)}</ul>
+      <h2 style="margin-top:2.2rem">Discounts</h2>
+      <p>Military discount. That is the one we offer, and we would rather list one real discount than a page of them.</p>
+      <h2 style="margin-top:2.2rem">No contracts</h2>
+      <p>None. Recurring plans run bi-monthly or quarterly and you can stop whenever you want.</p>
+    </div>
+  </section>
+  <Cta />
+</BaseLayout>

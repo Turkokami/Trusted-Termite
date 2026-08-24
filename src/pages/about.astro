@@ -1,0 +1,75 @@
+---
+/** The named-expert page. Carries the Person entity and the hasCredential
+ *  licence number. Sources: F-01 to F-06, B-11, B-12, K-08, K-09, K-11. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Trust from '../components/Trust.astro';
+import Cta from '../components/Cta.astro';
+import { BUSINESS } from '../data/business';
+const o = BUSINESS.owner;
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }];
+const quickAnswer = 'Valentin Moriel owns and operates Trusted Termite and Pest Solutions in Seminole, Texas. He holds Texas Department of Agriculture licence TPCL 0918482 as a Responsible Certified Applicator in pest control, termite, lawn and weed categories, and has worked in the trade six years.';
+---
+<BaseLayout
+  title="About Valentin Moriel | Trusted Termite &amp; Pest"
+  description="Seminole born, trained at a Terminix-Rentokil branch in El Paso, licensed TPCL 0918482. The person who answers the phone is the person who does the work."
+  path="/about/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+>
+  <section class="band">
+    <div class="narrow">
+      <p class="eyebrow">The person doing the work</p>
+      <h1>Valentin Moriel</h1>
+      <AnswerBox text={quickAnswer} />
+      <Trust />
+
+      <h2 style="margin-top:2.2rem">How he got into it</h2>
+      <p>
+        "About six years ago, I was recruited by my former district manager from a previous job to become
+        the Operations Manager of a small pest control branch. I came into the industry from a management
+        and operations background, and because of the position I stepped into, it really became a fast
+        track for me to learn and grow in the industry. I wasn't only learning pest control — I was
+        involved in virtually every side of the operation, from managing technicians and working directly
+        with customers to solving difficult pest problems, sales, training, and the day-to-day operation
+        of the branch."
+      </p>
+      <p>
+        That was in El Paso, across two branches including Terminix-Rentokil, over six years. It gave him
+        both sides of the job — the technical side and the business side — and it gave him a clear view
+        of what large-scale pest control does well and what it does badly.
+      </p>
+
+      <h2 style="margin-top:2.2rem">Why Seminole</h2>
+      <p>
+        Because he is from here. He grew up in Seminole and graduated high school here, and has been in
+        and out of Gaines County his whole life. Trusted Termite and Pest Solutions started in November
+        2025, and it is deliberately a one-man operation: the person who picks up the phone is the person
+        who shows up, inspects the property and does the treatment.
+      </p>
+      <p>
+        On what he took away from working at scale: "Big companies can make customers feel like just
+        another number. You get passed around, put on hold, and rarely talk to the same person twice.
+        That's actually the environment I came from, and it helped shape what I <em>didn't</em> want my
+        company to become. We want to know our customers, take the time to understand their concerns,
+        and service their property correctly — not rush through a timed service just to get to the next
+        stop."
+      </p>
+
+      <h2 style="margin-top:2.2rem">Licence and credentials</h2>
+      <ul class="tight">
+        <li>Texas Department of Agriculture Structural Pest Control Licence <strong>TPCL {o.tpcl}</strong></li>
+        <li>{o.licenceClass}</li>
+        <li>Licensed categories: {o.categories.join(', ')}</li>
+        <li>Insured — {BUSINESS.insurance.carrier}, $500,000 bodily injury and property damage, $1,000,000 aggregate</li>
+        <li>{o.yearsInTrade} years in the trade</li>
+        <li>Fluent in English and Spanish</li>
+      </ul>
+      <p style="color:var(--ink-3);font-size:.95rem">
+        Texas requires a licence number on written estimates. Very few pest control companies in West
+        Texas publish theirs anywhere else. You can verify it with the Texas Department of Agriculture.
+      </p>
+    </div>
+  </section>
+  <Cta />
+</BaseLayout>

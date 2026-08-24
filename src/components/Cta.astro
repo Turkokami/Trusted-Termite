@@ -1,0 +1,18 @@
+---
+/** Location-specific CTA. Keystone Part 4 block 6 — named to the page's
+ *  market, never a generic sitewide banner. */
+import { BUSINESS } from '../data/business';
+interface Props { market?: string; line?: string }
+const { market, line } = Astro.props;
+const where = market ? ` in ${market}` : '';
+---
+<section class="band" data-boilerplate>
+  <div class="narrow">
+    <h2>Talk to Valentin{where}</h2>
+    <p class="measure">{line ?? `He answers his own phone. Tell him what you are seeing, where you are seeing it and how long it has been going on, and he will tell you what he thinks it is and what it costs before anyone books anything.`}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={`tel:${BUSINESS.phoneE164}`}>Call {BUSINESS.phone}</a>
+      <a class="btn btn-ghost" href={`sms:${BUSINESS.phoneE164}`}>Send a text</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+---
+import { BUSINESS } from '../data/business';
+---
+<div class="callbar" role="region" aria-label="Contact">
+  <a class="btn btn-primary" href={`tel:${BUSINESS.phoneE164}`}>Call {BUSINESS.phone}</a>
+  <a class="btn btn-ghost" href={`sms:${BUSINESS.phoneE164}`}>Text</a>
+</div>

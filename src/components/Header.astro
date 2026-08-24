@@ -1,0 +1,19 @@
+---
+import { BUSINESS } from '../data/business';
+---
+<header class="site-head">
+  <div class="wrap">
+    <a href="/" class="brandmark" aria-label={`${BUSINESS.shortName} — home`}>
+      <img src="/brand/logo.png" alt={BUSINESS.name} width="120" height="120" />
+      <span>Trusted <span class="lime">Termite</span></span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="/services/">Services</a>
+      <a href="/locations/">Areas</a>
+      <a href="/about/">About</a>
+      <a href="/our-guarantee/">Guarantee</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <a class="head-call" href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phone}</a>
+  </div>
+</header>

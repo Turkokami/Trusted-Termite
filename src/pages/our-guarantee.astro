@@ -1,0 +1,61 @@
+---
+/** P0 deliverable. Every "guarantee" string on the site links here.
+ *  Wording follows the owner's own answers at E-09, E-10 and E-11 — a defined
+ *  term with stated exclusions, which is what Keystone doctrine 6 requires and
+ *  what the old "100% satisfaction guarantee" was not. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Cta from '../components/Cta.astro';
+import { BUSINESS } from '../data/business';
+const g = BUSINESS.guarantee;
+const t = BUSINESS.termiteWarranty;
+
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Our guarantee', path: '/our-guarantee/' }];
+const quickAnswer = 'Trusted Termite and Pest Solutions backs general pest control with a 30-day service guarantee. If a pest included in your original treatment is still active within thirty days, we return, inspect and re-treat the affected area at no additional charge. Termite treatments carry a separate one-year re-treatment warranty.';
+
+const faqs = [
+  { q: 'Does the guarantee need a contract?', a: 'No. There are no contracts on any service we offer. The 30-day service guarantee applies to the treatment you paid for, whether or not you are on a recurring plan.' },
+  { q: 'What if a different pest shows up?', a: 'The guarantee covers the pests and areas included in your original service agreement. A new or different pest problem is a separate job, and we will tell you that up front rather than quietly declining a callback. Call us anyway — often it is something simple.' },
+  { q: 'Does the termite warranty cover damage?', a: 'No, and this is the part most companies leave vague. The one-year termite warranty covers re-treatment only. It does not cover existing termite damage, repairs to the structure, or damage caused by future termite activity. Coverage is also subject to the original treatment agreement and to the property remaining reasonably unchanged.' },
+  { q: 'What happens after the first year on termite work?', a: 'You can renew termite protection annually. Renewal includes an inspection and continued re-treatment coverage.' },
+];
+---
+<BaseLayout
+  title="Our Guarantee | Trusted Termite &amp; Pest Solutions"
+  description="A 30-day service guarantee with the scope written down, plus a one-year termite re-treatment warranty. No contracts, and no vague promises."
+  path="/our-guarantee/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <section class="band">
+    <div class="narrow">
+      <p class="eyebrow">Terms, in plain language</p>
+      <h1>Our guarantee</h1>
+      <AnswerBox text={quickAnswer} />
+
+      <h2 style="margin-top:2.4rem">The {g.name}</h2>
+      <p>{g.covers}</p>
+      <p><strong>What it does not cover.</strong> {g.excludes}</p>
+      <p><strong>If you are on a recurring plan.</strong> {g.planExtra} If something comes up between services, we would rather you call than wait until your next appointment.</p>
+
+      <h2 style="margin-top:2.4rem">Termite work — {t.termMonths}-month re-treatment warranty</h2>
+      <p>{t.covers}</p>
+      <p><strong>What it does not cover.</strong> {t.excludes} Coverage is subject to the conditions of the original termite treatment agreement and to the property remaining reasonably unchanged from the time of treatment.</p>
+      <p>After the first year, termite protection can be renewed annually, which includes an inspection and continued re-treatment coverage.</p>
+
+      <h2 style="margin-top:2.4rem">Why it is written this way</h2>
+      <p>
+        A guarantee you cannot be held to is not worth having. "100% satisfaction" sounds better and
+        means less — there is no number in it, no scope, and nothing a customer can point at. A
+        thirty-day window with a stated list of what is in and what is out is something you can actually
+        hold us to, and it means we both know where it ends before the work starts.
+      </p>
+      <p style="color:var(--ink-3);font-size:.95rem">
+        {BUSINESS.legalName} · Licensed and regulated by the Texas Department of Agriculture ·
+        Structural Pest Control Licence TPCL {BUSINESS.owner.tpcl}.
+      </p>
+    </div>
+  </section>
+  <Cta />
+</BaseLayout>

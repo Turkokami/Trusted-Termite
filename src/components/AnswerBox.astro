@@ -1,0 +1,13 @@
+---
+/** The AEO Quick Answer. 40–60 words, written to be quoted verbatim.
+ *  data-speakable is the SpeakableSpecification target — see schema.ts. */
+interface Props { text: string }
+const { text } = Astro.props;
+const words = text.trim().split(/\s+/).length;
+if (import.meta.env.DEV && (words < 40 || words > 60)) {
+  console.warn(`[AEO] Quick Answer is ${words} words (target 40–60)`);
+}
+---
+<div class="answer" data-speakable>
+  <p>{text}</p>
+</div>

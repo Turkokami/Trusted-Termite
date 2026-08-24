@@ -1,0 +1,48 @@
+---
+import { BUSINESS, NAP_LINE, COUNTIES_SERVED } from '../data/business';
+import { TOWNS } from '../data/towns';
+import { SERVICES } from '../data/services';
+const year = 2026;
+const top = SERVICES.filter(s => s.priority <= 2);
+---
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Services</h4>
+        <ul>{top.map(s => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}</ul>
+      </div>
+      <div>
+        <h4>Where we work</h4>
+        <ul>{TOWNS.map(t => <li><a href={`/locations/${t.slug}/`}>{t.name}, TX</a></li>)}</ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About Valentin</a></li>
+          <li><a href="/our-guarantee/">Our guarantee</a></li>
+          <li><a href="/financing/">Financing</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phone}</a></li>
+          <li><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></li>
+          <li>{NAP_LINE}</li>
+          <li><a href={BUSINESS.social.facebook} rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>
+        {BUSINESS.legalName} · Based in {NAP_LINE} · Serving {COUNTIES_SERVED.slice(0, 4).join(', ')} and the Permian Basin.
+      </p>
+      <p class="lic">
+        Licensed and regulated by the Texas Department of Agriculture · Structural Pest Control Licence TPCL {BUSINESS.owner.tpcl} · {BUSINESS.owner.name}, {BUSINESS.owner.licenceClass}
+      </p>
+      <p>© {year} {BUSINESS.legalName}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

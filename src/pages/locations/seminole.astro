@@ -1,0 +1,407 @@
+---
+/**
+ * THE GOLD-STANDARD EXEMPLAR (Keystone 6.1).
+ *
+ * Hand-written. Every later town page is told to match this one's depth,
+ * structure and voice. Do not template this page and do not trim it.
+ *
+ * Sources for every local claim on this page:
+ *   · Subdivisions, soil, housing, character — owner intake D-09, K-05, K-06, K-07
+ *   · Products — C-11 verbatim
+ *   · Method and voice — F-04, F-14, K-02, K-09, K-11
+ *   · Guarantee — E-09, E-10
+ *   · Fire ant quarantine — TDA, 4 TAC §19.101
+ *   · Scorpion biology and prevention — Texas A&M AgriLife Extension
+ *   · Termite species range — AgriLife B-6080, Field Guide to Common Texas Insects
+ *   · Household size — US Census QuickFacts, Gaines County
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { BUSINESS } from '../../data/business';
+import { townBySlug } from '../../data/towns';
+import { SERVICES } from '../../data/services';
+
+const town = townBySlug('seminole')!;
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Seminole', path: '/locations/seminole/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions is based in Seminole, Texas and treats scorpions, termites, rodents, ants and bed bugs across Gaines County. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482, grew up in Seminole, and answers his own phone.';
+
+const faqs = [
+  {
+    q: 'Do I have fire ants in Seminole?',
+    a: 'Almost certainly not. Gaines County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101, and neither are Andrews, Yoakum or Dawson County. What most people are looking at is a red harvester ant mound — a bare circle three to six feet across with foraging trails running out of it. Harvester ants sting, and the sting can be more serious than most, but they do not invade houses. That changes the treatment completely, and it is worth getting right before anyone sprays anything.',
+  },
+  {
+    q: 'When are scorpions worst in Seminole?',
+    a: 'July and August. Texas A&M AgriLife identifies the striped bark scorpion as the most common and widespread scorpion in Texas, and its extension entomologists note that scorpions move indoors when it gets excessively dry outside. That makes a dry stretch a better predictor than the calendar. They are nocturnal, they climb well, and they turn up in attics more often than people expect.',
+  },
+  {
+    q: 'How do scorpions get into a Seminole house?',
+    a: 'Usually through four places, and they are the same four on most slab homes here: the weep holes in the brick, the utility and plumbing penetrations, the water heater closet, and the irrigation valve box. AgriLife recommends blocking weep holes with copper mesh, sealing pipe and wire penetrations, keeping weather stripping intact, trimming vegetation off the wall and moving firewood away from the door. Treatment on top of that works. Treatment instead of that does not.',
+  },
+  {
+    q: 'Do I need termite treatment in Seminole, or is that a Houston problem?',
+    a: 'It is a real question and the honest answer has some nuance in it. AgriLife notes that subterranean termites decrease from the Gulf Coast inland and are noticed less often in the High Plains and far West Texas. Formosan and drywood termites do not occur here at all. What does occur is the arid-land subterranean termite and the desert termite, and the desert termite eats dead grass rather than structures — the white sheeting people find on their lawn after a summer storm is usually that. It still needs looking at properly, because soil, foundation type and moisture change the answer property to property. What it does not need is being sold a treatment out of fear.',
+  },
+  {
+    q: 'What does recurring pest control cost in Seminole?',
+    a: 'Recurring residential service generally runs $140 to $160 or more per visit depending on the size of the home, the pest pressure and how often you want us out. The initial service is usually $200 to $250, because the first visit is more extensive — inspecting the property, treating inside where it is needed and doing a thorough exterior. Bi-monthly or quarterly is what we normally recommend. There is no contract, and recurring customers get re-services between scheduled visits at no charge for covered pests.',
+  },
+  {
+    q: 'Do you cover the acreage properties outside town?',
+    a: 'Yes. A good share of the work in Gaines County is on private and county-road properties outside the Seminole city limits, and they behave differently from an in-town house — more field pressure at the perimeter, outbuildings and equipment that give rodents somewhere to live, and often a longer run of foundation to treat. That is priced on the property, not on a flat residential rate.',
+  },
+  {
+    q: 'Is the treatment safe around kids and pets?',
+    a: 'Yes. We use professional pest-control products and apply them according to their EPA-approved labels, and we take into account children, pets and the areas your family actually uses when deciding how and where anything is applied. We will tell you about any precautions before or after treatment rather than leaving you to find out. Gaines County averages more than three people per household, which is among the highest in Texas — a lot of these are full houses, and that shapes how the work gets done.',
+  },
+  {
+    q: '¿Habla español?',
+    a: 'Sí. Valentin habla español con fluidez. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño, no con una central de llamadas.',
+  },
+];
+
+const localServices = SERVICES.filter((s) => s.priority <= 2);
+---
+
+<BaseLayout
+  title="Pest Control in Seminole, TX | Scorpions & Termites"
+  description="Seminole-based scorpion, termite and rodent control for Gaines County homes and acreage. Licensed TPCL 0918482, no contracts. Call (432) 278-7294."
+  path="/locations/seminole/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Seminole, Texas',
+    description: 'Scorpion, termite, rodent and general pest control for homes, acreage and businesses in Seminole and Gaines County.',
+    areaServed: ['Gaines County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Gaines County · Our home market</p>
+      <h1>Pest Control in Seminole, Texas</h1>
+      <div class="measure">
+        <AnswerBox text={quickAnswer} />
+      </div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Most of the companies advertising pest control in Seminole are driving here. They come from
+          Odessa, sixty-five miles south. They come from Lubbock, seventy-five miles northeast. Several
+          of the numbers that turn up in a Seminole search are New Mexico numbers, run out of Hobbs
+          across the state line. That is not a criticism of any of them — it is just a fact about where
+          the trucks start the day, and it decides how quickly anybody can get to you and how well they
+          know the ground they are standing on.
+        </p>
+        <p>
+          Valentin Moriel grew up here and graduated high school here. He learned the trade properly
+          somewhere else — six years running operations and service for a pest control branch in El Paso,
+          including a Terminix-Rentokil branch — and then came back to Seminole to do it his own way.
+          That is the whole reason this company exists, and it is worth saying plainly: he came home
+          because he thought the work could be done better than the way he had watched it get done at
+          scale.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What Seminole ground actually does to a house</h2>
+      <div class="measure">
+        <p>
+          Seminole sits in sand. Not uniformly — the soil across Gaines County runs from very loose sand
+          to extremely hard caliche layers, sometimes on the same street, and new construction often has
+          disturbed or imported fill packed around the foundation that behaves differently again. That
+          matters more than most people realise, because soil is the single biggest factor in how a
+          property meets its own foundation: how water drains, how the ground moves, and where something
+          living underneath it can get in.
+        </p>
+        <p>
+          It also means a treatment that made sense on one property can be the wrong answer two miles
+          away. A slab house in Countryside Estates with imported fill around it is a different job from
+          a pier-and-beam place in the older part of town with a crawlspace under it, and both are
+          different again from a manufactured home out on a county road with open ground on four sides.
+          Pier-and-beam brings crawlspace moisture, termite access points and rodents working underneath
+          the structure. Slab homes concentrate the risk at the plumbing penetrations, the expansion
+          joints and the foundation perimeter. Mobile and manufactured homes have their own set of
+          problems underneath, especially with rodents and moisture.
+        </p>
+        <p>
+          None of that is exotic. It is just the reason the inspection comes before the quote, every
+          time, rather than the other way round.
+        </p>
+      </div>
+
+      <h3 style="margin-top:2rem">The fields are part of the property</h3>
+      <div class="measure">
+        <p>
+          A lot of Seminole homes sit close to open land or working ground — cotton and peanut country,
+          irrigated circles, and the oilfield running through all of it. Pressure comes off that ground
+          and onto the perimeter, and it moves with the season and the weather rather than on a schedule.
+          A dry stretch pushes scorpions toward the house looking for somewhere better to be. Harvest
+          moves rodents. Heavy rain after a dry spell changes what is active within about a week.
+        </p>
+        <p>
+          That is why the recurring plan is bi-monthly or quarterly rather than a single visit. One
+          treatment addresses what is there today. It does not do anything about what walks in off the
+          field in September.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we actually get called about here</h2>
+
+      <div class="grid c2" style="margin-top:1.5rem">
+        <div class="card">
+          <h3>Striped bark scorpions</h3>
+          <p>
+            The pest people here genuinely worry about, and the one worth building the service around.
+            Texas A&amp;M AgriLife calls <em>Centruroides vittatus</em> the most common and widespread
+            scorpion in Texas. Peak season is July and August. They are nocturnal, they climb well and
+            they are found in attics more often than most people expect. AgriLife's own entomologists
+            note they come indoors when it gets excessively dry outside — which makes a drought a
+            better forecast than a calendar. No Texas scorpion is lethal, but the sting is painful and
+            the swelling can last days.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Red harvester ants — not fire ants</h3>
+          <p>
+            Gaines County is <strong>not</strong> on the Texas Department of Agriculture fire ant
+            quarantine list. Neither are Andrews, Yoakum or Dawson. What people are usually looking at
+            is a red harvester ant mound: a bare circle three to six feet across with foraging trails
+            leading away from it. They sting, and it can be medically serious, but per AgriLife they do
+            not invade homes or structures. It is a yard and play-area problem, not a structural one —
+            and it gets treated as one.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Termites, honestly</h3>
+          <p>
+            AgriLife notes that subterranean termites thin out moving inland and are noticed less often
+            in the High Plains and far West Texas. Formosan and drywood termites do not occur here.
+            What is here is the arid-land subterranean termite and the desert termite — and the desert
+            termite eats dead grass, not houses. The white carton sheeting that turns up on a lawn after
+            a summer storm is usually that, and it is not a structural emergency. Real termite risk here
+            still exists and still needs inspecting properly. It just should not be sold out of fear.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Rodents, October onward</h3>
+          <p>
+            As temperatures start dropping in October and November, rodents move toward buildings.
+            Around Seminole that means houses, but it also means barns, sheds, shops and equipment yards
+            — and those need a different approach, with trapping, professional bait stations and
+            monitoring, plus the part that actually ends it: sealing the ways in. Texas DSHS specifically
+            flags cleaning areas where rodents have been living as a risk worth taking seriously, which
+            is why cleanout work gets treated as a safety job rather than a hauling job.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Neighbourhoods and areas we work in Seminole</h2>
+      <div class="measure">
+        <p>
+          In-town neighbourhoods, the newer subdivisions, properties around the golf course, and a large
+          number of rural and acreage properties on private and county roads outside the city limits.
+          Named subdivisions we service regularly include:
+        </p>
+        <ul class="tight">
+          {town.neighborhoods.map((n) => <li>{n}</li>)}
+        </ul>
+        <p>
+          If you are outside town on a county road, that is normal work here rather than an exception —
+          a good share of Gaines County is exactly that, and those properties usually need more perimeter
+          attention and a look at the outbuildings rather than just the house.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Services in Seminole</h2>
+      <div class="grid c3" style="margin-top:1.5rem">
+        {localServices.map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3>
+            <p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          We also do lawn mowing and trimming, brush and lot clearing, and junk removal and property
+          cleanouts — which sounds like an odd combination until you have stood in a Seminole yard
+          looking at a debris pile that is also the scorpion harbourage. Dead vegetation, stacked
+          material and junk are on AgriLife's own list of what scorpions shelter under. Clearing it and
+          treating the ground it was sitting on is one job, and it is one invoice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>How the work actually goes</h2>
+      <div class="measure">
+        <p>
+          Valentin answers his own phone about nine times out of ten. In his own words, this is how a
+          call usually goes:
+        </p>
+        <blockquote style="border-left:4px solid var(--lime);padding-left:20px;margin:1.4rem 0;color:var(--ink-2)">
+          <p>
+            "I usually start by listening and asking questions about exactly what they're dealing with
+            instead of immediately trying to sell them something. I ask what pests they're seeing, how
+            long it's been happening, where they're seeing them, and what they've already tried. Then I
+            explain what I believe is happening, how I would treat it, what they can expect afterwards,
+            and what the service will cost."
+          </p>
+        </blockquote>
+        <p>
+          The products are real and we will name them. General pest work uses Alpine WSG, Onslaught
+          FastCap, Suspend PolyZone, Demand CS, Scion, Transport, Bifen LP, Talstar, DeltaGard and
+          DeltaDust, with Precor IGR, Niban, Advance 375A and professional baits where those are the
+          right tool. Termite work uses Termidor HE and SC, Trelona bait stations and Bora-Care depending
+          on the structure. Rodent work uses FirstStrike alongside stations, traps, monitoring and
+          exclusion. Vegetation work uses Ranger Pro, Prodiamine, Imazapyr and Celsius XTRA.
+        </p>
+        <p>
+          The point of listing them is not to impress anybody. It is that "we use safe, effective
+          treatments" is what every pest control website in West Texas says, and it tells you nothing
+          about whether the person holding the sprayer knows why they picked what is in it.
+        </p>
+        <p>
+          There is <strong>no contract</strong>. There is a <a href="/our-guarantee/">30-day service
+          guarantee</a> — if a pest that was included in your treatment is still active within thirty
+          days, we come back, inspect and re-treat the affected area at no charge. Recurring customers
+          get re-services between scheduled visits for covered pests. Termite work carries its own
+          one-year re-treatment warranty, which covers re-treatment and not structural repair, and we
+          would rather say that plainly than let anybody assume otherwise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>A Seminole year, month by month</h2>
+      <div class="measure">
+        <p>
+          Pest activity here changes through the year, and the weather moves the season forward or
+          backward more than the calendar does. A warm winter, a heavy rain, a drought, an irrigation
+          cycle or a sudden temperature swing can completely change what is showing up from one month
+          to the next. That said, the shape of the year is reasonably consistent:
+        </p>
+        <p>
+          <strong>January and February</strong> are generally slower for insects. Most of the calls are
+          rodents, cockroaches, and things looking for somewhere warm to be. It is also the quietest
+          window to do exclusion work properly — sealing, screening and blocking the routes in — because
+          nobody is in a hurry and the work holds all year once it is done.
+        </p>
+        <p>
+          <strong>March and April</strong> bring warmer ground and a general wake-up. Ants, spiders and
+          termites all become more active. This is the front end of the termite window in this part of
+          Texas, and it overlaps with the start of real-estate season, which is when termite questions
+          tend to arrive attached to a closing date.
+        </p>
+        <p>
+          <strong>May and June</strong> are when it genuinely picks up. Ants, termites, spiders, wasps,
+          fleas and ticks all at once. This is when a recurring plan starts earning its keep, because
+          the pressure arrives faster than a one-off treatment can be scheduled.
+        </p>
+        <p>
+          <strong>June through August</strong> are the busiest months of the year. Heavy scorpion
+          activity, plus ants, spiders, wasps, fleas, ticks and general crawling insects. If you have
+          only ever called a pest control company once, it was probably in July. Desert termites also
+          throw up their carton sheeting on lawns after summer storms around here — which alarms people
+          and almost never means what they think it means.
+        </p>
+        <p>
+          <strong>September and October</strong> stay active, because West Texas holds its heat well into
+          the fall. Then as temperatures start dropping through October and November, rodents begin
+          moving toward buildings — houses, but also barns, shops and equipment yards. Harvest moves
+          them too. This is the natural window for cleanup work, brush clearing and hauling off the
+          debris that has accumulated over the summer.
+        </p>
+        <p>
+          <strong>December</strong> shifts back indoors — rodents, cockroaches and interior pest issues,
+          plus attic and shed cleanouts. Texas DSHS specifically flags cleaning areas where rodents have
+          been living as a real risk, which is why we treat a shed cleanout as a job with precautions
+          rather than a job with a trailer.
+        </p>
+        <p>
+          Two things sit outside the calendar entirely. <strong>Bed bugs</strong> are not seasonal — those
+          calls come at any point in the year. And <strong>termites</strong> depend so heavily on soil,
+          moisture and the individual property that we do not look at the calendar alone when working out
+          whether a house is at risk.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Things we would rather say up front</h2>
+      <div class="measure">
+        <p>
+          <strong>Seeing a pest does not mean your house is dirty.</strong> This is the single most common
+          thing people apologise for on the phone, and it is not true. Some of the cleanest homes we
+          service still get ants, scorpions, spiders, cockroaches, rodents or bed bugs. In West Texas,
+          pests are driven by weather, moisture, surrounding fields, construction, soil conditions and
+          available entry points far more than by housekeeping.
+        </p>
+        <p>
+          <strong>Spraying what you can see does not solve it.</strong> Killing a few visible ants or
+          spraying a scorpion on the patio does nothing about where they are coming from. Effective work
+          means identifying the pest, finding the source, understanding why it is there, and choosing the
+          right treatment — which is sometimes not a spray at all.
+        </p>
+        <p>
+          <strong>Calling early is genuinely cheaper.</strong> People often wait until an infestation is
+          severe. Catching it early is dramatically easier and less expensive to control, and that is
+          especially true with termites, bed bugs, rodents, fleas, ticks and German cockroaches.
+        </p>
+        <p>
+          <strong>There are jobs we do not take.</strong> We do not do fumigation, and we do not do bed
+          bug heat treatment — chemical only. We do not do landscaping, dumpster rental, pressure washing
+          or demolition. If you need one of those, we will say so and you can go and find somebody who
+          does it properly rather than have us learn on your property.
+        </p>
+        <p>
+          <strong>Nobody here is going to pressure you.</strong> In Valentin's own words: "I don't try to
+          pressure them. I explain the problem, give them my recommendation, answer their questions, and
+          let the quality of the service speak for itself."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Seminole pest control questions" />
+
+  <Cta
+    market="Seminole"
+    line="He grew up here, he works here, and he answers his own phone. Tell him what you are seeing, where you are seeing it and how long it has been going on, and he will tell you what he thinks it is and what it costs before anyone books anything."
+  />
+</BaseLayout>

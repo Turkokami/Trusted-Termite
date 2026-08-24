@@ -1,0 +1,12 @@
+---
+import { BUSINESS } from '../data/business';
+const { owner, guarantee } = BUSINESS;
+---
+<div class="trust" data-boilerplate>
+  <span><b>{owner.name}</b>, {owner.jobTitle}</span>
+  <span class="lic">TDA licence TPCL {owner.tpcl}</span>
+  <span>{owner.yearsInTrade} years in the trade</span>
+  <span>Licensed &amp; insured</span>
+  <span>No contracts</span>
+  <span><a href={guarantee.termsPath}>{guarantee.name}</a></span>
+</div>

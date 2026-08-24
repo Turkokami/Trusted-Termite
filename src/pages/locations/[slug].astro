@@ -1,0 +1,84 @@
+---
+/**
+ * Town pages other than Seminole.
+ *
+ * DRAFT STATE — these render noindex until each one is written by hand to the
+ * depth of /locations/seminole/. Keystone M1 sets a 3,000-word floor of unique
+ * hyper-local content and none of these clears it yet. The route exists so the
+ * link graph is whole and the harness can check it; the page does not ship.
+ *
+ * A thin geo page is worse than no geo page. Do not remove `noindex` on any of
+ * these until the word-count auditor passes it.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Cta from '../../components/Cta.astro';
+import { TOWNS, type Town } from '../../data/towns';
+import { SERVICES } from '../../data/services';
+
+export function getStaticPaths() {
+  // Seminole has its own hand-written file — exclude it here or the route collides.
+  return TOWNS.filter(t => t.slug !== 'seminole').map(t => ({ params: { slug: t.slug }, props: { town: t } }));
+}
+interface Props { town: Town }
+const { town } = Astro.props;
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: town.name, path: `/locations/${town.slug}/` },
+];
+const quickAnswer = `Trusted Termite and Pest Solutions covers ${town.name}, Texas from a base in Seminole, about ${town.distanceMiApprox} miles ${town.direction}. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, termites, rodents and general pests across ${town.county}.`;
+const fireAntLine = {
+  'not-quarantined': `${town.county} is not on the Texas Department of Agriculture red imported fire ant quarantine list. What most people find here is a red harvester ant mound, which is a different problem with a different treatment.`,
+  quarantined: `${town.county} is on the Texas Department of Agriculture red imported fire ant quarantine list, so fire ants are a genuine consideration here in a way they are not further west.`,
+  partial: `Part of ${town.county} falls inside the Texas Department of Agriculture fire ant quarantine, so whether fire ants are a factor depends on where in the county you are.`,
+  unverified: '',
+}[town.fireAnt];
+---
+<BaseLayout
+  title={`Pest Control ${town.name} TX | Scorpions &amp; Termites`}
+  description={`Scorpion, termite and rodent control for ${town.name} homes and businesses, from a Seminole-based owner-operator. Licensed TPCL 0918482. No contracts.`}
+  path={`/locations/${town.slug}/`}
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  service={{
+    name: `Pest Control in ${town.name}, Texas`,
+    description: `Scorpion, termite, rodent and general pest control in ${town.name} and ${town.county}.`,
+    areaServed: [town.county],
+  }}
+  noindex={true}
+>
+  <Crumbs items={crumbs} />
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{town.county} · about {town.distanceMiApprox} miles {town.direction} of Seminole</p>
+      <h1>Pest Control in {town.name}, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p><strong>{town.character}</strong></p>
+        <p>{town.housing}</p>
+        <p>{town.soil}</p>
+        {fireAntLine && <p>{fireAntLine}</p>}
+        {town.weedOrdinance && (
+          <p>
+            On the lawn and clearing side, {town.name} enforces a {town.weedOrdinance.heightInches}-inch
+            standard{town.weedOrdinance.noticeDays ? `, with ${town.weedOrdinance.noticeDays} days to comply after notice` : ''}.
+            {' '}{town.weedOrdinance.note}
+          </p>
+        )}
+      </div>
+      <div class="grid c3" style="margin-top:1.8rem">
+        {SERVICES.filter(s => s.priority <= 2).map(s => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <Cta market={town.name} />
+</BaseLayout>

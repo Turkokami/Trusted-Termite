@@ -1,0 +1,74 @@
+---
+/**
+ * BaseLayout — the only place <head>, meta, OG and JSON-LD are written.
+ * Keystone M5 / M7 / Part 5 are enforced here so no page can ship without them.
+ */
+import { BUSINESS, SITE_URL } from '../data/business';
+import { buildGraph, type Crumb, type Faq } from '../lib/schema';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CallBar from '../components/CallBar.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  quickAnswer?: string;
+  breadcrumbs?: Crumb[];
+  faqs?: Faq[];
+  service?: { name: string; description: string; areaServed?: string[] };
+  noindex?: boolean;
+}
+
+const { title, description, path, quickAnswer, breadcrumbs, faqs, service, noindex = false } = Astro.props;
+
+// M5 guardrails — fail loudly in dev rather than shipping a bad title.
+if (import.meta.env.DEV) {
+  if (title.length > 60) console.warn(`[M5] title ${title.length} chars (>60): ${path}`);
+  if (description.length < 110 || description.length > 165)
+    console.warn(`[M5] description ${description.length} chars (not 110–165): ${path}`);
+  if (!/[.!?]$/.test(description)) console.warn(`[M5] description must end on punctuation: ${path}`);
+}
+
+const canonical = new URL(path, SITE_URL).href;
+const ogImage = new URL('/brand/social.png', SITE_URL).href;
+const graph = buildGraph({ path, title, description, quickAnswer, breadcrumbs, faqs, service });
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={BUSINESS.name} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="theme-color" content="#12351a" />
+
+  <link rel="icon" href="/brand/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+  <CallBar />
+</body>
+</html>

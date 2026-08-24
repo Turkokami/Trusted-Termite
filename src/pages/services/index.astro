@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Services', path: '/services/' }];
+const quickAnswer = 'Trusted Termite and Pest Solutions offers recurring pest control, scorpion exclusion, termite treatment, rodent and wildlife work, bed bug and mosquito treatment, lawn care and weed control, brush and lot clearing, and junk removal — all from one licensed owner-operator based in Seminole, Texas.';
+const groups = [
+  { key: 'pest', title: 'Pest control' },
+  { key: 'termite', title: 'Termite' },
+  { key: 'lawn', title: 'Lawn, weeds and brush' },
+  { key: 'junk', title: 'Junk and property' },
+] as const;
+---
+<BaseLayout
+  title="Our Services | Trusted Termite &amp; Pest Solutions"
+  description="Pest control, scorpions, termites, rodents, bed bugs, mosquitoes, lawn care, brush clearing and junk removal across Gaines County and the Permian Basin."
+  path="/services/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+>
+  <Crumbs items={crumbs} />
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">One licensed operator, four lines of work</p>
+      <h1>What we do</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      {groups.map(g => (
+        <div style="margin-top:2.4rem">
+          <h2>{g.title}</h2>
+          <div class="grid c3" style="margin-top:1rem">
+            {SERVICES.filter(s => s.group === g.key).map(s => (
+              <a class="card" href={`/services/${s.slug}/`}>
+                <h3>{s.name}</h3><p>{s.summary}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <Cta />
+</BaseLayout>

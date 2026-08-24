@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Trust from '../components/Trust.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { BUSINESS, QUICK_ANSWER } from '../data/business';
+import { SERVICES } from '../data/services';
+import { TOWNS } from '../data/towns';
+
+const faqs = [
+  { q: 'What areas do you cover?', a: 'Seminole and Gaines County first, then Seagraves, Denver City, Andrews, Brownfield, Lamesa, Big Spring, Midland, Odessa and Lubbock. Roughly a hundred miles from Seminole. There is no trip fee, though job minimums get discussed for out-of-town work.' },
+  { q: 'Do you make me sign a contract?', a: 'No. There are no contracts on any service. Recurring plans are bi-monthly or quarterly and you can stop them whenever you want. What holds people is the work, not the paperwork.' },
+  { q: 'How much is pest control?', a: 'Recurring residential service generally runs $140 to $160 or more per visit depending on the size of the home, the pest pressure and the frequency. The initial service is usually $200 to $250 because the first visit is more extensive. Termite, bed bug, mosquito, lawn and junk work is individually quoted after we look at it.' },
+  { q: 'Who actually shows up?', a: 'Valentin Moriel, the owner. This is a one-man operation on purpose — he holds Texas Department of Agriculture licence TPCL 0918482 as a Responsible Certified Applicator, and he does the work himself rather than sending somebody on a timed route.' },
+  { q: 'Can you come out today or tomorrow?', a: 'Often, yes. It depends on the schedule and where you are, but we keep enough flexibility to offer same-day or next-day service when we can. Call and we will tell you the earliest we can actually be there.' },
+  { q: 'What is the guarantee?', a: 'A 30-day service guarantee. If a pest included in your original treatment is still active within thirty days of service, we come back, inspect and re-treat the affected area at no additional charge. Recurring plan customers also get re-services between scheduled visits for covered pests.' },
+];
+---
+<BaseLayout
+  title="Pest Control Seminole TX | Trusted Termite &amp; Pest"
+  description="Scorpion, termite and rodent control across Gaines County and the Permian Basin, from a Seminole-based owner-operator. TPCL 0918482. No contracts."
+  path="/"
+  quickAnswer={QUICK_ANSWER}
+  faqs={faqs}
+>
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Seminole, Texas · Gaines County · Permian Basin</p>
+      <h1>Scorpions gone. Termites stopped.<br />The lot cleared.</h1>
+      <div class="measure">
+        <p style="font-size:1.15rem;color:var(--ink-2)">
+          One licensed owner-operator, based in Seminole — not a route driver sent out from Odessa or
+          Lubbock. Pest control, termite work, lawn and brush, and junk removal on one invoice.
+        </p>
+        <div class="btn-row" style="margin:1.4rem 0 0">
+          <a class="btn btn-primary" href={`tel:${BUSINESS.phoneE164}`}>Call {BUSINESS.phone}</a>
+          <a class="btn btn-ghost" href={`sms:${BUSINESS.phoneE164}`}>Send a text</a>
+        </div>
+      </div>
+      <Trust />
+      <div class="measure"><AnswerBox text={QUICK_ANSWER} /></div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we do</h2>
+      <div class="grid c3" style="margin-top:1.5rem">
+        {SERVICES.filter(s => s.priority <= 2).map(s => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3>
+            <p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:1.4rem"><a href="/services/">Every service we offer →</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why people call us instead of the big outfits</h2>
+      <div class="measure">
+        <p>
+          Valentin Moriel spent six years running operations and service for pest control branches in
+          El Paso, including a Terminix-Rentokil branch, before starting this company in Seminole — the
+          town he grew up in and graduated high school in. He is direct about what that taught him:
+        </p>
+        <blockquote style="border-left:4px solid var(--lime);padding-left:20px;margin:1.4rem 0;color:var(--ink-2)">
+          <p>
+            "Big companies can make customers feel like just another number. You get passed around, put
+            on hold, and rarely talk to the same person twice. That's actually the environment I came
+            from, and it helped shape what I <em>didn't</em> want my company to become."
+          </p>
+        </blockquote>
+        <p>
+          So: he answers his own phone. He inspects before he quotes. He explains what he thinks is
+          happening and what it costs before anybody books anything. There is no contract to sign, and
+          the guarantee has a number on it rather than a slogan.
+        </p>
+        <p><a href="/about/">More about Valentin and how the work gets done →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where we work</h2>
+      <div class="measure">
+        <p>
+          Seminole is home. From there the route runs out roughly a hundred miles in every direction —
+          north to Seagraves and Brownfield, west to Denver City, south to Andrews and Odessa, east to
+          Lamesa and Midland, and northeast to Lubbock.
+        </p>
+      </div>
+      <div class="grid c3" style="margin-top:1.5rem">
+        {TOWNS.map(t => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction}` : ' · home'}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Common questions" />
+  <Cta />
+</BaseLayout>

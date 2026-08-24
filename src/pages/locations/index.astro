@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Cta from '../../components/Cta.astro';
+import { TOWNS } from '../../data/towns';
+import { BUSINESS } from '../../data/business';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Areas we serve', path: '/locations/' }];
+const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, Texas and covers roughly a hundred miles in every direction — Gaines, Yoakum, Andrews, Dawson, Terry, Howard, Midland, Ector and Lubbock counties. There is no trip fee, though job minimums are discussed for out-of-town work.';
+---
+<BaseLayout
+  title="Areas We Serve | Seminole &amp; the Permian Basin"
+  description="Pest control, termite, lawn and junk removal across Gaines County and the Permian Basin, run out of Seminole. Ten towns on the route. No trip fee."
+  path="/locations/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+>
+  <Crumbs items={crumbs} />
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Ten towns, one truck, based in Seminole</p>
+      <h1>Where we work</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="grid c3" style="margin-top:1.8rem">
+        {TOWNS.map(t => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          The furthest we normally drive is about a hundred miles, which puts Lubbock and Big Spring at
+          the edge of the map. If you are outside that and it matters to you, call and ask — sometimes
+          it works out.
+        </p>
+      </div>
+    </div>
+  </section>
+  <Cta />
+</BaseLayout>

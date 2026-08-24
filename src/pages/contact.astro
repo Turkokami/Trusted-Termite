@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import { BUSINESS, NAP_LINE } from '../data/business';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }];
+const quickAnswer = 'Call or text Valentin Moriel at (432) 278-7294. He answers his own phone about nine times out of ten and will tell you what he thinks the problem is and what it costs before anything gets booked. Based in Seminole, Texas, covering Gaines County and the Permian Basin.';
+---
+<BaseLayout
+  title="Contact | Trusted Termite &amp; Pest Solutions"
+  description="Call or text (432) 278-7294 and speak to the owner. Seminole-based, covering Gaines County and the Permian Basin. No contracts, free inspection."
+  path="/contact/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+>
+  <section class="band">
+    <div class="narrow">
+      <p class="eyebrow">Straight through to the owner</p>
+      <h1>Get in touch</h1>
+      <AnswerBox text={quickAnswer} />
+      <div class="btn-row" style="margin:1.6rem 0">
+        <a class="btn btn-primary" href={`tel:${BUSINESS.phoneE164}`}>Call {BUSINESS.phone}</a>
+        <a class="btn btn-ghost" href={`sms:${BUSINESS.phoneE164}`}>Text {BUSINESS.phone}</a>
+        <a class="btn btn-ghost" href={`mailto:${BUSINESS.email}`}>Email</a>
+      </div>
+      <p>Based in {NAP_LINE}. Se habla español.</p>
+    </div>
+  </section>
+</BaseLayout>

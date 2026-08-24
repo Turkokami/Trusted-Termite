@@ -1,0 +1,62 @@
+---
+/** Service spokes. DRAFT — noindex until each is hand-written to M1 depth.
+ *  The route exists so the link graph is whole; the page does not ship. */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES, type Service } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+import { BUSINESS } from '../../data/business';
+
+export function getStaticPaths() {
+  return SERVICES.map(s => ({ params: { slug: s.slug }, props: { svc: s } }));
+}
+interface Props { svc: Service }
+const { svc } = Astro.props;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: `/services/${svc.slug}/` },
+];
+const quickAnswer = `${svc.name} from Trusted Termite and Pest Solutions, a Seminole-based owner-operator covering Gaines County and the Permian Basin. ${svc.summary} Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 in the ${svc.licenceCategory} category.`;
+---
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path={`/services/${svc.slug}/`}
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  service={{ name: svc.name, description: svc.summary }}
+  noindex={true}
+>
+  <Crumbs items={crumbs} />
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>{svc.name}</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>{svc.summary}</p>
+        {svc.products.length > 0 && (
+          <p><strong>What we use.</strong> {svc.products.join(', ')} — selected for the pest, the property and the label, not because it is what is on the truck.</p>
+        )}
+        <p>
+          {svc.guaranteeApplies
+            ? 'Covered by the 30-day service guarantee.'
+            : 'This service carries its own terms rather than the standard 30-day guarantee.'}
+          {' '}<a href={BUSINESS.guarantee.termsPath}>Read the terms</a>.
+        </p>
+      </div>
+      <h2 style="margin-top:2.2rem">Towns we cover</h2>
+      <div class="grid c3" style="margin-top:1rem">
+        {TOWNS.slice(0, 6).map(t => (
+          <a class="card" href={`/locations/${t.slug}/`}><h3>{t.name}, TX</h3><p>{t.county}</p></a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <Cta />
+</BaseLayout>
