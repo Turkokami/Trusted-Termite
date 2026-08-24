@@ -1,0 +1,426 @@
+---
+/**
+ * T4 city page — Midland. The highest-value and most contested market on the
+ * route, and the one where the market leader left the biggest gap: Fox Pest
+ * Control's Midland page runs ~3,200 templated words and names zero
+ * neighbourhoods, while their Corpus Christi page names streets, museums and
+ * districts across ~8,500. We deploy the depth they proved and didn't ship here.
+ *
+ * Local facts: D-09 (six named neighbourhoods), K-05, K-06, K-07, plus the TDA
+ * fire ant quarantine (Midland County IS quarantined — unlike Gaines) and the
+ * city's 18-inch weed standard.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { townBySlug } from '../../data/towns';
+import { neighborhoodsOf } from '../../data/neighborhoods';
+import { SERVICES } from '../../data/services';
+
+const town = townBySlug('midland')!;
+const hoods = neighborhoodsOf('midland');
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Midland', path: '/locations/midland/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Midland, Texas from a base in Seminole, about 75 miles northwest. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats fire ants, subterranean termites, scorpions and general pests across north and northwest Midland.';
+
+const faqs = [
+  {
+    q: 'Do I have fire ants in Midland?',
+    a: 'Possibly, and unlike most of our service area that is a real question here. Midland County IS on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101. Gaines, Andrews, Yoakum and Dawson counties are not. So a mound in a Midland yard genuinely might be fire ants, where the same mound sixty miles northwest almost certainly would not be. Identification matters before treatment, because a fire ant programme and a harvester ant treatment are different jobs.',
+  },
+  {
+    q: 'Is termite risk higher in Midland than out west?',
+    a: 'Slightly, and mostly because of construction rather than climate. Midland has far more newer subdivisions with slab-on-grade foundations and imported fill packed around them, which behaves differently from native ground. Texas A&M AgriLife notes subterranean termites thin out moving inland, so Midland is still low-pressure by state standards — but the density of newer slab construction means more properties where the risk concentrates at plumbing penetrations, expansion joints and the foundation perimeter.',
+  },
+  {
+    q: 'Which parts of Midland do you cover?',
+    a: 'North and northwest Midland primarily — Green Tree, Grassland Estates, Saddle Club, Greathouse, Briarwood, Polo Park and the surrounding neighbourhoods. We cover the rest of the city too; that side is simply where most of the work is and where the route makes the most sense.',
+  },
+  {
+    q: 'You are based in Seminole. How does that work for Midland?',
+    a: 'Midland is about 75 miles southeast of Seminole and well inside the hundred-mile working radius. There is no trip fee. For a single small job a long way out we will discuss a job minimum up front rather than surprise you with it — but for most Midland work it is a straightforward booking.',
+  },
+  {
+    q: 'What is the weed and grass rule in Midland?',
+    a: 'The city asks that grass and weeds on yards and vacant lots stay under 18 inches. That is more generous than Lubbock at eight inches or Odessa at twelve, but it is enforced, and lot clearing on a property that has had a notice is work we do alongside the pest side.',
+  },
+  {
+    q: 'Do you do commercial work in Midland?',
+    a: 'Yes — apartments and property management, restaurants and food service, hotels and motels, warehouses, retail and offices. Those are the types actually worked rather than a list of everything a pest company could theoretically service. If you manage rental units, note that 4 TAC §7.146 requires a pest control sign at least 48 hours before a planned indoor treatment at residential rental property with five or more units.',
+  },
+  {
+    q: 'What does it cost in Midland?',
+    a: 'The same as everywhere else on the route — recurring residential service generally $140 to $160 or more per visit depending on home size, pressure and frequency, with a $200 to $250 initial. Termite, bed bug, mosquito, lawn and junk work is individually quoted after an inspection. No contracts.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Midland?',
+    a: 'Sí. Valentin habla español con fluidez y atiende personalmente. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño, no con una central de llamadas ni con alguien que tenga que buscar a un traductor.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Midland TX | Fire Ants &amp; Termites"
+  description="Fire ant, termite and scorpion control across north and northwest Midland. Seminole-based owner-operator, licensed TPCL 0918482. No contracts."
+  path="/locations/midland/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Midland, Texas',
+    description: 'Fire ant, termite, scorpion and general pest control for homes and businesses in Midland and Midland County.',
+    areaServed: ['Midland County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Midland County · about 75 miles southeast of Seminole</p>
+      <h1>Pest Control in Midland, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Midland is the biggest market on this route and the most contested. Terminix, Orkin and Fox all
+          have a physical presence here, along with several long-standing local independents. We are not
+          going to pretend otherwise, and if you want the company with the most Google reviews in Midland
+          it is not us.
+        </p>
+        <p>
+          What we would say is this: <strong>read what those companies actually wrote about Midland.</strong>
+          The largest of them runs a Midland page of around three thousand words that names not one
+          neighbourhood, not one street and not one thing about the ground here — while the same company's
+          Corpus Christi page names the interstate, the museums and four separate districts. The template
+          exists. It just was not pointed at this city.
+        </p>
+        <p>
+          That gap is the whole argument for calling somebody who will actually look at your property.
+        </p>
+        <p>
+          What follows is what actually changes at the Midland County line, how the city's construction
+          alters the work, the six neighbourhoods where most of our Midland jobs are, what gets called in
+          through the year, the eighteen-inch weed standard, and what to ask before you buy or build here.
+          All of it specific to this city rather than swapped in from a template.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The thing that genuinely changes at the Midland County line</h2>
+      <div class="measure">
+        <p>
+          There is one hard, checkable fact that separates Midland from most of our service area, and
+          almost nobody uses it: <strong>Midland County is inside the Texas Department of Agriculture red
+          imported fire ant quarantine.</strong> So are Ector, Howard and Winkler. Gaines, Andrews,
+          Yoakum and Dawson are not. Part of Lubbock County is.
+        </p>
+        <p>
+          That line runs right through the middle of this route, and it means the honest answer to "are
+          these fire ants?" is genuinely different depending on which side of it you are standing. In
+          Seminole, a mound with a bare circle three to six feet across and foraging trails running out
+          of it is almost certainly a red harvester ant — which stings, sometimes seriously, but per
+          AgriLife does not invade homes or structures. In Midland, the same mound might well be what you
+          think it is.
+        </p>
+        <p>
+          Which is why identification comes before treatment. A fire ant programme and a harvester ant
+          treatment are not the same job, and being sold the wrong one is both wasted money and a problem
+          that does not go away.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What Midland's construction does to the work</h2>
+      <div class="measure">
+        <p>
+          Midland is much more developed and densely populated than the towns west of it — more
+          commercial property, more apartments, more newer subdivisions, and heavy oilfield activity
+          running through all of it. That changes both the type of pest pressure and where it comes from.
+        </p>
+        <p>
+          <strong>Newer slab construction dominates the growth areas.</strong> Greathouse and Polo Park in
+          particular are built recently enough that pre-treat history is a real question worth asking, and
+          new construction almost always has disturbed or imported fill packed around the foundation. That
+          fill behaves differently from the native ground three feet away — different drainage, different
+          moisture retention, different soil movement — and all three affect where termite risk
+          concentrates and how a treatment has to be applied.
+        </p>
+        <p>
+          <strong>Established neighbourhoods are a different job entirely.</strong> Green Tree and
+          Briarwood have mature trees, long-standing irrigation and settled landscaping. Mature landscaping
+          changes where spiders and scorpions shelter and puts more permanent harbourage close to the
+          structure. Older homes also mean more variation in foundation type, so the termite conversation
+          genuinely differs house to house rather than street to street.
+        </p>
+        <p>
+          <strong>Construction itself drives pest activity.</strong> This is worth saying plainly because
+          it surprises people: turning ground over displaces everything living in it. AgriLife notes
+          scorpions move indoors when landscaping or construction disturbs their habitat. In a city with
+          continuous development, the house next to the new build frequently gets the problem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Neighbourhoods we work in Midland</h2>
+      <div class="measure">
+        <p>
+          North and northwest Midland is where most of the work is. Each of these has its own pattern —
+          the pages below go into what actually gets called in from each one:
+        </p>
+      </div>
+      <div class="grid c3" style="margin:1.4rem 0">
+        {hoods.map((n) => (
+          <a class="card" href={`/locations/midland/${n.slug}/`}>
+            <h3>{n.name}</h3><p>{n.character}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure">
+        <p>
+          We cover the rest of Midland as well. Those six are simply where the route density is, and
+          naming them is more useful to you than claiming the whole city equally.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we get called about here</h2>
+      <div class="grid c2" style="margin-top:1.4rem">
+        <div class="card">
+          <h3>Fire ants</h3>
+          <p>
+            A genuine Midland problem in a way it is not further west, because the county is inside the
+            TDA quarantine. Identification first — the treatment for fire ants and the treatment for
+            harvester ants are different, and getting it wrong wastes a season.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Subterranean termites</h3>
+          <p>
+            Concentrated at plumbing penetrations, expansion joints and the foundation perimeter on slab
+            homes, which is most of the newer stock here. Liquid barrier with Termidor or a Trelona bait
+            system depending on the structure and the access.
+            <a href="/services/termite-control/"> More on termite work →</a>
+          </p>
+        </div>
+        <div class="card">
+          <h3>Scorpions</h3>
+          <p>
+            Peak July and August, same as everywhere on this route. In Midland the driver is as often
+            construction as drought — disturbed ground moves them, and there is a lot of disturbed ground.
+            <a href="/services/scorpion-control/"> Scorpion exclusion →</a>
+          </p>
+        </div>
+        <div class="card">
+          <h3>General crawling insects</h3>
+          <p>
+            Ants, spiders, roaches and occasional invaders through the warm months. Mature landscaping in
+            the established neighbourhoods gives them more places to shelter close to the structure than
+            an open lot in Gaines County does.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Lawn, brush and junk in Midland</h2>
+      <div class="measure">
+        <p>
+          The city asks that grass and weeds on yards and vacant lots stay under <strong>18 inches</strong>.
+          That is more generous than Lubbock's eight-inch standard or Odessa's twelve, but it is enforced,
+          and an overgrown lot in Midland is the same problem it is anywhere: a notice with a deadline
+          attached.
+        </p>
+        <p>
+          The reason we do this alongside pest control rather than as a separate business is that they are
+          usually the same job. AgriLife's list of what scorpions shelter under is rocks, boards, debris,
+          dead vegetation and fallen logs — which describes most overgrown lots and most side yards. Clear
+          it, haul it, treat the ground it was sitting on. One visit, one invoice, and the reason the
+          problem started actually goes away.
+        </p>
+        <p>
+          Mowing, trimming and edging, brush clearing, lot clearing, weed spraying, fertilization and tree
+          trimming, plus junk removal and full property cleanouts. Priced on the property and the scope
+          rather than a flat rate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Services in Midland</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service is bi-monthly or quarterly and you can stop it
+          whenever you want. Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with
+          termite work carrying its own one-year re-treatment warranty. Military discount. Cash, check,
+          card in person or online, Venmo, CashApp or Zelle, and financing on larger jobs.
+        </p>
+        <p>
+          Recurring residential service generally runs $140 to $160 or more per visit depending on the
+          size of the home, the pressure and the frequency, with a $200 to $250 initial. That sits toward
+          the top of the West Texas range rather than the bottom, and that is deliberate — the cheapest
+          quote in Midland is usually somebody's fourth stop of the morning on a timed route.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A Midland year</h2>
+      <div class="measure">
+        <p>
+          The seasonal shape here is broadly the West Texas pattern, with a few things the city's own
+          conditions change.
+        </p>
+        <p>
+          <strong>January and February</strong> are quiet for insects — rodents, cockroaches and whatever
+          is looking for shelter. In a city with as much multi-family and commercial property as Midland,
+          winter is when interior problems in shared buildings become obvious, because everything moves
+          indoors at once.
+        </p>
+        <p>
+          <strong>March and April</strong> bring the wake-up: ants, spiders and termites. This is the front
+          end of the termite window and it overlaps with real-estate season, which matters more in Midland
+          than in the smaller towns simply because more property changes hands.
+        </p>
+        <p>
+          <strong>May and June</strong> is when it genuinely picks up — ants, termites, spiders, wasps,
+          fleas and ticks together. Fire ant activity becomes visible in this window too, and mounds that
+          were dormant start showing up in irrigated lawns.
+        </p>
+        <p>
+          <strong>June through August</strong> are the busiest months of the year, with heavy scorpion
+          activity on top of everything else. Midland's development means construction is running through
+          all of it, and disturbed ground moves scorpions into whatever is next to it.
+        </p>
+        <p>
+          <strong>September and October</strong> stay active because the heat holds. As it cools through
+          <strong>October and November</strong>, rodents move toward buildings — and in a city this size
+          that means commercial property, warehouses and multi-family as much as houses.
+        </p>
+        <p>
+          <strong>December</strong> shifts back to interior pests and cleanout work.
+        </p>
+        <p>
+          Bed bugs sit outside the calendar entirely — those calls come at any point in the year, and in
+          Midland's apartment and hotel stock they are not seasonal in the slightest.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What it is actually like working Midland from Seminole</h2>
+      <div class="measure">
+        <p>
+          Worth being straightforward about the trade-off, because it cuts both ways.
+        </p>
+        <p>
+          <strong>What you give up:</strong> we are not five minutes away. A company with a Midland
+          address can sometimes be at your door faster than we can, and if a two-hour response time is the
+          deciding factor then that is a fair reason to call somebody else.
+        </p>
+        <p>
+          <strong>What you get instead:</strong> the person who answers the phone is the person who does
+          the work. Not a call centre, not a dispatcher, not a technician on their fifth stop with a
+          timer running. Valentin holds Texas Department of Agriculture licence TPCL 0918482 as a
+          Responsible Certified Applicator across four categories — Pest Control, Termite Control, Lawn &amp;
+          Ornamental and Weed Control — and he has six years in the trade, most of it running operations
+          and service for pest control branches in El Paso including a Terminix-Rentokil branch.
+        </p>
+        <p>
+          He is direct about why he left that: <em>"Big companies can make customers feel like just another
+          number. You get passed around, put on hold, and rarely talk to the same person twice. That's
+          actually the environment I came from, and it helped shape what I didn't want my company to
+          become."</em>
+        </p>
+        <p>
+          In practice that means the inspection comes before the quote every time, you get told what he
+          thinks is happening and what it costs before anything is booked, and nobody is being pressured.
+          For a recurring plan or a termite job — the work where getting it right matters more than getting
+          it fast — that is the trade most people would take.
+        </p>
+        <p>
+          One practical note on scheduling. Because Midland is a planned run rather than a five-minute
+          hop, booking a day or two ahead almost always gets you a better slot than calling at eight in
+          the morning hoping for that afternoon. Same-day does happen and it depends on where the truck
+          already is — call and ask, and you will get a straight answer about the earliest realistic time
+          rather than a maybe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Buying or building in Midland</h2>
+      <div class="measure">
+        <p>
+          Midland turns over more property than anywhere else on this route, and two things come up
+          repeatedly that are worth understanding before you are under contract.
+        </p>
+        <p>
+          <strong>Wood Destroying Insect reports.</strong> In Texas, the official WDI report — form
+          SPCS/T-5 — can only be completed by a certified applicator or a technician licensed
+          specifically in the <em>termite control</em> category. It is a hard credential gate, not a
+          formality. Two things worth knowing: the requirement for one usually comes from your lender or
+          your contract rather than from state law, and the form itself cannot be altered. If somebody
+          tells you Texas law mandates an inspection on every sale, they have not read the rule.
+        </p>
+        <p>
+          <strong>New-construction pre-treats.</strong> If you are building, 4 TAC §7.173 is specific. A
+          full treatment requires a continuous horizontal and vertical barrier. There must be a return
+          visit after the slab is poured and piers are placed to complete the vertical barrier. Final
+          application has to happen within 30 days of landscaping completion or one year from
+          construction completion, whichever is earlier. Partial treatments are allowed where
+          construction physically prevents a complete one — but only with a signed attestation from the
+          property owner, treated areas documented on amended diagrams, and copies delivered to the owner
+          within seven days.
+        </p>
+        <p>
+          With as much new construction as north and northwest Midland is carrying, that last one matters.
+          Ask your builder what was done, when, and whether the return visit happened — and ask for the
+          diagram.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Midland pest control questions" />
+  <Cta
+    market="Midland"
+    line="Tell him which part of town you are in, what you are seeing and how long it has been going on. If it is an ant mound, a photograph settles the fire ant question in about ten seconds and saves everybody a trip."
+  />
+</BaseLayout>

@@ -19,8 +19,12 @@ import { TOWNS, type Town } from '../../data/towns';
 import { SERVICES } from '../../data/services';
 
 export function getStaticPaths() {
-  // Seminole has its own hand-written file — exclude it here or the route collides.
-  return TOWNS.filter(t => t.slug !== 'seminole').map(t => ({ params: { slug: t.slug }, props: { town: t } }));
+  /** Hand-written town pages have their own files and are excluded here or the
+   *  routes collide. Add to this list as each town is written to depth.
+   *  Declared INSIDE the function — Astro hoists getStaticPaths. */
+  const WRITTEN = ['seminole', 'midland', 'odessa'];
+  return TOWNS.filter(t => !WRITTEN.includes(t.slug))
+    .map(t => ({ params: { slug: t.slug }, props: { town: t } }));
 }
 interface Props { town: Town }
 const { town } = Astro.props;

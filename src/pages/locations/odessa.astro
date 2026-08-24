@@ -1,0 +1,430 @@
+---
+/**
+ * T4 city page — Odessa. The strongest junk-removal and cleanout demand on the
+ * route, because of two verified facts nobody else uses: a 21.3% rental vacancy
+ * rate at the 2020 census (turnover drives bed bugs and roaches), and the
+ * region's most aggressive nuisance ordinance — 12 inches, itemised abatement
+ * costs, and 48-inch emergency abatement with no notice.
+ *
+ * Local facts: D-09 (Mission Estates, Parks Bell Ranch, north/northeast Odessa),
+ * K-05–K-07, TDA fire ant quarantine (Ector County IS quarantined), and Odessa
+ * Code Art. 6-5.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { townBySlug } from '../../data/towns';
+import { neighborhoodsOf } from '../../data/neighborhoods';
+import { SERVICES } from '../../data/services';
+
+const town = townBySlug('odessa')!;
+const hoods = neighborhoodsOf('odessa');
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Odessa', path: '/locations/odessa/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Odessa, Texas from a base in Seminole, about 65 miles north. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and handles bed bugs, roaches, fire ants, scorpions, lot clearing and property cleanouts across Ector County.';
+
+const faqs = [
+  {
+    q: 'Why are bed bugs such a problem in Odessa?',
+    a: 'Turnover. Odessa ran a 21.3% rental vacancy rate at the 2020 census — one of the highest in the region — and high residential turnover is the classic driver of bed bug spread. Every move-in and move-out is an opportunity for them to travel. It is not a reflection on any property or any tenant; it is a mathematical consequence of how often units change hands in an oilfield city.',
+  },
+  {
+    q: 'How is bed bug treatment priced?',
+    a: 'Individually, after we look at it. Price depends on the size of the home, the number of rooms affected, the severity of the infestation, how much preparation is required and whether follow-up treatments will be necessary. A light infestation in one bedroom and a severe whole-home infestation are completely different jobs and it would be dishonest to quote them the same. We treat chemically — we do not offer heat treatment, and if a job genuinely needs heat we will tell you that rather than sell you something that will not do it.',
+  },
+  {
+    q: 'What is the weed and grass rule in Odessa?',
+    a: 'Twelve inches. Odessa Code Article 6-5 defines any grass, weeds or wild brush exceeding twelve inches as a nuisance, and you get 5 days to request a hearing or 7 days to clear it. If the city does the work, the costs are itemised: major equipment at $56 per hour, labour at $21 per hour, a $125 flat administration fee, landfill at $52.50 per ton, plus a 10% late fee, and it becomes a lien at 10% annual interest that can be foreclosed. There is also a 48-inch threshold where the city can abate immediately with no notice at all.',
+  },
+  {
+    q: 'Do I have fire ants in Odessa?',
+    a: 'Possibly. Ector County IS on the Texas Department of Agriculture red imported fire ant quarantine list, unlike Gaines, Andrews, Yoakum and Dawson counties further west. So the question is genuinely open here in a way it is not in Seminole. Identification first, because a fire ant programme and a red harvester ant treatment are different jobs.',
+  },
+  {
+    q: 'Do you do apartment and rental property work?',
+    a: 'Yes — apartments and property management is one of the commercial types we actually work. Two rules matter if you manage units in Texas. Property Code §92.052 requires landlords to make diligent efforts to repair conditions that materially affect the physical health or safety of an ordinary tenant, and pest problems can qualify. And 4 TAC §7.146 requires a pest control sign at least 48 hours before a planned indoor treatment at residential rental property with five or more units. The Texas Department of Agriculture publishes a standard Spanish-language version of that sign.',
+  },
+  {
+    q: 'Which parts of Odessa do you cover?',
+    a: 'North and northeast Odessa primarily, including Mission Estates and the Parks Bell Ranch area, plus surrounding residential and commercial property. We cover the rest of the city too; that side is where the route density is.',
+  },
+  {
+    q: 'You are in Seminole. Is Odessa far for you?',
+    a: 'About 65 miles south, well inside the hundred-mile working radius, and one of the more regular runs. There is no trip fee. For a single small job we may discuss a job minimum up front, but for most Odessa work it is a straightforward booking.',
+  },
+  {
+    q: '¿Hablan español en Odessa?',
+    a: 'Sí. Valentin habla español con fluidez y atiende personalmente. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Odessa TX | Bed Bugs &amp; Cleanouts"
+  description="Bed bug, roach and fire ant control plus lot clearing and property cleanouts across north and northeast Odessa. Licensed TPCL 0918482. No contracts."
+  path="/locations/odessa/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Odessa, Texas',
+    description: 'Bed bug, roach, fire ant and scorpion control plus lot clearing and property cleanouts in Odessa and Ector County.',
+    areaServed: ['Ector County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Ector County · about 65 miles south of Seminole</p>
+      <h1>Pest Control in Odessa, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Odessa is a different job from the towns west of here, and the reason is not climate or soil.
+          It is turnover.
+        </p>
+        <p>
+          At the 2020 census Odessa ran a <strong>21.3% rental vacancy rate</strong> — among the highest in
+          the region. In an oilfield city that number moves with the rig count, and what it describes is a
+          housing stock where units change hands constantly. High turnover is the textbook driver of bed
+          bug spread and a significant driver of roach problems, because every move-in and every move-out
+          is a chance for something to travel with the furniture.
+        </p>
+        <p>
+          It also produces the other half of the work here: properties that need clearing out between
+          tenants, lots that have gone unmanaged, and owners who are not local trying to keep a property
+          compliant from somewhere else.
+        </p>
+        <p>
+          What follows is the city's nuisance ordinance with the actual abatement costs attached, what we
+          get called about here and why, the cleanout and hauling side including the safety part most
+          people skip, the two rules that apply to anybody managing rental units in Texas, and how bed bug
+          work really goes rather than how it gets advertised.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Odessa has the strictest abatement costs on this route</h2>
+      <div class="measure">
+        <p>
+          If you own property here, this is worth knowing before a letter arrives rather than after.
+          Odessa Code Article 6-5 defines any grass, weeds or wild brush over <strong>twelve inches</strong>
+          as a nuisance, along with junk — used or discarded material visible from adjacent property or
+          constituting a health or fire hazard — and construction materials stored in recognisable
+          amounts.
+        </p>
+        <p>
+          You get <strong>five days to request a hearing, or seven days to clear it</strong>. If the city
+          does the work, the costs are itemised and they are not small:
+        </p>
+        <ul class="tight">
+          <li>Major equipment — <strong>$56 per hour</strong></li>
+          <li>Labour — <strong>$21 per hour</strong></li>
+          <li>Administration — <strong>$125 flat fee</strong></li>
+          <li>Landfill — <strong>$52.50 per ton</strong></li>
+          <li>Plus a 10% late fee, becoming a lien at 10% annual interest that can be foreclosed</li>
+        </ul>
+        <p>
+          There is also a <strong>48-inch threshold at which the city can abate immediately, with no prior
+          notice.</strong> Each day a violation continues is a separate offence.
+        </p>
+        <p>
+          None of that is a scare tactic — it is published municipal code, and it is the single most
+          practical reason to have somebody clear a lot before it becomes the city's decision. If you have
+          already had a notice, tell us the deadline when you call.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we get called about in Odessa</h2>
+      <div class="grid c2" style="margin-top:1.4rem">
+        <div class="card">
+          <h3>Bed bugs</h3>
+          <p>
+            The Odessa problem, driven by turnover rather than by anything anyone did wrong. Chemical
+            treatment using Alpine WSG, Precor IGR and Transport, quoted individually on size, severity,
+            rooms affected and preparation required. Discreet, and followed up — one treatment is rarely
+            the whole answer with bed bugs and anybody telling you otherwise is selling.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Cockroaches</h3>
+          <p>
+            German cockroaches in multi-unit property are a breeding population that needs a proper
+            cleanout with baits and growth regulators, not a perimeter spray. That is a different job from
+            the occasional large roach wandering in from outside, and we will tell you which one you have
+            before quoting.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Fire ants</h3>
+          <p>
+            Ector County is inside the TDA quarantine, unlike the counties west of here. That makes the
+            identification question real in Odessa rather than academic. Get it right before treatment.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Scorpions</h3>
+          <p>
+            Peak July and August. In a developed city the driver is as often disturbed ground and
+            construction as it is drought.
+            <a href="/services/scorpion-control/"> Scorpion exclusion →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cleanouts, hauling and absentee-owner property</h2>
+      <div class="measure">
+        <p>
+          Junk removal and full property cleanouts are a bigger part of the Odessa work than anywhere else
+          on the route, for the same reason bed bugs are: units turn over, and what gets left behind has to
+          go somewhere before the next tenant moves in.
+        </p>
+        <p>
+          <strong>There is a safety dimension worth taking seriously.</strong> Texas DSHS specifically flags
+          hantavirus risk when cleaning areas where rodents could live — barns, cabins, hunting blinds and
+          sheds. A property that has sat empty with rodent activity is not a job for somebody with a trailer
+          and no precautions. We treat a cleanout as a job with a procedure rather than a job with a truck.
+        </p>
+        <p>
+          We also do ongoing upkeep for owners who are not local — checking the property, keeping the lot
+          inside the city's twelve-inch standard, and dealing with what turns up rather than waiting for a
+          notice to reach an address you no longer live at.
+        </p>
+        <p>
+          Pricing is on volume, material type, trailer space, labour to load and disposal fees. Photographs
+          usually get you an initial estimate; a larger project needs somebody on site.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Areas we work in Odessa</h2>
+      <div class="measure">
+        <p>
+          North and northeast Odessa is where the route density is. These two get their own pages:
+        </p>
+      </div>
+      <div class="grid c2" style="margin:1.4rem 0">
+        {hoods.map((n) => (
+          <a class="card" href={`/locations/odessa/${n.slug}/`}>
+            <h3>{n.name}</h3><p>{n.character}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure">
+        <p>
+          Plus surrounding residential and commercial property across the city. Newer construction here
+          tends to sit on developed and imported fill around the foundations, which changes where termite
+          risk concentrates compared with the native caliche.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Odessa</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service is bi-monthly or quarterly, generally $140 to
+          $160 or more per visit with a $200 to $250 initial. Bed bug, termite, lawn, brush and junk work
+          is individually quoted. Covered by the <a href="/our-guarantee/">30-day service guarantee</a> —
+          though note that bed bugs, rodents, wildlife, fleas and ticks carry their own terms rather than
+          the standard guarantee, and we would rather say that plainly than let you assume otherwise.
+        </p>
+        <p>
+          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle, and financing
+          available on larger jobs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>If you manage rental property here</h2>
+      <div class="measure">
+        <p>
+          Odessa has more renters than most of this route — around 40% of households — and two Texas rules
+          apply to almost every operator in the city. Neither is obscure, and both are routinely missed.
+        </p>
+        <p>
+          <strong>Texas Property Code §92.052.</strong> Landlords must make diligent efforts to repair
+          conditions that materially affect the physical health or safety of an ordinary tenant. The
+          statute itself gives no pest-specific examples, but the Texas Young Lawyers Association handbook
+          cited by the State Law Library lists roaches and rats as qualifying where they violate local
+          building, health or fire codes. In practice a significant infestation in a unit is a repair
+          obligation, not a courtesy.
+        </p>
+        <p>
+          <strong>4 TAC §7.146 — the 48-hour sign.</strong> A licensee must provide a pest control sign
+          <em>at least 48 hours before</em> a planned indoor treatment at residential rental property with
+          five or more units, and at workplaces, hospitals, nursing homes, hotels, motels, warehouses,
+          food-processing facilities, schools and day care centres. The sign has specs: minimum 8½ × 11
+          inches, first line at least 24-point type, remaining lines at least 12-point, contact information
+          for pesticide details, and the National Pesticide Information Center number. Emergency treatments
+          and vacant spaces are exempt. <strong>The Texas Department of Agriculture publishes a standard
+          Spanish-language version free of charge</strong> — which matters in a city where a large share of
+          residents speak Spanish at home.
+        </p>
+        <p>
+          Between them that is a duty to fix and a notice obligation you need a vendor who actually knows
+          about. It is a fair question to put to any company bidding on your units, and the answer tells
+          you a lot.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>An Odessa year</h2>
+      <div class="measure">
+        <p>
+          <strong>January and February</strong> are slower for insects but busy indoors — rodents,
+          cockroaches, and everything that has moved inside. In multi-family property this is when a
+          problem in one unit becomes a problem in four.
+        </p>
+        <p>
+          <strong>March and April</strong> bring ants, spiders and termite activity as the ground warms.
+          Fire ant mounds start showing in irrigated lawns.
+        </p>
+        <p>
+          <strong>May through August</strong> is the busy stretch — ants, spiders, wasps, fleas, ticks and
+          heavy scorpion activity through July and August. Odessa's development means disturbed ground is
+          moving scorpions around for most of it.
+        </p>
+        <p>
+          <strong>September through November</strong> stays warm, then rodents begin moving toward
+          buildings as it cools. In a city with this much commercial and warehouse property, autumn rodent
+          work is as much a business problem as a residential one.
+        </p>
+        <p>
+          <strong>December</strong> is interior pests and cleanouts.
+        </p>
+        <p>
+          Bed bugs, again, sit outside all of that. They arrive whenever a unit turns over, which in
+          Odessa is all year.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Working Odessa from Seminole</h2>
+      <div class="measure">
+        <p>
+          Odessa is about 65 miles south and one of the more regular runs on this route. Being honest
+          about the trade-off: a company with an Odessa address can sometimes be at your door faster. If
+          same-hour response is the deciding factor, that is a legitimate reason to call somebody local to
+          the city.
+        </p>
+        <p>
+          What you get instead is that the person who answers the phone is the person doing the work.
+          Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 as a Responsible
+          Certified Applicator across Pest Control, Termite Control, Lawn &amp; Ornamental and Weed Control,
+          with six years in the trade — most of it running operations and service for pest control branches
+          in El Paso, including a Terminix-Rentokil branch, before starting this company in the town he
+          grew up in.
+        </p>
+        <p>
+          For the work Odessa actually needs — a bed bug job done properly and followed up, a unit turned
+          around between tenants, a lot cleared before the city's seven days run out — the thing that
+          matters is somebody who inspects before quoting and tells you what is really going on. That is
+          the whole offer.
+        </p>
+        <p>
+          On scheduling: Odessa is a planned run, so booking a day or two ahead generally gets you a
+          better slot than calling the same morning. Same-day happens and depends on where the truck
+          already is. If you are working to a deadline — a unit turning over on a date, or a city notice
+          with days left on it — say so when you call and it gets scheduled around that rather than
+          around convenience.
+        </p>
+        <p>
+          And if you are not sure whether what you have is worth a visit at all, send a photograph first.
+          A mound, a bite pattern or a few insects on a mattress seam usually settles the question in a
+          couple of minutes, and that conversation costs nothing either way.
+        </p>
+        <p>
+          <a href="/about/">More about Valentin →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What actually works on bed bugs</h2>
+      <div class="measure">
+        <p>
+          Because this is the Odessa problem, it is worth setting out honestly rather than leaving it at
+          "we treat bed bugs."
+        </p>
+        <p>
+          <strong>Inspection is most of the job.</strong> Bed bugs are not only in beds. They shelter in
+          frames, headboards, nightstands, sofas, baseboards, outlet plates, behind pictures and along
+          seams — anywhere within a short crawl of where somebody sleeps. Finding the extent of it is what
+          decides whether this is a one-room job or a whole-property job, and getting that wrong is the
+          most common reason a treatment appears to fail.
+        </p>
+        <p>
+          <strong>Preparation matters and it is on you.</strong> Laundering and drying on high heat,
+          reducing clutter, and giving access to the areas that need treating. We will tell you exactly
+          what to do before the visit. A treatment into an unprepared room does maybe half of what it
+          should.
+        </p>
+        <p>
+          <strong>One treatment is rarely the whole answer.</strong> Anybody who tells you otherwise is
+          selling. Follow-up is normal and it is planned in from the start, not sprung on you afterwards.
+        </p>
+        <p>
+          <strong>We treat chemically — Alpine WSG, Precor IGR and Transport, selected by the situation.</strong>
+          We do not offer heat treatment. If a job genuinely needs heat, we will say so and point you
+          somewhere that has the equipment rather than take the money and underdeliver.
+        </p>
+        <p>
+          <strong>Bed bug work carries its own terms</strong> rather than the standard 30-day service
+          guarantee, and that is stated plainly on the <a href="/our-guarantee/">guarantee page</a>
+          rather than buried.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Odessa pest control questions" />
+  <Cta
+    market="Odessa"
+    line="If you are a property manager with a unit turning over, or an owner who has had a letter from the city, say so when you call — those both have deadlines attached and they change how the job gets scheduled."
+  />
+</BaseLayout>
