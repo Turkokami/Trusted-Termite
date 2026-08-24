@@ -1,0 +1,430 @@
+---
+/**
+ * Compliance cluster — the red imported fire ant quarantine.
+ *
+ * CORRECTED FRAMING, verified Aug 2026. 4 TAC §19.101 is titled "Quarantined
+ * Areas" and contains NO county list. Its entire operative text is:
+ *   "The department hereby adopts by reference as quarantined areas those
+ *    counties in Texas, or portions thereof, listed as quarantined areas in the
+ *    most current federal imported fire ant quarantine at 7 Code of Federal
+ *    Regulations, Part 301.81-3."
+ * And 7 CFR §301.81-3 does not contain a list either — it directs the reader to
+ * the APHIS website list, which carries its own last-updated date.
+ *
+ * CONSEQUENCE FOR THIS PAGE: it must LINK OUT to the live list rather than
+ * freeze one, and must date-stamp the reading it does publish. That is exactly
+ * what it does.
+ *
+ * County statuses below were read from two independently fetched APHIS
+ * regulated-areas PDFs (agreeing), document dated 27 October 2022:
+ *   NOT quarantined: Gaines, Yoakum, Terry, Dawson, Andrews
+ *   QUARANTINED:     Martin, Howard, Midland, Ector, Winkler
+ *   PARTIAL:         Lubbock — boundary description was garbled in both fetches
+ *                    and is NOT published here. "Partially quarantined, see the
+ *                    APHIS list for the boundary" is the only safe statement.
+ *
+ * ⚠️ Martin was corrected mid-research; an earlier draft of the Stanton page
+ * had it backwards. Two-of-two on re-check.
+ * ⚠️ NOT VERIFIED, do not publish: any total count of quarantined Texas
+ * counties, and whether APHIS has updated since Oct 2022.
+ *
+ * §19.102 quarantined articles and §19.103 restrictions are quoted from LII.
+ * Note §19.103(a) restricts movement into or through the FREE areas of Texas —
+ * not movement between two quarantined counties. That distinction is published.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { TOWNS } from '../../data/towns';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compliance', path: '/compliance/' },
+  { name: 'The fire ant quarantine', path: '/compliance/fire-ant-quarantine/' },
+];
+
+const free = TOWNS.filter((t) => t.weedOrdinance !== undefined && t.fireAnt === 'not-quarantined');
+const quar = TOWNS.filter((t) => t.fireAnt === 'quarantined');
+const part = TOWNS.filter((t) => t.fireAnt === 'partial');
+
+const quickAnswer =
+  'The red imported fire ant quarantine runs straight through our service area. Gaines, Yoakum, Terry, Dawson and Andrews counties are outside it; Martin, Howard, Midland, Ector and Winkler are inside; Lubbock is partially quarantined. If you move soil, sod, nursery stock, baled hay stored on the ground or used soil-moving equipment out of a quarantined county into a free area, the rules apply to you.';
+
+const faqs = [
+  {
+    q: 'Which counties near me are quarantined for fire ants?',
+    a: 'Reading the APHIS regulated-areas list, the quarantine boundary runs right through this region. Gaines, Yoakum, Terry, Dawson and Andrews are outside it. Martin, Howard, Midland, Ector and Winkler are inside it. Lubbock County is partially quarantined. Because the Texas rule adopts the federal list dynamically, always check the live APHIS list before relying on any published summary, including this one.',
+  },
+  {
+    q: 'Does 4 TAC §19.101 list the counties?',
+    a: 'No, and this surprises people. Section 19.101 is one sentence: the department adopts by reference as quarantined areas those Texas counties, or portions of them, listed in the most current federal imported fire ant quarantine at 7 CFR part 301.81-3. And that federal section does not contain a list either — it directs you to the list APHIS publishes on its website, which carries its own last-updated date. So the live APHIS list is the law, and any page that hard-codes counties is a snapshot.',
+  },
+  {
+    q: 'What counts as a regulated article?',
+    a: 'Under 4 TAC §19.102: the fire ant itself in any living state of development; soil, compost, decomposed manure, humus, muck and peat; plants with roots with soil attached; grass sod; baled hay and baled straw stored in direct contact with the ground; logs, pulpwood and stumpwood; and used mechanized soil-moving equipment. Note the precision on hay — it is baled hay and straw stored in direct ground contact, not hay generally.',
+  },
+  {
+    q: 'What do I have to do to move regulated articles?',
+    a: 'Section 19.103(a) prohibits quarantined articles from quarantined areas entering or passing through the free areas of Texas, except under the exemptions in (b) or with the documentation in (c). Otherwise a phytosanitary certificate or permit must accompany the movement, securely attached to the outside of the container or to the shipping documents. Certificates are issued where the articles come from certified fire ant-free premises, have been inspected and found free of infestation, have had an approved treatment, or were handled so that no infestation would be transmitted.',
+  },
+  {
+    q: 'Does the quarantine restrict moving things between two quarantined counties?',
+    a: 'Read literally, no. Section 19.103(a) restricts movement into or through the free areas of Texas. Moving soil from Midland to Ector — both quarantined — is a different situation from moving it from Midland to Gaines. That said, the exact reading of your movement is a question for the Texas Department of Agriculture Plant Quality Program rather than for us, and there is a separate federal rule at 7 CFR §301.81-4 governing interstate movement.',
+  },
+  {
+    q: 'Do I have fire ants, or is it a harvester ant?',
+    a: 'In Gaines, Yoakum, Terry, Dawson and Andrews it is very likely a red harvester ant, and the difference is obvious once you know it. A harvester ant mound is a bare circular clearing several feet across with foraging trails radiating out; per AgriLife they do not invade structures. An imported fire ant nest is a mounded dome with no central opening and responds aggressively and immediately to disturbance, and they do enter structures and equipment. The treatments are not interchangeable.',
+  },
+  {
+    q: 'Why does a pest control company care about a quarantine?',
+    a: 'Because it changes the honest answer to a customer question, and because it catches people out on the practical side. If you farm, ranch, run equipment, sell hay, move sod or do dirt work across this region, you are crossing a regulatory line that most people do not know exists — and its position is not intuitive, because it is a federal list rather than a natural boundary.',
+  },
+  {
+    q: '¿Hay hormigas rojas importadas en mi condado?',
+    a: 'Depende del condado, y la frontera de la cuarentena pasa justo por esta región. Gaines, Yoakum, Terry, Dawson y Andrews están fuera; Martin, Howard, Midland, Ector y Winkler están dentro; Lubbock está parcialmente. En los condados fuera de la cuarentena, lo que casi siempre encuentra la gente es un hormiguero de hormiga cosechadora, que no entra a las casas. Llámenos al (432) 278-7294 y lo identificamos.',
+  },
+];
+---
+
+<BaseLayout
+  title="The Texas Fire Ant Quarantine, Explained"
+  description="The quarantine boundary runs through our service area. Which counties are in, what counts as a regulated article, and what moving one actually requires."
+  path="/compliance/fire-ant-quarantine/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Compliance reference</p>
+      <h1>The red imported fire ant quarantine</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          There is a regulatory line running through the middle of this service area, and most people
+          living on either side of it have no idea it is there.
+        </p>
+        <p>
+          It is the red imported fire ant quarantine, and its position is not intuitive. It does not follow
+          a river or a highway or the edge of the caprock. It follows a federal list of counties, which
+          means the honest answer to "do I have fire ants" changes depending on which side of a county road
+          you are standing on.
+        </p>
+        <p>
+          For most of our customers this is simply useful identification information — in the northern half
+          of our area, what you are looking at is almost certainly a harvester ant. For anybody who farms,
+          ranches, moves dirt, sells hay, lays sod or hauls equipment, it is a set of movement rules with
+          real teeth.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where the line runs</h2>
+      <div class="measure">
+        <p>
+          Reading the APHIS regulated-areas list against the counties we serve:
+        </p>
+        <p>
+          <strong>Outside the quarantine:</strong> Gaines, Yoakum, Terry, Dawson and Andrews. That covers
+          {free.map((t) => t.name).join(', ')}.
+        </p>
+        <p>
+          <strong>Inside the quarantine:</strong> Martin, Howard, Midland, Ector and Winkler. That covers
+          {quar.map((t) => t.name).join(', ')}.
+        </p>
+        <p>
+          <strong>Partially quarantined:</strong> Lubbock County, covering {part.map((t) => t.name).join(', ')}.
+          The list describes a portion of the county rather than the whole of it. We are not going to print
+          a boundary description, because the descriptions we retrieved were garbled and a wrong boundary is
+          worse than no boundary. Check the APHIS list directly for that one.
+        </p>
+        <p>
+          <strong>So the boundary runs roughly north-west to south-east across the region</strong>, with the
+          agricultural counties of the southern Llano Estacado outside it and the Permian Basin counties
+          inside it. Seminole is outside. Midland and Odessa are inside. Andrews is outside, and Martin
+          County immediately east of it is inside.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          <strong>Currency warning, and it matters.</strong> The most recent APHIS regulated-areas document
+          we could retrieve is dated 27 October 2022, and we could not confirm whether it has been updated
+          since. Because the Texas rule adopts the federal list dynamically rather than reproducing it, the
+          live APHIS list is the authority and this page is a reading of it. Check the current list before
+          relying on any of the above for a movement decision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The rule that contains no list</h2>
+      <div class="measure">
+        <p>
+          This is worth understanding because it explains why every published county list, including ours,
+          is a snapshot rather than the law.
+        </p>
+        <p>
+          <strong>4 TAC §19.101 is titled "Quarantined Areas."</strong> Its entire operative content is one
+          sentence: the department adopts by reference as quarantined areas those counties in Texas, or
+          portions of them, listed as quarantined areas in the most current federal imported fire ant
+          quarantine at 7 Code of Federal Regulations, part 301.81-3.
+        </p>
+        <p>
+          <strong>And 7 CFR §301.81-3 does not contain a list either.</strong> It says the Administrator
+          will publish the list of quarantined areas on the plant health website, that the list will
+          include the date it was last updated, and that after a change APHIS will publish a notice in the
+          Federal Register informing the public.
+        </p>
+        <p>
+          <strong>So the chain runs: Texas rule → federal rule → a web page.</strong> The practical
+          consequence is that the quarantine can change without any Texas rulemaking at all, and that a
+          list frozen into a printed document or a website is only accurate as of the day it was read.
+        </p>
+        <p>
+          It also means anyone telling you confidently which counties are quarantined, without a date on the
+          statement, is telling you something they cannot know. Including us — which is why the reading
+          above carries the date of the document it came from.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What counts as a regulated article</h2>
+      <div class="measure">
+        <p>
+          Set out at 4 TAC §19.102, and the list is more specific than people assume.
+        </p>
+        <p><strong>The red imported fire ant in any living state of development.</strong></p>
+        <p>
+          <strong>Soil, compost, decomposed manure, humus, muck and peat</strong>, separately or with other
+          things. This is the big one for anybody doing dirt work.
+        </p>
+        <p>
+          <strong>Plants with roots with soil attached.</strong> Nursery stock, in other words — but note
+          that the trigger is the soil, not the plant.
+        </p>
+        <p><strong>Grass sod.</strong></p>
+        <p>
+          <strong>Baled hay and baled straw stored in direct contact with the ground.</strong> Read that
+          precisely. It is not hay generally. It is baled hay and straw that has been stored on the ground,
+          which is where a colony gets into it.
+        </p>
+        <p><strong>Logs, pulpwood and stumpwood.</strong></p>
+        <p>
+          <strong>Used mechanized soil-moving equipment.</strong> Not new equipment — used. A blade, a
+          backhoe, a box scraper that has been in the dirt in a quarantined county.
+        </p>
+        <p>
+          <strong>And a catch-all:</strong> any other materials or conveyances become quarantined articles
+          when determined to pose a risk of spreading the ant, and the possessor is notified.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What moving one actually requires</h2>
+      <div class="measure">
+        <p>
+          Section 19.103 is the restriction, and the first thing to notice is its direction.
+        </p>
+        <p>
+          <strong>Subsection (a):</strong> quarantined articles from quarantined areas are prohibited entry
+          into or through the <em>free</em> areas of Texas, except as provided in (b) and (c).
+        </p>
+        <p>
+          <strong>The restriction is on movement into the free areas</strong>, not on movement generally.
+          Hauling soil from Midland to Ector — both inside — is a different question from hauling it from
+          Midland to Gaines. That distinction is worth knowing because it is exactly the kind of thing that
+          gets over-simplified into "you can't move dirt", which is not what the rule says.
+        </p>
+        <p>
+          <strong>Subsection (b) carries seven exemption categories</strong>, including soil samples of one
+          pound or less if properly packaged, soil samples going to Army Corps of Engineers laboratories,
+          processed compost and organic matter, and treated logs and pulpwood at designated loading sites.
+        </p>
+        <p>
+          <strong>Otherwise, subsection (c):</strong> a phytosanitary certificate or permit must accompany
+          the movement. Those are issued where the articles originate from certified imported fire
+          ant-free premises, have been examined and found free of infestation, have undergone an approved
+          treatment, or were grown, produced, manufactured, stored or handled in such a manner that no
+          infestation would be transmitted. The certificate or permit must be securely attached to the
+          outside of the container, or attached to the shipping documents with the items properly
+          described.
+        </p>
+        <p>
+          <strong>Interstate movement has its own federal rule</strong> at 7 CFR §301.81-4, which requires
+          a certificate or limited permit — or, for articles that originated outside a quarantined area,
+          a waybill indicating the point of origin, transit without stops beyond fuel and traffic or
+          storage in fire ant-resistant locations, and maintained separate identity. Inspectors may stop,
+          inspect and seize non-compliant shipments.
+        </p>
+        <p>
+          <strong>Who this actually catches.</strong> Not householders, mostly. It catches the person
+          hauling a load of caliche or topsoil across a county line for a pad or a driveway. The sod
+          contractor. The landscaper bringing in nursery stock. Anybody selling or moving baled hay that
+          has been sitting on the ground. And the contractor moving a used blade, box scraper or backhoe
+          from a job in Midland to one in Gaines County — which on this route happens constantly and is
+          almost never thought of as a regulated movement.
+        </p>
+        <p>
+          <strong>Who to ask.</strong> The Texas Department of Agriculture Plant Quality Program handles
+          this, and it is the right call for a specific movement. We are a pest control company, not a
+          phytosanitary certifier, and the mechanics of obtaining a state-level compliance agreement are
+          outside what we can advise on.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Telling a fire ant from a harvester ant</h2>
+      <div class="measure">
+        <p>
+          For most people reading this page, the useful outcome is not a compliance decision — it is
+          finding out that the ants in the yard are not what they feared.
+        </p>
+        <p>
+          <strong>The red harvester ant</strong> builds a bare circular clearing, often several feet across,
+          with a central opening and foraging trails radiating outward. The clearing is the giveaway: they
+          strip vegetation around the nest. They are large, slow-moving relative to fire ants, and per
+          Texas A&M AgriLife they do not invade homes or structures. The sting is genuinely painful and can
+          be more serious than most, so they are not nothing — but they are an outdoor insect with an
+          outdoor nest.
+        </p>
+        <p>
+          <strong>The red imported fire ant</strong> builds a mounded dome of loose soil with no single
+          central opening, and the defining behaviour is the response to disturbance: touch the mound and
+          they boil out immediately and in numbers, and they sting repeatedly. They readily enter
+          structures, electrical boxes and equipment.
+        </p>
+        <p>
+          <strong>Why getting it right matters practically.</strong> The treatments are not interchangeable.
+          Broadcast baiting aimed at fire ants is a poor fit for a harvester ant nest, and treating a
+          harvester ant mound as though it were a fire ant infestation wastes money on a species that was
+          never going to come indoors.
+        </p>
+        <p>
+          <strong>And there is a conservation angle worth knowing.</strong> Red harvester ants are the
+          principal food of the Texas horned lizard, which has declined substantially across much of its
+          range. Where a harvester ant colony is out in a pasture and causing nobody any harm, leaving it
+          alone is a defensible answer, and it is one we will give you.
+        </p>
+        <p>
+          <strong>One more distinguishing detail people find useful.</strong> Harvester ant foraging trails
+          are conspicuous, often several yards long, and run to a seed source — these are seed-harvesting
+          ants and the cleared area around the nest is a by-product of that. Fire ant activity radiates
+          from the mound without the same trail structure, and the mound itself has no obvious entrance
+          because the workings are internal. If you can see a clear road with ants moving along it in both
+          directions carrying seed, that is a strong tell.
+        </p>
+        <p>
+          If you are not sure what you have, photograph the mound and text it. That resolves it faster than
+          any description, and it is a free answer either way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Living inside the quarantine</h2>
+      <div class="measure">
+        <p>
+          If you are in Midland, Odessa, Big Spring, Stanton or Kermit, fire ants are a real management
+          problem rather than a misidentification, and it is worth setting out what actually works.
+        </p>
+        <p>
+          <strong>Individual mound treatment deals with the mound you can see.</strong> It is fast, it is
+          satisfying, and on its own it is a losing strategy on any property with pressure, because the
+          colonies you have not found are unaffected and the treated ground is recolonised from them.
+        </p>
+        <p>
+          <strong>Broadcast baiting is the approach extension services actually recommend</strong> for area
+          management, because the foraging workers carry the material back into colonies you never located.
+          It is slower to show a result, which is why customers dislike it, and it is more effective, which
+          is why it is what gets recommended anyway.
+        </p>
+        <p>
+          <strong>Timing matters more than product.</strong> Bait works when ants are actively foraging,
+          which in this climate means avoiding the hottest part of a summer day and avoiding ground that is
+          about to be watered or rained on. A bait applied at the wrong hour is a bait that sits there.
+        </p>
+        <p>
+          <strong>Electrical equipment is the under-appreciated risk.</strong> Fire ants are drawn to
+          electrical fields and readily colonise irrigation controllers, well pumps, air conditioning units,
+          meter boxes, junction boxes and traffic control cabinets. On rural and oilfield property that is
+          frequently where the expensive damage happens rather than in the yard.
+        </p>
+        <p>
+          <strong>And they behave differently after rain.</strong> A flooded colony can raft and relocate,
+          which is why a property that seemed clear can show mounds in new places within days of a real
+          rain event. Post-rain is a good time to walk the ground and see what has actually moved.
+        </p>
+        <p>
+          <strong>What we will tell you honestly:</strong> on acreage inside the quarantine, elimination is
+          not the goal and nobody should sell it to you as one. Suppression around the buildings, the yard,
+          the equipment and the areas people and animals actually use is achievable and worth doing. The
+          back forty is not a treatment target.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What this means town by town</h2>
+      <div class="measure">
+        <p>
+          <strong>Seminole, Seagraves, Denver City, Lamesa, Brownfield and Andrews.</strong> Outside the
+          quarantine. The honest answer to a fire ant question here is almost always that it is a harvester
+          ant instead. If you are hauling soil, sod, ground-stored baled hay or used soil-moving equipment
+          <em>in</em> from a quarantined county, that movement is the regulated direction.
+        </p>
+        <p>
+          <strong>Midland, Odessa and Big Spring.</strong> Inside the quarantine. Fire ants are a genuine
+          possibility rather than a misidentification, and moving regulated articles out to the free
+          counties to the north and west engages the rules.
+        </p>
+        <p>
+          <strong>Stanton.</strong> Martin County is inside the quarantine, which makes Stanton an edge
+          case: it sits on the boundary with free counties immediately to the north-west, and it is the one
+          town on this route where we corrected our own earlier reading. Worth checking rather than
+          assuming.
+        </p>
+        <p>
+          <strong>Kermit.</strong> Winkler County is inside the quarantine, and the caliche pads and
+          equipment yards that characterise that end of the Basin are exactly the situation where fire ants
+          and electrical equipment meet.
+        </p>
+        <p>
+          <strong>Lubbock.</strong> Partially quarantined, and the boundary description is the one we could
+          not read cleanly. If you are moving regulated articles in or out of Lubbock County, that is a
+          call to make to the Department rather than a question to settle from a website.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          This is a plain-language summary of published state and federal rules, compiled for property
+          owners in our service area, and it is a reading taken from a dated document. Treat it as orientation
+          rather than as advice, and never as a substitute for the live APHIS list. For any actual movement decision,
+          check the current list and speak to the Texas Department of Agriculture Plant Quality Program.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Fire ant quarantine questions" />
+  <Cta
+    line="Photograph the mound and text it. In most of our area the answer is a harvester ant and the honest recommendation is to leave it where it is — which is a free answer and a short conversation."
+  />
+</BaseLayout>

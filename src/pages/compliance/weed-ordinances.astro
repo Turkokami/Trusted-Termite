@@ -1,0 +1,440 @@
+---
+/**
+ * Compliance cluster — the town-by-town vegetation ordinance comparison.
+ *
+ * This is the single most uncontested asset available in this market. Nobody
+ * else in West Texas pest control has written it, the numbers are genuinely
+ * different town to town, and people move between these towns assuming the
+ * rule travels with them.
+ *
+ * DATA DISCIPLINE: every height, notice period and citation on this page comes
+ * from `TOWNS[].weedOrdinance` so that the town pages and this page can never
+ * drift apart. A town whose ordinance we could not read renders as "not
+ * verified" rather than being guessed at — Seminole (eCode360 blocks automated
+ * access) and Big Spring (Municode is JavaScript-only) are both in that state.
+ *
+ * State-law grounding, all verified Aug 2026:
+ *  - Health & Safety Code §342.004 is the municipal weed power, and it pulls in
+ *    §343.011(c)(1),(2),(3) by cross-reference. (c)(3) is the pest hook:
+ *    "maintaining premises in a manner that creates an unsanitary condition
+ *    likely to attract or harbor mosquitoes, rodents, vermin, or other
+ *    disease-carrying pests."
+ *  - §342.008 is the no-notice abatement power above 48 inches, with notice to
+ *    the owner within 10 days after, hearing on written request within 30 days,
+ *    held within 20 days.
+ *  - §342.001 is the municipal stagnant-water power. §342.007 is expenses+lien.
+ *  - §343.011 applies ONLY to the unincorporated area of a county. (c)(4) is
+ *    the county weed nuisance — weeds "within 300 feet of another residence or
+ *    commercial establishment". NOTE: there is NO height figure in (c)(4). An
+ *    earlier draft of this repo claimed 36 inches; that was wrong and is gone.
+ *  - Local Government Code §217.042 is the HOME-RULE nuisance grant, reaching
+ *    5,000 feet outside the limits. It explains Lamesa's extraterritorial
+ *    reach. It is not a blanket grant to every Texas municipality.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { TOWNS } from '../../data/towns';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compliance', path: '/compliance/' },
+  { name: 'Weed and vegetation ordinances', path: '/compliance/weed-ordinances/' },
+];
+
+const withOrd = TOWNS.filter((t) => t.weedOrdinance).sort(
+  (a, b) => a.weedOrdinance!.heightInches - b.weedOrdinance!.heightInches,
+);
+const withoutOrd = TOWNS.filter((t) => !t.weedOrdinance);
+
+const quickAnswer =
+  'Maximum grass and weed height differs town to town across West Texas. Lubbock is the strictest at eight inches. Seagraves, Denver City, Lamesa, Brownfield, Stanton and Odessa are twelve. Midland is eighteen, and Andrews is twelve on lots under an acre and eighteen over. Notice periods run seven or ten days, and almost every town can abate a repeat violation for a year afterwards without telling you again.';
+
+const faqs = [
+  {
+    q: 'Which West Texas town has the strictest weed ordinance?',
+    a: 'Lubbock, at eight inches averaged across the lot, with a $175 administrative fee per occurrence. Nothing else on this route is close — the next tier down is twelve inches, and Midland allows eighteen.',
+  },
+  {
+    q: 'Does the rule change when I move to the next town?',
+    a: 'Yes, and this is the most common way people get caught. The limit, the notice period, the lien interest and the abatement mechanics are all set by each city individually. Moving from Midland at eighteen inches to Lubbock at eight more than halves what you are allowed, and nobody sends you a letter explaining that when you move.',
+  },
+  {
+    q: 'What is the one-year rule?',
+    a: 'Nearly every ordinance on this route lets the city state in a notice that a further violation of the same kind within one year may be corrected without further notice, at your expense, and assessed against the property. People assume every abatement comes with its own warning. For twelve months after the first notice, it does not have to.',
+  },
+  {
+    q: 'Can the city cut my lot with no warning at all?',
+    a: 'Above forty-eight inches, generally yes. Texas Health and Safety Code §342.008 lets a municipality abate without notice weeds that have grown higher than forty-eight inches and are an immediate danger to health, life or safety. You must be notified within ten days afterwards, and you can request an administrative hearing in writing within thirty days, to be held within twenty days of the request.',
+  },
+  {
+    q: 'Do these rules apply outside the city limits?',
+    a: 'Mostly not, with two important exceptions. County land falls under Health and Safety Code chapter 343, which applies only to unincorporated areas and defines a weed nuisance by proximity — weeds within three hundred feet of another residence or commercial establishment — rather than by height. And a home-rule city can reach five thousand feet beyond its own limits under Local Government Code §217.042, which is exactly what Lamesa does.',
+  },
+  {
+    q: 'What does any of this have to do with pest control?',
+    a: 'More than you would think, and it is written into the statute. Health and Safety Code §342.004 gives cities the weed power by cross-referencing §343.011(c)(1) to (3) — and (c)(3) is "maintaining premises in a manner that creates an unsanitary condition likely to attract or harbor mosquitoes, rodents, vermin, or other disease-carrying pests." The vegetation rule and the pest harbourage rule are the same rule.',
+  },
+  {
+    q: 'What does an unpaid abatement actually cost?',
+    a: 'The work, plus a lien on the property. Ten percent per annum is the common interest figure — Seagraves, Brownfield, Stanton and Lubbock all use it — and the lien is typically inferior only to tax liens. Lamesa adds a penalty band reaching two thousand dollars for public health and sanitation violations. Odessa publishes its itemised rates: major equipment at $56 an hour, labour at $21, a $125 administration fee and landfill at $52.50 a ton.',
+  },
+  {
+    q: '¿Hay una versión en español de esta información?',
+    a: 'Podemos explicárselo todo por teléfono en español — el dueño lo habla con fluidez. Las ordenanzas mismas las publica cada ciudad en inglés, así que si le llegó un aviso y no está seguro de qué dice, llámenos y se lo leemos: (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="West Texas Weed Ordinances Compared"
+  description="Grass and weed height limits, notice periods and lien terms for every town from Seminole to Lubbock, with the state law behind them. Sourced and cited."
+  path="/compliance/weed-ordinances/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Compliance reference</p>
+      <h1>Weed and vegetation ordinances across West Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Every town on this map enforces a maximum vegetation height, and the numbers are not the same.
+          They range from eight inches to eighteen across cities that are forty minutes apart, with notice
+          periods of seven or ten days, different lien interest, and different powers to act without
+          telling you at all.
+        </p>
+        <p>
+          People move between these towns constantly — Seminole to Midland, Lamesa to Lubbock, Andrews to
+          Odessa — and reasonably assume the rule travels with them. It does not, and there is no moment
+          at which anybody explains that. This page is that explanation, with the citation for each one so
+          you can check it yourself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The comparison</h2>
+      <div class="tablewrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Town</th><th>Limit</th><th>Notice</th><th>No notice above</th><th>Citation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {withOrd.map((t) => (
+              <tr>
+                <td><a href={`/locations/${t.slug}/`}>{t.name}</a></td>
+                <td>
+                  <strong>{t.weedOrdinance!.heightInches}"</strong>
+                  {t.weedOrdinance!.heightInchesLarge
+                    ? ` / ${t.weedOrdinance!.heightInchesLarge}" over an acre`
+                    : ''}
+                </td>
+                <td>{t.weedOrdinance!.noticeDays ? `${t.weedOrdinance!.noticeDays} days` : 'not verified'}</td>
+                <td>{t.weedOrdinance!.noNoticeAboveInches ? `${t.weedOrdinance!.noNoticeAboveInches}"` : '—'}</td>
+                <td class="cite">{t.weedOrdinance!.cite}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="measure" style="margin-top:1.6rem">
+        <p style="color:var(--ink-3);font-size:.95rem">
+          <strong>Not listed above:</strong> {withoutOrd.map((t) => t.name).join(', ')}. We could not read
+          those ordinances from an accessible published source, so we are not going to print a number for
+          them. Seminole's code is hosted behind a service that blocks automated access, and Big Spring
+          publishes its nuisance provisions in a JavaScript viewer plus a separate Structural Standards and
+          Nuisance Abatement Ordinance. For those towns, call city code enforcement and ask directly.
+          Every other page on this site quotes an exact figure because we could read the rule; here we
+          could not, and inventing one would be worse than admitting it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Town by town, and what is unusual about each</h2>
+      <div class="measure">
+        {withOrd.map((t) => (
+          <p>
+            <strong><a href={`/locations/${t.slug}/`}>{t.name}</a> — {t.weedOrdinance!.heightInches} inches
+            {t.weedOrdinance!.heightInchesLarge ? `, ${t.weedOrdinance!.heightInchesLarge} inches on tracts over an acre` : ''}
+            {t.weedOrdinance!.noticeDays ? `, ${t.weedOrdinance!.noticeDays} days' notice` : ''}.</strong>{' '}
+            {t.weedOrdinance!.note}
+          </p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The five things people get wrong</h2>
+      <div class="measure">
+        <p>
+          <strong>One — assuming the rule follows you.</strong> It is set city by city. Ten inches is fine
+          in Midland and a violation in Lubbock. If you have moved, or if you own property in more than one
+          of these towns, you are working to more than one standard.
+        </p>
+        <p>
+          <strong>Two — assuming the duty stops at your property line.</strong> Several of these ordinances
+          extend it. Seagraves runs the obligation out to the curb line or the pavement edge and to the
+          centre of the adjacent alley. Denver City covers the curb, gutter, sidewalk and the area to the
+          middle of the alley. The strip most people think of as the city's is theirs to keep, and alleys
+          are where this catches people most often because nobody looks at them.
+        </p>
+        <p>
+          <strong>Three — assuming every abatement comes with its own warning.</strong> It does not.
+          Nearly every ordinance here allows the notice to state that a further violation of the same kind
+          within a year may be corrected without further notice, at your expense. One letter can cover
+          twelve months, and Andrews says so openly in its own guidance — the city points out that state
+          law requires only one notice per year.
+        </p>
+        <p>
+          <strong>Four — assuming there is always notice at all.</strong> Above forty-eight inches, there
+          need not be. Texas Health and Safety Code §342.008 permits a municipality to abate without notice
+          weeds that have grown higher than four feet and are an immediate danger to health, life or
+          safety. Notice comes within ten days <em>after</em>, and the hearing right is a written request
+          within thirty days.
+        </p>
+        <p>
+          <strong>Five — assuming the bill is the end of it.</strong> It is a lien. Ten percent per annum
+          is the common rate on this route, running from the date the city pays, and the lien is usually
+          inferior only to tax liens — which means it sits ahead of a mortgage. In Seagraves the filed
+          statement of expenses is prima facie proof of the amount, so the burden of disputing it is yours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where the cities get the power</h2>
+      <div class="measure">
+        <p>
+          None of these ordinances are freestanding. They sit on a small stack of state law, and knowing
+          the stack tells you what a city can and cannot do to you.
+        </p>
+        <p>
+          <strong>Health and Safety Code §342.004</strong> is the municipal weed power, and it is one
+          sentence: the governing body of a municipality may require the owner of real property to keep it
+          free from weeds, brush, and a condition constituting a public nuisance as defined by
+          §343.011(c)(1), (2) or (3).
+        </p>
+        <p>
+          <strong>That cross-reference is the interesting part</strong>, and it is covered in its own
+          section below.
+        </p>
+        <p>
+          <strong>Health and Safety Code §342.008</strong> is the no-notice power above forty-eight inches,
+          with the ten-day after-notice and the thirty-day hearing request described above.
+        </p>
+        <p>
+          <strong>Health and Safety Code §342.007</strong> is where the expense assessment and the lien
+          come from, and <strong>§342.006</strong> sets the notice method the cities then mirror in their
+          own codes.
+        </p>
+        <p>
+          <strong>Health and Safety Code §342.001</strong> is a separate and less well known power: a
+          municipality may require the filling, draining and regulating of any place that is unwholesome,
+          contains stagnant water, or is in any other condition that may produce disease — and may impose
+          fines on the owner of premises on which stagnant water is found. That is why Stanton's article is
+          headed "Stagnant Water, Filth and Tall Weeds and Grass" and why Denver City runs a separate
+          health nuisances article naming stagnant receptacles and pooled wastewater.
+        </p>
+        <p>
+          <strong>Local Government Code §217.042</strong> is the home-rule nuisance grant. A home-rule
+          municipality may define and prohibit any nuisance within its limits <em>and within five thousand
+          feet outside them</em>, and may enforce ordinances to summarily abate and remove it. That is the
+          authority behind Lamesa's ordinance reaching just under a mile past the city limit sign. Note
+          that it is a home-rule power specifically — it is not a blanket grant to every Texas city.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>§343.011(c)(3) — where weeds and pests become the same law</h2>
+      <div class="measure">
+        <p>
+          This is the provision worth reading twice, and it is the reason a pest control company is the
+          one writing this page.
+        </p>
+        <p>
+          The municipal weed power at §342.004 does not define a nuisance itself. It borrows the definition
+          from Health and Safety Code §343.011(c), subsections (1), (2) and (3). Those are:
+        </p>
+        <p>
+          <strong>(c)(1)</strong> — keeping, storing, or accumulating refuse on premises in a neighborhood
+          unless the refuse is entirely contained in a closed receptacle.
+        </p>
+        <p>
+          <strong>(c)(2)</strong> — keeping, storing, or accumulating rubbish, including newspapers,
+          abandoned vehicles, refrigerators, stoves, furniture, tires, and cans, on premises in a
+          neighborhood or within three hundred feet of a public street for ten days or more.
+        </p>
+        <p>
+          <strong>(c)(3)</strong> — maintaining premises in a manner that creates an unsanitary condition
+          likely to attract or harbor mosquitoes, rodents, vermin, or other disease-carrying pests.
+        </p>
+        <p>
+          Read that third one again. The statute that lets a Texas city make you cut your grass is the same
+          statute that lets it make you deal with a condition harbouring rodents or mosquitoes. They are
+          not adjacent rules that happen to overlap. They are one rule, and the legislature wrote the pest
+          language into it deliberately.
+        </p>
+        <p>
+          Two practical consequences follow. First, if your problem is a neighbouring property — an
+          accumulation, a derelict structure, standing water, something harbouring rodents — municipal code
+          enforcement has authority that no pest control company has, and (c)(3) is the language to cite
+          when you call rather than filing a general complaint about untidiness.
+        </p>
+        <p>
+          Second, if <em>you</em> have received a weed notice, it is worth understanding that the city is
+          not objecting to the aesthetics. The legal theory behind the notice is harbourage, which is also
+          the reason the condition is generating a pest problem you may not have connected to it yet.
+          Dealing with the vegetation and dealing with the pest pressure are frequently the same afternoon's
+          work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Outside the city limits</h2>
+      <div class="measure">
+        <p>
+          A large share of the property on this route is not in any town, and the rules there are different
+          in kind rather than just in degree.
+        </p>
+        <p>
+          <strong>County land runs on Health and Safety Code chapter 343</strong>, which by its own terms
+          applies only to the unincorporated area of a county. The weed provision is §343.011(c)(4):
+          allowing weeds to grow on premises in a neighborhood if the weeds are located within three
+          hundred feet of another residence or commercial establishment.
+        </p>
+        <p>
+          <strong>Note what is not in that sentence: a height.</strong> The county nuisance is defined by
+          proximity to somebody else's home or business, not by inches. A tract with nothing near it is
+          treated very differently from the same growth beside a neighbour, and no number applies to
+          either. If you have seen a thirty-six inch county figure quoted somewhere, it is not in the
+          statute.
+        </p>
+        <p>
+          <strong>Chapter 343 also covers a good deal more than weeds.</strong> Refuse not in a closed
+          receptacle. Rubbish — the statute names newspapers, abandoned vehicles, refrigerators, stoves,
+          furniture, tires and cans — on premises in a neighborhood or within three hundred feet of a public
+          street for ten days or more. Unsanitary conditions likely to attract or harbour mosquitoes,
+          rodents, vermin or other disease-carrying pests. Structurally unsafe buildings. Unfenced or
+          uncovered swimming pools on abandoned property. Surface discharge from an on-site sewage disposal
+          system.
+        </p>
+        <p>
+          <strong>Abatement is the commissioners court's route</strong>, under §343.021 and §343.022, and
+          it is a slower and more formal process than a city notice. Counties must establish abatement
+          procedures consistent with the chapter before they can act.
+        </p>
+        <p>
+          <strong>And the home-rule exception cuts the other way.</strong> Being outside a city limit does
+          not automatically put you outside city reach. Under Local Government Code §217.042 a home-rule
+          municipality's nuisance ordinances extend five thousand feet past the boundary. If you own ground
+          on the edge of Lamesa, the city rule is very likely still yours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>If a notice has arrived</h2>
+      <div class="measure">
+        <p>
+          <strong>Read the date and the citation before anything else.</strong> Those two things determine
+          everything. The date starts the clock — seven days in Seagraves, Lamesa, Brownfield, Stanton,
+          Odessa and Lubbock; ten in Denver City and Andrews. The citation tells you which article you are
+          under, which matters most in Brownfield, where the weeds article runs seven days and the separate
+          offensive conditions article runs ten.
+        </p>
+        <p>
+          <strong>Do not assume the clock started when you read it.</strong> Most of these ordinances allow
+          service by mail to the address of record, and several permit newspaper publication plus posting on
+          the property where personal service fails. If you are an absentee owner and your address is not
+          current with the appraisal district, the notice period can run out before anything reaches you.
+        </p>
+        <p>
+          <strong>Check whether this is a first notice or a repeat.</strong> If you had a notice on the
+          same property within the past twelve months, the city may not be required to give you another one
+          before acting.
+        </p>
+        <p>
+          <strong>Ask about the hearing right.</strong> Seagraves gives a hearing before the municipal judge
+          on request within seven days. The §342.008 no-notice abatement carries a thirty-day window to
+          request a hearing, to be held within twenty days. These are real rights and they are rarely
+          exercised because nobody mentions them.
+        </p>
+        <p>
+          <strong>Then get it cut.</strong> Compliance is almost always cheaper and faster than argument.
+          An abatement plus administration plus a lien at ten percent is a considerably larger number than a
+          mowing job, and it attaches to the property rather than to you personally, which means it follows
+          the title.
+        </p>
+        <p>
+          If you want us to handle it, <a href="/services/lawn-care/">lawn and weed control</a> covers the
+          routine version and <a href="/services/brush-and-lot-clearing/">brush and lot clearing</a> covers
+          a lot that has got past mowing. Tell us the date on the notice when you call — in a seven-day town
+          it is worth more than any description of how bad the lot looks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>A note on how this page is maintained</h2>
+      <div class="measure">
+        <p>
+          Ordinances change. Every figure above was read from the town's own published code and carries the
+          citation so you can check it against the current version rather than trusting a pest control
+          website. Where a source was not accessible, the town is listed as not verified rather than
+          estimated.
+        </p>
+        <p>
+          If you find something here that is out of date or wrong, tell us and it gets corrected. That is a
+          more useful arrangement than a page that quietly ages, and it is the reason the citations are
+          printed at all.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          This is a plain-language summary of published municipal ordinances and state statutes, compiled
+          for property owners in our service area. It is not legal advice, and we are not lawyers. For a
+          decision that turns on the exact wording, read the ordinance itself or speak to the city.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Weed ordinance questions" />
+  <Cta
+    line="If a city notice has arrived, read him the date on it and the section it cites. In a seven-day town those two details decide everything about how the work gets scheduled."
+  />
+</BaseLayout>
+
+<style>
+  .tablewrap { overflow-x: auto; margin-top: 1.4rem; }
+  table.cmp { border-collapse: collapse; width: 100%; min-width: 640px; font-size: .96rem; }
+  table.cmp th, table.cmp td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule, #e3e0d8); }
+  table.cmp thead th { font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); }
+  table.cmp td.cite { color: var(--ink-3); font-size: .88rem; }
+</style>

@@ -1,0 +1,447 @@
+---
+/**
+ * Compliance hub. Deliberately NOT a thin index — it carries its own substance:
+ * everything a Texas customer is entitled to receive, see, check and keep, with
+ * the rule behind each one. All verified Aug 2026 via Cornell LII / Justia
+ * mirrors of 4 TAC ch. 7 subchapter H.
+ *
+ *  §7.141(a)  licensee must CARRY the licence card at all times when working
+ *  §7.141(b)  must present credentials on request
+ *  §7.141(c)  must present GOVERNMENT PHOTO ID to a customer on request  ← gem
+ *  §7.141(d)  business licence available at the place of business
+ *  §7.141(g)-(h) vehicle must display "Texas Pest Control License #" or
+ *             "TPCL #" permanently affixed to front fenders or door panels,
+ *             letters at least TWO INCHES tall, contrasting colours
+ *  §7.145(a)  jurisdiction statement + business name, licence number, address
+ *             and phone on the face of every contract, warranty, service
+ *             agreement, termite disclosure document or guarantee
+ *  §7.145(b)  business name, licence number, phone, address on every INVOICE
+ *  §7.145(c)  both must be legible and in at least 8-POINT TYPE
+ *  §7.144(a)  pest control use records kept TWO YEARS at the business facility,
+ *             including pesticide names AND EPA registration numbers, total
+ *             amounts applied, mixing rate, target pest, date, applicator name
+ *             and licence number, and the business TPCL number
+ *  §7.144(c)  those records available to TDA on written OR VERBAL request
+ *  §7.123     insurance: not less than $500,000 bodily injury and property
+ *             damage, minimum $1,000,000 total annual aggregate; 30 days'
+ *             notice to the department before cancellation; carrier must notify
+ *             within 10 business days if claims drop the aggregate below $1M
+ *  §7.177     WDI inspection sticker on the wall adjacent to the water heater,
+ *             electric breaker box, or beneath the kitchen sink
+ *  §7.172(d)  post-construction termite treatment sticker, not less than
+ *             1in x 2in, same locations
+ *
+ * HOME SOLICITATION — CORRECTED. TDA's own consumer sheet says "72 hours".
+ * The governing statute, Bus. & Com. Code §601.052, says "AT ANY TIME PRIOR TO
+ * MIDNIGHT OF THE THIRD BUSINESS DAY AFTER THE DATE OF THIS TRANSACTION" in
+ * boldfaced type of at least 10 points. Third business day is NOT 72 hours over
+ * a weekend. This page publishes the statutory language, not the shorthand.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { BUSINESS } from '../../data/business';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compliance', path: '/compliance/' },
+];
+
+const pages = [
+  {
+    href: '/compliance/weed-ordinances/',
+    title: 'Weed and vegetation ordinances',
+    blurb: 'Every town on the route compared — heights from eight inches to eighteen, notice periods, lien terms, and the state law behind them.',
+  },
+  {
+    href: '/compliance/pest-control-licence/',
+    title: 'The Texas pest control licence',
+    blurb: 'Seven licence classes, seven categories, the continuing education requirement, and how to verify any company in about two minutes.',
+  },
+  {
+    href: '/compliance/landlord-tenant/',
+    title: 'Renters, landlords and pest control',
+    blurb: 'What Property Code §92.052 actually requires, and why the claim that Texas law obliges landlords to provide pest control is false.',
+  },
+  {
+    href: '/compliance/fire-ant-quarantine/',
+    title: 'The fire ant quarantine',
+    blurb: 'The boundary runs straight through this service area. Which counties are in, what a regulated article is, and what moving one requires.',
+  },
+];
+
+const quickAnswer =
+  'Texas structural pest control is regulated in detail, and almost none of it is explained to customers. You are entitled to see a licence card and government photo ID at the door, to receive the Department’s own consumer information sheet, to find specific information on every contract and invoice, and to have your treatment records kept for two years. This section sets out those rights with the rule behind each one.';
+
+const faqs = [
+  {
+    q: 'Can I ask to see identification at the door?',
+    a: 'Yes, and it is an express regulatory right rather than a courtesy. Under 4 TAC §7.141 each individual licensee and apprentice must carry their licence or registration card at all times while performing structural pest control, must present credentials on request, and — subsection (c) — must present a state driver’s licence, state identification card or other government-issued photo identification to a customer on request, to verify their identity. Ask. Anybody legitimate expects it.',
+  },
+  {
+    q: 'How do I check a company from my driveway?',
+    a: 'Look at the truck. Under 4 TAC §7.141(g) and (h) a business licensee must prominently display the licence number on vehicles, permanently affixed, reading "Texas Pest Control License #" or "TPCL #", on the front fenders or door panels, in letters at least two inches tall and in contrasting colours. A vehicle has to display the number of each business it is used for. An unmarked truck is a question worth asking.',
+  },
+  {
+    q: 'What has to be on my invoice?',
+    a: 'Under 4 TAC §7.145(b), the business name, business licence number, telephone number and physical or mailing address must be on the face of any invoice. Under §7.145(a), every written contract, warranty, service agreement, termite disclosure document and guarantee must carry all of that plus the jurisdiction statement naming the Texas Department of Agriculture and its address and phone number. Both must be legible and in at least 8-point type.',
+  },
+  {
+    q: 'What records does a company have to keep about my property?',
+    a: 'Under 4 TAC §7.144, pest control use records are kept for two years at the business facility, and they are detailed: your billing and service address, the pesticide names and their EPA registration numbers, total amounts applied, the mixing rate, the devices used, the target pest or purpose, the date, the applicator’s name and licence number, and the business licence number. Those records must be made available to the Department on written or verbal request.',
+  },
+  {
+    q: 'Somebody knocked on my door and I signed. Can I get out of it?',
+    a: 'Very likely. Texas Business and Commerce Code §601.052 requires a home-solicitation merchant to give you a copy of the contract or receipt at signing, in the language of the sales presentation, carrying in boldfaced type of at least ten points, in immediate proximity to the signature space: "YOU, THE BUYER, MAY CANCEL THIS TRANSACTION AT ANY TIME PRIOR TO MIDNIGHT OF THE THIRD BUSINESS DAY AFTER THE DATE OF THIS TRANSACTION." Note that is the third business day, not seventy-two hours — over a weekend it is materially longer than the shorthand suggests.',
+  },
+  {
+    q: 'What insurance is a licensed company required to carry?',
+    a: 'Under 4 TAC §7.123, a business licence applicant must file a certificate of insurance for not less than $500,000 bodily injury and property damage, with a minimum total annual aggregate of $1,000,000. Coverage has to be maintained for the whole licensure period, policies must give the Department thirty days’ notice before cancellation, and if claims reduce the aggregate below a million the carrier and the licensee must act within ten business days to restore it.',
+  },
+  {
+    q: 'Why does a pest control company publish all this?',
+    a: 'Because almost every one of these rules exists to protect a customer who cannot evaluate the work directly, and almost none of them are ever mentioned to that customer. A company that tells you what you are entitled to demand has decided not to rely on you not knowing. That is the whole argument, and it is cheaper to make it honestly than to keep it quiet.',
+  },
+  {
+    q: '¿Puedo pedir identificación al técnico?',
+    a: 'Sí, y es un derecho establecido en el reglamento, no una cortesía. Bajo 4 TAC §7.141 el licenciatario debe portar su tarjeta de licencia en todo momento, presentarla cuando se le pida, y mostrar una identificación oficial con fotografía al cliente cuando este la solicite. Pídala siempre.',
+  },
+];
+---
+
+<BaseLayout
+  title="Texas Pest Control Compliance Reference"
+  description="What Texas law entitles you to see, receive and keep when you hire a pest control company — with the rule behind each one. Plain language, fully cited."
+  path="/compliance/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Compliance reference</p>
+      <h1>What Texas actually requires</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Structural pest control in Texas is regulated in a great deal of detail, and virtually none of it
+          is ever explained to the person paying for it.
+        </p>
+        <p>
+          That is not an accident of drafting. The rules exist precisely because a customer in this
+          transaction usually cannot evaluate the work — you cannot tell by looking whether a product was
+          applied at label rate, whether the person holding the sprayer is licensed in the right category,
+          or whether the treatment record says what the invoice says. So the legislature and the Department
+          built in things you <em>can</em> check.
+        </p>
+        <p>
+          This section sets those out, with the rule behind each one so you can read the source rather than
+          trust a summary on a pest control website. It applies to us as much as to anybody else, which is
+          rather the point.
+        </p>
+      </div>
+
+      <div class="grid c2" style="margin-top:2.4rem">
+        {pages.map((p) => (
+          <a class="card" href={p.href}>
+            <h3>{p.title}</h3>
+            <p>{p.blurb}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>At the door — what you can demand on the spot</h2>
+      <div class="measure">
+        <p>
+          <strong>The licence card.</strong> Rule 4 TAC §7.141(a): each individual licensee and apprentice
+          shall carry his or her licence or registration card at all times when performing structural pest
+          control activities. Not in the truck, not at the office — carried.
+        </p>
+        <p>
+          <strong>Credentials on request.</strong> Subsection (b) requires them to be presented on request
+          to customers, to the Department, to state health services, to the EPA, and to law enforcement.
+          You are on that list.
+        </p>
+        <p>
+          <strong>Government photo identification.</strong> This is the one almost nobody knows.
+          Subsection (c): upon request, each individual licensee and apprentice shall present a state
+          driver's licence, state identification card, or other government-issued photo identification to
+          a customer to verify their identity.
+        </p>
+        <p>
+          <strong>That is a regulatory right, not a favour.</strong> Anyone legitimate expects to be asked
+          and will not be offended. Anyone who becomes irritated by the request has told you something
+          useful. It is worth doing with any trade at your door, and in this one you have an express rule
+          behind you.
+        </p>
+        <p>
+          <strong>And the truck itself is a check.</strong> Under §7.141(g) and (h), a business licensee
+          must prominently display the licence number on vehicles used for the business: permanently
+          affixed, reading "Texas Pest Control License #" or "TPCL #", on the front fenders or door panels,
+          in letters at least two inches tall, in contrasting colours. A vehicle must display the business
+          licence number of each business it is used for. You can read that from your kitchen window before
+          anybody knocks.
+        </p>
+        <p>
+          <strong>The business licence itself</strong> must be available at the place of business under
+          subsection (d), and licence cards must be kept legible, with replacements obtained within ten
+          calendar days.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>On paper — what has to be written down</h2>
+      <div class="measure">
+        <p>
+          <strong>Every contract, warranty and guarantee.</strong> Rule 4 TAC §7.145(a) requires each
+          written contract, warranty, service agreement, termite disclosure document or guarantee to carry
+          on the face of the document the business name, business licence number, physical or mailing
+          address, telephone number, and the jurisdiction statement: "Licensed and regulated by: Texas
+          Department of Agriculture, P.O. Box 12847, Austin, TX 78711-2847, Phone (866) 918-4481, Fax
+          (888) 232-2567."
+        </p>
+        <p>
+          <strong>Every invoice.</strong> Subsection (b): the business name, business licence number,
+          telephone number and physical or mailing address must be on the face of any invoice.
+        </p>
+        <p>
+          <strong>Legibly.</strong> Subsection (c) requires both to be legible and printed in at least
+          8-point type. A jurisdiction statement rendered unreadably small does not satisfy the rule.
+        </p>
+        <p>
+          <strong>Why the jurisdiction statement matters.</strong> It is there so that a customer holding a
+          piece of paper always has, on that same piece of paper, the address and telephone number of the
+          agency that regulates the company that gave it to them. It is a complaint route printed on the
+          contract, and it is required by statute as well as by rule — Occupations Code §1951.451 requires
+          a written contract to include the department's mailing address and telephone number and a
+          statement that the department has jurisdiction.
+        </p>
+        <p>
+          <strong>The consumer information sheet.</strong> Under 4 TAC §7.147 the Department's own sheet
+          must be used — a company may not substitute its own version — and it is published in English and
+          Spanish. For an indoor treatment at a private residence that is not rental property, it is made
+          available to the owner. The sheet covers how the industry is regulated, what pesticide
+          registration does and does not mean, precautions, and contact numbers including the National
+          Pesticide Information Center on 1-800-858-7378.
+        </p>
+        <p>
+          <strong>And for termite work, a great deal more.</strong> Rule 4 TAC §7.174 requires disclosure
+          documents to be presented with a written estimate, with thirteen specified contents — including a
+          diagram with perimeter measurements showing active and previous activity, treatment areas and
+          conducive conditions; pesticide labels or physical barrier measurements; complete warranty
+          details; the applicator's signature; termiticide concentration or minimum number of bait
+          stations; and the consumer information sheet. A verbal estimate may give a general range, but a
+          written estimate must be provided before a treatment begins, and these documents may be prepared
+          only by licence holders in the termite category.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>On the wall — the stickers nobody knows about</h2>
+      <div class="measure">
+        <p>
+          Two rules require a physical, durable record to be left in your building, and almost no customer
+          has ever been told to look for them.
+        </p>
+        <p>
+          <strong>After a wood destroying insect inspection.</strong> Rule 4 TAC §7.177: upon completing an
+          inspection for the purposes of a WDI report, the licensee must post a durable sticker on the wall
+          adjacent to the water heater, the electric breaker box, or beneath the kitchen sink, giving the
+          name and licence number of the licensee, the date of the inspection, and a statement that the
+          sticker should not be removed. It is a violation for any licensee to remove or deface one.
+        </p>
+        <p>
+          <strong>After a post-construction termite treatment.</strong> Rule 4 TAC §7.172(d): a durable
+          sticker of not less than one inch by two inches, in the same locations, showing the business
+          name, address and phone number, the applicator's licence number, the product used, the date of
+          treatment, and a notice not to remove it.
+        </p>
+        <p>
+          <strong>Go and look.</strong> If you have bought a house in Texas, there may well be a history of
+          inspections and treatments recorded on a wall beside your water heater that nobody mentioned at
+          closing. It tells you who has been in the building, when, and what they applied — and the
+          non-removal rule means the record is meant to accumulate rather than be cleaned off by the next
+          company through.
+        </p>
+        <p>
+          <strong>And if you are selling</strong>, that sticker is part of what a buyer's inspector will
+          find. Knowing it is there, and what it says, is better than discovering it during a negotiation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>In the files — what is kept, and for how long</h2>
+      <div class="measure">
+        <p>
+          Rule 4 TAC §7.144 governs pest control use records, and the detail required is greater than most
+          customers imagine.
+        </p>
+        <p>
+          <strong>Kept for two years, at the business facility.</strong> Each record must include the
+          customer's billing name and address, the service address, the pesticide names <em>and their EPA
+          registration numbers</em>, the total amounts of ready-to-use pesticide applied, the devices used
+          and quantities, the mixing rate and total amount of material applied, the target pest or purpose,
+          the date of application, and the applicator's name and licence number along with the business
+          licence number.
+        </p>
+        <p>
+          <strong>Termite work adds more:</strong> square-foot measurements for each application site,
+          physical barrier measurements with an installation diagram, and for pre-construction work the
+          number of tanks, capacity in gallons, and the start and stop times.
+        </p>
+        <p>
+          <strong>And subsection (c) is the enforcement hook:</strong> those records shall be made
+          available to the Department upon written or verbal request. A company that cannot produce them
+          has a problem independent of whatever prompted the enquiry.
+        </p>
+        <p>
+          <strong>Two years is the common retention period</strong> across this chapter — it also applies
+          to termite disclosure documents, real estate inspection reports, pre-construction commercial
+          treatment records, continuing education certificates, and apprentice and technician training
+          records.
+        </p>
+        <p>
+          <strong>What this means for you practically:</strong> if you need to know what was applied at
+          your property eighteen months ago — for a warranty claim, a sale, a medical question, or a
+          dispute — the record exists and it is detailed. Ask for it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Behind it — insurance, and the cancellation right</h2>
+      <div class="measure">
+        <p>
+          <strong>Insurance is a licensing condition, not a marketing claim.</strong> Rule 4 TAC §7.123
+          requires a business licence applicant to file a certificate of insurance on the Department's own
+          form for not less than $500,000 bodily injury and property damage, with a minimum total annual
+          aggregate of $1,000,000 for all occurrences. No licence issues until it is met, and coverage
+          must be maintained for the entire licensure period.
+        </p>
+        <p>
+          <strong>The Department has to be told if it lapses.</strong> Policies must provide thirty days'
+          notice to the Department before cancellation, and if claims reduce the aggregate below a million
+          dollars the carrier must notify the Department and the licensee within ten business days, with
+          the licensee required to restore coverage. Only policies from insurers authorised by or
+          registered with the Texas Department of Insurance qualify.
+        </p>
+        <p>
+          Our own cover is with {BUSINESS.insurance.carrier} at those limits, and a certificate is
+          available on request — for commercial work it usually is required anyway.
+        </p>
+        <p>
+          <strong>Note also what insurance is not.</strong> It is not a bond, and it is not a warranty on
+          the pest outcome. Those are three separate things and this industry blurs them regularly.
+        </p>
+        <p>
+          <strong>The home-solicitation cancellation right.</strong> If you signed at your door rather than
+          having sought the company out, Texas Business and Commerce Code §601.052 requires the merchant to
+          give you a copy of the contract or receipt at the time you sign, in the language of the oral
+          sales presentation, dated, with the merchant's name and address, and carrying — in boldfaced type
+          of at least ten points, in immediate proximity to the signature space — the statement:
+        </p>
+        <p>
+          <strong>"YOU, THE BUYER, MAY CANCEL THIS TRANSACTION AT ANY TIME PRIOR TO MIDNIGHT OF THE THIRD
+          BUSINESS DAY AFTER THE DATE OF THIS TRANSACTION."</strong>
+        </p>
+        <p>
+          <strong>One precision point worth having.</strong> You will see this described as a
+          seventy-two-hour right, including in the Department's own consumer information sheet. The statute
+          says third business day, and over a weekend or a holiday that is materially longer than
+          seventy-two hours. If you are near the edge of the window, the statutory language is the one to
+          rely on.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The one thing none of this covers</h2>
+      <div class="measure">
+        <p>
+          Everything above is process — identity, paperwork, records, insurance, cancellation rights. It is
+          genuinely valuable and it is almost entirely unknown to customers, which is why it is published
+          here at length.
+        </p>
+        <p>
+          It is also not the same thing as the work being good.
+        </p>
+        <p>
+          A company can carry the licence, mark the truck correctly, hand over the Department's consumer
+          information sheet, print an immaculate jurisdiction statement, keep flawless two-year records —
+          and still perform a rushed inspection that misses the reason your problem exists. Compliance is
+          the floor, not the ceiling, and no regulator can inspect the thing that actually determines
+          whether a treatment works, which is how much attention somebody paid to your particular building.
+        </p>
+        <p>
+          So use the checks on this page to eliminate the operators who should not be on your property at
+          all. They will do that job well. Then judge the rest on whether the inspection came before the
+          treatment, whether the findings were explained to you before anything was applied, and whether
+          the person quoting the job was willing to tell you something that cost them money.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>If something goes wrong</h2>
+      <div class="measure">
+        <p>
+          Structural pest control is regulated by the Texas Department of Agriculture through its
+          Structural Pest Control Service. The old Structural Pest Control Board was abolished in 2007 and
+          its functions transferred, which is why older material refers to a board that no longer exists.
+        </p>
+        <p>
+          <strong>Complaints are accepted by phone on (866) 918-4481</strong>, or in writing to
+          spcs@TexasAgriculture.gov, and the Department publishes a complaint form. The mailing address is
+          P.O. Box 12847, Austin, TX 78711-2847.
+        </p>
+        <p>
+          <strong>What makes a complaint effective is the paperwork</strong> — which is why the sections
+          above are worth acting on before you ever need them. The service record, the products and their
+          EPA registration numbers, the dates, the invoice, the contract with its jurisdiction statement,
+          any sticker on the wall, and what you were told against what was written.
+        </p>
+        <p>
+          <strong>We would obviously rather resolve something on the phone</strong> than have it become a
+          filing, and in practice almost everything is a scheduling problem or a scope misunderstanding
+          rather than a genuine dispute. But the recourse exists whether or not a company mentions it.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          Everything in this section is a plain-language summary of published Texas rules and statutes,
+          compiled for property owners in our service area. It is not legal advice and we are not lawyers.
+          Rules are amended — several cited here were amended as recently as January 2023 — so the
+          citations are printed to let you read the current text rather than trust a summary on a pest
+          control website, including this one. If you find something out of date, tell us and it gets
+          corrected.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Compliance questions" />
+  <Cta
+    line="Ask us for the licence number, the categories and a certificate of insurance before you book anything — then ask everybody else the same three questions. It takes four minutes and it settles more than any review will."
+  />
+</BaseLayout>

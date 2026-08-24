@@ -1,0 +1,442 @@
+---
+/**
+ * Compliance cluster — who pays for pest control in a Texas rental.
+ *
+ * THE CENTRAL HONESTY POINT OF THIS PAGE, verified Aug 2026:
+ * Texas has NO statute expressly requiring landlords to provide pest control.
+ * Every section of Property Code ch. 92 subchapter B was enumerated and NONE
+ * mention pests, insects, vermin, rodents, bed bugs or infestation. Chapter 92
+ * has no pest subchapter. The widely-circulated claim on competitor blogs that
+ * "Texas law requires landlords to provide pest control" is false and this page
+ * says so.
+ *
+ * What IS true: an infestation reaches the landlord's repair duty only if it is
+ * a condition that "materially affects the physical health or safety of an
+ * ordinary tenant" under §92.052(a)(3)(A) — a fact question — AND the tenant
+ * follows the notice procedure AND is not delinquent in rent.
+ *
+ * Verified statute detail:
+ *  - §92.052(a): duty arises if (1) tenant specifies the condition in a notice
+ *    to the person/place rent is normally paid; (2) tenant is not delinquent in
+ *    rent when notice is given; (3) the condition materially affects the
+ *    physical health or safety of an ordinary tenant [or the 120°F hot water
+ *    device failure].
+ *  - §92.052(b): NO duty for a condition caused by the tenant, a lawful
+ *    occupant, a family member, or a guest/invitee — unless normal wear and tear.
+ *  - §92.052(d): notice must be in writing only if the lease is in writing and
+ *    requires written notice.
+ *  - §92.056(b): six conditions for landlord liability, including a SUBSEQUENT
+ *    written notice after a reasonable time, OR the original sent by certified
+ *    or trackable mail.
+ *  - §92.056(c) VERBATIM: landlord considered to have received notice when
+ *    actually received, or when USPS has ATTEMPTED delivery.
+ *  - §92.056(d): rebuttable presumption that SEVEN DAYS is a reasonable time,
+ *    rebuttable by date of notice, severity and nature of the condition, and
+ *    availability of materials, labor and utilities.
+ *  - §92.056(e): remedies — terminate; repair and deduct per §92.0561; deduct
+ *    without court action per §92.0561; judicial remedies per §92.0563.
+ *  - §92.056(g): the lease must state the §92.056 and §92.0561 remedies in
+ *    UNDERLINED OR BOLD print.
+ *  - §92.053: burden of proof.
+ *
+ * ⚠️ The research flagged that §92.056(b) and (e) could not be obtained fully
+ * verbatim from any accessible source. This page therefore paraphrases those
+ * two subsections and does NOT present them as quotations.
+ *
+ * Also used: H&S Code §343.011(c)(3) (unsanitary condition likely to attract or
+ * harbor mosquitoes, rodents, vermin) as the code-enforcement route, and
+ * §342.004 pulling it in for municipalities.
+ *
+ * NOT LEGAL ADVICE. The page says so twice and routes readers to a lawyer or
+ * to a tenant assistance service for anything turning on their facts.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compliance', path: '/compliance/' },
+  { name: 'Renters, landlords and pest control', path: '/compliance/landlord-tenant/' },
+];
+
+const quickAnswer =
+  'Texas has no statute that expressly requires a landlord to provide pest control, despite what a great many pest control websites claim. An infestation reaches a landlord’s repair duty only if it is a condition that materially affects the physical health or safety of an ordinary tenant under Property Code §92.052, and only if the tenant gives notice properly and is current on rent. Most of the time the lease decides it.';
+
+const faqs = [
+  {
+    q: 'Does Texas law require landlords to provide pest control?',
+    a: 'No. There is no Texas statute that says so, and the claim — which appears on a great many pest control company blogs — does not survive reading the code. Property Code chapter 92, subchapter B is the landlord repair duty, and none of its sections mention pests, insects, vermin, rodents, bed bugs or infestation. Chapter 92 has no pest subchapter at all. What exists is a general duty to repair conditions that materially affect the physical health or safety of an ordinary tenant, which an infestation may or may not amount to depending on the facts.',
+  },
+  {
+    q: 'So when is an infestation the landlord’s problem?',
+    a: 'When three things line up under §92.052(a): the tenant has specified the condition in a notice to the person or place where rent is normally paid; the tenant is not delinquent in rent at the time that notice is given; and the condition materially affects the physical health or safety of an ordinary tenant. That last one is a fact question, not a category. A severe rodent or roach infestation is a much stronger case than a few ants.',
+  },
+  {
+    q: 'What if the tenant caused it?',
+    a: 'Then generally there is no duty. Section 92.052(b) removes the landlord’s obligation for a condition caused by the tenant, a lawful occupant, a member of the tenant’s family, or a guest or invitee — unless the condition was caused by normal wear and tear. This is the provision most disputes actually turn on, and it is why the origin of an infestation matters so much.',
+  },
+  {
+    q: 'Does the notice have to be in writing?',
+    a: 'Under §92.052(d), only if the lease is in writing and requires written notice. But write it anyway. Section 92.056 makes the landlord liable only if, among other conditions, the tenant gave a subsequent written notice after a reasonable time — or sent the original by certified mail, return receipt requested, or another form of trackable mail. A dated written record is the difference between having a remedy and having a recollection.',
+  },
+  {
+    q: 'How long does a landlord get?',
+    a: 'A reasonable time, and §92.056(d) creates a rebuttable presumption that seven days is reasonable. That presumption can be rebutted by the date the notice was given, the severity and nature of the condition, and the availability of materials, labour and utilities. Note also §92.056(c): the landlord is considered to have received the notice when it was actually received, or when the postal service has attempted delivery.',
+  },
+  {
+    q: 'I am a landlord. What should I actually do?',
+    a: 'Address it in the lease so nobody is guessing, respond in writing and promptly to any notice, and treat quickly rather than argue about origin. A pest problem left in place across one tenancy tends to become a structural problem across several, and the treatment is almost always cheaper than the vacancy, the dispute or the damage.',
+  },
+  {
+    q: 'Can I call the city instead?',
+    a: 'Sometimes, and it is underused. Municipal code enforcement can reach a condition under Health and Safety Code §343.011(c)(3) — maintaining premises in a manner that creates an unsanitary condition likely to attract or harbor mosquitoes, rodents, vermin, or other disease-carrying pests — which cities pick up through §342.004. That is authority no pest control company has, and it is particularly useful when the source is a neighbouring property rather than your own unit.',
+  },
+  {
+    q: '¿La ley de Texas obliga al arrendador a pagar el control de plagas?',
+    a: 'No existe una ley en Texas que lo exija expresamente. El deber del arrendador bajo el Código de Propiedad §92.052 es reparar condiciones que afectan materialmente la salud o la seguridad física de un inquilino común, y una infestación puede o no llegar a ese nivel según los hechos. Lo que casi siempre decide el asunto es el contrato de arrendamiento. Léalo primero, y ponga cualquier aviso por escrito.',
+  },
+];
+---
+
+<BaseLayout
+  title="Renters, Landlords &amp; Pest Control in Texas"
+  description="Who actually pays for pest control in a Texas rental, what Property Code 92.052 does and does not require, and the myth almost every pest website repeats."
+  path="/compliance/landlord-tenant/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Compliance reference</p>
+      <h1>Renters, landlords and pest control in Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Search this question and you will find dozens of pest control companies telling you that Texas law
+          requires landlords to provide pest control.
+        </p>
+        <p>
+          <strong>It does not.</strong> There is no such statute. We went through Property Code chapter 92,
+          subchapter B — the landlord's repair duty — section by section, and not one of them mentions
+          pests, insects, vermin, rodents, bed bugs or infestation. Chapter 92 has subchapters on repair,
+          security deposits, security devices, disclosure of ownership, smoke alarms, utility cutoff,
+          retaliation and rental applications. There is no pest subchapter.
+        </p>
+        <p>
+          That does not mean tenants have no rights. It means the rights come from a general provision that
+          has to be applied to your particular facts, and from the lease — and the difference between those
+          two things and a flat statutory requirement is the difference between winning and losing an
+          argument with a landlord.
+        </p>
+        <p>
+          This page sets out what the law actually says. It is not legal advice, we are not lawyers, and
+          anything turning on your specific circumstances is worth ten minutes with somebody who is.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What §92.052 actually says</h2>
+      <div class="measure">
+        <p>
+          The operative provision is Texas Property Code §92.052, "Landlord's Duty to Repair or Remedy." It
+          works as a three-part test, and all three parts have to be satisfied before any duty arises at
+          all.
+        </p>
+        <p>
+          <strong>A landlord shall make a diligent effort to repair or remedy a condition if:</strong>
+        </p>
+        <p>
+          <strong>(1) the tenant specifies the condition in a notice</strong> to the person to whom or the
+          place where rent is normally paid. Not to a maintenance contractor, not to a neighbour, not to
+          whoever answers a leasing office phone if that is not where rent goes.
+        </p>
+        <p>
+          <strong>(2) the tenant is not delinquent in the payment of rent at the time notice is given.</strong>
+          This one is absolute and it is where a great many tenant claims die. Withholding rent first and
+          complaining second forfeits the protection.
+        </p>
+        <p>
+          <strong>(3) the condition materially affects the physical health or safety of an ordinary
+          tenant</strong> — or arises from the landlord's failure to provide and maintain a device
+          supplying hot water at a minimum of 120 degrees Fahrenheit.
+        </p>
+        <p>
+          <strong>That third limb is the whole question for pests</strong>, and it is deliberately a
+          standard rather than a list. "Materially affects the physical health or safety of an ordinary
+          tenant" is a fact question decided on the circumstances, and the phrase <em>ordinary tenant</em>
+          matters: the test is not how a particular person feels about insects, it is what the condition
+          does to a reasonable occupant.
+        </p>
+        <p>
+          <strong>In practice that means severity carries it.</strong> A heavy rodent infestation with
+          droppings in food preparation areas, or a serious German cockroach population, is a materially
+          different proposition from a seasonal ant trail or a spider in a garage. Nobody can tell you in
+          advance exactly where a court would draw that line, and any website that claims to is guessing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The exception that decides most disputes</h2>
+      <div class="measure">
+        <p>
+          Section 92.052(b) is short and it is the reason so many of these arguments go the way they do.
+        </p>
+        <p>
+          Unless the condition was caused by normal wear and tear, the landlord has no duty during the lease
+          term, or a renewal or extension, to repair or remedy a condition caused by the tenant, a lawful
+          occupant in the tenant's dwelling, a member of the tenant's family, or a guest or invitee of the
+          tenant.
+        </p>
+        <p>
+          <strong>Origin becomes the battleground</strong>, and pests are unusually susceptible to that
+          argument because they can plausibly arrive either way. A landlord can say the infestation came in
+          with the tenant's furniture. A tenant can say it was in the building before they moved in. Both
+          are often unprovable after the fact.
+        </p>
+        <p>
+          <strong>Which is why documentation at move-in matters more than people realise.</strong>
+          Photographs of the unit before anything comes in. A written move-in condition form, kept. Any
+          mention of a prior treatment, in writing. None of that is adversarial; it protects both sides,
+          because a landlord with a documented clean handover is equally well placed.
+        </p>
+        <p>
+          <strong>Bed bugs are the sharpest version of this.</strong> They are an introduction problem
+          rather than a sanitation problem — they arrive in luggage and second-hand furniture, and the
+          cleanest household is as exposed as any other. That makes them very difficult to attribute, and
+          in multi-unit property they move between units regardless of who introduced them. On a building
+          with adjacent units, treating one unit while the neighbouring one is untreated is frequently money
+          spent against continuous re-supply, whatever the paperwork says about fault.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The notice procedure, and why it has to be written</h2>
+      <div class="measure">
+        <p>
+          Section 92.052(d) says the notice must be in writing only if the lease is in writing and requires
+          written notice. Read on to §92.056 and you will see why you should write it regardless.
+        </p>
+        <p>
+          Section 92.056 sets out when a landlord is actually <em>liable</em> to the tenant, and it requires
+          a stack of conditions to be satisfied together: that the tenant gave notice to repair at the place
+          rent is normally paid; that the condition materially affects the physical health or safety of an
+          ordinary tenant; that after a reasonable time the tenant gave a <strong>subsequent written
+          notice</strong>, or that the original notice was sent by certified mail with return receipt or
+          another trackable form; that the landlord has had a reasonable time to repair after receiving it;
+          that the landlord has not made a diligent effort; and that the tenant was not delinquent in rent
+          when notice was given.
+        </p>
+        <p>
+          <strong>Two details are worth knowing precisely.</strong>
+        </p>
+        <p>
+          On receipt, §92.056(c) says: "a landlord is considered to have received the tenant's notice when
+          the landlord or the landlord's agent or employee has actually received the notice or when the
+          United States Postal Service has attempted to deliver the notice to the landlord." An attempted
+          delivery counts. A landlord who does not collect certified mail has still received it.
+        </p>
+        <p>
+          On timing, §92.056(d) creates a <strong>rebuttable presumption that seven days is a reasonable
+          time</strong> to repair — rebuttable by reference to the date of notice, the severity and nature
+          of the condition, and the availability of materials, labour and utilities. Seven days is a
+          starting point, not a deadline, and a genuinely difficult job can justify longer.
+        </p>
+        <p>
+          <strong>The remedies</strong>, if the landlord is liable, include terminating the lease, having
+          the condition repaired and deducting the cost under §92.0561, and judicial remedies under
+          §92.0563. Terminating carries a trade-off: on termination the tenant gets a pro rata rent refund
+          and the security deposit back, but forfeits the repair-and-deduct route and certain judicial
+          remedies.
+        </p>
+        <p>
+          <strong>And one provision that helps tenants find all of this:</strong> §92.056(g) requires the
+          lease itself to state the tenant's remedies under §92.056 and §92.0561 in underlined or bold
+          print. If your lease does not, that is worth noticing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What the lease actually does</h2>
+      <div class="measure">
+        <p>
+          Because the statute is a general standard rather than a pest rule, the lease is usually what
+          decides the question in practice. Read yours before assuming anything.
+        </p>
+        <p>
+          <strong>Many leases assign pest control expressly</strong>, to one party or the other. Some split
+          it by pest type — the landlord takes termites and rodents, the tenant takes ants and roaches.
+          Some split it by time, with the landlord responsible for anything reported in the first thirty or
+          sixty days and the tenant afterwards, on the theory that an early problem predates the tenancy.
+        </p>
+        <p>
+          <strong>Some require the tenant to allow access</strong> for scheduled treatment, which matters
+          in multi-unit property where a single refusing unit can defeat a building-wide programme.
+        </p>
+        <p>
+          <strong>Some require the tenant to report promptly</strong>, and a delayed report can weaken a
+          later claim.
+        </p>
+        <p>
+          <strong>What a lease cannot generally do</strong> is waive the landlord's statutory repair duty
+          outright — Property Code chapter 92 contains its own provisions about waiver and about the effect
+          on other rights, and a clause purporting to sign away the whole of subchapter B is worth asking a
+          lawyer about rather than accepting.
+        </p>
+        <p>
+          <strong>For landlords writing a lease:</strong> the clearer this clause is, the fewer arguments
+          you have. Silence does not favour you. It just means the question gets decided later, by somebody
+          else, on facts nobody documented.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>If you are the tenant</h2>
+      <div class="measure">
+        <p>
+          <strong>Read the lease first.</strong> It very likely addresses this, and it decides more than
+          the statute does.
+        </p>
+        <p>
+          <strong>Be current on rent.</strong> Not as a moral point — as a statutory one. Section
+          92.052(a)(2) is a hard condition and withholding rent before giving notice forfeits it.
+        </p>
+        <p>
+          <strong>Put it in writing, dated, to the place you pay rent.</strong> Describe the condition
+          specifically: what, where, how long, how bad. "Pests" is not a notice. "Rodent droppings in the
+          kitchen cabinets and under the sink, first noticed 3 August, ongoing" is.
+        </p>
+        <p>
+          <strong>Photograph everything</strong>, with dates. Droppings, damage, live insects, the state of
+          the unit. It costs nothing and it is the difference between a documented condition and a
+          disagreement.
+        </p>
+        <p>
+          <strong>Keep proof of delivery.</strong> Certified mail with return receipt, or another trackable
+          form, or a second written notice after a reasonable time. Section 92.056 effectively requires one
+          or the other.
+        </p>
+        <p>
+          <strong>Do not book a treatment yourself and expect reimbursement.</strong> This is the single
+          most common way tenants end up out of pocket. The repair-and-deduct route under §92.0561 has its
+          own conditions and limits, and it is not the same thing as hiring somebody and sending the
+          landlord the bill. Sort authorisation first.
+        </p>
+        <p>
+          <strong>If the source is a neighbouring property</strong>, municipal code enforcement may be more
+          effective than either your landlord or us. Health and Safety Code §343.011(c)(3) covers premises
+          maintained in a manner creating an unsanitary condition likely to attract or harbour mosquitoes,
+          rodents, vermin or other disease-carrying pests, and cities pick that up through §342.004. Name
+          the provision when you call rather than filing a general complaint — the
+          <a href="/compliance/weed-ordinances/">weed ordinance page</a> explains how cities pick that up.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>If you are the landlord</h2>
+      <div class="measure">
+        <p>
+          <strong>Say it in the lease.</strong> Assign responsibility explicitly, address access for
+          treatment, and require prompt reporting. Ambiguity costs you more than a clear clause ever will.
+        </p>
+        <p>
+          <strong>Respond in writing and quickly.</strong> The seven-day presumption in §92.056(d) is
+          rebuttable, but the rebutting is your job and it is much easier from a position of documented
+          diligence than from silence.
+        </p>
+        <p>
+          <strong>Treat rather than argue about origin.</strong> In almost every case the treatment costs
+          less than the vacancy, the dispute or the damage — and a pest problem left across one tenancy has
+          a way of becoming a building problem across several.
+        </p>
+        <p>
+          <strong>Use the turnover.</strong> An empty unit is the easiest possible property to treat
+          properly: full access, nothing to work around, no occupancy constraints on what can be applied.
+          The window between tenants is short and it is the best opportunity a rental property gets all
+          year.
+        </p>
+        <p>
+          <strong>Understand the multi-unit problem.</strong> On adjacent units, treating one while the
+          next is untreated is frequently spending against continuous re-supply. If you own the building,
+          the honest recommendation is often a larger job than the one you called about, and we will say so.
+        </p>
+        <p>
+          <strong>And know the notice rule that applies to you.</strong> Under 4 TAC §7.146, a licensee
+          must provide a pest control sign to the owner or manager at least forty-eight hours before a
+          planned indoor treatment at residential rental property with five or more units — and under
+          §7.148 the owner or manager, not the pest control company, then has to post it in an area of
+          common access, also at least forty-eight hours ahead, or distribute the information to each unit
+          being treated and those adjacent. That obligation is yours rather than ours, and it is worth
+          knowing before the truck arrives. Properties with fewer than five units fall under §7.147
+          instead, where the consumer information sheet is made available to each resident on request at
+          the time of treatment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why we published this</h2>
+      <div class="measure">
+        <p>
+          Because the version of this page that most of our competitors publish is wrong, and it is wrong
+          in a direction that suits them.
+        </p>
+        <p>
+          "Texas law requires your landlord to provide pest control" is a useful sentence for a company
+          selling treatments, because it converts a hesitant tenant into a booking and a nervous landlord
+          into a contract. It is also not true, and a tenant who acts on it — withholds rent, hires
+          somebody, expects reimbursement — can end up considerably worse off than if they had read the
+          lease.
+        </p>
+        <p>
+          The accurate position is less convenient and more useful: Texas has no pest control statute for
+          rentals, the general repair duty applies only when an infestation materially affects health or
+          safety, the notice procedure is strict, the tenant must be current on rent, and the landlord owes
+          nothing for a condition the tenant caused. Beyond that, the lease governs.
+        </p>
+        <p>
+          We work for both sides of this — landlords, property managers and tenants all book us — and we
+          will speak to whoever authorises the work, invoice whoever is paying, and coordinate access with
+          whoever lives there, without those needing to be the same person. What we will not do is tell
+          either side that the law says something it does not.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          This is a plain-language summary of published Texas statutes, compiled for property owners and
+          tenants in our service area. Nothing here is legal advice, and nobody at this company is a lawyer. Statutes are amended
+          and applied to particular facts. For a decision that matters, read the current text or speak to a
+          lawyer or a tenant assistance service.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Rental property pest control questions" />
+  <Cta
+    line="If you are a tenant, a landlord or a manager, say which on the first call. It changes the paperwork rather than the work, and sorting authorisation up front saves a wasted visit."
+  />
+</BaseLayout>

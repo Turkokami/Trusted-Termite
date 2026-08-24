@@ -1,0 +1,468 @@
+---
+/**
+ * Compliance cluster — the Texas structural pest control licence explained.
+ *
+ * The E-E-A-T anchor of the compliance tree, and the page that makes the
+ * published licence number mean something.
+ *
+ * Verified Aug 2026 against 4 TAC ch. 7 subchapter H (Structural Pest Control
+ * Service), retrieved via Cornell LII and Justia mirrors:
+ *  - §7.121 Types and Requirements of Licenses — seven classes, (a) business
+ *    licensee through (g) apprentice. A business licence is required for each
+ *    business LOCATION and must name a responsible certified commercial
+ *    applicator who does not hold that role anywhere else. The business licence
+ *    reflects only categories in which an active certified applicator is
+ *    employed, and requires the responsible applicator AND current general
+ *    liability insurance to be maintained at all times.
+ *  - §7.123 Insurance Requirements.
+ *  - §7.124 Structural License Categories — SEVEN official categories. The
+ *    official name of the termite category is "Termite and Wood Destroying
+ *    Insect Control", not "Termite".
+ *  - §7.126 Licensing Qualification Requirements — category exam + general
+ *    standards exam, plus 12 of the past 24 months supervised experience with
+ *    at least 6 months holding a technician licence, or an accredited
+ *    biological-sciences degree/certificate, or prior/out-of-state equivalents.
+ *  - §7.127 License Expiration and Renewal (annual).
+ *  - §7.132 Apprentice — min age 16, 20 classroom hours general standards
+ *    (2 hours in each of 10 subjects), plus 40 hours OJT and 8 classroom hours
+ *    per category, max 12 months, technician exam pass mark 70%.
+ *  - §7.133 Technician — 8 classroom + 40 OJT hours to add a category; 8 hours
+ *    verifiable training per year to renew, max 2 of which may be OJT.
+ *  - §7.134 Continuing Education — TWO general CEUs plus ONE per held category,
+ *    per CALENDAR year, at annual renewal. At least one general unit must cover
+ *    laws, pesticide safety, environmental protection or IPM. No course repeats
+ *    for credit within a calendar year. Self-study only every other year, never
+ *    two years running. Certificates kept two calendar years.
+ *
+ * HONESTY GATES:
+ *  - Do NOT assert whether TPCL 0918482 is the business licence number or the
+ *    applicator licence number. B-01 gave it as "TPCL". The page explains that
+ *    both exist and tells the reader to check the number against TDA records,
+ *    which is the point.
+ *  - Do NOT state a CEU figure for this business as fact beyond what the rule
+ *    arithmetic gives (2 general + 1 per category held).
+ *  - AgriLife's gloss that "only one CEU annually may come from self-study" is
+ *    an imprecise restatement of §7.134(e). Follow the rule text.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { BUSINESS } from '../../data/business';
+
+const o = BUSINESS.owner;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compliance', path: '/compliance/' },
+  { name: 'The Texas pest control licence', path: '/compliance/pest-control-licence/' },
+];
+
+const quickAnswer =
+  'Structural pest control in Texas is licensed by the Department of Agriculture under 4 TAC chapter 7. There are seven licence classes and seven categories, and a licence in one category does not cover another. Anyone can check a licence against the Department’s own records in about two minutes, which is the only free and conclusive piece of due diligence available in this trade.';
+
+const faqs = [
+  {
+    q: 'How do I check whether a pest control company is licensed in Texas?',
+    a: 'Ask for the licence number and check it against the Texas Department of Agriculture’s structural pest control records. You are looking for three things: that the licence exists, that it is current rather than expired or suspended, and that the categories on it cover the work being quoted. It takes about two minutes and it is the only piece of due diligence in this trade that is both free and conclusive.',
+  },
+  {
+    q: 'What are the licence classes?',
+    a: 'Seven, under 4 TAC §7.121. A business licence covers the company at a given location. A responsible certified commercial applicator is the named person accountable for training and supervising all pest control operations at that location, and may hold that role at only one location. A certified commercial applicator works without direct supervision within their categories. A technician works under direct supervision. An apprentice is a registered trainee who has not yet passed a technician exam. There are noncommercial equivalents for in-house applicators at schools, hospitals, apartments and government entities.',
+  },
+  {
+    q: 'What are the licence categories?',
+    a: 'Seven, under 4 TAC §7.124: Pest Control; Termite and Wood Destroying Insect Control; Lawn and Ornamental; Weed Control; Structural Fumigation; Commodity Fumigation; and Wood Preservation. Each is separately examined and separately maintained. Holding one confers nothing in another — which is why the category question matters more than the licence question when you are comparing quotes.',
+  },
+  {
+    q: 'Does a licence expire?',
+    a: 'Yes. Licences renew annually, and renewal is conditional on continuing education. Under 4 TAC §7.134 a certified applicator must obtain two general-training CEUs plus one unit in each category they hold, per calendar year. At least one general unit has to cover federal or state law, pesticide safety, environmental protection or integrated pest management. So somebody licensed in four categories is doing six units a year, every year, indefinitely.',
+  },
+  {
+    q: 'What licence do I need for a termite job specifically?',
+    a: 'The Termite and Wood Destroying Insect Control category. It is separate from Pest Control and it is not implied by it. There is also a rule about the paperwork: under 4 TAC §7.174 written estimates and disclosure documents for termite treatments may be prepared only by technicians or certified applicators licensed in the termite category, and the business licence number has to appear on the estimate.',
+  },
+  {
+    q: 'What is the difference between insured and bonded?',
+    a: 'They are different things and the industry blurs them constantly. A business licence under §7.121 requires the holder to maintain current general liability insurance at all times, and §7.123 sets the insurance requirements. A bond is a separate financial instrument. If a company describes itself as bonded, ask what the bond is and who holds it — and if a company describes itself as insured, you can ask for a certificate.',
+  },
+  {
+    q: 'What if a company will not give me a number?',
+    a: 'That is the answer. There is no legitimate reason to withhold it, and for termite work Texas already requires the business licence number to appear on the written estimate — so anyone declining to say it out loud is declining to do something they are going to have to do anyway.',
+  },
+  {
+    q: '¿Cómo verifico la licencia de una compañía de control de plagas?',
+    a: 'Pida el número de licencia y verifíquelo con el Departamento de Agricultura de Texas. Revise tres cosas: que la licencia exista, que esté vigente, y que las categorías cubran el trabajo que le están cotizando. La nuestra es TPCL ' + o.tpcl + ' y está publicada en todas las páginas de este sitio.',
+  },
+];
+---
+
+<BaseLayout
+  title="The Texas Pest Control Licence, Explained"
+  description="Licence classes, the seven categories, continuing education and how to verify any Texas pest control company in about two minutes. Cited to 4 TAC ch. 7."
+  path="/compliance/pest-control-licence/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Compliance reference</p>
+      <h1>The Texas pest control licence, explained</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Most people have never had a reason to learn how pest control licensing works in Texas, and the
+          industry does very little to explain it. That is a shame, because it is the one area where a
+          customer can verify something conclusively for free, and because the distinctions turn out to
+          matter a great deal when you are comparing two quotes.
+        </p>
+        <p>
+          Structural pest control here is regulated by the Texas Department of Agriculture, under Title 4
+          of the Texas Administrative Code, chapter 7, subchapter H. The subchapter runs to seven divisions
+          covering licensing, compliance and enforcement, unlawful acts, treatment standards and the school
+          IPM programme.
+        </p>
+        <p>
+          Our number is <strong>TPCL {o.tpcl}</strong>, printed on every page of this site. Everything below
+          explains what that number is, what it does and does not cover, and how to check it — on us and on
+          anybody else you are considering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>How to verify a licence — the two-minute version</h2>
+      <div class="measure">
+        <p>
+          Search the Texas Department of Agriculture's structural pest control licence records for the
+          number you have been given. You are checking three things, in this order.
+        </p>
+        <p>
+          <strong>One — does the licence exist.</strong> A number that returns nothing is the end of the
+          conversation.
+        </p>
+        <p>
+          <strong>Two — is it current.</strong> Licences renew annually and renewal depends on continuing
+          education being completed. A lapsed licence is not a paperwork inconvenience; an application made
+          under one is an unlicensed application on your property.
+        </p>
+        <p>
+          <strong>Three — and this is the one nobody checks — do the categories cover the work.</strong>
+          If you are being quoted a termite job, the Termite and Wood Destroying Insect Control category
+          needs to be on the licence. If it is not, the quote is not a quote; it is a problem waiting to
+          become yours. The same applies to lawn and weed spraying, which sits in two further categories of
+          its own.
+        </p>
+        <p>
+          Do this for everybody, not just for us. Reviews can be bought and photographs can be stock. A
+          licence record is a licence record, and it is the only free and conclusive check available in
+          this trade.
+        </p>
+        <p>
+          One caution on reading the results. A company holds a business licence, and the individuals
+          working for it hold their own applicator or technician licences. Those are separate records. If
+          the number you were given returns an individual rather than the company you are hiring, or the
+          other way round, that is not necessarily wrong — but it is worth one more question about which
+          business the person will be working for on your job.
+        </p>
+        <p>
+          If you would rather not search, the Structural Pest Control Service can be reached on
+          <strong>(866) 918-4481</strong>, or at Texas Department of Agriculture, P.O. Box 12847, Austin,
+          TX 78711-2847 — the same jurisdiction statement that the rules require to appear on termite
+          disclosure documents.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The seven licence classes</h2>
+      <div class="measure">
+        <p>
+          Set out at 4 TAC §7.121. The differences are about supervision and accountability, and they
+          describe very different things standing on your property.
+        </p>
+        <p>
+          <strong>Business licensee.</strong> The company. Any person engaged in structural pest control
+          for compensation must secure a business licence in the business's operating name, for each
+          business location including branch offices. Two conditions attach and both are continuous: the
+          location must have a designated responsible certified commercial applicator, and the business
+          must maintain current general liability insurance at all times. The business licence reflects only
+          those categories in which at least one active certified applicator is actually employed.
+        </p>
+        <p>
+          <strong>Responsible certified commercial applicator.</strong> The named individual the business
+          designates, responsible for the training and supervision of all pest control operations at that
+          location. The constraint worth knowing: a person may hold this role for only one business licence
+          location. They can work as an ordinary certified applicator elsewhere, but they cannot be the
+          responsible applicator in two places at once.
+        </p>
+        <p>
+          <strong>Certified commercial applicator.</strong> Licensed in one or more categories, and able to
+          perform pest control services, identifications and control measures without direct supervision —
+          though still under the general supervision of the responsible applicator. Limited to the
+          categories held.
+        </p>
+        <p>
+          <strong>Technician.</strong> Licensed in one or more categories, and performs pest control
+          services <em>under the direct supervision</em> of a certified applicator. That phrase is the
+          whole distinction.
+        </p>
+        <p>
+          <strong>Apprentice.</strong> A registered sales or service employee completing the training
+          required for a technician licence, who has not yet passed a technician exam. Registered to one
+          business, minimum age sixteen.
+        </p>
+        <p>
+          <strong>Certified noncommercial applicator</strong> and <strong>responsible certified
+          noncommercial applicator.</strong> The in-house equivalents, for employees of governmental
+          entities, apartment buildings, day cares, hospitals, nursing homes, hotels and motels,
+          warehouses, food-processing establishments and schools who do pest control on their own
+          employer's property rather than for hire.
+        </p>
+        <p>
+          <strong>Why it matters to you.</strong> When somebody arrives at your house, one of these
+          describes them, and the customer almost never asks which. A technician is competent and legal and
+          also, by definition, working under somebody else's supervision. Whether that supervisor has ever
+          seen your property is a fair question.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The seven categories</h2>
+      <div class="measure">
+        <p>
+          Set out at 4 TAC §7.124, with the Department's own definitions. These are the boundary of what
+          any licence holder may lawfully do.
+        </p>
+        <p>
+          <strong>Pest Control</strong> — the inspection or control of pests in and around structures, or
+          pest animals which may invade homes, restaurants, stores and other buildings. Cockroaches, ants,
+          fleas, flies, rodents, skunks and raccoons all sit here.
+        </p>
+        <p>
+          <strong>Termite and Wood Destroying Insect Control</strong> — the inspection or control of
+          termites, beetles or other wood destroying insects, and wood preservation, in structures,
+          including termites in nearby trees. Note the official name: it is not simply "termite", and it
+          covers more than termites.
+        </p>
+        <p>
+          <strong>Lawn and Ornamental</strong> — the inspection or control of pests or diseases of trees,
+          shrubs or other plantings.
+        </p>
+        <p>
+          <strong>Weed Control</strong> — the inspection or control of weeds in right-of-ways, around
+          homes, in a park, or in and around structures.
+        </p>
+        <p>
+          <strong>Structural Fumigation</strong> — the inspection or control of pests through fumigation of
+          structures not primarily intended to contain food, feed or grains.
+        </p>
+        <p>
+          <strong>Commodity Fumigation</strong> — fumigation of processed commodities, raw agricultural
+          commodities, or structures normally used to contain commodities.
+        </p>
+        <p>
+          <strong>Wood Preservation</strong> — pest control involving the addition of preservatives to wood
+          products, including the re-treatment of power-line poles.
+        </p>
+        <p>
+          <strong>What this business holds.</strong> {o.categories.join(', ')} — four of the seven. That
+          covers essentially everything a residential or light commercial property in this region needs.
+          It does <em>not</em> cover either fumigation category, which is why this site says plainly that
+          we do not fumigate and do not offer bed bug heat treatment, and why a structure that genuinely
+          needs tenting needs a different company.
+        </p>
+        <p>
+          <strong>And the arithmetic of holding four.</strong> Under §7.134 a certified applicator needs two
+          general-training units plus one unit in every category held, every calendar year. Four categories
+          is six units a year, indefinitely, as a condition of the licence staying valid.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What it takes to get one</h2>
+      <div class="measure">
+        <p>
+          Worth knowing because it tells you what the number represents.
+        </p>
+        <p>
+          <strong>An apprentice</strong> registers with a business within ten days of starting, must be at
+          least sixteen, and may not work without a licensed technician or certified applicator physically
+          present until the required training is documented. That training is two classroom hours in each
+          of ten general-standards subjects — twenty hours — plus forty hours of verifiable on-the-job
+          training and eight classroom hours in each licence category. After the training is documented, a
+          certified applicator must still be physically present for personal instruction three days a week.
+          The apprentice period caps at twelve months, after which all of the training must be repeated.
+        </p>
+        <p>
+          <strong>The technician exam</strong> has a pass mark of seventy percent. Adding a further category
+          to a technician licence takes another eight classroom hours and forty hours on the job. Renewal
+          requires the supervising certified applicator to certify eight hours of verifiable training in the
+          preceding calendar year, of which at most two may be on-the-job.
+        </p>
+        <p>
+          <strong>A certified commercial applicator</strong> must pass the appropriate category examination
+          <em>and</em> a separate general standards examination — and then satisfy one of several experience
+          routes. The ordinary one is verifiable employment in the pest control industry under the
+          supervision of a licensed certified applicator for at least twelve of the past twenty-four months,
+          while having held a technician's licence for at least six months in that period. The alternatives
+          are documented equivalent out-of-state experience, a degree or certificate in a biological science
+          related to pest control from an accredited two- or four-year institution, or having previously
+          held the licence.
+        </p>
+        <p>
+          <strong>The business licence has its own conditions</strong>, and they are ongoing rather than
+          one-time. Section 7.121(a) requires the licensee to maintain both the designated responsible
+          certified applicator and current general liability insurance at all times. Section 7.129 covers
+          what happens when a business loses its responsible applicator, which tells you the Department
+          treats that as a live compliance event rather than an administrative footnote.
+        </p>
+        <p>
+          <strong>None of it is a one-off.</strong> Renewal is annual and conditional on the CEUs. Which is
+          the point of the next section.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Continuing education, and why it is a consumer issue</h2>
+      <div class="measure">
+        <p>
+          4 TAC §7.134 governs this, and it is more demanding than most customers assume.
+        </p>
+        <p>
+          <strong>Two general units plus one per category, per calendar year</strong>, certified at annual
+          renewal. At least one of the general units must cover federal and state laws, pesticide safety,
+          environmental protection, or integrated pest management.
+        </p>
+        <p>
+          <strong>No repeats.</strong> An approved course may not be repeated for credit within the same
+          calendar year, and instructors cannot claim credit for courses they themselves teach.
+        </p>
+        <p>
+          <strong>Self-study is deliberately limited.</strong> The rule permits CEUs by approved self-study
+          course only every other year — self-study will not be accepted two years running, and doing so
+          results in a deficiency on review. The intention is plainly that a licence holder gets in front
+          of live instruction regularly.
+        </p>
+        <p>
+          <strong>Records are kept for two calendar years</strong>, and a licensee found non-compliant has
+          twenty days to produce them, with suspension in the deficient category available if they cannot.
+        </p>
+        <p>
+          <strong>The exemption for a first year.</strong> First-year licensees, and those newly certified
+          in an added category, are exempt for their initial period — which is sensible, because they have
+          just sat the examination that the CEUs exist to keep current. The Commissioner may also grant
+          hardship extensions.
+        </p>
+        <p>
+          <strong>Why any of this concerns you.</strong> Pesticide labels change. Products are withdrawn and
+          replaced. Resistance patterns shift. Regulations are amended — several of the rules cited on this
+          page were amended as recently as January 2023. A licence that renewed last month represents
+          somebody who has been kept current on all of that, and a licence that lapsed represents somebody
+          who has not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Questions worth asking any company, in order</h2>
+      <div class="measure">
+        <p>
+          These take about four minutes on the phone and they separate operators more reliably than
+          anything else a customer can do.
+        </p>
+        <p>
+          <strong>"What is your licence number?"</strong> There is one right answer and it is a number.
+          Hesitation, deflection, or an offer to bring it on the day is the finding.
+        </p>
+        <p>
+          <strong>"Which categories are on it?"</strong> The question almost nobody asks and the one that
+          most often matters. Match the categories against the work being quoted, not against the company's
+          general description of itself.
+        </p>
+        <p>
+          <strong>"Who will actually be doing the work, and what licence do they hold?"</strong> A certified
+          applicator, a technician under direct supervision, or an apprentice are three different answers.
+          None of them is wrong, and you are entitled to know which one is coming.
+        </p>
+        <p>
+          <strong>"Are you the responsible certified applicator for this location?"</strong> Useful with
+          small companies. Under §7.121(b) that role belongs to one named person per business location.
+        </p>
+        <p>
+          <strong>"Can I have a certificate of insurance?"</strong> Maintaining current general liability
+          cover is a continuing condition of the business licence. For commercial work you will usually need
+          the certificate anyway; for residential work, asking is a fair test of whether it exists.
+        </p>
+        <p>
+          <strong>"Will I get the Department's consumer information sheet?"</strong> For an indoor treatment
+          at a private residence, 4 TAC §7.147 requires the Department's own sheet to be made available —
+          a company may not substitute its own version, and it is published in English and Spanish.
+        </p>
+        <p>
+          <strong>And for termite work: "Will the written estimate carry the disclosure documents?"</strong>
+          4 TAC §7.174 requires them, sets out thirteen specific contents, and restricts their preparation
+          to licence holders in the termite category. It also requires a written estimate before any
+          treatment begins — a verbal figure may only be given as a general range.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Who regulates this, and what happens if something goes wrong</h2>
+      <div class="measure">
+        <p>
+          The Structural Pest Control Board that used to run this was abolished in 2007 and its functions
+          moved to the Texas Department of Agriculture, where they sit today as the Structural Pest Control
+          Service. If you find older material referring to the Board, that is why.
+        </p>
+        <p>
+          <strong>TDA accepts and investigates consumer complaints against licensed businesses</strong>, by
+          phone on (866) 918-4481 or in writing to spcs@TexasAgriculture.gov, and it publishes a complaint
+          form. The mailing address is P.O. Box 12847, Austin, TX 78711-2847.
+        </p>
+        <p>
+          <strong>What makes a complaint effective is paperwork</strong> — the service record, the products
+          used, the dates, what you were told against what was written, and any sign or consumer information
+          sheet you were given. Which is a good reason to keep all of it, whether or not you ever expect a
+          dispute.
+        </p>
+        <p>
+          We publish this because a guarantee that only works when the company feels like honouring it is
+          not really a guarantee. The recourse exists whether or not a company mentions it, and a company
+          that tells you about it up front has decided not to rely on you not knowing.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          This is a plain-language summary of published Texas rules, compiled for property owners. It is not
+          legal advice. Rules are amended — the citations are printed so you can read the current text
+          rather than trusting a summary on a pest control website, including this one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Licensing questions" />
+  <Cta
+    line="Ask us for the licence number and the categories before you book anything — then ask everybody else the same question. It is two minutes and it is the only check in this trade that settles the matter."
+  />
+</BaseLayout>
