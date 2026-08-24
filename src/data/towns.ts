@@ -1,10 +1,14 @@
 /**
  * towns.ts — the differentiator data set.
  *
+ * NO CAPACITY GATE. The owner wants all the work he can get; if demand outruns
+ * one truck he hires. Build the full surface. The ONLY thing that decides how
+ * much a town gets is how much real local data we hold for it — never how busy
+ * he is this week.
+ *
  * Keystone 6.3: each town row carries the facts that make its page impossible
  * to write as a template. The `tier` field decides how much gets built —
- * full (city + neighbourhoods + service matrix), triple, single, or area
- * (a mention on the locations hub only, no page of its own).
+ * full (city + neighbourhoods + service matrix), triple, single, or scaffold.
  *
  * Neighbourhood lists come verbatim from D-09. Soil, housing and character
  * come from K-05, K-06 and K-07. Fire ant status is 4 TAC §19.101 (TDA
@@ -23,7 +27,7 @@ export interface Town {
   /** Approximate road miles from Seminole. ESTIMATE — verify before publish. */
   distanceMiApprox: number;
   direction: string;
-  /** How much gets built. Capacity-gated per Keystone Part 13, Phase 3. */
+  /** How much gets built. Gated on DATA held, never on workload. */
   tier: 'full' | 'triple' | 'single' | 'scaffold';
   /** D-09 verbatim. Empty array = we have no local proper nouns yet and the
    *  page does not ship until we do. */
@@ -81,7 +85,7 @@ export const TOWNS: Town[] = [
     county: 'Gaines County',
     distanceMiApprox: 16,
     direction: 'north',
-    tier: 'single',
+    tier: 'triple',
     neighborhoods: [],
     housing: 'Older in-town housing stock with surrounding farm and acreage property.',
     soil: 'Sandy soils and caliche, the same profile as the rest of Gaines County.',
@@ -100,7 +104,7 @@ export const TOWNS: Town[] = [
     county: 'Yoakum County',
     distanceMiApprox: 22,
     direction: 'northwest',
-    tier: 'single',
+    tier: 'triple',
     neighborhoods: [],
     housing: 'In-town residential with oilfield housing and surrounding farmland.',
     soil: 'Sandy and caliche soils typical of the Yoakum County plains.',
@@ -120,7 +124,7 @@ export const TOWNS: Town[] = [
     county: 'Andrews County',
     distanceMiApprox: 40,
     direction: 'south',
-    tier: 'triple',
+    tier: 'full',
     neighborhoods: [],
     housing: 'High owner-occupancy — 76.7% — with a stable stock of family homes and surrounding acreage.',
     soil: 'Sandy and caliche soils, with the same foundation conditions as Gaines County.',
@@ -144,7 +148,7 @@ export const TOWNS: Town[] = [
     county: 'Dawson County',
     distanceMiApprox: 50,
     direction: 'northeast',
-    tier: 'single',
+    tier: 'triple',
     neighborhoods: [],
     housing: 'Older housing stock with farm and rural property around it.',
     soil: 'Farmed soils with clay content, differing from the sand around Seminole.',
@@ -160,7 +164,7 @@ export const TOWNS: Town[] = [
     county: 'Terry County',
     distanceMiApprox: 35,
     direction: 'northeast',
-    tier: 'single',
+    tier: 'triple',
     neighborhoods: [],
     housing: 'In-town residential and surrounding agricultural property.',
     soil: 'Sandy Terry County soils with caliche layers.',
@@ -176,7 +180,7 @@ export const TOWNS: Town[] = [
     county: 'Howard County',
     distanceMiApprox: 95,
     direction: 'southeast',
-    tier: 'single',
+    tier: 'triple',
     neighborhoods: [],
     housing: 'Mixed older housing stock, 64.7% owner-occupied.',
     soil: 'Drier Howard County soils with caliche.',
@@ -242,7 +246,7 @@ export const TOWNS: Town[] = [
     county: 'Lubbock County',
     distanceMiApprox: 75,
     direction: 'northeast',
-    tier: 'triple',
+    tier: 'full',
     neighborhoods: [],
     housing:
       'A larger urban environment — older established neighbourhoods, apartment communities and commercial property, with surrounding agricultural land.',
@@ -262,13 +266,44 @@ export const TOWNS: Town[] = [
     population: 273071,
     character: 'The Hub City — the largest market on the route and the furthest he will drive.',
   },
+  {
+    slug: 'kermit',
+    name: 'Kermit',
+    county: 'Winkler County',
+    distanceMiApprox: 85,
+    direction: 'south',
+    tier: 'scaffold',
+    neighborhoods: [],
+    housing: 'Highest owner-occupancy in the region at 84.5% — a stable stock of family homes.',
+    soil: 'Dry western-Basin caliche and sand.',
+    fireAnt: 'quarantined',
+    pestPressures: ['Fire ants — Winkler County IS quarantined', 'Scorpions sheltering under caliche pads and equipment yards', 'Rodents in outbuildings'],
+    weedOrdinance: null,
+    population: 6019,
+    character: 'The dry western edge of the Basin, where caliche pads and equipment yards collect the debris scorpions shelter under. No pest company is based in town.',
+  },
+  {
+    slug: 'stanton',
+    name: 'Stanton',
+    county: 'Martin County',
+    distanceMiApprox: 90,
+    direction: 'east',
+    tier: 'scaffold',
+    neighborhoods: [],
+    housing: 'Small-town residential with surrounding farm and ranch property.',
+    soil: 'Martin County farmed soils with caliche.',
+    fireAnt: 'unverified',
+    pestPressures: ['Scorpions', 'Field-driven ants and rodents'],
+    weedOrdinance: null,
+    population: 2500,
+    character: 'On the road between Midland and Big Spring, and squarely on the route east.',
+  },
 ];
 
-/** D-07 — wants these, does not serve them yet. Built, held, not published. */
-export const SCAFFOLD_TOWNS = [
-  { slug: 'kermit', name: 'Kermit', county: 'Winkler County' },
-  { slug: 'stanton', name: 'Stanton', county: 'Martin County' },
-];
+/** D-07 — he wants these and does not run them yet. They are built as real
+ *  pages at tier 'scaffold' so the day he starts serving them the switch is a
+ *  one-line change, not a new build. They stay noindex until then. */
+export const SCAFFOLD_TOWNS = TOWNS.filter((t) => t.tier === 'scaffold');
 
 export const townBySlug = (slug: string) => TOWNS.find((t) => t.slug === slug);
 export const publishedTowns = () => TOWNS.filter((t) => t.tier !== 'scaffold');

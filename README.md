@@ -1,17 +1,36 @@
 # Trusted Termite & Pest Solutions — Keystone build
 
-Astro static site. Tier 1.0 built to scale to 2.0. Build track 7A.
+Astro static site. Build track 7A (Keystone Part 0.1).
+
+**No capacity cap.** The owner wants all the work he can get; if demand outruns
+one truck he hires. The build targets the full geographic and service surface.
+The only thing that limits any page is whether we hold real local data for it —
+never how busy he is this week.
 
 ## Status
 
 **Phase 0** — work order written, not yet executed on the live site → `PHASE-0-WORK-ORDER.md`
 **Phase 1** — entity foundation, data layer, schema graph, templates, harness → **complete**
-**Phase 2+** — money pages, geo surface, authority layer → not started (blocked on budget)
+**Phase 2** — money pages → in progress. `pest-control` and `scorpion-control` written.
+**Phase 3** — geo surface → routes stood up, Seminole written, neighbourhood layer live.
 
-29 routes build. One page — `/locations/seminole/` — is written to full depth and
-is the gold-standard exemplar every later page matches. Twenty-one routes exist as
-`noindex` drafts so the link graph is whole and the harness can check it; they do
-not ship until they are written past the 3,000-word M1 floor.
+45 routes build. Three pages are written to full depth and pass the M1 floor:
+`/locations/seminole/` (the gold-standard exemplar), `/services/pest-control/`
+and `/services/scorpion-control/`. The rest exist as `noindex` drafts so the link
+graph is whole and the harness can check them; they ship as each is written past
+3,000 words.
+
+### Written to depth (indexable)
+- `/locations/seminole/` — 3,199 words · the exemplar every later page matches
+- `/services/pest-control/` — 3,002 words · the #1 money page (J-05)
+- `/services/scorpion-control/` — 3,000 words · the flagship differentiator
+
+### Next, in order
+1. `/` home — needs roughly 2,000 more words to the T1 contract
+2. `/services/termite-control/` — J-05 priority 2
+3. `/locations/midland/` and `/locations/odessa/` — the contested markets
+4. The remaining eight town pages, then the neighbourhood pages
+5. `/services/lawn-care/`, `/brush-and-lot-clearing/`, `/junk-removal/`
 
 ## Commands
 

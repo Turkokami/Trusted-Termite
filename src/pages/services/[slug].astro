@@ -11,7 +11,13 @@ import { TOWNS } from '../../data/towns';
 import { BUSINESS } from '../../data/business';
 
 export function getStaticPaths() {
-  return SERVICES.map(s => ({ params: { slug: s.slug }, props: { svc: s } }));
+  /** Hand-written spokes have their own files and are excluded here or the
+   *  routes collide. Add to this list as each one is written to depth.
+   *  Declared INSIDE the function — Astro hoists getStaticPaths, so a
+   *  module-scope const is not in scope when it runs. */
+  const WRITTEN = ['pest-control', 'scorpion-control'];
+  return SERVICES.filter(s => !WRITTEN.includes(s.slug))
+    .map(s => ({ params: { slug: s.slug }, props: { svc: s } }));
 }
 interface Props { svc: Service }
 const { svc } = Astro.props;

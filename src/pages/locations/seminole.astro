@@ -24,6 +24,9 @@ import Cta from '../../components/Cta.astro';
 import { BUSINESS } from '../../data/business';
 import { townBySlug } from '../../data/towns';
 import { SERVICES } from '../../data/services';
+import { neighborhoodsOf } from '../../data/neighborhoods';
+
+const hoods = neighborhoodsOf('seminole');
 
 const town = townBySlug('seminole')!;
 
@@ -227,9 +230,15 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
           number of rural and acreage properties on private and county roads outside the city limits.
           Named subdivisions we service regularly include:
         </p>
-        <ul class="tight">
-          {town.neighborhoods.map((n) => <li>{n}</li>)}
-        </ul>
+      </div>
+      <div class="grid c3" style="margin:1.4rem 0">
+        {hoods.map((n) => (
+          <a class="card" href={`/locations/seminole/${n.slug}/`}>
+            <h3>{n.name}</h3><p>{n.character}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure">
         <p>
           If you are outside town on a county road, that is normal work here rather than an exception —
           a good share of Gaines County is exactly that, and those properties usually need more perimeter

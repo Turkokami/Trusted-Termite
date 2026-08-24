@@ -1,0 +1,435 @@
+---
+/**
+ * T2 money page — the #1 build priority (J-05: "Recurring for sure then
+ * termites and commercial"). Hand-written to exemplar depth.
+ *
+ * Sources: C-01, C-11 (products), E-02 (pricing), E-04 (no contracts),
+ * E-09/E-10 (guarantee), K-01 (customer questions verbatim), K-02, K-03,
+ * K-05–K-07, F-14 (voice). Biology cited to Texas A&M AgriLife.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('pest-control')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Recurring Pest Control', path: '/services/pest-control/' },
+];
+
+const quickAnswer =
+  'Recurring pest control from Trusted Termite and Pest Solutions runs bi-monthly or quarterly across Gaines County and the Permian Basin. Service is generally $140 to $160 per visit with a $200 to $250 initial. No contracts, and re-services between visits are free for covered pests.';
+
+const faqs = [
+  {
+    q: 'How much do you charge for pest control?',
+    a: 'Recurring residential service is generally around $140 to $160 or more per visit, depending on the size of the home, the pest pressure and how often you want service. The initial visit is usually $200 to $250 because it is more extensive — inspecting the property, treating the interior where it is needed and doing a thorough exterior. Pricing depends on square footage and what is actually going on, so we would rather understand the problem first and give you an accurate number than hand everyone the same quote.',
+  },
+  {
+    q: 'Is the treatment safe for my kids and pets?',
+    a: 'Yes. We use professional pest-control products and apply them according to their EPA-approved labels. We take into account children, pets and the areas your family regularly uses when deciding how and where products are applied, and we will tell you about any precautions that need to be taken before or after treatment rather than leaving you to work it out.',
+  },
+  {
+    q: 'Do I need to leave the house while you spray?',
+    a: 'For most general pest-control services, no. We do ask that people and pets stay off treated areas until the product has completely dried. Certain specialised treatments have different requirements, and if that is the case we explain the instructions before we begin.',
+  },
+  {
+    q: 'How long does it take to start working?',
+    a: 'It depends on the pest and the product. Some pests start dying very quickly. Other treatments are designed on purpose to work over time so the pest carries the material back to where it is nesting — that is how you get a colony rather than the few you can see. It is also normal with some treatments to see activity briefly increase as pests are disturbed and come out of hiding.',
+  },
+  {
+    q: 'How often should I have the house treated?',
+    a: 'Bi-monthly or quarterly for ongoing protection. Which one depends on the property, the pressure, the time of year and what is around you — a house backing onto a field in Gaines County is a different proposition from one in the middle of a Midland subdivision. Regular service means staying ahead of problems rather than waiting until you have an infestation.',
+  },
+  {
+    q: 'If I still see bugs after you spray, will you come back?',
+    a: 'Yes. We stand behind the work with a 30-day service guarantee, and recurring customers also get service between their scheduled visits when they need it. If you are having an issue between services, call and we will get it taken care of. We would much rather come back out than have you sit with it until the next appointment.',
+  },
+  {
+    q: 'What does general pest control actually cover?',
+    a: 'A general service typically covers common crawling insects — ants, spiders, cockroaches and other household pests. Certain pests need a separate treatment plan: termites, bed bugs, fleas, ticks, rodents and other specialised problems each have their own approach and their own terms.',
+  },
+  {
+    q: 'Do you treat inside and outside, or just outside?',
+    a: 'On the initial service we typically treat both, so we establish a good starting point. After that, recurring service focuses mainly on maintaining the exterior barrier and addressing conditions around the home. Interior treatment is still available whenever it is needed or whenever you ask for it.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/pest-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{ name: svc.name, description: svc.summary }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest Control · licensed category · TPCL 0918482</p>
+      <h1>Recurring Pest Control</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Most people call a pest control company once, in July, because something has already got bad.
+          That works, in the sense that the immediate problem goes away. What it does not do is address
+          why it happened, and in West Texas the why is almost always outside the house rather than
+          inside it.
+        </p>
+        <p>
+          A recurring plan is not a subscription trap — there is no contract, and you can stop it
+          whenever you like. It is simply the difference between treating what is there today and
+          staying ahead of what walks in off the field in September.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The thing worth getting straight first</h2>
+      <div class="measure">
+        <p>
+          <strong>Seeing a pest does not mean your house is dirty.</strong> This is the single most
+          common thing people apologise for on the phone and it is not true. Some of the cleanest homes
+          we service still get ants, scorpions, spiders, cockroaches, rodents or even bed bugs.
+        </p>
+        <p>
+          Out here, pest activity is driven by weather, moisture, the fields around you, construction,
+          soil conditions and available entry points. A dry stretch pushes scorpions toward the house.
+          Harvest moves rodents. Heavy rain after a drought changes what is active within about a week.
+          None of that has anything to do with how often anybody vacuums.
+        </p>
+        <p>
+          The second thing worth saying: <strong>spraying what you can see does not solve it.</strong>
+          Killing a few visible ants, or spraying a scorpion on the patio, does nothing about where they
+          are coming from. Effective pest control means identifying the pest, finding the source,
+          understanding why it is there and choosing the right treatment — which is sometimes not a
+          spray at all.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What a service actually involves</h2>
+      <div class="measure">
+        <p>
+          <strong>The initial visit is the long one.</strong> It runs $200 to $250 and it is more
+          extensive on purpose: a walk of the property to work out what is happening and where it is
+          coming in, interior treatment where it is needed, and a thorough exterior. This is where the
+          conditions get found — the gap under the door sweep, the weep holes, the irrigation box, the
+          stack of material against the wall that is doing more harm than anybody realised.
+        </p>
+        <p>
+          <strong>Recurring visits maintain the barrier.</strong> After the initial, ongoing service
+          focuses mainly on the exterior and on the conditions around the home. Interior treatment stays
+          available any time it is needed or requested — it is not an upsell, it is just not usually
+          where the work is.
+        </p>
+        <p>
+          <strong>Bi-monthly or quarterly.</strong> Which one depends on the property, the pressure and
+          the season. A house on the edge of Seminole with open ground on two sides is not the same job
+          as one in the middle of Grassland Estates in Midland.
+        </p>
+      </div>
+
+      <h3 style="margin-top:2rem">What we use, by name</h3>
+      <div class="measure">
+        <p>
+          "We use safe, effective treatments" is what every pest control site in West Texas says, and it
+          tells you nothing. Here is the actual list for general pest work:
+        </p>
+        <ul class="tight">
+          <li><strong>Alpine WSG, Onslaught FastCap, Suspend PolyZone, Demand CS, Scion, Transport, Bifen LP, Talstar</strong> — the residual products that do the bulk of the exterior and interior work</li>
+          <li><strong>DeltaGard and DeltaDust</strong> — including dust into voids, weep holes and the places a liquid will not reach or will not last</li>
+          <li><strong>Precor IGR</strong> — an insect growth regulator, for breaking a cycle rather than killing what is visible</li>
+          <li><strong>Niban, Advance 375A, and professional roach and ant baits</strong> — where the point is to get material carried back to a colony</li>
+        </ul>
+        <p>
+          The product gets chosen for the pest, the property, the conditions and the label — not because
+          it is what happens to be on the truck. Valentin's own framing: <em>"We don't believe in using
+          one product for everything… The goal is to identify the problem, choose the right approach,
+          and solve it correctly — not just spray something and leave."</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we treat on a general plan</h2>
+      <div class="grid c2" style="margin-top:1.4rem">
+        <div class="card">
+          <h3>Ants</h3>
+          <p>
+            The most common call, and the one most often handled badly. Spraying the trail kills the
+            foragers and leaves the colony. Where it is the right approach we bait instead, so the
+            material gets carried back — then follow up to confirm activity is actually declining rather
+            than assuming it has.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Spiders</h3>
+          <p>
+            Brown recluse are found throughout Texas, indoors and out, and are active spring through
+            fall outdoors and year-round in climate-controlled interiors. They shelter in firewood
+            stacks, stored boxes in attics and low-traffic crevices. Black widows turn up in the same
+            kind of places. Treatment is about the harbourage, not the web you can see.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Cockroaches</h3>
+          <p>
+            German cockroaches are a different job from the occasional large roach that wanders in from
+            outside — one is a breeding population that needs a proper cleanout with baits and growth
+            regulators, the other is an exterior barrier problem. We will tell you which one you have.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Scorpions and occasional invaders</h3>
+          <p>
+            Covered on a general plan, though scorpions are enough of a specialty here that they have
+            their own page. Crickets, silverfish, centipedes, earwigs and the rest of the occasional
+            invaders come in for the same reason — a gap, and a reason to use it.
+            <a href="/services/scorpion-control/"> More on scorpion work →</a>
+          </p>
+        </div>
+      </div>
+      <div class="measure" style="margin-top:1.6rem">
+        <p>
+          <strong>Not on a general plan:</strong> termites, bed bugs, rodents, wildlife, fleas and ticks.
+          Each of those is a separate treatment plan with its own approach and its own terms. That is not
+          a technicality to catch you out — it is why the guarantee says what it says, and we would
+          rather be clear about it before you pay than after.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Through the year</h2>
+      <div class="measure">
+        <p>
+          Pest activity here changes through the year and weather moves the season around more than the
+          calendar does. A warm winter, heavy rain, drought, irrigation or a sudden temperature swing
+          can change what we are seeing from one month to the next. The general shape:
+        </p>
+        <p>
+          <strong>January–February</strong> are slower for insects — mostly rodents, cockroaches and
+          things looking for shelter indoors. <strong>March–April</strong> bring warmer ground and a
+          general wake-up in ants, spiders and termites. <strong>May–June</strong> is when it genuinely
+          picks up: ants, termites, spiders, wasps, fleas and ticks together.
+          <strong>June–August</strong> are the busiest months of the year, with heavy scorpion activity
+          on top of everything else.
+        </p>
+        <p>
+          <strong>September–October</strong> stay active because West Texas holds its heat well into the
+          fall. As it cools through <strong>October–November</strong>, rodents start moving toward
+          buildings. <strong>December</strong> shifts back to indoor pests and cleanout work.
+        </p>
+        <p>
+          The practical point: a plan started in April is doing its job by the time July arrives. A
+          plan started in July is playing catch-up.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What it costs, and what you are not signing</h2>
+      <div class="measure">
+        <ul class="tight">
+          <li><strong>Recurring service:</strong> around $140–$160+ per visit, by home size, pressure and frequency</li>
+          <li><strong>Initial service:</strong> $200–$250 — more extensive, and it sets the baseline</li>
+          <li><strong>One-time treatment:</strong> quoted on the property and the pest. Generally higher per visit than recurring, because it is solving the problem without an ongoing plan behind it</li>
+          <li><strong>No contract.</strong> None. Stop whenever you want</li>
+          <li><strong>Military discount</strong></li>
+          <li>Cash, check, card in person or online, Venmo, CashApp or Zelle</li>
+        </ul>
+        <p>
+          <strong>The guarantee.</strong> If a pest included in your treatment is still active within
+          thirty days, we come back, inspect and re-treat the affected area at no charge. Recurring
+          customers also get re-services between scheduled visits for covered pests.
+          <a href="/our-guarantee/">The full terms are written down</a>, including what is not covered,
+          because a guarantee you cannot be held to is not worth having.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where we run this service</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.filter((t) => t.tier !== 'scaffold').map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction}` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The same plan is a different job in different towns</h2>
+      <div class="measure">
+        <p>
+          This is the part that gets templated by companies running a route out of one city, and it is
+          the part that actually matters. Every town out here has its own conditions, so we do not treat
+          every property the same way.
+        </p>
+        <p>
+          <strong>Seminole and the smaller Gaines County communities</strong> sit in sandy soil, caliche,
+          open land and agricultural ground, with a lot of homes close to fields. That produces steady
+          pressure from ants, spiders, scorpions, rodents and occasional invaders arriving at the
+          perimeter rather than breeding inside. The housing is mixed — newer subdivisions, older
+          in-town properties, manufactured homes and a large number of rural and acreage properties on
+          private and county roads. An acreage property with outbuildings needs a different perimeter
+          plan from a house on a quarter-acre lot, and pricing follows the property rather than a
+          residential flat rate.
+        </p>
+        <p>
+          <strong>Midland</strong> is much more developed and densely populated — more commercial
+          property, apartments, newer subdivisions and heavy oilfield activity. That changes both the
+          type of pressure and where it comes from. It also puts you inside the fire ant quarantine,
+          which Gaines County is not, so the ant conversation is genuinely different sixty miles down
+          the road.
+        </p>
+        <p>
+          <strong>Odessa</strong> carries real rental turnover — the city ran a 21.3% rental vacancy rate
+          at the 2020 census — and turnover is the classic driver of bed bug and roach problems moving
+          between units. On a general plan there that often means paying closer attention to what is
+          arriving with tenants rather than what is walking in from outside.
+        </p>
+        <p>
+          <strong>Lubbock</strong> is different again: a larger urban environment with older established
+          neighbourhoods, apartment communities, commercial property and surrounding agricultural land.
+          Wind, dust, changing weather, irrigation, landscaping, construction and nearby fields all move
+          pest activity around in ways they simply do not in a town of eight thousand.
+        </p>
+        <p>
+          The underlying rule is the same everywhere: look at the town, the property type, the
+          construction, the soil, the landscaping, the surrounding environment and the specific pest,
+          then build the service around what that property actually needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Commercial pest control</h2>
+      <div class="measure">
+        <p>
+          Recurring plans run for commercial property as well as homes — apartments and property
+          management, restaurants and food service, hotels and motels, warehouses, retail and offices.
+          Those are the types actually worked rather than a list of everything a pest company could
+          theoretically service.
+        </p>
+        <p>
+          Two things are worth knowing if you manage property here. First, Texas Property Code §92.052
+          requires landlords to make diligent efforts to repair conditions that materially affect the
+          physical health or safety of an ordinary tenant, and pest problems can qualify. Second, under
+          4 TAC §7.146 a licensee must provide a pest control sign <strong>at least 48 hours before</strong>
+          a planned indoor treatment at residential rental property with five or more units, and at
+          workplaces, hotels, warehouses, food-processing facilities, schools and day care centres. The
+          Texas Department of Agriculture publishes a standard Spanish-language version of that sign.
+        </p>
+        <p>
+          If you are running units in Lubbock or Odessa, that is a duty to fix and a notice obligation
+          you need a vendor to help you meet. It is worth asking any company you are considering whether
+          they know the rule exists.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why people leave the bigger outfits</h2>
+      <div class="measure">
+        <p>
+          Valentin spent six years running operations and service for pest control branches in El Paso,
+          including a Terminix-Rentokil branch, before starting this company. He is direct about what
+          that taught him:
+        </p>
+        <blockquote style="border-left:4px solid var(--lime);padding-left:20px;margin:1.4rem 0;color:var(--ink-2)">
+          <p>
+            "Big companies can make customers feel like just another number. You get passed around, put
+            on hold, and rarely talk to the same person twice. That's actually the environment I came
+            from, and it helped shape what I <em>didn't</em> want my company to become. We want to know
+            our customers, take the time to understand their concerns, and service their property
+            correctly — not rush through a timed service just to get to the next stop."
+          </p>
+        </blockquote>
+        <p>
+          In practice that means the person who answers the phone is the person who shows up, and the
+          service is not being timed against a route target. It also means we would rather explain what
+          we think is happening and what it will cost before anything is booked, so nobody is agreeing
+          to a treatment they do not understand.
+        </p>
+        <p>
+          <a href="/about/">More about Valentin →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What the day actually looks like</h2>
+      <div class="measure">
+        <p>
+          <strong>Before the visit.</strong> You do not need to empty cupboards or move furniture for a
+          general service. If there is a specific room where you are seeing activity, say so when you
+          book — that is where the time goes. If anyone in the house is pregnant, immunocompromised, or
+          has a respiratory condition, mention it, because it changes product selection and placement.
+        </p>
+        <p>
+          <strong>On arrival.</strong> The walk comes first. Where are you seeing them, when, and how
+          many. Then the perimeter: the foundation line, the door sweeps, the weep holes, the utility
+          penetrations, the irrigation box, the water heater closet, and whatever is stacked against the
+          house. Most of the diagnosis happens outside, which surprises people who expected somebody to
+          go straight for a cupboard.
+        </p>
+        <p>
+          <strong>During.</strong> Exterior treatment around the foundation and at the entry points,
+          interior where it is needed on an initial or where you have asked. Dust into voids and weep
+          holes where a liquid will not hold. Baits placed where the point is to get material carried
+          back rather than to kill what is visible.
+        </p>
+        <p>
+          <strong>Afterwards.</strong> Keep people and pets off treated areas until the product has
+          dried. Expect to see <em>more</em> activity for a few days on some treatments — that is
+          disturbed insects coming out of hiding, not a failed treatment, and it is worth knowing in
+          advance so it does not read as a bad sign. If it is still going after a couple of weeks, that
+          is a call, not a wait.
+        </p>
+        <p>
+          <strong>Between visits.</strong> Recurring customers get re-services at no charge for covered
+          pests. Use them. Sitting with a problem until the next scheduled appointment helps nobody, and
+          it is the thing most people are too polite to do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Pest control questions" />
+  <Cta line="He answers his own phone about nine times out of ten. Tell him what you are seeing, where you are seeing it, how long it has been going on and what you have already tried — that is genuinely most of the diagnosis, and it costs nothing to ask." />
+</BaseLayout>

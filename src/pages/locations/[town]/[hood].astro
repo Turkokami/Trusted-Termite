@@ -1,0 +1,79 @@
+---
+/**
+ * T5 neighbourhood page. DRAFT — noindex until written to depth.
+ *
+ * These exist only where the OWNER named a real place at D-09. There is no
+ * generated neighbourhood on this site and there never will be: an invented
+ * subdivision is the fastest way to lose the credibility the whole build rests
+ * on. Lubbock has none yet — that is a question for him, not a gap to fill.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Cta from '../../../components/Cta.astro';
+import { NEIGHBORHOODS, neighborhoodsOf, type Neighborhood } from '../../../data/neighborhoods';
+import { townBySlug } from '../../../data/towns';
+import { SERVICES } from '../../../data/services';
+
+export function getStaticPaths() {
+  return NEIGHBORHOODS.map(n => ({ params: { town: n.town, hood: n.slug }, props: { hood: n } }));
+}
+interface Props { hood: Neighborhood }
+const { hood } = Astro.props;
+const town = townBySlug(hood.town)!;
+const siblings = neighborhoodsOf(hood.town).filter(n => n.slug !== hood.slug);
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: town.name, path: `/locations/${town.slug}/` },
+  { name: hood.name, path: `/locations/${town.slug}/${hood.slug}/` },
+];
+const quickAnswer = `Trusted Termite and Pest Solutions services ${hood.name} in ${town.name}, Texas. ${hood.character} Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, termites, rodents and general pests across ${town.county}.`;
+---
+<BaseLayout
+  title={`Pest Control ${hood.name}, ${town.name} TX`}
+  description={`Scorpion, termite and rodent control in ${hood.name}, ${town.name}. Seminole-based owner-operator, licensed TPCL 0918482. No contracts.`}
+  path={`/locations/${town.slug}/${hood.slug}/`}
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  service={{ name: `Pest Control in ${hood.name}`, description: hood.character, areaServed: [town.county] }}
+  noindex={true}
+>
+  <Crumbs items={crumbs} />
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{hood.name} · {town.name}, {town.county}</p>
+      <h1>Pest Control in {hood.name}</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>{hood.character}</p>
+        <p><strong>Construction.</strong> {hood.housing}</p>
+        <h2 style="margin-top:1.8rem">What gets called in from here</h2>
+        <ul class="tight">{hood.pressures.map(p => <li>{p}</li>)}</ul>
+        <p><a href={`/locations/${town.slug}/`}>← All of {town.name}</a></p>
+      </div>
+      {siblings.length > 0 && (
+        <>
+          <h2 style="margin-top:2rem">Nearby in {town.name}</h2>
+          <div class="grid c3" style="margin-top:1rem">
+            {siblings.map(s => (
+              <a class="card" href={`/locations/${town.slug}/${s.slug}/`}>
+                <h3>{s.name}</h3><p>{s.character}</p>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+      <h2 style="margin-top:2rem">Services here</h2>
+      <div class="grid c3" style="margin-top:1rem">
+        {SERVICES.filter(s => s.priority <= 2).map(s => (
+          <a class="card" href={`/services/${s.slug}/`}><h3>{s.name}</h3><p>{s.summary}</p></a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <Cta market={`${hood.name}, ${town.name}`} />
+</BaseLayout>

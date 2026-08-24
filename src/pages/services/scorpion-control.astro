@@ -1,0 +1,429 @@
+---
+/**
+ * T2 money page — the flagship differentiator for this market.
+ *
+ * Scorpions are the pest West Texans actually fear, exclusion work is
+ * high-margin and defensible, and it connects straight to the lawn, brush and
+ * junk lines because debris IS the harbourage. No competitor audited leads with
+ * this — Fox leads with ants.
+ *
+ * Biology and the prevention list are Texas A&M AgriLife Extension. Method,
+ * products and voice from the owner intake (C-11, F-14, K-02).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('scorpion-control')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Scorpion Control & Exclusion', path: '/services/scorpion-control/' },
+];
+
+const quickAnswer =
+  'Scorpion control in West Texas is mostly exclusion work. Trusted Termite and Pest Solutions seals the four places striped bark scorpions actually get in — weep holes, utility penetrations, the water heater closet and the irrigation box — then treats the perimeter and harbourage around the structure.';
+
+const faqs = [
+  {
+    q: 'What kind of scorpion is in my house?',
+    a: 'Almost certainly the striped bark scorpion, Centruroides vittatus. Texas A&M AgriLife calls it the most common and widespread scorpion in Texas — about two and a half inches, light brown, with two broad dark stripes down the back and a dark triangle above the eyes. Texas has eighteen described scorpion species, but this is the one turning up in West Texas houses.',
+  },
+  {
+    q: 'Is a scorpion sting here dangerous?',
+    a: 'Painful, not lethal. AgriLife describes stings as painful with local swelling and itching that can persist for several days, and numbness and swelling lasting from minutes to days. No Texas scorpion is lethal to humans, and the venom is less potent than the Arizona species people have usually read about. That said, a sting to a child, an elderly person or anyone with an allergy history is worth a call to a doctor.',
+  },
+  {
+    q: 'Why are scorpions suddenly getting into my house?',
+    a: 'Usually because it has been dry. AgriLife entomologist Wizzie Brown puts it plainly: striped bark scorpions wander indoors when they need a better place to be, if it gets excessively dry outside or cold. They also move in when landscaping or construction disturbs their habitat. That makes a dry stretch a better predictor than the calendar — which is genuinely useful out here, because it means you can see it coming.',
+  },
+  {
+    q: 'When is scorpion season in West Texas?',
+    a: 'July and August are the peak. Mating occurs in the fall, spring and early summer, and heat through mid-summer drives them toward houses. They are nocturnal, so most of what you find during the day is where they ended up rather than where they were going.',
+  },
+  {
+    q: 'How are they getting in?',
+    a: 'On most slab homes here it is four places: the weep holes in the brick, the utility and plumbing penetrations, the water heater closet, and the irrigation valve box. They also climb well — AgriLife notes they are frequently discovered in attics, which surprises people who assume a scorpion stays at ground level. Doors with worn weather stripping and gaps under garage doors account for most of the rest.',
+  },
+  {
+    q: 'Does spraying actually work on scorpions?',
+    a: 'Treatment works. Treatment on its own, without the sealing and the harbourage removal, does not hold. Scorpions have a hard exoskeleton and a habit of sheltering under things, so a perimeter spray with nothing else behind it tends to produce a good week and then a return. The order that works is: find the entry points, seal them, remove the harbourage, then treat.',
+  },
+  {
+    q: 'What can I do myself before you get here?',
+    a: 'Quite a lot, and AgriLife publishes the list. Seal pipe and wire penetrations. Keep window and door weather stripping in good order. Trim vegetation overhanging the house. Do not stack firewood against the wall or near a door. Clean the gutters. Block weep holes with copper mesh. Move debris piles, boards and stored material away from the foundation — that is where they shelter, and it is the single highest-value thing you can do without a licence.',
+  },
+  {
+    q: 'Can you clear the debris as well as treat?',
+    a: 'Yes, and it is usually one job rather than two. Dead vegetation, stacked material, boards and junk piles are on AgriLife’s own list of scorpion harbourage. We do brush and lot clearing and junk removal alongside the pest side, so the pile gets hauled and the ground it was sitting on gets treated on the same visit.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/scorpion-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{ name: svc.name, description: svc.summary }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest Control · licensed category · TPCL 0918482</p>
+      <h1>Scorpion Control &amp; Exclusion</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Scorpions are the pest people out here genuinely worry about. Not because they are the most
+          destructive — they are not, termites and rodents cost far more money — but because finding one
+          on the bathroom floor at two in the morning is a different kind of problem from finding ants
+          on the counter.
+        </p>
+        <p>
+          They are also the pest most often treated badly, because the obvious answer is to spray and
+          the correct answer is mostly to seal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What you are actually dealing with</h2>
+      <div class="measure">
+        <p>
+          The striped bark scorpion, <em>Centruroides vittatus</em>. Texas A&amp;M AgriLife calls it the
+          most common and widespread scorpion in Texas: roughly two and a half inches, light brown, two
+          broad dark stripes down the back, a dark triangle above the eyes. Populations out toward Big
+          Bend are less strongly marked.
+        </p>
+        <p>
+          Three facts about its behaviour explain almost everything about how it gets treated. It is
+          <strong>nocturnal</strong>, so what you find in daylight is where it stopped rather than where
+          it was headed. It <strong>shelters under things</strong> — AgriLife lists rocks, boards,
+          debris, dead vegetation and fallen logs, and specifically associates it with human dwellings.
+          And it <strong>climbs</strong>, which is why they are frequently discovered in attics and why
+          "it can't get up there" is usually wrong.
+        </p>
+        <p>
+          The sting is painful and produces local swelling and itching that can persist for several days,
+          with numbness and swelling lasting anywhere from minutes to days. No Texas scorpion is lethal.
+          That is worth saying clearly, because the fear is doing more work than the risk — and fear is
+          exactly what this trade tends to sell on.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why they come inside, and when</h2>
+      <div class="measure">
+        <p>
+          AgriLife extension entomologist Wizzie Brown: striped bark scorpions <em>"can wander indoors
+          when they need a better place to hang out, if it gets excessively dry outside, or cold."</em>
+          They also move in when landscaping or construction disturbs the ground they were living in.
+        </p>
+        <p>
+          That is a genuinely useful rule out here, because it means <strong>drought is a forecast.</strong>
+          A long dry stretch in June is a reliable predictor of a scorpion problem in July, and the time
+          to do exclusion work is before that rather than during it. New construction nearby does the
+          same thing — turning ground over moves everything living in it somewhere else, and somewhere
+          else is often the house next door.
+        </p>
+        <p>
+          <strong>Peak season is July and August.</strong> Mating happens in the fall, spring and early
+          summer. If you have never called anybody about a scorpion and then suddenly do, it was almost
+          certainly one of those two months.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The four ways they get into a West Texas house</h2>
+      <div class="grid c2" style="margin-top:1.4rem">
+        <div class="card">
+          <h3>1 · Weep holes</h3>
+          <p>
+            The gaps every brick veneer has at the base of the wall, there on purpose to let moisture
+            out. They also let scorpions in, straight into the wall void. AgriLife's own recommendation
+            is to block them with <strong>copper mesh</strong> — it stops the scorpion without stopping
+            the drainage, which is why stuffing them with foam or caulk is the wrong fix.
+          </p>
+        </div>
+        <div class="card">
+          <h3>2 · Utility and plumbing penetrations</h3>
+          <p>
+            Every pipe, wire and conduit that passes through the envelope is a hole somebody drilled,
+            and most were never sealed properly afterwards. On a slab home these run at the exact height
+            a scorpion is already walking.
+          </p>
+        </div>
+        <div class="card">
+          <h3>3 · The water heater closet</h3>
+          <p>
+            An exterior-access closet with penetrations, often a gap at the base, and usually the least
+            inspected part of the house. On a lot of homes here it is the single most productive place
+            to look.
+          </p>
+        </div>
+        <div class="card">
+          <h3>4 · The irrigation valve box</h3>
+          <p>
+            Sunken, sheltered, damp and connected to the foundation by trenched pipe. It is close to
+            ideal habitat, and it sits within a few feet of the wall on most properties with a system.
+          </p>
+        </div>
+      </div>
+      <div class="measure" style="margin-top:1.6rem">
+        <p>
+          Worn door sweeps, gaps under garage doors and failing window seals account for most of the
+          rest. None of this is exotic — it is just the part that gets skipped when the job is priced as
+          a spray.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How we do the work</h2>
+      <div class="measure">
+        <p><strong>1 · Inspect before anything gets sprayed.</strong> Walk the perimeter, find the entry
+        points, find the harbourage. On a West Texas slab that means the weep holes, the water heater
+        closet, the irrigation box and the utility penetrations, plus whatever is stacked against the
+        house.</p>
+
+        <p><strong>2 · Seal what should not be open.</strong> Copper mesh into weep holes. Penetrations
+        sealed. Door sweeps and weather stripping flagged where they have failed. This is the part that
+        holds after the treatment has worn off, and it is the reason exclusion work is worth paying for.</p>
+
+        <p><strong>3 · Remove the harbourage.</strong> Debris piles, stacked boards, firewood against the
+        wall, dead vegetation. AgriLife lists these as exactly what scorpions shelter under. We do brush
+        clearing and junk removal, so this can be the same visit and the same invoice rather than a
+        conversation about who you need to call next.</p>
+
+        <p><strong>4 · Then treat.</strong> Residual product around the foundation and at the entry
+        points — <strong>Demand CS</strong> and <strong>Talstar</strong> for the perimeter, with
+        <strong>DeltaDust</strong> into voids, weep holes and the places a liquid will not reach or will
+        not last. Dust matters more than people expect on scorpion work, because so much of the
+        harbourage is a void rather than a surface.</p>
+
+        <p><strong>5 · Come back.</strong> Scorpion work is not usually one visit. The bi-monthly or
+        quarterly plan exists because the pressure is seasonal and the exclusion needs checking after the
+        first summer has tested it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What you can do yourself, for free</h2>
+      <div class="measure">
+        <p>
+          This is AgriLife's own prevention list, and we are not going to pretend it is a trade secret.
+          Some of it you can do this weekend, and it will do more than a single treatment would:
+        </p>
+        <ul class="tight">
+          <li>Seal pipe and wire penetrations where they enter the house</li>
+          <li>Keep window and door weather stripping in good order</li>
+          <li>Trim vegetation that overhangs or touches the house</li>
+          <li>Do not stack firewood against a wall or near a door</li>
+          <li>Clean the gutters</li>
+          <li>Block weep holes with copper mesh</li>
+          <li>Move debris, boards and stored material away from the foundation</li>
+          <li>Shake out shoes, gloves and stored clothing — they end up in things</li>
+        </ul>
+        <p>
+          If you do all of that and still have a problem, then it is worth paying somebody. That is the
+          honest order, and telling you so costs us a job occasionally.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where we run this service</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.filter((t) => t.tier !== 'scaffold').map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction}` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:1.8rem">
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>. No contract. Priced on
+          the property rather than a flat rate, because a house with an irrigation system, a firewood
+          stack and open ground behind it is a different job from one without.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The yard is part of the treatment</h2>
+      <div class="measure">
+        <p>
+          This is the connection most pest companies never make, because most pest companies only do
+          pest control. AgriLife's list of what striped bark scorpions shelter under is: rocks, boards,
+          debris, dead vegetation and fallen logs. Read that again as a description of a West Texas
+          side yard.
+        </p>
+        <p>
+          The stack of lumber left over from a project. The pile of brush from last year's trimming.
+          The old swamp cooler behind the shed. The firewood against the wall. Every one of those is
+          harbourage sitting within a few feet of the foundation, and no amount of perimeter spray
+          outcompetes a permanent shelter with food and shade in it.
+        </p>
+        <p>
+          We do brush and lot clearing and junk removal alongside the pest side, which means the debris
+          pile gets hauled and the ground it was sitting on gets treated on the same visit. That is not
+          a bundling exercise — it is the actual fix, and splitting it across two companies is how it
+          ends up half done. Whoever hauls it away usually does not treat, and whoever treats usually
+          works around it.
+        </p>
+        <p>
+          There is a second reason this matters in some towns. Several cities on the route enforce weed
+          and nuisance standards with real deadlines and real fees — Lubbock at eight inches averaged
+          across the lot with a $175 administrative fee per occurrence, Odessa at twelve inches with
+          equipment and labour billed by the hour, Midland at eighteen, Andrews at twelve on smaller
+          lots. Outside city limits, Texas Health &amp; Safety Code §343.011 covers weeds over thirty-six
+          inches within three hundred feet of a residence. If you have had a notice, the clearing work
+          and the scorpion problem are frequently the same job.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How this differs across the route</h2>
+      <div class="measure">
+        <p>
+          <strong>Seminole, Seagraves, Denver City and the Gaines County acreage.</strong> Sandy soil,
+          caliche, open ground and homes close to fields. Scorpion pressure here arrives at the
+          perimeter and the structures that matter are often outbuildings as much as houses. Larger lots
+          mean more perimeter to treat and more places to shelter — the treatment is bigger than a
+          quarter-acre suburban job and priced accordingly.
+        </p>
+        <p>
+          <strong>Andrews.</strong> Desert bark scorpions alongside striped bark, plus black widow and
+          brown recluse in the same harbourage. High owner-occupancy and a stable stock of family homes,
+          which usually means long-standing landscaping and long-standing shelter to deal with.
+        </p>
+        <p>
+          <strong>Midland and Odessa.</strong> More developed, more construction, and construction is a
+          scorpion driver in its own right — turning ground over displaces everything living in it.
+          Newer subdivisions with imported fill around the foundations behave differently from
+          established neighbourhoods with mature landscaping.
+        </p>
+        <p>
+          <strong>Kermit and the western edge.</strong> Caliche pads and equipment yards collect exactly
+          the debris scorpions shelter under, which is why industrial and oilfield-adjacent property
+          often has a worse problem than the houses near it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Three things people get told that are not quite right</h2>
+      <div class="measure">
+        <p>
+          <strong>"A black light will solve it."</strong> Scorpions fluoresce under UV, and a black
+          light is genuinely useful for finding out how many you have and where they are moving at
+          night. It is a diagnostic tool, not a treatment. Walking the perimeter with one after dark is
+          worth doing — just do not expect it to change anything on its own.
+        </p>
+        <p>
+          <strong>"Cats and chickens keep them down."</strong> Both will kill scorpions. Neither
+          addresses the entry points, and a cat that hunts scorpions is a cat that occasionally gets
+          stung. It is not a plan.
+        </p>
+        <p>
+          <strong>"You need the strongest product available."</strong> Product strength is not usually
+          the limiting factor on scorpion work — placement is. A properly chosen residual at the right
+          entry points and a dust into the voids will outperform something harsher applied to the wrong
+          surfaces, and the label sets the rate either way. If somebody is selling you on the chemical
+          rather than the inspection, that is worth noticing.
+        </p>
+        <p>
+          What actually moves the needle is unglamorous: find the openings, close them, take away the
+          shelter, treat properly, and come back and check it after the first summer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How a scorpion job gets priced</h2>
+      <div class="measure">
+        <p>
+          There is no flat rate, and any company quoting one over the phone without asking anything has
+          not understood the job. What moves the number:
+        </p>
+        <ul class="tight">
+          <li><strong>How much perimeter there is.</strong> A quarter-acre lot in town and a five-acre property with outbuildings are not the same treatment.</li>
+          <li><strong>How much sealing is needed.</strong> A house with intact weather stripping and no weep-hole access is a short job. One with failed door sweeps, open penetrations and an accessible water heater closet is not.</li>
+          <li><strong>Whether there is harbourage to clear.</strong> If a brush pile or a stack of material has to move first, that is real work and it is quoted with the rest rather than discovered afterwards.</li>
+          <li><strong>Whether there is an irrigation system.</strong> Valve boxes are reliable entry points and reliable shelter, and they take time to do properly.</li>
+          <li><strong>Whether it is a one-off or a plan.</strong> A recurring plan carries the seasonal follow-up that scorpion work usually needs; a single visit does not, and it costs more per visit because of it.</li>
+        </ul>
+        <p>
+          Recurring pest control here generally runs $140 to $160 or more per visit with a $200 to $250
+          initial, and scorpion work sits inside that where it is a maintenance problem. Where it needs
+          real exclusion — sealing, mesh, clearing — that is quoted on the property after somebody has
+          walked it. There is no contract either way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Kids, pets and the honest answer</h2>
+      <div class="measure">
+        <p>
+          Scorpions are the pest that worries parents most out here, and the fear is understandable
+          even though the risk is smaller than it feels. The honest position: no Texas scorpion is
+          lethal to humans, the venom is less potent than the Arizona species most of the alarming
+          stories come from, and the usual outcome of a sting is a painful few hours and some swelling
+          that can linger for days. A sting to a small child, an elderly person, or anyone with an
+          allergy history is still worth a call to a doctor.
+        </p>
+        <p>
+          On the treatment side, the products are applied to their EPA-approved labels, with children,
+          pets and the areas your family actually uses taken into account when deciding where anything
+          goes. Dusts go into voids and weep holes — places nobody is touching — rather than onto
+          surfaces. Precautions get explained before we start rather than left for you to work out.
+        </p>
+        <p>
+          The most reassuring thing we can tell a parent, though, is not about chemistry. It is that
+          the sealing work is what keeps them out, and sealing does not wear off. A treated perimeter
+          protects a house for a season. A sealed weep hole protects it for as long as the mesh stays in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Scorpion questions" />
+  <Cta line="If you are finding them indoors, say where and how many, and whether it has been dry. That usually tells us most of what we need before anybody drives out." />
+</BaseLayout>

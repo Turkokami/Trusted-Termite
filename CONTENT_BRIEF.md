@@ -252,7 +252,19 @@ and the harness will fail the build.
 
 ---
 
-## 10 · Held — do not write these yet
+## 10 · Scope
+
+**There is no capacity cap on this build.** Build the full surface — every town
+he serves, every neighbourhood he named, every confirmed service, the Spanish
+tree, the pest library, the commercial verticals. If the site brings in more work
+than one truck can run, he hires; that is his call, not a reason to build less.
+
+The only limiter is data. A page ships when we hold enough real local fact to
+write it past 3,000 unique words, and not before.
+
+---
+
+## 11 · Held — do not write these yet
 
 | What | Why | Unblocks when |
 |---|---|---|
