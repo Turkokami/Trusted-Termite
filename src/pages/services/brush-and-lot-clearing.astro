@@ -1,0 +1,388 @@
+---
+/**
+ * T2 money page — the most uncontested content in this entire market.
+ *
+ * Five cities on the route enforce weed and nuisance standards with published
+ * heights, deadlines and itemised abatement costs, plus Texas Health & Safety
+ * Code Ch. 342 (cities) and Ch. 343 (unincorporated). NOT ONE competitor
+ * audited has a single page about any of it — and the homeowner holding the
+ * notice is searching that night.
+ *
+ * Every figure below is from municipal code or state statute. Where a town's
+ * standard is not verified (Seminole, Lamesa, Big Spring, Brownfield,
+ * Seagraves) it is deliberately absent rather than guessed.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('brush-and-lot-clearing')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Brush & Lot Clearing', path: '/services/brush-and-lot-clearing/' },
+];
+
+const quickAnswer =
+  'Overgrown lots, fence lines and acreage cleared and hauled across Gaines County and the Permian Basin. Lubbock enforces an eight-inch standard, Odessa twelve, Midland eighteen, and unincorporated county land falls under the state thirty-six-inch rule. If you have a notice, tell us the deadline.';
+
+const faqs = [
+  {
+    q: 'The city sent me a letter. How long do I actually have?',
+    a: 'It depends which city. Lubbock gives seven days from notice. Odessa gives five days to request a hearing or seven to clear it. Andrews gives ten days, with immediate action if growth exceeds four feet. Under the state framework for cities, Health & Safety Code §342.006 lets a municipality do the work and bill you if you fail to comply within seven days of notice. In unincorporated county areas the window is longer — §343 gives you until the thirtieth day after notice before criminal penalty attaches. Tell us the date on the letter when you call and we will work to it.',
+  },
+  {
+    q: 'What does it cost if I just let the city do it?',
+    a: 'More than having it done, and it does not go away. Odessa itemises it: major equipment $56 per hour, labour $21 per hour, a $125 flat administration fee, landfill $52.50 per ton, plus a 10% late fee. Lubbock charges a $175 administrative fee per occurrence on top of the work. In both cases the cost becomes a lien against the property — Lubbock at 10% interest, second only to tax liens; Odessa at 10% annual interest and foreclosable. Health & Safety Code §342.007 is the state authority for that lien.',
+  },
+  {
+    q: 'How tall is too tall where I am?',
+    a: 'Lubbock: eight inches, averaged across the lot — the strictest standard in the region. Odessa: twelve inches for grass, weeds or wild brush. Midland: eighteen inches on yards and vacant lots. Andrews: twelve inches on platted lots under an acre, eighteen on undeveloped tracts over an acre. Outside city limits anywhere in Texas, Health & Safety Code §343.011 makes weeds over thirty-six inches a public nuisance where the property is within three hundred feet of another residence or commercial establishment.',
+  },
+  {
+    q: 'Can the city clear my lot without telling me first?',
+    a: 'In some circumstances, yes. Health & Safety Code §342.008 allows emergency abatement without prior notice where weeds exceed forty-eight inches and pose an immediate danger. Odessa has that forty-eight-inch power in its own code. You must be notified within ten days after the work and can request an administrative hearing within thirty days — but by then the work is done and the bill exists.',
+  },
+  {
+    q: 'Is junk on the lot a separate problem from the weeds?',
+    a: 'Usually the same notice, and in unincorporated areas it is explicitly covered. §343.011 lists rubbish kept or accumulated for ten days or more within three hundred feet of a public street, unless it is fully enclosed in a building or not visible from the street — and it names newspapers, abandoned vehicles, refrigerators, stoves, furniture, tires and cans. Odessa defines junk separately as used or discarded material visible from adjacent property or constituting a health or fire hazard, and construction materials stored in recognisable amounts. We clear and haul both.',
+  },
+  {
+    q: 'How is clearing priced?',
+    a: 'Individually, on the size of the lot or acreage, how heavy and tall the vegetation is, accessibility, what equipment it needs, and whether the material has to be removed from the property or can stay. A lightly overgrown lot and a property with several feet of heavy brush are obviously very different jobs. Photographs usually get you an initial estimate; anything substantial needs somebody on site.',
+  },
+  {
+    q: 'Do you spray as well as cut?',
+    a: 'Yes, and it matters which one you actually need. Cutting deals with today; a residual or non-selective herbicide programme deals with next month. We hold the Texas Weed Control licence category, which is separate from Pest Control and separate again from Lawn & Ornamental — so we can legally do vegetation management rather than just mowing. We use Ranger Pro, Imazapyr, Prodiamine and Celsius XTRA depending on what is growing and what is meant to survive.',
+  },
+  {
+    q: 'Does clearing help with pests?',
+    a: 'Substantially, and it is the main reason we do both. Texas A&M AgriLife lists rocks, boards, debris, dead vegetation and fallen logs as what striped bark scorpions shelter under. Heavy brush and accumulated material within a few feet of a structure is harbourage, and no perimeter treatment outperforms a permanent shelter with shade and food in it. Clear it, haul it, treat the ground it was sitting on — one visit.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/brush-and-lot-clearing/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{ name: svc.name, description: svc.summary }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Weed Control · licensed category · TPCL 0918482</p>
+      <h1>Brush &amp; Lot Clearing</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Most people find this page because a letter arrived. If that is you, the useful information is
+          further down: what the standard actually is where you are, how long you have, and what it costs
+          if the city does it instead of you.
+        </p>
+        <p>
+          The short version is that these standards are real, they differ substantially town to town, and
+          the costs attach to the property rather than to you personally — which means they follow the
+          title rather than the person who let the grass grow.
+        </p>
+        <p>
+          What follows is the standard for each town on this route with the deadlines and the actual
+          abatement costs, how the notice process runs and where it catches people out, what we do and
+          what equipment it takes, why clearing and pest control are the same job out here, and what any
+          of it costs. If you are not under a notice and simply want a lot dealt with, skip to the last
+          two sections.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What the standard is, town by town</h2>
+      <div class="measure">
+        <p>
+          There is no single Texas rule. Cities set their own heights under Health &amp; Safety Code
+          Chapter 342, and they vary by more than a factor of two across this route:
+        </p>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Where</th><th>Limit</th><th>Time to comply</th><th>If the city does it</th></tr></thead>
+          <tbody>
+            <tr><td>Lubbock</td><td>8 inches, averaged across the lot</td><td>7 days</td><td>$175 administrative fee per occurrence, plus the work. Lien at 10% interest, second only to tax liens.</td></tr>
+            <tr><td>Odessa</td><td>12 inches</td><td>5 days to request a hearing, 7 to clear</td><td>Equipment $56/hr, labour $21/hr, $125 administration, landfill $52.50/ton, 10% late fee. Foreclosable lien at 10% annual interest.</td></tr>
+            <tr><td>Midland</td><td>18 inches</td><td>Not published</td><td>Not published</td></tr>
+            <tr><td>Andrews</td><td>12 inches under an acre, 18 inches over</td><td>10 days · immediate above 4 feet</td><td>Court action, or a contractor remediation list billed to the owner.</td></tr>
+            <tr><td>Unincorporated county</td><td>36 inches, within 300 feet of a residence or business</td><td>30 days from notice</td><td>First offence $50–$200; repeats $200–$1,000, up to six months, or both. Each day is a separate offence.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="measure">
+        <p>
+          Seminole, Seagraves, Lamesa, Brownfield and Big Spring all have their own codes and we have not
+          verified the specific heights for those, so they are deliberately absent from the table rather
+          than guessed at. If you are in one of those towns and have had a notice, tell us what it says
+          and we will work to what is actually on the paper.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How the process usually runs</h2>
+      <div class="measure">
+        <p>
+          Under the state framework for cities, the shape is consistent even where the local numbers are
+          not:
+        </p>
+        <p>
+          <strong>1 · Notice.</strong> §342.006 allows notice by personal written delivery, by letter to
+          the owner's address as recorded with the appraisal district, or — if personal service fails —
+          by publication, by posting on the building, or by placing a placard on the property itself.
+          That middle option catches people out constantly: <strong>if the appraisal district has an old
+          address for you, the first you may hear is the bill.</strong>
+        </p>
+        <p>
+          <strong>2 · The compliance window.</strong> Seven days under the state default, though cities
+          set their own. Andrews gives ten. Odessa runs a five-day hearing request alongside a seven-day
+          clearance window.
+        </p>
+        <p>
+          <strong>3 · The city does the work.</strong> If you have not complied, §342.006 lets the
+          municipality do it and bill you.
+        </p>
+        <p>
+          <strong>4 · The lien.</strong> §342.007 lets the city assess the expenses against the real
+          estate itself, with a lien bearing 10 percent interest, subordinate only to tax liens and
+          street improvement liens. That is the part worth understanding: it is not an invoice you can
+          argue about later, it is an encumbrance on the property.
+        </p>
+        <p>
+          <strong>The emergency route.</strong> §342.008 permits abatement with no prior notice at all
+          where weeds exceed forty-eight inches and pose an immediate danger. Notification comes within
+          ten days afterwards, with thirty days to request a hearing.
+        </p>
+        <p>
+          For unincorporated land, Chapter 343 works differently: thirty days from notice before criminal
+          penalty attaches, then fines from $50–$200 for a first offence and $200–$1,000 for repeats,
+          with up to six months' jail available and each day counting as a separate offence. Courts are
+          directed to order abatement on conviction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we actually do</h2>
+      <div class="measure">
+        <p>
+          <strong>Clearing.</strong> Overgrown residential lots, vacant lots, fence lines, rights of way
+          and acreage. Heavy brush, mesquite regrowth, volunteer growth along fences, and the
+          accumulated years on a property nobody has been to in a while.
+        </p>
+        <p>
+          <strong>Hauling.</strong> The cut material leaves. That sounds obvious and it is the thing most
+          often quoted separately — a price to cut that does not include getting rid of what was cut is
+          half a job, and in a town with a junk ordinance it can leave you in violation of a different
+          rule than the one you started with.
+        </p>
+        <p>
+          <strong>Vegetation management, not just mowing.</strong> Cutting handles today. If the point is
+          for it not to come back, that is a herbicide programme, and it requires the Texas
+          <strong>Weed Control</strong> licence category — which is separate from Pest Control and
+          separate again from Lawn &amp; Ornamental. We hold all three under TPCL 0918482. Ranger Pro,
+          Imazapyr, Prodiamine and Celsius XTRA depending on what is growing and what is meant to
+          survive. A fence line being cleared for good and a lawn being kept tidy are different chemistry.
+        </p>
+        <p>
+          <strong>Photographs afterwards.</strong> If this is a compliance job, you want evidence the
+          work was done and when. We photograph the finished lot so you have something for your file, or
+          for the city.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The pest connection, which is the actual reason we do both</h2>
+      <div class="measure">
+        <p>
+          Texas A&amp;M AgriLife's list of what striped bark scorpions shelter under is: rocks, boards,
+          debris, dead vegetation and fallen logs. Read that as a description of an overgrown lot with a
+          brush pile on it.
+        </p>
+        <p>
+          Heavy vegetation and accumulated material within a few feet of a structure is permanent
+          harbourage. You can treat the perimeter every quarter and the problem keeps returning, because
+          the thing producing it never moved. The same holds for rodents — brush, stacked material and
+          debris give them cover to work right up to the wall, and autumn is when they start using it.
+        </p>
+        <p>
+          Split between two companies this gets half done. Whoever hauls does not treat. Whoever treats
+          works around the pile and does not mention it. Doing both means the debris goes and the ground
+          it was sitting on gets treated before anybody leaves — and the reason the problem started
+          actually goes away.
+        </p>
+        <p>
+          There is a safety dimension too. Texas DSHS specifically flags hantavirus risk when cleaning
+          areas where rodents could live — barns, cabins, hunting blinds and sheds. A property that has
+          sat with heavy growth and rodent activity is not a job for somebody with a trailer and no
+          precautions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>If you are not local to the property</h2>
+      <div class="measure">
+        <p>
+          A significant share of this work is for owners who live somewhere else — inherited property, a
+          rental between tenants, land held in the family, or a house nobody has been to since a move.
+        </p>
+        <p>
+          The problem for absentee owners is structural rather than about neglect: <strong>the notice goes
+          to the address the appraisal district has on file.</strong> If that is out of date, the process
+          runs to completion without you. Work gets done, costs get assessed, and a lien attaches, all
+          before anybody reaches you.
+        </p>
+        <p>
+          We do ongoing upkeep for owners who are not local — checking the property on a sensible
+          interval, keeping the lot inside whatever standard applies where it sits, and dealing with what
+          turns up rather than waiting for a letter to reach an address you no longer live at. It costs
+          considerably less than an abatement plus an administrative fee plus interest.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What it costs and how it is quoted</h2>
+      <div class="measure">
+        <ul class="tight">
+          <li><strong>Lot and acreage clearing</strong> — quoted individually on size, how heavy and tall the growth is, access, equipment required, and whether material has to leave the property</li>
+          <li><strong>Fence lines and rights of way</strong> — usually by the run, with a separate figure if a herbicide programme is going on afterwards</li>
+          <li><strong>Hauling</strong> — on volume, material type, trailer space, labour to load and disposal fees</li>
+          <li><strong>Photographs get you an initial estimate.</strong> A larger project needs somebody on site — nobody can price several acres of heavy brush off a picture honestly</li>
+          <li><strong>No contracts</strong>, and a military discount</li>
+        </ul>
+        <p>
+          If you are working to a deadline on a city notice, say so when you call. That changes how it
+          gets scheduled rather than being something we find out afterwards.
+        </p>
+        <p>
+          One thing worth knowing about timing generally: a lot cleared in March is a smaller job than the
+          same lot in July, and considerably smaller than it is in September. Growth compounds, access gets
+          worse, and what was a mowing job becomes an equipment job. If a property is going to need doing
+          at some point this year, earlier is meaningfully cheaper rather than just more convenient.
+        </p>
+      </div>
+      <h2 style="margin-top:2.2rem">Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.filter((t) => t.tier !== 'scaffold').map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.weedOrdinance ? ` · ${t.weedOrdinance.heightInches}-inch standard` : ''}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What actually grows out here, and what to do about it</h2>
+      <div class="measure">
+        <p>
+          Clearing in West Texas is not the same problem as clearing somewhere wetter. What comes back
+          and how fast depends on what you are dealing with.
+        </p>
+        <p>
+          <strong>Mesquite.</strong> The one everybody has an opinion about. Cutting it stimulates
+          regrowth from the base, so a lot cut and left alone frequently comes back thicker than it
+          started. If the objective is for it not to return, cutting has to be paired with treatment, and
+          the timing matters more than the product.
+        </p>
+        <p>
+          <strong>Volunteer growth along fence lines.</strong> The most common call after a wet spring.
+          Fence lines collect seed, hold moisture in the shade of the posts, and are the last thing
+          anybody mows. They are also where a lot of the snake and rodent complaints originate, because a
+          continuous strip of cover running the length of a property is a highway.
+        </p>
+        <p>
+          <strong>Annual weeds after rain.</strong> A heavy spring turns a bare caliche lot into
+          something that trips a city standard within weeks. This is where a pre-emergent like Prodiamine
+          earns its keep — applied before germination it stops the problem rather than removing it
+          afterwards, and on a vacant lot that is far cheaper over a season than repeated cutting.
+        </p>
+        <p>
+          <strong>Established perennial growth on neglected land.</strong> Years of accumulation on a
+          property nobody has visited. That is an equipment job rather than a mowing job, and it is worth
+          somebody looking at it before anybody quotes — the difference between two hours and two days is
+          usually invisible in a photograph.
+        </p>
+        <p>
+          The general rule: <strong>cutting solves the notice, treatment solves the problem.</strong> On
+          a property you are keeping, doing both once is cheaper than doing one of them repeatedly.
+        </p>
+        <p>
+          One caution worth being straight about: a non-selective herbicide does what it says. Imazapyr in
+          particular is persistent in soil and is not something to put down where anybody intends to plant
+          later, or anywhere it can move onto ground you did not mean to treat. On a fence line or an
+          equipment yard that is the point. On a lot somebody might build on, it is the wrong choice, and
+          a company that reaches for the same jug every time is not making a decision. Ask what is going
+          down and why before anybody sprays — and if the honest answer is that cutting is enough this
+          season, that is what you should be told.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Selling, buying or inheriting a property</h2>
+      <div class="measure">
+        <p>
+          Three situations come up repeatedly, and in all three the clearing is not really about the
+          grass.
+        </p>
+        <p>
+          <strong>Getting a property ready to sell.</strong> An overgrown lot costs more at the offer
+          stage than clearing it costs. It also hides everything a buyer's inspector is going to find
+          anyway — foundation, drainage, outbuildings, what is stacked against the wall. Clearing first
+          means you find out before they do.
+        </p>
+        <p>
+          <strong>Just bought something that has sat.</strong> The most useful order is clear, then look,
+          then decide. It is very difficult to assess a property's real condition through several feet of
+          growth, and the pest and rodent picture only becomes visible once the cover is gone.
+        </p>
+        <p>
+          <strong>Inherited property.</strong> Usually the hardest, because it is rarely just a clearing
+          job — there is a house full of things, outbuildings nobody has opened, and often a distance
+          problem on top. The practical advice is to deal with the outside first: it stops the clock on
+          any city notice, it makes the property secure and visible, and it turns an overwhelming project
+          into a manageable one. The inside can then happen at whatever pace it needs to.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Lot clearing questions" />
+  <Cta line="If a letter has arrived, read us the date and the standard it cites. That tells us how fast this needs to move and whether it is a cutting job or a cutting-and-spraying job." />
+</BaseLayout>

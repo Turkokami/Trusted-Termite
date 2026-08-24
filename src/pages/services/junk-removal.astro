@@ -1,0 +1,396 @@
+---
+/**
+ * T2 money page — junk removal and property cleanouts.
+ *
+ * Market note: searches for junk removal in Seminole return exclusively
+ * national lead-generation funnels, several of which publish a Florida phone
+ * number on their "Seminole, TX" pages. There is no locally-owned junk removal
+ * business with a Gaines County address. This is the least contested of the
+ * three service lines.
+ *
+ * The safety angle is real and sourced: Texas DSHS explicitly flags hantavirus
+ * risk when cleaning areas where rodents could live — barns, cabins, hunting
+ * blinds and sheds. That sentence is a service page, from the state health
+ * department.
+ *
+ * NOT offered (C-04): dumpster rental, pressure washing, demolition.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('junk-removal')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Junk Removal & Property Cleanouts', path: '/services/junk-removal/' },
+];
+
+const quickAnswer =
+  'Junk hauls, full property cleanouts and ongoing upkeep for owners who are not local, across Gaines County and the Permian Basin. Priced on volume, material and disposal. Rodent-contaminated cleanouts are handled with proper precautions rather than as a hauling job.';
+
+const faqs = [
+  {
+    q: 'How is junk removal priced?',
+    a: 'On the amount and type of material being removed, how much trailer space it takes, the labour required to load it and the disposal fees. Heavy materials or anything needing additional equipment is priced differently, and we would rather say that at the quote than add it to the invoice afterwards. Photographs usually get you an initial estimate; a larger cleanout needs somebody on site.',
+  },
+  {
+    q: 'Do you rent dumpsters?',
+    a: 'No. We haul — you point at it and it leaves with us. If what you actually need is a dumpster sat on the property for a fortnight while you work through a renovation, that is a different service and we will tell you so rather than take the job. We also do not do pressure washing or demolition.',
+  },
+  {
+    q: 'Is there anything you will not take?',
+    a: 'Anything requiring hazardous waste handling, and anything that needs a licence we do not hold. Tell us what is there when you call. Most of what people are worried about is fine; the ones worth flagging in advance are paint, solvents, chemicals, tyres in quantity, and anything from a workshop nobody has looked in for years.',
+  },
+  {
+    q: 'The property has had rodents in it. Does that change anything?',
+    a: 'Yes, and it should. Texas DSHS specifically flags hantavirus risk when cleaning areas where rodents could live — naming barns, cabins, hunting blinds and sheds. Transmission is primarily airborne, from breathing in particles from an infected rodent’s urine, faeces or saliva, or from touching your face after handling contaminated items. Reported cases in Texas are rare, but the point of the guidance is that the cleaning itself is the risk moment. We treat that as a job with a procedure rather than a job with a trailer.',
+  },
+  {
+    q: 'Can you deal with junk that the city has cited?',
+    a: 'Yes, and it is common. Odessa Code Article 6-5 defines junk as used or discarded material visible from adjacent property or constituting a health or fire hazard, and separately covers construction materials stored in recognisable amounts. Outside city limits, Health & Safety Code §343.011 covers rubbish kept or accumulated for ten days or more within three hundred feet of a public street unless fully enclosed or not visible — naming newspapers, abandoned vehicles, refrigerators, stoves, furniture, tyres and cans. Tell us the deadline on the notice.',
+  },
+  {
+    q: 'Do you handle junked vehicles?',
+    a: 'Depends what and where. Seminole regulates junked and abandoned vehicles specifically under Article 8.300 of its code — a junked vehicle is one lacking current plates or inspection, wrecked, dismantled, or inoperable for 72 hours on public property or 30 consecutive days on private property. Notice is by certified mail with a 10-day compliance period and a right to request a hearing. That is a defined municipal process rather than a hauling question, so tell us what you have and where it is and we will be straight about whether we are the right call.',
+  },
+  {
+    q: 'Can you look after a property I do not live near?',
+    a: 'Yes — that is a real part of this work. Inherited property, a rental between tenants, land held in the family, or a house nobody has been to since a move. The structural problem for absentee owners is that a city notice goes to the address the appraisal district has on file, so if that is out of date the whole process can run to completion without you. We check the property on a sensible interval and deal with what turns up.',
+  },
+  {
+    q: 'Do you treat as well as haul?',
+    a: 'Yes, and it is usually the same visit. Debris piles are exactly what AgriLife lists as scorpion harbourage — rocks, boards, debris, dead vegetation. Hauling the pile and treating the ground it was sitting on is one job. Split between two companies it reliably gets half done.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/junk-removal/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{ name: svc.name, description: svc.summary }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Hauling, cleanouts and absentee-owner upkeep</p>
+      <h1>Junk Removal &amp; Property Cleanouts</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          If you have searched for junk removal around Seminole, you will have noticed something odd:
+          almost everything that comes back is a national lead-generation site. Several of them publish a
+          Florida phone number on their "Seminole, TX" page. They are funnels — they take your details
+          and sell them on to whoever is buying that week.
+        </p>
+        <p>
+          There is, as far as we can find, no junk removal business with an actual Gaines County address.
+          So this is the least complicated part of what we do to explain: you call somebody who is here,
+          he comes and looks at it, and it leaves.
+        </p>
+        <p>
+          What follows is what we take and what we do not, the safety part most haulers never mention,
+          what the city can require and what it costs when they do it for you, how turnover cleanouts
+          work, what absentee owners need to know about where notices actually get sent, and how a
+          cleanout runs on the day. Pricing is at the end.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we take</h2>
+      <div class="measure">
+        <ul class="tight">
+          <li><strong>Junk hauls</strong> — the accumulated pile, the shed nobody has opened, the yard after a project, the garage</li>
+          <li><strong>Full property cleanouts</strong> — a rental between tenants, an inherited property, a house being prepared for sale</li>
+          <li><strong>Post-clearing haul-off</strong> — cut brush and vegetation, alongside the lot clearing side</li>
+          <li><strong>Ongoing upkeep for owners who are not local</strong> — checking the property, keeping it inside whatever standard applies, and dealing with what turns up</li>
+        </ul>
+        <p>
+          <strong>What we do not do:</strong> dumpster rental, pressure washing and demolition. If what
+          you need is a dumpster sat on the property for a fortnight, or a structure taken down, we will
+          say so rather than take a job we are not set up for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The part most haulers do not mention</h2>
+      <div class="measure">
+        <p>
+          Texas DSHS publishes specific guidance on hantavirus, and the sentence that matters is this:
+          risk is flagged when <strong>cleaning areas where rodents could live — barns, cabins, hunting
+          blinds or sheds.</strong>
+        </p>
+        <p>
+          Transmission is primarily airborne, from breathing in particles from an infected rodent's
+          urine, faeces or saliva, or from touching your nose, eyes or mouth after handling contaminated
+          items. Reported cases in Texas are rare — DSHS is explicit about that, and we are not going to
+          overstate it. But the reason the guidance exists is that <strong>the cleaning is the risk
+          moment</strong>. Sweeping a shed floor that has had mice in it is precisely the wrong thing to
+          do, because it puts everything into the air.
+        </p>
+        <p>
+          A property that has sat empty out here, especially with outbuildings, has usually had rodents
+          in it. That is not a reflection on anybody — it is what happens to a shed in West Texas. It
+          does mean a cleanout is a job with a procedure: respiratory protection, wetting down rather
+          than sweeping dry, proper disinfection, and dealing with the rodent problem itself rather than
+          hauling the evidence away and leaving the cause.
+        </p>
+        <p>
+          That last part is the argument for having a licensed pest operator do the cleanout. Otherwise
+          the material leaves, the mice stay, and you are having the same conversation next winter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>When the city is involved</h2>
+      <div class="measure">
+        <p>
+          Junk is regulated separately from weeds in most codes, and the definitions are broader than
+          people expect.
+        </p>
+        <p>
+          <strong>Odessa</strong> defines junk as used or discarded material visible from adjacent
+          property or constituting a health or fire hazard, and separately covers construction materials
+          — rock, brick, concrete, lumber — stored in recognisable amounts. Violations carry fines with
+          each day counting as a separate offence, and abatement costs become a foreclosable lien.
+        </p>
+        <p>
+          <strong>Outside city limits</strong>, Health &amp; Safety Code §343.011 covers rubbish kept,
+          stored or accumulated for ten days or more within three hundred feet of a public street, unless
+          it is fully enclosed in a building or not visible from the street. It names the categories
+          explicitly: newspapers, abandoned vehicles, refrigerators, stoves, furniture, tyres and cans.
+          It also covers refuse not entirely contained in a closed receptacle, and unsanitary conditions
+          attracting mosquitoes, rodents or disease-carrying pests.
+        </p>
+        <p>
+          <strong>Seminole</strong> runs a defined process for junked and abandoned vehicles under
+          Article 8.300 of its code. A junked vehicle is one lacking current plates or inspection,
+          wrecked or dismantled, or inoperable for 72 hours on public property or 30 consecutive days on
+          private property. Notice goes by certified mail with a 10-day compliance period and a right to
+          request a public hearing. Vehicles are stored a minimum of ten days before being sold or
+          demolished.
+        </p>
+        <p>
+          If a notice has arrived, read us the date and what it cites. That is more useful than a
+          description of the pile.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cleanouts between tenants</h2>
+      <div class="measure">
+        <p>
+          This is a bigger part of the work in Odessa and Lubbock than anywhere else on the route, for a
+          straightforward reason: Odessa ran a 21.3% rental vacancy rate at the 2020 census and Lubbock
+          is a majority-renter city at 51.2%. Units turn over, and what gets left behind has to go before
+          the next tenant moves in.
+        </p>
+        <p>
+          The useful thing about doing that alongside pest control is that a turnover cleanout is exactly
+          when a unit's real problems are visible and exactly when they can be dealt with properly. An
+          empty unit is the easiest one to treat — nothing to work around, nobody to schedule around, and
+          the roach or bed bug problem that arrived with the last tenant does not get handed to the next
+          one.
+        </p>
+        <p>
+          If you manage property, it is worth knowing that Texas Property Code §92.052 requires landlords
+          to make diligent efforts to repair conditions that materially affect the physical health or
+          safety of an ordinary tenant, and pest problems can qualify. Handling it at turnover is
+          considerably cheaper than handling it as a repair demand six weeks into a lease.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Absentee owners</h2>
+      <div class="measure">
+        <p>
+          A real share of this work is for people who do not live near the property — inherited land, a
+          house that has not sold, family property, a rental held from another city.
+        </p>
+        <p>
+          The trap is administrative rather than about neglect. A city notice goes to the address the
+          appraisal district has on file. If that address is out of date, the notice period runs, the
+          city does the work, the costs are assessed, and a lien attaches to the property — all without
+          anybody reaching you. In Lubbock that is a $175 administrative fee plus the work, at 10%
+          interest, second only to tax liens. In Odessa it is itemised equipment and labour plus $125
+          administration plus landfill, at 10% annual interest and foreclosable.
+        </p>
+        <p>
+          Checking a property on a sensible interval and dealing with what turns up costs considerably
+          less than that, and it means somebody physically looks at the place occasionally — which
+          catches roof problems, break-ins and burst pipes as well as tall grass.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What it costs</h2>
+      <div class="measure">
+        <ul class="tight">
+          <li>Priced on the amount and type of material, trailer space, labour to load, and disposal fees</li>
+          <li>Heavy material or anything needing additional equipment is priced differently, and said at the quote rather than added to the invoice</li>
+          <li>Photographs usually get an initial estimate. A larger cleanout needs somebody on site</li>
+          <li>No contracts. Military discount. Financing available on larger jobs</li>
+          <li>Cash, check, card in person or online, Venmo, CashApp or Zelle</li>
+        </ul>
+        <p>
+          If it is a compliance job we photograph the finished property so you have something for your
+          file or for the city.
+        </p>
+        <p>
+          Where the job is a cleanout plus a treatment plus a clearing — which on a neglected property is
+          common — it is quoted as one piece of work rather than three. That is usually cheaper than the
+          parts separately, because it is one mobilisation and one trip to the landfill, and it means
+          nobody is working around what somebody else was supposed to have dealt with.
+        </p>
+      </div>
+      <h2 style="margin-top:2.2rem">Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.filter((t) => t.tier !== 'scaffold').map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3><p>{t.county}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How a cleanout actually goes</h2>
+      <div class="measure">
+        <p>
+          <strong>Look first.</strong> For anything bigger than a single load, somebody comes and walks
+          it. That is not a sales visit — it is the only way to price a cleanout honestly, because volume
+          in a photograph is unreliable and what is underneath the top layer decides most of the labour.
+        </p>
+        <p>
+          <strong>Sort before hauling where it is worth it.</strong> Metal, appliances and some materials
+          have a different disposal route from general waste, and separating them at the property is
+          usually cheaper than paying landfill weight on everything. On an inherited property we will
+          also flag anything that looks like it should be looked at before it goes — people find things
+          in sheds.
+        </p>
+        <p>
+          <strong>Precautions where they are needed.</strong> If there has been rodent activity, that
+          changes the method rather than the price: respiratory protection, wetting down rather than
+          sweeping dry, and proper disinfection afterwards. Per Texas DSHS the cleaning is the risk
+          moment, and doing it wrong puts everything into the air.
+        </p>
+        <p>
+          <strong>Deal with the cause, not just the evidence.</strong> If a shed has had mice in it,
+          hauling the material out and leaving does not solve anything — it just moves the mess. Being a
+          licensed operator means the exclusion and treatment can happen in the same visit.
+        </p>
+        <p>
+          <strong>Photographs at the end.</strong> Especially on compliance work or where the owner is
+          not present. You get something for your file.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why a hauler and a pest company are the same call out here</h2>
+      <div class="measure">
+        <p>
+          It reads like an odd combination of services until you have stood in a West Texas yard looking
+          at a debris pile.
+        </p>
+        <p>
+          Texas A&amp;M AgriLife's list of what striped bark scorpions shelter under is rocks, boards,
+          debris, dead vegetation and fallen logs. Their prevention list includes not stacking firewood
+          near doors and moving stored material away from the foundation. Those are not pest control
+          instructions in any conventional sense — they are hauling instructions written by
+          entomologists.
+        </p>
+        <p>
+          The same holds for rodents. Stacked material, junk and cover give them somewhere to live and a
+          protected route to the wall. Autumn is when they start using it, which is exactly when most
+          people are least inclined to be out clearing.
+        </p>
+        <p>
+          And it holds for the city. Odessa's ordinance treats weeds, rubbish, brush and "any other
+          objectionable, unsightly or unsanitary matter" as one nuisance category, and §343.011 explicitly
+          lists unsanitary conditions attracting mosquitoes, rodents or disease-carrying pests alongside
+          the rubbish provisions. The code already understands these as one problem. Most contractors
+          just are not licensed for both halves.
+        </p>
+        <p>
+          One visit, one invoice, and the reason the pile mattered actually gets dealt with.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Sheds, barns and outbuildings</h2>
+      <div class="measure">
+        <p>
+          Out here almost every property has one, and they are consistently the worst part of a cleanout
+          and the part people most want to skip.
+        </p>
+        <p>
+          <strong>Why they are the problem.</strong> An outbuilding is dry, quiet, undisturbed and full of
+          cover. It is close to ideal for rodents and it is where scorpions end up too — AgriLife lists
+          boards, debris and stored material as exactly what they shelter under. Years of accumulation in
+          a shed is not just clutter; it is a functioning habitat sitting a few yards from the house.
+        </p>
+        <p>
+          <strong>Why the order matters.</strong> Clearing an outbuilding without dealing with what has
+          been living in it moves the problem rather than solving it — the material leaves, the rodents
+          relocate, usually to the house. Doing the exclusion and treatment in the same visit is the whole
+          argument for a licensed operator doing the cleanout rather than a general hauler.
+        </p>
+        <p>
+          <strong>Why the precautions are not theatre.</strong> Texas DSHS names barns, cabins, hunting
+          blinds and sheds specifically. Dry sweeping a floor that has had mice on it aerosolises exactly
+          what the guidance is warning about. It costs nothing to do it the right way and it is not
+          something to find out about afterwards.
+        </p>
+        <p>
+          If you have an outbuilding you have been avoiding, that is a normal thing to say on the phone.
+          It is most of what this work is.
+        </p>
+        <p>
+          The same goes for a garage or a spare room that has become storage. Nobody is being judged for
+          it — a property accumulates, and then it accumulates faster because dealing with it feels like
+          a bigger job than it is. Most single-room clearances are a couple of hours and one load.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Junk removal questions" />
+  <Cta line="Photographs are the fastest way to get a number. If the property has been empty a while, mention that too — it changes how the cleanout gets approached rather than how much it costs." />
+</BaseLayout>
