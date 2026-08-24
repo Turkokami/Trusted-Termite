@@ -1,0 +1,444 @@
+---
+/**
+ * Service spoke — Rodent Control & Exclusion.
+ *
+ * Data sources: services.ts (products: FirstStrike; licence category Pest
+ * Control; guaranteeApplies FALSE — rodent work carries its own terms, and
+ * this page must say so rather than implying the 30-day guarantee covers it).
+ *
+ * Regional grounding: harvest displacement across cotton, peanut, sorghum
+ * and grain ground; oilfield shops and outbuildings; the autumn temperature
+ * trigger; Brownfield's art. 6.600 rat control ordinance and Big Spring's
+ * ch. 36 art. III rat-harbourage prohibition (both verified on their town
+ * pages).
+ *
+ * Honesty gates observed: no fumigation. No damage or disease claims beyond
+ * what is well established. No pricing figures. No fabricated statistics.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+import { BUSINESS } from '../../data/business';
+
+const svc = serviceBySlug('rodent-control')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: '/services/rodent-control/' },
+];
+
+const quickAnswer =
+  'Rodent control from Trusted Termite and Pest Solutions combines trapping, professional bait stations and monitoring with the exclusion work that actually ends the problem — finding and sealing the ways they get in. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and works homes, barns, shops and commercial premises across Gaines County and the Permian Basin.';
+
+const faqs = [
+  {
+    q: 'Why does bait alone not fix a rodent problem?',
+    a: 'Because bait removes the animals currently present and does nothing about the reason your property supported them. The building still has the same openings and the same harbourage, so the vacancy refills — often within weeks, and faster in autumn. Bait and traps are how you deal with the population you have. Exclusion is how you stop having one.',
+  },
+  {
+    q: 'How do you find where they are getting in?',
+    a: 'By walking the whole structure looking for the specific things rodents use: gaps under exterior doors and garage thresholds, the space around utility penetrations, unscreened weep holes, torn or missing vents, gaps where the roofline meets the wall, and anywhere a pipe or conduit enters. A house mouse needs a remarkably small opening, so the inspection is looking for gaps most people would walk past without registering them.',
+  },
+  {
+    q: 'Does rodent work come with your 30-day guarantee?',
+    a: 'No, and we want to be direct about that rather than let you assume otherwise. Rodent work carries its own terms rather than the standard 30-day service guarantee, because the outcome depends heavily on exclusion work being completed and on conditions on the property staying reasonably unchanged. The terms are agreed before the work, in writing where the job warrants it.',
+  },
+  {
+    q: 'What do you use for bait?',
+    a: 'FirstStrike, in professional tamper-resistant stations rather than loose. Placement is determined by where the activity actually is — which the inspection establishes — rather than by putting stations at even intervals around a building because it looks thorough. Where children, pets or non-target wildlife are a consideration, that changes the placement and sometimes the method, and it is a conversation we have before anything goes down.',
+  },
+  {
+    q: 'Why do I suddenly have mice every autumn?',
+    a: 'Two things happen at once out here. Field crops come off, which removes cover and food from a large area in a matter of days and displaces whatever was living in it. And the first genuinely cold nights arrive, which pushes rodents toward warmth. Buildings with existing gaps get hit hard and get hit suddenly. It is the most predictable pest event on the West Texas calendar, which is why exclusion in late summer is worth more than trapping in December.',
+  },
+  {
+    q: 'Do you handle rodents in outbuildings, shops and barns?',
+    a: 'Yes, and on rural property that is usually where the actual work is. The house is where you notice the problem; the shop, barn, equipment shed and feed storage are where the population lives. Treating the house alone is why people end up calling somebody a second time.',
+  },
+  {
+    q: 'Can you get rid of the smell or clean up after them?',
+    a: 'We remove what we find and address the harbourage. Full remediation of heavily contaminated insulation or ductwork is specialist restoration work rather than pest control, and where a property needs that we will say so plainly rather than doing an approximation of it.',
+  },
+  {
+    q: '¿Hacen control de roedores en español?',
+    a: 'Sí. Valentin habla español con fluidez y explica personalmente qué encontró, por dónde están entrando y qué hay que sellar. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/rodent-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: svc.name,
+    description: 'Trapping, professional bait stations, monitoring and structural exclusion for homes, barns, shops and commercial premises across West Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>Rodent Control &amp; Exclusion</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          There is one idea worth taking from this whole page, and it is the reason rodent work goes wrong
+          so often: <strong>a rodent problem is a building problem before it is an animal problem.</strong>
+        </p>
+        <p>
+          Everything living inside your structure got in through something. Until that something is
+          closed, removing the animals creates a vacancy rather than a solution, and vacancies in this
+          part of Texas fill quickly — there is a large and permanent population outside every building
+          here, and it is looking for exactly what your building offers.
+        </p>
+        <p>
+          That is why the durable part of this job is sealing rather than baiting, and why a company that
+          arrives, puts out stations and leaves has sold you a subscription instead of a result.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we actually do, in order</h2>
+      <div class="measure">
+        <p>
+          <strong>One — inspect before anything else.</strong> The whole exterior, not just the room where
+          you heard something. Every point where the building envelope is broken: under exterior doors, at
+          the garage threshold, around every pipe and conduit entering the structure, weep holes without
+          screens, gable and soffit vents, gaps where the roofline meets the wall, and anywhere a previous
+          trade cut an opening and did not close it. Then the interior where activity is reported, and the
+          rooms adjacent to it — which is generally where the explanation actually is.
+        </p>
+        <p>
+          <strong>Two — read the evidence rather than the complaint.</strong> Droppings tell you where the
+          activity is and roughly how recent it is. Rub marks along a wall or a joist tell you the route,
+          because rodents follow edges and use the same paths repeatedly. Gnaw damage tells you what is
+          being worked on. Sound at a particular hour tells you what you are dealing with and where it is
+          living. All of that is more informative than the sighting that prompted the call.
+        </p>
+        <p>
+          <strong>Three — identify the harbourage and the food.</strong> No control programme outcompetes
+          a permanent food source. Feed in a barn, spilled grain, bird seed, pet food stored in a bag
+          rather than a bin, an accumulation that provides cover against a wall. These get discussed
+          before product does, because the alternative is paying repeatedly for the same outcome.
+        </p>
+        <p>
+          <strong>Four — reduce the population.</strong> Trapping and professional tamper-resistant bait
+          stations, placed according to where the activity is rather than at decorative intervals. Where
+          children, pets, livestock or non-target wildlife are present, that changes placement and
+          sometimes method, and it is settled before anything is deployed.
+        </p>
+        <p>
+          <strong>Five — close the building.</strong> The part that determines whether any of the rest
+          lasts. Door sweeps, thresholds, screening on weep holes and vents, sealing around penetrations,
+          and identifying anything structural that needs a different trade — which we will tell you rather
+          than waving a foam gun at a framing problem.
+        </p>
+        <p>
+          <strong>Six — come back and check.</strong> Rodent work is not a single visit. Monitoring after
+          the initial treatment is how you find out whether the exclusion was complete, and it is the step
+          most often skipped by operators for whom the return drive is expensive.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The West Texas rodent calendar</h2>
+      <div class="measure">
+        <p>
+          Rodent pressure here is not random and it is not evenly distributed through the year. It runs on
+          two overlapping calendars, and knowing them is the difference between planning work and reacting
+          to it.
+        </p>
+        <p>
+          <strong>The agricultural calendar.</strong> This region grows cotton, peanuts, sorghum, grain
+          and corn across enormous acreages, much of it running right up to the edge of the towns. A field
+          in production is habitat: cover, food, water from irrigation, and no disturbance for months.
+          Then harvest happens, and it happens fast. A hundred and sixty acres that supported a population
+          all season is bare ground within days, and everything living in it relocates to whatever
+          structures are nearest.
+        </p>
+        <p>
+          Properties on the edge of town, and any property on acreage, experience this as a sudden arrival
+          rather than a gradual increase. It happens at roughly the same point every year. It is the single
+          most predictable pest event on this route.
+        </p>
+        <p>
+          <strong>The temperature calendar.</strong> The first genuinely cold nights of autumn drive
+          rodents toward warmth, and the buildings that get hit are the ones whose gaps were there all
+          along. Nothing changes about the structure in October. What changes is the incentive.
+        </p>
+        <p>
+          <strong>Where the two overlap</strong> — late summer into autumn — is the heaviest rodent period
+          of the year across every town we serve, and it is the reason exclusion work done in August and
+          September is worth several visits in December.
+        </p>
+        <p>
+          <strong>The oilfield variable.</strong> On top of both, the Permian economy produces buildings
+          that empty and refill on their own cycle. A structure that has been closed through a summer is a
+          completely different inspection from the same structure occupied. Nobody has been running water,
+          so plumbing traps have dried out. Nobody has opened a door, so nothing has been noticed. Activity
+          that would have been caught in week one in an occupied house has had four months. Re-opening a
+          building that has been sitting is one of the most productive single visits available and almost
+          nobody books it.
+        </p>
+        <p>
+          <strong>Winter is not empty.</strong> Rodents already inside stay inside, breeding in a warm
+          building with no seasonal constraint at all. A problem ignored in November is a larger problem in
+          February, not a resolved one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Outbuildings are where rural rodent work actually is</h2>
+      <div class="measure">
+        <p>
+          On a house in town, the job is the house. On acreage, the house is frequently the least
+          interesting building on the property, and treating it alone is the most common reason a rodent
+          job has to be done twice.
+        </p>
+        <p>
+          <strong>Shops and equipment sheds.</strong> A concrete floor, a roll-up door and a gap under it
+          is as close to a purpose-built rodent shelter as anything on a property. The gap is almost
+          always the whole problem and almost never the thing that gets looked at, because the door works
+          fine and nobody is thinking about the half inch of daylight at the bottom. Add stacked cardboard,
+          a workbench against a wall and anything with a seed or grain content within reach, and the shop
+          supports a year-round population that walks to the house when it gets cold.
+        </p>
+        <p>
+          <strong>Barns and anything holding feed.</strong> Feed is the strongest single draw on a rural
+          property, and it is not a housekeeping complaint — it is the reason the treatment plan looks the
+          way it does. Bagged feed on a pallet, spilled grain in a corner, a bin whose lid does not seat.
+          Where feed is present, storage and exclusion get addressed before product, because product
+          against a permanent food source is money spent to no purpose.
+        </p>
+        <p>
+          <strong>Well houses and pump enclosures.</strong> Small, sheltered, warm relative to the outside
+          in winter, and opened perhaps twice a year. Worth checking every time.
+        </p>
+        <p>
+          <strong>Hay.</strong> Stacked hay is cover, insulation and nesting material in one object. It
+          cannot be treated as though it were storage, and where it sits relative to other buildings
+          determines a lot about how the property behaves.
+        </p>
+        <p>
+          <strong>Vehicles and equipment left standing.</strong> Engine bays are warm, enclosed and full of
+          wiring. Machinery that sits between seasons is a genuinely common nesting site and an expensive
+          one, and it is worth mentioning if you have equipment that has not moved since spring.
+        </p>
+        <p>
+          The practical point for a quote: <strong>count your buildings before you call.</strong> Four
+          structures on five acres is a different job from one house on a town lot, and pricing it as the
+          town lot helps nobody — least of all you, when the visit runs out of time before the outbuildings
+          are done.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The exclusion work, specifically</h2>
+      <div class="measure">
+        <p>
+          Exclusion gets talked about vaguely in this industry, so here is what it actually consists of on
+          a West Texas building.
+        </p>
+        <p>
+          <strong>Door sweeps and thresholds.</strong> The highest-value single item on most properties.
+          Sun, wind and dust flatten and harden a sweep, and on a house past about twenty years old the
+          gap under an exterior door is usually measurable. A replacement sweep costs very little and
+          closes the most-used entry point on the building.
+        </p>
+        <p>
+          <strong>Garage and roll-up thresholds.</strong> Same principle at a larger scale. A roll-up door
+          that no longer seats along its whole width is an open invitation, and it is invisible from
+          inside because the door still closes and latches.
+        </p>
+        <p>
+          <strong>Utility penetrations.</strong> Water, waste, gas, electrical, cable, satellite,
+          internet, an old swamp cooler line, a condensate line. A building of any age has been worked on
+          repeatedly and each trade cut what it needed. Very few of those openings were closed properly
+          and several are now behind something.
+        </p>
+        <p>
+          <strong>Weep holes.</strong> Standard on brick veneer, designed to drain and ventilate the
+          cavity, and they should not be blocked. They should be screened, which closes a route that runs
+          straight up inside the wall.
+        </p>
+        <p>
+          <strong>Vents and screens.</strong> Gable vents, soffit vents, foundation vents and dryer vents.
+          Screen material degrades in this climate and a tear is an entry.
+        </p>
+        <p>
+          <strong>The roofline.</strong> Where the roof deck meets the wall, at eaves and at junctions
+          between sections of a building added at different times. Rodents climb far better than people
+          expect, and roof entry is under-diagnosed because nobody looks up.
+        </p>
+        <p>
+          <strong>Manufactured and mobile homes get their own list.</strong> The void beneath the floor is
+          the real perimeter, the gap between the skirting and the ground is the primary entry, and the
+          utility penetrations come up through the floor into cabinets rather than through a wall. A mouse
+          in the kitchen of a manufactured home is very often a mouse that never went outside.
+        </p>
+        <p>
+          <strong>What we will not do:</strong> pretend that foam and steel wool solve a structural
+          problem. Where a gap needs a carpenter, a roofer or a concrete repair, you will be told that,
+          and you will be told it during the inspection rather than after a treatment did not hold.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Two towns on this route legislate rodent harbourage</h2>
+      <div class="measure">
+        <p>
+          This is worth knowing if the source of your problem is somebody else's property, which is
+          frequently the case in town.
+        </p>
+        <p>
+          <strong>Brownfield</strong> maintains a standalone article on rat control — article 6.600 of its
+          health and sanitation chapter. A dedicated rodent article is unusual in a town of nine thousand
+          people, and cities do not write them speculatively.
+        </p>
+        <p>
+          <strong>Big Spring</strong> goes further in one respect. Chapter 36, article III of its code is
+          headed Vector Control, and section 36-61 is a general prohibition against <em>rat harborage</em>.
+          That wording is more sophisticated than it looks: prohibiting rats achieves nothing, because
+          nobody chooses to have them. Prohibiting harbourage regulates the conditions a property owner
+          actually controls — accumulations, stored material, structures left open.
+        </p>
+        <p>
+          Which is, precisely, the principle this page has been arguing. It is unusual and pleasing to
+          find it written into municipal code.
+        </p>
+        <p>
+          The practical use: if you are being re-colonised across a fence line from an unmanaged property,
+          code enforcement has authority that no pest control company has. Call the city and name the
+          article rather than filing a general complaint. Elsewhere on this route, general nuisance and
+          property maintenance provisions cover accumulation and rubbish, which reaches the same conditions
+          by a different route.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why this service does not carry the 30-day guarantee</h2>
+      <div class="measure">
+        <p>
+          Most of what we do is covered by a written thirty-day service guarantee. Rodent work is not, and
+          rather than letting you find that out later, here is the reasoning.
+        </p>
+        <p>
+          A service guarantee makes sense where the outcome is mostly within the treatment's control. On
+          general pest work, a correctly performed treatment on a correctly diagnosed problem should have
+          visibly done its work inside about a month, and if it has not, that is on us.
+        </p>
+        <p>
+          Rodent work is different in kind. The outcome depends on exclusion being completed — sometimes
+          including items that need another trade — and on the property not changing in ways that reopen
+          it. It depends on food sources being managed. On a rural property it depends on outbuildings
+          being included rather than deferred. And on an adjacent-source problem, it depends on something
+          nobody on your property controls.
+        </p>
+        <p>
+          Attaching a blanket thirty-day promise to that would either be dishonest or so heavily qualified
+          as to mean nothing. What we do instead is agree the terms for your specific job before the work
+          starts, in writing where the job warrants it, including what the follow-up looks like and what
+          happens if activity continues. That is a narrower commitment and a real one.
+        </p>
+        <p>
+          <a href={BUSINESS.guarantee.termsPath}>The full guarantee terms are here</a>, including exactly
+          what the standard thirty days does and does not cover on the services it applies to.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Things worth doing before we arrive</h2>
+      <div class="measure">
+        <p>
+          <strong>Do not put out your own bait first.</strong> It is the most common instinct and it makes
+          the inspection harder to read. Retail bait moved to an unknown location, partially consumed by
+          something unidentified, changes what the evidence means. If you already have, say so — it is
+          information, not a confession.
+        </p>
+        <p>
+          <strong>Leave the droppings where they are.</strong> Cleaning up before an inspection removes
+          the map. Where activity is, how recent it is and which routes are in use are all readable from
+          what is on the floor, and it is genuinely the most useful thing on the property.
+        </p>
+        <p>
+          <strong>Note the times.</strong> When you hear something, in which room, and at what hour. That
+          is diagnostic and it costs nothing to write down for a few days.
+        </p>
+        <p>
+          <strong>Move what you can away from the walls.</strong> Both outside and in. The perimeter walk
+          is most of the inspection, and stored material against a foundation is usually exactly the spot
+          worth looking at.
+        </p>
+        <p>
+          <strong>Count and unlock the buildings.</strong> Gates, shops, barns, well houses. On rural
+          property, locked outbuildings are the most common reason a visit does not finish.
+        </p>
+        <p>
+          <strong>Mention anyone sensitive.</strong> Small children, pets, livestock, aquariums, birds,
+          reptiles. Every one of those affects placement and method, and every one is easier to
+          accommodate before the truck is loaded.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Homes, acreage, barns, shops, rental property and commercial premises. Rodent work is priced on
+          the property rather than at a flat residential rate, because the number of structures involved
+          changes the job more than anything else. Terms are agreed after the inspection and before any
+          work is done. Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle.
+          Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Rodent control questions" />
+  <Cta
+    line="Tell him what you are hearing, where, at what time of day, and how many buildings are on the property. Those four things get you an accurate answer on the first call."
+  />
+</BaseLayout>

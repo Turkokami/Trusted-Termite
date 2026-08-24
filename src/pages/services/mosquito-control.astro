@@ -1,0 +1,442 @@
+---
+/**
+ * Service spoke — Mosquito Control.
+ *
+ * Data sources: services.ts (products: DeltaGard, Talstar; licence category
+ * Pest Control; guaranteeApplies TRUE — 30-day service guarantee applies).
+ *
+ * Regional grounding, all verified on the town pages:
+ *  - This region drains to playas and draws with NO permanent streams
+ *    (Gaines, Terry, Dawson, Yoakum counties). Surface water is episodic.
+ *  - Playa basins in Dawson County sit 1.5–9 m below the surrounding plain
+ *    with FREQUENT PROLONGED ponding (USDA Lamesa series); the equivalent
+ *    Seagraves series ponds BRIEFLY. That differential is real and is the
+ *    basis for the "it varies by town" section.
+ *  - Lubbock runs a municipal Vector Control programme (verified on the
+ *    Lubbock page). Denver City art. 6.05 and Stanton art. 7.03 both
+ *    regulate stagnant water directly.
+ *  - Beals Creek at Big Spring is INTERMITTENT.
+ *
+ * Honesty gates: no disease-risk statistics, no claims about specific
+ * disease prevalence, no eradication promises, no pricing figures. Mosquito
+ * control is suppression, and the page says so.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+import { BUSINESS } from '../../data/business';
+
+const svc = serviceBySlug('mosquito-control')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: '/services/mosquito-control/' },
+];
+
+const quickAnswer =
+  'Mosquito control from Trusted Termite and Pest Solutions is a one-off treatment or a recurring programme through the season, priced on property size, vegetation and harbourage. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482. Out here mosquito pressure follows rain events rather than running continuously, so timing the treatment matters more than the calendar does.';
+
+const faqs = [
+  {
+    q: 'Why does mosquito pressure here come in bursts?',
+    a: 'Because there is almost no permanent surface water. Gaines, Terry, Dawson and Yoakum counties have no permanent streams at all — the country drains to playa basins and draws that hold water after rain and are dry the rest of the time. So breeding habitat appears, produces, and disappears. Pressure typically climbs about a week to ten days after a real rain and falls away again, which is completely different from a region with standing water year-round.',
+  },
+  {
+    q: 'When is the right time to treat?',
+    a: 'In response to the weather rather than on a fixed date. A treatment applied on the calendar in a dry stretch is largely wasted, and the same treatment applied in the week following a significant rain does most of the work available. If you are on a recurring programme we schedule around what has actually fallen, which is one of the practical advantages of a one-truck operation over a routed one.',
+  },
+  {
+    q: 'Can you get rid of mosquitoes completely?',
+    a: 'No, and anybody telling you otherwise is selling something. Mosquito control is suppression, not eradication. Adults fly in from beyond your property, and no treatment holds a boundary against that indefinitely. What treatment does is knock down the adults present, reduce the harbourage they rest in during the day, and address breeding sites on your own ground. On a typical property that is the difference between unusable and comfortable, which is the honest promise.',
+  },
+  {
+    q: 'What do you use?',
+    a: 'DeltaGard and Talstar, applied at label rates to resting harbourage rather than sprayed indiscriminately across open ground. The label is legally binding in pesticide application, not advisory, and where and how much matters as much as what.',
+  },
+  {
+    q: 'Is mosquito work covered by the guarantee?',
+    a: 'Yes. Mosquito treatment carries the standard 30-day service guarantee, with the scope and exclusions written out in full on the guarantee page. Worth reading in this case, because a rain event three weeks after a treatment produces a new generation from a new breeding site, and understanding where the guarantee sits relative to that is better done in advance.',
+  },
+  {
+    q: 'Should I be calling the city instead?',
+    a: 'Sometimes, and we would rather tell you than take the booking. Lubbock runs its own vector control programme and will investigate standing water and public breeding sites. Denver City and Stanton both have ordinances regulating stagnant water directly. If the problem is bigger than your lot — a neighbouring property, an alley that holds water, a public drainage feature — the city is the more effective call and it does not cost you anything.',
+  },
+  {
+    q: 'What can I do myself that actually helps?',
+    a: 'Eliminate standing water on your own ground, which is the single highest-value thing available and costs nothing. Anything that holds water for about a week can produce a generation: buckets, plant saucers, wheelbarrows, tarps, tyres, clogged gutters, pet bowls, birdbaths, a low spot that stays wet from an irrigation head, a swamp cooler overflow. Walking the property after a rain and tipping things over is genuinely effective.',
+  },
+  {
+    q: '¿Ofrecen control de mosquitos en español?',
+    a: 'Sí. Valentin habla español con fluidez y le explica personalmente dónde se están criando y qué se puede hacer. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/mosquito-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: svc.name,
+    description: 'One-off and seasonal mosquito treatment for homes, acreage and commercial property across Gaines County and the Permian Basin, timed to rain events rather than to a fixed calendar.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>Mosquito Control</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Mosquito control in West Texas is a different discipline from mosquito control almost anywhere
+          else, and most of the advice you will find online was written for somewhere with rivers in it.
+        </p>
+        <p>
+          The governing fact here is that there is <strong>no permanent surface water</strong>. Gaines,
+          Terry, Dawson and Yoakum counties have no permanent streams. The country drains to playa basins
+          and draws that fill after rain and are dry the rest of the year. Beals Creek down at Big Spring
+          is intermittent.
+        </p>
+        <p>
+          What that produces is not a mosquito season. It is a series of mosquito <em>events</em>, and
+          treating them as though they were a season is why so much money gets spent on this with so
+          little to show for it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Timing beats product</h2>
+      <div class="measure">
+        <p>
+          If you take one thing from this page: <strong>when you treat matters more than what you treat
+          with.</strong>
+        </p>
+        <p>
+          Here is the cycle. Rain falls. Water collects in low ground, in playa basins, in draws, in
+          containers, in the low corner of a lot, in an alley that does not drain. Eggs that have been
+          sitting dry — some mosquito eggs tolerate drying for long periods and hatch when flooded — go
+          into water. Larvae develop. Adults emerge. Pressure climbs.
+        </p>
+        <p>
+          In this climate that whole sequence typically plays out over roughly a week to ten days from the
+          rain event, and then declines as the water disappears. It is fast because the temperatures are
+          high and the water is shallow.
+        </p>
+        <p>
+          <strong>A treatment applied during a dry stretch does very little</strong>, because there is
+          almost nothing to suppress and residual activity is being spent on empty ground. The same
+          treatment applied in the days after a real rain intercepts the emerging generation and does most
+          of the work available.
+        </p>
+        <p>
+          This is why a rigid quarterly mosquito programme, sold on a fixed schedule and delivered on a
+          fixed route, is a poor fit for this region. It will sometimes coincide with the right week by
+          accident. Mostly it will not.
+        </p>
+        <p>
+          What we do instead is watch the weather with you. On a recurring arrangement, the visits get
+          scheduled around what has actually fallen rather than around what month it is. A one-truck
+          operation can do that; a routed operation with eight technicians and a dispatch system
+          structurally cannot, and that is not a criticism of them — it is just a different machine.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>It is not the same in every town</h2>
+      <div class="measure">
+        <p>
+          Mosquito pressure varies meaningfully across this route, and the reason is ground rather than
+          weather.
+        </p>
+        <p>
+          The United States Department of Agriculture maintains soil series named after several towns out
+          here, and their descriptions differ in a way that turns out to matter. The series named
+          <strong>Seagraves</strong> describes playa basin floors that pond <em>briefly in some years</em>.
+          The series named <strong>Lamesa</strong> describes playa basin floors sitting roughly five to
+          thirty feet below the surrounding plain, characterised by <em>frequent prolonged ponding</em>.
+        </p>
+        <p>
+          Neither series describes the ground under any particular address — both are typified elsewhere —
+          but the contrast is real and it maps onto something you can observe. Deeper basins hold water
+          longer. Longer holding means more time for a generation to complete. Lamesa also sits lower than
+          the towns north and west of it, at about 2,992 feet against Seagraves at 3,353 and Brownfield at
+          3,310, and receives somewhat more rain.
+        </p>
+        <p>
+          <strong>Lubbock</strong> has genuine playa lakes within the city and runs a municipal vector
+          control programme in response, which tells you the pressure there is real enough to warrant
+          public money.
+        </p>
+        <p>
+          <strong>Big Spring</strong> is different again. It sits in a valley with defined drainage —
+          Beals Creek, intermittent, forming where two draws meet — and on limestone that sheds water
+          rather than absorbing it. Water there collects where the geometry sends it rather than soaking
+          away, which produces sharper post-rain events than the flat sandy towns.
+        </p>
+        <p>
+          <strong>Seminole, Seagraves, Denver City, Andrews and the sandier towns</strong> drain fastest
+          and clear fastest. Pressure there is the most tightly bound to individual rain events of anywhere
+          on the route.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What a treatment actually consists of</h2>
+      <div class="measure">
+        <p>
+          <strong>Harbourage, not open air.</strong> Adult mosquitoes do not spend the day flying around
+          your lawn. They rest in cool, shaded, humid places — the underside of dense shrubs, ivy and
+          ground cover, tall grass in the shade, under decks, in the lower branches of trees, along fence
+          lines, behind stored material. Treatment is applied to those resting sites, which is where the
+          residual does its work, rather than misted over open ground where it accomplishes very little and
+          drifts.
+        </p>
+        <p>
+          <strong>The perimeter and the boundary vegetation.</strong> On most properties the pressure
+          arrives at the edges, and the edges are where the shade and moisture are.
+        </p>
+        <p>
+          <strong>Products at label rate.</strong> DeltaGard and Talstar, selected for the situation. The
+          label in pesticide application is a legal document rather than a suggestion, and rate and
+          placement are as much of the job as choice of material.
+        </p>
+        <p>
+          <strong>Breeding sites on your ground.</strong> These get identified and dealt with during the
+          inspection, and this is frequently the part that changes the outcome most. A single container
+          holding water in the shade can produce continuously.
+        </p>
+        <p>
+          <strong>What we will tell you about honestly.</strong> If the source is not on your property —
+          a neighbouring lot, an alley that does not drain, a public drainage feature, a stock tank — no
+          treatment on your side is going to solve it, and you will be told that rather than sold a
+          recurring programme against an inexhaustible supply.
+        </p>
+        <p>
+          <strong>Pollinators.</strong> Application is made with flowering plants and bee activity in mind,
+          and if you keep bees or have significant flowering landscaping, say so before the visit rather
+          than during it. It changes timing and placement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The free half of the job</h2>
+      <div class="measure">
+        <p>
+          Source reduction — getting rid of standing water — is the highest-value mosquito intervention
+          available, it is free, and it is entirely within your control. Any professional who does not tell
+          you this is not being straight with you.
+        </p>
+        <p>
+          Anything holding water for roughly a week can produce a generation. Walk your property the day
+          after a rain and deal with:
+        </p>
+        <p>
+          <strong>Containers.</strong> Buckets, bins, wheelbarrows, plant pot saucers, children's toys,
+          tarps with a sag in them, tyres, boat and trailer covers, a cooler left open. Tip them, drill
+          them, or store them upside down.
+        </p>
+        <p>
+          <strong>Gutters.</strong> A blocked section holds water invisibly for weeks and is one of the
+          most consistently overlooked breeding sites on a house.
+        </p>
+        <p>
+          <strong>The things you refill anyway.</strong> Birdbaths, pet bowls, stock waterers, fountains
+          that have stopped circulating. Changing the water every few days breaks the cycle without
+          removing the feature.
+        </p>
+        <p>
+          <strong>Irrigation and drainage faults.</strong> The head that throws against a wall and keeps a
+          patch permanently damp. The low spot in the yard that never dries. The condensate line
+          discharging in one place all summer. The swamp cooler overflow. In a region this dry these are
+          not minor maintenance items — they are frequently the only reliable water on the property, and
+          they matter for far more than mosquitoes.
+        </p>
+        <p>
+          <strong>Anything corrugated, folded or shaded.</strong> Sheet metal with a curve in it. A tarp
+          over a woodpile. Equipment with a hollow in it. These hold surprisingly persistent water in
+          shade.
+        </p>
+        <p>
+          <strong>What does not help much.</strong> Ultrasonic devices, bug zappers — which kill mostly
+          non-target insects — and citronella candles beyond about arm's reach. None of those are scams
+          exactly; they just do very little against the actual problem, and money spent on them would do
+          more spent on drainage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Acreage, livestock and the properties that are harder</h2>
+      <div class="measure">
+        <p>
+          A town lot is a contained problem. Acreage is not, and it is worth being straight about what is
+          achievable on a property measured in acres rather than in feet.
+        </p>
+        <p>
+          <strong>Stock tanks and troughs.</strong> Permanent water on a property changes the picture
+          completely, because it removes the episodic pattern that governs everywhere else. A trough that
+          is never disturbed produces continuously. The practical answers are circulation, regular
+          emptying and refilling where that is realistic, and stocking where the water body supports it —
+          none of which is a pesticide question, and all of which does more than a treatment would.
+        </p>
+        <p>
+          <strong>Playa basins on your own ground.</strong> Where a low basin on a property fills after
+          rain, it is a genuine breeding site and it is also, frequently, something you should not be
+          filling in or draining. Treatment is aimed at the harbourage around the buildings and at the
+          approach, rather than at the basin itself.
+        </p>
+        <p>
+          <strong>Irrigation.</strong> A pivot running near a house keeps ground damp on a schedule, and
+          tail water and low corners hold longer than the field does. If your property is under
+          irrigation, the timing of a treatment should sit against the irrigation pattern rather than only
+          against the rain.
+        </p>
+        <p>
+          <strong>Livestock and outbuildings.</strong> Where animals are present, both the resting
+          harbourage and the product choice change. Say so before the visit rather than on the day — it
+          affects what can be applied and where, and it is much easier to plan for than to work around.
+        </p>
+        <p>
+          <strong>The honest limit on acreage.</strong> Nobody treats forty acres of open ground for
+          mosquitoes and nobody should try to sell you that. What is achievable is a defended envelope —
+          the house, the yard, the outdoor space you actually use, and the harbourage immediately around
+          them — with the rest of the property addressed through source reduction where sources exist. That
+          is a smaller promise than a whole-property claim and it is one that can actually be kept.
+        </p>
+        <p>
+          <strong>Events on rural property.</strong> Weddings, reunions and gatherings held on acreage are
+          the one case where the defended-envelope approach is worth pushing further, because the area in
+          use is known in advance and the date is fixed. Give as much notice as you can. The useful window
+          is a few days ahead of the event rather than the morning of it, and on a property with real
+          harbourage that difference is the whole result.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>When the answer is the city, not us</h2>
+      <div class="measure">
+        <p>
+          Several towns on this route have municipal instruments aimed directly at mosquito breeding
+          conditions, and if the problem is not originating on your ground those are more effective than
+          anything we can apply.
+        </p>
+        <p>
+          <strong>Lubbock</strong> runs its own vector control programme and will investigate standing
+          water and public breeding sites. If the pressure is neighbourhood-wide rather than
+          property-specific, that is the call to make first.
+        </p>
+        <p>
+          <strong>Denver City</strong> enumerates stagnant water in its health nuisances article — any
+          receptacle containing water that is stagnant, offensive or unwholesome, and the discharge of
+          wastewater into an alley or gutter in a way that may produce a pool of standing water. Ten days
+          to abate after notice, and unpaid abatement cost becomes a personal liability to the city.
+        </p>
+        <p>
+          <strong>Stanton</strong> goes further in framing: its article is literally headed "Stagnant
+          Water, Filth and Tall Weeds and Grass," treating all three as one problem, with seven days'
+          notice and a lien second only to tax liens.
+        </p>
+        <p>
+          <strong>Seagraves and Brownfield</strong> both name stagnant water in their property condition
+          articles alongside rubbish and accumulations.
+        </p>
+        <p>
+          None of that costs you anything, and none of it competes with a treatment — the two work
+          together. Suppress on your side, and use the city where the source is on somebody else's.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we will not claim</h2>
+      <div class="measure">
+        <p>
+          <strong>We will not promise a mosquito-free yard.</strong> Adults fly. They arrive from beyond
+          any boundary you can treat. Suppression is what is achievable and it is worth having; eradication
+          is not on offer from anybody honest.
+        </p>
+        <p>
+          <strong>We will not sell you a disease scare.</strong> Mosquito-borne illness is a real public
+          health matter, and it is also the standard lever this industry pulls to move a recurring plan.
+          If you want current information about disease activity in your area, that belongs to public
+          health authorities who actually monitor it, not to a pest control website quoting a number it
+          cannot stand behind.
+        </p>
+        <p>
+          <strong>We will not treat on a calendar we know is wrong for the conditions.</strong> If it has
+          been dry for six weeks and you are on a programme, we will tell you the visit is better spent
+          later, rather than performing an application so that an invoice can be raised.
+        </p>
+        <p>
+          <strong>And we will tell you when it is not your property.</strong> That conversation costs a
+          recurring plan and it is the only version of this service worth selling.
+        </p>
+        <p>
+          Mosquito work is covered by the standard thirty-day service guarantee —
+          <a href={BUSINESS.guarantee.termsPath}>the terms are written out in full here</a>, and they are
+          worth reading in this particular case, because a fresh rain event produces a fresh generation
+          from a fresh source and it is better to understand where the guarantee sits before that happens
+          than afterwards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          One-off treatment or a recurring programme through the season, priced on property size,
+          vegetation and harbourage rather than at a flat rate. Events, weddings and gatherings can be
+          treated ahead of the date — give as much notice as you can, because the useful window is a few
+          days before rather than the morning of. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Mosquito control questions" />
+  <Cta
+    line="Tell him what the property is like — how much shade, how much dense planting, whether anything holds water — and when it last rained. That last one changes the recommendation more than anything else."
+  />
+</BaseLayout>
