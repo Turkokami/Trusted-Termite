@@ -15,7 +15,7 @@ export function getStaticPaths() {
    *  routes collide. Add to this list as each one is written to depth.
    *  Declared INSIDE the function — Astro hoists getStaticPaths, so a
    *  module-scope const is not in scope when it runs. */
-  const WRITTEN = ['pest-control', 'scorpion-control', 'termite-control', 'brush-and-lot-clearing', 'junk-removal', 'rodent-control', 'mosquito-control'];
+  const WRITTEN = ['pest-control', 'scorpion-control', 'termite-control', 'brush-and-lot-clearing', 'junk-removal', 'rodent-control', 'mosquito-control', 'lawn-care', 'bed-bug-treatment', 'flea-and-tick', 'wildlife-removal', 'bird-and-pigeon-control'];
   return SERVICES.filter(s => !WRITTEN.includes(s.slug))
     .map(s => ({ params: { slug: s.slug }, props: { svc: s } }));
 }

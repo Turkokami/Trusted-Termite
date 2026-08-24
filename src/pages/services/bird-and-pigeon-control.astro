@@ -1,0 +1,441 @@
+---
+/**
+ * Service spoke — Bird & Pigeon Control.
+ *
+ * Data sources: services.ts (no products — this is exclusion and deterrent
+ * work, not an application service; licence category Pest Control;
+ * guaranteeApplies FALSE).
+ *
+ * HONESTY GATES:
+ *  - LEGAL DISTINCTION IS THE CORE OF THIS PAGE. Native birds in the United
+ *    States are protected under the Migratory Bird Treaty Act; feral pigeons,
+ *    European starlings and house sparrows are non-native and generally are
+ *    not covered by it. The page states this as the general framework and
+ *    directs people to US Fish and Wildlife Service and Texas Parks and
+ *    Wildlife for the specifics, rather than quoting statutory detail we
+ *    have not verified. It must NOT enumerate exemptions or advise anyone
+ *    that a particular species may be killed.
+ *  - Active nests with eggs or young are a hard stop regardless of species,
+ *    and the page says so.
+ *  - HEALTH: droppings accumulation is a genuine consideration. The page
+ *    refers to it in general terms and directs remediation of heavy
+ *    accumulations to appropriate specialists. NO disease statistics, NO
+ *    prevalence claims.
+ *  - No poisoning of birds. No pricing figures. No eradication promises.
+ *
+ * Regional grounding: oilfield and commercial infrastructure across the
+ * Permian; signage, canopies, warehouses, gins and grain handling; the
+ * I-20 corridor at Stanton; agricultural buildings across the route.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('bird-and-pigeon-control')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: '/services/bird-and-pigeon-control/' },
+];
+
+const quickAnswer =
+  'Bird and pigeon control from Trusted Termite and Pest Solutions is exclusion and deterrent work on roofs, signage, equipment and outbuildings across the Permian Basin. Valentin Moriel surveys and installs personally, under Texas Department of Agriculture licence TPCL 0918482. Native birds are federally protected and pigeons generally are not, so the first question on every job is which bird you actually have.';
+
+const faqs = [
+  {
+    q: 'Is it legal to remove birds from my building?',
+    a: 'It depends entirely on the species, and that is not a technicality. Native birds in the United States are protected under the Migratory Bird Treaty Act, which broadly covers the birds themselves along with their active nests and eggs. Feral pigeons, European starlings and house sparrows are non-native and generally fall outside that protection. So identification is the first step on every single job, and where the answer is a protected native species the work becomes exclusion and deterrence only.',
+  },
+  {
+    q: 'There is a nest with eggs in it. Can you move it?',
+    a: 'Not while it is active, and this is a hard stop rather than a preference. An active nest with eggs or young in it is left alone until it is naturally finished, whatever the species — for protected natives it is a legal matter, and for everything else it is simply the right way to do the job. What we can do in the meantime is plan the exclusion work so that when the nest is finished, the site is closed and the birds do not return to it next season.',
+  },
+  {
+    q: 'Do you poison or shoot birds?',
+    a: 'No. Neither, for any species. This is exclusion and deterrent work — closing the roosting and nesting sites and making the surfaces unusable. Beyond the legal questions, a dead bird inside a structure or on a roof creates a worse problem than the one you called about.',
+  },
+  {
+    q: 'What actually works to keep pigeons off a building?',
+    a: 'Physical exclusion works. Netting across an opening, screening a void, closing the gap under a roof edge, and stainless or plastic spike systems on ledges and signage. Slope devices on wide ledges. Those are permanent, they do not habituate, and they are what a serious job consists of. What works far less well is anything relying on the bird being frightened, because birds acclimatise to noise, motion and imitation predators remarkably quickly.',
+  },
+  {
+    q: 'Why do the droppings matter beyond the mess?',
+    a: 'Accumulated droppings are corrosive to some building materials and to paint and metalwork, they create genuinely slippery surfaces on walkways and equipment, and heavy accumulations raise health considerations that are best handled by people equipped for that specific work. On commercial premises they are also frequently an inspection issue. Cleaning a small amount is straightforward; a heavy long-standing accumulation is remediation work rather than pest control, and we will say so.',
+  },
+  {
+    q: 'Do birds bring other pests with them?',
+    a: 'Yes, and it is one of the more under-appreciated parts of this. Nests and roost sites support their own populations — bird mites, beetles and other associated insects — which then move into the structure when the birds leave or are excluded. Which is why exclusion work and the treatment that follows it are frequently planned together rather than separately.',
+  },
+  {
+    q: 'Is this covered by the 30-day guarantee?',
+    a: 'No. It carries its own agreed terms instead, set before the work. Exclusion and deterrent work is judged by whether the installation holds and whether the birds relocate off the treated surfaces, and that is a different kind of assessment from a pest treatment.',
+  },
+  {
+    q: '¿Ofrecen control de palomas y aves en español?',
+    a: 'Sí. Valentin habla español con fluidez y le explica personalmente qué especie es, qué permite la ley y qué se puede instalar. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/bird-and-pigeon-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: svc.name,
+    description: 'Exclusion, netting, spike systems and deterrent work for pigeons and nuisance birds on roofs, signage, canopies, equipment and outbuildings across the Permian Basin.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>Bird &amp; Pigeon Control</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Bird work has more law attached to it than any other service on this site, and the law turns
+          entirely on one question: <strong>which bird is it?</strong>
+        </p>
+        <p>
+          Native birds in the United States are protected under the Migratory Bird Treaty Act, which
+          broadly covers the birds along with their active nests and eggs. That protection is real, it is
+          federal, and it is not something a pest control company gets to work around because a customer
+          finds the birds inconvenient.
+        </p>
+        <p>
+          Feral pigeons, European starlings and house sparrows are non-native and generally fall outside
+          that protection, which is why almost all commercial bird work in this country is pigeon work.
+        </p>
+        <p>
+          So identification comes before anything else — before a quote, before a device goes up, before
+          anybody touches a nest. Where the answer is a protected native species, the job becomes exclusion
+          and deterrence only, and there are situations where the honest answer is to wait. The specifics
+          belong to the US Fish and Wildlife Service and to Texas Parks and Wildlife, and we would rather
+          point you at them than paraphrase them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The hard stops</h2>
+      <div class="measure">
+        <p>
+          Worth stating plainly and near the top, because these are the points where this trade most often
+          goes wrong.
+        </p>
+        <p>
+          <strong>An active nest is left alone.</strong> Eggs or young in it means it stays until it is
+          naturally finished — whatever the species. For protected natives that is a legal matter. For
+          everything else it is simply how the work should be done, and sealing a void with young inside
+          it produces exactly the odour and remediation problem you would expect.
+        </p>
+        <p>
+          <strong>We do not poison or shoot birds.</strong> Any species, any situation. The methods here
+          are physical.
+        </p>
+        <p>
+          <strong>We do not guess at species.</strong> If it is not clearly a pigeon, starling or house
+          sparrow, the identification gets settled before anything is planned.
+        </p>
+        <p>
+          <strong>Heavy droppings accumulations are not a cleaning job.</strong> A modest amount on a
+          ledge is straightforward. A long-standing accumulation in an enclosed space is remediation work
+          with its own equipment and its own precautions, and where that is what you have, you need
+          somebody set up for it. We will tell you that rather than under-doing it.
+        </p>
+        <p>
+          <strong>Raptors, owls, swallows and anything obviously native</strong> get treated as protected
+          until established otherwise. Swallows in particular catch people out, because their nests appear
+          quickly on the sides of buildings and the instinct is to knock them down.
+        </p>
+        <p>
+          <strong>Swifts and swallows in particular are worth pausing over</strong>, because they nest
+          on the sides of buildings in ways that look exactly like a pigeon problem to somebody who is not
+          looking closely, and because their nesting period is short enough that waiting it out is
+          frequently a realistic plan rather than an indefinite one.
+        </p>
+        <p>
+          <strong>And bats are not birds.</strong> If what is in the eaves turns out to have fur, that is
+          a different situation with its own protections — see <a href="/services/wildlife-removal/">wildlife
+          removal</a>, where the same principle applies and where the seasonal timing constraints are, if anything, stricter still.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why deterrents mostly stop working</h2>
+      <div class="measure">
+        <p>
+          Almost every property with a bird problem has already tried something, and the things people try
+          share a common flaw: they rely on the bird being frightened, and birds stop being frightened.
+        </p>
+        <p>
+          <strong>Plastic owls and hawk silhouettes.</strong> Effective for a few days. Birds are good at
+          learning that a thing which never moves and never does anything is not a threat, and a plastic
+          owl frequently ends up with a pigeon sitting on it.
+        </p>
+        <p>
+          <strong>Reflective tape, spinners and hanging discs.</strong> Same pattern. Some initial
+          disruption, then habituation, and in the meantime they look like a building with a problem.
+        </p>
+        <p>
+          <strong>Sound devices.</strong> Distress calls and predator sounds produce a response that
+          declines with repetition, and on a commercial site they frequently annoy the people working
+          there more than the birds.
+        </p>
+        <p>
+          <strong>Gels and sticky repellents.</strong> These have a place, but they degrade in sun and
+          dust — and there is a great deal of both out here — they collect debris, they can become
+          unpleasant to look at, and depending on the product and situation they raise welfare concerns
+          that are worth thinking about before installing.
+        </p>
+        <p>
+          <strong>What works is physical.</strong> If a bird cannot land on a surface, or cannot get into
+          a void, no habituation is possible. That is the whole basis of a durable installation, and it is
+          why proper bird work looks more like a construction job than a pest treatment.
+        </p>
+        <p>
+          <strong>Netting</strong> across an opening or beneath a canopy excludes an entire volume. It is
+          the strongest option available and it is what serious commercial installations use.
+        </p>
+        <p>
+          <strong>Spike systems</strong> on ledges, beams, signage tops and equipment prevent landing.
+          Stainless and UV-stable plastic both perform in this climate; cheap plastic does not last in this
+          sun.
+        </p>
+        <p>
+          <strong>Slope and coping devices</strong> on wide ledges make the surface unusable rather than
+          uncomfortable.
+        </p>
+        <p>
+          <strong>Screening and closing voids</strong> — soffits, gable vents, the gap under a roof edge,
+          the space behind signage, an open equipment housing. This is often the whole job, because that
+          is where the nesting actually is.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where the birds actually are on a Permian property</h2>
+      <div class="measure">
+        <p>
+          The building stock across this route has a consistent set of bird sites, and knowing them
+          shortens both the inspection and the quote.
+        </p>
+        <p>
+          <strong>Behind and on top of signage.</strong> The single most common commercial site in this
+          region. Illuminated signs are warm, the space behind a sign face is enclosed and sheltered, and
+          the top edge is a perfect ledge. On a highway property this is usually where the problem starts.
+        </p>
+        <p>
+          <strong>Fuel canopies and covered walkways.</strong> Structural steel, cross-members and the
+          junction where the canopy meets a column are all landing and nesting sites, and the droppings
+          land directly on the area customers walk through.
+        </p>
+        <p>
+          <strong>Warehouse and shop rafters.</strong> Where a roll-up door is open through the working
+          day, birds come in and roost on the structure. This is one of the most common industrial bird
+          situations in the Basin, and it is frequently solved at the doorway rather than in the roof.
+        </p>
+        <p>
+          <strong>Agricultural buildings and anything holding grain.</strong> Feed and stored commodity
+          attract birds continuously rather than seasonally. Gins, elevators, feed storage and barns all
+          carry it, and the bird problem and the rodent problem are usually the same problem with the
+          same cause.
+        </p>
+        <p>
+          <strong>Oilfield structures and equipment housings.</strong> Enclosed, sheltered, warm, and
+          often unattended for long stretches. Birds nesting inside equipment is a maintenance issue
+          before it is an aesthetic one.
+        </p>
+        <p>
+          <strong>Residential soffits, gable vents and the roof edge.</strong> On the older housing stock
+          across this route — median construction in the sixties and seventies in most of these towns —
+          soffit and fascia are frequently the softest part of the building envelope, and a small gap
+          becomes a nest site.
+        </p>
+        <p>
+          <strong>Chimneys and flues.</strong> Uncapped, they are a nesting shaft. Capping is one of the
+          few genuinely simple fixes on this list.
+        </p>
+        <p>
+          <strong>Solar panels.</strong> The void beneath the array is sheltered, shaded and almost never
+          inspected. It has become one of the more common new bird sites on residential property, and
+          under-panel screening is a well-established piece of work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What comes with the birds</h2>
+      <div class="measure">
+        <p>
+          This is the part most people do not anticipate, and it is why bird work and pest treatment are
+          often planned together.
+        </p>
+        <p>
+          A nest is a small ecosystem. Bird mites, beetles and other associated insects live in it and in
+          the accumulated material around a roost site. As long as the birds are present, those
+          populations stay with the birds. When the birds leave — or are excluded — the associated
+          insects go looking for an alternative, and the nearest alternative is the building.
+        </p>
+        <p>
+          Which produces a pattern that catches people out: the birds are dealt with, and a fortnight
+          later there is an insect problem inside that was not there before. It is not a coincidence and
+          it is not bad luck. It is a predictable consequence, and it is preventable if it is planned for.
+        </p>
+        <p>
+          <strong>So the sequence matters.</strong> Where a roost has been established for a long time,
+          the site is treated as part of the exclusion work rather than afterwards, and the removal of
+          nesting material is handled as part of the same job.
+        </p>
+        <p>
+          <strong>The other consequence is structural.</strong> Nesting material in a gutter, a valley or
+          a downspout blocks drainage, and blocked drainage in this climate produces exactly the reliable
+          moisture point that everything else on this site warns about. A bird problem on a roof
+          frequently becomes a moisture problem at a wall, and the moisture problem then becomes a pest
+          problem. Dealing with the birds is also dealing with that chain.
+        </p>
+        <p>
+          <strong>And droppings do real damage.</strong> They are corrosive to some materials, they
+          discolour paint and stone, they make walkways and equipment slippery, and on commercial
+          premises they are frequently an inspection matter. The cost of leaving a bird problem alone is
+          rarely just aesthetic.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Doing it before it becomes a project</h2>
+      <div class="measure">
+        <p>
+          Bird problems are unusual in this trade for being almost entirely preventable, and for getting
+          disproportionately more expensive the longer they run. Both facts are worth acting on.
+        </p>
+        <p>
+          <strong>A new site is cheap to close.</strong> A pair of birds assessing a soffit gap, a single
+          nest starting behind a sign, a few droppings appearing on one section of a canopy — at that
+          stage the job is a small piece of screening or a short run of spike. Nobody calls at that stage,
+          because it does not look like a problem yet.
+        </p>
+        <p>
+          <strong>An established site is a project.</strong> Birds return to successful nesting sites and
+          bring the next generation with them. Two seasons later the same building has multiple roosts,
+          an accumulation that needs proper remediation, an associated insect population, and an
+          installation that has to cover far more surface. The work is the same kind of work; there is
+          simply several times as much of it.
+        </p>
+        <p>
+          <strong>So the useful moment is early.</strong> If you have noticed birds starting to use a
+          building, that is the call. It is a smaller quote and a shorter job than the one available in
+          eighteen months.
+        </p>
+        <p>
+          <strong>And there is a maintenance angle worth folding in.</strong> Capping a chimney, screening
+          a gable vent, closing a soffit gap and screening under a solar array are all things that also
+          serve rodent exclusion and moisture control. If any of that is being done on a building anyway,
+          doing the bird-proofing at the same time costs very little extra and saves a separate visit.
+        </p>
+        <p>
+          <strong>For commercial property</strong>, the same logic applies with an added inspection
+          dimension: droppings on a walkway or a service area are a finding waiting to happen, and dealing
+          with them on a plan is considerably cheaper than dealing with them on a deadline.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>How a job runs</h2>
+      <div class="measure">
+        <p>
+          <strong>Identification first.</strong> Which species, and whether there is an active nest.
+          Everything else follows from those two answers, and neither is negotiable.
+        </p>
+        <p>
+          <strong>Then the survey.</strong> Where they are landing, where they are roosting overnight, and
+          where they are nesting — which are frequently three different places. The droppings map tells
+          you most of this, which is why it is worth leaving alone until the survey is done.
+        </p>
+        <p>
+          <strong>Then the plan and the quote.</strong> What gets netted, what gets spiked, what gets
+          screened and what gets closed, with the reasoning for each. Bird work is quoted per installation
+          rather than per visit, because the deliverable is a physical thing that stays there.
+        </p>
+        <p>
+          <strong>Then the timing question.</strong> If there is an active nest, the work waits for it,
+          and we will say when that is likely to be. If the roost is long-established, the associated
+          insect issue is planned into the sequence.
+        </p>
+        <p>
+          <strong>Then the installation.</strong> Physical, permanent, and specified for the surface —
+          because a spike system fixed with the wrong adhesive to a hot metal ledge in this sun is a
+          spike system on the ground by August.
+        </p>
+        <p>
+          <strong>And then a check.</strong> Birds relocate when a surface becomes unusable, and where
+          they relocate to is worth knowing — sometimes it is off the property, and sometimes it is
+          twenty feet along the same building, which means the next phase is already identified.
+        </p>
+        <p>
+          <strong>What we will not do</strong> is sell you a device we expect to stop working. If the
+          honest answer for your building is netting rather than a cheaper deterrent, that is the
+          recommendation even though it is the larger quote, because the cheaper option would have to be
+          done twice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Commercial premises, signage, canopies, warehouses, agricultural buildings, oilfield structures
+          and residential property. Quoted per installation after a survey, because the surfaces and the
+          volume of exclusion required determine the job entirely. This service carries its own agreed
+          terms rather than the standard 30-day pest guarantee. Certificates of insurance provided for
+          commercial work on request — ask before the day rather than on it. Military discount. Cash,
+          check, card in person or online, Venmo, CashApp or Zelle, and financing available on larger
+          jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Bird and pigeon control questions" />
+  <Cta
+    line="Photograph the birds and the mess if you can, and say whether you have seen a nest. Species and active nesting decide what is lawful, and those two answers shape everything that follows."
+  />
+</BaseLayout>

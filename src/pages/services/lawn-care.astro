@@ -1,0 +1,425 @@
+---
+/**
+ * Service spoke — Lawn Care & Weed Control.
+ *
+ * Data sources: services.ts (products: Ranger Pro, Prodiamine, Celsius XTRA;
+ * licence category Lawn & Ornamental; guaranteeApplies FALSE).
+ *
+ * Regional grounding — every ordinance figure below is verified on its own
+ * town page and must stay consistent with those pages:
+ *   Seagraves   12in, 7 days,  48in immediate, 10% lien
+ *   Denver City 12in, 10 days, 48in immediate, 5-day payment window,
+ *               NAMED species list, climax-vegetation exemption,
+ *               scraping/tilling needs city manager authorisation
+ *   Lamesa      12in, 7 days,  reaches 5,000 FEET past the city limits,
+ *               scoped to 100ft of a property line / 50ft of a structure,
+ *               $2,000 public health penalty band, 30 days before lien
+ *   Brownfield  12in, 7 days (art. 6.900) / 10 days (art. 6.500), 10% lien
+ *   Stanton     12in, 7 days, lien second only to tax liens at 10%,
+ *               PLUS 7.03.003: 100ft sight lines, 30in parkway bushes,
+ *               7ft/8ft tree clearance
+ *   Andrews     12in under an acre, 18in over an acre, 10 days, immediate
+ *               above 4 feet
+ *   Lubbock     8in, $175 per occurrence
+ *   Odessa      12in;  Midland 18in;  unincorporated county typically 36in
+ *   Every one of these carries a one-year single-notice rule.
+ *
+ * Honesty gates: no pricing figures; this is not an agricultural applicator;
+ * no landscaping/design work (explicitly excluded in services.ts EXCLUDED).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('lawn-care')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: '/services/lawn-care/' },
+];
+
+const quickAnswer =
+  'Lawn care and weed control from Trusted Termite and Pest Solutions covers mowing, trimming and edging, fertilization, tree trimming and weed spraying, priced on the property rather than at a flat rate. Valentin Moriel is licensed under TPCL 0918482 in both the Lawn and Ornamental and the Weed Control categories — which is not the same thing as a mowing service, and the difference matters.';
+
+const faqs = [
+  {
+    q: 'Why does a lawn service need a pest control licence?',
+    a: 'Mowing does not. Applying herbicide to somebody else\'s property for money does. Texas licenses Lawn and Ornamental and Weed Control as separate categories under the Structural Pest Control Service, examined and maintained individually. A great many people cutting grass for money in this region are not licensed to spray, and if the plan for your property involves any chemical at all, that is worth checking before the work rather than after.',
+  },
+  {
+    q: 'How tall can my grass get before the city acts?',
+    a: 'It depends entirely which town you are in, and the range is wider than people expect. Lubbock is the strictest at eight inches. Seagraves, Denver City, Lamesa, Brownfield, Stanton and Odessa are twelve. Midland is eighteen, and Andrews is twelve on platted lots under an acre and eighteen on undeveloped tracts over an acre. Unincorporated county land is generally far more permissive at around thirty-six inches. People move between these towns constantly and assume the rule travels with them. It does not.',
+  },
+  {
+    q: 'What is the one-year notice rule everybody gets caught by?',
+    a: 'Nearly every town on this route allows the city to state in a notice that a further violation of the same kind within one year may be corrected without further notice, at your expense, and assessed against the property. So the first letter can cover twelve months. People assume every abatement comes with its own warning. For a year after the first one, it does not have to.',
+  },
+  {
+    q: 'What do you use for weed spraying?',
+    a: 'Ranger Pro, Prodiamine and Celsius XTRA, chosen for the situation. Prodiamine is a pre-emergent — it prevents germination rather than killing what is already up, which means it is a February and March product, not a June one. Celsius XTRA is selective and used where there is turf worth keeping. Ranger Pro is non-selective and used where there is not. Choosing among those correctly is most of the job.',
+  },
+  {
+    q: 'Do you do landscaping and design?',
+    a: 'No. Mowing, trimming, edging, fertilization, tree trimming and weed spraying — maintenance and chemical work. We do not do landscape design, installation, irrigation systems, hardscaping or sod. Where you need those, you need a landscaper, and we will say so rather than learn on your property.',
+  },
+  {
+    q: 'Can you keep a lot in compliance if I live somewhere else?',
+    a: 'Yes, and that is a substantial share of this work. A lot kept on a schedule through the growing season costs a fraction of an abatement plus interest, and it removes the enforcement question entirely. If you own several properties in one town, they can be run on one visit and one invoice.',
+  },
+  {
+    q: 'Is lawn work covered by the 30-day guarantee?',
+    a: 'No. The thirty-day service guarantee applies to pest treatments, where the outcome is largely within the treatment\'s control. Lawn and weed work depends on rainfall, irrigation, season and what the property does after we leave, so it carries its own agreed terms instead. We would rather define that up front than attach a promise that would have to be argued about later.',
+  },
+  {
+    q: '¿Ofrecen servicio de jardín y control de maleza en español?',
+    a: 'Sí. Valentin habla español con fluidez y le explica personalmente qué producto se va a usar y por qué. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/lawn-care/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: svc.name,
+    description: 'Mowing, trimming, edging, fertilization, tree trimming and licensed weed spraying for homes, rental property, vacant lots and commercial premises across West Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>Lawn Care &amp; Weed Control</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          There are a lot of people cutting grass for money in West Texas, and most of them do it well.
+          This page is not an argument that they do not.
+        </p>
+        <p>
+          It is about the part of the work that is different: <strong>applying chemical to somebody else's
+          property is a licensed activity in Texas, and mowing is not.</strong> The Lawn and Ornamental and
+          Weed Control categories are examined and maintained separately under the Texas Department of
+          Agriculture's Structural Pest Control Service, and TPCL 0918482 carries both.
+        </p>
+        <p>
+          If the plan for your property is purely mechanical — cut it, edge it, haul it — that is a
+          straightforward job and plenty of people can do it. If it involves anything sprayed, the licence
+          question is worth asking before the work rather than after, of us and of anybody else.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Every town on this route has a different number</h2>
+      <div class="measure">
+        <p>
+          This is the single most useful thing on this page, because people move between these towns
+          constantly and assume the rule moves with them.
+        </p>
+        <p>
+          <strong>Lubbock is the strictest at eight inches</strong>, enforced with a per-occurrence charge.
+          Nothing else on this route is close to that.
+        </p>
+        <p>
+          <strong>Twelve inches</strong> covers most of the map: Seagraves, Denver City, Lamesa,
+          Brownfield, Stanton and Odessa all sit there.
+        </p>
+        <p>
+          <strong>Midland is eighteen.</strong> <strong>Andrews splits it</strong> — twelve inches on
+          platted lots under an acre, eighteen on undeveloped tracts over an acre.
+        </p>
+        <p>
+          <strong>Unincorporated county land is far more permissive</strong>, generally around thirty-six
+          inches, which is why a property just outside a city limit behaves completely differently from one
+          just inside it. That is also where people are most often surprised, in both directions: someone
+          moving out from town discovers the rules relaxed, and someone moving in from acreage discovers
+          they did not.
+        </p>
+        <p>
+          <strong>The notice periods differ too.</strong> Seagraves, Lamesa, Brownfield and Stanton run on
+          seven days. Denver City and Andrews allow ten. Brownfield actually runs two clocks depending on
+          which article your notice cites — seven days under the weeds article, ten under the offensive
+          conditions article.
+        </p>
+        <p>
+          <strong>Above forty-eight inches, most of these towns can act with no notice at all</strong>,
+          where growth is deemed an immediate danger to health, life or safety. Andrews sets that threshold
+          at four feet as well.
+        </p>
+        <p>
+          <strong>And the lien mechanics are real.</strong> Ten percent per annum is the common figure —
+          Seagraves, Brownfield and Stanton all use it — with the lien typically inferior only to tax
+          liens. Lamesa allows thirty days before the lien attaches; Denver City allows five days from
+          being billed. Lamesa's general penalty band reaches two thousand dollars for public health and
+          sanitation provisions, which is a fine separate from the abatement cost.
+        </p>
+        <p>
+          Two towns have provisions worth knowing about specifically. <strong>Lamesa's ordinance reaches
+          five thousand feet beyond the city limits</strong> — just under a mile — which catches owners of
+          edge-of-town ground who assumed the sign was the boundary. And <strong>Denver City names the
+          plants</strong>: pigweed, Russian thistle, ragweed, lambsquarter, kochia, prickly lettuce,
+          London rocket mustard, Canadian thistle and Johnson grass, while explicitly exempting undisturbed
+          native grasses, mesquite and shinnery oak.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Growing a lawn on sixteen inches of rain</h2>
+      <div class="measure">
+        <p>
+          Most lawn advice is written for places that get three times the rainfall this region does, and
+          following it here produces a lawn that is expensive, sickly and full of weeds.
+        </p>
+        <p>
+          <strong>Water deeply and infrequently.</strong> The most common mistake out here is the opposite:
+          a short daily cycle that wets the top inch and evaporates by ten in the morning. That trains
+          roots to stay shallow, which makes the turf less drought-tolerant, not more, and it keeps a
+          permanently damp band at the surface — which is a pest condition as much as a horticultural one.
+          Fewer, longer waterings drive roots down.
+        </p>
+        <p>
+          <strong>Water early.</strong> Wind and heat out here are brutal on midday irrigation, and a
+          significant fraction of what you pay for never reaches the soil. Evening watering leaves foliage
+          wet overnight, which favours fungal problems.
+        </p>
+        <p>
+          <strong>Mow high.</strong> Scalping a lawn in this climate is close to the worst thing you can
+          do to it. Taller turf shades its own root zone, holds soil moisture, and out-competes weeds by
+          denying them light — which is more effective and cheaper than spraying them afterwards. Most of
+          the weed problems we are called to spray started as a mowing height problem.
+        </p>
+        <p>
+          <strong>Sandy soil does not hold nutrients.</strong> The sandy loam across most of this route
+          drains fast, which means fertilizer leaches rather than accumulating. Heavy single applications
+          largely wash through. Lighter, better-timed applications do more for less.
+        </p>
+        <p>
+          <strong>Keep the irrigation off the building.</strong> This is where lawn care and pest control
+          meet directly, and it is the most common single fault we find. A head throwing against a
+          foundation, a downspout discharging at a wall, a low spot that stays wet — in a region this dry,
+          those are frequently the only reliable water within a hundred feet, and everything that needs
+          water knows where they are. Fixing an irrigation head does more for a pest problem than most
+          treatments will.
+        </p>
+        <p>
+          <strong>And keep beds off the wall.</strong> Landscaping run right up to the foundation holds
+          moisture, hides the inspection line and gives insects a staging area inches from the entry
+          points. A hand's width of clear ground between bed and wall changes the picture and costs
+          nothing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The three products, and when each is right</h2>
+      <div class="measure">
+        <p>
+          Weed control is mostly a timing and selection problem rather than a spraying problem, and getting
+          it wrong is how people end up with a dead lawn and living weeds.
+        </p>
+        <p>
+          <strong>Prodiamine is a pre-emergent.</strong> It prevents seeds from establishing. It does
+          nothing whatsoever to a weed that is already up, which means it is a late-winter and early-spring
+          product applied before germination, not a rescue for a lot that has already got away. Applied at
+          the right moment it removes a large share of the season's problem before it exists, which is both
+          cheaper and less chemical than dealing with it later.
+        </p>
+        <p>
+          The corollary: <strong>if you are calling in June about a lawn full of weeds, the pre-emergent
+          conversation is about next February.</strong> We will still deal with what is there, but the
+          durable fix was three months ago and it is worth saying so.
+        </p>
+        <p>
+          <strong>Celsius XTRA is selective.</strong> Used where there is turf worth keeping — it targets
+          broadleaf and certain grassy weeds while leaving warm-season lawn grasses standing. It also
+          performs in heat, which matters here, because several common selective herbicides are restricted
+          in high temperatures.
+        </p>
+        <p>
+          <strong>Ranger Pro is non-selective.</strong> It kills what it touches. Used on lots with nothing
+          worth preserving, on fence lines, on cracks and gravel, and on ground being cleared — and used
+          with care about drift and about what is downwind, because non-selective means non-selective.
+        </p>
+        <p>
+          <strong>The label is the law.</strong> That is not a figure of speech in pesticide application.
+          Rate, timing, site and conditions on the label are legally binding, and an operator applying
+          off-label is committing a regulatory offence on your property with your name on the address.
+        </p>
+        <p>
+          <strong>What we will not do.</strong> Spray a lawn that does not need spraying. Where the problem
+          is mowing height, watering pattern or soil compaction, that is the recommendation, and it costs
+          us the application. It is also the answer that works.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>A West Texas lawn year</h2>
+      <div class="measure">
+        <p>
+          <strong>Late winter — February into early March.</strong> The most important and least popular
+          window. Pre-emergent goes down before germination, and the timing is driven by soil temperature
+          rather than by the calendar, so it moves a little year to year. This is also the easiest time of
+          year to book anything, which is a useful coincidence.
+        </p>
+        <p>
+          <strong>Spring.</strong> Green-up, first mowings, and the point at which weeds that escaped the
+          pre-emergent become visible and treatable. City enforcement starts generating notices in this
+          window, and a lot that looked acceptable in February stops looking acceptable within about three
+          weeks of the first real rain.
+        </p>
+        <p>
+          <strong>Early summer.</strong> Peak growth and peak mowing frequency. Mowing height matters most
+          here, and the temptation to cut short before a holiday is the single most common way people
+          damage their own turf.
+        </p>
+        <p>
+          <strong>High summer.</strong> Heat stress. Watering discipline is the whole game, and this is
+          when the selective herbicide choice matters, because several products cannot be used safely at
+          these temperatures.
+        </p>
+        <p>
+          <strong>Autumn.</strong> Recovery and root development. Under-appreciated as a period for
+          getting a lawn into good condition, because the visible growth has slowed while the useful growth
+          has not.
+        </p>
+        <p>
+          <strong>Winter.</strong> Dormancy, tree trimming, and the mechanical work — clearing, cutting
+          back, dealing with the fence line — that nobody wants to do in August heat. Also the right time
+          to think about anything structural in the yard, because you can actually see the ground.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where this overlaps with the pest side</h2>
+      <div class="measure">
+        <p>
+          Being licensed in both the lawn and the pest categories is unusual for a business this size, and
+          it is worth explaining what it actually buys you, because it is not just convenience.
+        </p>
+        <p>
+          <strong>The yard is frequently the pest problem.</strong> A treated perimeter running through
+          knee-high vegetation is not a perimeter. Dense planting against a wall is harbourage inches from
+          the entry points. Ground cover holds the moisture that supports the population. Where the yard is
+          driving the pest problem, addressing the yard is part of the pest plan rather than an upsell
+          attached to it — and one person can do both, in the right order, in the same week.
+        </p>
+        <p>
+          <strong>Sequencing matters and usually gets ignored.</strong> If a property is going to be
+          cleared, cut back or substantially changed, doing that <em>before</em> treatment is worth the
+          extra week. Treating first and clearing afterwards means the treatment was applied to a property
+          about to be disturbed, and the disturbance pushes the population around in ways that make the
+          result impossible to read.
+        </p>
+        <p>
+          <strong>Trees and the roofline.</strong> Branches touching or overhanging a structure are
+          bridges — for rodents, for ants, for anything that climbs. Standard exclusion practice is to keep
+          vegetation clear of the roof and walls. In Stanton the city has already specified the clearance
+          it wants: seven feet above ground, eight feet above sidewalks, with sight lines kept clear within
+          a hundred feet and parkway bushes held to two and a half feet above gutter elevation. Trimming to
+          that ordinance also happens to be trimming to good exclusion practice.
+        </p>
+        <p>
+          <strong>And scorpions live in the landscaping.</strong> Not in the lawn — under the things beside
+          it. Landscape timbers, rock features, stacked material, dense ground cover along a foundation.
+          On scorpion work the yard is frequently more of the job than the house is.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>If you own property here and live somewhere else</h2>
+      <div class="measure">
+        <p>
+          A meaningful share of this work is for people who are not standing in front of the property —
+          landlords, out-of-state owners, inherited houses, vacant lots held for years, and families
+          managing a parent's place from another city.
+        </p>
+        <p>
+          The enforcement mechanics described above are aimed squarely at absentee owners and they are
+          harsher at a distance. Notice can be served by certified mail to the address of record, which is
+          only useful if that address is current with the appraisal district. Where personal service fails,
+          most of these ordinances permit publication in the local newspaper and posting on the property
+          itself — neither of which reaches somebody three hundred miles away. The seven or ten days run
+          regardless.
+        </p>
+        <p>
+          Then the one-year rule compounds it. A first notice you may never have seen opens twelve months
+          in which further abatement needs no notice at all, and the first you hear of any of it can be a
+          lien statement filed with the county clerk accruing ten percent.
+        </p>
+        <p>
+          <strong>The answer is a standing arrangement rather than a reaction.</strong> A lot kept on a
+          schedule through the growing season costs a fraction of an abatement plus interest, and it takes
+          the whole enforcement question off your desk. Several properties in one town run on one visit and
+          one invoice. Photographs after each service, if you want them, so you can see the condition
+          without driving.
+        </p>
+        <p>
+          If a notice has already arrived, read us the date printed on it and the section it cites when you
+          call. Those two details determine everything about how the work gets sequenced and scheduled, and they are worth more to us than any description of how bad it looks.
+        </p>
+        <p>
+          Where a property has got far enough away that mowing is not the answer,
+          <a href="/services/brush-and-lot-clearing/">brush and lot clearing</a> is the heavier version of
+          this service, and <a href="/services/junk-removal/">junk removal and cleanouts</a> handles what is
+          left behind.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Priced on the property rather than at a flat rate, because lot size, terrain, access and how far
+          it has been allowed to go change the job more than anything else. One-off or on a schedule
+          through the season, with no contract either way. This service carries its own agreed terms rather
+          than the standard 30-day pest guarantee. Military discount. Cash, check, card in person or
+          online, Venmo, CashApp or Zelle. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Lawn care and weed control questions" />
+  <Cta
+    line="Tell him the town, the rough size of the lot, and how long it has been since it was last cut. If a city notice has arrived, read him the date and the section it cites."
+  />
+</BaseLayout>

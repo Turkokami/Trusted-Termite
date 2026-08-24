@@ -1,0 +1,441 @@
+---
+/**
+ * Service spoke — Bed Bug Treatment.
+ *
+ * Data sources: services.ts (products: Alpine WSG, Precor IGR, Transport;
+ * licence category Pest Control; guaranteeApplies FALSE).
+ *
+ * HARD HONESTY GATES ON THIS PAGE:
+ *  - NO HEAT TREATMENT. It is in the EXCLUDED list in services.ts. This page
+ *    must state plainly that heat is not offered and that where heat is the
+ *    right answer, the customer needs a different provider.
+ *  - NO FUMIGATION. Not certified for it.
+ *  - No pricing figures. No claims about eradication rates, timeframes or
+ *    "one visit" outcomes. No disease claims — bed bugs are not established
+ *    as disease vectors and the page must not imply they are.
+ *  - No stigma language. The single most important message is that bed bugs
+ *    are an introduction problem, not a cleanliness problem.
+ *
+ * Regional grounding: I-20 corridor lodging at Stanton; oilfield man camps,
+ * RV parks and short-cycle rental turnover across the Permian (verified on
+ * the Denver City and locations pages); high rental share in Lubbock (51.2%
+ * renter, verified on the Lubbock page).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('bed-bug-treatment')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: '/services/bed-bug-treatment/' },
+];
+
+const quickAnswer =
+  'Bed bug treatment from Trusted Termite and Pest Solutions is chemical treatment, quoted individually, because a light infestation and a severe whole-home infestation are completely different jobs. Valentin Moriel carries out the work himself under TPCL 0918482, and does it discreetly. We do not offer heat treatment, and where heat is the right answer we will tell you so rather than sell you something adjacent.';
+
+const faqs = [
+  {
+    q: 'Do you do heat treatment?',
+    a: 'No. Heat is a legitimate method requiring specific equipment we do not carry, and we are not going to imply otherwise. What we offer is conventional chemical treatment with a follow-up schedule. Where heat is genuinely the right answer for your situation — and sometimes it is — you need a provider who does it, and we will say so on the phone rather than after taking a booking.',
+  },
+  {
+    q: 'Does having bed bugs mean my house is dirty?',
+    a: 'No, and this is the single most important thing on this page. Bed bugs are an introduction problem, not a sanitation problem. They arrive in luggage, in second-hand furniture, in a bag set down somewhere, on clothing. Spotless homes get them and always have. The only thing housekeeping changes is how easy they are to find, because clutter gives them more places to be.',
+  },
+  {
+    q: 'How do I know it is actually bed bugs?',
+    a: 'Look for the physical evidence rather than at the bites. Small dark spots along a mattress seam, on the box spring, or on the frame where the joints meet. Shed skins. Live insects roughly the size and shape of an apple seed, flattened and reddish-brown. Bites alone are unreliable — people react very differently, some not at all, and several other things bite. If you can photograph what you have found, text it before the visit.',
+  },
+  {
+    q: 'Can you treat it in one visit?',
+    a: 'Not honestly. Bed bug work is a sequence, not an event, because eggs are not affected by treatment the way active insects are and a second visit at the right interval is what deals with what hatches afterwards. Anyone promising a single-visit resolution is either using a method they have not explained or telling you what you want to hear.',
+  },
+  {
+    q: 'Is bed bug work covered by the 30-day guarantee?',
+    a: 'No. It carries its own agreed terms instead, set before the work starts. The reason is that the outcome depends heavily on preparation being completed, on the follow-up visits happening on schedule, and on the source of the introduction not continuing — none of which a blanket thirty-day promise handles honestly.',
+  },
+  {
+    q: 'What do you use?',
+    a: 'Alpine WSG, Precor IGR and Transport, selected and placed for the situation. The insect growth regulator matters as much as the adulticide, because it addresses the part of the population that is not currently an adult. Placement is determined by where the harbourage actually is, which is what the inspection establishes.',
+  },
+  {
+    q: 'Will the neighbours know?',
+    a: 'Not from us. There is no branded wrap announcing what we are treating, and we will not discuss your property with anybody who is not authorised on the job. If discretion matters to you — and for a good many people it does — say so when you book and it will be planned around.',
+  },
+  {
+    q: '¿Hacen tratamiento de chinches en español?',
+    a: 'Sí. Valentin habla español con fluidez y le explica personalmente cómo preparar la casa y qué esperar en cada visita. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/bed-bug-treatment/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: svc.name,
+    description: 'Discreet chemical bed bug treatment with scheduled follow-up for homes, rental property and lodging across Gaines County and the Permian Basin.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>Bed Bug Treatment</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Start with the thing that stops most people picking up the phone for weeks:
+          <strong>bed bugs have nothing to do with how clean your house is.</strong>
+        </p>
+        <p>
+          They are an introduction problem. They arrive in luggage, in second-hand furniture, in a bag
+          set down in the wrong place, on clothing, in a moving box. Immaculate homes get them.
+          Hospitals get them. Expensive hotels get them. The only thing housekeeping affects is how hard
+          they are to find, because clutter gives them more places to hide.
+        </p>
+        <p>
+          The delay caused by embarrassment is the actual damage. A small, localised introduction is a
+          contained job. The same introduction eight weeks later has spread through a room and into
+          adjacent ones, and it is a much bigger, longer and more expensive piece of work. Calling early
+          is the single most effective thing you can do, and nobody here is going to make you feel bad
+          about it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we do not offer, said first</h2>
+      <div class="measure">
+        <p>
+          Most pages about bed bugs list capabilities. This one starts with the limits, because in this
+          particular trade the limits are what you need in order to choose properly.
+        </p>
+        <p>
+          <strong>We do not do heat treatment.</strong> Whole-room or whole-structure thermal remediation
+          requires specific equipment and specific training, and we do not carry it. It is a real method
+          with real advantages — it reaches harbourage chemicals struggle with, and it has no residual
+          consideration — and where it is the right answer for a property, you need somebody who does it.
+          We will tell you that on the phone.
+        </p>
+        <p>
+          <strong>We do not fumigate.</strong> Structural fumigation requires its own certification, which
+          is not held here.
+        </p>
+        <p>
+          <strong>We do not promise a single-visit resolution.</strong> It is not achievable honestly with
+          conventional treatment, and the follow-up section below explains why.
+        </p>
+        <p>
+          <strong>And we do not sell a bed bug scare.</strong> Bed bugs are a genuine misery — sleep loss,
+          stress, and a real financial cost — and they are not a health emergency in the way this industry
+          sometimes implies. You have time to make a considered decision, get a second quote and choose the
+          right method. Anyone pressuring you to sign today is selling, not diagnosing.
+        </p>
+        <p>
+          <strong>What we do offer</strong> is conventional chemical treatment, performed by the licence
+          holder personally, with a scheduled follow-up, a written scope agreed before the work, and
+          discretion.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Finding out whether you actually have them</h2>
+      <div class="measure">
+        <p>
+          A surprising share of bed bug calls turn out to be something else, and a surprising share of
+          genuine infestations go unrecognised for months. Both errors come from looking at the wrong
+          evidence.
+        </p>
+        <p>
+          <strong>Bites are not diagnostic.</strong> People react enormously differently — some develop
+          pronounced welts, some show nothing at all, and two people in the same bed can have completely
+          different experiences. Several other things bite. Reading an infestation from skin is guesswork.
+        </p>
+        <p>
+          <strong>The physical evidence is what counts.</strong> Small dark spots — digested blood — along
+          mattress seams, on the box spring, on the underside of the frame, and at the joints where a bed
+          comes apart. Shed skins, which look like translucent empty shells. Live insects roughly the size
+          and shape of an apple seed, flattened, reddish-brown, and faster than people expect.
+        </p>
+        <p>
+          <strong>Where to look, in order.</strong> Mattress seams and tags first. Then the box spring,
+          including underneath the fabric at the corners. Then the frame, especially anywhere two pieces
+          bolt together. Then the headboard, and behind it if it is mounted to the wall. Then within about
+          fifteen feet of where somebody sleeps: nightstands, the seam of an upholstered chair, behind a
+          picture frame, along the edge of carpet, in the joint of a baseboard.
+        </p>
+        <p>
+          <strong>Photograph what you find.</strong> Phone camera, as close as it will focus, with
+          something for scale. Text it. That resolves in ten seconds what five minutes of description
+          cannot, and it means the visit arrives already knowing what it is dealing with.
+        </p>
+        <p>
+          <strong>And if you are not sure, call anyway.</strong> An inspection that finds nothing is a good
+          outcome, not a wasted trip. It is also considerably cheaper than the alternative of waiting to be
+          certain.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why one visit is not the job</h2>
+      <div class="measure">
+        <p>
+          This is the part of bed bug work most misunderstood by customers and most often glossed over by
+          companies, and it explains almost every disappointing outcome in this trade.
+        </p>
+        <p>
+          A conventional treatment deals effectively with the insects present at the time it is applied.
+          It does considerably less to eggs. Eggs then hatch on their own schedule, producing a new
+          generation from a population you were told had been dealt with — which arrives days or weeks
+          later and feels exactly like a treatment failure.
+        </p>
+        <p>
+          It is not a failure. It is the reason the second visit exists, and the reason the interval
+          between visits is set by the biology rather than by convenience. Skipping it, or letting it slip
+          because the return drive is inconvenient, is how a job that was going to work stops working.
+        </p>
+        <p>
+          <strong>Which is why an insect growth regulator is part of the treatment</strong> rather than an
+          extra. Precor IGR addresses the part of the population that is not currently a reproducing
+          adult, which is the part a straight adulticide misses.
+        </p>
+        <p>
+          <strong>And it is why seeing an insect after the first visit is expected</strong> rather than
+          alarming. What matters is the trend across visits, not the presence or absence of a sighting on
+          day four. We will tell you what to expect and roughly when, so that you are measuring the right
+          thing.
+        </p>
+        <p>
+          The practical implication for choosing a company: ask what the follow-up schedule is, in visits
+          and in days, before you book. If the answer is vague, or if follow-up is priced as a separate
+          call-out, that tells you how the job is actually going to run.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Preparation, and why it is not busywork</h2>
+      <div class="measure">
+        <p>
+          Bed bug treatment asks more of the customer than any other service on this site, and it is
+          reasonable to want to know why before doing it.
+        </p>
+        <p>
+          The reason is access. Bed bugs live in seams, joints and crevices within a short distance of
+          where people sleep, and treatment has to reach those places. Every item in the way is a place
+          that does not get treated and a place the population can retreat to.
+        </p>
+        <p>
+          <strong>Laundry.</strong> Bedding, and clothing from affected rooms, washed and dried on high
+          heat. The dryer does the work rather than the wash. Bagged after, and kept separate until the
+          job is complete.
+        </p>
+        <p>
+          <strong>Clutter reduction, not deep cleaning.</strong> The goal is access, not spotlessness.
+          Clearing the floor around beds and furniture, emptying nightstands, and moving stored boxes out
+          of the treatment zone — into sealed bags rather than into another room, because moving an
+          unsealed box is how a one-room problem becomes a two-room problem.
+        </p>
+        <p>
+          <strong>Do not throw the mattress out yet.</strong> The instinct is strong and it is usually
+          wrong. A treated mattress with an encasement fitted is generally recoverable, and a discarded
+          mattress dragged through the house on its way to the kerb spreads the problem along the route.
+          If it does need to go, it goes after treatment and wrapped.
+        </p>
+        <p>
+          <strong>Do not start moving beds into other rooms.</strong> Or sleeping on the sofa. Both are
+          understandable and both spread the infestation, because the insects follow where people sleep.
+          Staying put until the work is done is genuinely the better strategy.
+        </p>
+        <p>
+          <strong>Do not spray retail product first.</strong> Many retail products are repellent, which
+          scatters a contained population into new harbourage rather than eliminating it, and it makes the
+          job harder and longer. If you already have, say so — it changes the plan and it is information,
+          not a confession.
+        </p>
+        <p>
+          A specific preparation list is provided before the visit, matched to your property. It will be
+          shorter than the ones circulating online, because it is aimed at access rather than at making the
+          customer responsible for the result.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Rental property, lodging and the Permian pattern</h2>
+      <div class="measure">
+        <p>
+          Bed bugs behave differently in this region than the national advice assumes, because of how
+          people move through it.
+        </p>
+        <p>
+          <strong>Short-cycle turnover.</strong> The Permian economy produces rental property that changes
+          hands fast — man camps, RV parks, short-term housing, units that fill in a week and empty in a
+          month. Each turnover is an introduction opportunity, and the interval between them is short
+          enough that a problem can be handed forward repeatedly before anyone identifies it.
+        </p>
+        <p>
+          <strong>Lodging on the interstate.</strong> Stanton sits directly on I-20 between Midland and Big
+          Spring, and any premises serving a passing population sees a rate of introduction that
+          residential property does not. For those operators the game is detection rather than reaction:
+          routine inspection of rooms during turnover finds an introduction while it is still one room.
+        </p>
+        <p>
+          <strong>High-rental towns.</strong> In Lubbock, more than half of occupied housing is rented. In
+          Seagraves the figure is around forty percent. Multi-unit and adjacent-unit property raises a
+          specific question that single-family housing does not: whether the source is your unit at all.
+        </p>
+        <p>
+          <strong>Who pays, and who authorises.</strong> Texas property law places obligations on
+          residential landlords regarding conditions materially affecting health and safety, and many
+          leases address pest control directly, sometimes splitting it by pest type or by tenancy length.
+          Read the lease before assuming. We are not lawyers and this is not legal advice — but
+          practically, we will speak to whoever authorises the work, invoice whoever is paying, and
+          coordinate access with whoever lives there, without those needing to be the same person.
+        </p>
+        <p>
+          <strong>The one thing that causes problems</strong> is a tenant booking work the owner has not
+          approved and expecting the owner to pay afterwards. Sort authorisation before the visit.
+        </p>
+        <p>
+          <strong>And for multi-unit property:</strong> treating one unit while an adjacent one is
+          untreated is frequently money spent against continuous re-supply. Where that is the situation we
+          will say so, even though the honest recommendation is a larger job than the one you called about.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What the visit is actually like</h2>
+      <div class="measure">
+        <p>
+          People ask this more than they ask about method, and it is a fair question, so here is the shape
+          of it.
+        </p>
+        <p>
+          <strong>The inspection comes first and takes longer than you expect.</strong> Beds are taken
+          apart. Mattresses are lifted and the seams and tags examined. Box springs get looked at
+          underneath, which means the fabric on the corners. Frames are checked where they bolt together.
+          Headboards come off the wall if they are mounted. Then the fifteen-foot radius around each
+          sleeping position — nightstands, upholstered furniture seams, carpet edges, baseboard joints,
+          behind wall-mounted items.
+        </p>
+        <p>
+          <strong>Then a conversation before anything is applied.</strong> What was found, in which rooms,
+          how established it appears to be, what the treatment plan is, what the follow-up schedule is and
+          what it will cost. If the inspection changes the scope — and it often does, because infestations
+          are rarely confined to the room that prompted the call — the revised number is discussed on the
+          spot rather than appearing later on an invoice.
+        </p>
+        <p>
+          <strong>Then treatment</strong>, placed according to the harbourage found rather than applied
+          broadly, using Alpine WSG, Precor IGR and Transport as the situation calls for.
+        </p>
+        <p>
+          <strong>Then the paperwork Texas requires.</strong> The identity and licence number of the
+          business and information about what was applied. For interior applications a notice is posted
+          and stays up for at least forty-eight hours so that anyone entering the space afterwards knows
+          what is there. Keep it.
+        </p>
+        <p>
+          <strong>Then the follow-up, on the date agreed.</strong> Not when it is convenient for a route.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Not bringing them home in the first place</h2>
+      <div class="measure">
+        <p>
+          Introduction is the whole mechanism, so prevention is entirely about the things that come into
+          the building.
+        </p>
+        <p>
+          <strong>Travel.</strong> Put luggage on the rack rather than the bed or the floor, and pull back
+          the sheet at the head of the mattress to look at the seam before you unpack. It takes twenty
+          seconds. On returning, unpack into the laundry rather than into the wardrobe, and run everything
+          through a hot dryer cycle — the dryer, not the wash, is what does the work.
+        </p>
+        <p>
+          <strong>Second-hand furniture.</strong> The most common domestic introduction route by a wide
+          margin, and upholstered items and bed frames are the highest risk. Inspect seams, joints and the
+          underside before it comes through the door, not after.
+        </p>
+        <p>
+          <strong>Anything from a kerb.</strong> A mattress or sofa put out on a kerb in this region has a
+          meaningful chance of having been put there for a reason.
+        </p>
+        <p>
+          <strong>Encasements.</strong> A mattress and box spring encasement is inexpensive, permanent and
+          does two useful things: it removes the most complicated harbourage in the room from the equation,
+          and it makes future detection dramatically easier, because anything present has to be on the
+          outside where it can be seen.
+        </p>
+        <p>
+          <strong>Reduce the hiding places near the bed.</strong> Not for tidiness — for detection. The
+          fewer crevices within fifteen feet of where somebody sleeps, the earlier an introduction is
+          noticed, and earlier is the entire difference between a contained job and a whole-home one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Individually quoted after an inspection, because a light localised introduction and a severe
+          whole-home infestation are not the same job and should not be priced as though they were. The
+          scope, the follow-up schedule and the terms are agreed in writing before any work starts. This
+          service carries its own terms rather than the standard 30-day pest guarantee. No heat treatment
+          and no fumigation. Discreet. Military discount. Cash, check, card in person or online, Venmo,
+          CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Bed bug questions" />
+  <Cta
+    line="Text a photograph of what you have found if you can — mattress seam, frame joint, or the insect itself. It gets you a straight answer faster than anything else, and nobody here is going to make it awkward."
+  />
+</BaseLayout>

@@ -1,0 +1,429 @@
+---
+/**
+ * Service spoke — Flea & Tick Treatment.
+ *
+ * Data sources: services.ts (products: Precor IGR, Talstar, DeltaGard;
+ * licence category Pest Control; guaranteeApplies FALSE).
+ *
+ * HONESTY GATES:
+ *  - This is not veterinary work. The page must send people to a vet for the
+ *    animal side and must not recommend, name or dose any animal product.
+ *  - No disease statistics or prevalence claims. Tick-borne illness is
+ *    referred to only in general terms with a pointer to medical advice.
+ *  - No eradication promises; no pricing figures.
+ *  - guaranteeApplies is FALSE — say so and explain why (outcome depends on
+ *    the animal being treated in parallel, which we do not control).
+ *
+ * Regional grounding: sandy loam and fast-draining soils across the route;
+ * acreage with outbuildings and livestock; deer, rabbits, rodents and
+ * coyotes as wild hosts; the shaded-harbourage pattern that governs where
+ * fleas actually survive in a semi-arid climate.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('flea-and-tick')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: '/services/flea-and-tick/' },
+];
+
+const quickAnswer =
+  'Flea and tick treatment from Trusted Termite and Pest Solutions covers interior and exterior work, targeting where the activity is coming from rather than where you are seeing it. Valentin Moriel performs the work himself under Texas Department of Agriculture licence TPCL 0918482. Treating the property without treating the animal does not work, so this only succeeds alongside your vet — and we will say so before taking the job.';
+
+const faqs = [
+  {
+    q: 'Do I need to treat my pet as well?',
+    a: 'Yes, and it is not optional. Property treatment and animal treatment are two halves of one job, and doing either alone produces a cycle that never closes — the treated property is re-seeded by the untreated animal, or the treated animal is re-infested by the untreated property. The animal side belongs to your veterinarian. We do not recommend, supply or dose animal products, because that is veterinary practice and we are not qualified to do it.',
+  },
+  {
+    q: 'Why do I have fleas when it is this dry?',
+    a: 'Because fleas do not live in the open. They survive in shaded, humid microclimates — under decks and porches, in crawl spaces, under shrubs and dense ground cover, in a dog run, in the cool dirt where an animal lies down. In a semi-arid climate those pockets are a small fraction of the property, which is actually good news: the treatable area is much smaller and better defined than it would be in a wetter region.',
+  },
+  {
+    q: 'Where do ticks come from out here?',
+    a: 'Wild hosts and the vegetation they move through. Rabbits, rodents, deer and coyotes carry ticks across a property, and ticks wait on tall grass and brush along the routes those animals use — fence lines, brush edges, the boundary between mown ground and whatever is beyond it. That is why tick work is largely about the edges of a property rather than about the middle of a lawn.',
+  },
+  {
+    q: 'What do you use?',
+    a: 'Precor IGR, Talstar and DeltaGard, selected for the situation. The insect growth regulator matters as much as anything else on a flea job, because the large majority of a flea population at any moment is not adult — it is eggs, larvae and pupae in the carpet, in the bedding and in the soil, and an adulticide alone leaves that reservoir intact.',
+  },
+  {
+    q: 'Why do I still see fleas after the treatment?',
+    a: 'Because pupae are protected and emerge on their own schedule, sometimes triggered by vibration and warmth. Seeing adults for a stretch after treatment is expected rather than a failure, and it is why vacuuming daily after a treatment genuinely helps — it triggers emergence into treated surfaces. The trend across a couple of weeks is what to measure, not day three.',
+  },
+  {
+    q: 'Is this covered by the 30-day guarantee?',
+    a: 'No. It carries its own agreed terms instead. The reason is straightforward and worth stating: the outcome depends heavily on the animal being treated in parallel, which is outside our control and outside our competence. Promising a blanket thirty days on a result that depends on somebody else\'s veterinary plan would not be honest.',
+  },
+  {
+    q: 'How do I remove a tick that is attached?',
+    a: 'Fine-tipped tweezers, grasp as close to the skin as possible, and pull steadily upward without twisting or crushing the body. Clean the area afterwards. Do not use heat, petroleum jelly or nail polish — those are folk methods that increase the chance of the tick regurgitating. If you develop a rash, a fever or feel unwell in the weeks afterwards, see a doctor and tell them about the bite. That part is medical rather than pest control, and we will not pretend otherwise.',
+  },
+  {
+    q: '¿Hacen tratamiento de pulgas y garrapatas en español?',
+    a: 'Sí. Valentin habla español con fluidez y le explica personalmente dónde está el problema y qué tiene que hacer el veterinario. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/flea-and-tick/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: svc.name,
+    description: 'Interior and exterior flea and tick treatment for homes, yards, kennels and acreage across Gaines County and the Permian Basin, coordinated with veterinary treatment of the animal.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>Flea &amp; Tick Treatment</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          The most useful thing we can tell you about this service is a limit on it:
+          <strong>treating your property will not solve a flea problem on its own.</strong>
+        </p>
+        <p>
+          Fleas cycle between the animal and the environment continuously. Treat the property and leave the
+          animal untreated and the property is re-seeded within days. Treat the animal and leave the
+          property untreated and the animal is re-infested from the carpet and the yard. It is one problem
+          with two halves, and only doing both closes it.
+        </p>
+        <p>
+          The animal half belongs to your veterinarian. We do not recommend, supply or dose animal
+          products — that is veterinary practice, we are not qualified for it, and a pest control company
+          telling you what to put on your dog is a company operating outside its competence.
+        </p>
+        <p>
+          So if you call about fleas, one of the first things you will be asked is what your vet has your
+          animal on. If the answer is nothing, the honest recommendation is to sort that first or at the
+          same time, because a property treatment on its own is money spent against a source that is still
+          producing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What you are seeing is a small fraction of what is there</h2>
+      <div class="measure">
+        <p>
+          This is the piece of flea biology that explains almost every disappointing treatment, and it is
+          worth understanding before you spend anything.
+        </p>
+        <p>
+          The adult fleas you can see are a minority of the population. The rest is eggs, larvae and pupae
+          — in the carpet pile, in the gaps between floorboards, in pet bedding, in upholstery, and in the
+          soil and leaf litter outside where an animal lies down.
+        </p>
+        <p>
+          Eggs are laid on the animal and fall off wherever it goes, which means the distribution of the
+          problem is a map of where your pet spends time rather than where you noticed a flea. Larvae move
+          away from light down into the pile and the soil. And pupae are the difficult stage: enclosed,
+          protected, and capable of waiting for a trigger — warmth, carbon dioxide, vibration — before
+          emerging.
+        </p>
+        <p>
+          <strong>Which is why an adulticide alone fails.</strong> It deals with the visible minority and
+          leaves the reservoir intact, and the reservoir emerges over the following weeks into a property
+          that no longer has any active treatment on it.
+        </p>
+        <p>
+          <strong>And why an insect growth regulator is central rather than optional.</strong> Precor IGR
+          interrupts development, which addresses the part of the population an adulticide cannot reach.
+          On flea work the growth regulator is arguably the more important half of the treatment.
+        </p>
+        <p>
+          <strong>It is also why seeing fleas after treatment is expected.</strong> Pupae emerging into
+          treated surfaces is the treatment working, not failing. What matters is whether the numbers are
+          trending down across two or three weeks, and that is the thing to measure rather than a sighting
+          on day four.
+        </p>
+        <p>
+          <strong>And it is why vacuuming after a treatment genuinely helps.</strong> The vibration
+          triggers emergence, which brings the protected stage out into contact with the treatment.
+          Vacuum daily for a couple of weeks, empty into a bag and put the bag outside. It is the highest-
+          value free thing you can do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Fleas in a semi-arid climate</h2>
+      <div class="measure">
+        <p>
+          People are frequently surprised to have a flea problem in a region that gets sixteen inches of
+          rain a year, and the surprise leads them to misdiagnose it. Fleas do fine here — they just do
+          not do fine everywhere here.
+        </p>
+        <p>
+          Immature fleas need humidity and shade. Open, sun-baked, sandy ground is genuinely hostile to
+          them, and across most of this region that describes the majority of an outdoor space. What
+          sustains a population is the small set of places that are cool and damp and shaded, and that set
+          is short enough to list:
+        </p>
+        <p>
+          <strong>Under decks and porches.</strong> The classic one. Shaded, sheltered from rain and sun,
+          and almost always where an animal chooses to lie in summer.
+        </p>
+        <p>
+          <strong>Crawl spaces.</strong> On pier-and-beam construction, the void underneath is a
+          controlled climate compared with the yard, and animals get under there.
+        </p>
+        <p>
+          <strong>Under dense shrubs and ground cover.</strong> Anywhere with enough canopy to hold shade
+          and moisture at soil level.
+        </p>
+        <p>
+          <strong>Dog runs, kennels and pens.</strong> Concentrated animal use in one place produces
+          concentrated egg deposition in that place, and these are usually shaded by design.
+        </p>
+        <p>
+          <strong>The cool dirt an animal digs out.</strong> A dog that scrapes a hollow under a bush to
+          lie in has built a flea nursery, and it is the single most productive spot on many properties.
+        </p>
+        <p>
+          <strong>Beside a foundation on the shaded side of the house</strong>, particularly where
+          irrigation keeps the ground damp.
+        </p>
+        <p>
+          The practical consequence is good news: <strong>the treatable area is smaller and better defined
+          here than in a wetter region.</strong> Broadcast-treating an entire yard is largely wasted
+          effort. Treating the shaded harbourage properly does most of the available work, uses less
+          product, and is what the inspection is actually looking for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Ticks are an edge problem, not a lawn problem</h2>
+      <div class="measure">
+        <p>
+          Ticks behave differently from fleas in a way that changes where the work happens.
+        </p>
+        <p>
+          They do not fly or jump. They wait — on grass stems, on brush, on the tips of vegetation — with
+          their front legs extended, and they attach to whatever brushes past. That behaviour ties them
+          tightly to two things: <strong>tall vegetation, and the routes animals use through it.</strong>
+        </p>
+        <p>
+          On a West Texas property those routes are predictable. Fence lines. The boundary between mown
+          ground and whatever is beyond it. Brush edges. Paths through tall grass. The gap under a fence
+          where rabbits come and go. The line a dog runs along the perimeter every day.
+        </p>
+        <p>
+          <strong>The wild hosts matter.</strong> Rabbits and rodents move ticks across a property
+          constantly, deer carry them over longer distances, and coyotes and other wildlife do both.
+          None of that is controllable, which is exactly why tick work concentrates on the interface
+          rather than trying to address the source.
+        </p>
+        <p>
+          <strong>So the treatment is a boundary treatment.</strong> The perimeter, the fence lines, the
+          brush edge, and the transition zone where the maintained ground meets the unmaintained. Spraying
+          the middle of a mown lawn for ticks accomplishes very little, because that is not where they
+          are.
+        </p>
+        <p>
+          <strong>And the most effective intervention is mechanical.</strong> Keeping grass shorter along
+          the routes people and animals use, clearing brush back from the boundary, and creating a defined
+          transition rather than a gradual one all reduce tick habitat directly. Where that is the answer,
+          <a href="/services/lawn-care/">lawn and weed work</a> or
+          <a href="/services/brush-and-lot-clearing/">brush and lot clearing</a> does more than a chemical
+          application would, and we would rather do the thing that works.
+        </p>
+        <p>
+          <strong>On the health side</strong>, tick-borne illness is a real matter and it is a medical
+          one. If you develop a rash, a fever, or feel unwell in the weeks after a bite, see a doctor and
+          tell them about it. We are not going to publish risk statistics we cannot stand behind, and we
+          are not going to use fear to sell a treatment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Acreage, livestock and outbuildings</h2>
+      <div class="measure">
+        <p>
+          Rural property changes this job substantially, and in ways that are worth setting out before you
+          call.
+        </p>
+        <p>
+          <strong>Working dogs cover ground.</strong> A dog that ranges across a section is picking up
+          ticks along fence lines and brush edges you will never walk, and depositing flea eggs across a
+          much larger area than a town dog. The distribution of the problem follows the animal, and on
+          acreage that means it is genuinely spread out.
+        </p>
+        <p>
+          <strong>Barns and outbuildings are harbourage.</strong> Shaded, sheltered from wind and sun, with
+          soil floors or straw in many cases, and frequently where an animal sleeps. On a rural property the
+          barn is often more productive than the house, and treating the house alone is why the problem
+          comes back.
+        </p>
+        <p>
+          <strong>Livestock introduces a different set of considerations.</strong> Where animals are
+          present, product choice and placement change, and some things simply are not applied. Say what
+          you have before the visit rather than on the day — cattle, horses, goats, poultry, working dogs,
+          bees — because it changes the plan rather than complicating it.
+        </p>
+        <p>
+          <strong>Wildlife pressure is continuous.</strong> Rabbits, rodents and deer moving across
+          acreage re-supply ticks indefinitely. Nobody eliminates that. What can be done is manage the
+          interface around the buildings and the areas people and animals actually use, which is a smaller
+          and more honest promise than treating a property.
+        </p>
+        <p>
+          <strong>And there is a rodent connection worth knowing.</strong> Rodents carry fleas and ticks.
+          A property with a rodent population in the outbuildings has a permanent flea and tick source in
+          the outbuildings, and dealing with the fleas without dealing with the rodents is treating the
+          symptom. Where that is the situation, <a href="/services/rodent-control/">rodent control and
+          exclusion</a> is the underlying job.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Things people try first, and what they are worth</h2>
+      <div class="measure">
+        <p>
+          Almost nobody calls a pest control company about fleas as a first step, and that is reasonable.
+          Here is an honest assessment of the usual attempts, because knowing which ones are worth
+          continuing is genuinely useful.
+        </p>
+        <p>
+          <strong>Vacuuming — the most underrated thing on the list.</strong> It physically removes eggs,
+          larvae and adults, and the vibration triggers pupal emergence. Done daily it is a real
+          intervention rather than a token one. Do it before a treatment and keep doing it afterwards,
+          and empty the bag outside rather than into the kitchen bin.
+        </p>
+        <p>
+          <strong>Washing pet bedding hot — genuinely effective, and often skipped.</strong> The bedding
+          is usually the densest single concentration on the property. The dryer does more work than the
+          wash.
+        </p>
+        <p>
+          <strong>Retail foggers and bombs — mostly not.</strong> They deposit on horizontal surfaces and
+          do very little to reach the places fleas actually are: down in the pile, under furniture, in the
+          crevices. They also frequently contain repellent components that scatter a population rather
+          than eliminating it, which makes the professional job harder afterwards. If you have used one,
+          say so.
+        </p>
+        <p>
+          <strong>Diatomaceous earth — some real effect, badly overstated.</strong> It works by abrasion
+          and desiccation, needs to stay dry, and needs the insect to contact it. In practice it does
+          something in a dry, undisturbed void and very little in a carpet that gets walked on.
+        </p>
+        <p>
+          <strong>Ultrasonic devices — no.</strong> There is no mechanism by which these affect fleas or
+          ticks, and money spent on them would do more spent on a vacuum bag and a vet visit.
+        </p>
+        <p>
+          <strong>Salt and other household remedies — no meaningful effect</strong>, and heavy salt
+          application does no favours to a carpet.
+        </p>
+        <p>
+          <strong>Yard-wide broadcast granules — mostly wasted here.</strong> In a semi-arid climate the
+          open sunlit ground is not sustaining a flea population, so treating all of it spends product on
+          the part of the property that was never the problem. Concentrating on shaded harbourage is both
+          cheaper and more effective.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What a job looks like, and what you do</h2>
+      <div class="measure">
+        <p>
+          <strong>Before the visit.</strong> Speak to your vet and get the animal side started — that is
+          the half we do not do and the half without which nothing holds. Wash pet bedding on hot and dry
+          it hot. Vacuum thoroughly, including under furniture and along the edges of rooms where the pile
+          meets the skirting, and put the bag outside afterwards. Clear the floor so the treatment can
+          reach it. Outside, mow, and cut back shrubs enough that we can get under them.
+        </p>
+        <p>
+          <strong>The inspection.</strong> Interior first — where the animal sleeps, where it lies during
+          the day, the routes between, and the transition points at doorways. Then the exterior, working
+          through the shaded harbourage list above rather than walking the perimeter generically. On tick
+          work, the fence lines and brush edges specifically.
+        </p>
+        <p>
+          <strong>The treatment.</strong> Interior application aimed at the harbourage found, with an
+          insect growth regulator. Exterior treatment concentrated on the shaded pockets and, for ticks,
+          on the boundary and transition zones. Products at label rate, which is a legal requirement
+          rather than a guideline.
+        </p>
+        <p>
+          <strong>Afterwards.</strong> Keep vacuuming daily for a couple of weeks — it triggers pupal
+          emergence into treated surfaces and it is genuinely effective. Keep the animal on whatever your
+          vet has prescribed. Expect to see adults for a while, and watch the trend rather than any single
+          day.
+        </p>
+        <p>
+          <strong>Follow-up.</strong> Flea work frequently needs a second visit at a specific interval,
+          set by the life cycle rather than by convenience. Whether yours does is determined at the
+          inspection and agreed before the work rather than raised afterwards.
+        </p>
+        <p>
+          <strong>The documentation.</strong> Texas requires the identity and licence number of the
+          business and information about what was applied, and for interior applications a posted notice
+          that stays up at least forty-eight hours. Keep it, particularly if you have animals or small
+          children in the house.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Homes, yards, kennels, rental property and acreage, priced on the property and the extent rather
+          than at a flat rate. This service carries its own agreed terms rather than the standard 30-day
+          pest guarantee, because the outcome depends on veterinary treatment running alongside it.
+          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle. Se habla
+          español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Flea and tick questions" />
+  <Cta
+    line="Tell him what animals you have, where they sleep and where they lie outside during the day. That map is most of the diagnosis — and have a word with your vet before or alongside the visit."
+  />
+</BaseLayout>

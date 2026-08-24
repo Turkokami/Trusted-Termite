@@ -1,0 +1,473 @@
+---
+/**
+ * Service spoke — Wildlife Removal.
+ *
+ * Data sources: services.ts (no products listed — this is trapping and
+ * exclusion work, not an application service; licence category Pest Control;
+ * guaranteeApplies FALSE).
+ *
+ * HONESTY GATES:
+ *  - Nuisance wildlife around structures ONLY. This is not a game management
+ *    or depredation service and the page must not imply otherwise.
+ *  - Legal framing must be kept GENERAL. Texas wildlife law distinguishes
+ *    game, furbearing, nongame and protected species, and rules on trapping,
+ *    transport and relocation vary by species and situation. The page states
+ *    that the law varies and that species determines what is lawful, and
+ *    directs people to Texas Parks and Wildlife rather than stating specific
+ *    statutory rules we have not verified.
+ *  - RABIES: Texas has rabies vector species. The page must direct bite
+ *    incidents and sick-animal encounters to local animal control and to
+ *    medical/public health authorities, not handle them as pest control.
+ *  - NO poisoning of vertebrate wildlife. No claims about relocation
+ *    outcomes. No pricing figures.
+ *  - Refer bats and birds out to the appropriate handling — birds go to the
+ *    bird-and-pigeon spoke, and protected species are named as a limit.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const svc = serviceBySlug('wildlife-removal')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: svc.name, path: '/services/wildlife-removal/' },
+];
+
+const quickAnswer =
+  'Wildlife removal from Trusted Termite and Pest Solutions covers evaluation, trapping and removal of skunks, raccoons and other nuisance wildlife around West Texas properties, together with the exclusion work that stops the next one moving in. Valentin Moriel handles these jobs personally, licensed by the Texas Department of Agriculture under TPCL 0918482. What is lawful depends on the species, so identification comes before anything else.';
+
+const faqs = [
+  {
+    q: 'What is actually under my shed?',
+    a: 'Out here it is most often a skunk, a raccoon, an opossum or a feral cat, and occasionally a fox. Identification matters more than people expect, because what is lawful and what is sensible both depend on the species. Droppings, tracks in soft dirt, the size and shape of the opening, and the hour of activity are usually enough to tell without seeing the animal.',
+  },
+  {
+    q: 'Can you just relocate it somewhere else?',
+    a: 'Not as a default, and anyone promising it casually is glossing over the law. Texas regulates wildlife by species — game, furbearing, nongame and protected species are treated differently, and rules on trapping, transport and release vary with the situation. Some of what people assume is standard practice is not lawful, and some of it is simply ineffective. We work out what is permitted for your specific animal before proposing anything, and Texas Parks and Wildlife is the authority on the detail.',
+  },
+  {
+    q: 'Do you poison wildlife?',
+    a: 'No. Not skunks, not raccoons, not opossums, not foxes, not cats. Beyond the legal questions, a poisoned animal dies somewhere inaccessible — inside a wall, under a slab, in a crawl space — and you then have a considerably worse problem than the one you called about. Trapping and exclusion are the methods.',
+  },
+  {
+    q: 'Something bit someone, or the animal is behaving strangely. What do I do?',
+    a: 'That is not a pest control call. Contact your local animal control immediately, and for any bite or scratch seek medical advice straight away — Texas has rabies vector species and that assessment belongs to medical and public health professionals, not to us. Do not attempt to catch or handle the animal, and do not let it go. We would rather send you to the right place in ten seconds than take a booking.',
+  },
+  {
+    q: 'Do you handle bats?',
+    a: 'Bats are a specialised situation with their own legal protections, seasonal restrictions around young, and public health considerations, and they are not something to treat as ordinary nuisance work. If you have bats in a structure, tell us on the phone and we will point you to the right kind of help rather than improvising.',
+  },
+  {
+    q: 'What about birds and pigeons?',
+    a: 'Different service and different law — see our bird and pigeon page. The short version is that native birds carry federal protection and pigeons generally do not, which changes everything about what can be done.',
+  },
+  {
+    q: 'Will trapping solve it permanently?',
+    a: 'Only if the reason the animal chose your property is dealt with as well. Removing the occupant of a den under a shed and leaving the den open produces a vacancy that fills, often within weeks. The durable part of this work is exclusion — closing the access, removing the harbourage and taking away the food. That is why the quote is usually for both.',
+  },
+  {
+    q: '¿Ofrecen retiro de animales silvestres en español?',
+    a: 'Sí. Valentin habla español con fluidez y le explica personalmente qué animal es, qué se permite legalmente y cómo cerrar el acceso. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title={svc.titleShort}
+  description={svc.metaDescription}
+  path="/services/wildlife-removal/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: svc.name,
+    description: 'Evaluation, trapping, removal and exclusion for skunks, raccoons, opossums and other nuisance wildlife around homes, outbuildings and commercial property in West Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
+      <h1>Wildlife Removal</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Wildlife work is the service on this site with the most law attached to it and the least
+          standardisation, and the honest starting point is that
+          <strong>what can lawfully be done depends entirely on which animal it is.</strong>
+        </p>
+        <p>
+          Texas regulates wildlife by category. Game species, furbearing animals, nongame species and
+          protected species are treated differently, and the rules governing trapping, transport and
+          release are not uniform across them. A great deal of what people assume is routine practice —
+          in particular, catching something and letting it go somewhere else — is more constrained than
+          the assumption suggests.
+        </p>
+        <p>
+          So identification comes first, before a trap is set and before a price is quoted. Texas Parks
+          and Wildlife is the authority on the specifics, and where a situation sits outside what we can
+          lawfully or competently handle, we will tell you that and point you at who can.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Call somebody else first, in these situations</h2>
+      <div class="measure">
+        <p>
+          This section is deliberately near the top, because getting it wrong matters more than anything
+          else on this page.
+        </p>
+        <p>
+          <strong>If an animal has bitten or scratched a person or a pet.</strong> Contact local animal
+          control immediately, and seek medical advice straight away for any bite or scratch. Texas has
+          rabies vector species and that assessment is a medical and public health matter, not a pest
+          control one. Do not attempt to catch the animal yourself, and do not release it.
+        </p>
+        <p>
+          <strong>If an animal is behaving abnormally.</strong> Active in daylight when it should be
+          nocturnal, unsteady, unafraid of people, disoriented or aggressive without provocation. That is
+          an animal control call, and it is urgent.
+        </p>
+        <p>
+          <strong>If it is a stray or aggressive dog.</strong> Animal control, every time. Different
+          problem, different authority, and in some cases a genuine urgency that pest control cannot
+          serve.
+        </p>
+        <p>
+          <strong>If you have bats in a structure.</strong> Bats carry their own legal protections,
+          seasonal restrictions relating to young, and public health considerations. Tell us and we will
+          direct you rather than improvise on a situation that needs specialist handling.
+        </p>
+        <p>
+          <strong>If it is a bird.</strong> Native birds carry federal protection and the rules are
+          entirely different. See <a href="/services/bird-and-pigeon-control/">bird and pigeon control</a>.
+        </p>
+        <p>
+          <strong>If the animal is injured or is an orphaned juvenile.</strong> That is wildlife
+          rehabilitation, which is a licensed activity of its own, and Texas Parks and Wildlife maintains
+          information on permitted rehabilitators.
+        </p>
+        <p>
+          None of those are things we take money for and then hand off. They are the phone call before
+          the booking.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What is actually living under there</h2>
+      <div class="measure">
+        <p>
+          Most calls start with a noise, a smell or a hole, and the animal itself is never seen. That is
+          fine — the evidence is usually enough.
+        </p>
+        <p>
+          <strong>Skunks.</strong> The most common denning animal under sheds, decks, porches and
+          mobile-home skirting across this region. Nocturnal, dig readily, and prefer an existing void to
+          making one. The smell is the obvious tell, but a resident skunk is not necessarily spraying —
+          plenty of people have one under the shed for weeks without knowing. Cone-shaped diggings in a
+          lawn are a foraging sign rather than a denning one.
+        </p>
+        <p>
+          <strong>Raccoons.</strong> Strong, dextrous and genuinely capable of making their own entry.
+          Attics, chimneys, soffits and outbuildings. They are also the animal most likely to cause real
+          structural damage while getting in, and most likely to be a female with young at certain times
+          of year — which changes the job completely and is one of the main reasons the timing question
+          gets asked.
+        </p>
+        <p>
+          <strong>Opossums.</strong> Frequently under structures and frequently misidentified as
+          something worse. They tend to be transient rather than establishing long-term, and they are
+          often the least difficult of the group to resolve.
+        </p>
+        <p>
+          <strong>Feral cats.</strong> Extremely common under sheds and mobile homes, and a genuinely
+          different situation legally and practically from wildlife. Where cats are what you have, the
+          route usually runs through animal control or a local organisation rather than through us.
+        </p>
+        <p>
+          <strong>Foxes.</strong> Less common in town, more common on the edges and on acreage.
+        </p>
+        <p>
+          <strong>Reading the evidence.</strong> The size and shape of the entry hole. Tracks in soft dirt
+          or dust — and there is no shortage of dust out here. Droppings, which are diagnostic and which
+          should not be disturbed before an inspection. Hair caught at the edge of an opening. The hour
+          the noise happens. Damage patterns. Whether the opening was dug or forced.
+        </p>
+        <p>
+          <strong>Do not clear it up before we look.</strong> The instinct is to tidy. The evidence is the
+          diagnosis, and removing it makes the job guesswork.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why trapping alone does not end it</h2>
+      <div class="measure">
+        <p>
+          This is the same principle that governs rodent work, and it applies with more force here,
+          because the structures wildlife uses are larger and more obvious.
+        </p>
+        <p>
+          <strong>An animal chose your property for a reason.</strong> There is a void it can get into, or
+          a food source, or both. Remove the occupant and leave the reason in place, and the void is
+          simply advertised as available. Dens under decks and sheds get reoccupied repeatedly across
+          years, often by different species in succession, because the site is good rather than because
+          the animal was.
+        </p>
+        <p>
+          <strong>So the work is in two parts</strong>, and the second is the one that lasts.
+        </p>
+        <p>
+          <strong>Removing the occupant</strong> — trapping, sized and sited for the species, checked on a
+          schedule rather than left indefinitely, and handled according to what the law permits for that
+          animal.
+        </p>
+        <p>
+          <strong>Closing the property</strong> — and this is the part that determines whether you call
+          again next spring. Screening or trenching the perimeter of decks, porches and sheds. Closing the
+          gap between mobile-home skirting and the ground, which is the single most common wildlife entry
+          on this route. Capping chimneys. Screening gable and soffit vents. Repairing torn screen and
+          rotted soffit. Cutting back branches that reach a roofline, because raccoons in particular climb
+          and a branch is a bridge.
+        </p>
+        <p>
+          <strong>And removing the attraction</strong> — pet food left outside, unsecured bins, spilled
+          feed and grain, fallen fruit, an accessible compost pile, and water. On a rural property, feed
+          storage is nearly always part of the answer.
+        </p>
+        <p>
+          <strong>The timing question.</strong> There are periods when a denning animal is likely to have
+          dependent young, and closing an entry then can seal juveniles inside a structure — which is
+          inhumane, produces a genuinely serious odour and damage problem, and is the single worst outcome
+          available in this trade. It gets asked about before any exclusion work is scheduled, and it
+          sometimes means waiting.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Structures out here that wildlife particularly likes</h2>
+      <div class="measure">
+        <p>
+          The building stock across this route has some consistent features, and they show up in the same
+          way on property after property.
+        </p>
+        <p>
+          <strong>Mobile-home skirting.</strong> One of the most productive wildlife entries in the
+          region. The skirting was fitted years ago, the ground has shifted, and the gap between the two
+          functions as an open door into a large, dry, sheltered void directly beneath a heated floor.
+          Skunks in particular find it ideal. It is also frequently the same gap driving a rodent problem
+          in the kitchen.
+        </p>
+        <p>
+          <strong>Decks and porches on piers.</strong> A skirted or open void a few feet high, with soil
+          underneath, is a purpose-built den site. Screening or trenching it is a well-understood piece of
+          work and it usually ends the recurrence permanently.
+        </p>
+        <p>
+          <strong>Sheds and shops on blocks or slabs with an undercut.</strong> Same principle. Where a
+          building sits slightly proud of the ground, the edge is where to look.
+        </p>
+        <p>
+          <strong>Roll-up doors on shops.</strong> The gap at the threshold is a rodent problem in every
+          case and occasionally a larger-animal one too.
+        </p>
+        <p>
+          <strong>Attics and soffits.</strong> Raccoon country. Damaged soffit, a lifted shingle edge, a
+          gable vent with a torn screen. On older housing — and the median construction year across most of
+          this route is in the sixties and seventies — the soffit and fascia are frequently the softest
+          part of the envelope.
+        </p>
+        <p>
+          <strong>Chimneys.</strong> Uncapped chimneys are one of the few genuinely simple fixes on this
+          list, and one of the most consistently ignored.
+        </p>
+        <p>
+          <strong>Well houses, pump enclosures and out-of-use outbuildings.</strong> Opened once a season,
+          undisturbed the rest of the time.
+        </p>
+        <p>
+          <strong>And empty buildings.</strong> The Permian economy leaves structures standing unoccupied
+          for months at a time, and an empty building on a property is where the wildlife problem starts
+          before it reaches the occupied one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we will and will not do</h2>
+      <div class="measure">
+        <p>
+          <strong>We will identify before acting.</strong> Species determines what is lawful, what is
+          effective and what the timing constraints are. A trap set before identification is a guess with
+          legal exposure attached.
+        </p>
+        <p>
+          <strong>We will trap humanely and check on a schedule.</strong> Traps left unattended are both
+          inhumane and, in various circumstances, unlawful.
+        </p>
+        <p>
+          <strong>We will do the exclusion work</strong>, which is the part that actually ends it, and we
+          will quote it as part of the job rather than as a discovery afterwards.
+        </p>
+        <p>
+          <strong>We will tell you when a situation is outside what we handle.</strong> Bats, birds,
+          injured animals, orphaned juveniles, anything involving a bite, anything behaving abnormally,
+          and any species whose handling requires a permit or expertise we do not have.
+        </p>
+        <p>
+          <strong>We will not poison vertebrate wildlife.</strong> The legal questions aside, an animal
+          that dies inside a wall or under a slab converts a nuisance problem into a serious odour and
+          remediation problem that is far more expensive than the original job.
+        </p>
+        <p>
+          <strong>We will not promise you what happens to an animal afterwards</strong> beyond what the
+          law and the situation actually permit. That is a question with real constraints on it, and it
+          gets a real answer for your specific case rather than a reassuring generality.
+        </p>
+        <p>
+          <strong>We will not seal a structure at a time of year that risks trapping young inside it.</strong>
+          That is worth waiting for, and we will explain why rather than take the booking.
+        </p>
+        <p>
+          <strong>And we are not a game management or depredation service.</strong> This is nuisance
+          wildlife around buildings. Agricultural and land management wildlife work is a different trade.
+        </p>
+        <p>
+          This service carries its own agreed terms rather than the standard thirty-day pest guarantee,
+          for the obvious reason that wildlife is mobile and a property that stays open is a property that
+          gets reoccupied. What the terms are for your job is agreed before the work rather than after.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The seasons of a wildlife problem</h2>
+      <div class="measure">
+        <p>
+          Wildlife calls arrive in a fairly consistent rhythm out here, and knowing it helps with both
+          scheduling and expectations.
+        </p>
+        <p>
+          <strong>Late winter and early spring</strong> is when denning matters most. Animals looking for
+          somewhere sheltered to raise young are actively assessing structures, and this is the window in
+          which a gap that has been there for years suddenly becomes occupied. It is also the period where
+          the timing constraint on exclusion work bites hardest, because sealing a structure with
+          dependent young inside it is the worst outcome available.
+        </p>
+        <p>
+          <strong>Spring into early summer</strong> is when people first hear something. Young are noisy,
+          activity increases, and the noise in the ceiling that was nothing in February becomes obvious in
+          May.
+        </p>
+        <p>
+          <strong>High summer</strong> shifts the driver to shade and water. Anything cool and sheltered
+          becomes valuable, which means voids under decks, sheds and mobile-home skirting get used by
+          animals that were not interested in them in March. Water sources on a property matter more in
+          this stretch than at any other time.
+        </p>
+        <p>
+          <strong>Autumn</strong> is the food season and the pre-winter positioning season, running
+          straight into the heaviest rodent period of the year. The two overlap and the same structural
+          gaps serve both.
+        </p>
+        <p>
+          <strong>Winter</strong> is the best time to do the exclusion work. The timing constraints around
+          young are generally at their least restrictive, the vegetation is down so the ground can
+          actually be seen, and it is far more comfortable to trench a deck perimeter in January than in
+          July. If you had a problem this year and it has resolved, winter is when to close the property
+          so that next year does not repeat it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What to do in the meantime</h2>
+      <div class="measure">
+        <p>
+          <strong>Do not seal the hole yet.</strong> The most common self-help mistake. If the animal is
+          inside when you close the entry, you have a considerably worse problem, and if it has young in
+          there the outcome is genuinely bad.
+        </p>
+        <p>
+          <strong>Do not set your own trap.</strong> Beyond the legal complications, an incorrectly sized
+          or sited trap catches the wrong animal, injures the right one, or catches nothing while
+          convincing the target that the area is dangerous — which makes the professional job harder.
+        </p>
+        <p>
+          <strong>Do remove the food.</strong> Bring pet food in. Secure bins. Deal with spilled feed and
+          grain. Pick up fallen fruit. Fix the tap that drips. These reduce the attraction immediately and
+          cost nothing.
+        </p>
+        <p>
+          <strong>Do note the hours.</strong> When you hear it, where, and how often. On a nocturnal
+          animal that pattern is diagnostic.
+        </p>
+        <p>
+          <strong>Do keep pets away from the area.</strong> Both for their sake and because an interaction
+          complicates everything that follows.
+        </p>
+        <p>
+          <strong>Do not corner it.</strong> An animal that feels trapped behaves unpredictably, and a
+          skunk that feels trapped behaves predictably in a way nobody wants.
+        </p>
+        <p>
+          <strong>And do photograph what you can safely photograph.</strong> The hole, the tracks, the
+          droppings, the damage. Text it. It shortens the diagnosis considerably.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Homes, mobile and manufactured homes, outbuildings, acreage and commercial property. Quoted
+          individually after an evaluation, because the species, the structure and the exclusion work
+          required change the job entirely. This service carries its own agreed terms rather than the
+          standard 30-day pest guarantee. Military discount. Cash, check, card in person or online, Venmo,
+          CashApp or Zelle. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Wildlife removal questions" />
+  <Cta
+    line="Tell him what you are hearing or smelling, where, at what hour, and what the opening looks like. And if anything has bitten anybody or is behaving oddly, call animal control first — that one is not ours."
+  />
+</BaseLayout>
