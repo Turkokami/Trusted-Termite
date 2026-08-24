@@ -10,7 +10,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
 ---
 <BaseLayout
   title="Areas We Serve | Seminole &amp; the Permian Basin"
-  description="Pest control, termite, lawn and junk removal across Gaines County and the Permian Basin, run out of Seminole. Ten towns on the route. No trip fee."
+  description="Pest control, termite, lawn and junk removal across Gaines County and the Permian Basin, run out of Seminole. Thirteen towns on the route, no trip fee."
   path="/locations/"
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}
@@ -18,7 +18,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
   <Crumbs items={crumbs} />
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Ten towns, one truck, based in Seminole</p>
+      <p class="eyebrow">{TOWNS.length} towns, one truck, based in Seminole</p>
       <h1>Where we work</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <div class="grid c3" style="margin-top:1.8rem">
@@ -34,6 +34,319 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
           The furthest we normally drive is about a hundred miles, which puts Lubbock and Big Spring at
           the edge of the map. If you are outside that and it matters to you, call and ask — sometimes
           it works out.
+        </p>
+
+        <h2 style="margin-top:2.6rem">The shape of the route</h2>
+        <p>
+          Seminole sits in the middle of a region that most maps flatten into one thing and that is
+          actually three. Understanding which of the three your property is in explains more about your
+          pest pressure than anything else on this site.
+        </p>
+        <p>
+          To the north and north-west — Seagraves, Denver City, Brownfield, Lubbock — the land climbs onto
+          the southern Llano Estacado. Flat, high, sandy, agricultural. Cotton and peanuts and grain, with
+          irrigation circles laid across it and playa depressions that hold water after rain and are dry
+          the rest of the year. This is the part of the route where the pest calendar is driven by farming
+          activity: planting, irrigation, and above all harvest, which displaces rodents and field insects
+          toward structures on a schedule you could nearly put a date on.
+        </p>
+        <p>
+          To the south and south-east — Andrews, Midland, Odessa, Big Spring, Stanton — the country drops
+          toward the Permian Basin proper. Caliche, mesquite, oilfield infrastructure, and a housing stock
+          shaped by boom cycles: rapid build-outs, rental turnover, RV parks, and structures that sit
+          empty for months and then fill in a week. Vacancy is a pest condition here in a way it is not
+          further north, and scorpion pressure is the defining feature of the residential work.
+        </p>
+        <p>
+          And in the middle — Gaines County itself, Seminole and Lamesa and the country around them — the
+          two overlap. Agricultural land and oilfield activity sitting on the same sections, with a
+          resident population that is genuinely rural: acreage, outbuildings, shops, barns, and properties
+          where the house is the least interesting building on the lot.
+        </p>
+        <p>
+          One truck covers all three, which is why the town pages read differently from each other. The
+          technical work is the same everywhere. What is driving the problem is not.
+        </p>
+
+        <h2 style="margin-top:2.6rem">The counties</h2>
+        <p>
+          <strong>Gaines County.</strong> Home county, Seminole the seat. The largest share of the work
+          and the shortest drives. Agricultural, with a substantial rural residential population on
+          acreage outside the city limits where county rules rather than city ordinances apply.
+        </p>
+        <p>
+          <strong>Yoakum County.</strong> Denver City and the country around it, north-west. Oil and
+          agriculture together, small population, and very little pest control based locally.
+        </p>
+        <p>
+          <strong>Terry County.</strong> Brownfield, north. Cotton country on the caprock, an older
+          housing stock in town, and the same harvest-driven rodent pattern as the rest of the Llano.
+        </p>
+        <p>
+          <strong>Dawson County.</strong> Lamesa, east. Agricultural, with a town centre that predates
+          most of the region's oilfield build-out and a building stock that reflects it.
+        </p>
+        <p>
+          <strong>Andrews County.</strong> Andrews, south. Notable on this route for having no
+          full-service pest control company physically based in it, which shapes how service actually
+          reaches properties there.
+        </p>
+        <p>
+          <strong>Martin County.</strong> Stanton, south-east, between Midland and Big Spring on the
+          interstate.
+        </p>
+        <p>
+          <strong>Midland and Ector Counties.</strong> Midland and Odessa — the two largest markets on
+          the route, the most competitive, and the ones with the most developed municipal enforcement
+          around weeds and property condition.
+        </p>
+        <p>
+          <strong>Howard County.</strong> Big Spring, at the south-eastern edge of the map.
+        </p>
+        <p>
+          <strong>Lubbock County.</strong> Lubbock, at the northern edge — the largest city on the route
+          and the furthest regular drive, run as planned days rather than on demand.
+        </p>
+
+        <h2 style="margin-top:2.6rem">City weed and property ordinances across the route</h2>
+        <p>
+          Almost every town on this list enforces a maximum vegetation height inside the city limits, and
+          the numbers are not the same from town to town. People move between these towns constantly and
+          assume the rule travels with them. It does not.
+        </p>
+        <p>
+          The heights in force range from eight inches at the strict end to eighteen inches at the more
+          permissive, with twelve inches common in the middle and thirty-six inches typical for
+          unincorporated county land. The individual town pages carry the specifics for each place,
+          including the notice periods and how abatement costs are recovered, because the details matter
+          and getting them wrong is what turns a mowing job into a lien.
+        </p>
+        <p>
+          Two things are worth knowing wherever you are. First, the clock usually starts at the notice,
+          not at the inspection, so the date printed on the paper is the date that matters. Second,
+          several of these ordinances allow the city to issue a single notice per year and then abate
+          repeat occurrences without notifying you again — which is how people end up with charges they
+          did not see coming on a lot they thought was fine.
+        </p>
+        <p>
+          If you have received a notice, read us the date when you call. It changes how the work is
+          scheduled rather than being something to discover after the visit is booked.
+        </p>
+
+        <h2 style="margin-top:2.6rem">How distance actually works</h2>
+        <p>
+          There is no trip fee on this route. That is a deliberate choice and it is worth explaining what
+          it does and does not mean.
+        </p>
+        <p>
+          It means you will not see a mileage line on your invoice, and it means the price you were quoted
+          on the phone is the price. It does not mean distance is free — on a one-truck operation it is
+          one of the largest real costs in the business — and pretending otherwise would be the kind of
+          claim this site exists to avoid. What it means is that distance is accounted for in how work is
+          scheduled and, on larger jobs a long way out, in a job minimum discussed before you agree to
+          anything.
+        </p>
+        <p>
+          Practically, the route divides into two tiers. Seminole and the towns closest to it are
+          responsive: a call in the morning can often become a visit the same day, and something urgent
+          is genuinely urgent. The outer towns — Lubbock and Big Spring at the extremes, with Midland,
+          Odessa, Lamesa and Brownfield in between — run as planned days, grouped so that several
+          properties in one town are handled together.
+        </p>
+        <p>
+          The consequence for you is simple and it is the single most useful thing on this page: notice
+          buys you a better slot than urgency does. A call on Monday for work in Lubbock lands
+          considerably better than a call on Thursday morning hoping for Thursday afternoon, and no amount
+          of goodwill changes the seventy-five miles in between.
+        </p>
+        <p>
+          Grouping also means that if you know your neighbours are looking for the same work — which on
+          acreage and in small towns they very often are — mentioning it is worth doing. Several
+          properties in one town on one day is cheaper to deliver and easier to schedule than the same
+          properties spread across a month.
+        </p>
+
+        <h2 style="margin-top:2.6rem">Where the business is based, and why that is on the map</h2>
+        <p>
+          Seminole is not a marketing choice. The owner grew up here, graduated high school here and has
+          been in and out of Gaines County his whole life, and the business is based here because this is
+          where he lives.
+        </p>
+        <p>
+          That matters for a practical reason rather than a sentimental one. A company headquartered in
+          Midland or Odessa that lists Seminole as a service area is describing a place it drives to. The
+          direction of travel on this route runs the other way, and the towns nearest Seminole — the ones
+          large regional operators reach last and least often — are the ones served first and fastest here.
+        </p>
+        <p>
+          It is also why El Paso does not appear anywhere on this map despite six years of the owner's
+          trade experience happening there. That is where he trained, not a place this company serves, and
+          listing it as coverage would be exactly the kind of padding that makes service-area pages
+          worthless.
+        </p>
+        <p>
+          Being local also changes what a town page can honestly contain. Knowing which subdivisions were
+          built in which decade, which streets hold water after a storm, and which parts of town sit
+          against open field is not research — it is having lived here. Where that knowledge exists it is
+          on the page. Where it does not yet, the page says less rather than sounding as though it does.
+        </p>
+        <p>
+          The same rule governs the neighbourhood pages sitting beneath several of these towns. They exist
+          where specific local knowledge supports them and they stay unpublished where it does not, which
+          is why some towns already have several and others have none at all yet.
+        </p>
+
+        <h2 style="margin-top:2.6rem">Why the town pages are written the way they are</h2>
+        <p>
+          Most pest control websites in this region have a page for every town within a hundred miles,
+          and most of those pages are the same page with the town name swapped. You can usually confirm
+          it in under a minute: read two of them and look for a sentence that would be true of anywhere.
+        </p>
+        <p>
+          The pages linked above are not built that way, and the difference is deliberate. Each one is
+          written from things that are specifically true of that place — the local vegetation ordinance
+          and its actual numbers, what the housing stock is and roughly when it was built, what the
+          surrounding land is doing, what the pest calendar looks like there, and how the drive from
+          Seminole works in practice.
+        </p>
+        <p>
+          Where a town has less verified local detail behind it, its page is shorter and says less rather
+          than being padded out with generic material to match the others. That is a decision with a
+          real cost in search terms and it is the right one, because a page that invents local specifics
+          is worse than no page at all — it reads convincingly right up until a resident notices that the
+          detail is wrong, and then everything else on the site is in question too.
+        </p>
+        <p>
+          As more genuine local knowledge accumulates — ordinances confirmed by phone, neighbourhoods
+          worked, patterns observed across a season — the thinner pages get deeper. That is the honest
+          way for a regional surface to grow, and it is slower than the alternative.
+        </p>
+
+        <h2 style="margin-top:2.6rem">What is the same everywhere on this map</h2>
+        <p>
+          The town pages spend most of their length on differences, so it is worth setting out what does
+          not change across the route, because it is the majority of the picture.
+        </p>
+        <p>
+          <strong>Scorpions.</strong> The defining residential pest of this whole region, from Lubbock to
+          Big Spring, and the one that generates more calls in July than everything else combined. The
+          approach does not vary by town: find the harbourage, close the entry, treat the routes between
+          them. Properties differ enormously; the method does not.
+        </p>
+        <p>
+          <strong>Dryness as a driver.</strong> Everything out here is looking for moisture, and any
+          reliable source is a destination. Irrigation heads throwing against a foundation, a condensate
+          line discharging in the same spot all summer, a leaking spigot, a swamp cooler line. In wetter
+          parts of the country these are minor maintenance issues. Here they are the single most reliable
+          predictor of where the pest problem will be.
+        </p>
+        <p>
+          <strong>Wind and dust.</strong> Seals fail faster here. Door sweeps wear, weatherstripping
+          hardens and cracks, screens tear, and the gaps that result are the ones that matter. A
+          five-year-old sweep in this climate is not the same component it was when it was fitted, and
+          replacing one is frequently worth more than a treatment.
+        </p>
+        <p>
+          <strong>Termites, contrary to reputation.</strong> Plenty of people out here have been told the
+          climate is too dry for termites. It is not, and the assumption is why activity so often goes
+          unnoticed until it is substantial. Subterranean termites work below grade where the moisture
+          is, and slab construction hides the evidence rather than preventing the problem.
+        </p>
+        <p>
+          <strong>Autumn rodents.</strong> The first genuinely cold nights move mice and rats indoors
+          across every town on this list, on much the same schedule, and the buildings that get hit are
+          the ones whose gaps were there all along. Exclusion in September is worth more than trapping in
+          December, everywhere.
+        </p>
+
+        <h2 style="margin-top:2.6rem">Rural properties and county land</h2>
+        <p>
+          A large share of the work on this route is not in any town. It is on acreage, on section roads,
+          at addresses where the nearest neighbour is a quarter mile away and the nearest city limit is
+          several miles further. That work behaves differently enough to be worth its own explanation.
+        </p>
+        <p>
+          <strong>The buildings multiply.</strong> A rural property is rarely one structure. House, shop,
+          barn, equipment shed, well house, hay storage, sometimes a second dwelling. Each one is its own
+          inspection and its own set of entry points, and the population usually lives in the outbuildings
+          and visits the house rather than the other way round. Counting your buildings before you call
+          is the single most useful thing you can do for the accuracy of a quote.
+        </p>
+        <p>
+          <strong>The field is the boundary.</strong> Where a property abuts cultivated land, the field
+          sets the calendar. Irrigation coming on, a crop maturing, and above all harvest each push
+          populations toward whatever structures are nearest. Properties on the edge of a section see
+          this as a sudden event rather than a gradual increase, and they see it at roughly the same time
+          every year.
+        </p>
+        <p>
+          <strong>Feed and grain change everything.</strong> Livestock feed, bagged or in bins, spilled
+          grain, hay — any of these is a permanent food source, and no treatment regime outcompetes a
+          permanent food source. Where feed is present, storage and exclusion get discussed before product
+          does, because the alternative is paying repeatedly for the same outcome.
+        </p>
+        <p>
+          <strong>The rules are different.</strong> Outside city limits, municipal weed and property
+          ordinances do not apply. County-level standards are generally more permissive, and the
+          enforcement mechanism is different. That is a relief for most rural owners and occasionally a
+          surprise for someone who has just moved out from town and assumed the rules followed them.
+        </p>
+        <p>
+          <strong>Access needs planning.</strong> Gates, dogs, cattle guards, locked shops, and the
+          question of whether anyone will be on the property. None of these are obstacles if they are
+          mentioned in advance. All of them are wasted drives if they are not, and on this route a wasted
+          drive is an hour each way rather than ten minutes.
+        </p>
+
+        <h2 style="margin-top:2.6rem">Working across three markets at once</h2>
+        <p>
+          There is a version of a regional service page that claims equal expertise everywhere and means
+          it nowhere. This is not that, so here is the honest distribution.
+        </p>
+        <p>
+          Seminole and Gaines County are the home market, the deepest knowledge and the fastest response.
+          That is where the operator grew up, where the business is based, and where the property-level
+          familiarity — which neighbourhoods have which construction, which streets flood, which
+          subdivisions were built in which decade — is genuinely specific rather than generic.
+        </p>
+        <p>
+          The towns in the middle ring are worked regularly and known well: the ordinances, the housing
+          stock, the seasonal patterns, the parts of town where the problems concentrate. These are
+          planned-day markets rather than same-day, and the work there is steady rather than occasional.
+        </p>
+        <p>
+          The two large cities and the far edges are real service areas, worked on scheduled runs, with
+          the honest caveat that a one-truck operation covering a hundred-mile radius is not going to be
+          the fastest option in a city that has a dozen companies inside its own limits. What it can be
+          is the one where the owner answers the phone, the licence holder does the work, and nothing is
+          relayed through a call centre. For a lot of people that trade is worth making. For someone who
+          needs a technician within two hours on a Tuesday, it may not be, and that is a fair thing to
+          weigh.
+        </p>
+
+        <h2 style="margin-top:2.6rem">If your town is not on the list</h2>
+        <p>
+          The map has edges but they are not walls. There are properties between these towns, on ranch
+          roads and county roads and at addresses that do not belong to any municipality, and they are
+          served the same as anywhere else — usually on the day the truck is already heading that
+          direction.
+        </p>
+        <p>
+          If you are somewhere not named above and within roughly a hundred miles of Seminole, call and
+          ask. The answer depends on the day and on what else is scheduled nearby, and it is a thirty
+          second conversation rather than a formal enquiry.
+        </p>
+        <p>
+          If you are well outside that, the honest answer is that we are not the right call, and you will
+          be told so directly rather than strung along toward a visit that was never going to work. There
+          are good operators in most parts of this state, and sending you to one is a better outcome than
+          driving three hours to a job that cannot be priced sensibly.
+        </p>
+        <p>
+          One thing this site deliberately does not do is list towns it does not serve in order to appear
+          in more searches. Every town named on this page is a place work actually gets done. That is a
+          lower number than most pest control websites in this region advertise, and it is the accurate
+          one.
         </p>
       </div>
     </div>

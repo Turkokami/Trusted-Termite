@@ -1,0 +1,437 @@
+---
+/**
+ * T4 city page — Lubbock. The largest market on the route (273,071) and the
+ * furthest point he will drive (~75 miles, at the edge of the 100-mile radius).
+ *
+ * Three verified facts carry this page, and no competitor uses any of them:
+ *   · The 8-inch weed standard — §34.02.033(b), averaged across the lot, with a
+ *     $175 administrative fee per occurrence. Strictest in the region by a wide
+ *     margin (Odessa 12, Midland 18).
+ *   · The playa lake system and the city's own Vector Control programme, which
+ *     targets West Nile and St. Louis Encephalitis by source reduction.
+ *   · 51.2% renter — a majority-renter city, the only one on this route.
+ *
+ * TODO(fact): D-09 named NO Lubbock neighbourhoods. Until he does, this page
+ * carries no neighbourhood claims and no /locations/lubbock/{hood}/ pages exist.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { townBySlug } from '../../data/towns';
+import { SERVICES } from '../../data/services';
+
+const town = townBySlug('lubbock')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Lubbock', path: '/locations/lubbock/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Lubbock, Texas from a base in Seminole, about 75 miles southwest. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and handles mosquitoes, bed bugs, roaches, rodents and lot clearing across Lubbock County.';
+
+const faqs = [
+  {
+    q: 'What is the grass and weed limit in Lubbock?',
+    a: 'Eight inches, averaged across the lot, under Lubbock Code §34.02.033(b). That is the strictest standard anywhere on our route — Odessa allows twelve inches and Midland eighteen. You get seven days from notice under §34.02.036(a). If the city does the work there is a $175 administrative fee per occurrence on top of the cost, adjusted annually, with the statement due in thirty days and a lien second only to tax liens at 10% interest.',
+  },
+  {
+    q: 'Why does Lubbock have such a mosquito problem?',
+    a: 'The playa lakes. Lubbock sits in a landscape of shallow seasonal wetlands that fill after rain, and the city runs a dedicated Vector Control programme responsible for surveying, monitoring and controlling mosquito populations across the city and county — working primarily by source reduction in the playa system, targeting West Nile virus and St. Louis Encephalitis. That is a city-scale problem the city itself works on. What we handle is your property: harbourage, standing water, and the treatment around where you actually sit outside.',
+  },
+  {
+    q: 'Do I have fire ants in Lubbock?',
+    a: 'Possibly, and it genuinely depends where you are. Under the Texas Department of Agriculture quarantine list at 4 TAC §19.101, only a portion of Lubbock County is quarantined — unlike Midland and Ector, which are quarantined outright, or Gaines and Andrews, which are not quarantined at all. Lubbock is the one place on this route where the honest answer is that it depends on the address. Identification before treatment.',
+  },
+  {
+    q: 'Do you work with apartment communities and property managers?',
+    a: 'Yes. Lubbock is a majority-renter city — 51.2% of households rent, the highest on this route — so a large share of the pest work here is multi-family. Two rules matter: Texas Property Code §92.052 requires landlords to make diligent efforts to repair conditions materially affecting an ordinary tenant’s health or safety, and 4 TAC §7.146 requires a pest control sign at least 48 hours before a planned indoor treatment at any residential rental property with five or more units. TDA publishes that sign in Spanish as well as English.',
+  },
+  {
+    q: 'Lubbock is 75 miles away. Are you actually going to come?',
+    a: 'Yes, and it is worth being straight about what that means. Lubbock is the furthest regular point on our route and sits at the edge of the hundred-mile working radius. There is no trip fee, but for a single small job a long way out we will discuss a job minimum up front rather than surprise you with it. Scheduling a day or two ahead gets a better slot than calling the same morning. If you need somebody within the hour, a Lubbock-based company is the right call and we will say so.',
+  },
+  {
+    q: 'Is termite risk different in Lubbock?',
+    a: 'Broadly similar to the rest of the region and lower than most of Texas. Texas A&M AgriLife notes subterranean termites decrease from the Gulf Coast inland and are noticed less often in the High Plains. What changes in Lubbock is the housing: more older established stock with varied foundation types, which means the termite conversation genuinely differs property to property rather than by neighbourhood. Irrigation and mature landscaping also hold moisture at foundations in a way an open lot in Gaines County does not.',
+  },
+  {
+    q: 'What does it cost?',
+    a: 'The same as everywhere on the route. Recurring residential service generally runs $140 to $160 or more per visit depending on the size of the home, the pressure and the frequency, with a $200 to $250 initial. Bed bug, termite, mosquito, lawn, brush and junk work is individually quoted after an inspection. No contracts, and a military discount.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Lubbock?',
+    a: 'Sí. Valentin habla español con fluidez y atiende personalmente. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño, no con una central de llamadas.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Lubbock TX | Mosquitoes &amp; Rentals"
+  description="Mosquito, bed bug, roach and rodent control plus lot clearing across Lubbock County. Seminole-based owner-operator, licensed TPCL 0918482. No contracts."
+  path="/locations/lubbock/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Lubbock, Texas',
+    description: 'Mosquito, bed bug, roach, rodent and general pest control plus lot clearing in Lubbock and Lubbock County.',
+    areaServed: ['Lubbock County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Lubbock County · about 75 miles northeast of Seminole</p>
+      <h1>Pest Control in Lubbock, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Lubbock is the biggest city on this route and the furthest point we regularly run. It is also
+          the most different from everywhere else we work, and not for the reasons people assume.
+        </p>
+        <p>
+          It is not the climate. What changes in Lubbock is that it is a <strong>majority-renter
+          city</strong> — 51.2% of households rent, the highest anywhere on this route — sitting in a
+          landscape of <strong>playa lakes</strong> that fill after rain, under the
+          <strong>strictest weed ordinance in the region</strong> at eight inches. Those three facts
+          between them describe most of the work here.
+        </p>
+        <p>
+          What follows is each of them in turn, plus what actually gets called in through the year, what
+          the drive means in practice, and what any of it costs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Eight inches — the strictest standard on the route</h2>
+      <div class="measure">
+        <p>
+          Lubbock Code §34.02.033(b) sets the limit at <strong>eight inches, averaged across the
+          lot</strong>. For comparison, Odessa allows twelve and Midland eighteen. That is not a small
+          difference in practice: eight inches averaged is a lawn that needs cutting on a schedule rather
+          than when it starts to look bad, and on a vacant lot after a wet spring it is a fortnight.
+        </p>
+        <p>
+          <strong>You get seven days from notice</strong> under §34.02.036(a). If the city ends up doing
+          the work there is a <strong>$175 administrative fee per occurrence</strong> — adjusted annually
+          — on top of the cost of the work itself. The statement is due within thirty days, and the
+          amount becomes a lien on the property, second only to tax liens, carrying 10% interest.
+        </p>
+        <p>
+          The word doing the work there is <em>occurrence</em>. It is not once. A lot that keeps growing
+          gets the fee again.
+        </p>
+        <p>
+          For an owner who is not local, the trap is administrative: notice goes to the address the
+          appraisal district has on file. If that is out of date, the seven days run, the work happens,
+          and the lien attaches without anybody reaching you. Keeping a lot inside eight inches is
+          considerably cheaper than finding out afterwards.
+          <a href="/services/brush-and-lot-clearing/"> More on lot clearing and the ordinance →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The playa lakes, and what the city already does about them</h2>
+      <div class="measure">
+        <p>
+          Lubbock sits in a playa landscape — shallow seasonal basins that hold water after rain and dry
+          out between. They are a genuine feature of the region rather than a nuisance, and they are also
+          the single biggest driver of mosquito pressure in the city.
+        </p>
+        <p>
+          The city knows it. <strong>Lubbock runs a dedicated Vector Control programme</strong>
+          responsible for surveying, monitoring and controlling mosquito populations within the city and
+          county, working primarily by source reduction in the playa lake system alongside public
+          education, and specifically targeting <strong>West Nile virus and St. Louis
+          Encephalitis</strong>.
+        </p>
+        <p>
+          That matters for two reasons. First, it means the landscape-scale problem is being worked on by
+          somebody with the authority and budget to do it — we are not going to pretend a private company
+          treats a playa. Second, it means the useful thing a pest company can do in Lubbock is the
+          property-scale half: standing water you actually control, harbourage in dense landscaping, and
+          treatment around the parts of the garden people use in the evening.
+        </p>
+        <p>
+          West Nile is not theoretical in this region. Midland County confirmed a human case in July 2025
+          with two of four mosquito traps testing positive, and detected the virus again in June 2026.
+          Texas DSHS publishes weekly arbovirus activity through the season. The practical advice is
+          unglamorous and it works: empty anything holding water, keep gutters clear, and treat harbourage
+          rather than fogging open air.
+          <a href="/services/pest-control/"> Recurring service →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A majority-renter city</h2>
+      <div class="measure">
+        <p>
+          51.2% of Lubbock households rent. That is the highest on this route and it is higher than
+          Odessa, which is itself a high-turnover city. It changes what the pest work here actually is.
+        </p>
+        <p>
+          <strong>Multi-family is a different job from a house.</strong> A German cockroach population in
+          an apartment building is a building problem rather than a unit problem — treating one unit while
+          the ones either side go untreated produces a brief improvement and then a return. The same is
+          true of bed bugs, which travel along shared walls and through service voids. Anybody offering to
+          solve a multi-family problem one unit at a time is describing a recurring revenue stream rather
+          than a solution.
+        </p>
+        <p>
+          <strong>Turnover is the opportunity.</strong> An empty unit between tenants is the easiest one
+          in the building to treat properly — nothing to work around, nobody to schedule around, and the
+          problem that arrived with the last tenant does not get handed to the next. Doing pest work at
+          turnover alongside the cleanout is considerably cheaper than handling it as a repair demand six
+          weeks into a lease.
+        </p>
+        <p>
+          <strong>Two rules apply to every operator here.</strong> Texas Property Code §92.052 requires
+          landlords to make diligent efforts to repair conditions that materially affect the physical
+          health or safety of an ordinary tenant — and the Texas Young Lawyers Association handbook cited
+          by the State Law Library lists roaches and rats as qualifying where they breach local codes.
+          Separately, 4 TAC §7.146 requires a pest control sign <strong>at least 48 hours before</strong>
+          any planned indoor treatment at residential rental property with five or more units, with
+          specified minimum sizes and type sizes and the National Pesticide Information Center number on
+          it. TDA publishes a standard Spanish-language version free of charge, which in a city with
+          Lubbock's demographics is not a detail.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we get called about in Lubbock</h2>
+      <div class="grid c2" style="margin-top:1.4rem">
+        <div class="card">
+          <h3>Mosquitoes</h3>
+          <p>
+            Property-scale work: standing water, harbourage in dense landscaping, and treatment around
+            the areas people actually use. DeltaGard and Talstar, priced on property size, vegetation and
+            how much of the property needs covering. The playa system is the city's job; your garden is
+            ours.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Bed bugs and roaches in multi-family</h3>
+          <p>
+            The consequence of a majority-renter city. Chemical bed bug treatment with Alpine WSG, Precor
+            IGR and Transport, quoted on rooms affected and severity. German cockroach cleanouts with
+            baits and growth regulators rather than a perimeter spray. Both need the building treated as
+            a building.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Rodents</h3>
+          <p>
+            October and November as it cools, and in a city this size that means commercial property,
+            warehouses and multi-family as much as houses. Trapping, professional stations, monitoring
+            and — the part that ends it — sealing the ways in.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Fire ants, partially</h3>
+          <p>
+            Lubbock is the one place on this route where the quarantine answer is genuinely "it depends
+            where". Only part of Lubbock County is on the TDA list. Worth identifying rather than
+            assuming, because a fire ant programme and a harvester ant treatment are different jobs.
+          </p>
+        </div>
+      </div>
+      <div class="measure" style="margin-top:1.6rem">
+        <p>
+          Wind, dust, changing weather, irrigation, landscaping, construction and the surrounding
+          agricultural land all move pest activity here in ways they simply do not in a town of eight
+          thousand. Lubbock has more variables than anywhere else we work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A Lubbock year</h2>
+      <div class="measure">
+        <p>
+          <strong>January and February</strong> are quiet outdoors and busy indoors — rodents, roaches,
+          and everything sheltering. In multi-family this is when a problem in one unit becomes a problem
+          in several, because everything is moving through the warm parts of a building.
+        </p>
+        <p>
+          <strong>March and April</strong> bring ants, spiders and termite activity as the ground warms.
+          The termite window opens here as it does everywhere on the route.
+        </p>
+        <p>
+          <strong>May and June</strong> is when mosquito season begins in earnest, and the playa basins
+          start doing their work after spring rain. Ants, spiders, wasps, fleas and ticks all pick up
+          together.
+        </p>
+        <p>
+          <strong>July and August</strong> are the peak — scorpions, mosquitoes, and West Nile detections
+          historically clustering in this window across the region. This is also when the eight-inch
+          standard bites hardest, because growth after rain is fastest.
+        </p>
+        <p>
+          <strong>September and October</strong> stay active as the heat holds, with West Nile activity
+          typically running into September. Then rodents begin moving indoors as it cools.
+        </p>
+        <p>
+          <strong>November and December</strong> shift to interior pests, rodent exclusion and cleanout
+          work. Also the best window of the year for exclusion, because sealing done in winter holds
+          through the following summer.
+        </p>
+        <p>
+          Bed bugs, as everywhere, sit outside the calendar. In a student and rental city they follow
+          lease cycles rather than seasons, and the summer moving window concentrates them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Working Lubbock from Seminole — honestly</h2>
+      <div class="measure">
+        <p>
+          Lubbock is about 75 miles from the shop and it is the furthest regular point on the route,
+          sitting near the edge of the hundred-mile radius. It is worth being direct about the trade-off,
+          because pretending it does not exist would be the same template-writing we criticise elsewhere.
+        </p>
+        <p>
+          <strong>What you give up.</strong> Response time. A Lubbock company can be at your door faster,
+          and for a genuine emergency that is the right call — we will tell you so rather than take the
+          booking and get there in four hours.
+        </p>
+        <p>
+          <strong>What you get instead.</strong> The person who answers the phone is the person who does
+          the work. Valentin Moriel holds TDA licence TPCL 0918482 as a Responsible Certified Applicator
+          across Pest Control, Termite Control, Lawn &amp; Ornamental and Weed Control, with six years in
+          the trade — most of it running operations and service for pest control branches in El Paso,
+          including a Terminix-Rentokil branch, before coming back to the town he grew up in to start
+          this company. He inspects before he quotes, explains what he thinks is happening and what it
+          costs before anything is booked, and does not pressure anybody.
+        </p>
+        <p>
+          <strong>What works in practice.</strong> Booking a day or two ahead gets a better slot than
+          calling the same morning. For recurring service, a termite job, a multi-property contract or a
+          scheduled cleanout — the work where getting it right matters more than getting it fast — the
+          distance is largely irrelevant. <a href="/about/">More about Valentin →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Services in Lubbock</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service is bi-monthly or quarterly, generally $140 to
+          $160 or more per visit with a $200 to $250 initial. Bed bug, termite, mosquito, lawn, brush and
+          junk work is individually quoted. Covered by the <a href="/our-guarantee/">30-day service
+          guarantee</a> — with bed bugs, rodents, wildlife, fleas and ticks carrying their own terms
+          rather than the standard guarantee, which we would rather say plainly than let anybody assume.
+        </p>
+        <p>
+          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle, and
+          financing on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>If you own property in Lubbock and live somewhere else</h2>
+      <div class="measure">
+        <p>
+          A meaningful share of Lubbock property is owned by people who are not in Lubbock — rentals held
+          from another city, property bought while a family member studied here, land held in an estate.
+          The eight-inch standard is unforgiving of that arrangement in a way twelve or eighteen inches is
+          not.
+        </p>
+        <p>
+          The mechanics are worth understanding. Notice goes to the address recorded with the appraisal
+          district. Seven days run. The city can then do the work, add <strong>$175 per occurrence</strong>
+          and assess the whole amount against the property as a lien at 10% interest, second only to tax
+          liens. Nobody has to reach you for any of that to happen, and because the fee is per occurrence
+          rather than per year, a lot that keeps growing keeps generating them.
+        </p>
+        <p>
+          What we do for absentee owners is unglamorous: check the property on a sensible interval, keep
+          the lot inside eight inches, deal with what turns up, and send photographs. It costs
+          considerably less than one abatement plus the fee plus interest, and it means somebody
+          physically looks at the place occasionally — which catches roof damage, break-ins and burst
+          pipes as well as tall grass.
+        </p>
+        <p>
+          If a notice has already arrived, read us the date on it when you call. That determines how the
+          work gets scheduled rather than being something we discover afterwards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Before you call about a Lubbock property</h2>
+      <div class="prose">
+        <p>
+          A useful quote over the phone depends almost entirely on what you can tell us in the first
+          two minutes, and most people do not know which details matter. Four things change the price
+          and the schedule more than anything else, and none of them are complicated to check.
+        </p>
+        <p>
+          <strong>The kind of building.</strong> A slab-on-grade house, a pier-and-beam house, a
+          duplex and a small commercial suite are four different jobs even when the pest is identical.
+          Pier-and-beam means a crawl space, which means the perimeter is not the whole story.
+        </p>
+        <p>
+          <strong>Whether the lot is landscaped or not.</strong> Turf, beds and irrigation change what
+          lives at the foundation line. A lot that has been dry and bare all summer supports a
+          different set of insects than one that is watered three mornings a week, and the treatment
+          is aimed differently.
+        </p>
+        <p>
+          <strong>Whether you own it or manage it.</strong> If you are the owner-occupier, we talk to
+          you and we are done. If you are a landlord, a property manager or one of several owners, we
+          need to know who authorises the work and who is going to be there to open the door,
+          because a wasted drive to Lubbock is expensive in a way a wasted drive across Seminole is not.
+        </p>
+        <p>
+          <strong>Whether anything has already been sprayed.</strong> Store-bought product on a
+          baseboard is not a disaster, but it does change what we expect to see and how long it takes
+          for a treatment to read as working. Say so. Nobody is going to be judged for trying.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Lubbock pest control questions" />
+  <Cta
+    market="Lubbock"
+    line="Tell him what part of town you are in, what you are seeing, and whether you are working to a deadline — a lease turnover, a city notice, a closing date. Lubbock is a planned run, so a day or two of notice gets a much better slot than calling the same morning."
+  />
+</BaseLayout>

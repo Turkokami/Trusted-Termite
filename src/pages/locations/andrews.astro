@@ -1,0 +1,428 @@
+---
+/**
+ * T4 city page — Andrews. The single best genuinely-uncontested market on the
+ * route, and the argument is verifiable: Today's Homeowner's Andrews roundup
+ * lists eight companies and states explicitly that NONE are physically located
+ * in Andrews. They come from Midland, Odessa, Hobbs NM and Seminole. The only
+ * Andrews-address operator found in any directory is a weed-control company.
+ *
+ * Local facts: D-01 (served today), K-05–K-07, TDA quarantine (Andrews County
+ * NOT quarantined), Andrews Ordinances 1080/1089 (12in under an acre, 18in
+ * over, 10 days, immediate above 4 feet), Census (13,665 pop, 76.7% owner-occ).
+ *
+ * TODO(fact): no Andrews neighbourhoods named at D-09.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { townBySlug } from '../../data/towns';
+import { SERVICES } from '../../data/services';
+
+const town = townBySlug('andrews')!;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Andrews', path: '/locations/andrews/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions covers Andrews, Texas from a base in Seminole, about 40 miles north. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 and treats scorpions, spiders, termites and rodents across Andrews County. No full-service pest company is based in Andrews itself.';
+
+const faqs = [
+  {
+    q: 'Is there a pest control company actually based in Andrews?',
+    a: 'Not a full-service one, as far as any directory we can find shows. Independent roundups of Andrews pest control list eight companies and state explicitly that none are physically located in Andrews — they come from Midland, Odessa, Hobbs in New Mexico, and Seminole. The only Andrews-address operator that turns up is a weed control company. So whoever you call is driving in. The question is how far, and whether they know the ground.',
+  },
+  {
+    q: 'Do I have fire ants in Andrews?',
+    a: 'Almost certainly not. Andrews County is not on the Texas Department of Agriculture red imported fire ant quarantine list under 4 TAC §19.101, and neither are Gaines, Yoakum or Dawson. Midland, Ector, Howard and Winkler are. What most people are looking at here is a red harvester ant mound — a bare circle three to six feet across with foraging trails leading out. They sting, and it can be more serious than most, but per AgriLife they do not invade homes or structures. Different problem, different treatment.',
+  },
+  {
+    q: 'What is the weed and grass rule in Andrews?',
+    a: 'Twelve inches on platted lots under an acre, eighteen inches on undeveloped tracts over an acre, under Ordinances 1080 and 1089 codified at Section 18 of the Code of Ordinances. You get ten days from notice, and the city can act immediately if growth exceeds four feet. Enforcement is by court action or by placing the property on a contractor remediation list and billing the owner. The city notes that state law requires only one notice per year, which catches people out — a second violation does not necessarily come with a second warning.',
+  },
+  {
+    q: 'What scorpions are in Andrews?',
+    a: 'Striped bark scorpions, and desert bark scorpions alongside them. Peak season is July and August. Texas A&M AgriLife entomologists note that scorpions move indoors when it gets excessively dry outside, so a long dry stretch in June is a reliable predictor of a problem in July. They are nocturnal, climb well, and turn up in attics more often than people expect.',
+  },
+  {
+    q: 'Are brown recluse and black widow spiders a real problem here?',
+    a: 'They are present and worth taking seriously without panicking about. AgriLife notes brown recluse are found throughout Texas, indoors and out, active spring through fall outdoors and year-round in climate-controlled interiors, sheltering in firewood stacks, stored boxes in attics and low-traffic crevices. Bites are rare and accidental, and there have been no confirmed deaths. Treatment is about the harbourage — the stacked material and stored boxes — rather than the web you can see.',
+  },
+  {
+    q: 'Do you cover the acreage and farm properties outside town?',
+    a: 'Yes, and a good share of the Andrews work is exactly that. Acreage behaves differently from an in-town lot: more field pressure arriving at the perimeter, outbuildings and equipment that give rodents somewhere to live, and often a longer run of foundation to treat. It is priced on the property rather than on a flat residential rate.',
+  },
+  {
+    q: 'How far is Andrews from you?',
+    a: 'About 40 miles south of Seminole — one of the closer towns on the route and a regular run. There is no trip fee. It is close enough that same-day and next-day work is often genuinely possible rather than aspirational.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Andrews?',
+    a: 'Sí. Valentin habla español con fluidez y atiende personalmente. Puede llamar o enviar un mensaje de texto al (432) 278-7294 y hablar directamente con el dueño.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control Andrews TX | Scorpions &amp; Spiders"
+  description="Scorpion, spider, termite and rodent control across Andrews County, from a Seminole crew 40 miles up the road. Licensed TPCL 0918482. No contracts."
+  path="/locations/andrews/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Andrews, Texas',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, acreage and businesses in Andrews and Andrews County.',
+    areaServed: ['Andrews County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Andrews County · about 40 miles south of Seminole</p>
+      <h1>Pest Control in Andrews, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Here is a fact about Andrews that is easy to verify and worth knowing before you call anybody:
+          <strong>no full-service pest control company is based in Andrews.</strong>
+        </p>
+        <p>
+          Independent roundups of Andrews pest control list eight companies and state explicitly that
+          none of them are physically located in the town. They come from Midland, from Odessa, from
+          Hobbs across the New Mexico line, and from Seminole. The only operator that turns up with an
+          actual Andrews address is a weed control company.
+        </p>
+        <p>
+          That is not a criticism of any of them. It means the honest question for a town of 13,665
+          people is not <em>who is local</em> — nobody is — but <strong>who is closest, and who knows the
+          ground.</strong> Seminole is forty miles up the road, which makes Andrews one of the closer
+          towns on this route rather than one of the further ones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What Andrews is actually like to work</h2>
+      <div class="measure">
+        <p>
+          Andrews has the second-highest owner-occupancy on the route at <strong>76.7%</strong> — a
+          stable stock of family homes rather than a rental market — sitting in an oilfield economy with
+          farmland around it. The population has been broadly flat since 2020, up about 1.3%.
+        </p>
+        <p>
+          What that means practically: <strong>the same houses, owned by the same people, year after
+          year.</strong> Which is the ideal market for recurring service, because the value of a plan
+          compounds when somebody is still in the house in five years. It also means long-standing
+          landscaping, established outbuildings, and problems that have had time to settle in rather than
+          arriving with a new tenant.
+        </p>
+        <p>
+          The soil is the same profile as Gaines County — sandy soils and caliche, with the same
+          foundation conditions. Some properties sit on very loose sand, others on extremely hard caliche
+          layers, and new construction usually has disturbed or imported fill packed around it. Soil
+          decides drainage, movement and how a structure meets the ground, which is most of what decides
+          termite risk. It is the reason we inspect before quoting rather than pricing off a square
+          footage.
+        </p>
+        <p>
+          A good share of the Andrews work is acreage and property outside town. Those behave differently
+          from an in-town lot: more field pressure at the perimeter, outbuildings and equipment that give
+          rodents somewhere to live, and a longer run of foundation to treat. Priced on the property, not
+          a flat residential rate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we get called about in Andrews</h2>
+      <div class="grid c2" style="margin-top:1.4rem">
+        <div class="card">
+          <h3>Scorpions — striped bark and desert bark</h3>
+          <p>
+            Two species rather than one, and the peak is July and August. AgriLife's entomologists note
+            they come indoors when it gets excessively dry outside, which makes a long dry June a
+            reliable forecast for a July problem. Nocturnal, they climb well, and attics are more common
+            than people expect. The work is mostly sealing rather than spraying.
+            <a href="/services/scorpion-control/"> Scorpion exclusion →</a>
+          </p>
+        </div>
+        <div class="card">
+          <h3>Black widow and brown recluse</h3>
+          <p>
+            Both present and both worth respecting without alarm. AgriLife: brown recluse are found
+            throughout Texas, active spring through fall outdoors and year-round indoors, sheltering in
+            firewood stacks, stored boxes in attics and low-traffic crevices. Bites are rare and
+            accidental with no confirmed deaths. The treatment is the harbourage, not the web.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Harvester ants — not fire ants</h3>
+          <p>
+            Andrews County is <strong>not</strong> on the TDA fire ant quarantine list. What is mounding
+            in an Andrews yard is almost certainly a red harvester ant: a bare circle three to six feet
+            across with foraging trails. They sting and it can be medically serious, but per AgriLife
+            they do not invade homes. It is a yard and play-area problem and it gets treated as one.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Rodents off the farmland</h3>
+          <p>
+            October and November as it cools, and in Andrews that means outbuildings, shops and equipment
+            storage as much as houses. Trapping, professional stations, monitoring, and the sealing work
+            that actually ends it. Texas DSHS flags cleaning rodent-occupied sheds and barns as a genuine
+            risk moment, which is why cleanout work here gets treated as a job with a procedure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The Andrews weed ordinance, and the part that catches people</h2>
+      <div class="measure">
+        <p>
+          Andrews sets <strong>twelve inches on platted lots under an acre and eighteen inches on
+          undeveloped tracts over an acre</strong>, under Ordinances 1080 and 1089, codified at Section
+          18 of the Code of Ordinances. You get <strong>ten days</strong> from notice — more generous
+          than Lubbock's seven or Odessa's five-to-seven — and the city can act <strong>immediately where
+          growth exceeds four feet.</strong>
+        </p>
+        <p>
+          Enforcement is by court action, or by placing the property on a contractor remediation list and
+          billing the owner.
+        </p>
+        <p>
+          Here is the part that genuinely catches people out. The city notes that <strong>state law
+          requires only one notice per year.</strong> Most people assume a warning arrives every time.
+          It does not — a second violation in the same year can go straight to remediation without the
+          courtesy of another letter.
+        </p>
+        <p>
+          If you own property here and do not live in Andrews, that is worth planning around, because a
+          notice goes to the address on file with the appraisal district. Keeping a lot inside the
+          standard on a schedule is straightforwardly cheaper than dealing with it afterwards.
+          <a href="/services/brush-and-lot-clearing/"> Lot clearing and the ordinance →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>An Andrews year</h2>
+      <div class="measure">
+        <p>
+          <strong>January and February</strong> are quiet for insects — rodents and things sheltering
+          indoors. It is the best window for exclusion work, because sealing done now holds through the
+          following summer and nobody is in a rush.
+        </p>
+        <p>
+          <strong>March and April</strong> bring the wake-up: ants, spiders and termite activity as the
+          ground warms. The termite window opens here as it does across the region.
+        </p>
+        <p>
+          <strong>May and June</strong> picks up properly — ants, spiders, wasps, fleas and ticks. A plan
+          started now is working by the time July arrives; a plan started in July is catching up.
+        </p>
+        <p>
+          <strong>July and August</strong> are the peak and are dominated by scorpions. Both species,
+          both driven indoors by heat and dry ground, both nocturnal. This is when most people call a
+          pest company for the first time.
+        </p>
+        <p>
+          <strong>September and October</strong> stay active because the heat holds well into fall, then
+          rodents start moving toward buildings. On acreage that means the barn and the shop before it
+          means the house.
+        </p>
+        <p>
+          <strong>November and December</strong> shift indoors, with rodent exclusion and shed and
+          outbuilding cleanouts. Also the natural window for brush clearing and hauling off what the
+          summer produced.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Forty miles, and what that actually means</h2>
+      <div class="measure">
+        <p>
+          Andrews is one of the closer towns on this route. Since nobody is based in the town itself,
+          the comparison worth making is against the alternatives: Midland is roughly 45 miles away,
+          Odessa about 35, Hobbs across the state line about 55. Seminole is 40.
+        </p>
+        <p>
+          So on distance it is a wash. What is not a wash is who turns up.
+        </p>
+        <p>
+          Valentin Moriel holds TDA licence TPCL 0918482 as a Responsible Certified Applicator across
+          Pest Control, Termite Control, Lawn &amp; Ornamental and Weed Control. He has six years in the
+          trade, most of it running operations and service for pest control branches in El Paso including
+          a Terminix-Rentokil branch, before coming back to Seminole to start this company. He answers
+          his own phone about nine times in ten, inspects before quoting, and does not pressure anybody.
+        </p>
+        <p>
+          At forty miles, same-day and next-day work is often genuinely possible rather than something
+          said on a website. No trip fee. For a very small single job a long way out of town we will
+          discuss a job minimum up front rather than surprise you with it afterwards.
+          <a href="/about/">More about Valentin →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Services in Andrews</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>No contracts.</strong> Recurring service is bi-monthly or quarterly, generally $140 to
+          $160 or more per visit depending on the size of the home, the pressure and the frequency, with
+          a $200 to $250 initial. Termite, bed bug, mosquito, lawn, brush and junk work is individually
+          quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why "nobody is based here" matters more than it sounds</h2>
+      <div class="measure">
+        <p>
+          It is easy to read that as a complaint about competitors. It is not — it is a description of how
+          a town of 13,665 people gets served, and it has practical consequences worth understanding.
+        </p>
+        <p>
+          <strong>Route order decides your appointment.</strong> When every company is driving in, you
+          are somewhere on a run rather than the first stop. That is fine and it is how the trade works.
+          It does mean a company running Andrews as the far end of a Midland route is fitting you in
+          differently from one running it as a regular forty-mile leg.
+        </p>
+        <p>
+          <strong>Nobody accumulates local knowledge by accident.</strong> A technician who visits Andrews
+          twice a month on someone else's schedule does not build a picture of what the town's ground and
+          housing actually do. That is why almost every pest control website covering this area could have
+          its town names swapped without changing a word — because for most of them, nothing about the
+          town informed the writing.
+        </p>
+        <p>
+          <strong>Follow-up is where it shows.</strong> The 30-day guarantee and the free re-services
+          between visits are only worth anything if somebody will actually come back for them. A callback
+          that is inconvenient for a route tends to become a scheduling problem. At forty miles on a
+          regular run, it is not.
+        </p>
+        <p>
+          None of that makes a Midland or Odessa company a bad choice. It does mean the question worth
+          asking any of them is simply: how often are you in Andrews anyway?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Things worth saying plainly</h2>
+      <div class="measure">
+        <p>
+          <strong>Seeing a pest does not mean the house is dirty.</strong> It is the thing people most
+          often apologise for on the phone and it is not true. Some of the cleanest homes we service get
+          ants, scorpions, spiders, roaches and rodents. Out here it is driven by weather, moisture, the
+          fields around you, construction, soil and available entry points — not housekeeping.
+        </p>
+        <p>
+          <strong>Spraying what you can see does not fix it.</strong> Killing the scorpion on the patio
+          or the ants on the trail does nothing about where they are coming from. The work is identifying
+          the pest, finding the source, and choosing the right treatment — which on scorpion work is
+          mostly sealing rather than spraying at all.
+        </p>
+        <p>
+          <strong>Calling early is genuinely cheaper.</strong> People tend to wait until it is bad.
+          Catching it early is dramatically easier with termites, bed bugs, rodents, fleas, ticks and
+          German cockroaches — the ones where a population has time to establish.
+        </p>
+        <p>
+          <strong>There are jobs we do not take.</strong> No fumigation, no bed bug heat treatment, no
+          landscaping, dumpster rental, pressure washing or demolition. If you need one of those we will
+          say so rather than learn on your property.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Outbuildings are where the Andrews work really is</h2>
+      <div class="prose">
+        <p>
+          On a house in town, the job is the house. On acreage outside Andrews, the house is often the
+          least interesting building on the property, and treating it alone is why people end up
+          calling somebody a second time. The barn, the shop, the equipment shed, the well house and
+          the feed store are not outbuildings in the sense of being peripheral. They are where the
+          population lives. The house is where you notice it.
+        </p>
+        <p>
+          <strong>Shops and equipment sheds.</strong> A shop with a concrete floor, a roll-up door and
+          a gap under it is a rodent hotel. The gap is almost always the whole problem, and almost
+          always the thing that never gets looked at, because the door works fine and nobody is
+          thinking about the half inch of daylight at the bottom of it. Add stacked cardboard, a
+          workbench against a wall and something with a seed or grain content within reach, and the
+          shop supports a population year-round that periodically walks eighty feet to the house when
+          it gets cold. Baiting the kitchen does nothing about that.
+        </p>
+        <p>
+          <strong>Barns and anything holding hay or feed.</strong> Feed is the single strongest draw on
+          a rural property. Bagged feed on a pallet, spilled grain in a corner, a bin with a lid that
+          does not seat — these are not housekeeping complaints, they are the reason the treatment
+          plan looks the way it does. Where feed is present we talk about exclusion and placement
+          before we talk about product, because product alone against a permanent food source is
+          money spent to no purpose.
+        </p>
+        <p>
+          <strong>Well houses and pump enclosures.</strong> Small, dark, warm in winter, often with a
+          little standing moisture, and rarely opened. Black widows in particular do extremely well in
+          them. So do scorpions. If you have not opened yours since spring, open it before we come
+          and tell us what you found, or leave it and let us open it — but do not assume it is empty
+          because it is small.
+        </p>
+        <p>
+          <strong>What this means for a quote.</strong> When you call, count your buildings. Not
+          precisely — roughly. Four structures on five acres is a genuinely different job from one
+          house on a town lot, and pricing it as though it were the town lot helps nobody. Telling us
+          up front means the visit gets scheduled with enough time in it to actually finish.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Andrews pest control questions" />
+  <Cta
+    market="Andrews"
+    line="If you are on acreage outside town, mention the outbuildings when you call — barns, shops and equipment storage change the job considerably, and they are usually where the rodent problem actually lives."
+  />
+</BaseLayout>
