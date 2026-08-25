@@ -147,6 +147,16 @@ the new pages go up guarantees the two sets compete.
 
 ## P0-7 · Verify the domain registrant — **start today, it gates go-live**
 
+> **UPDATED Aug 2026.** The client has confirmed the site will NOT be hosted on
+> Ailanding — it moves to separate hosting (Vercel is already the deploy target
+> in `astro.config.mjs`). **That does not close this item.** Hosting and domain
+> registration are different things. If Ailanding holds the registrar account
+> they control DNS, which means the domain cannot be pointed at the new host
+> without either their cooperation or a transfer. Read the **registrant name**
+> and the **transfer lock status**. If the registrant is Valentin or the LLC,
+> this item is closed. If it is Ailanding, start the transfer now — it is the
+> longest-lead item in the whole build and everything else is ready.
+
 Not a content fix, but it belongs in Phase 0 because it has the longest lead time.
 
 1. Run a WHOIS on `trustedtermiteandpest.com` and read the **registrant name**.

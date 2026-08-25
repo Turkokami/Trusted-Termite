@@ -1,0 +1,437 @@
+---
+/**
+ * Problem micro page — /services/{service}/{problem}/ per the frozen taxonomy.
+ * WDI inspections for real estate transactions, under termite-control.
+ *
+ * ############################################################################
+ * HELD AT NOINDEX UNTIL THE OWNER CONFIRMS THE WDI DECISION.
+ * Gated on BUSINESS.owner.wdiDecisionConfirmed, the same single flag as
+ * /compliance/wdi-report/. Flip it in business.ts and BOTH pages ship. Strike
+ * the WDI row from the CONTENT_BRIEF held table at the same time.
+ *
+ * B-05: he IS licensed in the Termite and Wood Destroying Insect Control
+ * category, which is what 4 TAC §7.175(a) requires — so this is a commercial
+ * decision, not a capability one. C-09: he would rather not perform them.
+ *
+ * ⚠️ THIS PAGE MAKES A SERVICE PROMISE. Do not ship it until the owner has
+ * confirmed in writing that he will take this work, AND has given the
+ * operating limits the "How scheduling works" section needs. Placeholder
+ * language there is deliberately conservative and should be replaced with his
+ * actual answer, not shipped as written.
+ * ############################################################################
+ *
+ * Rules used, all verified Aug 2026 — see /compliance/wdi-report/ for the full
+ * citation block. Key operational points for THIS page:
+ *  - §7.175(a): licensed certified applicator or technician in the Termite and
+ *    Wood Destroying Insect Control category. Trainees present must be named.
+ *  - §7.175(b): recognised inaccessible/obstructed areas — the access argument.
+ *  - §7.175(d): the mandatory inspection areas.
+ *  - §7.176(a): department-prescribed form, no alterations permitted.
+ *  - §7.176(b): a lender's form is SUPPLEMENTAL, not a substitute.
+ *  - §7.176(d)/(e): copies + 2-year retention.
+ *  - §7.177: the durable sticker.
+ *  - Form SPCS/T-5 (Rev. 9/1/2020). T-4 is superseded.
+ *  - Section 7A independence attestation.
+ *  - TREC does not regulate WDI; home inspectors need the SPCS licence.
+ *
+ * NO PRICING FIGURES. NO turnaround-time promise beyond what the owner
+ * confirms. NO claim to be faster or cheaper than anybody.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { BUSINESS } from '../../../data/business';
+import { TOWNS } from '../../../data/towns';
+
+const o = BUSINESS.owner;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Termite control', path: '/services/termite-control/' },
+  { name: 'WDI inspections', path: '/services/termite-control/wdi-inspection/' },
+];
+
+const quickAnswer =
+  'Wood destroying insect inspections for real estate transactions across Gaines County and the Permian Basin, on the Texas Official Wood Destroying Insect Report, form SPCS/T-5. Performed by the licence holder personally under Texas Department of Agriculture licence TPCL 0918482, which carries the Termite and Wood Destroying Insect Control category that 4 TAC §7.175(a) requires.';
+
+const faqs = [
+  {
+    q: 'Are you licensed to do WDI reports?',
+    a: 'Yes. Rule 4 TAC §7.175(a) requires the inspection to be conducted by a licensed certified applicator or technician in the Termite and Wood Destroying Insect Control category — not a general pest control licence. That category is on TPCL ' + o.tpcl + ', and you can verify it against the Texas Department of Agriculture’s own records in about two minutes. Do that for anybody you are considering, not just for us.',
+  },
+  {
+    q: 'Can my home inspector do it instead?',
+    a: 'Not unless they separately hold the structural pest control licence in the termite category. TREC does not regulate wood destroying insect inspections and publishes no WDI form, and a licensed home inspector may not advertise WDI inspections without that separate licence. If somebody is offering both as a package, ask which licence covers the termite half — it is a fair question and a legitimate one.',
+  },
+  {
+    q: 'How much notice do you need?',
+    a: 'As much as you can give, and more than you would need from a company inside your own town. This is a one-truck operation covering roughly a hundred miles, and closing dates do not move. Seminole and the towns nearest it are responsive; the further towns run as planned days. If you have a contract with a date on it, call when the contract is signed rather than when the option period is running out.',
+  },
+  {
+    q: 'What will you need from the property?',
+    a: 'Access, and it makes more difference than anything else. Rule 4 TAC §7.175(b) treats a long list of areas as inaccessible or obstructed — including anywhere storage conditions or locks make inspection impracticable. A crawl space hatch buried under boxes, a locked shop, a garage stacked to the roof, storage hard against the garage walls: all of that gets recorded as not inspected rather than inspected. Clearing it beforehand is the difference between a report that is worth something and one full of exclusions.',
+  },
+  {
+    q: 'What does the report actually cover?',
+    a: 'The visible presence or absence of termites and other wood destroying insects, and conditions conducive to infestation, in the accessible areas, on the day. It is not a warranty, not a guarantee that the structure is free of termites, and not a damage assessment. Section 7.175(a) says plainly that concealed infestations and damage may not be discovered and that examinations of inaccessible or obstructed areas are not required. There is a full explanation on our WDI report reference page.',
+  },
+  {
+    q: 'My lender has their own form.',
+    a: 'Both get completed. Section 7.176(b) provides that a lending provider such as the Department of Veterans Affairs may require the results on another form, and that the other form is supplemental to the required department form and must be kept in the inspection file. The T-5 is not optional because a lender supplied something else. Tell us at booking which lender is involved so the right supplemental form is ready.',
+  },
+  {
+    q: 'If you find something, are you going to sell me a treatment?',
+    a: 'Only where the rule permits it, and the rule is deliberately restrictive. For a real estate transaction report, §7.175(a) requires visible evidence of active infestation, or visible evidence of previous infestation with no evidence of prior treatment, before a corrective treatment can be recommended. Conducive conditions alone are not grounds. You are also entirely free to take the report and have the work done by somebody else, and plenty of people do.',
+  },
+  {
+    q: '¿Hacen inspecciones de termitas para compra y venta de casas?',
+    a: 'Sí. El informe oficial es el formulario SPCS/T-5 del estado, y solo puede hacerlo alguien con licencia en la categoría de termitas — la nuestra es TPCL ' + o.tpcl + '. Valentin habla español y le explica personalmente qué dice el informe, incluidas las áreas que no se pudieron inspeccionar. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="WDI Inspections for Real Estate | West Texas"
+  description="Texas Official Wood Destroying Insect Reports on form SPCS/T-5 across the Permian Basin, performed by the licence holder in the required termite category."
+  path="/services/termite-control/wdi-inspection/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  noindex={!o.wdiDecisionConfirmed}
+  service={{
+    name: 'Wood Destroying Insect Inspections',
+    description: 'Texas Official Wood Destroying Insect Reports (SPCS/T-5) for real estate transactions across Gaines County and the Permian Basin.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Termite &amp; Wood Destroying Insect Control · licensed category</p>
+      <h1>WDI inspections for real estate</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          If you are buying, selling or lending on a property in this region and somebody has asked for a
+          termite inspection, what they need is the <strong>Texas Official Wood Destroying Insect Report,
+          form SPCS/T-5</strong>.
+        </p>
+        <p>
+          Two things are worth knowing before you book it with anybody. It has to be done by somebody
+          holding a specific licence category — not a general pest licence and not a home inspector's
+          licence. And it covers considerably less than most people assume, which makes understanding the
+          limits part of the service rather than fine print.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The licence that actually matters</h2>
+      <div class="measure">
+        <p>
+          Rule 4 TAC §7.175(a) requires a WDI inspection to be conducted by a licensed certified applicator
+          or technician in the <strong>Termite and Wood Destroying Insect Control</strong> category.
+        </p>
+        <p>
+          <strong>That is a separate category from general pest control</strong>, separately examined and
+          separately maintained under 4 TAC §7.124. A company can be entirely legitimate, fully licensed,
+          and still not hold it.
+        </p>
+        <p>
+          <strong>It is on ours.</strong> TPCL {o.tpcl}, and the categories are {o.categories.join(', ')}.
+          Check it against the Texas Department of Agriculture's records before you rely on anything here —
+          it takes about two minutes, and the <a href="/compliance/pest-control-licence/">licence page</a>
+          explains exactly what to look for.
+        </p>
+        <p>
+          <strong>Do the same for anybody else.</strong> This is the one piece of due diligence in the
+          trade that is both free and conclusive, and on a real estate transaction it is worth doing before
+          a report is relied on rather than after a problem surfaces.
+        </p>
+        <p>
+          <strong>And a note on home inspectors.</strong> TREC does not regulate wood destroying insect
+          inspections and publishes no WDI form. A licensed home inspector may not advertise WDI
+          inspections without separately holding the structural pest control licence. Where both are being
+          offered together, asking which licence covers the termite half is a fair question — sometimes the
+          answer is that a licensed subcontractor does it, which is fine, and sometimes it is not.
+        </p>
+        <p>
+          <strong>One more check on the paperwork itself.</strong> The current form is
+          <strong>SPCS/T-5</strong>. The older <strong>T-4</strong> is superseded and still circulates on
+          third-party form sites. If a report arrives on a T-4, it is the wrong document.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What the inspection involves</h2>
+      <div class="measure">
+        <p>
+          Rule 4 TAC §7.175(d) sets the mandatory areas, where accessible and unobstructed, and it is a
+          longer list than most people expect.
+        </p>
+        <p>
+          <strong>Plumbing</strong> in bathrooms, kitchen, laundry and elsewhere. <strong>Window and door
+          frames and sills.</strong> <strong>Baseboards, flooring, walls and ceilings.</strong>
+          <strong>Entrance steps and porches.</strong> <strong>The exterior of the slab or foundation
+          wall.</strong> <strong>Crawl spaces</strong> including support piers and stiff legs, floor
+          joists, sub floors, sill plates and the foundation wall. <strong>The fireplace.</strong> And
+          <strong>weep holes.</strong>
+        </p>
+        <p>
+          <strong>Then the report is written on the department's form</strong>, which under §7.176(a) may
+          not be altered or revised. It carries a diagram with approximate perimeter measurements —
+          §7.175(c) says it does not have to be to scale — showing construction details, areas of current
+          activity, areas of previous activity, conditions conducive to infestation, and the areas that
+          were inaccessible or obstructed.
+        </p>
+        <p>
+          <strong>Conditions conducive get reported whether or not anything is active</strong>, and §7.175(e)
+          lists them: wood to ground contact, formboards left in place, excessive moisture, wood debris
+          under or around the structure, footing too low or soil line too high, insufficient clearance in a
+          crawl space, expansion joints or cracks in a slab, and decks.
+        </p>
+        <p>
+          <strong>A sticker goes up.</strong> Rule 4 TAC §7.177 requires a durable sticker on the wall
+          adjacent to the water heater, the electric breaker box, or beneath the kitchen sink, giving the
+          inspector's name and licence number, the date, and a statement not to remove it.
+        </p>
+        <p>
+          <strong>And you get a copy.</strong> Under §7.176(d) copies go to the person who ordered the
+          inspection and to our business files, and under §7.176(e) we retain them for a minimum of two
+          years. If you are the buyer and the seller ordered the report, ask for it directly — only the
+          purchaser of the service is required to receive one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Access is the whole job</h2>
+      <div class="measure">
+        <p>
+          This is the part where you can change the value of the report you are paying for, and almost
+          nobody is told about it in advance.
+        </p>
+        <p>
+          <strong>Rule 4 TAC §7.175(b) treats a long list of areas as inaccessible or obstructed</strong>,
+          and examinations of those are not required. Inaccessible attics. Hollow wall interiors. Areas
+          behind or beneath stoves, refrigerators, furniture, built-in cabinets, insulation and floor
+          coverings. And — the one that is entirely within your control — <strong>areas where storage
+          conditions or locks make inspection impracticable.</strong>
+        </p>
+        <p>
+          <strong>So a garage stacked to the roof produces a report that says the garage was not
+          inspected.</strong> A crawl space hatch under three boxes produces a report with no crawl space
+          in it. A locked shop is a locked shop. None of that is the inspector being unhelpful; it is what
+          the rule provides for, and it all gets recorded.
+        </p>
+        <p>
+          <strong>What to do before the visit.</strong> Unlock everything — outbuildings, shops, gates,
+          crawl space access. Clear the hatch. Pull stored material back from the garage walls and away
+          from the interior perimeter. Move what can be moved away from the foundation outside. If there
+          are dogs, plan for them.
+        </p>
+        <p>
+          <strong>Sellers: this is worth an afternoon.</strong> An inspection that can actually see the
+          structure produces a report a buyer can rely on. One full of exclusions invites a renegotiation
+          you did not need, or a second inspection at a worse moment in the timeline.
+        </p>
+        <p>
+          <strong>Buyers: read that section first.</strong> Before the findings. If the crawl space was
+          locked, the attic inaccessible and the garage impassable, you are holding a document that tells
+          you very little — and you are entitled to ask for access to be arranged and the inspection
+          completed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we will and will not tell you</h2>
+      <div class="measure">
+        <p>
+          <strong>We will explain the report rather than hand it over.</strong> Including the
+          inaccessible-areas section, which is the part that determines how much weight the rest of it
+          carries. That conversation is part of the job.
+        </p>
+        <p>
+          <strong>We will not tell you the house is free of termites.</strong> Nobody honest can. The
+          rule itself says concealed infestations and damage may not be discovered.
+        </p>
+        <p>
+          <strong>We will not convert conducive conditions into a treatment recommendation.</strong> For a
+          real estate transaction report, §7.175(a) requires visible evidence of active infestation, or
+          visible evidence of previous infestation with no evidence of prior treatment, before a corrective
+          treatment can be recommended. Conducive conditions get reported — they are genuinely useful, and
+          they are a repair list rather than a sales opportunity.
+        </p>
+        <p>
+          <strong>We will sign the independence attestation, because it is on the form.</strong> Section 7A
+          of the T-5 states that neither the inspector nor the company has, has had, or contemplates having
+          any interest in the purchase or sale of the property.
+        </p>
+        <p>
+          <strong>We will tell you what we could not see.</strong> Not as a disclaimer buried at the end,
+          but as part of handing the report over — because on an occupied house being sold, the list of
+          areas that could not be inspected is often longer than the list of findings, and a buyer who does
+          not understand that is making a decision on less information than they think they have.
+        </p>
+        <p>
+          <strong>You are free to take the report elsewhere.</strong> If something is found and you would
+          rather have the treatment done by another company, that is entirely normal and we will not make
+          it awkward. The inspection and the treatment are two separate transactions and it is healthier
+          when everybody remembers that.
+        </p>
+        <p>
+          <strong>And if a treatment is warranted</strong>, the quote follows the ordinary rules —
+          4 TAC §7.174 disclosure documents with a written estimate before any work begins, and the
+          <a href="/our-guarantee/">warranty terms</a> written out with the re-treatment and damage
+          distinction made plainly. A closing deadline is the most effective sales pressure there is, and
+          it is not a reason to sign something unread.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>For realtors, lenders and title companies</h2>
+      <div class="measure">
+        <p>
+          If you order these professionally rather than once in your life, a few things are worth having
+          from whoever you use.
+        </p>
+        <p>
+          <strong>The licence category, confirmed rather than assumed.</strong> Termite and Wood Destroying
+          Insect Control, verifiable against the Department's records. A report signed by somebody without
+          it is a problem attached to a file you are responsible for, and it surfaces at the worst possible
+          moment. Ours is TPCL {o.tpcl}.
+        </p>
+        <p>
+          <strong>The current form.</strong> SPCS/T-5, not the superseded T-4 that still circulates on
+          third-party form sites. It takes two seconds to check the form number and it has cost people
+          transactions.
+        </p>
+        <p>
+          <strong>A report that is actually complete.</strong> Meaning the diagram is filled in, the
+          conducive conditions are listed, and — most importantly — the inaccessible areas are recorded
+          properly rather than left blank. A blank exclusions section on an occupied house is not a
+          thorough inspection; it is an incomplete form, and it is the thing that gets argued about later.
+        </p>
+        <p>
+          <strong>Somebody who will explain it to your client.</strong> Buyers routinely read a WDI report
+          as a pass or a fail, and neither reading is right. Ten minutes on the phone explaining what was
+          and was not inspected saves a great deal of anxiety and, frequently, an unnecessary renegotiation.
+        </p>
+        <p>
+          <strong>And somebody who will tell you when they cannot make the date.</strong> Immediately, on
+          the first call, rather than accepting the booking and calling on the Thursday. On a transaction
+          that is the single most valuable thing a vendor can do for you.
+        </p>
+        <p>
+          <strong>On grouping.</strong> If you have several properties in one town, book them together.
+          The outer towns on this route run as planned days, and a title company or an agent with three
+          inspections in Lamesa gets a materially better date than three separate calls would produce.
+        </p>
+        <p>
+          <strong>One thing we will not do</strong> is shade a report because a transaction needs to close.
+          That should go without saying and it does not always, so it is said here. The independence
+          attestation in Section 7A of the form is signed on every report, and it means what it says.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How scheduling works, honestly</h2>
+      <div class="measure">
+        <p>
+          Real estate work is the least flexible thing in this trade, and it is worth being straight about
+          what a one-truck operation can and cannot promise.
+        </p>
+        <p>
+          <strong>Closing dates do not move.</strong> Ours is not a business that can absorb a
+          same-afternoon request from the far end of a hundred-mile route, and pretending otherwise would
+          fail somebody at the worst possible moment in a transaction.
+        </p>
+        <p>
+          <strong>So call when the contract is signed</strong>, not when the option period is running out.
+          A week of notice is an easy booking. Two days is workable near Seminole. Same-day from Lubbock or
+          Big Spring is not a promise anybody should make you.
+        </p>
+        <p>
+          <strong>Seminole and the towns nearest it are responsive.</strong> Seagraves, Denver City,
+          Andrews and Gaines County generally can usually be fitted quickly.
+        </p>
+        <p>
+          <strong>The outer towns run as planned days.</strong> Grouping helps enormously — if a title
+          company or an agent has several inspections in one town, saying so gets everybody a better date
+          than booking them separately.
+        </p>
+        <p>
+          <strong>Tell us the deadline at booking, not at the visit.</strong> The closing date, the option
+          period expiry, the lender's cut-off. Those drive everything about how the work is sequenced, and
+          they are the single most useful thing you can say on the first call.
+        </p>
+        <p>
+          <strong>Peak season is the constraint worth planning around.</strong> Termite swarms in this
+          region come in April and May — later than anywhere else in Texas, because swarm timing runs on a
+          north-south gradient — and that is also when spring transactions are moving. If your closing sits
+          in that window, the notice you give matters more than at any other point in the year.
+        </p>
+        <p>
+          <strong>And if we cannot make your date, you will be told immediately</strong> rather than
+          booked in and disappointed. On a transaction that is worth more than a booking, and it is the
+          only version of this service worth offering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where we do this work</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Individually quoted, because a small in-town house and a property with several outbuildings are
+          not the same inspection. The report is on the department's prescribed form and is not altered.
+          Copies to whoever ordered it, retained here for a minimum of two years. Military discount. Cash,
+          check, card in person or online, Venmo, CashApp or Zelle. Se habla español — and on a WDI report
+          that matters, because explaining what the inaccessible-areas section means is part of the job.
+        </p>
+        <p>
+          For the full regulatory picture — what the report covers, what it explicitly does not, and how to
+          read one you have already been given — see the
+          <a href="/compliance/wdi-report/">WDI report reference page</a>. For the biology, including why
+          the dry-climate assumption about West Texas is wrong, see the
+          <a href="/pest-library/subterranean-termite/">subterranean termite library page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="WDI inspection questions" />
+  <Cta
+    line="Call when the contract is signed rather than when the option period is running out, and have the closing date to hand. On real estate work that date decides everything."
+  />
+</BaseLayout>

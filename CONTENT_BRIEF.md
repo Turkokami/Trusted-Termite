@@ -268,7 +268,7 @@ write it past 3,000 unique words, and not before.
 
 | What | Why | Unblocks when |
 |---|---|---|
-| WDI / T-5 / realtor + lender cluster | B-05 says he's licensed; C-09 says he'd rather not do them | Owner confirms in writing |
+| WDI / T-5 / realtor + lender cluster | B-05 says he's licensed; C-09 says he'd rather not do them | Owner confirms in writing. **BUILT AND PARKED** — `/compliance/wdi-report/` and `/services/termite-control/wdi-inspection/` are written to depth and held at noindex. Both gate on `BUSINESS.owner.wdiDecisionConfirmed`. Flip that ONE flag in `business.ts` to `true` and both ship. Verified: flag true → 46 indexable, both pass M1. ⚠️ Before shipping, replace the placeholder scheduling limits on the service page with his actual answer on radius and notice period. |
 | Oilfield / man-camp vertical | C-07 shows no oilfield work done; C-12 says he wants it | There is a real job to point at |
 | Kermit, Stanton city pages | D-07 — wants them, doesn't serve them | He starts running them |
 | Community / sponsorship proof | F-12 — none yet | He joins something |
