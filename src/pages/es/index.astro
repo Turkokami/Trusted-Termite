@@ -1,0 +1,481 @@
+---
+/**
+ * /es/ — Spanish home. Phase 5, blue-ocean.
+ *
+ * WHY THIS IS THE BIGGEST UNCONTESTED OPPORTUNITY ON THIS ROUTE:
+ *  - F-07 verified: the owner is fluent in Spanish and answers his own phone.
+ *    This is not "se habla español" meaning somebody in an office might call
+ *    back Thursday. It is the licence holder, on the phone, in Spanish.
+ *  - The market is heavily Spanish-speaking. Verified school-district figures:
+ *    Seagraves ISD 83.2% Hispanic, Denver City ISD 86.3%, Brownfield and
+ *    Lamesa both substantial. (Enrollment demographics are a proxy for
+ *    household language, not a measure of it — the page does NOT claim a
+ *    household-language percentage, because no source gives one.)
+ *  - No competitor on this route publishes Spanish content.
+ *  - There is a genuine COMPLIANCE hook: 4 TAC §7.147(f) requires the
+ *    department's own consumer information sheet to be used and states it is
+ *    available "in English and Spanish"; §7.146(e) states "A standard sign in
+ *    Spanish is available from the department upon request." TDA publishes
+ *    "HOJA DE INFORMACIÓN AL CONSUMIDOR" and "AVISO DE TRATAMIENTO DE
+ *    EXTERMINACIÓN". So Spanish-speaking customers have a statutory right to
+ *    documents in Spanish that almost nobody tells them about.
+ *
+ * WRITING RULE: written in Spanish, not translated from the English pages.
+ * Neutral Latin American Spanish, usted throughout. Regional vocabulary chosen
+ * for this market: "alacrán" alongside "escorpión" (alacrán is the common term
+ * in northern Mexico and among Mexican-American families in West Texas),
+ * "chinches" for bed bugs, "plomería" for plumbing.
+ *
+ * HONESTY GATES CARRY OVER UNCHANGED. No fabricated reviews or ratings, no
+ * aggregateRating, no pricing figures, no "our team" (solo operator), the same
+ * licence and guarantee facts, and the same refusals (no fumigación, no
+ * tratamiento térmico para chinches).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Cta from '../../components/Cta.astro';
+import { BUSINESS } from '../../data/business';
+import { SERVICES } from '../../data/services';
+import { TOWNS } from '../../data/towns';
+
+const o = BUSINESS.owner;
+/** Only Spanish pages that ACTUALLY EXIST are linked. Declaring an esSlug in
+ *  services.ts does not create a page — linking to one that is not written is
+ *  a dead link, and the harness will fail the build for it. */
+const ES_WRITTEN = [
+  { esSlug: 'control-de-plagas', esName: 'Control de Plagas', esBlurb: 'Servicio recurrente o tratamiento único, con inspección antes de aplicar nada.' },
+  { esSlug: 'control-de-escorpiones', esName: 'Control de Alacranes', esBlurb: 'La plaga que define esta región. Sellado y exclusión, no nada más rociar.' },
+  { esSlug: 'control-de-termitas', esName: 'Control de Termitas', esBlurb: 'Aquí sí hay termitas, y la creencia de que no las hay es lo que hace el daño.' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions es una empresa de control de plagas con licencia en Seminole, Texas. El dueño, Valentin Moriel, tiene la licencia TPCL 0918482 del Departamento de Agricultura de Texas, habla español con fluidez, contesta su propio teléfono y hace el trabajo él mismo. Atiende el condado de Gaines y la Cuenca Pérmica.';
+
+const faqs = [
+  {
+    q: '¿Realmente hablan español, o me van a devolver la llamada?',
+    a: 'Habla español el dueño, que es la misma persona que contesta el teléfono, hace la inspección y aplica el tratamiento. No hay intérprete, no hay que esperar a que alguien de la oficina le regrese la llamada, y no hay que explicar el problema dos veces. Llame o mande un mensaje de texto al (432) 278-7294 y hable directamente con él.',
+  },
+  {
+    q: '¿Tengo derecho a recibir documentos en español?',
+    a: 'Sí, y casi nadie se lo dice. El reglamento 4 TAC §7.147(f) exige que se use la hoja de información al consumidor del propio Departamento de Agricultura de Texas — una compañía no puede sustituirla por la suya — y establece que está disponible en inglés y en español. El §7.146(e) dice que el aviso de tratamiento también está disponible en español a solicitud. El Departamento las publica como "Hoja de Información al Consumidor" y "Aviso de Tratamiento de Exterminación". Pídalas.',
+  },
+  {
+    q: '¿Cómo verifico que la licencia es real?',
+    a: 'Busque el número TPCL ' + o.tpcl + ' en los registros de control de plagas estructural del Departamento de Agricultura de Texas. Revise tres cosas: que la licencia exista, que esté vigente y no vencida, y que las categorías cubran el trabajo que le están cotizando — si le cotizan termitas, la categoría de termitas tiene que aparecer. Toma unos dos minutos, es gratis, y es la única verificación en todo este oficio que resuelve el asunto de forma definitiva.',
+  },
+  {
+    q: '¿Hay contrato?',
+    a: 'No. Ningún servicio lleva contrato. El servicio recurrente es cada dos meses o cada tres meses, sin plazo mínimo, sin renovación automática y sin cargo por cancelar. Si el programa está funcionando, lo va a conservar porque funciona.',
+  },
+  {
+    q: '¿Los alacranes de Texas son mortales?',
+    a: 'No. Texas A&M AgriLife señala que ninguna especie de alacrán en Texas se considera mortal, y que las picaduras producen reacciones moderadas en la mayoría de las personas porque el veneno tiene poco efecto sobre el sistema nervioso. La especie realmente peligrosa en Estados Unidos es el alacrán de corteza de Arizona, que es un animal distinto. Dicho eso: la picadura duele bastante, la hinchazón puede durar varios días, y con niños pequeños o personas alérgicas conviene consultar a un médico.',
+  },
+  {
+    q: '¿Es cierto que aquí hace demasiado seco para que haya termitas?',
+    a: 'No, y esa creencia es la razón por la que el daño avanza sin que nadie lo note. AgriLife indica que las poblaciones principales están en la costa pero que las termitas se encuentran en todo el estado, y es explícito en que donde hay humedad disponible las termitas pueden permanecer lejos del suelo por períodos prolongados — mencionando plomería defectuosa, techos con goteras, fugas del condensado del aire acondicionado y canaletas mal mantenidas. El riego del jardín en tierra seca proporciona exactamente eso.',
+  },
+  {
+    q: '¿Cuánto cuesta?',
+    a: 'Depende de la propiedad, y no publicamos una lista de precios porque un número dado sin ver el lugar o cobra de más a la mayoría o no es el número que va a terminar pagando. Lo que sí le decimos es qué determina el precio: el tamaño y tipo de la construcción, cuántos edificios hay, cuál es la plaga, si es un tratamiento único o un programa, y a qué distancia está de Seminole. Nada más.',
+  },
+  {
+    q: '¿Qué NO hacen?',
+    a: 'No hacemos fumigación — esa es una categoría de licencia aparte que no tenemos. No hacemos tratamiento térmico para chinches. No hacemos jardinería de diseño, renta de contenedores, lavado a presión ni demolición. Si necesita algo de eso, se lo decimos por teléfono en lugar de aprender en su propiedad.',
+  },
+];
+---
+
+<BaseLayout
+  title="Control de Plagas en Seminole, TX"
+  description="Control de plagas con licencia en el condado de Gaines y la Cuenca Pérmica. El dueño habla español, contesta el teléfono y hace el trabajo. Sin contratos."
+  path="/es/"
+  lang="es"
+  altLangPath="/"
+  quickAnswer={quickAnswer}
+  faqs={faqs}
+>
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Seminole, Texas · TPCL {o.tpcl}</p>
+      <h1>Control de plagas en el oeste de Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>La persona que contesta el teléfono es la misma que hace el trabajo</strong>, y habla
+          español. No es un centro de llamadas, no es un intérprete, y no es alguien de la oficina que le
+          va a regresar la llamada el jueves.
+        </p>
+        <p>
+          Eso importa más de lo que parece. Un problema de plagas descrito en un segundo idioma, con prisa,
+          produce una inspección peor — porque los detalles que resuelven el caso son justamente los que
+          se pierden al traducir sobre la marcha. Aquí no hay traducción sobre la marcha.
+        </p>
+        <p>
+          <a href="/">This page in English</a>.
+        </p>
+      </div>
+
+      <div class="grid c3" style="margin-top:2.4rem">
+        {ES_WRITTEN.map((s) => (
+          <a class="card" href={`/es/servicios/${s.esSlug}/`}>
+            <h3>{s.esName}</h3>
+            <p>{s.esBlurb}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:1.2rem">
+        <p style="color:var(--ink-3);font-size:.95rem">
+          <a href="/es/servicios/">Ver todos los servicios</a>. Las páginas en español se publican
+          conforme se escriben completas — no traducidas a medias. Los servicios que todavía no tienen
+          página en español existen en inglés, y se los explicamos por teléfono en español con gusto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Sus derechos como cliente, en español</h2>
+      <div class="measure">
+        <p>
+          Texas regula el control de plagas estructural con bastante detalle, y casi nada de eso se le
+          explica a la persona que paga. Varias de esas protecciones están disponibles en español y casi
+          nadie lo menciona.
+        </p>
+        <p>
+          <strong>La hoja de información al consumidor.</strong> El reglamento 4 TAC §7.147(f) exige que se
+          use la hoja del propio Departamento de Agricultura de Texas — una compañía no puede sustituirla
+          por una versión suya — y establece que está disponible <em>en inglés y en español</em>. El
+          Departamento la publica como <em>Hoja de Información al Consumidor</em>. Pídala.
+        </p>
+        <p>
+          <strong>El aviso de tratamiento.</strong> El §7.146(e) establece que hay un aviso estándar en
+          español disponible del Departamento a solicitud. Se publica como <em>Aviso de Tratamiento de
+          Exterminación</em>, y no cuesta nada pedirlo. Si usted administra un edificio de cinco unidades o más, o un lugar de
+          trabajo, esto le concierne directamente.
+        </p>
+        <p>
+          <strong>Identificación en la puerta.</strong> Bajo el §7.141, quien tenga licencia debe portar su
+          tarjeta en todo momento mientras trabaja, presentarla cuando se le pida, y — inciso (c) —
+          mostrar una identificación oficial con fotografía al cliente que la solicite. Eso es un derecho
+          establecido en el reglamento, no una cortesía. Pídala siempre, a cualquier compañía.
+        </p>
+        <p>
+          <strong>La camioneta también se puede revisar.</strong> El §7.141(g) y (h) exigen que el número
+          de licencia aparezca de forma permanente en los vehículos, con las palabras "Texas Pest Control
+          License #" o "TPCL #", en las salpicaderas delanteras o en las puertas, en letras de al menos
+          <strong>dos pulgadas</strong> y en colores contrastantes. Lo puede leer desde la ventana antes de
+          que toquen la puerta.
+        </p>
+        <p>
+          <strong>Y en cada factura.</strong> El §7.145(b) exige el nombre del negocio, el número de
+          licencia, el teléfono y la dirección en toda factura. En los contratos y garantías se agrega la
+          declaración de jurisdicción del Departamento. Todo legible y en letra de al menos 8 puntos.
+        </p>
+        <p>
+          Hay más detalle en la <a href="/compliance/">sección de cumplimiento</a>: qué debe aparecer en
+          cada factura y en cada contrato, qué registros está obligada a guardar la compañía y por cuánto
+          tiempo, y cómo presentar una queja ante el Departamento. Está en inglés, y se lo explicamos por
+          teléfono en español con gusto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que de verdad hay aquí</h2>
+      <div class="measure">
+        <p>
+          Casi todo lo que se lee en internet sobre plagas está escrito para un lugar más húmedo, con
+          ríos, con bosque. Aquí no aplica igual, y hay cuatro cosas que explican casi todo.
+        </p>
+        <p>
+          <strong>Casi no hay agua superficial permanente.</strong> Los condados de Gaines, Terry, Dawson y
+          Yoakum no tienen arroyos permanentes. El terreno drena hacia playas y arroyos secos que se llenan
+          después de la lluvia y están secos el resto del año. Eso significa que los mosquitos vienen por
+          rachas después de una lluvia, no de forma continua — y que cualquier agua artificial en su
+          propiedad se vuelve el punto más importante de todo el terreno.
+        </p>
+        <p>
+          <strong>La tierra drena rápido.</strong> Arena y suelo arenoso sobre subsuelo de arcilla. El agua
+          se va, así que todo se concentra alrededor de lo que sí retiene humedad: la cabeza de riego que
+          pega contra la cimentación, la línea del condensado del aire acondicionado que descarga en el
+          mismo lugar todo el verano, la llave que gotea. En un lugar húmedo eso es un detalle de
+          mantenimiento. Aquí es, con frecuencia, la explicación completa del problema.
+        </p>
+        <p>
+          <strong>El viento y el polvo acaban con los sellos.</strong> Los burletes de las puertas se
+          aplastan, el hule se endurece y se parte, las mallas se rompen. Combinado con casas cuya
+          construcción promedio en la mayoría de estos pueblos es de los años sesenta y setenta, eso
+          produce el mismo conjunto de entradas en propiedad tras propiedad — y es la razón por la que
+          sellar rinde más que fumigar.
+        </p>
+        <p>
+          <strong>Y la agricultura marca el calendario.</strong> Algodón, cacahuate, sorgo y maíz en
+          extensiones enormes que llegan hasta la orilla de los pueblos. Un campo sembrado es hábitat. La
+          cosecha lo elimina en cuestión de días y reubica todo lo que vivía ahí hacia las construcciones
+          más cercanas, más o menos en la misma época cada año.
+        </p>
+        <p>
+          En la mitad sur de la ruta hay una quinta condición: la economía petrolera deja edificios que se
+          vacían y se vuelven a llenar por temporadas, y un edificio desocupado es una condición de plagas
+          por sí solo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Tres cosas que casi todo el mundo cree y que no son ciertas</h2>
+      <div class="measure">
+        <p>
+          <strong>Uno — que los alacranes de aquí matan.</strong> Texas A&M AgriLife lo dice de forma
+          directa: ninguna especie de alacrán en Texas se considera mortal, y las picaduras producen
+          reacciones moderadas en la mayoría de las personas porque el veneno tiene poco efecto sobre el
+          sistema nervioso. La especie realmente peligrosa en Estados Unidos es el alacrán de corteza de
+          Arizona, que no es el que usted tiene en la cochera. La picadura duele fuerte y la hinchazón
+          puede durar días — con niños pequeños o personas alérgicas hay que tener cuidado — pero el miedo
+          es mayor que el animal, y en este oficio ese miedo se usa para vender.
+        </p>
+        <p>
+          <strong>Dos — que aquí hace demasiado seco para las termitas.</strong> Ninguna fuente de
+          extensión respalda eso. AgriLife dice lo contrario: donde hay humedad disponible, las termitas
+          pueden permanecer lejos del suelo por períodos prolongados, y menciona la plomería defectuosa,
+          los techos con goteras, las fugas del condensado del aire acondicionado y las canaletas mal
+          mantenidas. En una región con dieciséis pulgadas de lluvia al año, el riego del jardín puede ser
+          la única humedad confiable en cien pies a la redonda. La creencia misma es lo que provoca que
+          nadie proteja la casa.
+        </p>
+        <p>
+          <strong>Tres — que el lodo en los postes de la cerca es una emergencia de termitas.</strong> Casi
+          siempre no lo es. Esas láminas y tubitos frágiles de lodo sobre postes, pasto seco y estiércol,
+          de mayo a septiembre, son de la <em>termita del desierto</em> — común en el sur y el oeste de
+          Texas, que no perfora la madera, no causa daño estructural, y que AgriLife describe como
+          inofensiva para el ser humano y los animales. Es un asunto de pastizal y una señal sobre el manejo del
+          pastoreo, no una amenaza para su casa. Lodo en la cerca es una cosa; lodo en la cimentación es otra muy distinta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Dónde trabajamos</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {TOWNS.map((t) => (
+          <a class="card" href={`/locations/${t.slug}/`}>
+            <h3>{t.name}, TX</h3>
+            <p>{t.county}{t.distanceMiApprox > 0 ? ` · a unas ${t.distanceMiApprox} millas de Seminole` : ' · aquí mismo'}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Desde Seminole cubrimos aproximadamente cien millas a la redonda. Seminole y los pueblos más
+          cercanos tienen la mayor disponibilidad — una llamada por la mañana muchas veces se convierte en
+          una visita ese mismo día. Los pueblos más lejanos se atienden por día programado, así que avisar
+          con un par de días de anticipación consigue una fecha mucho mejor que llamar con urgencia la
+          misma mañana.
+        </p>
+        <p>
+          <strong>No cobramos cargo por viaje.</strong> En trabajos grandes y lejanos se conversa un mínimo
+          antes de que usted acepte nada. Lo que nunca va a pasar es que aparezca un cargo por millaje en
+          la factura que no se haya hablado antes.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          Las páginas de cada pueblo están en inglés por ahora. Traen el detalle local — la ordenanza de
+          maleza de cada ciudad, los plazos, y qué se ve en cada lugar. Con gusto se lo explicamos por
+          teléfono en español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Quién hace el trabajo</h2>
+      <div class="measure">
+        <p>
+          Valentin Moriel es de Seminole. Creció aquí y se graduó de la preparatoria aquí, y ha entrado y
+          salido del condado de Gaines toda su vida.
+        </p>
+        <p>
+          <strong>Aprendió el oficio en El Paso</strong>, durante seis años, en dos sucursales incluida una
+          de Terminix-Rentokil. Entró como gerente de operaciones de una sucursal chica, lo cual significa
+          que aprendió el negocio completo y no nada más la aplicación: manejo de técnicos, trato directo
+          con clientes, problemas difíciles, ventas, capacitación y la operación diaria.
+        </p>
+        <p>
+          <strong>Lo que se trajo de ahí fue una idea clara de lo que no quería.</strong> En sus palabras:
+          "Las compañías grandes pueden hacer que el cliente se sienta como un número más. Lo pasan de una
+          persona a otra, lo dejan esperando, y casi nunca habla dos veces con el mismo. De ahí vengo, y
+          eso ayudó a definir lo que <em>no</em> quería que fuera mi compañía."
+        </p>
+        <p>
+          <strong>El Paso aparece en esta página y en ninguna otra parte del sitio</strong>, y eso es a
+          propósito. Ahí se formó; no es un área que esta compañía atienda. Ponerlo como área de servicio
+          sería una afirmación sobre cobertura que simplemente no es cierta, y es exactamente lo que hacen
+          las compañías chicas de plagas para aparecer en más búsquedas.
+        </p>
+        <p>
+          <strong>Trusted Termite and Pest Solutions abrió en noviembre de 2025.</strong> Seis años de
+          experiencia y un negocio nuevo son dos números distintos y aquí nunca se mezclan. No va a leer
+          "más de una década sirviendo al oeste de Texas" en este sitio, porque la compañía no tiene una
+          década.
+        </p>
+        <p>
+          <strong>Y es deliberadamente un negocio de una sola persona.</strong> Quien contesta el teléfono
+          es quien llega, inspecciona y aplica el tratamiento. Eso significa que lo que usted le contó en
+          marzo se sabe en septiembre, porque no hay traspaso donde se pueda perder. También significa
+          límites honestos: hay una camioneta, y una llamada de la misma mañana desde un pueblo a setenta y
+          cinco millas puede no ser una visita de la misma mañana. Si el trabajo rebasa lo que una camioneta
+          puede hacer, la respuesta es contratar y capacitar bien, no empezar a apurar los servicios para
+          meter más paradas en el día.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cómo trabajamos</h2>
+      <div class="measure">
+        <p>
+          <strong>La inspección va antes que el tratamiento, siempre.</strong> Aplicar producto sin saber
+          qué se está tratando, por dónde entra y qué lo está sosteniendo produce un servicio que parece
+          funcionar tres semanas y luego no. La mayoría de los problemas que la gente describe como "se le
+          acabó el efecto al spray" nunca fueron fallas del tratamiento: fueron fallas de inspección.
+        </p>
+        <p>
+          <strong>Se recorre toda la propiedad</strong>, no nada más el lado donde usted vio algo. Las
+          entradas de servicio, los agujeros de ventilación del ladrillo, los burletes de las puertas, el
+          umbral de la cochera, y la historia del agua: dónde llega el riego, dónde se encharca, qué está
+          arrimado a la pared.
+        </p>
+        <p>
+          <strong>Después se conversa, antes de aplicar nada.</strong> Qué se encontró, qué significa, qué
+          se va a hacer, cuánto cuesta, y qué puede hacer usted por su cuenta que ayudaría. Esa última
+          parte no es relleno: en casi toda propiedad hay dos o tres cambios gratuitos que hacen más que
+          un tratamiento adicional.
+        </p>
+        <p>
+          <strong>Y esa conversación incluye lo que quizá no quiere oír.</strong> Que el problema son las
+          condiciones y no una plaga establecida. Que va a hacer falta una segunda visita. O que lo que
+          usted describe no es algo que esta empresa maneje y necesita a alguien más. Decir eso cuesta
+          dinero, y es la única versión de este negocio que vale la pena.
+        </p>
+        <p>
+          <strong>El trabajo no está cronometrado.</strong> En las empresas grandes cada servicio tiene una
+          duración esperada y al técnico se le mide contra ella. Ese sistema no está diseñado para producir
+          inspecciones completas, sino rutas predecibles. Aquí una propiedad que necesita dos horas recibe
+          dos horas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cómo saber si una compañía de plagas es de fiar</h2>
+      <div class="measure">
+        <p>
+          Esto aplica para nosotros igual que para cualquiera, y son verificaciones que usted puede hacer
+          sin pedirle permiso a nadie.
+        </p>
+        <p>
+          <strong>Pida el número de licencia y verifíquelo.</strong> Búsquelo en los registros del
+          Departamento de Agricultura de Texas. Revise tres cosas: que exista, que esté vigente, y que las
+          categorías cubran el trabajo que le están cotizando. Si le cotizan termitas y la categoría de
+          termitas no aparece, eso no es una cotización: es un problema esperando a ser suyo. Es la única
+          verificación en este oficio que es gratis y concluyente.
+        </p>
+        <p>
+          <strong>Pida identificación en la puerta.</strong> Bajo el reglamento 4 TAC §7.141, quien tenga
+          licencia debe portar su tarjeta mientras trabaja, presentarla cuando se le pida, y mostrar una
+          identificación oficial con foto al cliente que la solicite. Cualquiera legítimo espera que se la
+          pidan. A quien le moleste la pregunta, ya le dijo algo útil.
+        </p>
+        <p>
+          <strong>Lea la garantía completa antes de firmar.</strong> Una garantía sin un número de días no
+          es una garantía. Busque tres cosas: cuánto dura, contra qué plagas exactamente, y qué hacen si
+          falla. "Satisfacción garantizada" no contiene ninguna de las tres.
+        </p>
+        <p>
+          <strong>Pregunte si la garantía se cancela al cancelar el plan.</strong> Muchos programas
+          recurrentes están escritos de manera que la cobertura sólo existe mientras el plan siga activo.
+          El nuestro no funciona así — los treinta días se pegan al tratamiento, no a la suscripción.
+        </p>
+        <p>
+          <strong>Desconfíe de la presión.</strong> "Este precio nada más si contrata hoy" es una técnica
+          de venta, no una limitación real de agenda. Los problemas de plagas que de verdad son urgentes
+          siguen siendo urgentes mañana.
+        </p>
+        <p>
+          <strong>Y si firmó en la puerta de su casa, tiene derecho a cancelar.</strong> El Código de
+          Negocios y Comercio de Texas §601.052 exige que le entreguen copia del contrato al firmar, en el
+          idioma en que se le hizo la presentación de venta, con esta declaración en letra negrita: "USTED,
+          EL COMPRADOR, PUEDE CANCELAR ESTA TRANSACCIÓN EN CUALQUIER MOMENTO ANTES DE LA MEDIANOCHE DEL
+          TERCER DÍA HÁBIL DESPUÉS DE LA FECHA DE ESTA TRANSACCIÓN." Fíjese que dice tercer día
+          <em>hábil</em>, no setenta y dos horas — en fin de semana eso es bastante más tiempo del que
+          mucha gente cree.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Garantía, pagos y lo que no hacemos</h2>
+      <div class="measure">
+        <p>
+          <strong>Garantía de servicio de 30 días</strong> en el control de plagas general: si una plaga
+          incluida en su tratamiento original sigue activa dentro de los treinta días, regresamos,
+          inspeccionamos y volvemos a tratar el área afectada sin cargo adicional. Los términos completos,
+          con las exclusiones escritas, están en la <a href="/our-guarantee/">página de garantía</a>.
+        </p>
+        <p>
+          <strong>El trabajo de termitas lleva su propia garantía de un año</strong> de retratamiento — que
+          cubre volver a tratar, no reparar daño. Esa distinción es la que más se confunde en este oficio y
+          por eso está escrita en la página en lugar de quedar en una conversación.
+        </p>
+        <p>
+          <strong>Sin contratos.</strong> El servicio recurrente es cada dos o cada tres meses, sin plazo,
+          sin renovación automática y sin cargo por cancelar. Las visitas intermedias entre servicios
+          programados van incluidas, no se negocian.
+        </p>
+        <p>
+          <strong>Formas de pago:</strong> efectivo, cheque, tarjeta en persona o en línea, Venmo, CashApp
+          o Zelle. Hay financiamiento disponible en trabajos grandes como los de termitas — pregunte desde
+          la primera llamada, no al final. <strong>Descuento militar.</strong>
+        </p>
+        <p>
+          <strong>Un consejo sobre las aplicaciones de pago:</strong> confirme el usuario por teléfono con
+          la persona con la que está tratando antes de mandar nada. La suplantación de contratistas locales
+          en aplicaciones de pago es un problema real, y la costumbre más segura es nunca pagar a un
+          usuario que sólo recibió por escrito.
+        </p>
+        <p>
+          <strong>Lo que no hacemos:</strong> fumigación (es una categoría de licencia aparte que no
+          tenemos), tratamiento térmico para chinches, jardinería de diseño, renta de contenedores, lavado
+          a presión y demolición. Si necesita algo de eso, se lo decimos por teléfono.
+        </p>
+        <p>
+          <strong>Y si algo sale mal.</strong> El Departamento de Agricultura de Texas regula este oficio y
+          recibe quejas de consumidores contra negocios con licencia — incluidos nosotros. Al (866)
+          918-4481 o a spcs@TexasAgriculture.gov. Lo publicamos porque una garantía que sólo sirve cuando
+          la compañía tiene ganas de cumplirla no es realmente una garantía.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    line="Llame o mande un mensaje de texto al (432) 278-7294 y hable directamente con el dueño, en español. Dígale qué está viendo, dónde, y si tiene una fecha límite — un aviso de la ciudad, una mudanza, un cierre de casa."
+  />
+</BaseLayout>

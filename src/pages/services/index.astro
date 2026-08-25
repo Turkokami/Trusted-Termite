@@ -17,6 +17,7 @@ const groups = [
   title="Our Services | Trusted Termite &amp; Pest Solutions"
   description="Pest control, scorpions, termites, rodents, bed bugs, mosquitoes, lawn care, brush clearing and junk removal across Gaines County and the Permian Basin."
   path="/services/"
+  altLangPath="/es/servicios/"
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}
 >
@@ -26,6 +27,7 @@ const groups = [
       <p class="eyebrow">One licensed operator, four lines of work</p>
       <h1>What we do</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <p class="measure" style="margin-top:1rem"><a href="/es/servicios/" lang="es" hreflang="es">Esta página en español</a></p>
       {groups.map(g => (
         <div style="margin-top:2.4rem">
           <h2>{g.title}</h2>

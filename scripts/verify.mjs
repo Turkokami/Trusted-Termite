@@ -152,10 +152,27 @@ for (const p of pages) {
 
   const types = graph.flatMap((n) => (Array.isArray(n['@type']) ? n['@type'] : [n['@type']]));
   for (const req of ['WebSite', 'WebPage', 'ImageObject', 'LocalBusiness', 'BreadcrumbList']) {
-    if (req === 'BreadcrumbList' && p.url === '/') continue; // home has no breadcrumb
+    // Home has no breadcrumb, and neither does a language root (/es/).
+    if (req === 'BreadcrumbList' && (p.url === '/' || p.url === '/es/')) continue;
     if (!types.includes(req)) warns.push(`NODE MISS  ${p.url} — no ${req}`);
   }
   if (types.filter((t) => t === 'FAQPage').length > 1) errors.push(`2+ FAQPage ${p.url}`);
+
+  // --- i18n: hreflang must resolve, and must be reciprocal -----------------
+  const alts = [...p.html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)]
+    .map((m) => ({ lang: m[1], href: m[2] }));
+  for (const a of alts) {
+    if (a.lang === 'x-default') continue;
+    const rel = a.href.replace(/^https?:\/\/[^/]+/, '');
+    if (!pages.some((q) => q.url === rel)) {
+      errors.push(`HREFLANG   ${p.url} → ${rel} (${a.lang}) does not exist`);
+      continue;
+    }
+    const other = pages.find((q) => q.url === rel);
+    if (!/<link rel="alternate"/.test(other.html) || !other.html.includes(p.url === '/' ? 'href="' : p.url)) {
+      warns.push(`HREFLANG   ${p.url} ↔ ${rel} not reciprocal`);
+    }
+  }
 
   // @id collisions within a page
   const ids = graph.map((n) => n['@id']).filter(Boolean);

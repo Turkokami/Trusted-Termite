@@ -19,9 +19,16 @@ interface Props {
   faqs?: Faq[];
   service?: { name: string; description: string; areaServed?: string[] };
   noindex?: boolean;
+  /** Page language. Drives <html lang> and the hreflang pair. */
+  lang?: 'en' | 'es';
+  /** Path of the equivalent page in the other language, if one exists.
+   *  Supplying it emits reciprocal hreflang alternates plus x-default.
+   *  Only set this where a real translated page EXISTS — a hreflang pointing
+   *  at a 404 is worse than no hreflang at all. */
+  altLangPath?: string;
 }
 
-const { title, description, path, quickAnswer, breadcrumbs, faqs, service, noindex = false } = Astro.props;
+const { title, description, path, quickAnswer, breadcrumbs, faqs, service, noindex = false, lang = 'en', altLangPath } = Astro.props;
 
 // M5 guardrails — fail loudly in dev rather than shipping a bad title.
 if (import.meta.env.DEV) {
@@ -32,17 +39,25 @@ if (import.meta.env.DEV) {
 }
 
 const canonical = new URL(path, SITE_URL).href;
+/** hreflang pair. `path` is always the current language; `altLangPath` is the
+ *  other one. x-default points at the English page by convention. */
+const altHref = altLangPath ? new URL(altLangPath, SITE_URL).href : null;
+const enHref = lang === 'en' ? canonical : altHref;
+const esHref = lang === 'es' ? canonical : altHref;
 const ogImage = new URL('/brand/social.png', SITE_URL).href;
 const graph = buildGraph({ path, title, description, quickAnswer, breadcrumbs, faqs, service });
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  {altHref && enHref && <link rel="alternate" hreflang="en-US" href={enHref} />}
+  {altHref && esHref && <link rel="alternate" hreflang="es-US" href={esHref} />}
+  {altHref && enHref && <link rel="alternate" hreflang="x-default" href={enHref} />}
   {noindex && <meta name="robots" content="noindex,nofollow" />}
 
   <meta property="og:type" content="website" />

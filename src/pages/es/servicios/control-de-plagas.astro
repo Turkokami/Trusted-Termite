@@ -1,0 +1,425 @@
+---
+/**
+ * /es/servicios/control-de-plagas/ — Spanish general pest control page.
+ *
+ * Products from C-11 (same as the English page). Guarantee applies (30 days).
+ *
+ * Sourced pest facts used here, all AgriLife unless noted:
+ *  - German cockroach: does NOT live outdoors in Texas, "spend their lives
+ *    indoors" — carried in. ~75% of life in cracks 1/32-3/16 in. Female carries
+ *    the ootheca to hatch. 30-40 nymphs/capsule; nymph->adult 50-60 days;
+ *    optimum ~80F. Bug bombs "generally do not eliminate cockroaches because
+ *    they do not penetrate the cracks". Daytime sightings = large population.
+ *    Dispersal beyond kitchen/bath = severity indicator. Allergen/asthma link
+ *    (NIEHS); HEPA vacuum.
+ *  - American cockroach: largest in Texas 1.5-2 in, reddish brown with tan
+ *    banding outlining the pronotum, both sexes fly, sewer/drain/soffit/door
+ *    wanderer. "Keep P-traps filled with water to create a barrier between the
+ *    sewer and the home or business."
+ *  - Harvester vs fire ant: Gaines/Yoakum/Terry/Dawson/Andrews NOT quarantined;
+ *    harvester ants do not invade structures; bare circular mound with
+ *    foraging trails; the sting is serious but they stay outdoors. Fire ants
+ *    ARE quarantined in Midland/Ector/Howard/Martin/Winkler and part of
+ *    Lubbock — so the answer changes by county.
+ *  - House mouse: 1/4 in gap ("a hole the size of a pencil diameter");
+ *    thigmotaxis; ~30 ft home range; seal with metal or concrete NOT foam,
+ *    plastic, wood or rubber.
+ *
+ * HONESTY: 30-day guarantee applies to this service. No pricing. No
+ * aggregateRating. No "nuestro equipo" — he is a solo operator.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { serviceBySlug } from '../../../data/services';
+
+const svc = serviceBySlug('pest-control')!;
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Control de Plagas', path: '/es/servicios/control-de-plagas/' },
+];
+
+const quickAnswer =
+  'Control de plagas general para casas, propiedades rurales y negocios del condado de Gaines y la Cuenca Pérmica. Servicio recurrente cada dos o tres meses, o tratamiento único, siempre con inspección antes de aplicar nada. Cubierto por la garantía de servicio de 30 días. Sin contratos.';
+
+const faqs = [
+  {
+    q: '¿Por qué inspeccionan antes de tratar?',
+    a: 'Porque rociar un perímetro sin saber qué se está tratando, por dónde entra y qué lo está sosteniendo produce un servicio que parece funcionar tres semanas y luego deja de funcionar. La mayoría de los problemas que la gente describe como "se le acabó el efecto al spray" nunca fueron fallas de tratamiento: fueron fallas de inspección. La inspección es el trabajo; la aplicación es la consecuencia.',
+  },
+  {
+    q: '¿Cada cuándo hay que dar servicio?',
+    a: 'Cada dos meses o cada tres, según la propiedad. Cada dos meses conviene donde hay presión sostenida — terreno con parcelas, construcciones viejas, propiedades pegadas a campo abierto o con jardinería densa. Cada tres meses le sirve a la mayoría de las casas dentro del pueblo. Cuál le recomendamos depende de lo que encuentre la inspección, no de cuál vale más.',
+  },
+  {
+    q: 'Vi una cucaracha. ¿Qué tan mal está?',
+    a: 'Depende completamente de cuál cucaracha. Una de media pulgada, café claro, con dos rayas oscuras en el escudo detrás de la cabeza, es una cucaracha alemana y sí es una infestación real. Una café rojiza de pulgada y media a dos pulgadas, con borde claro alrededor del escudo, es una cucaracha americana y casi seguro entró de afuera por un desagüe o por debajo de una puerta. Son dos problemas completamente distintos y la solución de uno es de plomería.',
+  },
+  {
+    q: '¿Por qué no sirven las bombas de humo para cucarachas?',
+    a: 'Porque no llegan a donde están. AgriLife lo dice directo: los aerosoles de liberación total generalmente no eliminan cucarachas porque no penetran las grietas donde se esconden. La cucaracha alemana pasa alrededor del setenta y cinco por ciento de su vida en grietas de entre un treintaidosavo y tres dieciseisavos de pulgada. Además la hembra carga la cápsula de huevos hasta que están por nacer, así que el insecticida de superficie se pierde a la siguiente generación. Y peor: muchos productos de mostrador son repelentes y dispersan la población en lugar de eliminarla, lo cual alarga el trabajo profesional.',
+  },
+  {
+    q: '¿Tengo hormigas rojas importadas?',
+    a: 'Depende del condado, y aquí la respuesta cambia de verdad. Gaines, Yoakum, Terry, Dawson y Andrews no están en la cuarentena. Midland, Ector, Howard, Martin y Winkler sí lo están, y Lubbock parcialmente. En los condados que no están, lo que la gente encuentra casi siempre es un hormiguero de hormiga cosechadora: un círculo pelón de varios pies con senderos que salen de él. Pican fuerte, pero según AgriLife no invaden las construcciones. Son problemas distintos y tratamientos distintos.',
+  },
+  {
+    q: '¿Qué tan chico es el hueco por el que se mete un ratón?',
+    a: 'Un cuarto de pulgada. La guía de AgriLife describe ratones pasando por aberturas de apenas un cuarto de pulgada de diámetro — un agujero del tamaño de un lápiz. Las ratas necesitan poco más de media pulgada. El estándar de exclusión es sellar todo lo mayor a un cuarto de pulgada, y sellarlo con metal o concreto: la espuma, el plástico, la madera y el hule son masticables y no sirven como sello permanente contra roedores.',
+  },
+  {
+    q: '¿El servicio es seguro con niños y mascotas?',
+    a: 'Los productos se aplican a la dosis de la etiqueta, que en aplicación de plaguicidas es un requisito legal y no una sugerencia, y la colocación importa tanto como el producto. Dígannos antes de la visita si hay bebés, embarazo, condiciones respiratorias, sensibilidades químicas, acuarios, aves, reptiles o colmenas — todo eso cambia qué se usa y dónde, y es mucho más fácil planearlo antes que trabajarlo a la mitad. También tiene derecho a la hoja de información al consumidor del Departamento, en español.',
+  },
+  {
+    q: '¿Qué cubre la garantía de 30 días?',
+    a: 'Si una plaga incluida en su tratamiento original sigue activa dentro de los treinta días, regresamos, inspeccionamos y volvemos a tratar el área afectada sin cargo adicional. Cubre las plagas y las áreas incluidas en su servicio original — una plaga nueva o distinta es un trabajo aparte, y se lo decimos por adelantado en lugar de rechazarle la visita después. Los términos completos, con exclusiones, están escritos en la página de garantía.',
+  },
+];
+---
+
+<BaseLayout
+  title="Control de Plagas General | Seminole, TX"
+  description="Servicio recurrente o tratamiento único en el condado de Gaines y la Cuenca Pérmica, con inspección antes de aplicar. Garantía de 30 días, sin contratos."
+  path="/es/servicios/control-de-plagas/"
+  lang="es"
+  altLangPath="/services/pest-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Control de Plagas General',
+    description: 'Servicio recurrente y tratamiento único contra cucarachas, hormigas, arañas, grillos y roedores en casas y negocios del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Control de Plagas · categoría con licencia</p>
+      <h1>Control de plagas general</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Este es el punto de partida de la mayoría de las llamadas: está viendo algo adentro y no está
+          seguro de qué es. Está bien — identificar es nuestro trabajo, y describir lo que vio sirve más
+          que adivinar el nombre.
+        </p>
+        <p>
+          Lo que sí conviene saber de entrada es que aquí la identificación cambia la respuesta más de lo
+          que la gente espera, y que en buena parte de los casos el resultado honesto es que no necesita
+          tratamiento.
+        </p>
+        <p>
+          <a href="/services/pest-control/">This page in English</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cómo trabajamos una propiedad</h2>
+      <div class="measure">
+        <p>
+          <strong>La primera visita es una inspección antes que un tratamiento</strong>, y ese orden
+          importa. Rociar un perímetro sin saber qué se está tratando, por dónde entra y qué lo sostiene
+          produce un servicio que parece funcionar tres semanas y después no. La mayoría de los problemas
+          que la gente describe como "se le acabó el efecto" nunca fueron fallas del tratamiento: fueron
+          fallas de inspección.
+        </p>
+        <p>
+          <strong>Se recorre todo el perímetro exterior</strong>, no nada más el frente ni el lado que
+          usted mencionó. Entradas de servicio, agujeros de ventilación del ladrillo, burletes de puertas,
+          el umbral de la cochera, el espacio bajo el portón si hay taller. Dónde corre el riego y dónde se
+          encharca. Qué está apilado contra la cimentación. Cómo se ve la barda del lado que nadie usa.
+        </p>
+        <p>
+          <strong>Después adentro</strong> — los cuartos donde de verdad está viendo cosas, y los cuartos
+          contiguos, que es donde normalmente está la explicación.
+        </p>
+        <p>
+          <strong>Y en propiedades con terreno, los otros edificios.</strong> El taller, la bodega, el
+          cuarto de la bomba, donde se guarda el alimento. En una propiedad rural la casa suele ser el
+          edificio menos interesante: es donde usted <em>nota</em> el problema, no donde vive.
+        </p>
+        <p>
+          <strong>Luego una conversación, antes de aplicar nada.</strong> Qué se encontró, qué significa,
+          qué se va a hacer, cuánto cuesta y qué puede hacer usted que ayudaría. Esa última parte no es
+          relleno: en casi toda propiedad hay dos o tres cambios gratuitos que rinden más que un
+          tratamiento adicional.
+        </p>
+        <p>
+          <strong>El trabajo no está cronometrado.</strong> Una propiedad que necesita cuarenta minutos
+          recibe cuarenta minutos, y una que necesita dos horas recibe dos horas, porque nadie está contando
+          paradas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Identificar primero: dos cucarachas, dos problemas distintos</h2>
+      <div class="measure">
+        <p>
+          Esta distinción es la que más dinero le ahorra a la gente, y casi nadie se la explica.
+        </p>
+        <p>
+          <strong>La de media pulgada con dos rayas.</strong> Café claro, de media a cinco octavos de
+          pulgada, con dos rayas oscuras paralelas corriendo por el escudo detrás de la cabeza. Esa es la
+          <strong>cucaracha alemana</strong>, y sí es una infestación real.
+        </p>
+        <p>
+          <strong>La grande y rojiza de noche.</strong> De pulgada y media a dos pulgadas — la cucaracha
+          más grande de Texas — café rojiza con un borde entre canela y amarillo claro alrededor del
+          escudo, y vuela. Esa es la <strong>cucaracha americana</strong>, y casi seguro va de paso.
+        </p>
+        <p>
+          <strong>Por qué la diferencia es tan tajante.</strong> AgriLife establece que la cucaracha
+          alemana "no vive al aire libre en Texas" y "pasa su vida adentro". Es decir: la trajeron. En
+          cajas, en despensa, en un electrodoméstico usado, en muebles de segunda mano, o desde una unidad
+          vecina. No hay población de perímetro que rociar.
+        </p>
+        <p>
+          <strong>La americana es lo contrario.</strong> Es un insecto de exteriores y de sistemas de
+          drenaje — AgriLife la describe como una de las cucarachas más comunes en los alcantarillados —
+          que vive en composta, cubresuelos, troncos huecos, mantillo, tocones, leña, registros de
+          alcantarilla y cajas de medidor de agua. Entra por puertas mal selladas, por los aleros del techo
+          y <strong>por las coladeras del piso</strong>.
+        </p>
+        <p>
+          <strong>Y por eso el consejo más barato de esta página</strong> es el de AgriLife, textual:
+          mantenga las trampas P llenas de agua para crear una barrera entre el drenaje y la casa o el
+          negocio. Una coladera que se secó — en un cuarto que no se usa, en un lavadero, en un baño de
+          visitas — es un tubo abierto desde el alcantarillado hacia adentro. Dejar correr agua por todas
+          las coladeras una vez por semana no cuesta nada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Si sí son cucarachas alemanas</h2>
+      <div class="measure">
+        <p>
+          La jerarquía de AgriLife es inspección, limpieza, exclusión y después insecticidas de baja
+          toxicidad — en ese orden, y con esta plaga el orden no está a discusión.
+        </p>
+        <p>
+          <strong>Viven en grietas.</strong> Alrededor del setenta y cinco por ciento de su vida en
+          rendijas de entre un treintaidosavo y tres dieciseisavos de pulgada. Por eso AgriLife dice
+          claramente que las bombas de humo generalmente no las eliminan: no penetran las grietas donde
+          están.
+        </p>
+        <p>
+          <strong>La hembra carga la cápsula de huevos hasta que están por nacer</strong>, lo cual sube
+          mucho la supervivencia y hace que el insecticida de superficie se pierda a la siguiente
+          generación.
+        </p>
+        <p>
+          <strong>Y se reproducen rápido.</strong> De treinta a cuarenta ninfas por cápsula, de ninfa a
+          adulto en cincuenta a sesenta días a temperatura normal de interior, con óptimo alrededor de
+          ochenta grados. AgriLife la llama la más prolífica de las cucarachas de interior.
+        </p>
+        <p>
+          <strong>Dos señales de qué tan grave está.</strong> Verlas de día: AgriLife señala que si se ven
+          cucarachas durante el día, normalmente significa que hay muchas. Y la dispersión — conforme crece
+          la población y escasea la comida, salen de la cocina y el baño hacia recámaras y otros cuartos.
+          Una cucaracha en la recámara es un indicador de gravedad, no un dato de ubicación.
+        </p>
+        <p>
+          <strong>Qué funciona:</strong> monitoreo con trampas de pegamento a lo largo de paredes y orillas
+          de gabinetes para encontrar el refugio en lugar de adivinarlo; limpieza y arreglo de fugas, porque
+          AgriLife nombra la eliminación de humedad de forma explícita; aspirado <strong>con filtro
+          HEPA</strong>, porque los refugios de cucaracha contienen alérgenos; sellado de las grietas; y
+          cebo en gel colocado correctamente — al menos una aplicación a treinta o sesenta centímetros de
+          cada refugio sospechado, y muchas aplicaciones chicas del tamaño de un chícharo en lugar de pocas
+          grandes.
+        </p>
+        <p>
+          <strong>Y hay una razón de salud para atenderlo.</strong> AgriLife la describe como una de las
+          plagas más extendidas de importancia para la salud pública en casas, apartamentos y restaurantes:
+          transportan gérmenes y están asociadas con alergias y asma. El Instituto Nacional de Ciencias de
+          Salud Ambiental señala una relación entre la presencia de cucarachas y el aumento de la gravedad
+          de los síntomas de asma.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Hormigas: cosechadora o importada</h2>
+      <div class="measure">
+        <p>
+          Otra identificación que cambia la respuesta por completo, y que depende del condado en el que
+          esté parado.
+        </p>
+        <p>
+          <strong>La hormiga cosechadora roja</strong> hace un claro circular pelón, muchas veces de varios
+          pies de diámetro, con una abertura central y senderos que salen hacia afuera. El claro es la
+          señal: pelan la vegetación alrededor del nido. Pican fuerte, y la picadura puede ser más seria
+          que la mayoría — pero según AgriLife <strong>no invaden casas ni construcciones</strong>. Es un
+          insecto de exterior con un nido de exterior.
+        </p>
+        <p>
+          <strong>La hormiga roja importada</strong> hace un montículo de tierra suelta sin una abertura
+          central visible, y lo que la define es la respuesta al disturbio: se toca el montículo y salen de
+          inmediato y en cantidad, picando repetidamente. Sí entran a construcciones, a cajas eléctricas y
+          a equipo.
+        </p>
+        <p>
+          <strong>Y la frontera pasa justo por aquí.</strong> Gaines, Yoakum, Terry, Dawson y Andrews no
+          están en la cuarentena. Midland, Ector, Howard, Martin y Winkler sí, y Lubbock parcialmente. Así
+          que en la mitad norte de nuestra ruta la respuesta honesta a "¿tengo hormigas rojas?" casi siempre
+          es que no — lo que tiene es una cosechadora.
+        </p>
+        <p>
+          <strong>Por qué importa acertar.</strong> Los tratamientos no son intercambiables. Un cebo pensado
+          para hormiga importada le sirve de poco a un nido de cosechadora, y tratar un nido de cosechadora
+          como si fuera una infestación de importada es gastar en una especie que nunca iba a entrar a la
+          casa.
+        </p>
+        <p>
+          <strong>Y hay una razón de conservación que vale la pena mencionar.</strong> La hormiga
+          cosechadora roja es el alimento principal del camaleón de Texas, que ha disminuido en buena parte
+          de su rango. Donde un nido de cosechadora está en el potrero sin molestar a nadie, dejarlo en paz
+          es una respuesta defendible, y es una que le vamos a dar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Lo demás que atendemos en el servicio general</h2>
+      <div class="measure">
+        <p>
+          <strong>Arañas</strong>, incluidas viuda negra y reclusa parda. Están presentes y valen respeto
+          sin necesidad de alarmarse. AgriLife señala que la reclusa parda se refugia en leña apilada, en
+          cajas guardadas en el ático y en rendijas de poco tránsito, y que las mordeduras son raras y
+          accidentales. El tratamiento va al refugio — el material apilado — más que a la telaraña que
+          usted ve.
+        </p>
+        <p>
+          <strong>Grillos</strong>, sobre todo en otoño, y el factor que más los empeora es la luz exterior.
+          Una luz encendida toda la noche junto a una puerta con el burlete gastado concentra insectos
+          justo donde el sello es más débil.
+        </p>
+        <p>
+          <strong>Ratones y ratas.</strong> El estándar de exclusión es un cuarto de pulgada — AgriLife
+          describe aberturas de apenas un cuarto de pulgada, del tamaño de un lápiz — y hay que sellar con
+          <strong>metal o concreto</strong>: la espuma, el plástico, la madera y el hule son masticables y
+          no sirven de sello permanente. Los roedores caminan pegados a las orillas, por las esquinas entre
+          pared y piso, así que ahí es donde van los dispositivos.
+        </p>
+        <p>
+          <strong>Invasores de temporada</strong> — ciempiés, pececillos de plata, tijerillas — que casi
+          siempre entran por las mismas aberturas que todo lo demás, y que se resuelven sellando más que
+          rociando.
+        </p>
+        <p>
+          <strong>Y algunas cosas son servicio aparte:</strong> alacranes, termitas, chinches, mosquitos,
+          pulgas y garrapatas, y animales silvestres tienen su propio método y su propia página. Si su
+          problema es uno de esos, se lo decimos en lugar de meterlo en el servicio general.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>El año de plagas en el oeste de Texas</h2>
+      <div class="measure">
+        <p>
+          La presión aquí es marcadamente estacional y más predecible de lo que la gente cree, lo cual
+          significa que se puede planear en lugar de nada más reaccionar.
+        </p>
+        <p>
+          <strong>Finales del invierno.</strong> La época más tranquila y la más útil. Sellado, establecer
+          el perímetro, limpiar terrenos mientras la vegetación está baja, e inspección de termitas antes
+          del enjambre local. Es cuando menos gente llama y cuando más fácil es conseguir fecha.
+        </p>
+        <p>
+          <strong>Abril y mayo.</strong> Temporada de enjambre de termitas en esta región específicamente.
+          Las hormigas se activan, la maleza corre después de cualquier lluvia, y llegan las primeras
+          llamadas de alacranes. También es cuando las ciudades empiezan a emitir avisos de maleza.
+        </p>
+        <p>
+          <strong>Principios de verano.</strong> El período más pesado de plagas generales. Hormigas,
+          cucarachas, arañas, grillos, y actividad de alacranes subiendo. La presión de mosquitos sigue a
+          las lluvias en lugar de correr continua.
+        </p>
+        <p>
+          <strong>Julio y agosto.</strong> El pico de la temporada de alacranes y las semanas más ocupadas
+          del año. Los áticos llegan a su temperatura máxima y el suelo afuera está en su punto más seco,
+          así que los dos factores empujan en la misma dirección al mismo tiempo.
+        </p>
+        <p>
+          <strong>Final del verano y cosecha.</strong> La actividad agrícola desplaza roedores e insectos
+          de campo hacia las construcciones. Las propiedades en la orilla del pueblo lo viven como una
+          llegada repentina, más o menos en la misma fecha cada año.
+        </p>
+        <p>
+          <strong>Otoño.</strong> La temporada de roedores propiamente dicha, cuando las primeras noches
+          frías meten ratones y ratas a las construcciones. También temporada de grillos. El sellado hecho
+          en septiembre vale varias visitas en diciembre.
+        </p>
+        <p>
+          <strong>Invierno.</strong> Más tranquilo, no vacío. Los roedores que ya están adentro se quedan
+          adentro y siguen reproduciéndose en un edificio caliente. Es la época correcta para el trabajo
+          deliberado: limpieza, retiro y los arreglos estructurales que nadie quiere hacer en agosto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Producto, garantía y lo que no hacemos</h2>
+      <div class="measure">
+        <p>
+          <strong>Qué usamos.</strong> {svc.products.join(', ')} — elegidos según la plaga, la propiedad y
+          la etiqueta, no según lo que traiga la camioneta. En aplicación de plaguicidas la etiqueta es
+          legalmente obligatoria, no una sugerencia, y la dosis y la colocación importan tanto como el
+          producto.
+        </p>
+        <p>
+          <strong>Garantía de servicio de 30 días.</strong> Si una plaga incluida en su tratamiento
+          original sigue activa dentro de los treinta días, regresamos, inspeccionamos y volvemos a tratar
+          el área afectada sin cargo adicional. Cubre las plagas y las áreas de su servicio original; una
+          plaga nueva o distinta es un trabajo aparte y se lo decimos por adelantado. Los términos
+          completos están en la <a href="/our-guarantee/">página de garantía</a>.
+        </p>
+        <p>
+          <strong>Sin contratos.</strong> El servicio recurrente es cada dos o cada tres meses, sin plazo,
+          sin renovación automática y sin cargo por cancelar. Las visitas intermedias entre servicios
+          programados van incluidas — y en la práctica esa es la parte que de verdad vale.
+        </p>
+        <p>
+          <strong>Y una recomendación que le va a costar dinero a nosotros:</strong> si su propiedad es una
+          casa normal dentro del pueblo con un problema puntual, le vamos a decir que un solo tratamiento
+          debería bastar, y ahí termina la conversación. Nadie le va a llevar la plática hacia un programa
+          describiéndole lo que podría haber dentro de sus paredes.
+        </p>
+        <p>
+          <strong>Lo que no hacemos:</strong> fumigación, tratamiento térmico para chinches, jardinería de
+          diseño, renta de contenedores, lavado a presión ni demolición. Si necesita algo de eso, se lo
+          decimos por teléfono en lugar de aprender en su propiedad.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre control de plagas" />
+  <Cta
+    line="Descríbale qué está viendo, de qué tamaño comparado con algo conocido, en qué cuarto y a qué hora. Y si puede, mándele una foto de cerca al (432) 278-7294 — eso resuelve en diez segundos lo que cinco minutos de descripción no."
+  />
+</BaseLayout>

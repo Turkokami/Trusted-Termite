@@ -30,6 +30,14 @@ export interface Service {
   guaranteeApplies: boolean;
   /** Build priority. J-05: "Recurring for sure then termites and commercial". */
   priority: 1 | 2 | 3;
+  /** Spanish tree. `esSlug` is the URL segment under /es/servicios/, `esName`
+   *  the heading. Written in Spanish rather than translated from the English —
+   *  F-07 confirms the owner is fluent, and this market is heavily
+   *  Spanish-speaking (Seagraves ISD 83.2% Hispanic, Denver City ISD 86.3%).
+   *  A Spanish page only ships when it has been WRITTEN to M1 depth; declaring
+   *  a slug here does not create a page. */
+  esSlug: string;
+  esName: string;
 }
 
 export const SERVICES: Service[] = [
@@ -46,6 +54,8 @@ export const SERVICES: Service[] = [
       'Bi-monthly or quarterly service that keeps ahead of pressure instead of reacting to it. Complimentary re-services between visits for covered pests.',
     guaranteeApplies: true,
     priority: 1,
+    esSlug: 'control-de-plagas',
+    esName: 'Control de Plagas',
   },
   {
     slug: 'scorpion-control',
@@ -60,6 +70,8 @@ export const SERVICES: Service[] = [
       'Sealing and treatment aimed at where striped bark scorpions actually get in — weep holes, utility penetrations, the water heater closet and the irrigation box.',
     guaranteeApplies: true,
     priority: 1,
+    esSlug: 'control-de-escorpiones',
+    esName: 'Control de Escorpiones',
   },
   {
     slug: 'termite-control',
@@ -74,6 +86,8 @@ export const SERVICES: Service[] = [
       'Liquid barrier treatment, Trelona bait systems, and new-construction pre-treats. Individually quoted after an inspection — linear footage, foundation type, soil and access all change the job.',
     guaranteeApplies: false, // carries its own one-year re-treatment warranty
     priority: 2,
+    esSlug: 'control-de-termitas',
+    esName: 'Control de Termitas',
   },
   {
     slug: 'rodent-control',
@@ -88,6 +102,8 @@ export const SERVICES: Service[] = [
       'Trapping, professional bait stations, monitoring and — the part that actually ends it — sealing the ways they get in.',
     guaranteeApplies: false,
     priority: 2,
+    esSlug: 'control-de-roedores',
+    esName: 'Control de Roedores y Exclusión',
   },
   {
     slug: 'wildlife-removal',
@@ -101,6 +117,8 @@ export const SERVICES: Service[] = [
     summary: 'Evaluation, trapping and removal for skunks, raccoons and other nuisance wildlife around the property.',
     guaranteeApplies: false,
     priority: 3,
+    esSlug: 'retiro-de-animales-silvestres',
+    esName: 'Retiro de Animales Silvestres',
   },
   {
     slug: 'bed-bug-treatment',
@@ -115,6 +133,8 @@ export const SERVICES: Service[] = [
       'Chemical treatment, individually quoted. A light infestation and a severe whole-home infestation are completely different jobs.',
     guaranteeApplies: false,
     priority: 3,
+    esSlug: 'tratamiento-de-chinches',
+    esName: 'Tratamiento de Chinches',
   },
   {
     slug: 'mosquito-control',
@@ -128,6 +148,8 @@ export const SERVICES: Service[] = [
     summary: 'One-off treatment or a recurring programme through the season, priced on property size and harbourage.',
     guaranteeApplies: true,
     priority: 3,
+    esSlug: 'control-de-mosquitos',
+    esName: 'Control de Mosquitos',
   },
   {
     slug: 'flea-and-tick',
@@ -141,6 +163,8 @@ export const SERVICES: Service[] = [
     summary: 'Interior and exterior treatment, targeting where the activity is coming from rather than where it is being seen.',
     guaranteeApplies: false,
     priority: 3,
+    esSlug: 'pulgas-y-garrapatas',
+    esName: 'Pulgas y Garrapatas',
   },
   {
     slug: 'bird-and-pigeon-control',
@@ -154,6 +178,8 @@ export const SERVICES: Service[] = [
     summary: 'Exclusion and deterrent work on roofs, signage, equipment and outbuildings.',
     guaranteeApplies: false,
     priority: 3,
+    esSlug: 'control-de-aves-y-palomas',
+    esName: 'Control de Aves y Palomas',
   },
   {
     slug: 'lawn-care',
@@ -167,6 +193,8 @@ export const SERVICES: Service[] = [
     summary: 'Mowing, trimming and edging, fertilization, tree trimming and weed spraying, priced on the property rather than a flat rate.',
     guaranteeApplies: false,
     priority: 2,
+    esSlug: 'jardineria-y-control-de-maleza',
+    esName: 'Jardinería y Control de Maleza',
   },
   {
     slug: 'brush-and-lot-clearing',
@@ -181,6 +209,8 @@ export const SERVICES: Service[] = [
       'Overgrown lots, fence lines and acreage cleared and hauled — including properties under a city or county notice.',
     guaranteeApplies: false,
     priority: 2,
+    esSlug: 'limpieza-de-terrenos',
+    esName: 'Limpieza de Terrenos y Maleza',
   },
   {
     slug: 'junk-removal',
@@ -195,6 +225,8 @@ export const SERVICES: Service[] = [
       'Junk hauls, full property cleanouts, and ongoing upkeep for owners who are not local. Priced on volume, material and disposal.',
     guaranteeApplies: false,
     priority: 2,
+    esSlug: 'retiro-de-escombros',
+    esName: 'Retiro de Escombros y Limpieza',
   },
 ];
 
@@ -227,3 +259,4 @@ export const VERTICALS = [
 ];
 
 export const serviceBySlug = (slug: string) => SERVICES.find((s) => s.slug === slug);
+export const serviceByEsSlug = (esSlug: string) => SERVICES.find((s) => s.esSlug === esSlug);

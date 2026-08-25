@@ -1,0 +1,416 @@
+---
+/**
+ * /es/servicios/control-de-termitas/ — Spanish termite page.
+ *
+ * Same sourcing discipline as the English page. AgriLife E-368,
+ * texasinsects.tamu.edu, urbanentomology.tamu.edu, desert termite entry.
+ *
+ * CORE ARGUMENT: "aquí hace demasiado seco para las termitas" is unsupported by
+ * any extension source. E-368 says the major populations are coastal "but they
+ * are found throughout the state", and that where moisture is available
+ * termites can be away from soil for extended periods — naming defective
+ * plumbing, leaky roofs, AC condenser leaks and poorly maintained gutters.
+ *
+ * SPECIES DISCIPLINE: Reticulitermes generically or R. flavipes. NOT Formosan
+ * (Houston-Galveston and Beaumont-Port Arthur only). R. tibialis NOT claimed —
+ * no Texas extension source places it here.
+ *
+ * REGIONAL DIFFERENTIATOR: desert termite, Gnathamitermes tubiformans. Common
+ * in south and west Texas, conspicuous May-September on shortgrass pasture,
+ * fragile mud tubes and sheets on plants, litter, dung and fence posts. Does
+ * NOT tunnel wood, no structural damage, "medically harmless to man and
+ * animals". Rangeland forage issue, worse on overgrazed/drought-stressed land.
+ *
+ * SWARM WINDOW: April-May for these counties. E-368: "Swarming begins in South
+ * Texas in January and February; in the Panhandle region of Texas, swarms do
+ * not occur until April and May." Do NOT print the statewide Feb-May range as
+ * if it were local.
+ *
+ * WARRANTY HONESTY: re-treatment warranty vs damage warranty. He offers the
+ * FIRST. Do not imply the second. Guarantee terms live on /our-guarantee/.
+ * ⚠️ Do NOT link to the WDI pages — those are held at noindex pending the
+ *    owner's decision.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { BUSINESS } from '../../../data/business';
+
+const t = BUSINESS.termiteWarranty;
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Control de Termitas', path: '/es/servicios/control-de-termitas/' },
+];
+
+const quickAnswer =
+  'Sí hay termitas subterráneas en el oeste de Texas. La creencia de que aquí hace demasiado seco no la respalda ninguna fuente de extensión — AgriLife es explícito en que donde hay humedad disponible las termitas pueden permanecer lejos del suelo por períodos prolongados, y el riego, las fugas de plomería y el condensado del aire acondicionado la proporcionan. Aquí los enjambres salen en abril y mayo.';
+
+const faqs = [
+  {
+    q: '¿No hace demasiado seco aquí para que haya termitas?',
+    a: 'No, y esa creencia es exactamente la razón por la que el daño avanza sin que nadie lo note. La posición de AgriLife es que las poblaciones principales están en la zona costera de Texas pero que las termitas se encuentran en todo el estado — es un gradiente, no una frontera. Más importante todavía: la guía E-368 establece que donde hay humedad disponible las termitas pueden permanecer lejos del suelo por períodos prolongados, y menciona la plomería defectuosa, los techos con goteras, las fugas del condensado del aire acondicionado y las canaletas mal mantenidas. El riego del jardín en tierra seca crea justamente esas condiciones.',
+  },
+  {
+    q: '¿Cuándo salen los enjambres aquí?',
+    a: 'En abril y mayo, y esto sí es regional. AgriLife indica que los enjambres empiezan en el sur de Texas en enero y febrero, mientras que en la región del Panhandle no ocurren sino hasta abril y mayo. Si lee una guía estatal que dice de febrero a mayo, ese rango es todo el estado junto y la parte temprana le corresponde al Valle. Los vuelos ocurren de día, normalmente después de una lluvia, y los disparadores son calor, duración del día y humedad.',
+  },
+  {
+    q: 'Encontré lodo en los postes de la cerca y en el pastizal. ¿Tengo termitas en la casa?',
+    a: 'Casi seguro que no, y esto es lo más útil de esta página para cualquiera que tenga terreno. Lo que describe es muy probablemente la termita del desierto, Gnathamitermes tubiformans — común en el sur y el oeste de Texas, visible de mayo a septiembre, que construye tubitos y láminas frágiles de lodo sobre plantas, hojarasca, estiércol y postes de cerca. No perfora la madera, no causa daño estructural, y AgriLife la describe como inofensiva para el ser humano y los animales. Es un asunto de forraje de pastizal, peor en terreno sobrepastoreado o con estrés por sequía. No es una amenaza para su casa.',
+  },
+  {
+    q: '¿Cómo distingo una termita voladora de una hormiga voladora?',
+    a: 'Dos cosas, y las dos son fáciles. La termita no tiene la cintura marcada — el cuerpo es recto de lado a lado — mientras que la hormiga tiene una cintura angosta evidente. Y las cuatro alas de la termita miden lo mismo, mientras que las alas delanteras de la hormiga son notablemente más largas que las traseras. Las termitas voladoras miden entre un cuarto y tres octavos de pulgada, de negro a café amarillento claro, con alas pálidas o grisáceas.',
+  },
+  {
+    q: '¿Cómo se ve la evidencia?',
+    a: 'Normalmente lo primero son los propios voladores, o alas tiradas en el alféizar de una ventana, en telarañas o cerca de las luces de adentro. Después los tubos de lodo sobre pilares, muros de cimentación, losas y cerca de las entradas de tubería — hechos de tierra, partículas de madera y desechos pegados con secreciones. AgriLife es específico: la presencia de tubos y de lodo dentro de las galerías indica una infestación activa. El daño sigue la veta de la madera, atacando la parte blanda, y las galerías quedan forradas de lodo o con aspecto moteado y pálido.',
+  },
+  {
+    q: '¿Cuánto tarda una colonia en producir voladores?',
+    a: 'De dos a cuatro años, y la guía E-368 sitúa la madurez de la colonia entre tres y cinco. Una colonia nativa madura se describe como de unos doscientos cincuenta mil obreros, aunque muchas son bastante más chicas. Lo importante en la práctica: un enjambre dentro de su casa es evidencia de algo que lleva años establecido, no de algo que llegó el mes pasado — y por eso vale la pena una inspección en lugar de esperar a ver si se repite.',
+  },
+  {
+    q: '¿La garantía cubre el daño?',
+    a: 'No, y esta es la distinción que más se confunde en todo el oficio. Hay dos productos distintos en el mercado de termitas. Una garantía de retratamiento significa que si vuelve a aparecer actividad dentro del período cubierto, la compañía regresa y trata de nuevo sin costo. Una garantía de daño significa que la compañía paga la reparación del daño estructural hasta un límite establecido. Lo que ofrecemos es la primera: doce meses de retratamiento, renovable cada año con inspección. No ofrecemos garantía de daño y no vamos a insinuar que sí usando palabras como "protección" sin decir qué se está protegiendo.',
+  },
+  {
+    q: '¿Qué puedo hacer yo que ayude de verdad?',
+    a: 'Quitarle el agua a la construcción y quitar el contacto de madera con tierra. AgriLife nombra las condiciones que favorecen la infestación: contacto de madera con el suelo, cimbra dejada en su lugar, exceso de humedad, escombro de madera alrededor, cimentación muy baja o nivel de tierra muy alto, poco espacio libre en el entrepiso, juntas o grietas en la losa, y terrazas de madera. Casi todo eso es gratis o barato de corregir, y hacerlo rinde más que cualquier tratamiento adicional.',
+  },
+];
+---
+
+<BaseLayout
+  title="Control de Termitas en el Oeste de Texas"
+  description="Sí hay termitas aquí. Enjambres en abril y mayo, cómo distinguir la termita del desierto, y qué condiciones las hacen posibles en tierra seca."
+  path="/es/servicios/control-de-termitas/"
+  lang="es"
+  altLangPath="/services/termite-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Control de Termitas',
+    description: 'Inspección y tratamiento de termitas subterráneas para casas, propiedades rurales y negocios del condado de Gaines y la Cuenca Pérmica.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Termitas e insectos que destruyen madera · categoría con licencia</p>
+      <h1>Control de termitas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Por aquí existe la creencia de que esta tierra es demasiado seca para las termitas. Es el error
+          más caro que se puede cometer siendo propietario en el oeste de Texas, y no lo respalda ninguna
+          fuente de extensión que hayamos podido encontrar.
+        </p>
+        <p>
+          Además se refuerza a sí mismo de una manera especialmente dañina. Quien cree que no hay termitas
+          no manda hacer inspecciones, no corrige las condiciones que las favorecen y no revisa la línea de
+          la cimentación — así que la actividad avanza sin detectarse durante años, y para cuando alguien
+          se da cuenta, el hallazgo no confirma nada excepto que nadie estaba mirando.
+        </p>
+        <p>
+          <a href="/services/termite-control/">This page in English</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Qué dicen realmente las fuentes</h2>
+      <div class="measure">
+        <p>
+          <strong>Sobre la distribución.</strong> La guía E-368 de AgriLife plantea un gradiente, no una
+          frontera: "Las poblaciones principales de termitas están en las zonas costeras de Texas, pero se
+          encuentran en todo el estado." Menos que en la costa del Golfo. No cero.
+        </p>
+        <p>
+          <strong>Sobre el argumento de la sequedad, directamente.</strong> La E-368 señala que las
+          termitas se deshidratan con facilidad y que necesitan contacto con el suelo <em>o alguna otra
+          fuente de humedad</em> — y después las nombra: plomería defectuosa, techos con goteras, fugas de
+          los condensadores del aire acondicionado, canaletas mal mantenidas. Y va más lejos, corrigiendo
+          de forma explícita una creencia anterior: <strong>"si hay humedad disponible, las termitas pueden
+          permanecer lejos del suelo por períodos prolongados."</strong>
+        </p>
+        <p>
+          <strong>Compare eso con cómo es realmente una propiedad del oeste de Texas.</strong> Riego de
+          jardín funcionando todo el verano. Condensado del aire acondicionado descargando en el mismo
+          pedazo de tierra durante cuatro meses. La línea del cooler. En una región con dieciséis pulgadas
+          de lluvia al año, esas fuentes artificiales no son marginales: con frecuencia son la única
+          humedad confiable en cien pies a la redonda, y todo lo que necesita agua sabe dónde están.
+        </p>
+        <p>
+          <strong>Lo que no vamos a afirmar.</strong> No encontramos ninguna publicación de AgriLife que
+          cuantifique la presión de termitas para el Llano Estacado o la Cuenca Pérmica en particular, ni
+          ninguna que diga que esta región tiene menos riesgo que el este de Texas. Así que no le vamos a
+          dar un porcentaje regional, y quien se lo dé se lo está inventando. Lo que sí le podemos decir es
+          que el razonamiento de "aquí hace mucho seco" no se sostiene, y que las fuentes lo dicen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>La termita del desierto — lo que probablemente tiene en el pastizal</h2>
+      <div class="measure">
+        <p>
+          Este es el dato local más útil de toda la página, y es uno que le ahorra dinero en lugar de
+          costárselo.
+        </p>
+        <p>
+          Si tiene terreno por aquí, seguramente ha visto láminas delgadas y tubitos frágiles de lodo seco
+          sobre postes de cerca, sobre pasto seco, sobre estiércol de vaca, en la base del mezquite. Se ve
+          alarmante y con frecuencia se confunde con un problema estructural de termitas.
+        </p>
+        <p>
+          <strong>Casi seguro es la termita del desierto</strong>, <em>Gnathamitermes tubiformans</em>, y la
+          descripción de AgriLife no deja lugar a dudas. Común en el sur y el oeste de Texas. Visible de
+          mayo a septiembre en pastizal corto. Construye tubos y láminas frágiles de lodo alrededor de la
+          superficie de plantas herbáceas y leñosas, hojarasca, estiércol, postes de cerca y objetos
+          similares. Los obreros miden como tres octavos de pulgada, de color crema con la cabeza café.
+        </p>
+        <p>
+          <strong>Y los tres datos que importan:</strong> no perfora la madera, no causa daño estructural,
+          y AgriLife la describe como inofensiva para el ser humano y los animales.
+        </p>
+        <p>
+          <strong>Lo que en realidad es</strong> es un asunto de forraje de pastizal. Se alimenta de
+          gramíneas vivas y secas, y es peor en terreno sobrepastoreado o con estrés por sequía — lo cual
+          convierte su presencia en una señal sobre el manejo del pastoreo, no en una emergencia de control
+          de plagas.
+        </p>
+        <p>
+          <strong>Cómo distinguirlas en la práctica.</strong> Por ubicación y por material. Las estructuras
+          de la termita del desierto están al aire libre sobre vegetación, hojarasca y estiércol, en el
+          pastizal, y son frágiles — se desmoronan al tocarlas. Los tubos de refugio de la termita
+          subterránea están sobre construcciones: pilares, muros de cimentación, orillas de losa, cerca de
+          entradas de tubería, subiendo hacia la madera, y son más resistentes y más deliberados. Lodo en
+          la cerca es una cosa. Lodo en la cimentación es otra.
+        </p>
+        <p>
+          <strong>Por qué se lo dice una empresa de plagas.</strong> Porque la alternativa es cotizar un
+          trabajo de termitas sobre un fenómeno de pastizal que nunca iba a dañar nada. Eso pasa, y no
+          debería.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cuáles hay realmente aquí</h2>
+      <div class="measure">
+        <p>
+          Vale la pena ser preciso, porque el contenido nacional generaliza mal.
+        </p>
+        <p>
+          <strong>Termitas subterráneas nativas</strong>, del género <em>Reticulitermes</em> — principalmente
+          la termita subterránea del este, <em>R. flavipes</em> — es de lo que escribimos para esta región y
+          lo que tratamos.
+        </p>
+        <p>
+          <strong>Otras dos especies de <em>Reticulitermes</em> de Texas se quedan al este de aquí.</strong>
+          <em>R. virginicus</em> está registrada del este de Texas hacia el oeste hasta los condados de
+          Uvalde y Tom Green. <em>R. hageni</em> llega a Bexar y Eastland. Ninguna de las dos alcanza la
+          Cuenca Pérmica ni el Llano Estacado.
+        </p>
+        <p>
+          <strong>La termita formosana no está aquí.</strong> <em>Coptotermes formosanus</em> está
+          registrada en Texas en las zonas de Houston–Galveston y Beaumont–Port Arthur. Es un animal
+          bastante más agresivo y se menciona en publicidad muy fuera de su área. Si una compañía le habla
+          de termitas formosanas en el condado de Gaines, eso es una señal de alerta.
+        </p>
+        <p>
+          <strong>Y una que deliberadamente no afirmamos.</strong> La termita subterránea de tierras
+          áridas, <em>R. tibialis</em>, está bien documentada para Arizona y Colorado, y encajaría muy bien
+          en esta región. No encontramos ninguna fuente de extensión de Texas que la ubique en Texas, así
+          que no la vamos a afirmar. Si eso cambia, esta página cambia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Abril y mayo — la temporada de enjambres aquí</h2>
+      <div class="measure">
+        <p>
+          El calendario de enjambres en Texas corre en un gradiente norte–sur muy marcado, y este es uno de
+          los puntos donde la información estatal confunde activamente.
+        </p>
+        <p>
+          <strong>AgriLife:</strong> "Los enjambres empiezan en el sur de Texas en enero y febrero; en la
+          región del Panhandle de Texas, los enjambres no ocurren sino hasta abril y mayo."
+        </p>
+        <p>
+          <strong>Así que para estos condados la ventana defendible es abril y mayo.</strong> Si lee una
+          guía estatal que dice de febrero a mayo, ese rango es todo el estado apilado y la parte temprana
+          le pertenece al Valle del Río Grande.
+        </p>
+        <p>
+          <strong>Los disparadores son calor, duración del día y humedad.</strong> Los vuelos ocurren
+          durante el día, y normalmente después de una lluvia.
+        </p>
+        <p>
+          <strong>Qué hacer con eso.</strong> Una inspección de termitas a finales del invierno o muy a
+          principios de la primavera — febrero o marzo — queda por delante del enjambre local en lugar de
+          por detrás. Además es la parte más tranquila de nuestro año y la fecha más fácil de conseguir, lo
+          cual es una coincidencia útil y no un argumento de venta.
+        </p>
+        <p>
+          <strong>Y si ve un enjambre adentro</strong>, junte algunos en una bolsa. Los voladores dentro de
+          una construcción son la evidencia más fuerte que existe, mucho mejor que una descripción, y
+          desaparecen en cuestión de horas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Losa y entrepiso se comportan distinto</h2>
+      <div class="measure">
+        <p>
+          <strong>En losa</strong>, según AgriLife, las termitas entran por madera en contacto directo con
+          el suelo y construyendo tubos de refugio sobre o a través de grietas en la cimentación. Las
+          vulnerabilidades específicas son las trampas de baño y las entradas de tubería — las aberturas
+          cortadas a través de la losa para la plomería, que con frecuencia quedan más grandes de lo
+          necesario y rara vez se sellan bien.
+        </p>
+        <p>
+          <strong>El problema de la losa no es que impida las termitas. Es que las esconde.</strong> La
+          actividad puede correr dentro de una pared mucho tiempo sin que nada sea visible desde adentro,
+          y por eso la línea exterior de la cimentación y las penetraciones importan tanto en una
+          inspección.
+        </p>
+        <p>
+          <strong>En construcción de entrepiso</strong>, AgriLife da cifras que vale la pena conocer: un
+          mínimo de dieciocho pulgadas de espacio libre entre las viguetas del piso y el suelo, y al menos
+          doce pulgadas entre las vigas y el suelo. Cubrir por lo menos el setenta por ciento del suelo del
+          entrepiso con polietileno de seis milésimas. Ventilación cruzada de un pie cuadrado de
+          ventilación por cada ciento cincuenta pies cuadrados de entrepiso, con las ventilas enfrentadas y
+          cerca de las esquinas.
+        </p>
+        <p>
+          <strong>La ventaja del entrepiso es que se puede inspeccionar.</strong> La desventaja es que
+          normalmente no se hace, y un entrepiso mal ventilado y sin barrera de vapor es una cámara de
+          humedad debajo de su piso.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Condiciones que las favorecen — la mitad gratis del trabajo</h2>
+      <div class="measure">
+        <p>
+          Las medidas culturales de AgriLife, que cuestan mucho menos que un tratamiento y hacen que el
+          tratamiento trabaje mejor.
+        </p>
+        <p>
+          <strong>Pendiente que aleje el agua de la construcción</strong> por todos los lados. El agua debe
+          salir del edificio, no juntarse contra él.
+        </p>
+        <p>
+          <strong>Nivel de tierra al menos seis a ocho pulgadas por debajo del borde superior de la
+          cimentación.</strong> Los arriates elevados y el relleno agregado que entierran la línea de la
+          cimentación son de las fallas más comunes que encontramos, y anulan tanto la barrera como la
+          posibilidad de inspeccionar.
+        </p>
+        <p>
+          <strong>Elimine todo contacto de madera con tierra.</strong> AgriLife nombra postes de cerca,
+          zancas de escalera, enrejados y marcos de puerta. Cada uno de ellos es un puente por encima de
+          cualquier barrera que exista.
+        </p>
+        <p>
+          <strong>Retire estacas de cimbra, restos de madera y tocones</strong> que hayan quedado de la
+          construcción. Madera enterrada junto a un edificio nuevo es una colonia inicial con domicilio
+          incluido.
+        </p>
+        <p>
+          <strong>Evite arbustos densos pegados a la casa.</strong> AgriLife da dos razones y las dos
+          importan: elevan la humedad junto al muro y bloquean la inspección de la línea de la cimentación.
+          Una propiedad que no se puede inspeccionar es una propiedad sin aviso temprano.
+        </p>
+        <p>
+          <strong>Separe pórticos y escalones del suelo</strong> con al menos seis pulgadas de concreto
+          macizo.
+        </p>
+        <p>
+          <strong>Y arregle el agua.</strong> Plomería defectuosa, techos con goteras, fugas del condensado
+          del aire acondicionado, canaletas mal mantenidas. En este clima eso no es un detalle de
+          mantenimiento: con frecuencia es la razón completa de que un problema de termitas sea posible en
+          una propiedad que de otro modo sería demasiado seca para sostenerlo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La garantía, y la distinción que hay que entender</h2>
+      <div class="measure">
+        <p>
+          Hay dos productos fundamentalmente distintos en el mercado de termitas, y conviene entender la
+          diferencia antes de firmar nada, con quien sea.
+        </p>
+        <p>
+          <strong>Una garantía de retratamiento</strong> significa que si vuelve a encontrarse actividad de
+          termitas dentro del período cubierto, la compañía regresa y trata de nuevo sin costo.
+        </p>
+        <p>
+          <strong>Una garantía de daño</strong> — a veces llamada bono de reparación — significa que la
+          compañía va a pagar la reparación del daño estructural causado por termitas durante el período
+          cubierto, hasta un límite establecido. Es mucho más cara de sostener, normalmente la venden
+          compañías con el respaldo financiero para asumirla, y viene con condiciones importantes,
+          requisitos de inspección anual y sus propias exclusiones.
+        </p>
+        <p>
+          <strong>Lo que ofrecemos es la primera.</strong> Una garantía de retratamiento de
+          {t.termMonths} meses sobre el tratamiento realizado, renovable cada año con inspección. No
+          ofrecemos garantía de daño y no vamos a insinuar que sí usando palabras como "protección" sin
+          decir qué se está protegiendo. Si lo que usted necesita es una garantía de daño — y para algunas
+          transacciones y algunas construcciones sí lo es — una compañía más grande es la opción correcta y
+          se lo vamos a decir.
+        </p>
+        <p>
+          <strong>Y algo más que conviene saber:</strong> una garantía de retratamiento vale lo que valga
+          la inspección que la precedió. La cobertura normalmente se limita a las áreas tratadas y a la
+          construcción tal como estaba en ese momento. Si agrega un cuarto, construye una terraza pegada a
+          la cimentación, cambia el nivel del terreno o deja que una bajada de agua descargue contra el
+          muro, cambió la construcción sobre la que se escribió la garantía. Eso no es una trampa, es
+          física — pero sí es razón para avisar de cualquier modificación a quien tenga su garantía.
+        </p>
+        <p>
+          Los términos completos, con las exclusiones escritas, están en la
+          <a href="/our-guarantee/">página de garantía</a>. Está en inglés y se la explicamos por teléfono
+          en español con gusto.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          La biología, las normas de construcción y las recomendaciones de manejo de esta página siguen
+          publicaciones de Texas A&amp;M AgriLife Extension, principalmente la E-368, junto con la guía de
+          campo Texas Insects. Donde no se pudo documentar una afirmación para esta región, la página lo
+          dice en lugar de llenar el hueco.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre termitas" />
+  <Cta
+    line="Si encontró lodo en un poste de cerca y no en una cimentación, díganoslo — muy probablemente es termita del desierto y es una conversación mucho más corta. Los voladores de adentro sí conviene guardarlos en una bolsa."
+  />
+</BaseLayout>

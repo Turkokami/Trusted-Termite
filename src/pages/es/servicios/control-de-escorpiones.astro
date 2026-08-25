@@ -1,0 +1,438 @@
+---
+/**
+ * /es/servicios/control-de-escorpiones/ — the flagship Spanish service page.
+ *
+ * VOCABULARY NOTE: the page uses "alacrán" as the primary term with "escorpión"
+ * introduced once, because alacrán is the common word in northern Mexico and
+ * among Mexican-American families in West Texas. The URL keeps "escorpiones"
+ * for search reasons; the copy leads with alacrán.
+ *
+ * All biology sourced to Texas A&M AgriLife, same as the English pages:
+ *  - Centruroides vittatus. Adults ~2 3/8 in, yellowish-tan, TWO broad dark
+ *    longitudinal stripes, dark triangle on the head over the eyes.
+ *  - LIVE BIRTH: ~8 month gestation, 13-47 young averaging 31, young ride the
+ *    mother 3-7 days through a molt, 5-6 molts to maturity, lifespan ~4 years
+ *    (E-362; Field Guide says 3-8 — cite 4 and note variation).
+ *  - SEVERITY, non-negotiable: "None of the scorpions in Texas are considered
+ *    'deadly.'" Stings "produce only moderate reactions in most people because
+ *    the poison has little effect on the nervous system." The dangerous US
+ *    species is the ARIZONA bark scorpion, C. sculpturatus — a different
+ *    animal. This page must never imply a Texas species is lethal.
+ *  - ENTRY: E-362 "During periods of hot weather, scorpions may move into
+ *    living areas to escape the high temperatures in attics." Molly Keck:
+ *    they seek "water and cooler temperatures and when they feel that
+ *    temperature difference below a door or by another small crack, they can
+ *    squeeze their way inside."
+ *  - Fluoresces under UV.
+ *  - MANAGEMENT, non-chemical first: remove trash, logs, boards, stones,
+ *    bricks; mow short at the foundation; prune shrubs and overhanging
+ *    branches; garbage above ground level; NEVER bring firewood indoors unless
+ *    it goes straight on the fire; weather-strip loose doors and windows; plug
+ *    weep holes with steel wool, copper mesh, nylon scouring pad or screen
+ *    wire; seal roof eaves and pipe penetrations; keep screens in repair.
+ *  ⚠️ Do NOT name additional Permian Basin species — AgriLife publishes counts
+ *    for Amarillo/Abilene/Fort Stockton but no species list for these counties.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { BUSINESS } from '../../../data/business';
+
+const o = BUSINESS.owner;
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Control de Alacranes', path: '/es/servicios/control-de-escorpiones/' },
+];
+
+const quickAnswer =
+  'El alacrán rayado de corteza es la plaga que define esta región, y no es mortal — Texas A&M AgriLife señala que ninguna especie de alacrán en Texas se considera mortal. Entran buscando frescura y humedad, por debajo de las puertas, y viven arriba en áticos y paredes. El trabajo es sellar y quitar refugio mucho más que rociar.';
+
+const faqs = [
+  {
+    q: '¿Los alacranes de Texas matan?',
+    a: 'No. Texas A&M AgriLife lo dice sin rodeos: ninguna de las especies de alacrán de Texas se considera mortal, y las picaduras producen reacciones moderadas en la mayoría de las personas porque el veneno tiene poco efecto sobre el sistema nervioso. La especie realmente peligrosa en Estados Unidos es el alacrán de corteza de Arizona, que es otro animal. Aun así la picadura duele fuerte, la hinchazón puede durar varios días, la reacción varía de persona a persona, y como con cualquier veneno de artrópodo puede haber reacción alérgica — con niños pequeños o personas alérgicas hay que tener más cuidado.',
+  },
+  {
+    q: '¿Cómo sé que es un alacrán rayado?',
+    a: 'Dos rayas oscuras y anchas a lo largo del abdomen, sobre un cuerpo entre amarillo y café claro, y una mancha oscura en forma de triángulo sobre la cabeza, encima de los ojos. Ese triángulo es el detalle que casi nadie nota y es el que lo identifica. Los adultos miden alrededor de dos pulgadas y cuarto, a veces dos y media. Las pinzas son delgadas, no gruesas como de cangrejo, y la cola es larga y delgada — más larga en los machos.',
+  },
+  {
+    q: '¿Por qué se meten a la casa justo en julio y agosto?',
+    a: 'Por calor y por agua. La guía E-362 de AgriLife dice que en épocas de calor los alacranes pueden meterse a las áreas habitadas para escapar de las altas temperaturas del ático. Y los entomólogos de extensión describen que en clima caliente y seco buscan agua y un ambiente más fresco, colándose donde sienten una diferencia de temperatura por debajo de una puerta o por otra grieta pequeña. Entran abajo, viven arriba, y bajan al área habitada cuando el ático se calienta demasiado. Por eso una racha seca y larga en junio predice un julio difícil.',
+  },
+  {
+    q: '¿Es cierto que brillan con luz negra?',
+    a: 'Sí, y es la herramienta más útil que puede comprar para este problema. El cuerpo del alacrán brilla bajo luz ultravioleta. Salga después de que oscurezca por completo, en una noche cálida, y recorra despacio el perímetro de la casa con la lámpara: la línea de la cimentación, la base de las paredes, los umbrales de las puertas, y después las leñeras, la piedra decorativa, los materiales apilados. Luego mire hacia arriba — trepan bien, y una revisión hecha nada más a la altura del tobillo subestima lo que hay.',
+  },
+  {
+    q: '¿Sirve rociar?',
+    a: 'Menos de lo que la gente espera, por sí solo. Los alacranes tienen una cutícula cerosa, pasan el día escondidos en lugar de cruzar superficies tratadas, y aguantan mucho tiempo sin comer. La propia guía de manejo de AgriLife empieza por medidas no químicas: quitar el refugio, cortar el pasto bajo junto a la cimentación, podar arbustos y ramas que rocen la casa, poner burletes en las puertas, tapar los agujeros de ventilación del ladrillo, y sellar aleros y entradas de tubería. El tratamiento apoya ese trabajo, no lo sustituye.',
+  },
+  {
+    q: '¿Qué hago si me pica uno?',
+    a: 'Lave la zona y ponga hielo para el dolor. Lo normal es dolor agudo inmediato e hinchazón local, y la hinchazón y la comezón pueden durar varios días. Busque atención médica si el dolor o la hinchazón no ceden, si hay cualquier dificultad para respirar, o si se trata de un niño pequeño. Nosotros somos una empresa de control de plagas, no médicos — más allá de los primeros auxilios eso le corresponde a un doctor o al centro de intoxicaciones.',
+  },
+  {
+    q: '¿Se pueden eliminar por completo?',
+    a: 'En una propiedad que colinda con terreno abierto, piedra o jardinería pesada, no — y quien se lo prometa le está describiendo algo que no puede entregar. Lo que sí funciona es supresión más exclusión: reducir mucho lo que hay, y cerrar las vías por donde entran a la construcción. Esa es una promesa más chica, y es de las que sí se pueden cumplir.',
+  },
+  {
+    q: '¿Cuánto cuesta?',
+    a: 'Depende de la propiedad: el tamaño y tipo de construcción, cuántos edificios hay, cuánto refugio hay alrededor y a qué distancia está de Seminole. Se cotiza después de ver el lugar, y la inspección para cotizar no se cobra. Lo que no va a pasar es que le demos un número por teléfono sin saber nada de la propiedad y que ese número cambie cuando llegue la camioneta.',
+  },
+];
+---
+
+<BaseLayout
+  title="Control de Alacranes en el Oeste de Texas"
+  description="Alacranes en Seminole y la Cuenca Pérmica: identificación, por qué entran a la casa y qué funciona de verdad. Licencia TPCL 0918482, sin contratos."
+  path="/es/servicios/control-de-escorpiones/"
+  lang="es"
+  altLangPath="/services/scorpion-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Control de Alacranes',
+    description: 'Exclusión, eliminación de refugio y tratamiento dirigido contra alacranes en casas, propiedades rurales y negocios del condado de Gaines y la Cuenca Pérmica.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Control de Plagas · categoría con licencia</p>
+      <h1>Control de alacranes</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          El alacrán — o escorpión, según cómo lo diga su familia — es la plaga que más llamadas genera en
+          esta región durante el verano, y sobre la que circula más información equivocada que sobre
+          cualquier otra.
+        </p>
+        <p>
+          Por eso esta página va con fuente. Todo lo que sigue viene de publicaciones de Texas A&amp;M
+          AgriLife Extension, y donde AgriLife y la creencia popular no coinciden, lo decimos y nos vamos
+          con AgriLife.
+        </p>
+        <p>
+          <a href="/services/scorpion-control/">This page in English</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Primero lo primero: no son mortales</h2>
+      <div class="measure">
+        <p>
+          La posición de AgriLife no podría ser más clara. <strong>"Ninguno de los alacranes de Texas se
+          considera mortal."</strong> Y: <strong>"Las picaduras de los alacranes de Texas producen
+          reacciones moderadas en la mayoría de las personas porque el veneno tiene poco efecto sobre el
+          sistema nervioso."</strong>
+        </p>
+        <p>
+          La especie en la que la gente está pensando cuando se preocupa por esto es el
+          <strong>alacrán de corteza de Arizona</strong>, que sí es médicamente importante y que
+          <em>es otro animal</em>. No es el que está en su cochera en Seminole.
+        </p>
+        <p>
+          <strong>Cómo es una picadura en realidad.</strong> Dolor agudo e inmediato. Hinchazón local que
+          muchas veces dura varios días. Comezón. La reacción varía bastante de persona a persona, y como
+          con el veneno de cualquier artrópodo puede haber reacción alérgica. Para la mayoría, hielo basta
+          para el dolor.
+        </p>
+        <p>
+          <strong>Cuándo sí hay que ir al médico.</strong> Si el dolor o la hinchazón no ceden, si hay
+          cualquier dificultad para respirar, o si a quien picaron es un niño pequeño o alguien con alergia
+          conocida. Esa es una decisión médica y le corresponde a un doctor o al centro de intoxicaciones,
+          no a nosotros.
+        </p>
+        <p>
+          <strong>Por qué empezamos por aquí.</strong> Porque el miedo es la herramienta de venta estándar
+          en este oficio y preferimos no usarla. Los alacranes son una molestia real, encontrarse uno en la
+          cama o en una bota es genuinamente desagradable, y hay buenas razones para atenderlos. Que maten
+          no es una de ellas, y una compañía que dé a entender lo contrario está contradiciendo al servicio
+          de extensión del propio estado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cómo identificarlo</h2>
+      <div class="measure">
+        <p>
+          <strong>Tamaño.</strong> Los adultos miden alrededor de dos pulgadas y cuarto, a veces hasta dos
+          y media.
+        </p>
+        <p>
+          <strong>Color y marcas.</strong> Cuerpo entre amarillo y café claro, con <strong>dos rayas
+          oscuras y anchas a lo largo del abdomen</strong> — de ahí el nombre — y una <strong>mancha oscura
+          en forma de triángulo sobre la cabeza, encima de los ojos</strong>. Ese triángulo es el detalle
+          que casi nadie registra y es el que identifica la especie.
+        </p>
+        <p>
+          <strong>Forma.</strong> Pinzas delgadas, no gruesas como de cangrejo, y cola larga y delgada. Los
+          machos tienen la cola más larga que las hembras.
+        </p>
+        <p>
+          <strong>Los juveniles</strong> son más claros, con la base de las pinzas y el último segmento de
+          la cola oscuros.
+        </p>
+        <p>
+          <strong>Bajo luz ultravioleta todo el animal brilla</strong>, lo cual no es una curiosidad sino
+          una herramienta — más abajo se explica cómo usarla.
+        </p>
+        <p>
+          <strong>Con qué se confunde.</strong> Con los pseudoescorpiones, que son diminutos, no tienen
+          cola y son inofensivos. Más al oeste del estado hay otras especies, pero eso es el extremo oeste
+          de Texas y no la Cuenca Pérmica. Texas tiene alrededor de dieciocho especies en total, y la
+          diversidad aumenta conforme uno va hacia el oeste. No vamos a nombrarle especies adicionales para
+          el condado de Gaines o el área de Midland–Odessa, porque AgriLife no publica una lista de
+          especies para estos condados y no la vamos a inventar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Por qué se meten aquí</h2>
+      <div class="measure">
+        <p>
+          Esta es la parte que convierte al alacrán en una historia regional y no en un tema genérico, y
+          las fuentes de extensión son inusualmente directas al respecto.
+        </p>
+        <p>
+          <strong>AgriLife, guía E-362:</strong> "En épocas de calor, los alacranes pueden desplazarse a
+          las áreas habitadas para escapar de las altas temperaturas del ático."
+        </p>
+        <p>
+          <strong>Molly Keck, entomóloga de AgriLife Extension:</strong> en clima caliente y seco "pueden
+          buscar agua y/o un ambiente más hospitalario". Y durante la sequía: buscan "agua y temperaturas
+          más frescas, y cuando sienten esa diferencia de temperatura debajo de una puerta o por otra
+          grieta pequeña, pueden colarse hacia adentro".
+        </p>
+        <p>
+          <strong>Junte las dos cosas y tiene la secuencia completa</strong>, que explica casi todas las
+          llamadas que recibimos:
+        </p>
+        <p>
+          <strong>Entran abajo.</strong> Por debajo de una puerta con el burlete gastado, por el umbral,
+          alrededor de una entrada de tubería — donde sientan una diferencia de temperatura o de humedad. Su
+          cuerpo aplanado les permite meterse en grietas pequeñas y debajo de piedras, corteza y madera.
+        </p>
+        <p>
+          <strong>Viven arriba.</strong> En huecos de pared y en el ático, donde está oscuro y nadie los
+          molesta. AgriLife señala que "con frecuencia se encuentran en los áticos de las casas", y la
+          gente constantemente subestima esto y busca a nivel del piso.
+        </p>
+        <p>
+          <strong>Y bajan cuando el ático se calienta de más</strong>, en las peores semanas del verano de
+          la Cuenca Pérmica. Por eso la gente los encuentra en julio y agosto, en recámaras y baños,
+          después de no haber visto nada en toda la primavera.
+        </p>
+        <p>
+          <strong>Esto se puede predecir.</strong> Una racha seca y larga en junio, con calor sostenido y
+          sin lluvia, es el mejor pronóstico que existe de un julio difícil. Si lleva seis semanas de calor
+          seco y su propiedad ya tiene historia, ese es el momento de actuar y no el de esperar a ver.
+        </p>
+        <p>
+          <strong>Y explica la paradoja del agua.</strong> En una región tan seca, cualquier agua confiable
+          en la propiedad es un destino: la cabeza de riego que pega contra la cimentación, la línea del
+          condensado, la llave que gotea, el desagüe del cooler. Arreglar eso hace más por un problema de
+          alacranes que la mayoría de los tratamientos, y es gratis.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cómo revisar su propiedad con luz negra</h2>
+      <div class="measure">
+        <p>
+          Como la cutícula brilla bajo luz ultravioleta, una lámpara UV convierte un problema invisible en
+          uno visible, y es lo más útil que puede comprar quien viva en esta región.
+        </p>
+        <p>
+          <strong>Salga después de que oscurezca por completo</strong>, en una noche cálida, cuando están
+          activos. Las noches frescas y la luz del día dan resultados engañosamente limpios.
+        </p>
+        <p>
+          <strong>Recorra primero el perímetro de la casa</strong>, despacio, barriendo con el haz la línea
+          de la cimentación, la base de las paredes, los umbrales de las puertas y la parte baja de la
+          construcción. Después el refugio evidente: leña apilada, materiales guardados, vigas de
+          jardinería, piedra decorativa, la orilla de los arriates, cualquier cosa apoyada en el suelo.
+        </p>
+        <p>
+          <strong>Luego mire hacia arriba.</strong> Bardas, las hiladas bajas de ladrillo, troncos de
+          árboles, y la pared hacia el techo. Trepan, y una revisión hecha sólo a la altura del tobillo
+          subestima lo que hay.
+        </p>
+        <p>
+          <strong>Y adentro, si se anima:</strong> la cochera, el cuarto de lavado, las esquinas donde el
+          piso se junta con el zoclo, y — con cuidado, y sólo si es seguro estar allá arriba — el ático.
+        </p>
+        <p>
+          <strong>Para qué sirve la revisión.</strong> No para matar lo que encuentre, aunque puede. Sirve
+          para saber <em>dónde están</em>, que es la información que determina todo lo demás. Una revisión
+          que muestra actividad concentrada en una barda y nada en el resto describe un trabajo
+          completamente distinto de una que muestra actividad dispersa por todos lados.
+        </p>
+        <p>
+          Si lo hace antes de que vayamos, díganos qué encontró y dónde. Es más útil que cualquier otra
+          cosa que nos pueda dar, y lo único que cuesta es el precio de una lámpara de luz negra.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Qué funciona de verdad</h2>
+      <div class="measure">
+        <p>
+          La guía de manejo de AgriLife empieza por medidas no químicas, y nosotros también, porque en esta
+          plaga en particular el orden no está ni cerca de ser discutible.
+        </p>
+        <p>
+          <strong>Quite el refugio.</strong> Basura, troncos, tablas, piedras y ladrillos alrededor de la
+          construcción. Es la acción de mayor valor disponible y es gratis. Todo lo que está apilado contra
+          la pared o cerca de ella es hábitat, y es exactamente debajo de esas cosas donde se encuentran.
+        </p>
+        <p>
+          <strong>Corte el pasto bajo junto a la cimentación</strong>, y pode los arbustos y las ramas que
+          rocen la casa.
+        </p>
+        <p>
+          <strong>Mantenga la basura por encima del nivel del suelo.</strong>
+        </p>
+        <p>
+          <strong>Nunca meta leña a la casa</strong> a menos que vaya directo a la chimenea. AgriLife es
+          explícito en esto, y es una de las formas más comunes en que un alacrán acaba en la sala.
+        </p>
+        <p>
+          <strong>Ponga burletes en puertas y ventanas flojas.</strong> El espacio debajo de una puerta
+          exterior es la entrada principal en la mayoría de las propiedades, y en una casa de más de veinte
+          años en este clima un burlete gastado es prácticamente universal.
+        </p>
+        <p>
+          <strong>Tape los agujeros de ventilación del ladrillo</strong> — AgriLife sugiere fibra de acero,
+          malla de cobre, una fibra de tallar de nylon o cuadritos de tela de alambre. Esos agujeros son un
+          elemento de drenaje del muro y no se deben sellar por completo, pero sí se deben cubrir con
+          malla, porque abren directo al hueco de la pared.
+        </p>
+        <p>
+          <strong>Selle los aleros del techo y las entradas de tubería</strong>, y mantenga los mosquiteros
+          en buen estado.
+        </p>
+        <p>
+          <strong>Dónde entra el tratamiento.</strong> Después de todo lo anterior, no en lugar de ello. Una
+          aplicación residual dirigida a las rutas entre el refugio y la construcción, a los puntos de
+          entrada y a los lugares donde la revisión con luz negra mostró actividad hace trabajo real. El
+          mismo producto rociado por todo el pasto hace muy poco, porque ahí no están.
+        </p>
+        <p>
+          <strong>Y lo que le vamos a decir con honestidad:</strong> en una propiedad que colinda con
+          terreno abierto, piedra o jardinería pesada, la fuente no se va a ir a ningún lado y eliminarlos
+          por completo no es el objetivo. Supresión más exclusión sí lo es, y sí funciona.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Biología: por qué no se acaban de un solo tratamiento</h2>
+      <div class="measure">
+        <p>
+          <strong>No ponen huevos: paren vivos.</strong> El apareamiento ocurre en otoño, primavera o
+          principios de verano, la gestación dura alrededor de <strong>ocho meses</strong>, y la hembra
+          pare entre trece y cuarenta y siete crías vivas, con un promedio de unas treinta y una.
+        </p>
+        <p>
+          <strong>Las crías se le suben al lomo</strong> durante tres a siete días, hasta después de su
+          primera muda, y luego se dispersan. Si alguna vez levantó una tabla y encontró lo que parecía un
+          alacrán grande cubierto de una costra pálida, eso era lo que estaba viendo.
+        </p>
+        <p>
+          <strong>Necesitan cinco o seis mudas para llegar a adultos</strong>, y la guía E-362 de AgriLife
+          da una vida de alrededor de cuatro años. Otras fuentes dan rangos más amplios, así que tome
+          cuatro como la cifra de trabajo y espere variación.
+        </p>
+        <p>
+          <strong>Por qué eso importa en la práctica.</strong> Ocho meses de gestación y cuatro años de
+          vida significan que una propiedad con población establecida tiene generaciones traslapadas, no un
+          brote de temporada. Por eso un solo tratamiento fuerte no deja limpia una propiedad de forma
+          permanente, y por eso en una propiedad con presión real la recomendación honesta es un programa
+          y no una visita.
+        </p>
+        <p>
+          <strong>Son nocturnos, y eso no es preferencia sino supervivencia.</strong> AgriLife señala que
+          esconderse de día les ayuda a manejar la temperatura y el balance de agua — funciones que
+          importan muchísimo para sobrevivir en hábitat seco. Todo su comportamiento se explica por la
+          necesidad de no deshidratarse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Costumbres que ayudan</h2>
+      <div class="measure">
+        <p>
+          Cosas que conviene hacer en esta parte de Texas, ninguna de las cuales cuesta nada.
+        </p>
+        <p>
+          <strong>Sacuda botas y zapatos</strong> que hayan quedado en la cochera, en el cuarto de entrada
+          o junto a una puerta. Es la situación de picadura más común por aquí.
+        </p>
+        <p>
+          <strong>Revise ropa de cama y toallas</strong> en una propiedad con actividad conocida, sobre
+          todo en julio y agosto.
+        </p>
+        <p>
+          <strong>No meta la mano donde no alcanza a ver</strong> — debajo de material apilado, detrás de
+          cajas guardadas en el ático, dentro de una leñera. Para eso, use guantes, y mueva las cosas con una herramienta antes de
+          meter la mano.
+        </p>
+        <p>
+          <strong>Cuide la luz de la entrada por la noche.</strong> Llegan a los umbrales iluminados porque
+          la luz atrae a los insectos de los que se alimentan. Una luz de patio encendida toda la noche
+          junto a una puerta con el burlete gastado es un arreglo que trabaja en su contra.
+        </p>
+        <p>
+          <strong>Atienda los insectos.</strong> Los alacranes son depredadores, y una propiedad con mucha
+          presión de insectos sostiene más alacranes. El control general de plagas en el perímetro reduce
+          la comida disponible, que es una parte indirecta pero muy real de la respuesta completa.
+        </p>
+        <p>
+          <strong>Y quite la humedad de la construcción.</strong> La cabeza de riego, la línea del
+          condensado, la llave que gotea. En este clima ese arreglo rinde más que en cualquier lugar
+          húmedo.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          La biología, la gravedad de la picadura y las recomendaciones de manejo de esta página siguen
+          publicaciones de Texas A&amp;M AgriLife Extension, incluida la guía E-362. Las preguntas médicas
+          sobre una picadura le corresponden a un médico o al centro de intoxicaciones, no a una empresa de
+          control de plagas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre alacranes" />
+  <Cta
+    line="Recorra el perímetro con una lámpara de luz negra después de que oscurezca y díganos qué se prendió y dónde. Ese mapa vale más que cualquier descripción por teléfono."
+  />
+</BaseLayout>

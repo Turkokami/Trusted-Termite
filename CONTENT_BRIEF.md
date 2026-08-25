@@ -264,6 +264,33 @@ write it past 3,000 unique words, and not before.
 
 ---
 
+## 10b · Spanish tree — the rule
+
+Spanish pages are **written in Spanish, not translated**. Neutral Latin
+American Spanish, *usted* throughout. Regional vocabulary for this market:
+**alacrán** leads over *escorpión* (alacrán is the common term in northern
+Mexico and among Mexican-American families here), *chinches*, *plomería*.
+
+**Every honesty gate carries over unchanged.** Same licence facts, same
+guarantee terms, same refusals (no fumigación, no tratamiento térmico para
+chinches), no pricing figures, no `aggregateRating`, and never *nuestro
+equipo* — he is a solo operator.
+
+**A Spanish page ships only when written to the full M1 floor.** A half-
+translated page is worse than an English page with a Spanish phone
+conversation behind it. Declaring an `esSlug` in `services.ts` does **not**
+create a page; the hubs link only what exists and list the rest without links.
+
+**hreflang is reciprocal or it is absent.** `altLangPath` is set on BOTH sides
+of a pair, never one. The harness fails the build on a hreflang that points at
+a page which does not exist — verified by negative test.
+
+Written so far: `/es/`, `/es/servicios/`, `control-de-plagas`,
+`control-de-escorpiones`, `control-de-termitas`. The other nine services have
+slugs reserved in `services.ts` and no pages.
+
+---
+
 ## 11 · Held — do not write these yet
 
 | What | Why | Unblocks when |

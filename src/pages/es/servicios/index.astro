@@ -1,0 +1,465 @@
+---
+/**
+ * /es/servicios/ — Spanish services hub.
+ *
+ * Written in Spanish, not translated. Same honesty gates as the English tree.
+ * Only pages that EXIST are linked; the rest are listed without links, exactly
+ * as the pest library does. Adding an esSlug to services.ts does not create a
+ * page — the harness fails the build on a dead link, which is the correct
+ * behaviour and the reason this pattern exists.
+ *
+ * The licence-category argument is the spine here, same as the English hub:
+ * 4 TAC §7.124 defines SEVEN categories; he holds four; that is the legal
+ * boundary of what this business may do, and it is why the "what we do not do"
+ * list is published rather than buried.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+import { BUSINESS } from '../../../data/business';
+
+const o = BUSINESS.owner;
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+];
+
+/** Spanish pages that are actually written. Linked. */
+const WRITTEN = ['control-de-plagas', 'control-de-escorpiones', 'control-de-termitas'];
+
+const grupos = [
+  { key: 'pest', title: 'Control de plagas' },
+  { key: 'termite', title: 'Termitas' },
+  { key: 'lawn', title: 'Jardín, maleza y terrenos' },
+  { key: 'junk', title: 'Escombros y limpieza de propiedad' },
+] as const;
+
+const esBlurb: Record<string, string> = {
+  'control-de-plagas': 'Servicio recurrente o tratamiento único, con inspección antes de aplicar nada.',
+  'control-de-escorpiones': 'La plaga que define esta región. Sellado y exclusión más que rociar.',
+  'control-de-termitas': 'Sí hay termitas aquí, y creer que no las hay es lo que causa el daño.',
+};
+
+const quickAnswer =
+  'Doce servicios confirmados, dentro de las cuatro categorías de licencia que tenemos: control de plagas, termitas, jardín y ornamentales, y control de maleza. El Departamento de Agricultura de Texas define siete categorías en total — las tres que no tenemos marcan el límite de lo que este negocio puede hacer legalmente, y por eso está publicado.';
+---
+
+<BaseLayout
+  title="Servicios | Control de Plagas en Español"
+  description="Control de plagas, alacranes, termitas, roedores, maleza y limpieza de terrenos en el oeste de Texas. Licencia TPCL 0918482. Sin contratos."
+  path="/es/servicios/"
+  lang="es"
+  altLangPath="/services/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Un operador con licencia · TPCL {o.tpcl}</p>
+      <h1>Servicios</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <a href="/services/">This page in English</a>. Las páginas marcadas abajo tienen versión completa
+          en español; las demás existen en inglés y se las explicamos por teléfono en español.
+        </p>
+      </div>
+
+      {grupos.map((g) => (
+        <div style="margin-top:2.4rem">
+          <h2>{g.title}</h2>
+          <div class="grid c3" style="margin-top:1rem">
+            {SERVICES.filter((s) => s.group === g.key).map((s) => (
+              WRITTEN.includes(s.esSlug) ? (
+                <a class="card" href={`/es/servicios/${s.esSlug}/`}>
+                  <h3>{s.esName}</h3>
+                  <p>{esBlurb[s.esSlug]}</p>
+                </a>
+              ) : (
+                <div class="card" style="opacity:.72">
+                  <h3>{s.esName}</h3>
+                  <p style="font-size:.92rem">Página en español en preparación — <a href={`/services/${s.slug}/`}>ver en inglés</a>.</p>
+                </div>
+              )
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Por qué una sola persona cubre cuatro oficios distintos</h2>
+      <div class="measure">
+        <p>
+          La lista de arriba parece más amplia de lo que un negocio de un solo hombre debería poder cubrir,
+          así que conviene explicar cómo está estructurada — porque la respuesta no es "intentamos
+          cualquier cosa".
+        </p>
+        <p>
+          <strong>Texas otorga la licencia por categorías</strong>, no como un permiso general. El
+          reglamento 4 TAC §7.124 define <strong>siete</strong> categorías: control de plagas; termitas e
+          insectos que destruyen madera; jardín y ornamentales; control de maleza; fumigación estructural;
+          fumigación de productos almacenados; y preservación de madera.
+        </p>
+        <p>
+          <strong>Aquí tenemos cuatro:</strong> {o.categories.join(', ')}. Cada una se examina y se mantiene
+          por separado. Tener una no otorga nada en otra — por eso, cuando compare cotizaciones, la
+          pregunta que de verdad importa no es "¿tiene licencia?" sino "¿qué categorías trae la licencia?".
+          Si le cotizan termitas, la categoría de termitas tiene que estar ahí.
+        </p>
+        <p>
+          <strong>Y eso significa que hay trabajo que no podemos hacer.</strong> Ninguna de las dos
+          categorías de fumigación está en esta licencia. Si una construcción de verdad necesita fumigación
+          con lona, necesita otra compañía, y se lo vamos a decir por teléfono en lugar de venderle algo
+          parecido.
+        </p>
+        <p>
+          <strong>El trabajo de propiedad</strong> — limpieza de terrenos y retiro de escombros — no es
+          trabajo de licencia de plagas, y está en la lista por una razón práctica. Buena parte de los
+          problemas de plagas aquí son problemas de refugio: maleza pegada a la construcción, un terreno
+          que no se ha cortado, un montón de lámina o madera apilada desde el dueño anterior. Tratar una
+          casa cuyo problema son los veinte pies de maleza que tiene al lado es tratar el síntoma.
+        </p>
+        <p>
+          Puede verificar todo esto usted mismo, y le conviene hacerlo con cualquier compañía que esté
+          considerando, no nada más con nosotros. La <a href="/compliance/pest-control-licence/">página
+          sobre la licencia</a> está en inglés y explica las siete categorías, las siete clases de
+          licencia, el requisito de educación continua y cómo verificar cualquier número con el
+          Departamento en unos dos minutos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Qué servicio necesita en realidad</h2>
+      <div class="measure">
+        <p>
+          Casi toda la gente llama sabiendo qué vio, no sabiendo qué pedir. Eso está bien — describir el
+          síntoma sirve más que adivinar la categoría. Pero si quiere llegar con una idea, así se dividen
+          las cosas.
+        </p>
+        <p>
+          <strong>Está viendo insectos adentro y no sabe qué son.</strong> Control de plagas general, que
+          es como empieza la mayoría de las llamadas. La identificación se hace en la inspección, y sí
+          importa: hormigas, cucarachas e invasores ocasionales se parecen para casi todo el mundo y se
+          tratan de forma muy distinta.
+        </p>
+        <p>
+          <strong>Está viendo alacranes.</strong> Ese es su propio servicio y su propio método. El trabajo
+          de alacranes es de refugio y sellado mucho más que de rociado, y un tratamiento de perímetro
+          aplicado sin atender dónde viven y por dónde entran lo va a decepcionar.
+        </p>
+        <p>
+          <strong>Tiene tubos de lodo, alas tiradas, o madera que suena hueca.</strong> Termitas, y
+          necesita inspección en lugar de cotización por teléfono. Aquí también es donde a veces la
+          respuesta honesta es que lo que usted describe no son termitas — mejor resultado para usted, peor
+          para nuestra factura.
+        </p>
+        <p>
+          <strong>Escucha algo en el techo o encuentra excremento.</strong> Roedores, y la respuesta casi
+          nunca es sólo cebo. El control de roedores que no cierra la entrada es una suscripción, no una
+          solución.
+        </p>
+        <p>
+          <strong>Algo más grande se metió debajo del cobertizo o al ático.</strong> Animales silvestres,
+          que es otro conjunto de métodos y otro conjunto de restricciones legales según el animal.
+        </p>
+        <p>
+          <strong>Le llegó un aviso de la ciudad, o la maleza le pasa de la rodilla.</strong> Control de
+          maleza o limpieza de terreno, según si la solución es química o mecánica. Si hay un aviso de por
+          medio, dígalo primero: trae una fecha, y la fecha manda sobre todo lo demás.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>El orden importa</h2>
+      <div class="measure">
+        <p>
+          Muy pocas propiedades aquí necesitan exactamente una sola cosa, y la secuencia importa más de lo
+          que la gente espera.
+        </p>
+        <p>
+          <strong>El orden general es: quitar el refugio, cerrar la entrada, después tratar.</strong>
+          Hacerlo al revés — tratar primero y limpiar después — significa que el tratamiento se aplicó a una
+          propiedad que está a punto de ser removida por completo, y esa remoción mueve a la población de
+          maneras que hacen imposible leer el resultado. Si un terreno se va a limpiar, limpiarlo primero y
+          tratar después vale la semana extra.
+        </p>
+        <p>
+          <strong>La excepción son las termitas</strong>, que no dependen de nada de eso y deben atenderse
+          en cuanto se identifican. Es lo único de esta lista donde esperar tiene un costo que se acumula.
+        </p>
+        <p>
+          <strong>Los roedores están en medio.</strong> La exclusión — cerrar las aberturas, sellar las
+          entradas de tubería, arreglar el burlete de la puerta y el umbral del portón — es la parte
+          duradera, y atrapar sin eso nada más crea vacantes que se vuelven a llenar. Donde una abertura
+          necesita a otro oficio para cerrarse bien, se lo decimos en lugar de aplicar espuma a un problema
+          estructural.
+        </p>
+        <p>
+          <strong>Y el jardín se cruza con todo.</strong> Un perímetro tratado que atraviesa maleza a la
+          altura de la rodilla no es un perímetro. Donde el patio es el problema, atender el patio es parte
+          del plan de plagas, no un servicio adicional que se le quiere vender encima.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Dónde trabajamos y cómo se programa</h2>
+      <div class="measure">
+        <p>
+          Todo lo de esta página está disponible en toda el área de servicio, que sale de Seminole por el
+          condado de Gaines y cruza la Cuenca Pérmica y el sur de las Llanuras Altas. Lo que cambia con la
+          distancia no es qué se puede hacer, sino cómo funciona la agenda.
+        </p>
+        <p>
+          <strong>Seminole y los pueblos más cercanos son los de mayor disponibilidad</strong>, incluida la
+          posibilidad de responder rápido cuando algo de verdad no puede esperar.
+        </p>
+        <p>
+          <strong>Los pueblos más lejanos se atienden por día programado</strong>, agrupando varias
+          propiedades del mismo pueblo en la misma corrida. Eso significa que avisar con un par de días de
+          anticipación consigue una fecha mucho mejor que llamar con urgencia la misma mañana. Es
+          consecuencia de que una sola camioneta cubra distancias reales, y es mejor decirlo que dejar que
+          se descubra.
+        </p>
+        <p>
+          <strong>El consejo práctico es el mismo en todas partes:</strong> si tiene una fecha límite — un
+          cierre de casa, un cambio de inquilino, una inspección, un aviso de la ciudad con fecha impresa —
+          empiece por ahí. Las fechas límite mandan sobre la agenda mucho más que la urgencia, y una semana
+          de aviso sobre una obligación con fecha vale más que cualquier insistencia el mismo día.
+        </p>
+        <p>
+          <strong>Y si tiene varias propiedades</strong>, o sabe que un vecino busca lo mismo, dígalo.
+          Varias propiedades en un pueblo el mismo día salen más baratas de atender y son más fáciles de
+          programar que las mismas propiedades repartidas en un mes.
+        </p>
+        <p>
+          <strong>No cobramos cargo por viaje.</strong> En trabajos grandes y lejanos se conversa un mínimo
+          antes de que usted acepte nada, y nunca aparece un cargo por millaje en la factura que no se haya
+          hablado antes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Qué incluye siempre la primera visita</h2>
+      <div class="measure">
+        <p>
+          Sea cual sea el servicio que nos trajo, la primera visita sigue la misma forma, porque la
+          inspección no es un trámite pegado al trabajo: es la parte que decide si el trabajo funciona.
+        </p>
+        <p>
+          <strong>Un recorrido completo del exterior</strong>, no nada más el lado donde vio algo. Entradas
+          de servicio, agujeros de ventilación del ladrillo, burletes de puertas, umbrales, la cochera, la
+          línea del techo donde se alcance a ver, y los puntos donde la construcción toca el suelo.
+        </p>
+        <p>
+          <strong>Después la historia del agua.</strong> Riego, bajadas de agua, la línea del condensado, y
+          cualquier lugar donde el agua llegue de forma confiable. En una región con dieciséis pulgadas de
+          lluvia al año, eso suele ser la explicación completa del problema.
+        </p>
+        <p>
+          <strong>Luego lo demás que haya en la propiedad.</strong> Los edificios anexos se revisan si
+          existen, porque en terreno rural ahí es donde vive la población y la casa es nada más donde usted
+          la nota. Las bardas, el material guardado y la vegetación pegada a la construcción se leen como
+          parte del mismo cuadro.
+        </p>
+        <p>
+          <strong>Después el interior donde sea relevante</strong> — los cuartos donde de verdad está
+          viendo actividad, y los cuartos contiguos, que es donde normalmente está la explicación.
+        </p>
+        <p>
+          <strong>Y luego una conversación antes de aplicar nada</strong>, sobre qué se encontró, qué
+          significa, qué se va a hacer, cuánto cuesta y qué puede hacer usted que ayudaría. Esa última
+          parte no es relleno: en casi toda propiedad hay dos o tres cambios gratuitos que rinden más que
+          un tratamiento adicional.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que no hacemos</h2>
+      <div class="measure">
+        <p>
+          Una lista corta, publicada a propósito, porque saber dónde se detiene una compañía dice más que
+          leer todo lo que dice que empieza.
+        </p>
+        <p>
+          <strong>Fumigación.</strong> Requiere su propia certificación y no la tenemos — ni la estructural
+          ni la de productos almacenados. Si una construcción de verdad necesita fumigación con lona,
+          necesita una compañía certificada para eso, y se lo vamos a decir desde la primera llamada en lugar de venderle algo parecido.
+        </p>
+        <p>
+          <strong>Tratamiento térmico para chinches.</strong> El calor es un método específico que requiere
+          equipo específico. Las chinches se atienden aquí por medios convencionales con seguimiento
+          programado; donde el calor sea la respuesta correcta, ese es otro proveedor.
+        </p>
+        <p>
+          <strong>Jardinería de diseño, renta de contenedores, lavado a presión y demolición.</strong>
+          Oficios vecinos por los que nos preguntan constantemente porque el trabajo de limpieza de
+          terrenos parece una puerta de entrada. No lo es.
+        </p>
+        <p>
+          <strong>Y cualquier cosa que requiera una categoría de licencia que no tenemos.</strong> Las
+          cuatro categorías de la licencia son el límite, y el número está publicado en todas las páginas de
+          este sitio precisamente para que se pueda verificar en lugar de creerlo.
+        </p>
+        <p>
+          <strong>Rechazar trabajo no es una estrategia de negocio que nadie escogería</strong> en su primer
+          año. Es, sin embargo, la única forma de que el resto de este sitio signifique algo — y sale bastante
+          más barato que aprender un oficio nuevo en la propiedad de otra persona.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cuándo un servicio único basta y cuándo no</h2>
+      <div class="measure">
+        <p>
+          Es la pregunta que más afecta lo que va a gastar en un año, y este oficio tiene fama de
+          contestarla a su propio favor. Aquí va la versión honesta.
+        </p>
+        <p>
+          <strong>Un tratamiento único es lo correcto cuando el problema es un evento, no una
+          condición.</strong> Algo entró, se atiende, y la propiedad no tiene las características que lo
+          traerían de vuelta. Un panal de avispas. Una invasión aislada después de una lluvia. Una
+          construcción que acaba de limpiarse y cerrarse. Pagar un programa para atender algo que pasó una
+          sola vez es pagar tranquilidad, no resultado.
+        </p>
+        <p>
+          <strong>Un programa recurrente es lo correcto cuando hay presión continua</strong> que no se va a
+          ir — lo cual, en esta región, describe a la mayoría de las propiedades. Colindancia con campo
+          abierto o con agricultura. Terreno con edificios anexos. Construcción vieja con muchos puntos de
+          entrada. Cualquier lugar con actividad sostenida de alacranes. En esos casos el programa no es el
+          extra que le quieren vender: es el camino más barato, porque la alternativa es una serie de
+          tratamientos únicos a costo completo cada vez.
+        </p>
+        <p>
+          <strong>Cuál le recomendamos depende de lo que encuentre la inspección</strong>, no de cuál vale
+          más. Si su propiedad es una casa normal dentro del pueblo con un problema puntual, le vamos a
+          decir que un solo tratamiento debería bastar, y ahí se acaba la conversación.
+        </p>
+        <p>
+          <strong>Los programas corren cada dos meses o cada tres.</strong> Cada dos conviene con presión
+          sostenida; cada tres le sirve a la mayoría de las casas del pueblo. No hay contrato en ninguno de
+          los dos, ni plazo, ni cargo por cancelar, y las visitas intermedias van incluidas en lugar de
+          negociarse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Comercios y propiedad de renta</h2>
+      <div class="measure">
+        <p>
+          Los servicios de arriba aplican igual a negocios y a propiedad de renta, con algunas diferencias
+          prácticas que conviene saber antes de llamar.
+        </p>
+        <p>
+          <strong>Los negocios normalmente necesitan papeleo antes de que alguien entre.</strong> Un
+          certificado de seguro a nombre de su empresa es lo más común, y se arregla en minutos con
+          anticipación pero cuesta una visita si se descubre el mismo día.
+        </p>
+        <p>
+          <strong>Y hay una obligación legal que probablemente nadie le ha mencionado.</strong> Si
+          administra propiedad de renta de <strong>cinco unidades o más</strong>, o un lugar de trabajo, un
+          hotel, una bodega o un establecimiento de alimentos, el reglamento 4 TAC §7.146 nos obliga a
+          entregarle el aviso de tratamiento al menos cuarenta y ocho horas antes de una aplicación
+          interior. Y el §7.148 pone la obligación de <em>colocarlo</em> sobre usted — el dueño,
+          administrador o empleador — también con cuarenta y ocho horas de anticipación, en un área de
+          acceso común. Ese aviso está disponible en español.
+        </p>
+        <p>
+          <strong>En renta, además, hay que resolver quién autoriza.</strong> Quien paga, quien autoriza y
+          quien abre la puerta son con frecuencia tres personas distintas. Es completamente normal y no
+          retrasa nada, siempre que se resuelva antes de la visita en lugar de en la puerta.
+        </p>
+        <p>
+          <strong>Y la ventana entre inquilinos es la mejor del año.</strong> Una unidad vacía es la
+          propiedad más fácil de tratar bien: acceso completo, nada que rodear, y ninguna restricción por
+          ocupación. Esa ventana es corta, así que funciona mucho mejor planeada que reaccionada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Precio, garantía y contratos</h2>
+      <div class="measure">
+        <p>
+          <strong>No hay lista de precios en este sitio</strong>, y no es porque se esté escondiendo algo.
+          Un número publicado sin ver la propiedad o está lo bastante alto para cubrir el peor caso — y
+          entonces le cobra de más a la mayoría — o está lo bastante bajo para atraer la llamada, y
+          entonces no es el número que va a terminar pagando.
+        </p>
+        <p>
+          <strong>Lo que sí determina el precio</strong>, y se lo decimos completo: el tamaño y tipo de
+          construcción, cuántos edificios hay, cuál es la plaga, si es tratamiento único o programa
+          recurrente, y a qué distancia está de Seminole. Nada más. No hay precios de temporada alta, no
+          aparecen cargos que no se hablaron, y no se convierte una llamada única en un contrato que usted
+          no pidió.
+        </p>
+        <p>
+          <strong>Garantía de servicio de 30 días</strong> en el control de plagas general, con las
+          exclusiones escritas en lugar de dejadas a una conversación. El trabajo de termitas lleva su
+          propia garantía de un año de retratamiento — que cubre volver a tratar, <em>no</em> reparar daño,
+          y esa distinción es la que más se confunde en este oficio. Algunos servicios llevan sus propios
+          términos en vez de la garantía estándar, y en cada página se dice cuál es cuál. Los términos
+          completos están en la <a href="/our-guarantee/">página de garantía</a>.
+        </p>
+        <p>
+          <strong>Sin contratos, en ningún servicio.</strong> El servicio recurrente es cada dos o cada
+          tres meses, sin plazo mínimo, sin renovación automática y sin cargo por cancelar. Las visitas
+          intermedias entre servicios programados van incluidas, no se negocian — y en la práctica esa es
+          la parte que de verdad vale del servicio recurrente.
+        </p>
+        <p>
+          <strong>Sobre las cotizaciones por teléfono.</strong> La mayoría del trabajo de plagas general se
+          puede cotizar con precisión por teléfono si usted puede contestar unas cuantas preguntas: en qué
+          pueblo está y si es dentro o fuera del límite de la ciudad, qué tipo de construcción es y más o
+          menos de qué tamaño, cuántos edificios hay, qué está viendo y desde cuándo, y si ya se aplicó
+          algo. Eso es deliberado — manejar hasta una casa normal para cotizar un tratamiento normal le
+          desperdicia la tarde a usted y a nosotros, y ese costo termina metido en el precio de alguien.
+        </p>
+        <p>
+          <strong>Las termitas son la excepción</strong> y prácticamente siempre requieren inspección
+          primero. El plan depende del tipo de construcción, del suelo, del nivel del terreno, de si hay
+          losa o entrepiso, de dónde está la actividad y de qué está haciendo la construcción donde toca el
+          suelo. Quien cotice termitas por teléfono sin ver la propiedad está adivinando alto o piensa
+          corregir el número al llegar.
+        </p>
+        <p>
+          <strong>Descuento militar.</strong> Efectivo, cheque, tarjeta en persona o en línea, Venmo,
+          CashApp o Zelle, y financiamiento en trabajos grandes como los de termitas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    line="Llame o mande un mensaje de texto al (432) 278-7294 y hable en español directamente con el dueño. Dígale qué está viendo, dónde, cuántos edificios hay en la propiedad y si tiene una fecha límite."
+  />
+</BaseLayout>

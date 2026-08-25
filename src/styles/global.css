@@ -262,3 +262,12 @@ td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--rule); vertical-a
 td:first-child { color: var(--ink); font-weight: 600; }
 
 img { max-width: 100%; height: auto; }
+
+/* Language switcher — visually distinct from the main nav so it reads as a
+   mode change rather than another section. */
+.site-head nav.main a.lang-switch {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.9rem;
+}
