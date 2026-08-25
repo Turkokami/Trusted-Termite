@@ -1,0 +1,459 @@
+---
+/**
+ * Commercial vertical hub. /commercial/{vertical}/ per the frozen taxonomy.
+ *
+ * SCOPE DISCIPLINE: the six verticals come from VERTICALS in services.ts, which
+ * is C-07 — the commercial types the owner has ACTUALLY worked. The oilfield /
+ * man-camp vertical is HELD in CONTENT_BRIEF section 11 (C-07 shows no oilfield
+ * work done; C-12 says he wants it) and must not appear here until there is a
+ * real job to point at.
+ *
+ * THE REGULATORY SPINE OF THIS CLUSTER, verified Aug 2026:
+ * 4 TAC §7.146 enumerates the premises where a licensee must PROVIDE a pest
+ * control sign at least 48 hours before a planned INDOOR treatment, and the
+ * list maps almost exactly onto these verticals:
+ *   (a) residential rental property with FIVE OR MORE units
+ *   (b) workplaces — to the employer or building manager
+ *   (c) hospitals, nursing homes, hotels, motels, lodges, warehouses,
+ *       food-processing establishments, schools or educational institutions,
+ *       and day care centers — to the chief administrator, IPM Coordinator or
+ *       building manager
+ * §7.148 puts the POSTING duty on the unlicensed party — owner, manager,
+ * employer, chief administrator — also at least 48 hours ahead, in an area of
+ * common access, or by distributing the information to each unit treated and
+ * each adjacent unit.
+ * §7.147 governs the consumer information sheet, and (f) requires the
+ * Department's OWN sheet, published in English and Spanish.
+ * §7.146(d) and §7.147(g): exemptions for vacant/unused/unoccupied space and
+ * for emergency treatment, the latter requiring a signed statement kept with
+ * the pest control use records; an emergency is "an imminent hazard to health"
+ * and treatment is limited to the localized area.
+ * §7.146(e): sign at least 8.5x11in, first line 24-point minimum, remaining
+ * lines 12-point minimum. Spanish sign available from the department.
+ * §7.146(g): the pesticide hotline wording must be "National Pesticide
+ * Information Center 1-800-858-7378".
+ * §7.145: business name, licence number, phone and address on every contract
+ * AND every invoice, plus the jurisdiction statement on contracts, 8-point min.
+ * §7.144: pest control use records kept TWO YEARS, available to TDA on written
+ * or verbal request.
+ * §7.123: insurance not less than $500,000 / $1,000,000 aggregate.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { VERTICALS } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Commercial', path: '/commercial/' },
+];
+
+const blurbs: Record<string, string> = {
+  apartments: 'Five or more units changes your legal obligations, not just ours. Turnover is the best window you get all year.',
+  restaurants: 'German cockroaches are carried in, not sprayed in. Drains, deliveries and the record an inspector asks to see.',
+  hotels: 'Bed bugs are an introduction problem, and detection at turnover is the entire game.',
+  warehouses: 'Rodents, stored product and a roll-up door with a half-inch gap under it.',
+  retail: 'Back-of-house, deliveries and the hours nobody is watching.',
+  offices: 'Break rooms, the workplace notice rule, and the quiet building at the weekend.',
+};
+
+const quickAnswer =
+  'Commercial pest control from a licensed owner-operator across Gaines County and the Permian Basin, for the six premises types we have actually worked: apartments and property management, restaurants and food service, hotels and motels, warehouses, retail and offices. Texas puts specific notice duties on several of those — and some of them fall on you rather than on us.';
+
+const faqs = [
+  {
+    q: 'Do you work commercial property?',
+    a: 'Yes, in six categories: apartments and property management, restaurants and food service, hotels and motels, warehouses, retail and offices. Those are the premises types this business has actually serviced. We are not going to list categories we have not worked in order to look bigger — if you are outside those six, ask, and you will get a straight answer about whether we are the right fit.',
+  },
+  {
+    q: 'What is the 48-hour notice rule and does it apply to me?',
+    a: 'Under 4 TAC §7.146 a licensee must provide a pest control sign at least 48 hours before a planned indoor treatment at residential rental property with five or more units, at a workplace, and at hospitals, nursing homes, hotels, motels, lodges, warehouses, food-processing establishments, schools and day care centres. If you run any of those, it applies. The part people miss is §7.148: the duty to actually post that sign falls on you — the owner, manager, employer or chief administrator — not on the pest control company.',
+  },
+  {
+    q: 'What happens if the space is empty?',
+    a: 'Section 7.146(d) says a person is not in violation if the space to be treated is vacant, unused and unoccupied. That is one of several reasons turnover and out-of-hours work is easier for everybody, and it is worth building into how you schedule.',
+  },
+  {
+    q: 'What about a genuine emergency?',
+    a: 'Section 7.147(g) waives the pre-notification requirements where the customer and the certified applicator sign a statement attesting that an emergency exists requiring immediate treatment — with an emergency defined as an imminent hazard to health, and treatment limited to the localised area. That signed statement is kept with the pest control use records. It is a real provision, and it is not a way around routine scheduling.',
+  },
+  {
+    q: 'Will I get documentation for my inspector?',
+    a: 'Yes, and more of it than most operators volunteer. Under 4 TAC §7.145 the business name, licence number, telephone number and address must appear on every invoice, and contracts and service agreements additionally carry the Department jurisdiction statement. Under §7.144 we keep pest control use records for two years, including the pesticides used with their EPA registration numbers, amounts, mixing rates, target pest, date, and the applicator’s name and licence number. That record is what an inspector actually wants to see.',
+  },
+  {
+    q: 'Do you carry insurance and can I get a certificate?',
+    a: 'Yes. Maintaining general liability cover is a condition of holding a Texas business licence at all — 4 TAC §7.123 requires not less than $500,000 bodily injury and property damage with a $1,000,000 aggregate. A certificate naming your entity is available on request. Ask before the day rather than on it, because most commercial clients need it on file before a vendor comes on site.',
+  },
+  {
+    q: 'Can you service several properties on one visit?',
+    a: 'Yes, and it is usually the cheaper way to do it. Several properties in one town on one day is materially less expensive to deliver than the same properties treated as unrelated calls across three weeks, and it is less administration on your side too. Multi-property owners can be invoiced together.',
+  },
+  {
+    q: '¿Atienden negocios y propiedades comerciales?',
+    a: 'Sí — apartamentos y administración de propiedades, restaurantes y servicio de alimentos, hoteles y moteles, bodegas, comercio minorista y oficinas. El dueño hace el trabajo personalmente y habla español, así que puede coordinar con su personal directamente. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Commercial Pest Control | West Texas"
+  description="Apartments, restaurants, hotels, warehouses, retail and offices across the Permian Basin — with the Texas notice rules that apply to you, not just to us."
+  path="/commercial/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Commercial</p>
+      <h1>Commercial pest control</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Six premises types, and they are the six this business has actually worked rather than a list
+          assembled to look comprehensive. If your situation is outside them, ask — you will get a straight
+          answer about whether we are the right fit, which is worth more than a booking that goes badly.
+        </p>
+        <p>
+          The thing worth knowing before you read any further is that Texas puts pest control notice duties
+          on <em>you</em> as well as on us, and most commercial customers have never been told what theirs
+          are. That is the section below.
+        </p>
+      </div>
+
+      <div class="grid c3" style="margin-top:2.4rem">
+        {VERTICALS.map((v) => (
+          <a class="card" href={`/commercial/${v.slug}/`}>
+            <h3>{v.name}</h3>
+            <p>{blurbs[v.slug]}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The notice rule, and the half of it that is yours</h2>
+      <div class="measure">
+        <p>
+          Rule 4 TAC §7.146 is the pest control sign requirement, and its list of premises reads almost
+          exactly like a list of commercial customers.
+        </p>
+        <p>
+          <strong>A licensee must provide a pest control sign at least forty-eight hours before a planned
+          indoor treatment</strong> at: residential rental property with <strong>five or more</strong>
+          rental units, to the owner or manager; at a <strong>workplace</strong>, to the employer or
+          building manager; and at a <strong>hospital, nursing home, hotel, motel, lodge, warehouse,
+          food-processing establishment, school or educational institution, or day care centre</strong>, to
+          the chief administrator, IPM Coordinator or building manager.
+        </p>
+        <p>
+          <strong>That obligation is ours.</strong> We supply the sign, on time, before the work.
+        </p>
+        <p>
+          <strong>The next one is yours, and it is the one people do not know about.</strong> Rule 4 TAC
+          §7.148 places the posting duty on the unlicensed party. Owners or managers of residential rental
+          property with five or more units must either post the sign in an area of common access to
+          residents at least forty-eight hours before the planned indoor treatment, or distribute the
+          application information to each unit planned to be treated and each adjacent unit — again at
+          least forty-eight hours ahead — and make the consumer information sheet available on request.
+        </p>
+        <p>
+          <strong>Employers, building managers, IPM coordinators and chief administrators</strong> of
+          workplaces, hospitals, nursing homes, hotels, motels, lodges, warehouses, food-processing
+          establishments, schools and day care centres must post the sign in an area of common access at
+          least forty-eight hours before each planned indoor treatment, and make the consumer information
+          sheet available to anyone working or residing in the building who asks for it.
+        </p>
+        <p>
+          <strong>Schools and day cares carry an extra one.</strong> Chief administrators or IPM
+          coordinators must notify parents and guardians in writing that pesticides are applied
+          periodically indoors and outdoors, and that information on times, types and prior notification is
+          available on request — with that notification made at the time of student registration.
+        </p>
+        <p>
+          <strong>Why we tell you this rather than quietly handing over a sign.</strong> Because a
+          compliance obligation you do not know you have is one you are not meeting, and because the
+          forty-eight hours only works if somebody actually posts the thing. Coordinating that is part of
+          scheduling a commercial job properly, and it is a conversation worth having before the first
+          visit rather than after an inspection.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The details of the sign itself</h2>
+      <div class="measure">
+        <p>
+          Worth knowing, because a non-compliant sign is not a compliant one and the specifications are
+          precise.
+        </p>
+        <p>
+          <strong>Size and type.</strong> At least eight and a half by eleven inches, with the first line
+          in a minimum of 24-point type — a quarter inch — and all remaining lines in a minimum of 12-point,
+          an eighth of an inch.
+        </p>
+        <p>
+          <strong>Format.</strong> The sign must appear in a format approved by the Department, and the
+          text and format are published on the Structural Pest Control Service website. Advertising and
+          logos may be added, but only to the extent that they do not interfere with the purpose of public
+          notification.
+        </p>
+        <p>
+          <strong>Contact information.</strong> In the space marked "For more information call or contact,"
+          the telephone number to obtain information on the pesticides used must be listed — which may be
+          the apartment manager, the building manager, the IPM coordinator or the pest control operator.
+        </p>
+        <p>
+          <strong>The hotline wording is prescribed.</strong> In the space marked "phone number of hotline
+          for pesticide information," the rule requires this exact wording: National Pesticide Information
+          Center 1-800-858-7378. A workplace with its own pesticide information centre may substitute its
+          own number.
+        </p>
+        <p>
+          <strong>Spanish.</strong> A standard sign in Spanish is available from the Department on request,
+          and the consumer information sheet is published in both English and Spanish. In this part of
+          Texas that is not a courtesy feature — for a great many buildings it is the difference between
+          notice that works and notice that is technically posted.
+        </p>
+        <p>
+          <strong>When it does not apply.</strong> Section 7.146(d): a person is not in violation if the
+          space to be treated is vacant, unused and unoccupied, or if extenuating circumstances require an
+          emergency treatment. Section 7.148(e) adds that you are not in violation if the sign is removed
+          by an unauthorised person, or if the space was vacant at the time of treatment.
+        </p>
+        <p>
+          <strong>And the emergency waiver.</strong> Section 7.147(g) waives the pre-notification
+          requirements where the customer and the certified applicator sign a statement attesting that an
+          emergency exists requiring immediate treatment. An emergency is defined as an imminent hazard to
+          health, treatment is limited to the localised area, and the signed statement is kept on file with
+          the pest control use records. It is a genuine provision for a genuine situation, not a shortcut
+          around scheduling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What commercial work has in common, whatever the premises</h2>
+      <div class="measure">
+        <p>
+          The six pages above deal with what is specific to each sector. A few things run through all of
+          them and are worth setting out once.
+        </p>
+        <p>
+          <strong>The problem is almost never where it is noticed.</strong> A sighting on a sales floor,
+          in a dining room or in an office corridor is an animal in transit. The source is in a service
+          area, a void, a drain, a stockroom or a delivery route. A programme aimed at where customers see
+          things is aimed at the symptom, and it is the most common reason commercial pest control feels
+          like a subscription rather than a solution.
+        </p>
+        <p>
+          <strong>Deliveries are the introduction route.</strong> German cockroaches do not live outdoors
+          in Texas — AgriLife states it plainly — so a population in a commercial building was carried in.
+          In cartons, in produce, in second-hand equipment, on a pallet, or from an adjoining unit. Which
+          means inspecting what arrives does more than treating the perimeter, because there is no
+          perimeter population to treat.
+        </p>
+        <p>
+          <strong>Cardboard is harbourage, nesting material and a delivery vehicle at once.</strong>
+          Wherever it accumulates — a stockroom, a dock, a dry store — it is doing all three jobs. Breaking
+          it down promptly is one of the cheapest interventions available in any commercial setting.
+        </p>
+        <p>
+          <strong>Doors decide most of it.</strong> Roll-up thresholds, personnel door sweeps, receiving
+          doors propped open, and gaps at the slab. The exclusion standard is a quarter of an inch, sealed
+          with metal or concrete rather than foam, plastic, wood or rubber, all of which are gnawable.
+        </p>
+        <p>
+          <strong>The quiet hours are when it happens.</strong> Every commercial building is unobserved for
+          most of the day or most of the week, and that is when activity establishes. It is also why
+          monitoring devices reported over time beat a fixed application schedule — they see the hours
+          nobody is there.
+        </p>
+        <p>
+          <strong>And drains dry out.</strong> In every one of these sectors, the traps that dry are the
+          ones in areas nobody uses, and a dry trap is an open pipe from the sewer. AgriLife's guidance is
+          verbatim: keep P-traps filled with water to create a barrier between the sewer and the building.
+          Running water through the seldom-used fixtures weekly costs nothing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What you get on paper</h2>
+      <div class="measure">
+        <p>
+          On commercial work the documentation is frequently the point. An inspector, an insurer, a
+          franchisor or a corporate auditor is going to ask for a record, and the record either exists in
+          usable form or it does not.
+        </p>
+        <p>
+          <strong>Every invoice</strong> carries the business name, licence number, telephone number and
+          address, as 4 TAC §7.145(b) requires. <strong>Every contract, service agreement, warranty and
+          guarantee</strong> carries all of that plus the Department jurisdiction statement under
+          §7.145(a). Both must be legible and in at least 8-point type.
+        </p>
+        <p>
+          <strong>Pest control use records</strong> are kept for two years under §7.144, and they are
+          detailed: your billing name and address, the service address, the pesticides used <em>with their
+          EPA registration numbers</em>, total amounts applied, devices used and quantities, the mixing
+          rate, the target pest or purpose, the date of application, and the applicator's name and licence
+          number alongside the business licence number. Those records must be made available to the
+          Department on written or verbal request — and they are what your inspector actually wants.
+        </p>
+        <p>
+          <strong>The Department's consumer information sheet</strong> under §7.147, in English or Spanish,
+          which for five-plus-unit rentals, workplaces and institutions we supply to the manager along with
+          the sign.
+        </p>
+        <p>
+          <strong>A certificate of insurance</strong> naming your entity, on request. Maintaining general
+          liability cover is a continuing condition of holding a Texas business licence — §7.123 sets it at
+          not less than $500,000 bodily injury and property damage with a $1,000,000 annual aggregate, with
+          the Department entitled to thirty days' notice before any cancellation.
+        </p>
+        <p>
+          <strong>Ask for the certificate before the day.</strong> It is the single most common reason a
+          commercial visit gets turned away at the gate, and it takes minutes to arrange in advance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How commercial work is actually run here</h2>
+      <div class="measure">
+        <p>
+          <strong>The licence holder does the work.</strong> Not a technician under general supervision,
+          not a rotating route. On commercial premises that matters more than on a house, because the value
+          of a service programme is cumulative — somebody who was in your building last quarter knows what
+          has changed since, and continuity is the thing route-based operators structurally cannot offer.
+        </p>
+        <p>
+          <strong>Scheduling around your operation, not ours.</strong> Out of hours where the premises need
+          it, at turnover where that is the sensible window, and grouped across multiple properties where
+          you have them. On the far towns this runs as a planned day, so notice buys a much better slot
+          than urgency does.
+        </p>
+        <p>
+          <strong>Inspection before treatment, every time.</strong> Commercial buildings hide their
+          problems in service areas, voids, drains and delivery routes rather than in the parts customers
+          see. A programme built on where activity actually is beats one built on a fixed application
+          schedule, and it usually costs less.
+        </p>
+        <p>
+          <strong>Monitoring where it earns its place.</strong> Sticky-card monitors along walls and
+          equipment edges find harbourage that inspection alone misses, and they turn "is it getting
+          better" from an argument into a reading.
+        </p>
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly with no term, no
+          auto-renewal and no cancellation fee. If the programme is working you will keep it because it is
+          working.
+        </p>
+        <p>
+          <strong>And the honest limit.</strong> This is one truck covering a hundred-mile radius. If your
+          requirement is a technician on site within two hours, or overnight coverage across several sites
+          simultaneously, we are not the right answer and we will say so on the phone rather than after
+          taking the contract.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Getting a commercial quote that means something</h2>
+      <div class="measure">
+        <p>
+          Four answers turn a vague enquiry into an accurate number, and they take about a minute.
+        </p>
+        <p>
+          <strong>The premises type and rough size.</strong> Floor area for a warehouse or a shop, unit
+          count for an apartment property, room count for lodging, covers or kitchen size for food service.
+          That sets the scale of the job more than anything else.
+        </p>
+        <p>
+          <strong>What you are actually seeing, and where.</strong> Front of house or back, which room,
+          what time of day, and how long it has been going on. Photographs help enormously here — a
+          half-inch striped roach and a two-inch reddish one are entirely different jobs.
+        </p>
+        <p>
+          <strong>Whether anything is driving a deadline.</strong> A health inspection, a corporate audit,
+          a franchisor visit, a lease requirement, a guest complaint already logged. Deadlines change
+          scheduling more than urgency does, and they are worth leading with rather than mentioning at the
+          end.
+        </p>
+        <p>
+          <strong>And the paperwork you need.</strong> Certificate of insurance, whether service records
+          have to go to a head office or a management company, and whether anybody has to be notified
+          before work happens. Sorting that on the first call takes four minutes; sorting it at the door
+          costs a visit.
+        </p>
+        <p>
+          <strong>Then expect an inspection before a firm price on anything substantial.</strong> Commercial
+          buildings hide their problems, and a number quoted without seeing the service areas is either
+          padded or about to change. What you can get on the phone is a realistic range and an honest view
+          of whether we are the right fit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we do not do</h2>
+      <div class="measure">
+        <p>
+          Published deliberately, because on commercial work the cost of finding out mid-contract is higher
+          than on a house.
+        </p>
+        <p>
+          <strong>No fumigation.</strong> Structural fumigation and commodity fumigation are separate
+          licence categories under 4 TAC §7.124 and neither is held here. A warehouse or a commodity
+          operation that genuinely needs fumigation needs a company certified for it.
+        </p>
+        <p>
+          <strong>No bed bug heat treatment.</strong> Conventional chemical treatment with scheduled
+          follow-up is what is offered. Where thermal remediation is the right answer for a property, that
+          is a different provider.
+        </p>
+        <p>
+          <strong>No oilfield or man-camp vertical.</strong> It gets asked about constantly in this region
+          and it is not on the list above, because this business has not done that work yet. When there is
+          a real job to point at, there will be a page. Until then, listing it would be a claim about
+          experience that does not exist.
+        </p>
+        <p>
+          <strong>No landscaping, dumpster rental, pressure washing or demolition.</strong> Lot clearing
+          and junk removal are offered because they remove pest harbourage; they are not a doorway into
+          adjacent trades.
+        </p>
+        <p>
+          <strong>And nothing outside the four licence categories held</strong> — pest control, termite and
+          wood destroying insect control, lawn and ornamental, and weed control. The
+          <a href="/compliance/pest-control-licence/">licence page</a> explains what those cover and how to
+          verify them, on us and on anybody else you are considering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Commercial pest control questions" />
+  <Cta
+    line="Tell him the premises type, roughly how many units or how much floor area, and whether you need a certificate of insurance on file. Those three answers get a usable quote on the first call."
+  />
+</BaseLayout>

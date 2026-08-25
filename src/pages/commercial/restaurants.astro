@@ -1,0 +1,415 @@
+---
+/**
+ * Commercial vertical — restaurants and food service. C-07 verified.
+ *
+ * REGULATORY SPINE, verified Aug 2026:
+ *  - 4 TAC §7.146(c): a licensee must provide a pest control sign at least 48
+ *    hours before a planned indoor treatment at, among others, a
+ *    FOOD-PROCESSING ESTABLISHMENT — to the chief administrator, IPM
+ *    Coordinator or building manager. §7.148(b) puts the POSTING duty on them.
+ *  - A restaurant is also a WORKPLACE under §7.146(b)/§7.147(d): sign and
+ *    consumer information sheet to the employer or building manager, employer
+ *    posts >=48h ahead in an area of common access employees are most likely to
+ *    see, sheet available on request during normal business hours.
+ *  - §7.144: pest control use records kept 2 years, incl. pesticide names AND
+ *    EPA registration numbers, amounts, mixing rate, target pest, date,
+ *    applicator name + licence number, business TPCL. Available to TDA on
+ *    written or verbal request. THIS is the record an inspector wants.
+ *  - §7.145(b): business name, licence number, phone, address on every invoice.
+ *  - Health & Safety Code §341.011(3): a public health nuisance includes "a
+ *    restaurant, food market, bakery, other place of business, or vehicle in
+ *    which food is prepared, packed, stored, transported, sold, or served to
+ *    the public and that is not constantly maintained in a sanitary condition."
+ *    §341.011(1): "a condition or place that is a breeding place for flies and
+ *    that is in a populous area."
+ *
+ * GERMAN COCKROACH (AgriLife ENTO-037) — the defining pest. Does NOT live
+ * outdoors in Texas; carried in. 75% of life in cracks 1/32-3/16 in. Female
+ * carries ootheca to hatch. 30-40 nymphs/capsule, nymph->adult 50-60 days,
+ * optimum ~80F, a generation in ~100 days. Bug bombs do not penetrate cracks.
+ * Daytime sightings indicate a large population. Dispersal beyond the kitchen
+ * is a severity indicator. Public-health pest; allergen/asthma link (NIEHS);
+ * HEPA vacuum. Baits primary: >=1 placement within 1-2 ft of every suspected
+ * harbourage, many small pea-sized placements beat few large; rotate active
+ * ingredient if no result at 2-3 weeks. Boric acid effective, applied so
+ * lightly residue is barely visible. Hair dryer to flush harbourage.
+ *
+ * AMERICAN COCKROACH (ENTO-037): largest roach in Texas, 1.5-2 in, reddish
+ * brown with tan/light-yellow banding outlining the pronotum, both sexes fly.
+ * Outdoor/commercial-building insect: compost, ground cover, hollow trees,
+ * mulch, stumps, woodpiles, SEWER MANHOLES, underground water meters; "one of
+ * the most common cockroaches in sewer systems". Enters via poorly sealed
+ * doors, roof soffits and FLOOR DRAINS. Prevention verbatim: "Keep P-traps
+ * filled with water to create a barrier between the sewer and the home or
+ * business." "Check the threshold seals under doors and ensure that roof
+ * soffits are screened." Development ~600 days; adults 1-2 years.
+ * ORIENTAL COCKROACH: dark brown/black, ~1.25 in, does not fly, prefers cooler
+ * ground-level sites, also uses floor drains.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Commercial', path: '/commercial/' },
+  { name: 'Restaurants & food service', path: '/commercial/restaurants/' },
+];
+
+const quickAnswer =
+  'Food service pest control across the Permian Basin, from a licensed owner-operator. Two facts shape almost every job: German cockroaches are carried in rather than sprayed in, and a large reddish roach at night is nearly always a drain or door problem rather than an infestation. The service record we keep under 4 TAC §7.144 is the document your inspector actually wants to see.';
+
+const faqs = [
+  {
+    q: 'What record will my health inspector ask for?',
+    a: 'The service record, and it is more detailed than most operators volunteer. Under 4 TAC §7.144 pest control use records are kept for two years and must include the service address, the pesticides used with their EPA registration numbers, total amounts applied, devices used, the mixing rate, the target pest or purpose, the date of application, and the applicator’s name and licence number alongside the business licence number. Ask for copies for your own file — an inspector wants to see a documented programme, not a receipt.',
+  },
+  {
+    q: 'Does the 48-hour notice rule apply to a restaurant?',
+    a: 'Yes, on two separate footings. A restaurant is a workplace under 4 TAC §7.146(b), and a food-processing establishment is named specifically in §7.146(c). Either way we must provide a pest control sign at least 48 hours before a planned indoor treatment — and under §7.148(b) the employer or building manager, not us, must post it in an area of common access at least 48 hours ahead, and make the consumer information sheet available to anyone working in the building who asks.',
+  },
+  {
+    q: 'Why does spraying not fix German cockroaches?',
+    a: 'Because of where they live and how they breed. AgriLife records that German cockroaches spend about seventy-five percent of their lives in crevices between a thirty-second and three-sixteenths of an inch wide, and that total-release aerosols generally do not eliminate them because they do not penetrate those cracks. On top of that, the female carries the egg capsule until the nymphs are ready to emerge, so surface insecticide largely misses the next generation. Correctly placed gel bait, sanitation and crevice sealing are the treatment; the spray is the least effective part.',
+  },
+  {
+    q: 'I have a big reddish roach in the dining room at night. Is my kitchen infested?',
+    a: 'Almost certainly not, and this is the most useful distinction in food service. A large reddish-brown roach an inch and a half to two inches long, with tan banding outlining the shield behind the head, is an American cockroach — an outdoor and sewer insect that AgriLife describes as one of the most common cockroaches in sewer systems. It came in through a floor drain, a poorly sealed door threshold or a roof soffit. That is a plumbing and exclusion problem. A half-inch light brown roach with two dark stripes in the kitchen is a German cockroach and a genuine infestation. They are completely different jobs.',
+  },
+  {
+    q: 'What is the single cheapest thing I can do?',
+    a: 'Keep the P-traps filled. AgriLife’s prevention guidance is verbatim: keep P-traps filled with water to create a barrier between the sewer and the home or business. A floor drain that has dried out — in a walk-in, a mop sink, an unused prep area — is an open pipe from the sewer into your building, and American and oriental cockroaches use floor drains as common points of entry. Running water down every drain weekly costs nothing.',
+  },
+  {
+    q: 'Do you treat during service hours?',
+    a: 'Not usually, and you would not want us to. Food service work is generally done outside operating hours, which suits the treatment as much as it suits you — surfaces are clear, equipment can be moved, and the crevice work that actually matters is reachable. Where a premises is genuinely twenty-four hour, we plan around the quietest window and the vacant-space provisions in the rules.',
+  },
+  {
+    q: 'Is the sanitation conversation going to be a lecture?',
+    a: 'No, and it is not a way of shifting blame either. AgriLife’s own control hierarchy is inspection, sanitation, exclusion and then low-toxicity insecticides — sanitation is in it because it works, not because the customer is at fault. Most food service premises are run well and still have specific harbourage points: under and behind equipment, in motor housings, in the seams of cracked coving, behind a splashback. Finding those is the job.',
+  },
+  {
+    q: '¿Atienden restaurantes y cocinas comerciales?',
+    a: 'Sí. El dueño hace el trabajo personalmente y habla español, lo cual importa en una cocina donde gran parte del personal lo prefiere. Guardamos los registros de aplicación durante dos años, como exige 4 TAC §7.144 — que es el documento que le va a pedir el inspector. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Restaurant Pest Control | Permian Basin"
+  description="Food service pest control with the documentation an inspector asks for. German cockroach programmes, drain and door exclusion, out-of-hours service."
+  path="/commercial/restaurants/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Commercial · restaurants &amp; food service</p>
+      <h1>Restaurants and food service</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Food service is the category where pest control stops being about comfort and starts being about
+          your licence to operate. It is also the category where the two most common calls turn out to be
+          completely different problems that look similar to everybody except an entomologist.
+        </p>
+        <p>
+          So this page starts with that distinction, because getting it right is the difference between a
+          plumbing repair and a treatment programme.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Two roaches, two entirely different problems</h2>
+      <div class="measure">
+        <p>
+          <strong>The half-inch one with two stripes.</strong> Light brown, half to five-eighths of an
+          inch, with two dark parallel stripes running down the shield behind the head. That is a
+          <strong>German cockroach</strong>, and it is a genuine infestation.
+        </p>
+        <p>
+          <strong>The big reddish one at night.</strong> An inch and a half to two inches — the largest
+          cockroach in Texas — reddish brown with tan to light-yellow banding outlining the pronotum, and
+          it flies. That is an <strong>American cockroach</strong>, and it is almost certainly a wanderer
+          rather than a resident.
+        </p>
+        <p>
+          <strong>Why the distinction is so sharp.</strong> AgriLife's ENTO-037 states that German
+          cockroaches "do not live outdoors in Texas" and "spend their lives indoors." They are carried in
+          — in cartons, in produce deliveries, in second-hand equipment, in a supplier's crate. Perimeter
+          treatment does nothing about them because there is no perimeter population.
+        </p>
+        <p>
+          <strong>American cockroaches are the opposite.</strong> They are outdoor and commercial-building
+          insects, living in compost, ground cover, hollow trees, mulch, old stumps, woodpiles, sewer
+          manholes and underground water meters — and AgriLife calls them one of the most common
+          cockroaches in sewer systems. They "live mostly outdoors but may move indoors in search of food
+          or water," entering through poorly sealed doors, roof soffits and floor drains.
+        </p>
+        <p>
+          <strong>So one is a treatment programme and the other is a maintenance job.</strong> Confusing
+          them means either spending on a spray programme aimed at an animal that is walking in through a
+          dry drain, or dismissing a genuine German cockroach problem as "just one roach."
+        </p>
+        <p>
+          <strong>There is a third worth knowing.</strong> The oriental cockroach — dark brown to black,
+          around an inch and a quarter, does not fly, wings short in both sexes — prefers cooler
+          ground-level sites like basements, crawl spaces and wet areas, and also uses floor drains to get
+          in. Same category of problem as the American.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Drains, doors and soffits — the cheap half of the job</h2>
+      <div class="measure">
+        <p>
+          AgriLife's prevention guidance for the large peridomestic roaches is three sentences long and
+          costs almost nothing to act on.
+        </p>
+        <p>
+          <strong>"Keep P-traps filled with water to create a barrier between the sewer and the home or
+          business."</strong> This is the single highest-value item on this page. A floor drain that has
+          dried out is an open pipe from the sewer into your building. The drains that dry are the ones
+          nobody uses — in a walk-in, under a three-compartment sink that is out of service, in a mop
+          closet, in a prep area that changed use. Running water down every drain weekly, or fitting trap
+          primers where a drain is chronically dry, closes the route entirely.
+        </p>
+        <p>
+          <strong>"Check the threshold seals under doors."</strong> Back doors in food service take
+          enormous punishment, get propped open during deliveries and service, and the sweep is usually the
+          first thing to fail. A door that latches perfectly can still have a measurable gap at the bottom.
+        </p>
+        <p>
+          <strong>"Ensure that roof soffits are screened."</strong> Under-inspected everywhere and
+          particularly on older buildings, where a torn or missing soffit screen is an open route into the
+          ceiling void.
+        </p>
+        <p>
+          <strong>Add the ones specific to this region.</strong> Dumpster placement and the ground under it
+          — grease and food residue in gravel or caliche supports a permanent population a few yards from
+          your back door. Grease trap condition, and how often it is actually pumped. Standing water anywhere on the lot, which in a semi-arid
+          climate is the only reliable moisture for a hundred feet and draws everything.
+        </p>
+        <p>
+          <strong>And flies.</strong> Texas Health and Safety Code §341.011(1) makes a condition or place
+          that is a breeding place for flies, in a populous area, a public health nuisance in its own
+          right. Drain flies in particular are a biofilm problem living inside the drain itself rather than an airborne
+          problem in the room, and cleaning the biofilm off the drain wall is the fix, rather than spraying the
+          air above it or pouring something down and hoping.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A German cockroach programme in a kitchen</h2>
+      <div class="measure">
+        <p>
+          AgriLife's stated hierarchy is inspection, sanitation, exclusion, then low-toxicity insecticides.
+          In a commercial kitchen that plays out specifically.
+        </p>
+        <p>
+          <strong>Inspection and monitoring.</strong> Sticky-card monitors along walls and equipment
+          edges, which find harbourage rather than guessing at it and give you a reading over time instead
+          of an argument. A hair dryer is a legitimate inspection tool here — warm air flushes roaches out
+          of harbourage so you can see where they actually are.
+        </p>
+        <p>
+          <strong>Where they actually are.</strong> Dark shelter near moisture and food. Under sinks,
+          behind plumbing, behind and under appliances, in cabinet voids, behind coving and baseboards, in
+          motor housings and equipment legs, in the seams of stainless where it meets the wall. Warm
+          equipment is a particular draw — optimum development temperature is around eighty degrees, which
+          describes the space behind a dish machine rather well.
+        </p>
+        <p>
+          <strong>Sanitation and moisture, without the lecture.</strong> Cleaning under and behind
+          equipment where residues accumulate, and fixing leaks — AgriLife names removing moisture sources
+          explicitly. Most food service premises are run properly and still have three or four specific
+          points where residue and moisture meet, and those points are the job.
+        </p>
+        <p>
+          <strong>Vacuuming with a HEPA filter</strong> — AgriLife specifies HEPA because cockroach
+          harbourages contain allergens. It removes the population and its food residues at once and gives
+          an immediate reduction that bait takes weeks to match.
+        </p>
+        <p>
+          <strong>Sealing the crevices.</strong> Cabinet voids, penetrations for plumbing and electrical,
+          gaps behind splashbacks, cracked coving. In a kitchen this is also a cleanability improvement, so
+          it tends to pay for itself twice.
+        </p>
+        <p>
+          <strong>Bait, placed properly.</strong> At least one placement within one to two feet of every
+          suspected harbourage, with many small pea-sized placements rather than a few large ones. If the
+          population has not responded within two to three weeks, rotate to a different bait with a new
+          active ingredient rather than repeating. Boric acid dust remains highly effective, applied so
+          lightly the residue is barely visible.
+        </p>
+        <p>
+          <strong>Two readings that tell you how bad it is.</strong> Daytime sightings — AgriLife notes
+          that seeing cockroaches during the day usually means there are a lot of them around. And
+          dispersal: as a population grows and food runs short they spread out of the kitchen into dining
+          areas, offices and storage. A report from front of house is a severity indicator rather than a
+          location detail, and it changes the scope of the job.
+        </p>
+        <p>
+          <strong>And two things to stop your staff doing.</strong> Setting off foggers, which AgriLife
+          says do not work and which scatter the population. And spraying retail product over bait
+          placements — many are repellent and will drive roaches away from the bait that was about to kill
+          them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The paperwork, and why it is the deliverable</h2>
+      <div class="measure">
+        <p>
+          On residential work the deliverable is the outcome. In food service the documentation is half the
+          product, because somebody with authority is going to ask to see it.
+        </p>
+        <p>
+          <strong>Pest control use records, kept two years.</strong> Rule 4 TAC §7.144 requires each record
+          to contain the customer billing name and address, the service address, the pesticide names
+          <em>and their EPA registration numbers</em>, total amounts of ready-to-use pesticide applied, the
+          devices used and quantities, the mixing rate and total amount of material applied, the target
+          pest or purpose, the date of application, and the applicator's name and licence number along with
+          the business licence number. Those records must be made available to the Department on written or
+          verbal request.
+        </p>
+        <p>
+          <strong>That is the document your inspector wants.</strong> Not an invoice showing that somebody
+          came. A record showing what was applied, where, at what rate, against what, by whom, on what
+          date — and a pattern of that over time demonstrating a programme rather than a reaction. Ask for
+          copies for your own file and keep them where you can find them.
+        </p>
+        <p>
+          <strong>Invoices carry their own requirements.</strong> Under §7.145(b) the business name,
+          licence number, telephone number and address must appear on the face of every invoice, and under
+          §7.145(a) contracts and service agreements additionally carry the Department jurisdiction
+          statement. Both legible and in at least 8-point type.
+        </p>
+        <p>
+          <strong>The notice regime applies to you twice over.</strong> A restaurant is a workplace under
+          §7.146(b) and a food-processing establishment is named explicitly in §7.146(c). We provide the
+          sign at least forty-eight hours before a planned indoor treatment; under §7.148(b) you post it in
+          an area of common access at least forty-eight hours ahead and make the consumer information sheet
+          available to anyone working in the building who asks. Section 7.147(d) adds that the sheet be
+          available on request during normal business hours.
+        </p>
+        <p>
+          <strong>A certificate of insurance</strong>, naming your entity, on request — and worth arranging
+          before the first visit rather than at the door.
+        </p>
+        <p>
+          <strong>And the wider legal frame.</strong> Texas Health and Safety Code §341.011(3) makes a
+          public health nuisance of a restaurant, food market, bakery, other place of business, or vehicle
+          in which food is prepared, packed, stored, transported, sold or served to the public that is not
+          constantly maintained in a sanitary condition. Pest management is part of what "constantly
+          maintained" means in practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Rodents in food premises</h2>
+      <div class="measure">
+        <p>
+          Less common than roaches in this sector and far more consequential when it happens.
+        </p>
+        <p>
+          <strong>The entry standard is a quarter inch.</strong> A house mouse can squeeze under a gap
+          around a quarter of an inch — AgriLife's school IPM material puts it at openings as small as a
+          quarter inch in diameter, and describes a mouse getting through a hole the size of a pencil
+          diameter. Rats need slightly more than half an inch. The practical exclusion standard is to seal
+          everything larger than a quarter inch, because juveniles are the concern.
+        </p>
+        <p>
+          <strong>Seal with material they cannot chew.</strong> Metal or concrete. Foam, plastic, wood and
+          rubber are all gnawable and should not be relied on as a permanent rodent seal — a point New
+          Mexico State extension makes explicitly. Quarter-inch hardware cloth for mice, half-inch mesh for
+          rats, galvanised sheet metal at 24 gauge or heavier.
+        </p>
+        <p>
+          <strong>They travel along edges.</strong> The behaviour has a name — thigmotaxis — and AgriLife
+          names it: rodents follow linear pathways, the corners between walls and floors, and the base of
+          foundations. That is where monitoring and traps go, close enough to the wall that the animal
+          passes directly over the trigger, and no more than about ten feet apart in an active area.
+        </p>
+        <p>
+          <strong>Mice work in a small radius.</strong> They seldom venture more than about thirty feet
+          from the nest and food supply, returning to the nest up to forty times a day. Which is why mouse
+          control is about density of devices in a small area rather than perimeter treatment — and why
+          finding the harbourage matters more than covering ground.
+        </p>
+        <p>
+          <strong>Storage practice does a lot of the work.</strong> Food in metal, glass or heavy plastic
+          with tight lids. Stored material kept eighteen inches off the floor and away from walls, which is
+          both a rodent measure and an inspection one, because you cannot see a runway you cannot get to.
+        </p>
+        <p>
+          <strong>And deliveries are the introduction route</strong> for a great deal of what arrives in
+          food premises — rodents, German cockroaches and stored product insects alike. Inspecting incoming
+          cartons at the door, and breaking down cardboard rather than storing it long term, closes off
+          more problems than any amount of treatment does afterwards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How the service runs</h2>
+      <div class="measure">
+        <p>
+          <strong>Outside operating hours, generally.</strong> Which suits the work as much as the
+          business: surfaces clear, equipment movable, crevices reachable, and no notice complications from
+          treating occupied space.
+        </p>
+        <p>
+          <strong>The licence holder does the work.</strong> On a food premises that continuity matters
+          more than almost anywhere else, because a programme is cumulative — knowing that the gap behind
+          the dish machine was sealed in March, and that the monitor by the walk-in has been clean since,
+          is what turns visits into a trend.
+        </p>
+        <p>
+          <strong>Monitoring reported rather than assumed.</strong> Sticky-card readings over time are the
+          honest measure of whether a programme is working, and they are also the thing that tells you when
+          to escalate rather than repeat.
+        </p>
+        <p>
+          <strong>Recurring service with no contract.</strong> Bi-monthly or quarterly, no term, no
+          cancellation fee, interim visits between scheduled ones included rather than negotiated. In food
+          service the interim call is the whole point — something turns up, you need somebody, and you
+          should not be re-negotiating a price to get one.
+        </p>
+        <p>
+          <strong>And the honest limits.</strong> No fumigation — structural and commodity fumigation are
+          separate licence categories and neither is held here. No bed bug heat treatment. If your
+          situation genuinely calls for either, you need a company certified for it and you will be told so
+          on the phone rather than after taking the work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Restaurant pest control questions" />
+  <Cta
+    line="Describe the roach before anything else — half an inch with two stripes, or an inch and a half and reddish. Those are two different problems and the answer to one is a plumbing job."
+  />
+</BaseLayout>

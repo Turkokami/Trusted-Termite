@@ -1,0 +1,436 @@
+---
+/**
+ * Commercial vertical — hotels and motels. C-07 verified.
+ *
+ * REGULATORY: 4 TAC §7.146(c) names "hotel, motel, lodge" explicitly among the
+ * premises where a licensee must provide a pest control sign at least 48 hours
+ * before a planned indoor treatment, to the chief administrator, IPM
+ * Coordinator or building manager. §7.148(b) puts the POSTING duty on them —
+ * area of common access, >=48h ahead — plus making the consumer information
+ * sheet available to anyone working or residing in the building on request.
+ * §7.147(e) mirrors this for the consumer information sheet.
+ * §7.146(d): no violation where the space is vacant, unused and unoccupied —
+ * which for a hotel is most rooms most of the time, and is worth planning around.
+ * §7.144: two-year use records. §7.145: invoice/contract requirements.
+ * §7.123: insurance $500k/$1M.
+ *
+ * BED BUGS — introduction problem, not sanitation. NO HEAT TREATMENT offered
+ * (EXCLUDED in services.ts). No fumigation. No single-visit promise: eggs are
+ * not affected the way active insects are, so a second visit at the interval
+ * set by the life cycle is what deals with what hatches. Precor IGR matters as
+ * much as the adulticide.
+ * NO disease claims — bed bugs are not established disease vectors and this
+ * page must not imply they are.
+ *
+ * Regional: Stanton sits directly on I-20 between Midland and Big Spring;
+ * Permian short-cycle occupancy, man camps and RV parks (verified on the
+ * Denver City and locations pages).
+ *
+ * AMERICAN COCKROACH: floor drains, door thresholds, roof soffits; "Keep
+ * P-traps filled with water to create a barrier between the sewer and the home
+ * or business" (ENTO-037).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Commercial', path: '/commercial/' },
+  { name: 'Hotels & motels', path: '/commercial/hotels/' },
+];
+
+const quickAnswer =
+  'Hotels and motels are named specifically in the Texas pest control notice rule, and bed bugs are the pest that defines the sector. They are an introduction problem rather than a sanitation one — which means the cleanest property is as exposed as any other, and that detection at turnover, not reaction to a complaint, is the entire game.';
+
+const faqs = [
+  {
+    q: 'Does the 48-hour notice rule apply to a hotel?',
+    a: 'Yes, explicitly. Rule 4 TAC §7.146(c) names hotels, motels and lodges among the premises where a licensee must provide a pest control sign to the chief administrator, IPM coordinator or building manager at least 48 hours before a planned indoor treatment. Under §7.148(b) that person must then post it in an area of common access at least 48 hours ahead, and make the consumer information sheet available to anyone working or residing in the building who asks.',
+  },
+  {
+    q: 'What about rooms that are empty?',
+    a: 'Section 7.146(d) provides that a person is not in violation if the space to be treated is vacant, unused and unoccupied. For a hotel that is most rooms most of the time, and it is worth building into how you schedule — treating out of an occupied block, or during a low-occupancy window, simplifies the notice mechanics considerably as well as the operational ones.',
+  },
+  {
+    q: 'Does having bed bugs mean the property is dirty?',
+    a: 'No, and this is the single most important thing on this page. Bed bugs are an introduction problem. They arrive in luggage, on clothing, in second-hand furniture. A spotless property that takes travellers is exposed by definition, and the industry’s habit of treating an infestation as evidence of poor housekeeping is both wrong and actively harmful, because it makes staff reluctant to report what they find.',
+  },
+  {
+    q: 'What should housekeeping actually be looking for?',
+    a: 'Physical evidence, not bites. Small dark spots along mattress seams, on the box spring — including underneath the fabric at the corners — and on the frame where pieces bolt together. Shed skins, which look like translucent empty shells. Live insects roughly the size and shape of an apple seed, flattened and reddish-brown. Then the fifteen-foot radius: the headboard and behind it if wall-mounted, nightstands, the seams of upholstered chairs, the edge of carpet, behind pictures.',
+  },
+  {
+    q: 'Can you clear a room in one visit?',
+    a: 'Not honestly. Bed bug work is a sequence rather than an event, because eggs are not affected by treatment the way active insects are, and a second visit at the right interval is what deals with what hatches. Anyone promising a single-visit resolution is either using a method they have not explained or telling you what you want to hear. Plan the room out of inventory for the sequence, not for a single afternoon.',
+  },
+  {
+    q: 'Do you do heat treatment?',
+    a: 'No. Thermal remediation requires specific equipment we do not carry, and we are not going to imply otherwise. What we offer is conventional chemical treatment with a scheduled follow-up. Heat has real advantages for some situations, and where it is genuinely the right answer for a property you need a provider who does it — which we will say on the phone rather than after taking the booking.',
+  },
+  {
+    q: 'How do I stop it spreading to the next room?',
+    a: 'Do not move the mattress or the furniture out through the corridor, which is how a one-room problem becomes a floor problem. Do not relocate the guest’s belongings without bagging them. Inspect the adjacent rooms — either side, above and below — before deciding scope, because bed bugs move between rooms and the room that reported is not necessarily the room with the source.',
+  },
+  {
+    q: '¿Atienden hoteles y moteles?',
+    a: 'Sí. El dueño hace el trabajo personalmente y habla español, lo cual facilita explicar la preparación al personal de limpieza directamente. Recuerde que la obligación de colocar el aviso de tratamiento corresponde al administrador del edificio, no a la compañía. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Hotel &amp; Motel Pest Control | West Texas"
+  description="Bed bug detection and treatment for lodging on the I-20 corridor and across the Permian Basin, with the notice rule that names hotels specifically."
+  path="/commercial/hotels/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Commercial · hotels &amp; motels</p>
+      <h1>Hotels and motels</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Lodging is the sector where a single pest becomes an existential business problem, and where the
+          industry's instincts about that pest are almost entirely wrong.
+        </p>
+        <p>
+          The instinct is to treat bed bugs as a housekeeping failure — something that happens to badly run
+          properties. That belief is why staff hide what they find, why introductions run for weeks before
+          anybody reports them, and why a contained problem becomes a floor. This page starts there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Introduction, not sanitation</h2>
+      <div class="measure">
+        <p>
+          <strong>Bed bugs arrive in luggage.</strong> In clothing, in a bag set on a bed, in second-hand
+          furniture, in a delivery. They are not attracted by dirt, they do not breed in it, and their
+          presence says nothing whatsoever about how a property is cleaned.
+        </p>
+        <p>
+          <strong>Which means a property that takes travellers is exposed by definition.</strong> The rate
+          of introduction is a function of throughput, not of standards. Expensive hotels get them.
+          Hospitals get them. The cleanest property on the interstate gets them.
+        </p>
+        <p>
+          <strong>The only thing housekeeping changes is detection.</strong> A tidy room with minimal
+          clutter is easier to inspect, and an introduction is found earlier. That is a real and valuable
+          effect, and it is entirely different from causation.
+        </p>
+        <p>
+          <strong>Why this framing matters operationally.</strong> If your staff believe finding bed bugs
+          reflects on their work, they will not report them. They will strip the room, wash everything on
+          hot, say nothing, and hope. That delay is what converts a single introduced room into a
+          multi-room problem, and it is caused by the culture rather than by the insect.
+        </p>
+        <p>
+          <strong>The fix is to make reporting safe and routine.</strong> A finding is good news — it means
+          the system worked. Tell your team that explicitly, and mean it, because the alternative costs far
+          more than any treatment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Detection at turnover is the whole game</h2>
+      <div class="measure">
+        <p>
+          Every hotel has a moment, several times a week per room, when the bed is stripped and the room is
+          empty. That is a free inspection opportunity that most properties do not use.
+        </p>
+        <p>
+          <strong>What to look at, in order.</strong> Mattress seams and the tags first. Then the box
+          spring — including underneath the fabric at the corners, which is the most productive single spot
+          in a hotel room and the one nobody checks. Then the frame, particularly anywhere two pieces bolt
+          together. Then the headboard, and behind it if it is wall-mounted.
+        </p>
+        <p>
+          <strong>Then the fifteen-foot radius around the sleeping position.</strong> Nightstands, the
+          seams of upholstered chairs, the edge of carpet where it meets the wall, the joint of a
+          baseboard, behind a picture frame.
+        </p>
+        <p>
+          <strong>What you are looking for is evidence, not insects.</strong> Small dark spots — digested
+          blood — along seams and joints. Shed skins that look like translucent empty shells. Live insects
+          roughly the size and shape of an apple seed, flattened, reddish-brown and faster than people
+          expect.
+        </p>
+        <p>
+          <strong>Not bites.</strong> People react enormously differently — some develop pronounced welts,
+          some show nothing at all, and two people in the same bed can have entirely different experiences.
+          A guest complaint about bites is a reason to inspect, not a diagnosis.
+        </p>
+        <p>
+          <strong>Encasements make this dramatically easier.</strong> A mattress and box spring encasement
+          removes the most complicated harbourage in the room from the equation and forces anything present
+          onto the outside where it can be seen. They are inexpensive, they are permanent, and on a
+          property with any history they pay for themselves in inspection time alone.
+        </p>
+        <p>
+          <strong>Reduce the crevices near the bed.</strong> Not for appearance — for detection. Every
+          additional harbourage point within fifteen feet of where somebody sleeps is somewhere an
+          introduction can establish unseen.
+        </p>
+        <p>
+          <strong>Photograph anything you find</strong> and text it before we come out. It resolves in ten
+          seconds what a description cannot, and it means the visit arrives knowing what it is dealing
+          with.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What treatment actually involves</h2>
+      <div class="measure">
+        <p>
+          <strong>The inspection comes first and takes longer than you expect.</strong> Beds apart,
+          mattresses lifted, box spring corners opened, frames checked at the joints, headboards off the
+          wall. Then the radius around each sleeping position. On a hotel this also means the adjacent
+          rooms, because scope is the first question.
+        </p>
+        <p>
+          <strong>Then a conversation about scope and cost before anything is applied.</strong> If the
+          inspection changes the picture — and on lodging it frequently does, because infestations are
+          rarely confined to the room that prompted the call — the revised number is discussed on the spot
+          rather than appearing on an invoice.
+        </p>
+        <p>
+          <strong>Then conventional chemical treatment</strong>, placed according to the harbourage found.
+          The insect growth regulator matters as much as the adulticide here, because it addresses the part
+          of the population that is not currently a reproducing adult — which is the part a straight
+          adulticide misses entirely.
+        </p>
+        <p>
+          <strong>Then the follow-up, on the date agreed.</strong> This is not optional and it is not
+          padding. A conventional treatment deals effectively with the insects present when it is applied
+          and does considerably less to eggs. Those hatch on their own schedule, producing a new generation
+          that arrives days or weeks later and feels exactly like a treatment failure. It is not. It is the
+          reason the second visit exists, and the interval is set by the biology rather than by
+          convenience.
+        </p>
+        <p>
+          <strong>Plan the room out of inventory for the sequence</strong>, not for a single afternoon.
+          That is the honest operational answer and it is better to know it when you book than to discover
+          it when you are trying to sell the room.
+        </p>
+        <p>
+          <strong>What we do not do.</strong> No heat treatment — thermal remediation needs equipment we do
+          not carry. No fumigation. No promise of single-visit resolution. Where heat is genuinely right
+          for a property, you need a provider who does it and you will be told so.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Stopping it spreading</h2>
+      <div class="measure">
+        <p>
+          Most multi-room bed bug problems in lodging were single-room problems that got moved.
+        </p>
+        <p>
+          <strong>Do not carry the mattress out through the corridor.</strong> The instinct to remove and
+          replace is strong and it is how a contained problem is distributed along a floor. If a mattress
+          does need to go, it goes after treatment and wrapped.
+        </p>
+        <p>
+          <strong>Do not relocate a guest's belongings unbagged.</strong> Moving a guest is often the right
+          call for the guest; moving their luggage into another room without containing it moves the
+          problem with them.
+        </p>
+        <p>
+          <strong>Do not move staff equipment between rooms without thought.</strong> Housekeeping carts,
+          linen bags and vacuum cleaners all travel the floor, and a bag that sat on an infested bed goes
+          everywhere the cart goes.
+        </p>
+        <p>
+          <strong>Inspect the neighbours before deciding scope.</strong> Either side, above and below. Bed
+          bugs move between rooms through wall voids, plumbing chases and electrical penetrations, and the
+          room that reported is not necessarily the room with the source. Treating one room while an
+          adjacent one is untreated is frequently money spent against continuous re-supply.
+        </p>
+        <p>
+          <strong>Keep a room history.</strong> Which rooms have had findings, when, and what was done. On
+          a property of any size, patterns emerge — a particular floor, a particular corridor, rooms
+          adjacent to a specific chase — and that pattern is worth more than any single inspection.
+        </p>
+        <p>
+          <strong>Take the room out of inventory properly.</strong> A room under treatment is not a room
+          that can be sold on the second night because it looks fine. It looks fine before the follow-up
+          too, and selling it in between is how a treated room becomes an untreated one with a new guest in
+          it — and how a guest complaint arrives against a property that had already found and addressed
+          the problem.
+        </p>
+        <p>
+          <strong>And handle the guest conversation separately from the pest one.</strong> That is a
+          hospitality decision and it is yours. What we can do is give you an accurate account of what was
+          found and what has been done, which is a considerably better footing for that
+          conversation than uncertainty would be.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Building a detection routine that staff will actually use</h2>
+      <div class="measure">
+        <p>
+          A programme that depends on housekeeping doing a careful ten-minute inspection of every room
+          every day will not survive contact with a real property. One that fits inside what they already
+          do might.
+        </p>
+        <p>
+          <strong>Attach it to the strip, not to a separate task.</strong> The bed is already being
+          stripped. The thirty seconds of looking at the mattress seam and the box spring corners while the
+          linen is off costs nothing extra, and it covers the two most productive locations in the room.
+        </p>
+        <p>
+          <strong>Give people a card, not a lecture.</strong> A laminated card at the cart with the three
+          things to look for — dark spots along seams, translucent shed skins, an apple-seed-shaped insect
+          — and a photograph of each does more than a training session. Recognition is visual and it is
+          learned from pictures.
+        </p>
+        <p>
+          <strong>Make reporting a single, easy action</strong> that does not require judgement. The staff
+          member's job is to report what they saw, not to decide whether it counts. Anybody being asked to
+          assess severity will resolve doubt by not reporting.
+        </p>
+        <p>
+          <strong>Never penalise a finding.</strong> If a report creates work, blame or suspicion for the
+          person who made it, you have built a system that suppresses information. This is the single most
+          common failure in lodging pest management and it is entirely cultural.
+        </p>
+        <p>
+          <strong>Prioritise the rooms most likely to have something.</strong> Rooms that have had a
+          finding before. Rooms adjacent to those. Rooms with high turnover or long stays. Rooms nearest
+          the entrance, the laundry, or a shared chase.
+        </p>
+        <p>
+          <strong>And write down what was found and where.</strong> A room history is worth more than any
+          single inspection, because it is where patterns show up — and patterns are what tell you whether
+          you have a series of introductions or one problem moving.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The rest of the building</h2>
+      <div class="measure">
+        <p>
+          Bed bugs get the attention, and they are not the only thing a lodging property deals with.
+        </p>
+        <p>
+          <strong>Large roaches from drains.</strong> A reddish-brown roach an inch and a half to two
+          inches long, appearing in a bathroom or a corridor at night, is almost certainly an American
+          cockroach — an outdoor and sewer insect that AgriLife describes as one of the most common
+          cockroaches in sewer systems. It came in through a floor drain, a door threshold or a roof
+          soffit. The fix is plumbing and exclusion, not a treatment programme.
+        </p>
+        <p>
+          <strong>The cheapest intervention available:</strong> keep P-traps filled. AgriLife's guidance is
+          verbatim — keep P-traps filled with water to create a barrier between the sewer and the building.
+          In a hotel the drains that dry out are in rooms that have been out of inventory, in unused
+          housekeeping closets, and in seasonal areas. Running water through them on a schedule closes the
+          route entirely.
+        </p>
+        <p>
+          <strong>Check door thresholds and roof soffits</strong>, which are the other two entry routes
+          AgriLife names specifically. On a motel layout, where a good share of the doors open directly to
+          the outside and take constant use, the sweeps wear out faster than anybody replaces them, and
+          that gap is doing more work against you than any single treatment can undo.
+        </p>
+        <p>
+          <strong>Rodents in back-of-house.</strong> Laundry, storage, kitchen and loading areas. The
+          exclusion standard is a quarter of an inch, sealed with metal or concrete rather than foam or
+          plastic, and stored material kept eighteen inches off the floor and away from walls so runways
+          can be seen.
+        </p>
+        <p>
+          <strong>Scorpions, in this region specifically.</strong> Ground-floor rooms, exterior corridors
+          and anything with a door opening directly outside. AgriLife's guidance on entry — under doors and
+          through small cracks, seeking cooler temperatures — applies exactly to a motel layout, and door
+          sweeps are the single highest-value item.
+        </p>
+        <p>
+          <strong>And on the I-20 corridor specifically</strong>, throughput is the variable that drives
+          all of it. Stanton sits directly on the interstate between Midland and Big Spring, and any
+          premises serving a passing population sees a rate of introduction that a residential building
+          does not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Paperwork, notice and how we work with you</h2>
+      <div class="measure">
+        <p>
+          <strong>The notice rule names you.</strong> Rule 4 TAC §7.146(c) lists hotels, motels and lodges
+          among the premises where we must provide a pest control sign at least forty-eight hours before a
+          planned indoor treatment, to the chief administrator, IPM coordinator or building manager. Under
+          §7.148(b) that person posts it in an area of common access at least forty-eight hours ahead and
+          makes the consumer information sheet available to anyone working or residing in the building on
+          request.
+        </p>
+        <p>
+          <strong>And §7.146(d) gives you room to work.</strong> No violation where the space is vacant,
+          unused and unoccupied — which for a hotel is most rooms most of the time. Treating out of an
+          unoccupied block simplifies the notice mechanics as well as the operational ones, and it is worth
+          scheduling around deliberately.
+        </p>
+        <p>
+          <strong>Records for two years.</strong> Under §7.144 we keep pest control use records including
+          the pesticides used with their EPA registration numbers, amounts, mixing rates, target pest,
+          dates and applicator details. On lodging that record matters for more than compliance — it is
+          what you produce if a guest claim ever arises, and it is the difference between a documented
+          response and a recollection.
+        </p>
+        <p>
+          <strong>Certificate of insurance</strong> naming your entity, on request, and worth arranging
+          before the first visit.
+        </p>
+        <p>
+          <strong>Discretion.</strong> No branded wrap announcing what is being treated, and we do not
+          discuss your property with anyone not authorised on the job. On lodging that is not a nicety, it is part of the service.
+        </p>
+        <p>
+          <strong>Scheduling around occupancy.</strong> Out of hours, out of an unoccupied block, or during
+          a low-occupancy window — whichever suits. Tell us your pattern rather than calling when a room is
+          already out of service.
+        </p>
+        <p>
+          <strong>And Spanish.</strong> Valentin speaks it fluently and explains preparation to
+          housekeeping staff directly, without an interpreter. On a property where the people most likely
+          to find an introduction first are the people cleaning the rooms, that is worth a great deal more
+          than it sounds.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Hotel pest control questions" />
+  <Cta
+    line="Tell him how many rooms, whether the finding is in one room or several, and whether the rooms either side have been looked at. Scope is the first question and it decides everything else."
+  />
+</BaseLayout>

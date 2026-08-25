@@ -1,0 +1,413 @@
+---
+/**
+ * Commercial vertical — offices. C-07 verified. Last of the six.
+ *
+ * REGULATORY: an office is a WORKPLACE under 4 TAC §7.146(b) — the licensee
+ * provides the pest control sign to the employer or building manager at least
+ * 48 hours before a planned indoor treatment. §7.147(d): sign AND consumer
+ * information sheet to the employer or building manager; the employer posts
+ * >=48h ahead in an area of common access EMPLOYEES ARE MOST LIKELY TO SEE and
+ * makes the sheet available on request during NORMAL BUSINESS HOURS.
+ * §7.148(b) is the posting duty on the unlicensed party.
+ * §7.146(d)/§7.148(e): no violation where the space is vacant, unused and
+ * unoccupied, or where the sign is removed by an unauthorized person.
+ * §7.147(g): emergency waiver needs a SIGNED statement from customer AND
+ * certified applicator; emergency = "an imminent hazard to health"; treatment
+ * limited to the localized area; statement kept with the use records.
+ * §7.144 two-year records; §7.145 invoice/contract; §7.123 insurance.
+ *
+ * Pest angles used, all sourced:
+ *  - German cockroach: break room; carried in; 75% of life in 1/32-3/16 in
+ *    cracks; bug bombs fail; daytime sighting = large population.
+ *  - American/oriental cockroach: floor drains, door thresholds, roof soffits;
+ *    keep P-traps filled.
+ *  - Rodents: 1/4 in standard; metal/concrete not foam/plastic/wood/rubber;
+ *    thigmotaxis; mice ~30 ft home range; traps <=10 ft apart at walls.
+ *  - Scorpions: enter low under doors seeking cooler temps and moisture, live
+ *    high in voids and attics, drop into occupied space when attics overheat
+ *    (AgriLife E-362; Molly Keck). Ground-floor suites and exterior doors.
+ *  - Cockroach allergen/asthma link (NIEHS) — relevant to an occupied
+ *    workplace and to any accommodation conversation.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Commercial', path: '/commercial/' },
+  { name: 'Offices', path: '/commercial/offices/' },
+];
+
+const quickAnswer =
+  'Office pest control across the Permian Basin. Offices have almost no pest pressure of their own — what they have is a break room, a set of doors, and a building that sits empty two-thirds of the time. Texas treats an office as a workplace under the notice rule, which puts a posting duty on the employer rather than on us.';
+
+const faqs = [
+  {
+    q: 'Why would an office need pest control at all?',
+    a: 'Because of three things that have nothing to do with the work being done there: the break room, which is frequently the only food source in the building and the most under-managed room in it; the doors, which are how everything gets in; and the empty hours, because a building nobody is in for sixteen hours a day and all weekend is a building where activity goes unnoticed. Offices generate few pests and reveal them slowly.',
+  },
+  {
+    q: 'What does the notice rule require of me?',
+    a: 'An office is a workplace under 4 TAC §7.146(b), so we provide the pest control sign to the employer or building manager at least 48 hours before a planned indoor treatment. Under §7.147(d) and §7.148(b) you then post it in an area of common access that employees are most likely to see, at least 48 hours before each planned indoor treatment, and make the Department’s consumer information sheet available to anyone working in the building on request during normal business hours. That posting duty is yours, not ours.',
+  },
+  {
+    q: 'What if we treat out of hours when nobody is in?',
+    a: 'The notice requirement still attaches to a planned indoor treatment at a workplace, so the sign still goes up ahead of it. What §7.146(d) and §7.148(e) do provide is that there is no violation where the space to be treated is vacant, unused and unoccupied, or where the sign is removed by an unauthorised person. In practice, out-of-hours work is easier for everybody and it is what we usually recommend.',
+  },
+  {
+    q: 'Is there an emergency exception?',
+    a: 'Yes, and it is narrower than people assume. Section 7.147(g) waives the pre-notification requirements where the customer and the certified applicator sign a statement attesting that an emergency exists requiring immediate treatment — with an emergency defined as an imminent hazard to health and treatment limited to the localised area. That signed statement is kept with the pest control use records. It is a real provision for a real situation, not a way around a scheduling problem.',
+  },
+  {
+    q: 'Somebody saw a cockroach in the kitchen. How worried should I be?',
+    a: 'It depends entirely which cockroach. A half-inch light brown one with two dark stripes is a German cockroach and it is a genuine infestation — AgriLife records that they do not live outdoors in Texas, so it was carried in, most likely in food packaging or a delivery. A large reddish-brown one an inch and a half long is an American cockroach and is almost certainly a wanderer from a drain or a door. Also worth knowing: if anyone sees roaches during the day, AgriLife’s guidance is that it usually means there are a lot of them.',
+  },
+  {
+    q: 'Do we have to tell staff what was applied?',
+    a: 'You have to make the Department’s consumer information sheet available to anyone working in the building who asks, during normal business hours, and the posted sign carries the pesticide information contact and the National Pesticide Information Center number. Beyond the legal minimum, telling people in advance is simply good practice — it heads off the questions, and it matters to anyone with asthma or a chemical sensitivity, who is entitled to know.',
+  },
+  {
+    q: 'Can you work around a building with sensitive occupants?',
+    a: 'Yes, and it is worth flagging before the visit rather than during it. Asthma, respiratory conditions, pregnancy, chemical sensitivities — all of those change what is used and where. There is a real reason to take it seriously in an office: cockroach harbourages contain allergens, and the NIEHS notes a link between cockroach presence and increased severity of asthma symptoms, so the pest itself is part of the picture as well as the treatment.',
+  },
+  {
+    q: '¿Atienden oficinas y edificios comerciales?',
+    a: 'Sí. En una oficina casi todo el problema está en el cuarto de descanso y en las puertas. El dueño hace el trabajo personalmente, generalmente fuera del horario laboral, y habla español. Recuerde que la obligación de colocar el aviso corresponde al empleador o administrador del edificio. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Office Pest Control | Permian Basin"
+  description="Break rooms, door thresholds and empty buildings — the three things that actually drive office pest problems, plus the workplace notice rule that binds you."
+  path="/commercial/offices/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Commercial · offices</p>
+      <h1>Offices</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Offices are the easiest commercial category to service and the one where customers are most
+          surprised to need anybody at all. There is no food production, no stored commodity, no inbound
+          freight, no public throughput.
+        </p>
+        <p>
+          What there is, is a break room, a set of doors, and a building that nobody is in for two-thirds
+          of the week. Those three things account for almost every office pest problem we deal with.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The break room is the whole problem</h2>
+      <div class="measure">
+        <p>
+          In a premises that handles no food commercially, the break room is frequently the only food
+          source in the building — which makes it not a contributing factor but the entire explanation.
+        </p>
+        <p>
+          <strong>It is also the most under-managed room in most offices</strong>, because it belongs to
+          everybody and therefore to nobody. Cleaning contracts often cover floors and surfaces and stop
+          short of the inside of a microwave, the seal of a fridge door, or the underside of a toaster.
+        </p>
+        <p>
+          <strong>Where the problems actually are.</strong> Under and behind the fridge, which is warm,
+          dark and undisturbed — and warmth matters, because German cockroach development is optimal at
+          around eighty degrees. Behind and inside the microwave. The seams of upholstered seating. The gap
+          between the counter and the wall. Food stored in desks and lockers around the building rather
+          than in the kitchen at all.
+        </p>
+        <p>
+          <strong>And the moisture.</strong> A sink nobody claims, a dripping tap, a fridge drip tray, a
+          water cooler with a wet mat under it. In a semi-arid climate any reliable moisture indoors is
+          worth more to a pest than any food source, and it is usually easier to fix.
+        </p>
+        <p>
+          <strong>What actually works, and it is not a treatment.</strong> Make the break room somebody's
+          explicit responsibility. Put food storage in sealed containers rather than in desk drawers. Empty
+          the bin at end of day rather than end of week. Clean under and behind the appliances on a
+          schedule that exists in writing. On a great many offices that alone resolves the problem, and we
+          will tell you so rather than sell you a quarterly programme against a fridge nobody moves.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The doors, and the empty hours</h2>
+      <div class="measure">
+        <p>
+          <strong>Everything gets in through something.</strong> Exterior doors and their sweeps, service
+          and back doors, utility penetrations, vents, and where the wall meets the slab. The exclusion
+          standard is a quarter of an inch — AgriLife describes mice getting through an opening the size of
+          a pencil diameter — and extension guidance is to seal everything larger than that regardless of
+          which species you think you have.
+        </p>
+        <p>
+          <strong>Seal with metal or concrete.</strong> Foam, plastic, wood and rubber are all gnawable and
+          are not a permanent rodent seal, whatever a contractor tells you.
+        </p>
+        <p>
+          <strong>Doors propped open matter more than people think.</strong> In this climate a door held
+          open for deliveries, for a smoke break, or simply because the entry system is awkward is a real
+          and repeated opening, and it is usually the one nobody counts.
+        </p>
+        <p>
+          <strong>Then the empty hours.</strong> An office is unoccupied roughly two-thirds of the week,
+          and completely still for long stretches. Nothing about that creates pests — but it means activity
+          runs unobserved. Something that would be noticed within a day in an occupied home has a weekend,
+          and over a holiday period it has a fortnight.
+        </p>
+        <p>
+          <strong>The drains dry out.</strong> Which is the second consequence of a quiet building, and it
+          is the one nobody anticipates. A floor drain or a rarely-used washroom trap that dries is an open
+          pipe from the sewer, and AgriLife's prevention guidance is verbatim: keep P-traps filled with
+          water to create a barrier between the sewer and the building. American and oriental cockroaches
+          use floor drains as common points of entry. Running water through the seldom-used fixtures weekly
+          costs nothing and closes the route.
+        </p>
+        <p>
+          <strong>And an empty building is a cool building</strong>, or a hot one, depending on how the
+          system is set back. Either way it changes the gradient at every door and gap — which, as the next
+          section covers, is precisely what a scorpion is looking for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Scorpions in ground-floor offices</h2>
+      <div class="measure">
+        <p>
+          This is the regional item that surprises people who have moved into the area, and it applies to
+          any suite with an exterior door.
+        </p>
+        <p>
+          <strong>The mechanism is temperature and moisture.</strong> AgriLife's E-362 notes that during
+          hot weather scorpions may move into living areas to escape high temperatures in attics, and
+          AgriLife extension entomologists describe them seeking water and cooler conditions in hot dry
+          weather — squeezing in where they feel a temperature difference below a door or through another
+          small crack.
+        </p>
+        <p>
+          <strong>Which describes an air-conditioned office building precisely.</strong> A cooled interior
+          against a hundred-degree exterior is the largest temperature gradient on the property, and it is
+          strongest at exactly the thresholds where the seals are worst.
+        </p>
+        <p>
+          <strong>So the pattern is: enter low, live high.</strong> In under a door or through a
+          penetration, then up into wall voids and ceiling spaces, then down into occupied space when the
+          void overheats — which is why sightings cluster in July and August.
+        </p>
+        <p>
+          <strong>The fixes are mundane and effective.</strong> Door sweeps first, which is the single
+          highest-value item. Then weep hole screening, sealing around penetrations, and keeping
+          landscaping, stored material and rock features back from the building. AgriLife's own management
+          guidance leads with harbourage removal rather than with chemistry, and on scorpion work that
+          ranking is not close.
+        </p>
+        <p>
+          <strong>And it is worth saying plainly to staff:</strong> no scorpion in Texas is considered
+          deadly, per AgriLife, and stings produce only moderate reactions in most people. They hurt, local
+          swelling can last days, and anyone with a known allergy should take it seriously — but the fear
+          in a workplace is usually out of proportion to the animal, and telling people that is part of
+          managing the problem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Occupied space and the people in it</h2>
+      <div class="measure">
+        <p>
+          Offices are the category where treatment happens closest to people who did not choose to be
+          there, and that deserves more thought than it usually gets.
+        </p>
+        <p>
+          <strong>Tell people in advance.</strong> The posted sign is the legal minimum; a note to staff is
+          the sensible version. Most objections to workplace pest control are objections to being
+          surprised.
+        </p>
+        <p>
+          <strong>Flag sensitivities before the visit.</strong> Asthma, respiratory conditions, pregnancy,
+          chemical sensitivities. Also aquariums, which are common in offices and genuinely matter, and any
+          plants that are somebody's project. All of those change what is used and where, and every one of
+          them is easier to plan around than to work around.
+        </p>
+        <p>
+          <strong>The pest is part of the health picture too.</strong> AgriLife specifies HEPA vacuuming
+          for cockroach work because harbourages contain allergens, and the National Institute of
+          Environmental Health Sciences notes a link between cockroach presence and increased severity of
+          asthma symptoms. So an untreated cockroach problem in an occupied office is not a neutral option
+          — it is a trade-off, and it is worth framing it that way in a conversation with staff rather than
+          pretending the only risk is the treatment.
+        </p>
+        <p>
+          <strong>And be careful about who authorises what.</strong> In an office the person who books the
+          work, the person who signs for it, and the people who will be standing next to it are frequently
+          three different groups. Somebody should be telling the third group, and it should not be the
+          first they hear of it when a technician arrives.
+        </p>
+        <p>
+          <strong>Out of hours, generally.</strong> Better result, fewer complications, simpler notice
+          mechanics, and nobody working next to it. It is what we recommend for almost every office job.
+        </p>
+        <p>
+          <strong>And targeted rather than broadcast.</strong> Crevice and harbourage placement rather than
+          general application across occupied space. That is better practice regardless, and in an office
+          it also happens to be what people would want if they knew to ask.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The other things offices actually call about</h2>
+      <div class="measure">
+        <p>
+          Beyond the break room and the doors, a short list covers nearly everything else.
+        </p>
+        <p>
+          <strong>Ants on a moisture trail.</strong> Usually following a water source rather than a food
+          one — a break room sink, a leaking fitting, a condensate line, a planter that gets over-watered.
+          Following the trail back to where it enters the wall is more productive than treating where the
+          ants are visible, and the moisture fix is frequently the whole answer.
+        </p>
+        <p>
+          <strong>Spiders in corners and store rooms.</strong> Mostly harmless and mostly a symptom: a
+          building with spiders is a building with enough insects to feed them. Reducing the insects and
+          the harbourage does more than treating the webs.
+        </p>
+        <p>
+          <strong>Wasps at an entrance.</strong> The one office situation that is genuinely urgent, because
+          it is at a door everybody has to use and because somebody in the building may be allergic. Nests
+          under eaves, over doorways and in signage are the usual sites. This is also the situation the
+          emergency provision in the rules was written for.
+        </p>
+        <p>
+          <strong>Crickets in autumn.</strong> A West Texas seasonal event that reaches ground-floor
+          offices through the same door gaps as everything else, and which is made dramatically worse by
+          exterior lighting. Lights on all night beside a glass entrance concentrate insects at exactly the
+          point where the seals are weakest.
+        </p>
+        <p>
+          <strong>Rodents in a suspended ceiling.</strong> Heard rather than seen, usually at a consistent
+          hour. Rodents travel along edges — thigmotaxis, in AgriLife's term: linear pathways, wall and
+          floor corners, structural runs. Devices go on those runs, close to the wall and no more than
+          about ten feet apart in an active area, rather than scattered across the void.
+        </p>
+        <p>
+          <strong>And something dead in a wall.</strong> Which is not a treatment problem but is very much
+          an office problem, and it is worth saying that the usual cause is somebody having put out bait
+          without exclusion. Trapping rather than baiting in an occupied building avoids it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Multi-tenant buildings</h2>
+      <div class="measure">
+        <p>
+          Most offices in this region are one suite in a shared building, which means part of your pest
+          picture belongs to somebody else.
+        </p>
+        <p>
+          <strong>Find out where the line is.</strong> Many leases put common areas on the landlord and
+          suite interiors on the tenant. That is workable, but it produces a gap precisely where problems
+          travel — shared voids, plumbing chases, roof spaces, service corridors and the bin area.
+        </p>
+        <p>
+          <strong>German cockroaches move between suites.</strong> They do not live outdoors in Texas, so
+          a population in your suite was carried in — possibly by you, in a delivery or somebody's
+          groceries, and just as possibly from the tenant next door. Treating one suite while the adjacent
+          one is untreated is frequently spending against continuous re-supply.
+        </p>
+        <p>
+          <strong>Rodents use the shared roof void.</strong> Roof rats nest above ground — attics, wall
+          voids, ceiling voids — and forage up to three hundred feet, which in a shared building covers
+          every suite in it.
+        </p>
+        <p>
+          <strong>The shared bin area serves everybody equally</strong>, including whichever tenant is not
+          managing theirs.
+        </p>
+        <p>
+          <strong>So the useful first step is a conversation with the building manager</strong> rather than
+          a treatment. If there is a building-wide programme, joining it beats running a parallel one. If
+          there is not, and the problem is structural, saying so to the person who can authorise the work
+          is worth more than treating your own carpet.
+        </p>
+        <p>
+          <strong>We will tell you when that is the situation</strong>, even though it means a smaller job
+          or none at all. A tenant paying to treat a suite that is being re-supplied from next door is
+          paying for a subscription rather than a solution.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Notice, records and how it runs</h2>
+      <div class="measure">
+        <p>
+          <strong>You are a workplace.</strong> Rule 4 TAC §7.146(b) requires us to provide the pest
+          control sign to the employer or building manager at least forty-eight hours before a planned
+          indoor treatment, and §7.147(d) adds the consumer information sheet. Under §7.148(b) you post it
+          in an area of common access that employees are most likely to see, at least forty-eight hours
+          ahead, and make the sheet available on request during normal business hours.
+        </p>
+        <p>
+          <strong>Two reliefs.</strong> Section 7.146(d): no violation where the space to be treated is
+          vacant, unused and unoccupied. Section 7.148(e): no violation if the sign is removed by an
+          unauthorised person. Both are useful in a building where suites empty and notices come down.
+        </p>
+        <p>
+          <strong>And the emergency provision, used properly.</strong> Section 7.147(g) waives
+          pre-notification where the customer and the certified applicator sign a statement attesting to an
+          emergency requiring immediate treatment — an imminent hazard to health, with treatment limited to
+          the localised area, and the signed statement kept with the use records. It exists for a situation like a wasp nest
+          over a door that everybody has to walk under, and it is not a way of absorbing a scheduling
+          squeeze.
+        </p>
+        <p>
+          <strong>Records for two years</strong> under §7.144, including pesticides with EPA registration
+          numbers, amounts, mixing rates, target pest, dates and applicator details. Invoices and contracts
+          carrying the business name, licence number, phone and address under §7.145, with the jurisdiction
+          statement on contracts. A certificate of insurance naming your entity on request — managed office
+          buildings usually want one on file before a vendor comes on site.
+        </p>
+        <p>
+          <strong>No contracts.</strong> Bi-monthly or quarterly, no term, no cancellation fee, interim
+          visits included. And on many offices the honest recommendation is not a recurring programme at
+          all — it is a single visit, a short exclusion list and an honest conversation about the break room. If that is what your
+          building needs, that is what you will be told.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Office pest control questions" />
+  <Cta
+    line="Tell him what was seen and where, and whether you are a whole building or one suite in a shared one. On offices that second answer often changes the recommendation entirely."
+  />
+</BaseLayout>

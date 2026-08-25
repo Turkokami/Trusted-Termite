@@ -1,0 +1,420 @@
+---
+/**
+ * Commercial vertical — retail. C-07 verified.
+ *
+ * REGULATORY: retail premises are a WORKPLACE under 4 TAC §7.146(b) —
+ * a licensee must provide the pest control sign to the employer or building
+ * manager at least 48 hours before a planned indoor treatment. §7.147(d)
+ * mirrors it for the consumer information sheet: sign + sheet to the employer
+ * or building manager; the employer posts >=48h ahead in an area of common
+ * access EMPLOYEES ARE MOST LIKELY TO SEE, and makes the sheet available on
+ * request during NORMAL BUSINESS HOURS. §7.148(b) is the posting duty.
+ * A retail premises SELLING FOOD is additionally caught by Health & Safety
+ * Code §341.011(3) — "a restaurant, food market, bakery, other place of
+ * business ... in which food is prepared, packed, stored, transported, sold,
+ * or served to the public and that is not constantly maintained in a sanitary
+ * condition" is a public health nuisance. NOTE: "food market" is named.
+ * §7.144 two-year records; §7.145 invoice/contract; §7.123 insurance.
+ *
+ * Pest facts used, all sourced above in .research/pest-species.md:
+ *  - German cockroach: carried in, does NOT live outdoors in Texas; 75% of
+ *    life in cracks 1/32-3/16 in; bug bombs do not penetrate; bait placement
+ *    within 1-2 ft of harbourage, many small placements; daytime sightings and
+ *    dispersal are severity indicators; HEPA vacuum (allergens).
+ *  - American cockroach: sewer/drain/soffit/door-threshold wanderer; keep
+ *    P-traps filled.
+ *  - Rodents: 1/4 in exclusion standard; metal or concrete, not foam/plastic/
+ *    wood/rubber/steel wool; thigmotaxis along wall-floor corners; mice within
+ *    ~30 ft of nest; traps <=10 ft apart close to walls; mice not neophobic,
+ *    rats are; rub marks = rat sign; store 18 in off floor, off walls.
+ *  - Stored product insects arrive on incoming freight; cardboard is
+ *    harbourage and an introduction route.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Commercial', path: '/commercial/' },
+  { name: 'Retail', path: '/commercial/retail/' },
+];
+
+const quickAnswer =
+  'Retail pest control across the Permian Basin. Almost everything that matters happens in the back — the receiving door, the stockroom, the break room and the dumpster pad — while the problem gets noticed on the sales floor. Retail premises are workplaces under the Texas notice rule, and if you sell food you are caught by the public health nuisance statute as well.';
+
+const faqs = [
+  {
+    q: 'Where do retail pest problems actually start?',
+    a: 'Back of house, nearly always. The receiving door and its threshold, the stockroom where cardboard accumulates, the break room, the dumpster pad and the ground under it. The sales floor is where a customer sees something and where the damage is done commercially, but it is very rarely the source. A programme aimed at the sales floor is aimed at the symptom.',
+  },
+  {
+    q: 'Does the 48-hour notice rule apply to a shop?',
+    a: 'Yes. A retail premises is a workplace under 4 TAC §7.146(b), so we must provide the pest control sign to the employer or building manager at least 48 hours before a planned indoor treatment. Under §7.147(d) and §7.148(b) the employer then posts it at least 48 hours ahead in an area of common access that employees are most likely to see, and makes the Department’s consumer information sheet available on request during normal business hours.',
+  },
+  {
+    q: 'We sell food. Does that change anything?',
+    a: 'Yes, on two fronts. Texas Health and Safety Code §341.011(3) makes a public health nuisance of a food market or other place of business in which food is prepared, packed, stored, transported, sold or served to the public and that is not constantly maintained in a sanitary condition — "food market" is named specifically. And a premises handling food may fall within the food-processing establishment provisions of §7.146(c) as well as the workplace ones. Practically it means the documentation matters more.',
+  },
+  {
+    q: 'Why does cardboard keep coming up?',
+    a: 'Because it is three problems at once. Corrugated board is harbourage — German cockroaches spend around three-quarters of their lives in crevices between a thirty-second and three-sixteenths of an inch wide, and corrugation is exactly that dimension. It is nesting material for rodents. And it is the single most common introduction route for both, arriving on inbound freight from a supplier or a distribution centre. Breaking it down promptly rather than stacking it changes more than most retailers expect.',
+  },
+  {
+    q: 'Can you treat while we are open?',
+    a: 'Generally we would rather not, and you would rather we did not. Retail work is usually done before opening or after closing — the crevice work that actually matters needs fixtures moved and shelves cleared, and treating an occupied sales floor is both worse for the result and more complicated under the notice rules. Where a premises trades long hours, we plan around the quietest window.',
+  },
+  {
+    q: 'A customer saw a mouse. How bad is that?',
+    a: 'Commercially, worse than the pest problem usually is. Biologically, a mouse on a sales floor is often an animal that has moved out of the stockroom because the stockroom got crowded or a route changed. What it tells you is that there is an established population somewhere behind the wall you are looking at, because mice seldom range more than about thirty feet from the nest. So the sighting locates the problem approximately, and it means the back needs inspecting rather than the floor treating.',
+  },
+  {
+    q: 'What about seasonal stock and the Christmas rush?',
+    a: 'It is the highest-risk period of the year and it is worth planning for. Inbound volume peaks, cardboard accumulates faster than anybody breaks it down, stock is stored in places that are not really storage, back doors stand open for deliveries, and nobody has time to look behind anything. The useful move is a service visit and an exclusion check in early autumn, before the volume arrives, rather than a reactive one in December.',
+  },
+  {
+    q: '¿Atienden tiendas y comercios?',
+    a: 'Sí. La mayor parte del trabajo está en la trastienda: la puerta de recibo, el almacén, el cuarto de descanso y el área del contenedor de basura. El dueño hace el trabajo personalmente, habla español y puede explicarle al personal directamente qué buscar. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Retail Pest Control | Permian Basin"
+  description="Back-of-house programmes for shops and stores across West Texas — receiving doors, stockrooms, break rooms and the dumpster pad, with documented monitoring."
+  path="/commercial/retail/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Commercial · retail</p>
+      <h1>Retail</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Retail has a structural problem that other commercial sectors do not: the place where a pest
+          problem is <em>noticed</em> and the place where it <em>lives</em> are almost never the same, and
+          the noticing happens in front of customers.
+        </p>
+        <p>
+          That asymmetry drives bad decisions. The instinct after a sighting on the sales floor is to treat
+          the sales floor, which is where the animal was passing rather than where it came from. A
+          programme built on that instinct produces visits and no improvement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Everything happens in the back</h2>
+      <div class="measure">
+        <p>
+          <strong>The receiving door.</strong> The single most important structural item in most retail
+          premises. It stands open during deliveries, it takes constant physical abuse, and its sweep or
+          threshold seal is usually the first thing to fail. The dimension that matters is a quarter of an
+          inch — AgriLife's guidance describes mice getting through openings as small as a quarter inch in
+          diameter, a hole the size of a pencil — and extension exclusion standards say seal everything
+          above that, because juveniles are the concern.
+        </p>
+        <p>
+          <strong>The stockroom.</strong> Cardboard, pallets, seasonal stock that has not moved in eight
+          months, and shelving pushed against the wall. Rodents travel along edges — the behaviour has a
+          name, thigmotaxis, and AgriLife names it directly: linear pathways, the corners between walls and
+          floors, the base of foundations. A stockroom with material hard against the wall has no
+          inspectable perimeter and a permanent runway.
+        </p>
+        <p>
+          <strong>The break room.</strong> Consistently the most under-managed room in retail. Food stored
+          in desks and lockers, a sink that is nobody's job, a fridge nobody cleans, and crumbs in the
+          seams of upholstered seating. In a premises that sells no food at all, the break room is
+          frequently the only food source on site — which makes it the whole problem.
+        </p>
+        <p>
+          <strong>The dumpster pad and the ground under it.</strong> Grease, food residue and packaging
+          working into gravel or caliche supports a permanent population a few yards from your back door.
+          Placement, lid condition, collection frequency and the state of the surface all matter more than
+          anything applied indoors.
+        </p>
+        <p>
+          <strong>Floor drains, if you have them.</strong> A dry trap is an open pipe from the sewer.
+          AgriLife's prevention guidance is verbatim: keep P-traps filled with water to create a barrier
+          between the sewer and the building. American and oriental cockroaches use floor drains as common
+          points of entry.
+        </p>
+        <p>
+          <strong>And the roofline and soffits</strong>, which nobody looks at and which AgriLife names as
+          an entry route alongside doors and drains.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cardboard is the material problem</h2>
+      <div class="measure">
+        <p>
+          It comes up on every retail inspection and it is worth understanding why, because the fix is
+          operational rather than chemical.
+        </p>
+        <p>
+          <strong>It is harbourage.</strong> German cockroaches spend around seventy-five percent of their
+          lives in narrow crevices between a thirty-second and three-sixteenths of an inch wide. The flutes
+          in corrugated board are precisely that dimension. A stack of flattened cartons is a purpose-built
+          cockroach habitat with a delivery schedule.
+        </p>
+        <p>
+          <strong>It is nesting material.</strong> For rodents, cardboard is shelter and bedding in one
+          object, and a pallet of it in a corner is functionally a nest site.
+        </p>
+        <p>
+          <strong>And it is the introduction route.</strong> This is the important one. AgriLife's ENTO-037
+          states that German cockroaches "do not live outdoors in Texas" and "spend their lives indoors" —
+          which means a German cockroach population in your stockroom was <em>carried in</em>. In cartons,
+          in produce, in a supplier's crate, in second-hand fixtures, or from an adjoining unit in a
+          shopping centre. There is no perimeter population to spray.
+        </p>
+        <p>
+          <strong>What actually helps.</strong> Break cartons down and get them out promptly rather than
+          accumulating them. Inspect incoming freight at the door, particularly anything that has sat in a
+          yard or moved through several hands. Do not store long-term stock in cardboard where a plastic
+          tote would do. And keep the baler or the cardboard staging area away from the stockroom wall
+          rather than against it.
+        </p>
+        <p>
+          <strong>The same logic covers stored product insects</strong> — beetles and moths in dry goods —
+          which arrive in packaging and establish in whatever has been sitting longest. Stock rotation is a
+          pest control measure as much as a merchandising one, and the pallet that has not moved since
+          spring is where to look first.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Reading a sighting on the sales floor</h2>
+      <div class="measure">
+        <p>
+          A customer report is information, and it is worth knowing what it actually tells you.
+        </p>
+        <p>
+          <strong>A mouse on the sales floor</strong> did not come far. House mice seldom venture more than
+          about thirty feet from the nest and food supply, occupying an area roughly ten to thirty feet
+          across and returning to the nest up to forty times a day. So the sighting locates the problem
+          approximately, and what it means is that there is an established population within a short
+          radius — behind a wall, under a fixture, in the stockroom on the other side.
+        </p>
+        <p>
+          <strong>A German cockroach in daylight</strong> is a severity indicator rather than a location
+          detail. AgriLife's wording is that if you see cockroaches during the day, it usually means there
+          are a lot of them around. And dispersal out of the harbourage area — into offices, changing
+          rooms, the sales floor — happens as a population grows and food runs short. Both of those mean
+          the problem is bigger than the sighting.
+        </p>
+        <p>
+          <strong>A large reddish roach at night</strong> is a different animal and a different problem.
+          An inch and a half to two inches, reddish brown with tan banding outlining the shield behind the
+          head, is an American cockroach — an outdoor and sewer insect that AgriLife describes as one of
+          the most common cockroaches in sewer systems. It came in through a drain, a door threshold or a
+          soffit. Plumbing and exclusion, not a treatment programme.
+        </p>
+        <p>
+          <strong>Gnaw marks tell you the species.</strong> Mouse gnaw marks run about a twelfth of an inch
+          — two millimetres. Rat gnaw marks about a sixth of an inch — four millimetres. And smudge or rub
+          marks along pipes, beams and walls are a rat sign rather than a mouse sign, caused by fur
+          contacting surfaces on a habitual runway.
+        </p>
+        <p>
+          <strong>Photograph rather than describe.</strong> Droppings, gnaw marks, damage to packaging, or
+          the insect itself, with something beside it for scale. It settles in ten seconds what a
+          conversation cannot, and on retail it also gives you a dated record of when the finding was made.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What a retail programme looks like</h2>
+      <div class="measure">
+        <p>
+          <strong>Monitoring first, reported over time.</strong> Sticky-card monitors along the base of
+          walls and fixtures in back-of-house areas, which find harbourage rather than guess at it and turn
+          "is it getting better" from an argument into a reading. On retail the monitors also tell you
+          whether an introduction arrived with a specific delivery, because the timing lines up.
+        </p>
+        <p>
+          <strong>Exclusion as the durable half.</strong> The receiving door threshold, personnel doors,
+          utility penetrations, the gap where wall meets slab, vents and their screens. Sealed with metal
+          or concrete rather than foam, plastic, wood or rubber — all of which are gnawable and should not
+          be relied on as a permanent rodent seal.
+        </p>
+        <p>
+          <strong>Device placement that follows behaviour.</strong> Along runways and at entry points
+          rather than at even intervals because it looks systematic. Close enough to the wall that the
+          animal passes over the trigger, and no more than about ten feet apart in an active area. Many
+          small placements beat a few large ones, because a mouse eats up to twenty percent of its body
+          weight daily across roughly two hundred small meals a night.
+        </p>
+        <p>
+          <strong>Bait discipline where cockroaches are involved.</strong> At least one placement within
+          one to two feet of every suspected harbourage, many small pea-sized placements rather than few
+          large ones, and rotation to a different active ingredient if a population has not responded
+          within two to three weeks. And nobody spraying retail product over the bait — many are repellent
+          and will drive roaches away from the thing that was going to work.
+        </p>
+        <p>
+          <strong>Out of hours, generally.</strong> Fixtures move, shelves clear, the crevice work is
+          reachable, and the notice mechanics are simpler when the space is unoccupied.
+        </p>
+        <p>
+          <strong>And no contracts.</strong> Bi-monthly or quarterly, no term, no cancellation fee, with
+          interim visits between scheduled ones included rather than negotiated. In retail the interim call
+          is the one that matters — something is seen, you need somebody quickly, and you should not be
+          re-negotiating to get one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The retail year</h2>
+      <div class="measure">
+        <p>
+          Retail pest pressure has its own calendar, driven by trading patterns as much as by weather, and
+          it is predictable enough to plan around.
+        </p>
+        <p>
+          <strong>Early autumn is the window that matters most.</strong> It sits just before inbound volume
+          climbs for the season, and it coincides with the first cold nights that push rodents toward
+          buildings. Exclusion done in September is worth several reactive visits in December, and the
+          stockroom is emptier now than it will be at any point in the next four months.
+        </p>
+        <p>
+          <strong>Late autumn into December is the highest-risk stretch.</strong> Inbound freight peaks,
+          cardboard accumulates faster than anybody breaks it down, stock goes into places that are not
+          really storage, the receiving door stands open more, and nobody has time to look behind anything.
+          Every one of those is a pest condition and they all arrive at once.
+        </p>
+        <p>
+          <strong>January is when it surfaces.</strong> Volume drops, the stockroom gets dug out, and
+          whatever established itself in November becomes visible. A finding in January is usually a
+          December problem.
+        </p>
+        <p>
+          <strong>Spring and early summer</strong> bring general pest pressure — ants, roaches, spiders —
+          and the first scorpion activity, which in this region reaches ground-floor retail through door
+          thresholds like everything else.
+        </p>
+        <p>
+          <strong>Late summer into harvest</strong> puts field-driven rodent pressure onto any premises
+          near open or agricultural ground, which on the edge of these towns is a great many of them. It
+          arrives suddenly and at roughly the same point each year.
+        </p>
+        <p>
+          <strong>And any week after real rain</strong> moves things around — including large roaches out
+          of drains and ants into buildings — regardless of season.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Shopping centres and shared buildings</h2>
+      <div class="measure">
+        <p>
+          If you are one unit in a multi-tenant building, a good deal of your pest picture is not yours.
+        </p>
+        <p>
+          <strong>German cockroaches move between units</strong> through shared voids, plumbing chases and
+          wall penetrations. Treating your unit while the neighbouring one is untreated is frequently money
+          spent against continuous re-supply, and it is the most common reason a retail cockroach programme
+          appears to fail.
+        </p>
+        <p>
+          <strong>Rodents use the shared roof void and the shared service corridor.</strong> Roof rats in
+          particular nest above ground — attics, wall voids, ceiling voids — and forage up to three hundred
+          feet, which in a strip centre covers every unit in the building.
+        </p>
+        <p>
+          <strong>Shared bins are shared problems.</strong> A common dumpster area serves every unit
+          equally, including the one that is not managing its waste.
+        </p>
+        <p>
+          <strong>So find out what the landlord does.</strong> Many multi-tenant leases put common-area
+          pest control on the landlord and unit interiors on the tenant, which produces a gap exactly where
+          the problem lives. Knowing which side of that line your issue falls on before you book saves an
+          argument later.
+        </p>
+        <p>
+          <strong>And where the honest answer is a building-wide job</strong>, we will say so even though
+          it is a larger quote than the one you rang about and even though you may not be the person who
+          can authorise it. Telling you that your own unit alone cannot be fixed is a good deal
+          more useful than taking your money to prove it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Notice, records and insurance</h2>
+      <div class="measure">
+        <p>
+          <strong>You are a workplace under the notice rule.</strong> Rule 4 TAC §7.146(b) requires us to
+          provide a pest control sign to the employer or building manager at least forty-eight hours before
+          a planned indoor treatment. Section 7.147(d) adds the consumer information sheet. And §7.148(b)
+          puts the posting duty on you: in an area of common access that employees are most likely to see,
+          at least forty-eight hours before each planned indoor treatment, with the sheet available on
+          request during normal business hours.
+        </p>
+        <p>
+          <strong>If you sell food, there is more.</strong> Texas Health and Safety Code §341.011(3) names
+          a food market among the places of business that constitute a public health nuisance if not
+          constantly maintained in a sanitary condition. And a premises handling food may fall within the
+          food-processing establishment provisions of §7.146(c) as well as the workplace ones. In practice
+          that raises the value of a documented programme considerably.
+        </p>
+        <p>
+          <strong>Records for two years.</strong> Under §7.144, pest control use records include the
+          service address, pesticides used with their EPA registration numbers, amounts, devices used,
+          mixing rates, target pest, dates, and the applicator's name and licence number alongside the
+          business licence number — and must be made available to the Department on written or verbal
+          request. Ask for copies for your own file; if a corporate auditor, a franchisor or an inspector
+          asks, this is what they want.
+        </p>
+        <p>
+          <strong>Invoices and contracts</strong> carry the business name, licence number, telephone and
+          address under §7.145, with the Department jurisdiction statement on contracts, both legible and
+          in at least 8-point type.
+        </p>
+        <p>
+          <strong>Certificate of insurance</strong> naming your entity, on request. Managed retail property
+          almost always wants one on file before a vendor comes on site, so arrange it ahead of the first
+          visit rather than at the loading dock.
+        </p>
+        <p>
+          <strong>And Spanish.</strong> Valentin speaks it fluently and briefs staff directly. On a retail
+          premises the people most likely to spot a problem first are the people receiving freight and
+          working the stockroom, and being able to tell them what to look for in the language they prefer
+          is worth a good deal more than any monitoring device on the wall.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Retail pest control questions" />
+  <Cta
+    line="Describe what was seen and where, then tell him what the back of house looks like — the receiving door, where cardboard goes, and how far the dumpster is from it."
+  />
+</BaseLayout>

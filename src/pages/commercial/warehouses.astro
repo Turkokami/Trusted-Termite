@@ -1,0 +1,418 @@
+---
+/**
+ * Commercial vertical — warehouses. C-07 verified.
+ *
+ * REGULATORY: 4 TAC §7.146(c) names "warehouse" explicitly. Sign to the chief
+ * administrator, IPM Coordinator or building manager >=48h before a planned
+ * indoor treatment; §7.148(b) puts the posting duty on them, area of common
+ * access, >=48h ahead, plus the consumer information sheet on request.
+ * A warehouse is also a WORKPLACE under §7.146(b)/§7.147(d).
+ * §7.144 two-year use records; §7.145 invoice/contract; §7.123 insurance.
+ *
+ * FUMIGATION IS NOT OFFERED. Structural Fumigation and Commodity Fumigation
+ * are separate categories under §7.124 and neither is held. Commodity storage
+ * operations that need fumigation must be told to go elsewhere. This is the
+ * hardest honesty gate on this page because warehouses are exactly where the
+ * request comes from.
+ *
+ * RODENT FACTS, all sourced:
+ *  - House mouse: gap 1/4 in (AgriLife School IPM: "as small as 1/4 inch in
+ *    diameter", "a hole the size of a pencil diameter"; UC IPM: under 1/4 in
+ *    tall, through 3/8 in wide). Rats: slightly more than 1/2 in; UC IPM says
+ *    seal everything over 1/4 in because juveniles are the concern.
+ *  - Mouse: 5-10 litters/yr of 5-6, gestation 18-21 days, mature 5-6 weeks.
+ *    Eats ~20% body weight daily in ~200 small meals nightly -> many small
+ *    placements beat few large. Home range 10-30 ft, seldom >30 ft from nest,
+ *    returns up to 40x/day. Traps <=10 ft apart, close to walls.
+ *  - Thigmotaxis: rodents travel linear pathways, wall/floor corners, base of
+ *    foundations (AgriLife School IPM).
+ *  - Mice are NOT neophobic - "quickly detect new objects but do not fear
+ *    them", enter bait stations almost immediately. RATS ARE neophobic - both
+ *    roof and Norway rats "are leery of new things", requiring pre-baiting.
+ *    This is a genuine, sourced technical contrast.
+ *  - Roof rat: climbs, nests ABOVE ground (attics, wall/ceiling voids), forages
+ *    up to 300 ft. Norway rat: burrows, ground floors, forages ~150 ft
+ *    (AgriLife School IPM). Roof rats climb vertical pipes up to 3 in dia.,
+ *    jump 36 in vertically / 48 in horizontally; Norway rats burrow >=36 in.
+ *  - Rub/smudge marks are a RAT sign, not a mouse sign. Gnaw marks: mouse
+ *    ~1/12 in (2mm), rat ~1/6 in (4mm).
+ *  - Seal with METAL OR CONCRETE. Foam, plastic, wood, rubber and steel wool
+ *    are gnawable (NMSU L-209) - note this conflicts with AgriLife's steel-wool
+ *    suggestion for scorpion weep holes; steel wool is fine against arthropods,
+ *    NOT as a permanent rodent seal. 24-gauge 1/4x1/4 hardware cloth for mice,
+ *    19-gauge 1/2x1/2 for rats, galvanised sheet 24 gauge or heavier. Never
+ *    lightweight chicken wire.
+ *  - Store materials 18 in off the floor with space from walls (NMSU).
+ *  ⚠️ Do NOT assert roof vs Norway prevalence for this region - no source.
+ *    Both occur in Texas towns; identify by evidence on site.
+ *  ⚠️ HANTAVIRUS is carried by the DEER MOUSE (Peromyscus), NOT house mice or
+ *    commensal rats. Do not blur them. Never sweep or vacuum droppings.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Commercial', path: '/commercial/' },
+  { name: 'Warehouses', path: '/commercial/warehouses/' },
+];
+
+const quickAnswer =
+  'Warehouse pest control across the Permian Basin, with rodents as the defining problem and a roll-up door threshold as the defining entry point. Texas names warehouses specifically in the 48-hour notice rule. We do not offer fumigation — neither fumigation category is held on this licence, and a commodity operation that needs it needs somebody else.';
+
+const faqs = [
+  {
+    q: 'Do you fumigate warehouses?',
+    a: 'No, and this is worth settling before anything else. Structural fumigation and commodity fumigation are separate licence categories under 4 TAC §7.124, and neither is held on this licence. If your operation genuinely requires fumigation of a structure or of stored commodity, you need a company certified for it, and we will tell you that on the phone rather than after taking the work.',
+  },
+  {
+    q: 'What size gap actually matters?',
+    a: 'A quarter of an inch. AgriLife’s guidance describes mice getting through openings as small as a quarter inch in diameter — a hole the size of a pencil. Rats need slightly more than half an inch. But the exclusion standard used by extension services is to seal everything larger than a quarter inch regardless of which species you think you have, because juveniles are the concern and because you rarely know for certain at the outset.',
+  },
+  {
+    q: 'What should I seal gaps with?',
+    a: 'Metal or concrete. Foam, plastic, wood and rubber are all gnawable and should not be relied on as a permanent rodent seal — New Mexico State extension says so explicitly, and steel wool belongs on that list too for rodent work even though it is perfectly adequate against insects. Quarter-inch hardware cloth at 24 gauge for mice, half-inch mesh at 19 gauge for rats, galvanised sheet metal at 24 gauge or heavier. Never lightweight chicken wire.',
+  },
+  {
+    q: 'Why do you want traps every ten feet instead of a few good ones?',
+    a: 'Because of how mice feed and how far they travel. A house mouse eats up to twenty percent of its body weight daily in roughly two hundred small meals a night, and seldom ventures more than about thirty feet from its nest — returning to it up to forty times a day. So control is about density of devices within a small radius rather than coverage of a large area. UC IPM’s guidance is traps no more than about ten feet apart in an active area, set close to the wall so the animal passes directly over the trigger.',
+  },
+  {
+    q: 'Why did the rat traps not work when the mouse traps did?',
+    a: 'Neophobia, and it is a real and sourced difference. AgriLife notes that both roof and Norway rats are leery of new things in their environment, which requires patience and pre-baiting — leaving traps unset and baited until the animals are feeding confidently. Mice are the opposite: they quickly detect new objects but do not fear them, and will enter bait stations almost immediately. So mouse work is fast and decisive, and rat work is slow at the start by design.',
+  },
+  {
+    q: 'How do I tell whether it is rats or mice?',
+    a: 'Gnaw marks and rub marks. Mouse gnaw marks run about a twelfth of an inch, roughly two millimetres; rat gnaw marks about a sixth of an inch, four millimetres. And smudge or rub marks along beams, rafters, pipes and walls — caused by rats rubbing their fur against surfaces on habitual runways — are a rat sign rather than a mouse sign. Dropping size and shape helps too, and it is genuinely worth photographing rather than describing.',
+  },
+  {
+    q: 'Does the 48-hour notice rule apply to a warehouse?',
+    a: 'Yes, twice. Warehouses are named explicitly in 4 TAC §7.146(c), and a warehouse is also a workplace under §7.146(b). We provide the pest control sign at least 48 hours before a planned indoor treatment; under §7.148(b) the building manager or employer must post it in an area of common access at least 48 hours ahead and make the consumer information sheet available to anyone working in the building who asks.',
+  },
+  {
+    q: '¿Atienden bodegas y almacenes?',
+    a: 'Sí — roedores, exclusión estructural, monitoreo y documentación. No hacemos fumigación: esa es una categoría de licencia distinta que no tenemos, y si su operación la necesita se lo diremos desde la primera llamada. El dueño habla español y coordina directamente con el personal. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Warehouse Pest Control | Permian Basin"
+  description="Rodent programmes, structural exclusion and documented monitoring for warehouses and storage across West Texas. No fumigation — and we say so up front."
+  path="/commercial/warehouses/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Commercial · warehouses</p>
+      <h1>Warehouses and storage</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Start with what we cannot do, because warehouses are exactly where the question comes up and it
+          is better answered in the first minute than the third week.
+        </p>
+        <p>
+          <strong>We do not fumigate.</strong> Structural fumigation and commodity fumigation are two
+          separate licence categories under 4 TAC §7.124, and neither is held on this licence. If your
+          operation requires fumigation of the structure or of stored commodity, you need a company
+          certified for it. That is a straight answer and you will get it on the phone.
+        </p>
+        <p>
+          What is offered is rodent programmes, structural exclusion, general pest work, monitoring, and
+          documentation good enough to satisfy whoever audits you. On most warehouses in this region that
+          is the whole requirement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The threshold under the roll-up door</h2>
+      <div class="measure">
+        <p>
+          If there is one thing to take from this page, it is that most warehouse rodent problems are a
+          door problem, and the door in question works perfectly.
+        </p>
+        <p>
+          <strong>A roll-up door that no longer seats along its whole width</strong> is an open invitation
+          and it is invisible from the inside, because the door still closes and still latches. The gap is
+          usually at the ends, or where the slab has settled, or where a strip has been damaged by a
+          forklift and never replaced.
+        </p>
+        <p>
+          <strong>The dimension that matters is a quarter of an inch.</strong> AgriLife's guidance
+          describes mice getting through openings as small as a quarter inch in diameter — a hole the size
+          of a pencil. Rats need slightly more than half an inch. Extension exclusion standards say seal
+          everything over a quarter inch regardless, because juveniles are the concern and because you
+          rarely know at the outset which species you are dealing with.
+        </p>
+        <p>
+          <strong>Then everything else on the envelope.</strong> Personnel doors and their sweeps. Dock
+          levellers and the void behind them, which is one of the most productive harbourage points in any
+          warehouse and almost never inspected. Utility penetrations for water, electrical, gas, air lines
+          and data. Vents and their screens. Where the wall panel meets the slab. Anywhere a contractor cut
+          an opening and did not close it.
+        </p>
+        <p>
+          <strong>And the doors that stand open all day.</strong> In this climate, and in this industry,
+          that is normal operating practice and it is not going to change. What can change is what is
+          immediately outside them — vegetation, stored pallets, accumulated material — because an open
+          door twenty feet from good harbourage is a very different proposition from an open door with
+          clear ground around it.
+        </p>
+        <p>
+          <strong>Seal with metal or concrete.</strong> Foam, plastic, wood and rubber are gnawable and
+          should not be relied on as a permanent rodent seal — New Mexico State extension is explicit about
+          it, and steel wool belongs on that list for rodent work too, even though it is perfectly adequate
+          against insects. Quarter-inch hardware cloth at 24 gauge for mice, half-inch mesh at 19 gauge for
+          rats, galvanised sheet at 24 gauge or heavier. Never lightweight chicken wire.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How rodents actually move through a building</h2>
+      <div class="measure">
+        <p>
+          Understanding this changes where devices go, and it is the difference between a programme that
+          works and one that generates paperwork.
+        </p>
+        <p>
+          <strong>They travel along edges.</strong> The behaviour has a name — thigmotaxis — and AgriLife
+          names it directly: rodents travel linear pathways, the corners between walls and floors, and the
+          base of foundations. They do not cross open floor if they can help it. In a warehouse that means
+          the perimeter wall, the base of racking, the line where pallets meet the wall, and any run of
+          conduit or pipe at low level.
+        </p>
+        <p>
+          <strong>Mice work in a very small radius.</strong> A house mouse seldom ventures more than about
+          thirty feet from its nest and food supply, occupying an area roughly ten to thirty feet across
+          and returning to the nest up to forty times a day. That is the operational reason mouse control
+          is about density of devices in a small area rather than perimeter coverage of a large one.
+        </p>
+        <p>
+          <strong>And they feed in tiny amounts, constantly.</strong> Up to twenty percent of body weight
+          daily, taken in roughly two hundred small meals a night. Which is why many small bait and trap
+          placements beat a few large ones, and why UC IPM's guidance is traps no more than about ten feet
+          apart in an active area, set close to the wall so the animal passes directly over the trigger.
+        </p>
+        <p>
+          <strong>Rats range much further.</strong> AgriLife's figures are that roof rats travel up to
+          three hundred feet in search of food and Norway rats approximately a hundred and fifty. So a rat
+          problem in your building may be sourced well outside it, and the perimeter and the neighbours
+          matter in a way they do not for mice.
+        </p>
+        <p>
+          <strong>The two rat species behave differently and nest differently.</strong> Roof rats are agile
+          climbers that nest above ground — attics, wall voids, ceiling voids, and outdoors in trees and
+          shrubs — and they can climb vertical pipes up to three inches in diameter and jump thirty-six
+          inches vertically. Norway rats are burrowers, nesting along building foundations and beneath
+          rubbish or woodpiles, occupying ground floors, and burrowing at least thirty-six inches straight
+          down. Both occur in Texas towns, and rather than assert which dominates here — no source gives
+          that for this region — we identify by the evidence on site.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Neophobia, and why rat work starts slowly</h2>
+      <div class="measure">
+        <p>
+          This is the single most useful piece of technical knowledge for anybody who has tried to handle
+          a rodent problem in-house and concluded that traps do not work.
+        </p>
+        <p>
+          <strong>Mice are not neophobic.</strong> They quickly detect new objects in their environment but
+          do not fear them, and will enter a bait station and sample bait almost immediately. Mouse work is
+          therefore fast: put out enough devices, correctly placed, and you get a result within days.
+        </p>
+        <p>
+          <strong>Rats are the opposite.</strong> AgriLife's own material states that both roof and Norway
+          rats are leery of new things in their environment. A trap placed and set on day one is a trap
+          that rats will avoid, sometimes for a week or more, and the operator concludes there are no rats
+          — or worse, that the population is bait-shy.
+        </p>
+        <p>
+          <strong>Which is why rat work is pre-baited.</strong> Devices go out unset, baited, and left
+          until the animals are feeding on them confidently. Then they are set, all at once. That sequence
+          feels like nothing is happening and it is the reason the job works.
+        </p>
+        <p>
+          <strong>And the most common in-house mistake, per AgriLife's field advice:</strong> not putting
+          out enough traps. A handful of devices against an established population extends the job
+          indefinitely and educates the survivors. The correct approach is enough devices to make the
+          trapping period short and decisive.
+        </p>
+        <p>
+          <strong>Reading the evidence.</strong> Mouse gnaw marks run about a twelfth of an inch — two
+          millimetres. Rat gnaw marks about a sixth of an inch — four millimetres. Smudge or rub marks
+          along beams, rafters, pipes and walls, caused by rats rubbing their fur against surfaces on
+          habitual runways, are a rat sign and not a mouse sign. Droppings differ in size and in whether
+          the ends are pointed. A long-standing mouse infestation carries a characteristic musky odour.
+        </p>
+        <p>
+          <strong>Reproduction is why a small problem does not stay small.</strong> A house mouse produces
+          five to ten litters a year of five or six young, with a gestation of eighteen to twenty-one days
+          and sexual maturity at five to six weeks. Those numbers compound quickly enough that a
+          fortnight's delay in a warehouse is a materially larger job, and they are the reason the correct
+          response to first evidence is a decisive one rather than a watching brief.
+        </p>
+        <p>
+          <strong>Photograph rather than describe.</strong> Droppings and gnaw marks photograph well with
+          something beside them for scale, and it settles the species question far faster than any
+          conversation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Storage practice does half the work</h2>
+      <div class="measure">
+        <p>
+          None of this is chemical and all of it makes the treatment side easier and cheaper.
+        </p>
+        <p>
+          <strong>Eighteen inches off the floor, and away from the walls.</strong> New Mexico State
+          extension's standard, and it does two things at once: it removes the harbourage under and behind
+          stored material, and — just as importantly — it lets you see the runway. You cannot inspect a
+          wall base you cannot reach, and a perimeter aisle is worth more than any monitoring device
+          placed in front of a pallet.
+        </p>
+        <p>
+          <strong>Food and feed in metal, glass or heavy plastic with tight lids.</strong> Bagged product
+          sitting on a pallet is a food source with a delivery date attached, and no control programme
+          outcompetes a permanent food supply — that is true in a barn and it is equally true across a
+          hundred thousand square feet.
+        </p>
+        <p>
+          <strong>Cardboard is a material problem.</strong> Corrugated board is harbourage, nesting
+          material and a common introduction route for stored product insects and German cockroaches
+          arriving on incoming freight. Breaking it down promptly rather than accumulating it changes more
+          than most people expect.
+        </p>
+        <p>
+          <strong>Rotate stock and inspect the back.</strong> The pallet that has not moved in eight months
+          is where the problem is, every time. Long-term static storage in a corner is functionally a
+          harbourage installation, and the longer it sits the less likely anybody is to look behind it —
+          which is precisely why it is worth putting on a schedule rather than leaving to whenever the
+          stock finally moves.
+        </p>
+        <p>
+          <strong>Watch what arrives.</strong> Inbound freight is the main introduction route for a
+          warehouse — rodents, stored product insects and cockroaches alike. Inspecting incoming pallets
+          at the dock, particularly anything that has been sitting in a yard or transferred through several
+          hands, closes off more problems than any treatment resolves afterwards.
+        </p>
+        <p>
+          <strong>And manage the exterior.</strong> Vegetation back from the wall, no stored pallets or
+          scrap against the building, and the ground clear where doors open. In this region that also
+          matters for scorpions and for field-driven rodent pressure after harvest — a warehouse on the
+          edge of town gets a seasonal wave from the surrounding ground at roughly the same point every
+          year.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A word about deer mice</h2>
+      <div class="measure">
+        <p>
+          This one is worth a section on its own, because it is a genuine rural West Texas consideration
+          and because it is routinely blurred with the ordinary house mouse.
+        </p>
+        <p>
+          <strong>Hantavirus is carried by the deer mouse</strong>, <em>Peromyscus maniculatus</em>. The
+          CDC identifies it as the host of the most common hantavirus causing pulmonary syndrome in the
+          United States. It is <em>not</em> carried by house mice or by commensal rats, and attaching it to
+          them — which a good deal of pest control marketing does — is both inaccurate and unhelpful.
+        </p>
+        <p>
+          <strong>Telling them apart.</strong> A house mouse is light brownish to grey overall with a
+          relatively hairless tail. A deer mouse has a white belly and a bicoloured, moderately to well
+          furred tail. That tail is the practical distinction.
+        </p>
+        <p>
+          <strong>Where it matters here.</strong> Outbuildings, barns, equipment sheds and rural structures
+          — including storage buildings on the edge of towns and on agricultural property. Not typically
+          an urban warehouse problem, and genuinely worth thinking about on a rural one.
+        </p>
+        <p>
+          <strong>The handling rule, which is the important part.</strong> Never sweep or vacuum rodent
+          droppings. Transmission is by inhaling aerosolised urine, droppings or saliva, and sweeping is
+          precisely the action that aerosolises them. The CDC guidance is to wet the material with a ten
+          percent bleach solution — about a cup and a half of bleach per gallon of water — wait an hour,
+          and double-bag it, using an N-100 or HEPA respirator rather than a painter's mask.
+        </p>
+        <p>
+          <strong>If you have a building that has been closed up with rodent activity in it</strong>, that
+          is the situation the guidance is written for. Ventilate before entering, and do not start with a
+          broom in your hand.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Programme, documentation and notice</h2>
+      <div class="measure">
+        <p>
+          <strong>Monitoring devices reported over time</strong>, rather than a fixed application schedule.
+          On a warehouse the value of a programme is the trend — which stations are taking, which corner
+          went active after a rack was moved, whether last quarter's exclusion held. A programme that
+          produces readings can be escalated intelligently; one that produces visits cannot.
+        </p>
+        <p>
+          <strong>A device map that reflects the building</strong>, placed on the runways and at the entry
+          points rather than at even intervals because it looks systematic.
+        </p>
+        <p>
+          <strong>Records for two years, as 4 TAC §7.144 requires</strong> — pesticides with EPA
+          registration numbers, amounts, mixing rates, devices used and quantities, target pest, dates, and
+          the applicator's name and licence number. Available to the Department on written or verbal
+          request. If you are audited by a customer, a franchisor or an insurer, this is the file they
+          want.
+        </p>
+        <p>
+          <strong>Invoices and contracts</strong> carrying the business name, licence number, telephone and
+          address under §7.145, with the jurisdiction statement on contracts.
+        </p>
+        <p>
+          <strong>Certificate of insurance</strong> naming your entity, on request. Warehouses almost
+          always require one before a vendor comes on site, so arrange it before the first visit rather
+          than at the gate.
+        </p>
+        <p>
+          <strong>And the notice rule applies to you twice.</strong> Warehouses are named explicitly in
+          4 TAC §7.146(c), and a warehouse is also a workplace under §7.146(b). We supply the sign at least
+          forty-eight hours before a planned indoor treatment; under §7.148(b) the building manager or
+          employer posts it in an area of common access at least forty-eight hours ahead, and makes the
+          consumer information sheet available to anyone working in the building who asks for it. That
+          second duty is yours, and most operations have never been told about it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Warehouse pest control questions" />
+  <Cta
+    line="Tell him the floor area, what is stored, and whether the roll-up doors seat properly along their whole width. That last one answers more than it sounds like it should."
+  />
+</BaseLayout>

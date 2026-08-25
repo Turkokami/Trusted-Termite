@@ -1,0 +1,448 @@
+---
+/**
+ * Commercial vertical — apartments and property management. C-07 verified.
+ *
+ * THE FIVE-UNIT LINE is the spine of this page, verified Aug 2026:
+ *  - 4 TAC §7.147(a): indoor treatment at a private residence that is NOT
+ *    rental property — consumer information sheet made available to the owner.
+ *  - §7.147(b): rental property with FEWER THAN FIVE units — sheet made
+ *    available to each resident, ON REQUEST, at the time of each treatment.
+ *  - §7.147(c) and §7.146(a): FIVE OR MORE units — the licensee supplies the
+ *    owner/manager with both the consumer information sheet AND a pest control
+ *    sign, at least 48 hours before a planned indoor treatment.
+ *  - §7.148(a): the OWNER OR MANAGER, expressly "other than the certified
+ *    applicator or technician", must then either (1) post the sign in an area
+ *    of common access to residents at least 48 hours before the planned indoor
+ *    treatment, or (2) distribute the application information to each unit
+ *    planned to be treated AND each unit adjacent to those planned to be
+ *    treated, or in an adjacent or common access area, at least 48 hours
+ *    before — and (3) make the consumer information sheet available on request.
+ *  - §7.148(e): not in violation if the sign is removed by an unauthorized
+ *    person, or if the space was vacant, unused and unoccupied at treatment.
+ *
+ * Property Code, verified: §92.052 duty to repair; §92.052(b) no duty for a
+ * condition caused by tenant/occupant/family/guest unless normal wear and tear;
+ * §92.056(c) receipt on ATTEMPTED postal delivery; §92.056(d) rebuttable
+ * presumption that SEVEN DAYS is reasonable; §92.056(g) lease must state the
+ * §92.056 and §92.0561 remedies in underlined or bold print.
+ * NO Texas statute requires landlords to provide pest control — see the
+ * landlord-tenant compliance page. Do not imply otherwise here.
+ *
+ * German cockroach facts (AgriLife ENTO-037): does NOT live outdoors in Texas;
+ * female carries the ootheca until hatch; ~75% of life in cracks 1/32-3/16 in;
+ * 30-40 nymphs per capsule; nymph to adult 50-60 days; bug bombs do not work
+ * because they do not penetrate cracks; baits primary, one placement within
+ * 1-2 ft of every suspected harbourage, many small pea-sized placements beat
+ * few large ones, rotate active ingredient if no result in 2-3 weeks; HEPA
+ * vacuum because harbourages contain allergens; asthma link (NIEHS).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Commercial', path: '/commercial/' },
+  { name: 'Apartments & property management', path: '/commercial/apartments/' },
+];
+
+const quickAnswer =
+  'Five rental units is the line that changes your obligations. At five or more, Texas requires us to give you a pest control sign at least 48 hours before an indoor treatment — and requires you, not us, to post it. Below five, the rules are lighter. Either way, German cockroaches are carried in rather than sprayed in, and turnover is the best treatment window a rental property gets all year.';
+
+const faqs = [
+  {
+    q: 'What changes at five units?',
+    a: 'Quite a lot. Under 4 TAC §7.146(a) and §7.147(c), for an indoor treatment at residential rental property with five or more units the licensee must supply the owner or manager with both the Department’s consumer information sheet and a pest control sign, at least 48 hours before the planned treatment. Below five units, §7.147(b) applies instead: the sheet is made available to each resident on request at the time of each treatment, and there is no sign requirement. One unit either side of that line is a materially different compliance picture.',
+  },
+  {
+    q: 'Who has to post the sign?',
+    a: 'You do. Rule 4 TAC §7.148(a) puts the posting duty on the owner or manager, and the rule says expressly that it is somebody other than the certified applicator or technician. You either post it in an area of common access to residents at least 48 hours before the planned indoor treatment, or distribute the application information to each unit being treated and each adjacent unit at least 48 hours ahead. You must also make the consumer information sheet available on request.',
+  },
+  {
+    q: 'What if a resident tears the sign down?',
+    a: 'Section 7.148(e) covers that: a person is not considered in violation if the pest control sign is removed by an unauthorised person, or if the space to be treated was vacant, unused and unoccupied at the time of treatment. That is a sensible provision and it is worth knowing about, because on a large property signs do come down.',
+  },
+  {
+    q: 'Am I legally required to provide pest control to tenants?',
+    a: 'No. Texas has no statute that expressly requires it, whatever you may have read. Property Code §92.052 creates a general duty to repair conditions that materially affect the physical health or safety of an ordinary tenant, which a serious infestation may reach on its facts — and there is no duty at all under §92.052(b) for a condition caused by the tenant, an occupant, a family member or a guest, unless it was normal wear and tear. Beyond that, your lease governs. The compliance section covers this in full.',
+  },
+  {
+    q: 'How long do I have to respond to a tenant notice?',
+    a: 'A reasonable time, and §92.056(d) sets a rebuttable presumption that seven days is reasonable — rebuttable by the date of the notice, the severity and nature of the condition, and the availability of materials, labour and utilities. Note also §92.056(c): you are considered to have received a notice when you actually receive it or when the postal service has attempted delivery. Uncollected certified mail still counts.',
+  },
+  {
+    q: 'Why does treating one unit not fix the problem?',
+    a: 'Because German cockroaches move between adjoining units through shared voids, plumbing chases and wall penetrations, and because the population you cannot see is larger than the one you can. Treating a complaining unit while the neighbouring units are untreated is frequently money spent against continuous re-supply. On a building with adjacency, the honest recommendation is usually a block rather than a unit, and we will say so even though it is a larger job.',
+  },
+  {
+    q: 'Do bug bombs work in an apartment?',
+    a: 'No, and AgriLife says so directly: total-release aerosols generally do not eliminate cockroaches because they do not penetrate the cracks where most cockroaches hide. German cockroaches spend around three-quarters of their lives in crevices between a thirty-second and three-sixteenths of an inch wide. A resident setting off foggers before your treatment usually scatters the population and makes the professional job longer, so it is worth telling people not to.',
+  },
+  {
+    q: '¿Atienden complejos de apartamentos?',
+    a: 'Sí, y el dueño habla español con fluidez, así que puede explicar el tratamiento directamente a los residentes sin intérprete. Recuerde que en propiedades de cinco unidades o más, la obligación de colocar el aviso es del propietario o administrador, no de la compañía. Llame al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Apartment Pest Control | Permian Basin"
+  description="The five-unit line changes your legal duties, not just ours. Turnover treatment, German cockroach programmes and the notice rule that falls on managers."
+  path="/commercial/apartments/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Commercial · apartments &amp; property management</p>
+      <h1>Apartments and property management</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Multi-family property is the commercial category where the gap between what an owner thinks the
+          rules are and what they actually are is widest — in both directions. People believe Texas
+          requires them to provide pest control, which it does not. And they have never heard of the
+          notice duty that genuinely does fall on them.
+        </p>
+        <p>
+          This page sorts both out, and then deals with the pest that actually drives multi-family work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Five units is the line</h2>
+      <div class="measure">
+        <p>
+          Texas draws a bright line at five rental units, and one unit either side of it is a materially
+          different compliance picture.
+        </p>
+        <p>
+          <strong>Fewer than five units.</strong> Rule 4 TAC §7.147(b) applies: for an indoor treatment,
+          the certified applicator or technician makes the Department's consumer information sheet
+          available to each resident, on request, at the time of each treatment. No sign requirement, no
+          forty-eight-hour clock.
+        </p>
+        <p>
+          <strong>Five or more units.</strong> Rule 4 TAC §7.146(a) and §7.147(c) both engage. We must
+          supply the owner or manager with the consumer information sheet <em>and</em> a pest control sign,
+          at least <strong>forty-eight hours before</strong> the planned indoor treatment.
+        </p>
+        <p>
+          <strong>And then the duty becomes yours.</strong> Rule 4 TAC §7.148(a) is explicit that the
+          posting is done by the owner or manager — the rule says, in terms, somebody "other than the
+          certified applicator or technician." You must either:
+        </p>
+        <p>
+          <strong>(1) post the sign in an area of common access to residents</strong>, at least forty-eight
+          hours before the planned indoor treatment; <strong>or (2) distribute the application
+          information</strong> to each unit planned to be treated <em>and each unit adjacent to those
+          planned to be treated</em>, or in an adjacent or common access area, again at least forty-eight
+          hours before. And <strong>(3) make the consumer information sheet available on request.</strong>
+        </p>
+        <p>
+          <strong>Note the adjacency requirement in option two.</strong> It is not just the units being
+          treated. It is those units and their neighbours, which on a typical building roughly triples the
+          distribution.
+        </p>
+        <p>
+          <strong>Two reliefs worth knowing.</strong> Section 7.148(e): you are not in violation if the
+          sign is removed by an unauthorised person, or if the space to be treated was vacant, unused and
+          unoccupied at the time of treatment. Signs do come down on a big property, and vacancy is common
+          — the rule accounts for both.
+        </p>
+        <p>
+          <strong>Why we raise it at all.</strong> Because we could hand you a sign, meet our obligation,
+          and say nothing about yours. A great many operators do exactly that. A duty you do not know you
+          have is a duty you are not discharging, and the forty-eight hours only does its job if the sign
+          actually goes up.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What you actually owe a tenant</h2>
+      <div class="measure">
+        <p>
+          Shorter than the internet suggests, and worth getting right.
+        </p>
+        <p>
+          <strong>There is no Texas pest control statute for rentals.</strong> Property Code chapter 92,
+          subchapter B is the landlord repair duty, and no section of it mentions pests, insects, vermin,
+          rodents, bed bugs or infestation. The claim that Texas law requires landlords to provide pest
+          control appears on a great many pest control websites and it does not survive reading the code.
+        </p>
+        <p>
+          <strong>What exists is §92.052</strong>, a general duty to make a diligent effort to repair or
+          remedy a condition where the tenant has specified it in a notice to the place rent is normally
+          paid, the tenant is not delinquent in rent at the time, and the condition materially affects the
+          physical health or safety of an ordinary tenant. Whether an infestation reaches that standard is
+          a fact question about severity, not a category.
+        </p>
+        <p>
+          <strong>And §92.052(b) is the provision most disputes turn on.</strong> Unless caused by normal
+          wear and tear, there is no duty for a condition caused by the tenant, a lawful occupant, a family
+          member, or a guest or invitee. With pests, origin is frequently unprovable after the fact — which
+          is an argument for documenting unit condition at move-in rather than for arguing at move-out.
+        </p>
+        <p>
+          <strong>On timing</strong>, §92.056(d) creates a rebuttable presumption that seven days is a
+          reasonable time to repair, rebuttable by the date of notice, the severity and nature of the
+          condition, and the availability of materials, labour and utilities. And §92.056(c) provides that
+          you are considered to have received a notice when you or your agent actually receive it, or when
+          the postal service has <em>attempted</em> delivery — so uncollected certified mail still counts.
+        </p>
+        <p>
+          <strong>One lease requirement worth checking on your own paperwork:</strong> §92.056(g) requires
+          the lease to state the tenant's remedies under §92.056 and §92.0561 in underlined or bold print.
+        </p>
+        <p>
+          <strong>The practical advice.</strong> Address pest control expressly in the lease so nobody is
+          guessing, respond to notices in writing and promptly, and treat rather than argue about origin.
+          The treatment is nearly always cheaper than the vacancy, the dispute or the damage. There is a
+          fuller treatment of all of this on the
+          <a href="/compliance/landlord-tenant/">landlord and tenant compliance page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>German cockroaches — the pest that defines multi-family work</h2>
+      <div class="measure">
+        <p>
+          Almost everything difficult about apartment pest control comes back to one species, and it
+          behaves in ways that make most people's instincts wrong.
+        </p>
+        <p>
+          <strong>It does not live outdoors in Texas.</strong> AgriLife's ENTO-037 says so in terms: German
+          cockroaches "do not live outdoors in Texas" and "spend their lives indoors." That single fact
+          reframes the whole problem. A German cockroach population was <em>carried in</em> — in cartons,
+          groceries, appliances, second-hand furniture, or from an adjoining unit. It is never a perimeter
+          problem, and perimeter spraying does not address it.
+        </p>
+        <p>
+          <strong>It lives in cracks.</strong> About seventy-five percent of its life is spent in narrow
+          crevices between a thirty-second and three-sixteenths of an inch wide. Which is why AgriLife
+          states plainly that total-release aerosols — bug bombs — generally do not eliminate cockroaches,
+          because they do not penetrate the cracks where the roaches actually are.
+        </p>
+        <p>
+          <strong>The female carries the egg capsule until hatch</strong>, rather than depositing it. That
+          sharply raises survival, and it means contact insecticide on surfaces largely misses the next
+          generation.
+        </p>
+        <p>
+          <strong>And it breeds fast.</strong> Thirty to forty nymphs per capsule, nymph to adult in fifty
+          to sixty days at normal indoor temperatures, optimum around eighty degrees. AgriLife calls it the
+          most prolific of indoor cockroaches, capable of producing a generation in about a hundred days.
+        </p>
+        <p>
+          <strong>Two things tell you how bad it is.</strong> Daytime sightings: AgriLife notes that if you
+          see cockroaches during the day, it usually means there are a lot of them. And dispersal — as
+          populations grow and food runs short they spread from kitchens and bathrooms into bedrooms and
+          other rooms. A report of roaches in a bedroom is a severity indicator, not a location detail.
+        </p>
+        <p>
+          <strong>Why this matters to a property owner specifically.</strong> ENTO-037 describes the German
+          cockroach as one of the most widespread insect pests to public health in urban homes, apartments
+          and restaurants — they transport germs and are associated with allergies and asthma, and the
+          NIEHS notes a link between cockroach presence and increased severity of asthma symptoms. That is
+          a habitability consideration as well as a nuisance one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What a German cockroach programme actually looks like</h2>
+      <div class="measure">
+        <p>
+          AgriLife's own hierarchy is inspection, sanitation, exclusion, and low-toxicity insecticides — in
+          that order. Here is what that means on a building.
+        </p>
+        <p>
+          <strong>Monitoring first.</strong> Sticky-card monitors along walls and cabinet edges, to find
+          harbourage rather than guess at it. On a multi-unit property this also tells you which units are
+          actually sources and which are receiving, which is the difference between treating three units
+          and treating thirty.
+        </p>
+        <p>
+          <strong>Sanitation and moisture.</strong> Cleaning floors and counters, and fixing water leaks —
+          AgriLife names moisture removal explicitly. Under sinks, behind plumbing, behind and under
+          appliances. On a rental this is partly a tenant conversation and partly a maintenance one, and it
+          is worth being clear which is which rather than blaming the resident by default.
+        </p>
+        <p>
+          <strong>Vacuuming, with a HEPA filter.</strong> AgriLife specifies HEPA because cockroach
+          harbourages contain allergens. Vacuuming removes both the roaches and the food residues under
+          stoves and behind refrigerators, and it produces an immediate population reduction that bait
+          alone takes weeks to match.
+        </p>
+        <p>
+          <strong>Sealing the cracks</strong> they hide and travel in — cabinet voids, behind baseboards,
+          plumbing penetrations, the gaps between units. On multi-family property the penetrations between
+          adjoining units are the single most important structural item, because they are the highway.
+        </p>
+        <p>
+          <strong>Bait as the primary chemistry, placed correctly.</strong> AgriLife's guidance is at least
+          one placement within one to two feet of every suspected harbourage, and that many small pea-sized
+          placements are more effective than fewer large ones. If a population persists beyond two to three
+          weeks, rotate to a different bait with a new active ingredient rather than repeating the same
+          one.
+        </p>
+        <p>
+          <strong>Boric acid dust</strong> remains, in AgriLife's words, one of the more effective
+          cockroach control insecticides — applied so lightly that the residue is barely visible. Heavy
+          visible dust is repellent and counterproductive.
+        </p>
+        <p>
+          <strong>What we will tell residents, and you should too.</strong> Do not set off foggers. Do not
+          spray retail product over bait placements — many are repellent and will drive roaches away from
+          the bait that was going to kill them. If somebody already has, say so; it changes the plan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Turnover is the best window you get</h2>
+      <div class="measure">
+        <p>
+          An empty unit is the easiest property in the world to treat properly, and the window is short
+          enough that it works far better planned than reacted to.
+        </p>
+        <p>
+          <strong>Full access.</strong> Nothing to work around, no furniture to move, no negotiation about
+          which rooms. Every crevice reachable, every cabinet void open.
+        </p>
+        <p>
+          <strong>No occupancy constraints.</strong> Materials and methods that need a vacancy period are
+          available, and the §7.146(d) and §7.148(e) reliefs for vacant, unused and unoccupied space mean
+          the notice mechanics are simpler too.
+        </p>
+        <p>
+          <strong>A clean baseline.</strong> Treating at turnover establishes what the unit's condition
+          actually was at handover — which is precisely the evidence §92.052(b) disputes turn on months
+          later. Photograph it while it is empty.
+        </p>
+        <p>
+          <strong>And it breaks the handover chain.</strong> On short-cycle rental property — which the
+          Permian economy produces a great deal of — an untreated unit passes its problem to the next
+          tenant, who reports it, who is then suspected of causing it. Treating between tenancies ends that
+          cycle and removes an entire class of argument.
+        </p>
+        <p>
+          <strong>Practically:</strong> tell us your turnover schedule rather than calling when a unit
+          comes free. Grouped turnover work across a property, or across several properties in the same
+          town, is cheaper to deliver and easier to schedule than single units at short notice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Bed bugs, and the adjacency problem</h2>
+      <div class="measure">
+        <p>
+          The other multi-family pest that behaves in a way owners find counter-intuitive.
+        </p>
+        <p>
+          <strong>Bed bugs are an introduction problem, not a sanitation problem.</strong> They arrive in
+          luggage, in second-hand furniture, on clothing, in a moving box. The cleanest unit in the
+          building is as exposed as any other, which makes attribution nearly impossible and makes blaming
+          a tenant both unfair and usually unprovable.
+        </p>
+        <p>
+          <strong>They move between units.</strong> Which means the unit that reported is not necessarily
+          the unit that has the problem, and treating in isolation is frequently spending against
+          continuous re-supply from next door.
+        </p>
+        <p>
+          <strong>So on adjacency, the honest recommendation is usually larger than the call.</strong>
+          Inspecting neighbouring units — above, below and either side — before deciding scope. That is a
+          bigger quote than the one you rang about, and saying so costs us money in the short term and
+          saves it in the medium term.
+        </p>
+        <p>
+          <strong>Detection beats reaction.</strong> On property with turnover, inspecting units at
+          changeover finds an introduction while it is still one unit. That is a five-minute look at
+          mattress seams, the box spring corners and the bed frame joints, and it is the single highest-value
+          routine available on multi-family property.
+        </p>
+        <p>
+          <strong>What we do not offer:</strong> heat treatment. Conventional chemical treatment with a
+          scheduled follow-up is the service, and the follow-up is not optional — eggs are not affected the
+          way active insects are, so the second visit at the right interval is what deals with what
+          hatches. Where thermal remediation is genuinely the right answer for a building, you need a
+          provider who does it and we will tell you so.
+        </p>
+        <p>
+          There is a fuller account on the <a href="/services/bed-bug-treatment/">bed bug page</a>,
+          including what to tell residents about preparation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Working with us on a property</h2>
+      <div class="measure">
+        <p>
+          <strong>Sort authorisation and access first.</strong> Who approves the work, who receives the
+          invoice, who lets us in, and whether the tenant is the contact. Those are frequently four
+          different people on multi-family property and it is entirely normal — it just needs settling
+          before the visit rather than at the door.
+        </p>
+        <p>
+          <strong>Get the certificate of insurance in advance.</strong> Most managed property requires one
+          on file before a vendor comes on site. It takes minutes ahead of time and costs a visit on the
+          day.
+        </p>
+        <p>
+          <strong>Coordinate the notice.</strong> If you are five units or more, we need to get you the
+          sign and the consumer information sheet forty-eight hours out, and you need to post or distribute
+          it in that window. That is a scheduling constraint on both of us and it is much easier when the
+          service day is planned rather than urgent.
+        </p>
+        <p>
+          <strong>Tell residents what is happening and in which language.</strong> The Department publishes
+          both the sign and the consumer information sheet in Spanish, and in this part of Texas that
+          matters. Valentin speaks Spanish fluently and talks to residents directly, without an interpreter
+          and without a callback — which on a property where notice has to actually reach people is worth
+          more than it sounds.
+        </p>
+        <p>
+          <strong>Keep the records.</strong> We hold pest control use records for two years as 4 TAC §7.144
+          requires, including pesticides and their EPA registration numbers, amounts, mixing rates, target
+          pest, dates and applicator details. Ask for copies for your own file — they are the documentation
+          a habitability question, an insurer or a dispute will eventually want.
+        </p>
+        <p>
+          <strong>And no contracts.</strong> Recurring service runs bi-monthly or quarterly with no term
+          and no cancellation fee, and interim visits between scheduled ones are included rather than
+          negotiated. On a property with real pressure, the interim call is the part that earns its keep.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Apartment pest control questions" />
+  <Cta
+    line="Tell him the unit count first — five is the line that changes the paperwork — and whether you need a certificate of insurance on file before anybody comes on site."
+  />
+</BaseLayout>
