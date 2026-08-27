@@ -204,7 +204,7 @@ export const DECAYING_FACTS: DecayingFact[] = [
     id: 'BIZ-02',
     what: 'Published price ranges: $140–$160+ per recurring visit, $200–$250 initial service (E-01, E-02).',
     source: 'The owner.',
-    surfaces: ['/', '/services/pest-control/', '/financing/', '/contact/', 'src/data/business.ts → pricing'],
+    surfaces: ['/', '/services/pest-control/', '/contact/', 'src/data/business.ts → pricing'],
     lastVerified: '2026-08-23',
     intervalDays: H,
     severity: 'high',

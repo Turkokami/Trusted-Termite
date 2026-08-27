@@ -13,6 +13,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Trust from '../../components/Trust.astro';
+import ServiceMap from '../../components/ServiceMap.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
@@ -88,6 +89,7 @@ const faqs = [
       <h1>Pest Control in Odessa, Texas</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <ServiceMap query="Odessa, TX" label="Map of Odessa, Texas" zoom={11} caption="Service area map — call to confirm your address." />
       <div class="measure">
         <p>
           Odessa is a different job from the towns west of here, and the reason is not climate or soil.
@@ -271,10 +273,10 @@ const faqs = [
           the standard guarantee, and we would rather say that plainly than let you assume otherwise.
         </p>
         <p>
-          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle, and financing
-          available on larger jobs — which matters more here than most places, because a full unit
-          turnaround with a bed bug treatment and a cleanout on top is rarely a small invoice, and
-          spreading it should not be the thing that stops the work getting done properly.
+          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle. Getting the
+          number settled up front matters more here than most places, because a full unit turnaround
+          with a bed bug treatment and a cleanout on top is rarely a small invoice — so ask for the
+          figure before the work starts rather than after, and nothing at the end is a surprise.
         </p>
       </div>
     </div>

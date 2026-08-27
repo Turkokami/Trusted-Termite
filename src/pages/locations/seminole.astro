@@ -18,6 +18,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Trust from '../../components/Trust.astro';
+import ServiceMap from '../../components/ServiceMap.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
@@ -100,6 +101,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
         <AnswerBox text={quickAnswer} />
       </div>
       <Trust />
+      <ServiceMap query="Seminole, TX" label="Map of Seminole, Texas" zoom={12} caption="Service area map — call to confirm your address." />
       <div class="measure">
         <p>
           Most of the companies advertising pest control in Seminole are driving here. They come from

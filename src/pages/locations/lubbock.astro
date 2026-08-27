@@ -17,6 +17,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Trust from '../../components/Trust.astro';
+import ServiceMap from '../../components/ServiceMap.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
@@ -90,6 +91,7 @@ const faqs = [
       <h1>Pest Control in Lubbock, Texas</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <ServiceMap query="Lubbock, TX" label="Map of Lubbock, Texas" zoom={11} caption="Service area map — call to confirm your address." />
       <div class="measure">
         <p>
           Lubbock is the biggest city on this route and the furthest point we regularly run. It is also
@@ -355,8 +357,7 @@ const faqs = [
           rather than the standard guarantee, which we would rather say plainly than let anybody assume.
         </p>
         <p>
-          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle, and
-          financing on larger jobs. Se habla español.
+          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle. Se habla español.
         </p>
       </div>
     </div>

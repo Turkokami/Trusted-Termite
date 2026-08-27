@@ -13,6 +13,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Trust from '../../components/Trust.astro';
+import ServiceMap from '../../components/ServiceMap.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
@@ -88,6 +89,7 @@ const faqs = [
       <h1>Pest Control in Midland, Texas</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <ServiceMap query="Midland, TX" label="Map of Midland, Texas" zoom={11} caption="Service area map — call to confirm your address." />
       <div class="measure">
         <p>
           Midland is the biggest market on this route and the most contested. Terminix, Orkin and Fox all
@@ -286,7 +288,7 @@ const faqs = [
           <strong>No contracts.</strong> Recurring service is bi-monthly or quarterly and you can stop it
           whenever you want. Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with
           termite work carrying its own one-year re-treatment warranty. Military discount. Cash, check,
-          card in person or online, Venmo, CashApp or Zelle, and financing on larger jobs.
+          card in person or online, Venmo, CashApp or Zelle.
         </p>
         <p>
           Recurring residential service generally runs $140 to $160 or more per visit depending on the

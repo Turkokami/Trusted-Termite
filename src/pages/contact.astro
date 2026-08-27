@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnswerBox from '../components/AnswerBox.astro';
 import { BUSINESS, NAP_LINE } from '../data/business';
+import ServiceMap from '../components/ServiceMap.astro';
 const crumbs = [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }];
 const quickAnswer = 'Call or text Valentin Moriel at (432) 278-7294. He answers his own phone about nine times out of ten and will tell you what he thinks the problem is and what it costs before anything gets booked. Based in Seminole, Texas, covering Gaines County and the Permian Basin.';
 ---
@@ -22,6 +23,12 @@ const quickAnswer = 'Call or text Valentin Moriel at (432) 278-7294. He answers 
         <a class="btn btn-ghost" href={`sms:${BUSINESS.phoneE164}`}>Text {BUSINESS.phone}</a>
         <a class="btn btn-ghost" href={`mailto:${BUSINESS.email}`}>Email</a>
       </div>
+      <ServiceMap
+        query="Seminole, TX"
+        label="Map of the Seminole, Texas service area"
+        zoom={9}
+        caption="Service area map. Address withheld by request."
+      />
       <p>Based in {NAP_LINE}. Se habla español.</p>
 
       <h2 style="margin-top:2.6rem">What to have ready when you call</h2>

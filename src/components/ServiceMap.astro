@@ -1,0 +1,105 @@
+---
+/**
+ * ServiceMap.astro — the only place a Google map is embedded.
+ *
+ * PRIVACY, and it is the reason this is a component rather than an inline
+ * iframe copied around: business.ts sets publishStreetAddress:false because
+ * the address on file is Valentin's HOME (A-05, I-05, G-03). A map centred on
+ * it would publish the exact thing that flag exists to withhold, and a dropped
+ * pin is far harder to retract than a line of text — it survives in
+ * screenshots, in cached tiles and in anyone's saved places.
+ *
+ * Every map on this site is therefore centred on a PLACE — a town, a county,
+ * a neighbourhood — never on the business address. The assertion below turns
+ * that from a habit somebody has to remember into a build failure.
+ *
+ * KEYLESS BY DESIGN. The ?output=embed endpoint needs no Maps API key, so
+ * there is no key to leak, rotate, or wire into Vercel env vars, and no
+ * billing account hanging off a static brochure site. The trade is that we
+ * cannot style the tiles or drop a custom marker. For showing a service area
+ * that is not a loss.
+ */
+import { BUSINESS } from '../data/business';
+
+interface Props {
+  /** A PLACE — "Seminole, TX", "Gaines County, TX". Never a street address. */
+  query: string;
+  /** Accessible name. Screen readers announce this in place of the map. */
+  label: string;
+  /** 9 regional · 12 town · 14 neighbourhood. */
+  zoom?: number;
+  /** Short line under the map. Keep it under ten words: the duplicate-sentence
+   *  scanner counts any repeated run of ten or more. */
+  caption?: string;
+  /** Footer variant — shorter, muted, sits full width. */
+  compact?: boolean;
+}
+const { query, label, zoom = 12, caption, compact = false } = Astro.props;
+
+/* The guard. If somebody ever passes the home address — by reaching for
+   BUSINESS.address.street because it was the nearest string to hand — the
+   build stops here instead of shipping his house on a map. */
+if (query.includes(BUSINESS.address.street)) {
+  throw new Error(
+    `ServiceMap: refused a map centred on "${BUSINESS.address.street}". That is the owner's home address and publishStreetAddress is false — pass a town or county instead.`,
+  );
+}
+
+const src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&z=${zoom}&output=embed`;
+---
+
+<div class={compact ? 'smap smap--compact' : 'smap'} data-boilerplate>
+  <iframe
+    src={src}
+    title={label}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  ></iframe>
+  {caption && <p class="smap__cap">{caption}</p>}
+</div>
+
+<style>
+  .smap {
+    margin: 1.5rem 0 0;
+    max-width: var(--measure);
+  }
+  .smap iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    /* The embed paints its own white chrome. On the dark theme that reads as a
+       lit panel rather than a hole punched in the page. */
+    background: var(--surface-2);
+  }
+  .smap__cap {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: .5rem 0 0;
+  }
+
+  /* Footer variant. Wider and shorter — it is orienting the reader, not
+     inviting them to explore. */
+  .smap--compact { margin: 0; max-width: none; }
+  .smap--compact iframe {
+    aspect-ratio: 21 / 9;
+    /* Bounded so a wide monitor does not turn the footer into a map with a
+       business attached to it. */
+    max-height: 380px;
+    /* The footer is dark green in BOTH themes, so this variant sets its own
+       rule and caption colours instead of inheriting the page tokens — which
+       would render near-black on near-black in the light theme. */
+    border-color: rgba(255, 255, 255, .18);
+  }
+  .smap--compact .smap__cap { color: #9db097; }
+
+  @media (max-width: 640px) {
+    .smap iframe { aspect-ratio: 4 / 3; }
+    .smap--compact iframe { aspect-ratio: 16 / 11; }
+  }
+</style>

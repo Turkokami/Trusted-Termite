@@ -49,6 +49,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnswerBox from '../../../components/AnswerBox.astro';
 import Trust from '../../../components/Trust.astro';
+import ServiceMap from '../../../components/ServiceMap.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import Faq from '../../../components/Faq.astro';
 import Cta from '../../../components/Cta.astro';
@@ -117,6 +118,7 @@ const faqs = [
       <h1>Pest Control in Green Tree, Midland</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <ServiceMap query="Green Tree Country Club, Midland, TX" label="Map of Green Tree Country Club, Midland, Texas" zoom={14} caption="Service area map — call to confirm your address." />
       <div class="measure">
         <p>
           The single most useful thing to know about pest pressure in Green Tree comes from the man whose
@@ -391,7 +393,7 @@ const faqs = [
         <p>
           Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
           its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
-          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+          Venmo, CashApp or Zelle. Se habla español.
         </p>
         <p>
           <strong>One thing we would say to almost any Green Tree homeowner.</strong> If the property has

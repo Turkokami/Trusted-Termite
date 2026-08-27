@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Crumbs from '../../components/Crumbs.astro';
+import ServiceMap from '../../components/ServiceMap.astro';
 import Cta from '../../components/Cta.astro';
 import { TOWNS } from '../../data/towns';
 import { BUSINESS } from '../../data/business';
@@ -23,6 +24,12 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
       </p>
       <h1>Where we work</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <ServiceMap
+        query="Seminole, TX"
+        label="Map of the West Texas service area"
+        zoom={8}
+        caption="One truck, based in Seminole."
+      />
       <div class="grid c3" style="margin-top:1.8rem">
         {TOWNS.map(t => (
           <a class="card" href={`/locations/${t.slug}/`}>

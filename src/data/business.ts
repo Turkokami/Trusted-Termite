@@ -110,7 +110,14 @@ export const BUSINESS = {
   contracts: false, // E-04 — "No contracts"
   discounts: ['Military'], // E-06 — ONLY military. Do not add others.
   payments: ['Cash', 'Check', 'Card in person', 'Card online', 'Venmo', 'CashApp', 'Zelle'],
-  financing: { offered: true, note: 'on certain terms, for larger jobs' }, // E-08
+  /** E-08 answered that financing was available on larger jobs. REVERSED by
+   *  the owner in August 2026: he does not offer it and does not want it
+   *  implied anywhere on the site. The flag stays here set false rather than
+   *  being deleted, because "we asked and the answer is no" is a different
+   *  fact from "we never asked" — and if he takes it on later this is the one
+   *  line that turns it back on. /financing/ was retired at the same time and
+   *  now redirects; see src/data/redirects.ts. */
+  financing: { offered: false, note: null as string | null },
 
   /* ---- pricing (E-01 "ranges", E-02) ---- */
   pricing: {

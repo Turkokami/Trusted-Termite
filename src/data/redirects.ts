@@ -56,6 +56,12 @@ export const REDIRECTS: Redirect[] = [
       'No equivalent page and deliberately so. The six testimonials on the old site carried no platform, no dates and no attribution. Reviews belong on the Google Business Profile where they are verifiable. Revisit only if reviews.verified goes true.',
   },
   {
+    from: '/financing',
+    to: '/contact/',
+    note:
+      'NOT a legacy Ailanding URL — this one is ours. /financing/ shipped in Phase 2 on E-08, which said financing was available on larger jobs. The owner reversed that in August 2026. The page is deleted rather than left noindex, because a visitor who reaches it still reads an offer we cannot honour, and noindex only hides a page from search. Contact is the honest destination: the answer to "can I spread this" is now a conversation with him, not a page.',
+  },
+  {
     from: '/faq',
     to: '/',
     note:

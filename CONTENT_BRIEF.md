@@ -192,7 +192,10 @@ Publish **ranges**, never a fixed price.
 - Termite, bed bug, mosquito, lawn, brush, junk: **individually quoted after inspection**
 - **No contracts** (E-04) — say it often, it is the strongest offer in this market
 - **Military discount only** (E-06). Do not list others.
-- Financing on larger jobs, on agreed terms (E-08)
+- ~~Financing on larger jobs, on agreed terms (E-08)~~ — **WITHDRAWN August 2026.**
+  He does not offer financing. E-08 said otherwise and every surface that repeated
+  it has been cleared; `/financing/` is retired and redirects to `/contact/`.
+  Do not reintroduce it from the intake, which still carries the old answer.
 
 Note this is at the **top** of the West Texas range, not the bottom. Do not write
 price-led copy. Lead with method and care.
@@ -244,7 +247,6 @@ to siblings (M3).
 /commercial/{vertical}/           industry vertical
 /compliance/{topic}/              code / ordinance page
 /our-guarantee/                   defined warranty terms
-/financing/                       BNPL + payment
 /about/                           named-expert Person page
 /es/servicios/{service}/          Spanish tree
 ```

@@ -249,6 +249,7 @@ nav.main a:hover { color: var(--lime); }
 .site-foot .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 30px; }
 .site-foot ul { list-style: none; padding: 0; margin: 0; }
 .site-foot li { margin-bottom: 7px; }
+.site-foot .foot-map { margin-top: 34px; }
 .site-foot .legal { border-top: 1px solid rgba(255,255,255,.14); margin-top: 32px; padding-top: 20px;
   font-size: .84rem; color: #9db097; }
 .site-foot .legal .lic { font-family: var(--font-mono); }

@@ -13,6 +13,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Trust from '../../components/Trust.astro';
+import ServiceMap from '../../components/ServiceMap.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Cta from '../../components/Cta.astro';
 import { TOWNS, type Town } from '../../data/towns';
@@ -62,6 +63,7 @@ const fireAntLine = {
       <h1>Pest Control in {town.name}, Texas</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <ServiceMap query={`${town.name}, TX`} label={`Map of ${town.name}, Texas`} zoom={12} caption="Service area map — call to confirm your address." />
       <div class="measure">
         <p><strong>{town.character}</strong></p>
         <p>{town.housing}</p>

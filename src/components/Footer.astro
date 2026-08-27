@@ -2,6 +2,7 @@
 import { BUSINESS, NAP_LINE, COUNTIES_SERVED } from '../data/business';
 import { TOWNS } from '../data/towns';
 import { SERVICES } from '../data/services';
+import ServiceMap from './ServiceMap.astro';
 const year = 2026;
 const top = SERVICES.filter(s => s.priority <= 2);
 ---
@@ -21,7 +22,6 @@ const top = SERVICES.filter(s => s.priority <= 2);
         <ul>
           <li><a href="/about/">About Valentin</a></li>
           <li><a href="/our-guarantee/">Our guarantee</a></li>
-          <li><a href="/financing/">Financing</a></li>
           <li><a href="/commercial/">Commercial</a></li>
           <li><a href="/pest-library/">Pest library</a></li>
           <li><a href="/compliance/">Compliance reference</a></li>
@@ -37,6 +37,16 @@ const top = SERVICES.filter(s => s.priority <= 2);
           <li><a href={BUSINESS.social.facebook} rel="noopener">Facebook</a></li>
         </ul>
       </div>
+    </div>
+    <div class="foot-map">
+      <h4>Our service area</h4>
+      <ServiceMap
+        query="Seminole, TX"
+        label="Map of the Seminole, Texas service area"
+        zoom={8}
+        caption="Seminole and the Permian Basin."
+        compact
+      />
     </div>
     <div class="legal">
       <p>

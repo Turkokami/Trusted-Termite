@@ -72,6 +72,11 @@
       "permanent": true
     },
     {
+      "source": "/financing/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
       "source": "/faq/",
       "destination": "/",
       "permanent": true
