@@ -1,0 +1,433 @@
+---
+/**
+ * Problem spoke — "something died in my wall."
+ *
+ * THE ARGUMENT: nobody can honestly quote you a duration, and this page says
+ * so where every competitor prints a number. What IS sourced is the mechanism
+ * (drying, not a calendar), the fly and beetle sequence with real timings, and
+ * a hard debunk of ozone.
+ *
+ * VERIFIED:
+ *  - ICWDM, the mechanism that replaces the fake number: "As soon as the
+ *    carcass dries out the odor will disappear, so the need to dry out the
+ *    carcass is critical. Larger carcasses will take more time to dry out."
+ *    Also: "Don't be surprised at the amount of odor caused by an animal as
+ *    small as a mouse."; "Use of a fiber optic scope allows you to see inside
+ *    the wall without making large holes to investigate."; you can be "one stud
+ *    away from the source of the problem, requiring you to make two holes
+ *    instead of one".
+ *  - Forensic decomposition science: temperature is the dominant driver,
+ *    formalised as accumulated degree-days. Franceschetti et al. 2021,
+ *    Insects: "Temperature is the most important factor affecting
+ *    decomposition." USED ONLY as the general principle — see flag 2.
+ *  - AgriLife ENTO-050 (Merchant), the timing that IS quotable: "Adult blow and
+ *    flesh flies are usually seen 1 to 2 weeks after maggots appear in a home.
+ *    Flies may continue to emerge for 1 to 3 weeks, after which they should
+ *    disappear."; "Blow fly larvae are creamy white and legless"; "Flesh flies
+ *    are large (3/8 to 5/8 in, 10 to 16 mm) and gray with black stripes on the
+ *    thorax."; maggots found in homes "are usually those that have completed
+ *    feeding and are searching for a place complete their metamorphosis";
+ *    "In most cases destroying any maggots and killing adult flies with a fly
+ *    swatter is the only practical response."
+ *  - AgriLife ENT-2014, the delayed-presentation diagnostic: hide and larder
+ *    beetles "means that an animal may have died in the structure within the
+ *    past few months." Hide beetle "strikingly white on the underside" with
+ *    "acutely pointed and saw-like (serrated) tips of the elytra"; larder
+ *    beetle has "a distinct cream-colored band across the top third of the
+ *    elytra". Dermestes larvae "cigar-shaped", hairy, with "a pair of curved,
+ *    conspicuous 'horns' (urogomphi)".
+ *  - NC State: blow flies can "find carrion in minutes"; large indoor
+ *    emergences trace to "dead and decaying animals in wall voids,
+ *    crawlspaces, or even attics".
+ *  - UC IPM 7436: "Remove old spider webs and bird, rodent, bee, and wasp
+ *    nests, which can harbor infestations."
+ *  - EPA on ozone, an affirmative debunk with numbers: "At concentrations that
+ *    do not exceed public health standards, ozone is not effective at removing
+ *    many odor-causing chemicals." Output measured at 0.20–0.30 ppm following
+ *    manufacturer instructions and 0.50–0.80 ppm in some conditions — "5-10
+ *    times higher than public health limits" — against an FDA limit of 0.05
+ *    ppm and an OSHA limit of 0.10 ppm. Also: body odour may be MASKED by the
+ *    smell of ozone without being removed.
+ *  - CDC hantavirus, the sentence that settles the species question: "Other
+ *    rodents, such as house mice, roof rats, and Norway rats, have never been
+ *    known to give people HPS." Reservoirs in North America: "the deer mouse,
+ *    the white-footed mouse, the rice rat, and the cotton rat." Transmission is
+ *    aerosolisation of urine, droppings and nesting material. Cleanup: spray
+ *    with disinfectant or bleach solution, let it soak, bag it. DSHS: cases are
+ *    rare in Texas.
+ *
+ * ⚠️ FIVE HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. NO ODOUR-DURATION FIGURE. NONE. "Three days to three weeks", "two to
+ *     three weeks for a mouse, six for a rat" — these appear ONLY in commercial
+ *     marketing and in NO extension, public health or peer-reviewed source.
+ *     The page must refuse to give a number and must say why. This is the whole
+ *     point of the page.
+ *  2. ADD IS HUMAN-REMAINS SCENE WORK. Applying accumulated degree-day
+ *     literature to a rodent behind drywall is extrapolation. Use the
+ *     temperature principle qualitatively; do not compute or imply a figure.
+ *  3. HEALTH RISK — NO AFFIRMATIVE SOURCE EITHER WAY. No public health source
+ *     identifies a carcass in a cavity as a specific disease hazard, and none
+ *     declares it safe. Report that guidance addresses droppings and nesting
+ *     material rather than carcasses in cavities. Do NOT write "authorities say
+ *     it is harmless."
+ *  4. ENZYME PRODUCTS AND MASKING AGENTS have NO evidence base in any priority
+ *     source. Unevidenced, not disproven. Claim nothing for them.
+ *  5. BLOW FLY DEVELOPMENT TIME CONFLICTS — AgriLife's Field Guide gives "16 to
+ *     35 days" egg to adult, NC State roughly 9–10 days. Do not print either as
+ *     settled; use ENTO-050's homeowner framing instead, which is what this
+ *     page does.
+ *  Also NOT VERIFIED: the flesh-fly checkerboard-abdomen and red-eye ID details
+ *  (not in a priority source), and whether West Texas low humidity measurably
+ *  shortens odour duration — it follows from the drying mechanism but nobody
+ *  has measured it, and the page says exactly that.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Wildlife removal', path: '/services/wildlife-removal/' },
+  { name: 'Dead animal in a wall', path: '/services/wildlife-removal/dead-animal-in-the-wall/' },
+];
+
+const quickAnswer =
+  'Nobody can honestly tell you how long it will smell. Every duration figure on the internet traces to marketing rather than to any extension, public health or published source. What is documented is the mechanism: the odour goes when the carcass dries out, larger animals take longer to dry, and temperature drives the whole process.';
+
+const faqs = [
+  {
+    q: 'How long will this smell last?',
+    a: 'We do not know, and neither does anybody who tells you confidently. We went looking for a sourced figure and there is not one — no extension service, no public health agency and no published study gives a duration for a carcass in a residential wall void. The numbers you will read elsewhere come from pest control and wildlife company marketing. What is sourced is the mechanism: as soon as the carcass dries out the odour will disappear, and larger carcasses take more time to dry out. Temperature drives the rate. That is an honest answer and it is genuinely more useful than a made-up range, because it tells you which variables matter.',
+  },
+  {
+    q: 'Is a dead animal in my wall a health risk?',
+    a: 'The sourced answer is narrower than either reassurance or alarm. We could not find a public health source that identifies a carcass in a wall cavity as a specific disease hazard — and we could not find one declaring it safe either. What the guidance actually addresses is droppings and nesting material rather than a body in a void. The documented consequences are odour, which can genuinely cause symptoms like headache and nausea without being toxic, and secondary insects feeding on the carcass. We would rather tell you where the guidance stops than fill the gap with a claim.',
+  },
+  {
+    q: 'Could it be hantavirus?',
+    a: 'Almost certainly not from a house mouse, and the CDC is unusually direct about this. Its brochure states that other rodents — house mice, roof rats and Norway rats — have never been known to give people the disease. The North American reservoirs it names are the deer mouse, the white-footed mouse, the rice rat and the cotton rat. Transmission happens when urine, droppings or nesting material are stirred up into the air, not from the fact of a body being present. Deer mice do occur across West Texas, so the pathway that deserves respect is a nest with accumulated dry droppings being disturbed — which is why the cleanup rule is to wet everything down first rather than sweep or vacuum. Texas DSHS describes cases in the state as rare.',
+  },
+  {
+    q: 'Why have I suddenly got flies indoors?',
+    a: 'Because blow flies find carrion fast — NC State says they can locate it in minutes — and large indoor fly emergences trace to dead animals in wall voids, crawl spaces and attics. AgriLife gives the timing you can actually plan around: adult blow and flesh flies are usually seen one to two weeks after maggots appear, and flies may continue to emerge for one to three weeks, after which they should disappear. That last clause is the reassurance, and it is sourced rather than soothing.',
+  },
+  {
+    q: 'There are maggots on the floor. What do I do?',
+    a: 'Less than you would think. AgriLife notes that maggots found in homes are usually ones that have finished feeding and are searching for somewhere to pupate — so they are leaving the carcass rather than arriving at it. Its recommendation is plain: in most cases destroying any maggots and killing adult flies with a swatter is the only practical response. Spraying the room does not reach the source, and the source is what matters.',
+  },
+  {
+    q: 'What about the little beetles that showed up later?',
+    a: 'Those are a diagnostic in their own right. AgriLife states that the presence of hide and larder beetles means an animal may have died in the structure within the past few months. So if the smell is gone and beetles are now turning up, you are looking at the aftermath rather than a new problem. The hide beetle is strikingly white on the underside with sharply pointed, saw-toothed wing-case tips; the larder beetle carries a cream band across the top third of the wing cases. The larvae are cigar-shaped, hairy, and have a pair of curved horns at the tail end.',
+  },
+  {
+    q: 'Will an ozone machine fix the smell?',
+    a: 'The EPA’s evidence on this is negative, not neutral, and it is worth reading before anybody hires one. At concentrations that do not exceed public health standards, ozone is not effective at removing many odour-causing chemicals. The EPA also notes that odour can be masked by the smell of ozone without being removed — which is precisely the failure mode being sold. And the safety numbers are not trivial: generators measured at 0.20 to 0.30 parts per million when used as instructed, and 0.50 to 0.80 in some conditions, against an FDA limit of 0.05 and an OSHA limit of 0.10.',
+  },
+  {
+    q: 'Can you find it without wrecking my wall?',
+    a: 'Often, yes, and the tool for that is a borescope. The wildlife damage guidance recommends a fibre-optic scope precisely because it lets you see inside a wall without making large holes to investigate — and it warns about the specific failure of guessing, which is that you can end up one stud away from the source and have to make two holes instead of one. We would rather spend twenty minutes narrowing it down than open drywall on a hunch.',
+  },
+];
+---
+
+<BaseLayout
+  title="Dead Animal in a Wall | Trusted Termite"
+  description="Nobody can honestly quote you a duration — here is what is actually documented about the odour, the flies, the beetles, and why an ozone machine is the wrong answer."
+  path="/services/wildlife-removal/dead-animal-in-the-wall/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Wildlife removal · problem page</p>
+      <h1>Something died in the wall</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          The first thing everybody wants is a number. How long. Three days? Three weeks? You will find
+          both figures stated confidently on dozens of pages, along with tidy tables giving a mouse two
+          weeks and a rat six.
+        </p>
+        <p>
+          We went looking for where those numbers come from. They do not come from anywhere. There is no
+          extension publication, no public health guidance and no published study that gives a duration for
+          a carcass decomposing in a residential wall void. Every version of that figure traces back to
+          pest control and wildlife removal marketing, where it is repeated between companies until it
+          acquires the texture of a fact.
+        </p>
+        <p>
+          So this page will not give you one. What it will give you is the part that is documented — the
+          mechanism that actually controls how long it lasts, the insect sequence that follows and what its
+          timing tells you, an honest account of the health question, and a straight answer on the machines
+          people rent to fix it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What actually controls how long it lasts</h2>
+      <div class="measure">
+        <p>
+          <strong>Drying, not a calendar.</strong> The wildlife damage literature ties the odour to
+          desiccation directly: as soon as the carcass dries out the odour will disappear, so the need to
+          dry the carcass out is critical, and larger carcasses take more time to dry. That is a mechanism
+          rather than a date, and it is the honest core of the answer.
+        </p>
+        <p>
+          <strong>Which makes mass the first variable.</strong> A mouse and a raccoon are not the same
+          problem on any axis — not smell, not duration, not what it takes to resolve. The same source
+          adds a line worth keeping in mind though: do not be surprised at the amount of odour caused by an
+          animal as small as a mouse. Small does not mean mild.
+        </p>
+        <p>
+          <strong>Temperature is the second.</strong> Decomposition research is consistent that temperature
+          is the most important factor affecting the rate — the field formalises it as the product of time
+          and temperature rather than time alone. We are stating that as a general principle only. That
+          literature is built on outdoor scenes and human remains, and turning it into a prediction about a
+          rodent behind drywall in August would be extrapolation dressed as arithmetic.
+        </p>
+        <p>
+          <strong>Airflow and cavity conditions are the third.</strong> A carcass in a ventilated attic, a
+          carcass in a sealed interior stud bay, and a carcass in a crawl space are three different drying
+          environments in the same house.
+        </p>
+        <p>
+          <strong>And a West Texas note, labelled as reasoning.</strong> Ambient humidity here is low for
+          much of the year — routinely in the teens on a summer afternoon. If drying is what ends the
+          odour, then a dry climate should shorten it relative to a humid one. That follows logically from
+          the sourced mechanism and we think it is right. Nobody has measured it, so we are flagging it as
+          an inference rather than telling you your climate has bought you a specific number of days.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The insects that follow, and what their timing tells you</h2>
+      <div class="measure">
+        <p>
+          <strong>Blow flies arrive first and they arrive fast.</strong> NC State notes they can find
+          carrion in minutes, and that large indoor fly emergences trace back to dead and decaying animals
+          in wall voids, crawl spaces or attics. They are the metallic ones — green, blue, copper or black,
+          otherwise built like a house fly.
+        </p>
+        <p>
+          <strong>Then the timing you can actually use.</strong> AgriLife states that adult blow and flesh
+          flies are usually seen one to two weeks after maggots appear in a home, and that flies may
+          continue to emerge for one to three weeks, after which they should disappear. That is the closest
+          thing to a schedule anybody can honestly give you, and note what it is measuring: the fly
+          emergence, not the odour.
+        </p>
+        <p>
+          <strong>Flesh flies are the large grey ones.</strong> AgriLife describes them as three-eighths to
+          five-eighths of an inch, grey, with black stripes on the thorax. Blow fly larvae are creamy white
+          and legless.
+        </p>
+        <p>
+          <strong>Maggots on the floor are leaving, not arriving.</strong> This is a genuinely useful piece
+          of information that almost nobody knows. AgriLife notes that maggots found in homes are usually
+          ones that have completed feeding and are searching for a place to complete metamorphosis — they
+          are migrating away from a source that may be some distance off, sometimes difficult to find or
+          out of reach. Its practical recommendation is unglamorous: in most cases destroying the maggots
+          and killing adult flies with a swatter is the only practical response.
+        </p>
+        <p>
+          <strong>Beetles come later, and they date the event.</strong> AgriLife's fact sheet on hide and
+          larder beetles gives the diagnostic directly: their presence sometimes means an animal died in
+          the structure within the past few months. So beetles without a smell means you are seeing the
+          tail of something that already happened.
+        </p>
+        <p>
+          <strong>Identifying those beetles.</strong> The hide beetle is strikingly white on the underside,
+          and its wing cases end in acutely pointed, saw-toothed tips — that combination separates it from
+          its relatives. The larder beetle carries a distinct cream-coloured band across the top third of
+          the wing cases, sometimes with three small black patches on each side. The larvae of both are
+          cigar-shaped and densely hairy, dark brown to black, with a pair of curved horns on the last
+          abdominal segment.
+        </p>
+        <p>
+          <strong>Carpet beetles belong in the same conversation.</strong> UC IPM's guidance on them
+          includes a line that reads like it was written for this page: remove old spider webs and bird,
+          rodent, bee and wasp nests, which can harbour infestations. A carcass is one item on a longer
+          list of dead organic material in a structure that keeps dermestid beetles going.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The health question, answered to the edge of the evidence</h2>
+      <div class="measure">
+        <p>
+          <strong>What we could not find.</strong> No public health source we could reach identifies a dead
+          animal in a wall void as a specific infectious disease hazard. Equally, none declares it
+          harmless. The guidance that exists is about droppings and nesting material, not carcasses in
+          cavities. We are telling you where the evidence stops rather than filling the gap in either
+          direction, because both of the available lies are tempting — reassurance sells a calm customer
+          and alarm sells a job.
+        </p>
+        <p>
+          <strong>The odour itself is not nothing.</strong> Strong odours can produce real symptoms —
+          headache, nausea, irritation — without the air being toxic. If somebody in the house is
+          genuinely unwell, that is worth taking seriously as a symptom even though the source is a smell
+          rather than a poison.
+        </p>
+        <p>
+          <strong>Hantavirus, precisely.</strong> The CDC's brochure names the North American reservoirs as
+          the deer mouse, the white-footed mouse, the rice rat and the cotton rat, and then states
+          directly that other rodents — house mice, roof rats and Norway rats — have never been known to
+          give people the disease. So a dead house mouse in a wall is not a hantavirus scenario. Deer mice
+          do occur across West Texas, and the real risk pathway is the one the CDC describes: fresh urine,
+          droppings or nesting materials being stirred up so the virus gets into the air.
+        </p>
+        <p>
+          <strong>Which is why the cleanup rule is wet-first.</strong> The CDC's instruction is to spray the
+          dead rodent or nest and the surrounding area with disinfectant or a bleach and water mixture, let
+          it soak, and bag it. Not sweep. Not vacuum. Those are the two actions that aerosolise exactly
+          what you do not want aerosolised. Texas DSHS describes hantavirus cases in the state as rare, and
+          rare is worth respecting rather than dismissing when the precaution costs a spray bottle.
+        </p>
+        <p>
+          <strong>Secondary insects are the documented consequence.</strong> Flies now, dermestid beetles
+          later, and both of those are real, both are sourced, and both resolve when the source is removed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Finding it without wrecking the house</h2>
+      <div class="measure">
+        <p>
+          <strong>The warning worth reading first.</strong> The wildlife damage guidance points out the
+          exact way this goes wrong: you can be one stud away from the source, requiring you to make two
+          holes instead of one. Exploratory demolition on a hunch is how a small job turns into drywall
+          work.
+        </p>
+        <p>
+          <strong>The tool is a borescope.</strong> The same source recommends a fibre-optic scope so you
+          can see inside a wall without making large holes to investigate. A small inspection hole in an
+          inconspicuous place beats a guess with a saw.
+        </p>
+        <p>
+          <strong>Narrowing it down before anybody opens anything.</strong> Where the smell is strongest and
+          at what height. Where the flies are congregating, and at which window — they head for light.
+          Where the entry point was, if there was a rodent or wildlife problem recently, because animals
+          die near where they live. Which cavity is warm. Whether the smell tracks with the air handler
+          running, which can move odour a long way from its source and is a common reason people look in
+          the wrong room entirely.
+        </p>
+        <p>
+          <strong>And the sequence that avoids the whole problem.</strong> This is the strongest argument
+          for doing exclusion properly in the first place. AgriLife's own guidance is to inspect the house
+          for openings where birds or mammals might enter and seal them with sturdy wire, sheet metal or
+          other pest-resistant material — but the order matters, and sealing a building with something
+          still inside is the most common way a dead-animal-in-a-wall call gets created. That order is set
+          out on our <a href="/services/rodent-control/noises-in-the-attic/">attic noises page</a>: get it
+          out, confirm it is out, then seal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why it happened, which decides whether it happens again</h2>
+      <div class="measure">
+        <p>
+          <strong>Sealed in.</strong> Far and away the most common cause we meet. Somebody heard something
+          in the attic, found the hole, and closed it — and the animal was inside. This is preventable and
+          the prevention is a step rather than a product: confirm the space is empty before it is closed.
+        </p>
+        <p>
+          <strong>Poisoned.</strong> A rodenticide used inside a structure produces animals that die
+          wherever they happen to be, which is frequently a wall void or an insulation layer. That is a
+          known trade-off of the method rather than a mishap, and it is one of the reasons we would rather
+          talk about trapping and exclusion first on the
+          <a href="/services/rodent-control/">rodent control</a> side.
+        </p>
+        <p>
+          <strong>Trapped by the building itself.</strong> A chimney without a cap, a vent pipe, an open
+          soffit that leads somewhere with no exit, a wall cavity an animal drops into and cannot climb
+          out of. These are structural traps and they catch something every year until they are closed.
+        </p>
+        <p>
+          <strong>Or simply the end of a life.</strong> Animals living in a structure die in it eventually.
+          A colony or a nest that has been tolerated for years will produce this call sooner or later, and
+          that is not anybody's mistake — it is the predictable cost of leaving the population in place.
+        </p>
+        <p>
+          <strong>Which is the argument for dealing with the living problem.</strong> Most of the odour
+          calls we get are the second act of a wildlife or rodent problem somebody hoped would resolve
+          itself. Exclusion done properly is unglamorous, it costs money at a moment when nothing smells,
+          and it is the only version of this that does not repeat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The machines and the products, assessed honestly</h2>
+      <div class="measure">
+        <p>
+          <strong>Ozone generators: the evidence is against them, and it is the EPA's evidence.</strong> At
+          concentrations that do not exceed public health standards, ozone has little potential to remove
+          indoor air contaminants, and is not effective at removing many odour-causing chemicals. The EPA
+          also notes that body odour may be masked by the smell of ozone without being removed — which is
+          the exact illusion that makes people believe it worked.
+        </p>
+        <p>
+          <strong>And the exposure numbers are not small print.</strong> The EPA reports generators
+          producing 0.20 to 0.30 parts per million when operated according to the manufacturer's
+          instructions, and 0.50 to 0.80 parts per million in some conditions — five to ten times higher
+          than public health limits. For reference, the FDA limit is 0.05 and the OSHA limit is 0.10. It
+          notes that relatively low amounts can cause chest pain, coughing, shortness of breath and throat
+          irritation, and can worsen chronic respiratory disease such as asthma.
+        </p>
+        <p>
+          <strong>Enzyme treatments and masking agents.</strong> We looked for an evidence base and found
+          none in any source we would cite. That is not the same as saying they do nothing — it means
+          nobody has established that they do. We are not going to sell you a product on the strength of an
+          absence of evidence, in either direction.
+        </p>
+        <p>
+          <strong>What is evidenced is source removal.</strong> Every extension source on the insect side
+          of this says the same thing in slightly different words: locating and eliminating the source is
+          the key to control. The carcass out, the affected material out, the cavity cleaned, the entry
+          sealed. Everything else is managing a symptom.
+        </p>
+        <p>
+          <strong>And sometimes the answer is that it will pass.</strong> If the animal is small, the
+          location is genuinely inaccessible, and opening the wall would cost more than the problem, then
+          ventilating the space and waiting is a legitimate choice — because the sourced mechanism says the
+          odour ends when the carcass dries. We will tell you when we think that is the sensible call,
+          which is not a sentence that generates an invoice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Smell you cannot place?"
+    body="Tell us where it is strongest, whether flies have appeared, and whether anything was recently trapped or sealed up. That usually gets us to the right cavity before anybody opens a wall."
+  />
+</BaseLayout>

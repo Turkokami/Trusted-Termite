@@ -1,0 +1,434 @@
+---
+/**
+ * Problem spoke — "grass burs (sandburs) all over my yard."
+ *
+ * THE ARGUMENT: this is a soil-temperature problem and a seed-bank problem, not
+ * a spraying problem. The trigger is 52°F soil temperature, the honest horizon
+ * is years rather than a season, and the strongest long-term measure is dense
+ * turf — which IS a sourced claim, not folk wisdom.
+ *
+ * VERIFIED:
+ *  - The 52°F trigger, consistent across EVERY source: "generally when the soil
+ *    temperature (NOT the air temperature) reaches 52 degrees F" (AgriLife
+ *    Austin County); "Seed germination starts when soil temperatures reach 52 F
+ *    and peaks at 75 F" (OSU); "One to three seeds in the sandbur pod will
+ *    germinate once soil temperatures reach ~52°F" (AgriLife 2025 Grassburs).
+ *  - Boeri (AgriLife statewide turfgrass specialist, AgriLife Today, 13 Aug
+ *    2024): "Sandbur seeds can begin early germination at soil temperatures of
+ *    52 degrees and continue to germinate at low levels through the summer.
+ *    However, peak emergence is around April-May when soils reach 72 degrees.";
+ *    "Seeds can survive up to eight years in the soil."; "Sandburs have
+ *    extended germination periods that can last more than three years."; "The
+ *    best long-term strategy to win the war against sandburs is to create
+ *    dense, healthy turfgrass."
+ *  - Univ. of Arizona: "It will take at least three years of control effort
+ *    (probably longer)."; "Each bur usually contains 2 seeds. There may be as
+ *    many as 1,000 seeds produced by a single plant."; flowers May to October.
+ *  - AgriLife Controlling Field Sandbur in Turfgrass: "is especially adapted to
+ *    dry, sandy soils"; "Field sandburs (grassburs) are generally not a problem
+ *    in well maintained turfgrass areas."; "A dense stand of healthy grass
+ *    provides the best weed control."; apply pre-emergent "two to four weeks
+ *    ahead of germination"; heavy infestations "EVERY 6 WEEKS through
+ *    September"; light infestations "two applications that are 6 weeks
+ *    apart"; higher cut → lower infestation; deep-soak watering maintaining "a
+ *    dry surface layer" favours the grass; weeds are "opportunists" that
+ *    "invade weakened lawns".
+ *  - OSU: the bur "absorbs and retains soil moisture until conditions are good
+ *    for germination. In this way, sandbur can easily take over poorly managed
+ *    bermudagrass pastures on dry sandy soils."; "keeps the seeds viable for
+ *    years in the soil"; "Proper fertilization and stocking rate combined are
+ *    the best sandbur control."; Plateau and Pastora "controlled sandbur
+ *    best…when applied within three weeks after germination."
+ *  - AgriLife Ag News and Views (Jan 2025): three native Texas species — field,
+ *    longspine and southern sandbur; field sandbur most problematic because it
+ *    "over-winters or perennializes"; two germination periods, spring and fall.
+ *  - AgriLife 2025 Grassburs: "February is the time for forage and turf
+ *    managers to begin waging war against this pest"; "Working from South to
+ *    North Texas, the beginning to the end of February is an ideal month".
+ *
+ * ⚠️ FIVE HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. DO NOT STATE FLATLY THAT SANDBUR IS AN ANNUAL. AgriLife sources
+ *     contradict each other: the homeowner PDF names C. echinatus and calls it
+ *     a summer annual; AggieTurf names C. spinifex and lists "Annual or
+ *     Perennial"; Ag News says field sandbur "over-winters or perennializes";
+ *     OSU says annual that "rarely, behaves as a short-lived perennial." Say
+ *     warm-season and primarily annual, and report the disagreement.
+ *  2. UPPER GERMINATION TEMPERATURE CONFLICTS. "Germination ceases at about
+ *     74°F" (AgriLife) vs peak at 72°F with continued low-level summer
+ *     germination (Boeri) vs peaks at 75°F with emergence into late fall (OSU).
+ *     The 52°F START is consistent; the ceiling is not. Do not assert that
+ *     germination stops.
+ *  3. NO WEST TEXAS CALENDAR DATE EXISTS. AgriLife publishes dates for south,
+ *     central and north Texas only — roughly 1 March, 15 March and 1 April.
+ *     There is NO South Plains or Permian Basin date in any source. Any local
+ *     timing on this page must be presented as inferred from the 52°F rule and
+ *     the reader pointed at soil temperature, which the sources stress is SOIL,
+ *     not air.
+ *  4. NAME NO HERBICIDE ACTIVES. The older AgriLife documents name MSMA/DSMA
+ *     and imazaquin; MSMA's residential turf registration has been restricted
+ *     by EPA and those documents are not recent. Newer AgriLife material
+ *     centres on indaziflam and Celsius, which are professional products. No
+ *     source gives a homeowner-current list. This page therefore names NO
+ *     active ingredients and sends the reader to the current label. That is a
+ *     deliberate choice, not an omission.
+ *  5. THE EIGHT-YEAR FIGURE IS ONE PERSON IN A NEWS RELEASE. It is attributed
+ *     on the page to AgriLife's statewide turfgrass specialist by role rather
+ *     than presented as a study finding. The peer-reviewed seed-germination
+ *     paper was unreachable (403).
+ *  Also: "sandbur thrives because of low fertility" is only PARTLY supported.
+ *  The sourced framing is that it exploits thin, poorly managed turf on dry
+ *  sandy soils — which is what the page says.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Lawn care', path: '/services/lawn-care/' },
+  { name: 'Grass burs', path: '/services/lawn-care/grassburs/' },
+];
+
+const quickAnswer =
+  'Grass burs germinate when soil temperature — not air temperature — reaches about 52 degrees, and the pre-emergent has to be down before that. The seeds last in the ground for years: AgriLife’s statewide turfgrass specialist puts it at up to eight, and Arizona’s extension service says plainly that it will take at least three years of control effort and probably longer.';
+
+const faqs = [
+  {
+    q: 'When do I put the pre-emergent down?',
+    a: 'Before the soil hits about 52 degrees, and the sources are emphatic that it is soil temperature and not air temperature that matters. AgriLife’s guidance is to apply two to four weeks ahead of germination, which means you are working to a soil thermometer or a soil temperature network rather than to a feeling about spring. Its published calendar dates run roughly from the start of March in south Texas to the first of April in north Texas — and we will be straight that no source we could find publishes a date for the South Plains or the Permian Basin. Watch the soil, not the calendar.',
+  },
+  {
+    q: 'I sprayed and they came back. Why?',
+    a: 'Because you were treating this year’s plants and the problem is the seed bank. AgriLife’s statewide turfgrass specialist says seeds can survive up to eight years in the soil, and that sandburs have extended germination periods lasting more than three years. Oklahoma State describes the bur itself absorbing and retaining soil moisture until conditions are right, which keeps the seeds viable for years. So one good season of control kills the plants you can see and leaves years of germination still in the ground beneath them.',
+  },
+  {
+    q: 'How long until they are actually gone?',
+    a: 'Years, and we would rather tell you that at the start than let you find out. The University of Arizona’s extension service states it directly: it will take at least three years of control effort, probably longer. That is the honest planning horizon. What a first year of proper control buys you is a large reduction and a smaller seed return to the soil, which is what makes the second and third years easier. Anybody quoting you a single season has either not read the literature or is not telling you what is in it.',
+  },
+  {
+    q: 'Does one application last the season?',
+    a: 'Not on a bad infestation. AgriLife’s guidance for heavy infestations is a pre-emergent every six weeks through September; for light infestations, two applications six weeks apart should cover seed germination. Its statewide specialist frames it the same way — apply before peak germination, then follow with another application depending on the label, the soil type and the weather. The reason is the germination window: emergence starts at 52 degrees and continues at low levels through the summer, and one barrier laid in March has thinned out long before that is over.',
+  },
+  {
+    q: 'Why is it so bad in my yard specifically?',
+    a: 'Sandy soil and thin turf, which describes a great deal of ground out here. AgriLife states the plant is especially adapted to dry, sandy soils, and — the sentence worth sitting with — that grass burs are generally not a problem in well maintained turfgrass areas. Oklahoma State describes sandbur easily taking over poorly managed bermudagrass on dry sandy soils. The plant is an opportunist. It is exploiting a gap rather than outcompeting a healthy stand.',
+  },
+  {
+    q: 'Is "grow thicker grass" real advice or a brush-off?',
+    a: 'It is a sourced recommendation, repeated by multiple extension services, which surprised us as much as it might surprise you. AgriLife states that a dense stand of healthy grass provides the best weed control, and its statewide turfgrass specialist calls creating dense healthy turfgrass the best long-term strategy for winning against sandburs. Oklahoma State says proper fertilisation and stocking rate combined are the best sandbur control on pasture. AgriLife also gives two specific levers: the higher the cut, the lower the infestation, and deep-soak watering that maintains a dry surface layer gives the grass a competitive advantage.',
+  },
+  {
+    q: 'Which product should I buy?',
+    a: 'We are not going to name one, and the reason is that the sources cannot agree on a current homeowner list. The older AgriLife documents name active ingredients whose registrations have since been restricted for residential turf, and the newer AgriLife material centres on professional products. Nothing we could find gives a current homeowner-facing list. So the answer is to read the label on whatever is in front of you, check that turfgrass and grass burs are both on it, and check the timing it specifies. If a website tells you confidently which bottle to buy without a date on its advice, that is worth being suspicious of.',
+  },
+  {
+    q: 'Is it an annual or a perennial?',
+    a: 'The sources genuinely disagree and we are going to show you that rather than pick. AgriLife’s homeowner publication calls it a summer annual grassy weed. Its own turfgrass programme lists the species as annual or perennial. A more recent AgriLife piece says field sandbur is the most problematic of the three native Texas species precisely because it over-winters or perennialises. Oklahoma State calls it an annual warm-season weed that rarely behaves as a short-lived perennial. What survives all four accounts is that it is warm-season, that it is primarily annual, and that assuming winter will kill it off for you is not safe.',
+  },
+];
+---
+
+<BaseLayout
+  title="Grass Burs in the Yard | Trusted Termite"
+  description="A soil temperature problem and a seed bank problem, not a spraying problem — the 52-degree trigger, the multi-year horizon, and why dense turf is sourced advice."
+  path="/services/lawn-care/grassburs/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Lawn care · problem page</p>
+      <h1>Grass burs</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Everybody out here knows what these are and nearly everybody has the same experience with them:
+          something gets sprayed, the yard looks better, and the following August the dog will not walk
+          across the grass again. That cycle is not a failure of effort. It is what happens when a seed
+          bank problem gets treated as a spraying problem.
+        </p>
+        <p>
+          Two numbers reframe the whole thing. The first is 52 degrees — the soil temperature at which the
+          seeds start germinating, which is what sets the timing and which is soil temperature and
+          emphatically not air temperature. The second is the seed longevity: AgriLife's statewide
+          turfgrass specialist puts it at up to eight years in the ground.
+        </p>
+        <p>
+          Put those together and the honest planning horizon is what the University of Arizona's extension
+          service states outright — at least three years of control effort, probably longer. We would
+          rather open with that than sell you a season.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The plant, and why this ground suits it</h2>
+      <div class="measure">
+        <p>
+          <strong>Three species, one main offender.</strong> AgriLife identifies three native sandburs in
+          Texas making up most infestations — field, longspine and southern — and singles out field
+          sandbur as the most problematic, because it over-winters or perennialises rather than reliably
+          dying off.
+        </p>
+        <p>
+          <strong>Which brings up a disagreement we are going to show rather than hide.</strong> AgriLife's
+          own homeowner publication calls sandbur a summer annual grassy weed and names one species; its
+          turfgrass programme names a different species and lists the life cycle as annual or perennial;
+          the more recent AgriLife piece describes over-wintering; Oklahoma State calls it an annual that
+          rarely behaves as a short-lived perennial. Four accounts, not fully reconcilable. What survives
+          all of them is warm-season, primarily annual, and do not count on winter to solve it.
+        </p>
+        <p>
+          <strong>The seed production is the part that matters.</strong> Each bur usually contains two
+          seeds, and a single plant may produce as many as a thousand seeds. Flowering runs from May to
+          October or until frost. So one season of a plant left alone is a very large deposit into a bank
+          that pays out for years.
+        </p>
+        <p>
+          <strong>And the bur is not just a delivery mechanism, it is a storage device.</strong> Oklahoma
+          State describes the bur absorbing and retaining soil moisture until conditions are good for
+          germination, keeping the seeds viable for years in the soil. That is why raking, mowing and
+          bagging matter more than they feel like they should.
+        </p>
+        <p>
+          <strong>Why this ground in particular.</strong> AgriLife states the plant is especially adapted
+          to dry, sandy soils, and Oklahoma State describes it easily taking over poorly managed
+          bermudagrass pastures on dry sandy soils. The Llano Estacado and the country around Seminole is
+          sandy land — that is why it grows peanuts and cotton — and a great deal of the residential ground
+          here is thin turf over sand. This is close to ideal habitat.
+        </p>
+        <p>
+          <strong>But note what AgriLife says next,</strong> because it is the most hopeful sentence in the
+          literature: grass burs are generally not a problem in well maintained turfgrass areas. The plant
+          is an opportunist exploiting a gap, not a superior competitor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>52 degrees, and why the calendar will let you down</h2>
+      <div class="measure">
+        <p>
+          <strong>Every source agrees on the trigger.</strong> Germination begins when soil temperature
+          reaches about 52 degrees Fahrenheit. AgriLife says it, Oklahoma State says it, and AgriLife's own
+          more recent material repeats it. It is one of the cleanest numbers in extension horticulture.
+        </p>
+        <p>
+          <strong>Soil, not air — and the sources say so in capitals.</strong> One AgriLife page writes
+          "NOT the air temperature" in the middle of the sentence, which is not a thing extension
+          publications normally do. Soil lags air, and a warm week in February does not mean the ground has
+          come up.
+        </p>
+        <p>
+          <strong>The pre-emergent has to be down before that.</strong> AgriLife's guidance is to apply two
+          to four weeks ahead of germination. A pre-emergent works by preventing establishment, so applying
+          it once you can see the plants is applying the wrong product to the wrong stage.
+        </p>
+        <p>
+          <strong>And here is where we have to be honest about a gap.</strong> AgriLife publishes calendar
+          dates for the 52-degree threshold across the state — roughly the first of March in south Texas,
+          around the middle of March in central Texas, and about the first of April in north Texas. There
+          is no published date for the South Plains or the Permian Basin. We looked. Rather than borrow a
+          neighbouring region's date and present it as local, we are telling you to work from soil
+          temperature directly.
+        </p>
+        <p>
+          <strong>How to do that practically.</strong> A soil thermometer costs very little and reads at
+          two to four inches. The state's mesonet and evapotranspiration networks publish soil temperature
+          from stations across this region. Take a reading in the morning, in an open part of the yard, on
+          several days rather than one — the trend is what you are watching, not a single number.
+        </p>
+        <p>
+          <strong>Do not assume germination then stops.</strong> The sources conflict on the upper end, and
+          we are not going to paper over it. One AgriLife line says germination ceases at about 74 degrees
+          of soil temperature. Its statewide specialist says peak emergence is around April and May when
+          soils reach 72 degrees, but that germination continues at low levels through the summer.
+          Oklahoma State says germination peaks at 75 degrees and emergence can occur until late autumn
+          when moisture and temperature allow. Practically, plan for a long window rather than a single
+          event.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>One application is not a programme</h2>
+      <div class="measure">
+        <p>
+          <strong>AgriLife's own intervals.</strong> On a heavy infestation, pre-emergent every six weeks
+          through September. On a light one, two applications six weeks apart should cover seed
+          germination. Those are the published numbers and they are considerably more work than most
+          people expect.
+        </p>
+        <p>
+          <strong>The reasoning behind repeats.</strong> A pre-emergent barrier degrades — through
+          irrigation, rainfall, soil temperature and microbial activity. Meanwhile germination is not a
+          single flush. AgriLife's specialist describes applying before peak germination then following up
+          depending on the label, the soil type and the weather. Sand and heat both work against
+          persistence, which is not a helpful combination here.
+        </p>
+        <p>
+          <strong>If plants are already up.</strong> Oklahoma State's finding on post-emergent timing is
+          useful and specific: the two products it tested controlled sandbur best when applied within
+          three weeks after germination. Small plants are the window. A mature plant already carrying burs
+          is past the point where killing it protects this season.
+        </p>
+        <p>
+          <strong>And the February note.</strong> AgriLife's own timing article opens by saying February is
+          when forage and turf managers should begin waging war, working from south to north Texas across
+          the month. For a region with no published date, that is a reasonable signal that planning starts
+          well before anybody's lawn looks like it needs attention.
+        </p>
+        <p>
+          <strong>Why we do not name a product on this page.</strong> The older AgriLife documents name
+          active ingredients whose residential turf registration has since been restricted, and the newer
+          material centres on professional products. Nothing we could find is a current homeowner list. So
+          rather than repeat a name from a document of uncertain vintage, we will tell you what the label
+          in your hand has to say — your turf species, grass burs or field sandbur by name, and the timing
+          — and leave the choice with the current label rather than an old PDF.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The part that is not chemical, and is better supported than you would expect</h2>
+      <div class="measure">
+        <p>
+          <strong>"Grow thicker grass" is a sourced recommendation.</strong> We checked, because it sounds
+          like the sort of thing said to end a conversation. AgriLife states that a dense stand of healthy
+          grass provides the best weed control. Its statewide turfgrass specialist calls creating dense,
+          healthy turfgrass the best long-term strategy for winning against sandburs. On the pasture side,
+          Oklahoma State states that proper fertilisation and stocking rate combined are the best sandbur
+          control. Three separate sources, same conclusion.
+        </p>
+        <p>
+          <strong>Mowing height is a lever.</strong> AgriLife's guidance is direct: the higher the cut, the
+          lower the infestation. Scalped turf gives light to the soil surface, which is precisely what a
+          germinating annual grass needs.
+        </p>
+        <p>
+          <strong>Irrigation depth is another.</strong> AgriLife describes deep-soak watering that
+          maintains a dry surface layer as giving the grass a competitive advantage. Frequent shallow
+          watering keeps the top inch damp, which is the layer where sandbur is germinating — and in a
+          region where a lot of yards are watered little and often because of the heat, this is a genuine
+          and free change.
+        </p>
+        <p>
+          <strong>Fertility, framed carefully.</strong> Fertilising is supported as a control tool by the
+          sources above. What we could not find is any source claiming sandbur has a specific competitive
+          advantage under low nitrogen. So the honest framing is not that sandbur loves poor soil in some
+          special way — it is that it exploits thin, poorly managed turf on dry sandy ground, and thickening
+          that turf takes the opportunity away.
+        </p>
+        <p>
+          <strong>And the physical work.</strong> Bag the clippings while burs are on the plants rather
+          than mulching them back into the lawn. Deal with the plants along fence lines, alleys and the
+          caliche edge, because those are the reservoirs that re-seed a treated yard. Be careful what moves
+          between properties on a mower deck, a truck tyre or a dog.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Pasture, acreage and the horse property version of this problem</h2>
+      <div class="measure">
+        <p>
+          <strong>The same plant, a different economics.</strong> On a lawn, grass burs are a comfort and
+          a dog problem. On grazing land they are a forage-quality problem, and the extension material
+          treats them that way — Oklahoma State's account is written about bermudagrass pasture, and its
+          conclusion is that proper fertilisation and stocking rate combined are the best sandbur control.
+          That is a management answer rather than a chemical one.
+        </p>
+        <p>
+          <strong>Overgrazing is the mechanism.</strong> A stand grazed hard and left thin is exactly the
+          poorly managed turf the sources describe sandbur taking over. The plant does not need to beat
+          healthy grass; it needs the grass to be absent for part of the season, and hooves and a dry
+          summer do that reliably out here.
+        </p>
+        <p>
+          <strong>Timing shifts with cutting and grazing.</strong> AgriLife's forage guidance is that after
+          the first cutting or a major grazing event, another application at the same rate should follow —
+          the disturbance opens the canopy again, and an open canopy is a germination opportunity.
+        </p>
+        <p>
+          <strong>The seed moves on animals, which is the whole design.</strong> The bur exists to attach
+          to a passing animal. Livestock, dogs, coyotes and deer are all distribution mechanisms, and on
+          acreage that means a clean pasture next to a neglected one is being re-seeded regardless of what
+          happens inside the fence. Fence lines, working pens, gate approaches and the ground around water
+          are the places to look first, because that is where animals concentrate and where the turf is
+          thinnest.
+        </p>
+        <p>
+          <strong>And the equipment problem.</strong> A shredder or a mower run through a patch in seed and
+          then driven to clean ground is a very efficient way to plant sandbur. On a property with a
+          patchwork of infested and clean areas, sequencing the work — clean ground first, infested last —
+          costs nothing and matters.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What a realistic plan looks like</h2>
+      <div class="measure">
+        <p>
+          <strong>Year one is about stopping the deposit.</strong> Pre-emergent timed off soil
+          temperature, repeated at the published interval, plus whatever post-emergent work is warranted
+          early while plants are small. The measurable goal is that very few plants set burs, because every
+          plant that does is up to a thousand seeds going back into the ground for the rest of the decade.
+        </p>
+        <p>
+          <strong>Year two is when the difference shows.</strong> The seed bank has had a year without a
+          deposit and a year of withdrawals. The same programme runs, and there is usually visibly less to
+          deal with.
+        </p>
+        <p>
+          <strong>Year three is the one people quit before.</strong> Arizona's at-least-three-years figure
+          exists because the bank does not empty on the schedule anybody wants. A yard that looks clean
+          after two good years and is then left alone will come back, because there is still seed in the
+          soil waiting for 52 degrees.
+        </p>
+        <p>
+          <strong>Running alongside all of it, the turf work.</strong> Mowing height up, watering deep and
+          less often, fertility where the soil calls for it. That is the part that changes the outcome
+          after the programme ends, and it is also the cheapest part.
+        </p>
+        <p>
+          <strong>What we will tell you before you book anything.</strong> That this is a multi-year
+          commitment rather than a treatment; that the timing is set by the ground rather than by our
+          schedule; and that if you only want one application in June, we will do it and it will not fix
+          your yard. That is on the <a href="/services/lawn-care/">lawn care page</a> too, because we would
+          rather be believed than booked.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Burs taking the yard?"
+    body="Tell us how long it has been going on and how much of the yard is affected. The plan starts from soil temperature and runs over years, and we would rather set that expectation before we quote than after."
+  />
+</BaseLayout>

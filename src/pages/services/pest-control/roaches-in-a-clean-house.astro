@@ -1,0 +1,450 @@
+---
+/**
+ * Problem spoke — "German cockroaches in a house that is genuinely clean."
+ *
+ * THE ARGUMENT: introduction is independent of housekeeping. What housekeeping
+ * changes is whether an introduced population establishes and how fast. The
+ * page holds that line carefully in BOTH directions — it does not tell anyone
+ * that cleaning is irrelevant.
+ *
+ * VERIFIED:
+ *  - NC State Extension (Wada-Katsumata & Hayes, 23 Jan 2025), the load-bearing
+ *    quote: "even with the most stringent cleaning regimen and despite regular
+ *    pest management, German cockroaches can still find their way into your
+ *    structure". On hitchhiking: "This term refers to the introduction of any
+ *    number of pests into a previously uninfested structure through contact
+ *    with or through acquiring previously infested material or products." And:
+ *    "even with the most stringent inspection small nymphs can easily be
+ *    overlooked". Movement through "shared walls between residential or
+ *    commercial units" driven by resource depletion, overcrowding, exploration.
+ *  - AgriLife ENTO-PU-121 (Brown, Merchant, SIDERS — Dec 2017): "Cockroaches
+ *    can infest homes when brought in with groceries or boxes, and, once
+ *    established, can readily move within structures such as from apartment to
+ *    apartment."; "They tend to congregate near sources of heat and moisture,
+ *    which accelerate their growth and reproductive rates."; "Good cleanup and
+ *    sanitation practices are essential to effective cockroach control."
+ *    LOCAL POINT WORTH KEEPING: Kerry Siders is the AgriLife Extension agent
+ *    for Hockley, Cochran and Lamb counties — this publication has direct South
+ *    Plains authorship, which is a real and rare local-relevance fact.
+ *  - UC IPM 7467: "Cockroaches thrive where food and water are available to
+ *    them. Even tiny amounts of crumbs or liquids caught between cracks provide
+ *    a food source."; "Cockroaches hide in dark, warm areas, especially narrow
+ *    spaces where surfaces touch them on both sides."; "Look for other methods
+ *    of entry, such as from items being brought into the building, especially
+ *    appliances, furniture, boxes, and items that were recently in storage."
+ *  - Penn State: "It is difficult to keep cockroaches from entering homes via
+ *    boxes, grocery bags, suitcases, and the like"; "A key factor in prevention
+ *    is sanitation."
+ *  - Zha, Wang, Eiden, Cooper & Wang 2019, J. Econ. Entomol. 112(5):2302–2310 —
+ *    188-unit high-rise, Paterson NJ. "At month 0, cockroach infestations
+ *    within the building were spatially correlated… Therefore, IPM not only
+ *    eliminates cockroach infestations in individual units, but also reduces
+ *    cockroach dispersal between units." Building infestation 49% at month 0
+ *    (23 heavy / 25 medium / 42 light), 24% at 6 months, 12% at 12 months.
+ *    Traps by the stove and refrigerator caught significantly more than traps
+ *    under the sink or in the bathroom. Across-hallway both-infested pairs:
+ *    expected 24.0, observed 36.4.
+ *  - Wang, Eiden, Cooper, Zha & Wang 2019, J. Integrated Pest Management
+ *    10(1):33 — 75% reduction in infested apartments under building-wide IPM
+ *    vs 39% in the control building on conventional monthly service.
+ *
+ * ⚠️ FOUR HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. DO NOT SAY CLEANLINESS IS IRRELEVANT. No extension source says that, and
+ *     two say the opposite: AgriLife calls sanitation "essential", Penn State
+ *     "a key factor". The supportable claim is narrower and the page must keep
+ *     it narrow: INTRODUCTION is independent of housekeeping.
+ *  2. "UNIT-BY-UNIT TREATMENT FAILS" IS NOT IN THE LITERATURE. It is an
+ *     inference from the spatial-correlation data and the 75%-vs-39% result.
+ *     The page presents it as an inference, in those words.
+ *  3. THE WORD "CARDBOARD" IS NOT VERBATIM ANYWHERE. Sources say "boxes",
+ *     "grocery bags", "suitcases", "appliances, furniture". Use their words.
+ *  4. THE NUMBERS CONFLICT AND MUST NOT BE BLENDED. Egg-to-adult: AgriLife
+ *     "50 to 60 days" vs NC State "70-100 days". Annual output: Penn State
+ *     "over 10,000 descendants… assuming two generations per year" vs UC IPM
+ *     "over 30,000 individuals in a year" — a threefold gap resting on
+ *     different assumptions. Eggs per case: NC State mean 40, Penn State "up to
+ *     48 eggs (usually 30 to 48)", UC IPM "about 30". AgriLife's "12 to 36" is
+ *     generic across ALL species and must not be cited as a German cockroach
+ *     figure. Cite ranges, attribute, and say sources differ.
+ *  Glucose aversion is deliberately NOT re-explained here — it is covered at
+ *  /pest-library/german-cockroach/ and this page links there instead.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Pest control', path: '/services/pest-control/' },
+  { name: 'Roaches in a clean house', path: '/services/pest-control/roaches-in-a-clean-house/' },
+];
+
+const quickAnswer =
+  'German cockroaches arrive as cargo, not as a verdict on your housekeeping. NC State states that even with the most stringent cleaning regimen and regular pest management, they can still find their way into a structure. What cleaning changes is whether an arrival establishes — and the food scale that matters is crumbs caught in a crack, not dishes in a sink.';
+
+const faqs = [
+  {
+    q: 'Did I do something wrong?',
+    a: 'Almost certainly not, at least not in the way you are thinking. NC State Extension states that even with the most stringent cleaning regimen, and despite regular pest management, German cockroaches can still find their way into a structure. They arrive by hitchhiking — carried in on material or products that were already infested. AgriLife says the same thing in fewer words: cockroaches can infest homes when brought in with groceries or boxes. Nothing on that list is a hygiene failure.',
+  },
+  {
+    q: 'So cleaning does not matter?',
+    a: 'No, and we are not going to let this page drift into that, because it is not what the sources say. AgriLife states that good cleanup and sanitation practices are essential to effective cockroach control, and Penn State calls sanitation a key factor in prevention. The narrower claim — the one that is actually supported — is that cleaning does not control whether they get in. It controls whether an arrival turns into a population, and how quickly a treatment finishes the job. Those are different questions and blurring them is how people end up blamed for something they did not cause.',
+  },
+  {
+    q: 'What counts as food to a cockroach?',
+    a: 'Far less than you would think, and this is the part that catches out careful households. UC IPM puts it precisely: even tiny amounts of crumbs or liquids caught between cracks provide a food source. That is the scale — the gap where the counter meets the splashback, the seam under the toe-kick, the grease film behind a cooker, a drip line under a fridge. A kitchen can pass any reasonable inspection and still be supplying a population, because the relevant food is in places nobody cleans on a normal week and some places nobody can reach at all.',
+  },
+  {
+    q: 'Where are they actually living?',
+    a: 'In cracks tight enough to touch them on both sides. UC IPM describes cockroaches hiding in dark, warm areas, especially narrow spaces where surfaces contact them on both sides, and harbouring in moist dark crevices when not foraging. AgriLife adds that they congregate near sources of heat and moisture, which accelerate their growth and reproductive rates. That combination — warm, humid, tight — describes the motor housing of a fridge, the void behind a dishwasher, the underside of a sink cabinet, and the gap beside a water heater almost perfectly.',
+  },
+  {
+    q: 'How did they get past me? I check things.',
+    a: 'Because the things you would need to spot are about the size of a comma. NC State notes that even with the most stringent inspection, small nymphs can easily be overlooked. An egg case tucked into the seam of a cardboard flat or the underside of an appliance is smaller than a coffee bean and does not move. UC IPM specifically directs attention to items brought into a building — appliances, furniture, boxes, and things that were recently in storage — and Penn State says it is difficult to keep cockroaches out via boxes, grocery bags, suitcases and the like.',
+  },
+  {
+    q: 'I live in an apartment. Does my neighbour matter?',
+    a: 'Very much, and there is real data on it rather than just an opinion. A study of a 188-unit high-rise found that at the start of the programme cockroach infestations within the building were spatially correlated — infested units clustered near other infested units well beyond what chance would produce. Across a hallway, the number of both-infested pairs observed was 36.4 against 24.0 expected. After a year of building-wide management, the correlation had largely broken down, which the authors read as reduced dispersal between units.',
+  },
+  {
+    q: 'Then is treating just my unit a waste of money?',
+    a: 'That is an inference rather than a finding, and we will label it as one. What the literature actually shows is that a building-wide programme achieved a 75 percent reduction in infested apartments against 39 percent for a control building on conventional monthly service, and that infestations cluster between neighbouring units. From that we conclude that treating one unit in a building where the neighbours are untreated is working against a supply line. We think that conclusion is sound. It is not a sentence anybody has published, so we are not going to present it as one.',
+  },
+  {
+    q: 'How fast does this get away from you?',
+    a: 'Fast, and the published figures disagree about exactly how fast, which is worth knowing rather than hiding. On development time, AgriLife gives 50 to 60 days from nymph to adult at average indoor temperatures while NC State gives 70 to 100 days. On annual output, Penn State calculates over 10,000 descendants in a year assuming two generations, while UC IPM puts a single female and her offspring at over 30,000 in a year. Those are threefold apart because they rest on different assumptions. What every source agrees on is the shape: a few insects in spring is a serious problem by late summer.',
+  },
+];
+---
+
+<BaseLayout
+  title="Roaches in a Clean House | Trusted Termite"
+  description="German cockroaches arrive as cargo, not as a verdict on your housekeeping — what the extension sources actually say, and why the neighbouring unit matters."
+  path="/services/pest-control/roaches-in-a-clean-house/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">General pest control · problem page</p>
+      <h1>German cockroaches in a house that is genuinely clean</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          This is one of the few pest problems that arrives carrying an accusation. People apologise to us
+          on the doorstep. They tidy before we get there. They tell us, unprompted and often twice, that
+          the house is normally spotless — and quite frequently it visibly is.
+        </p>
+        <p>
+          So we want to put the sourced position first, before anything else on this page. NC State
+          Extension, in a 2025 publication, states that even with the most stringent cleaning regimen and
+          despite regular pest management, German cockroaches can still find their way into your structure.
+          AgriLife's own account of how they arrive is a single unglamorous sentence: cockroaches can infest
+          homes when brought in with groceries or boxes.
+        </p>
+        <p>
+          That is the answer to how they got in. It is not about you. What the rest of this page is about
+          is the more useful question — given that they are in, what is actually keeping them, and what
+          changes it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Arriving and establishing are two different questions</h2>
+      <div class="measure">
+        <p>
+          <strong>This distinction does all the work, so it is worth being precise about it.</strong> One
+          question is how a cockroach gets through your front door. A completely different question is
+          whether the ones that got in survive, breed and become a hundred. Housekeeping has almost nothing
+          to do with the first and a good deal to do with the second.
+        </p>
+        <p>
+          <strong>On arrival, the literature is unambiguous.</strong> NC State describes the mechanism as
+          hitchhiking, and defines it as the introduction of pests into a previously uninfested structure
+          through contact with, or acquisition of, previously infested material or products. UC IPM tells
+          you where to look: items brought into the building, especially appliances, furniture, boxes, and
+          things that were recently in storage. Penn State says it is difficult to keep cockroaches from
+          entering homes via boxes, grocery bags, suitcases and the like.
+        </p>
+        <p>
+          <strong>Notice what is not on any of those lists.</strong> Dirty dishes. Bins. Floors. The things
+          people flagellate themselves about are absent, because the sources are describing a transport
+          problem, not a hygiene one.
+        </p>
+        <p>
+          <strong>And notice what the sources do say about sanitation,</strong> because we are not going to
+          quote them selectively. AgriLife states that good cleanup and sanitation practices are essential
+          to effective cockroach control. Penn State calls sanitation a key factor in prevention and gets
+          specific — clean up spilled food including crumbs on the floor, do not leave dirty dishes
+          overnight.
+        </p>
+        <p>
+          <strong>Both of those things are true at once.</strong> Cleaning is a control lever. It is not
+          the cause of introduction. Any page that tells you cleanliness has nothing to do with cockroaches
+          is overstating a real point until it stops being true, and that is not a favour to anybody.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The scale of food that actually matters</h2>
+      <div class="measure">
+        <p>
+          <strong>Here is the sentence that reframes a clean kitchen.</strong> UC IPM: even tiny amounts of
+          crumbs or liquids caught between cracks provide a food source. Not a plate. Not a bin. Crumbs, in
+          cracks.
+        </p>
+        <p>
+          <strong>Which changes where you would look.</strong> The seam where a worktop meets the
+          splashback. The gap under a toe-kick. The greasy film on the wall behind a cooker, and the trough
+          of crumbs under the hob. Under and behind the fridge, where a condensation drip and a warm motor
+          sit together. The void beside a dishwasher. Inside the cabinet under a sink, where a slow
+          compression fitting has been damp for two years.
+        </p>
+        <p>
+          <strong>None of that is reachable on a normal clean.</strong> Some of it is not reachable at all
+          without pulling an appliance out. So a household can be doing everything right by any ordinary
+          standard and still be supplying a population, which is precisely why the accusation people bring
+          to the door is unfair.
+        </p>
+        <p>
+          <strong>Warmth and moisture are the other half.</strong> AgriLife states that cockroaches
+          congregate near sources of heat and moisture, which accelerate their growth and reproductive
+          rates. That is not just about where they hide — it is about how fast the problem compounds.
+          Populations behind a warm appliance develop faster than populations in a cool cupboard.
+        </p>
+        <p>
+          <strong>And the harbourage itself is physical, not dirty.</strong> UC IPM describes cockroaches
+          hiding in dark, warm areas, especially narrow spaces where surfaces touch them on both sides.
+          They want contact on the back and the front at once. A hairline gap behind a loose piece of trim
+          qualifies; an open shelf does not. This is why the fix is so often carpentry and caulk rather
+          than chemical.
+        </p>
+        <p>
+          <strong>The corollary for the West Texas housing stock.</strong> A dry climate does not mean a
+          dry building. The moisture is indoors and it is local: a sink trap, an evaporative cooler line, a
+          water heater pan, a fridge drip tray, a slow supply fitting nobody has looked at. In a region
+          where the humidity outside is often in the teens, those interior wet spots are exactly where a
+          moisture-dependent insect concentrates, which makes them the highest-value place to look.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The apartment problem, with the actual data</h2>
+      <div class="measure">
+        <p>
+          <strong>Where the evidence comes from.</strong> A team studied a 188-unit high-rise apartment
+          building and tracked cockroach infestation across it while running a building-wide programme. At
+          the start, 49 percent of the building was infested — 23 units heavily, 25 medium, 42 light. At
+          six months that was 24 percent. At twelve months, 12 percent.
+        </p>
+        <p>
+          <strong>The finding that matters for a tenant.</strong> At month zero, infestations within the
+          building were spatially correlated — infested units sat next to, above and below other infested
+          units at a rate above chance. Across a hallway, the number of both-infested pairs came out at
+          36.4 observed against 24.0 expected. After twelve months of building-wide work, only correlation
+          across floors remained, which the authors interpret as the programme having reduced dispersal
+          between units as well as clearing individual ones.
+        </p>
+        <p>
+          <strong>A companion study puts a number on the difference in approach.</strong> Building-wide
+          integrated management achieved a 75 percent reduction in infested apartments; a control building
+          receiving conventional monthly pest control achieved 39 percent.
+        </p>
+        <p>
+          <strong>Now the honest part.</strong> Nowhere in that literature does anyone write the sentence
+          "unit-by-unit treatment fails". What is published is the clustering, and the 75 against 39. The
+          conclusion we draw — that treating one flat while the neighbours go untreated means fighting a
+          resupply — is an inference. We think it is a sound one and we act on it. We are still going to
+          label it as our reasoning rather than dress it up as a citation.
+        </p>
+        <p>
+          <strong>One practical detail from the same study.</strong> Traps placed by the stove and the
+          refrigerator caught significantly more cockroaches than traps under the kitchen sink or in the
+          bathroom. If you are monitoring your own unit, that is where the monitors go.
+        </p>
+        <p>
+          <strong>What this means in Odessa, Midland, Lubbock and Andrews.</strong> Plenty of the rental
+          stock here is exactly this shape — shared walls, shared plumbing chases, a common laundry.
+          NC State notes cockroaches moving through shared walls between residential or commercial units,
+          driven by resource depletion, overcrowding or simple exploration. If you are a tenant, the
+          single most useful thing you can do is tell the manager, because a building-level response is
+          worth more than anything happening inside your four walls.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How fast it moves, with the sources disagreeing in public</h2>
+      <div class="measure">
+        <p>
+          <strong>We are going to show you the disagreement rather than pick a number.</strong> Reference
+          pages usually present one clean figure. The clean figure does not exist here.
+        </p>
+        <p>
+          <strong>Eggs per case.</strong> NC State gives a mean of 40. Penn State gives up to 48, usually
+          30 to 48. UC IPM says about 30. AgriLife's publication gives 12 to 36 — but that figure is
+          explicitly generic across cockroach species, so it should not be quoted as a German cockroach
+          number, and we are noting that because it gets misquoted that way constantly.
+        </p>
+        <p>
+          <strong>Egg cases per female.</strong> NC State: five to eight, totalling 200 to 250 eggs in a
+          lifetime. Penn State: four to eight. Those agree well enough.
+        </p>
+        <p>
+          <strong>Time from egg to adult.</strong> AgriLife says 50 to 60 days at average indoor
+          temperatures. NC State says 70 to 100 days. That gap is real and neither source is careless; they
+          are likely measuring under different conditions, and temperature drives development.
+        </p>
+        <p>
+          <strong>Annual output.</strong> Penn State calculates over 10,000 descendants in a year assuming
+          two generations. UC IPM puts a single female and her offspring at over 30,000 individuals in a
+          year. A factor of three, from different starting assumptions.
+        </p>
+        <p>
+          <strong>What survives the disagreement.</strong> All four sources describe the same curve: a
+          reproductive rate high enough that a handful of insects in March is an infestation by August, and
+          fast enough that a fortnight of delay is measurable. That is the operational fact, and it does
+          not depend on which figure you believe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The things that most often carry them in</h2>
+      <div class="measure">
+        <p>
+          <strong>Used appliances.</strong> UC IPM names appliances first among the items to check. A
+          second-hand fridge, microwave, washer or dishwasher has warm voids and motor housings that are
+          effectively purpose-built harbourage, and the previous owner may have had no idea. This is the
+          single most common introduction we see, and in a market like ours — where a lot of good used
+          equipment moves between households and through oilfield housing — it is worth naming plainly.
+        </p>
+        <p>
+          <strong>Boxes and things out of storage.</strong> Both UC IPM and Penn State name boxes. An egg
+          case glued into a flute or a fold is smaller than a coffee bean, it does not move, and it will
+          sit there for weeks. A unit that has been in a storage building on the edge of town for a season
+          is a plausible source in a way that a new purchase is not.
+        </p>
+        <p>
+          <strong>Groceries.</strong> AgriLife names groceries alongside boxes. Nobody needs to feel
+          careless about this — it is not a thing that can reasonably be inspected for.
+        </p>
+        <p>
+          <strong>Second-hand furniture.</strong> On the list at UC IPM. The joints and undersides are the
+          places to look before it comes through the door.
+        </p>
+        <p>
+          <strong>Suitcases and everything that travels.</strong> Penn State includes them. A stay
+          somewhere with a problem is enough.
+        </p>
+        <p>
+          <strong>And the neighbouring unit, covered above,</strong> which is a supply route rather than a
+          single event and is the reason a flat can be reinfested after a clean treatment.
+        </p>
+        <p>
+          <strong>What to do with that list.</strong> Not worry about it constantly. Look properly at the
+          two things on it that are worth looking at — a used appliance before it is plumbed in, and boxes
+          coming out of long storage — and let the rest go. The realistic goal is catching an introduction
+          early, not preventing every one of them, because the sources are clear that prevention at the
+          door is not fully achievable.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Something worth pointing out about the source itself</h2>
+      <div class="measure">
+        <p>
+          <strong>AgriLife's cockroach publication has South Plains authorship.</strong> The 2017 extension
+          publication we have been quoting lists three authors, and one of them is the AgriLife Extension
+          agent for Hockley, Cochran and Lamb counties — that is Levelland, Morton and Littlefield, an
+          hour or so north of us.
+        </p>
+        <p>
+          <strong>Why we are bothering to say that.</strong> Because on most of this site we have to be
+          careful to note the opposite. There is no AgriLife structural pest guide written for the Llano
+          Estacado or the Permian Basin as a distinct region, so nearly everything we cite is statewide
+          material that we then have to apply locally and say so. This is one of the very few publications
+          where somebody who works in this landscape had a hand in the text.
+        </p>
+        <p>
+          <strong>It does not change the biology.</strong> A German cockroach behaves the same in Levelland
+          as in Houston. But when a page is built on the honesty of its sourcing, a source with local
+          authorship is worth naming, and so is the fact that it is unusual.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we do about it</h2>
+      <div class="measure">
+        <p>
+          <strong>First, we are not going to make you feel bad.</strong> That sounds soft for a service
+          page and it is not. A household that feels accused hides the problem, delays the call, and
+          cleans in ways that make the inspection harder. The job goes better when everybody starts from
+          the sourced position that this is a transport problem.
+        </p>
+        <p>
+          <strong>The inspection targets crevices and moisture, not surfaces.</strong> Behind and under
+          appliances, the motor housing of the fridge, the dishwasher void, under-sink cabinets, the water
+          heater surround, and the seams and trim in between. Monitors go where the data says they catch —
+          by the stove and the refrigerator.
+        </p>
+        <p>
+          <strong>The treatment is bait-led, and there is a reason for that</strong> which we have set out
+          in full on the <a href="/pest-library/german-cockroach/">German cockroach library page</a>,
+          including the documented phenomenon of bait aversion and why the response to an ignored bait is
+          to rotate rather than to reach for a spray can. AgriLife's own advice on that page's subject is
+          to switch active ingredients regularly to avoid creating resistant populations.
+        </p>
+        <p>
+          <strong>And there is work that is yours rather than ours,</strong> which we will hand you as a
+          list rather than a lecture: get behind the appliances once, fix the slow leak, close the crevices
+          with caulk, and be careful what comes into the house — particularly used appliances and boxes out
+          of storage, which the sources name directly.
+        </p>
+        <p>
+          <strong>If you rent, tell the manager in writing.</strong> The building data above is the reason.
+          A treatment inside your unit is worth having; a building-level response is worth roughly twice as
+          much, and no individual tenant can arrange one alone.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Roaches you cannot account for?"
+    body="Tell us where you are seeing them and what has come into the house lately — an appliance, boxes out of storage, a move. That history usually explains the arrival, and the inspection then goes looking for what is keeping them."
+  />
+</BaseLayout>

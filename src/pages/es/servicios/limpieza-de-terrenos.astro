@@ -1,0 +1,376 @@
+---
+/**
+ * Página en español — Limpieza de Terrenos y Maleza.
+ * Par en inglés: /services/brush-and-lot-clearing/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Cifras y citas verificadas en la página inglesa: plazos por ciudad, costos
+ * itemizados de Odessa, cuota administrativa de Lubbock, gravámenes al 10%,
+ * §342.006/.007/.008, §343.011. Productos reales. Sin precios propios.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Limpieza de Terrenos', path: '/es/servicios/limpieza-de-terrenos/' },
+];
+
+const quickAnswer =
+  'Desmonte de lotes, corte de maleza alta, retiro del material y aplicación de herbicida residual, con la categoría estatal de Control de Maleza que la mayoría de quienes cortan pasto no tiene. Valentin Moriel lo hace personalmente bajo la licencia TPCL 0918482, en el condado de Gaines y la Cuenca Pérmica.';
+
+const faqs = [
+  {
+    q: 'La ciudad me mandó una carta. ¿Cuánto tiempo tengo en realidad?',
+    a: 'Depende de la ciudad. Lubbock da siete días desde el aviso. Odessa da cinco días para pedir audiencia o siete para limpiar. Andrews da diez días, con acción inmediata si el crecimiento pasa de cuatro pies. Kermit da diez días. En el marco estatal para municipios, el Código de Salud y Seguridad §342.006 permite a la ciudad hacer el trabajo y cobrárselo si usted no cumple dentro de los siete días del aviso. En zona no incorporada del condado la ventana es más larga: el capítulo §343 le da hasta el trigésimo día después del aviso antes de que proceda la sanción penal. Dígannos la fecha que trae la carta y trabajamos a ese plazo.',
+  },
+  {
+    q: '¿Qué cuesta si dejo que lo haga la ciudad?',
+    a: 'Más que mandarlo hacer, y no desaparece. Odessa lo desglosa: equipo mayor 56 dólares la hora, mano de obra 21 dólares la hora, una cuota administrativa fija de 125 dólares, relleno sanitario 52.50 dólares por tonelada, más un recargo del 10% por pago tardío. Lubbock cobra 175 dólares de cuota administrativa por cada ocurrencia además del trabajo. En ambos casos el costo se convierte en gravamen sobre la propiedad — en Lubbock al 10% de interés y solo por debajo de los gravámenes fiscales; en Odessa al 10% anual y ejecutable. El §342.007 es la autoridad estatal para ese gravamen.',
+  },
+  {
+    q: '¿Qué tan alta es demasiado alta donde yo estoy?',
+    a: 'Lubbock: ocho pulgadas, promediadas en todo el lote, el estándar más estricto de la región. Kermit: diez. Odessa: doce pulgadas para pasto, maleza o monte silvestre. Seminole, Seagraves, Denver City, Lamesa, Brownfield y Stanton: doce. Midland: dieciocho en patios y lotes baldíos. Andrews: doce en lotes registrados de menos de un acre y dieciocho en terrenos sin desarrollar de más de un acre. Fuera de los límites de la ciudad, en cualquier parte de Texas, el §343.011(c)(4) hace estorbo público permitir que crezca maleza dentro de trescientos pies de otra residencia o negocio en una zona habitada — y note que esa disposición del condado se define por proximidad y no contiene ninguna cifra de altura.',
+  },
+  {
+    q: '¿La ciudad puede limpiar mi lote sin avisarme antes?',
+    a: 'En ciertas circunstancias, sí. El §342.008 permite la limpieza de emergencia sin aviso previo cuando la maleza pasa de cuarenta y ocho pulgadas y representa un peligro inmediato. Odessa tiene esa facultad de cuarenta y ocho pulgadas en su propio código y Kermit también. A usted deben notificarle dentro de los diez días posteriores al trabajo y puede pedir una audiencia administrativa dentro de los treinta días — pero para entonces el trabajo ya se hizo y la cuenta ya existe. Vale la pena saber que la audiencia existe: mucha gente recibe esa carta sin enterarse de que tiene un derecho con reloj.',
+  },
+  {
+    q: '¿La chatarra en el lote es un problema aparte de la maleza?',
+    a: 'Normalmente va en el mismo aviso, y en zona no incorporada está cubierto expresamente. El §343.011 incluye basura guardada o acumulada por diez días o más dentro de trescientos pies de una vía pública, salvo que esté completamente encerrada en un edificio o no sea visible desde la calle — y nombra periódicos, vehículos abandonados, refrigeradores, estufas, muebles, llantas y latas. Odessa define la chatarra por separado como material usado o desechado visible desde la propiedad vecina o que constituya riesgo de salud o incendio, e incluye materiales de construcción almacenados en cantidades reconocibles. Nosotros limpiamos y nos llevamos las dos cosas.',
+  },
+  {
+    q: '¿Cómo se cotiza el desmonte?',
+    a: 'De forma individual: por el tamaño del lote o la superficie, qué tan alta y pesada está la vegetación, el acceso, qué equipo hace falta, y si el material tiene que salir de la propiedad o puede quedarse. Un lote ligeramente descuidado y una propiedad con varios pies de monte pesado son trabajos muy distintos. Con fotografías normalmente se puede dar una idea inicial; algo grande necesita alguien en el sitio.',
+  },
+  {
+    q: '¿También aplican herbicida o nada más cortan?',
+    a: 'Las dos cosas, y importa cuál necesita usted en realidad. Cortar resuelve hoy; un programa con residual o con no selectivo resuelve el mes que viene. Tenemos la categoría estatal de Control de Maleza, que es aparte de Control de Plagas y aparte otra vez de Jardín y Ornamental, así que legalmente podemos hacer manejo de vegetación y no solamente cortar. Usamos Ranger Pro, Imazapyr, Prodiamine y Celsius XTRA según lo que esté creciendo y según lo que deba sobrevivir.',
+  },
+  {
+    q: '¿Limpiar el terreno ayuda con las plagas?',
+    a: 'Bastante, y es la razón principal por la que hacemos las dos cosas. Texas A&M AgriLife enumera piedras, tablas, escombros, vegetación muerta y troncos caídos como aquello bajo lo que se resguarda el alacrán rayado de corteza. Monte pesado y material acumulado a pocos pies de una construcción es refugio, y ningún tratamiento perimetral supera a un abrigo permanente con sombra y comida adentro. Limpiar, llevarse el material y tratar el suelo donde estaba es un solo trabajo.',
+  },
+];
+---
+
+<BaseLayout
+  title="Limpieza de Terrenos y Maleza | Seminole, TX"
+  description="Desmonte de lotes, retiro de material y herbicida residual con licencia estatal de Control de Maleza, en el condado de Gaines y la Cuenca Pérmica."
+  path="/es/servicios/limpieza-de-terrenos/"
+  lang="es"
+  altLangPath="/services/brush-and-lot-clearing/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Limpieza de Terrenos y Maleza',
+    description: 'Desmonte de lotes baldíos y acreajes, corte de maleza alta, retiro de material y manejo de vegetación con herbicida en el oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Limpieza de Terrenos y Maleza</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Si le llegó una carta de la ciudad, empiece por la fecha.</strong> Casi todo lo demás en
+          esta página depende de cuántos días le quedan, y ese número cambia según el pueblo de una manera
+          que sorprende a mucha gente.
+        </p>
+        <p>
+          Lo segundo que conviene saber es que dejar que la ciudad lo haga <em>no</em> es la opción barata.
+          El costo no se cobra como una multa que uno puede discutir: se convierte en gravamen sobre la
+          propiedad, con intereses, y se queda ahí.
+        </p>
+        <p>
+          Y lo tercero — la parte que casi nadie relaciona — es que un lote lleno de maleza y material
+          acumulado no es solamente un asunto de apariencia ni de multas. Es el refugio del que salen los
+          alacranes, las arañas y los roedores que después aparecen en la casa de al lado. Por eso hacemos
+          la limpieza y el tratamiento en la misma visita.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>El plazo, pueblo por pueblo</h2>
+      <div class="measure">
+        <p>
+          Estos son los números que hemos verificado en los códigos de las ciudades donde trabajamos.
+          Léalos con la carta enfrente.
+        </p>
+        <p>
+          <strong>Lubbock: siete días</strong> desde el aviso, y el estándar de altura más estricto de la
+          región — ocho pulgadas promediadas en todo el lote. Además cobra 175 dólares de cuota
+          administrativa por cada ocurrencia, encima del costo del trabajo.
+        </p>
+        <p>
+          <strong>Odessa: cinco días</strong> para pedir audiencia o <strong>siete</strong> para limpiar,
+          con límite de doce pulgadas para pasto, maleza o monte silvestre.
+        </p>
+        <p>
+          <strong>Andrews: diez días</strong>, con acción inmediata si el crecimiento pasa de cuatro pies.
+          Su límite es de doce pulgadas en lotes registrados de menos de un acre y dieciocho en terrenos
+          sin desarrollar de más de un acre.
+        </p>
+        <p>
+          <strong>Kermit: diez días</strong>, con el límite más bajo de la ruta después de Lubbock — diez
+          pulgadas — y con un detalle que no tiene ningún otro pueblo aquí: el aviso puede cubrir una
+          reincidencia durante <strong>veinticuatro meses</strong>, no doce.
+        </p>
+        <p>
+          <strong>El marco estatal para ciudades</strong> es el §342.006, que permite al municipio hacer el
+          trabajo y cobrárselo si usted no cumple dentro de los siete días del aviso.
+        </p>
+        <p>
+          <strong>Y fuera de los límites de la ciudad el reloj es otro.</strong> En zona no incorporada del
+          condado, el capítulo §343 le da hasta el trigésimo día después del aviso antes de que proceda la
+          sanción penal. Es considerablemente más tiempo — pero también es un procedimiento distinto, y
+          conviene no confundir uno con otro porque la gente tiene propiedades en ambos lados.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que cuesta dejar que lo haga la ciudad</h2>
+      <div class="measure">
+        <p>
+          Esta es la parte que hace que la gente cambie de opinión, así que vale la pena verla con números
+          reales en vez de con advertencias vagas.
+        </p>
+        <p>
+          <strong>Odessa publica su desglose.</strong> Equipo mayor a <strong>56 dólares la hora</strong>.
+          Mano de obra a <strong>21 dólares la hora</strong>. Una cuota administrativa fija de
+          <strong>125 dólares</strong>. Disposición en el relleno sanitario a
+          <strong>52.50 dólares por tonelada</strong>. Y un <strong>recargo del 10%</strong> si se paga
+          tarde.
+        </p>
+        <p>
+          <strong>Lubbock suma 175 dólares</strong> de cuota administrativa por cada ocurrencia, encima del
+          costo del trabajo mismo.
+        </p>
+        <p>
+          <strong>Pero el costo directo no es el problema principal.</strong> El problema es qué pasa
+          después: el monto se convierte en <strong>gravamen sobre la propiedad</strong>. En Lubbock al 10%
+          de interés y solo por debajo de los gravámenes fiscales. En Odessa al 10% anual y ejecutable — es
+          decir, con posibilidad de ejecución sobre el inmueble. El §342.007 es la autoridad estatal que
+          permite todo eso.
+        </p>
+        <p>
+          <strong>Un gravamen no se olvida.</strong> Sigue ahí cuando usted quiera vender, refinanciar o
+          heredar la propiedad, y aparece en el título. Mucha gente descubre uno de hace años justo en el
+          peor momento posible, que es a la mitad de una operación.
+        </p>
+        <p>
+          <strong>Comparado con eso</strong>, mantener un lote cortado durante la temporada de crecimiento
+          cuesta una fracción y elimina el tema por completo. No es un argumento de venta: es aritmética
+          con las cifras que publican las propias ciudades.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La regla de las cuarenta y ocho pulgadas</h2>
+      <div class="measure">
+        <p>
+          Hay una disposición que conviene conocer aunque no le haya tocado, porque cambia la urgencia de
+          un lote que se dejó crecer de más.
+        </p>
+        <p>
+          <strong>El §342.008 permite la limpieza de emergencia sin ningún aviso previo</strong> cuando la
+          maleza pasa de cuarenta y ocho pulgadas y representa un peligro inmediato. Odessa tiene esa
+          facultad escrita en su propio código, y Kermit también. Cuatro pies es bastante crecimiento, así
+          que no es una regla que sorprenda a alguien que cortó hace tres semanas: está dirigida a lotes
+          genuinamente abandonados y a propiedades que nadie está vigilando.
+        </p>
+        <p>
+          <strong>El aviso llega después.</strong> La ciudad tiene diez días para decirle qué encontró y
+          qué hizo. Y aquí está la parte que casi nadie menciona: usted puede pedir una audiencia
+          administrativa dentro de los treinta días de esa notificación. Es un derecho real con un reloj
+          real, y aparece en la misma sección que la facultad que le molestó.
+        </p>
+        <p>
+          <strong>Quién debería tener esto presente.</strong> Si heredó un terreno, si compró uno en
+          subasta, o si es dueño de algo aquí que no ha pisado este año, esa es la disposición que le
+          aplica — no la de las diez o doce pulgadas. Y si vive fuera del pueblo, el aviso se manda a la
+          dirección que el distrito de valuación tiene registrada, así que un domicilio desactualizado
+          puede hacer que todo el procedimiento corra sin que usted se entere.
+        </p>
+        <p>
+          <strong>Nosotros no damos asesoría legal</strong> y no somos abogados. Le decimos qué dice la
+          regla y le señalamos dónde leerla, porque un dueño de propiedad que se entera por una página de
+          control de plagas de que la audiencia existe está mejor que uno que se entera cuando ya venció.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cómo se hace el trabajo</h2>
+      <div class="measure">
+        <p>
+          <strong>Primero se ve qué hay debajo.</strong> Un lote alto esconde cosas: llantas, alambre,
+          concreto, tocones, un pozo viejo, a veces un vehículo. Eso decide el equipo y decide el precio, y
+          es la razón por la que un trabajo grande necesita alguien en el sitio y no solo fotos.
+        </p>
+        <p>
+          <strong>Después el corte</strong>, con el equipo que corresponda a la altura y densidad. Maleza
+          de rodilla y monte de varios pies no son el mismo trabajo ni de lejos.
+        </p>
+        <p>
+          <strong>Luego la decisión sobre el material.</strong> Puede quedarse triturado en el terreno o
+          tiene que salir. Depende de la ordenanza, del tamaño del lote, de si hay vecinos cerca y de qué
+          quiere usted. Si sale, lo cargamos y lo llevamos, y la disposición se cotiza aparte porque el
+          relleno sanitario cobra por peso.
+        </p>
+        <p>
+          <strong>Y luego el herbicida, que es lo que decide si el trabajo dura.</strong> Cortar resuelve
+          hoy. Sin manejo de vegetación, en seis semanas después de una lluvia buena el lote vuelve a estar
+          donde estaba. Usamos <strong>Ranger Pro</strong> donde no hay nada que conservar,
+          <strong>Imazapyr</strong> donde hace falta residual más largo,
+          <strong>Prodiamine</strong> como preemergente para lo que aún no germina, y
+          <strong>Celsius XTRA</strong> donde sí hay pasto que vale la pena dejar vivo. Todo a dosis de
+          etiqueta, que en Texas es la ley y no una sugerencia.
+        </p>
+        <p>
+          <strong>Al final, el suelo donde estaba el material.</strong> Si acabamos de quitar una pila que
+          llevaba dos años ahí, ese suelo es donde vivía lo que estaba debajo. Tratarlo en la misma visita
+          es la diferencia entre limpiar un terreno y resolver un problema.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La conexión con las plagas, que es el motivo real</h2>
+      <div class="measure">
+        <p>
+          Texas A&amp;M AgriLife es explícito sobre bajo qué se resguarda el alacrán rayado de corteza:
+          <strong>piedras, tablas, escombros, vegetación muerta y troncos caídos</strong>. Léalo otra vez y
+          compárelo con cómo se ve un lote descuidado.
+        </p>
+        <p>
+          <strong>Un tratamiento perimetral no compite contra eso.</strong> Se puede aplicar producto
+          alrededor de una casa con toda la técnica del mundo, y si a tres metros de la pared hay una pila
+          de tablas con sombra, humedad y grillos adentro, la fuente sigue produciendo. Es una discusión
+          que tenemos seguido y siempre termina igual: primero se quita el refugio.
+        </p>
+        <p>
+          <strong>Lo mismo vale para los roedores.</strong> Material apilado contra un muro es abrigo con
+          calor y con rutas protegidas. Y en dos de las ciudades de esta ruta está escrito en la ordenanza:
+          Brownfield tiene un artículo dedicado al control de ratas y Big Spring prohíbe directamente el
+          refugio para ratas. Esa segunda idea es exactamente este argumento, redactado por un
+          ayuntamiento.
+        </p>
+        <p>
+          <strong>Y la maleza seca acumulada contra una construcción</strong> deja de ser tema de plagas y
+          pasa a ser tema de incendio. Las plantas rodadoras se apilan contra cercas y muros y se quedan
+          ahí todo el invierno. Varias ciudades lo tratan como motivo de aviso por sí solo.
+        </p>
+        <p>
+          <strong>Por eso ofrecemos las dos cosas juntas.</strong> No por conveniencia comercial: porque
+          repartir el trabajo entre una empresa que limpia y otra que fumiga es la manera confiable de que
+          se haga la mitad. El material se va y el suelo se trata en la misma visita, por la misma persona,
+          que además tiene licencia para hacer las dos cosas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>La chatarra normalmente va en el mismo aviso</h2>
+      <div class="measure">
+        <p>
+          Mucha gente supone que la maleza y el material tirado son dos trámites distintos. Casi siempre
+          van juntos, y fuera de los límites de la ciudad está escrito con nombre y apellido.
+        </p>
+        <p>
+          <strong>El §343.011 cubre basura</strong> guardada o acumulada por diez días o más dentro de
+          trescientos pies de una vía pública, salvo que esté completamente encerrada en un edificio o no
+          sea visible desde la calle. Y no lo deja abstracto: nombra <strong>periódicos, vehículos
+          abandonados, refrigeradores, estufas, muebles, llantas y latas</strong>. Si algo de esa lista
+          está en su terreno a la vista desde el camino, ya está descrito en el estatuto.
+        </p>
+        <p>
+          <strong>Odessa lo define aparte</strong>, como material usado o desechado visible desde la
+          propiedad vecina o que constituya un riesgo de salud o de incendio — e incluye expresamente
+          materiales de construcción almacenados en cantidades reconocibles. Esa última parte agarra
+          desprevenida a bastante gente que dejó block, madera o tubería sobrante después de una obra.
+        </p>
+        <p>
+          <strong>Las dos cosas se limpian igual y se llevan en el mismo viaje.</strong> Es una de las
+          razones por las que hacemos desmonte y retiro de escombros como un solo servicio: separar el
+          corte del acarreo obliga al dueño a coordinar dos empresas para un problema que llegó en una
+          sola carta.
+        </p>
+        <p>
+          <strong>Lo que no nos llevamos</strong> es cualquier cosa que requiera manejo de residuos
+          peligrosos o una licencia que no tenemos. Pintura, solventes, químicos, llantas en cantidad y lo
+          que salga de un taller que nadie ha abierto en años son los casos que conviene mencionar por
+          teléfono antes de que lleguemos, no cuando ya estamos ahí.
+        </p>
+        <p>
+          <strong>Y los vehículos chatarra son un procedimiento municipal aparte.</strong> Seminole los
+          regula específicamente: un vehículo chatarra es el que no tiene placas o verificación vigente,
+          está chocado, desarmado o inoperable — setenta y dos horas en propiedad pública o treinta días
+          consecutivos en propiedad privada. El aviso va por correo certificado con diez días para cumplir
+          y derecho a pedir audiencia. Dígannos qué hay y dónde está, y le decimos con franqueza si somos
+          los indicados o no.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Si no vive cerca de la propiedad</h2>
+      <div class="measure">
+        <p>
+          Una parte considerable de este trabajo es para dueños ausentes: propiedad heredada, terreno de la
+          familia, una casa entre inquilinos, o un lote comprado hace años que nadie ha visitado.
+        </p>
+        <p>
+          <strong>El problema de fondo es el correo.</strong> El aviso va a la dirección registrada en el
+          distrito de valuación del condado. Si está desactualizada, el procedimiento completo puede correr
+          sin usted: aviso, plazo, limpieza hecha por la ciudad, cobro, gravamen. Actualizar esa dirección
+          es gratis y es lo primero que le recomendamos, antes que contratar a nadie.
+        </p>
+        <p>
+          <strong>Lo que hacemos en esos casos</strong> es revisar la propiedad en un intervalo razonable y
+          atender lo que aparezca, con fotos de cómo quedó. Si aparece algo que usted debería saber — un
+          vehículo abandonado, material tirado, una cerca dañada, señales de que alguien entró — se lo
+          decimos.
+        </p>
+        <p>
+          <strong>Y si va a vender, comprar o acaba de heredar</strong>, conviene revisar el terreno antes y
+          no después. Un gravamen viejo por limpieza aparece en el título, y descubrirlo a mitad de una
+          operación es caro y lento. Una limpieza hecha con tiempo cuesta lo que cuesta y se acabó.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre limpieza de terrenos" />
+  <Cta
+    line="Si ya tiene la carta de la ciudad, dígale la fecha y el pueblo — con eso sabe exactamente cuántos días quedan. Si todavía no llega ninguna carta, unas fotos del terreno bastan para darle una idea de por dónde va el trabajo."
+  />
+</BaseLayout>

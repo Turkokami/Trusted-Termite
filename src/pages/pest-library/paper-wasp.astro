@@ -1,0 +1,466 @@
+---
+/**
+ * Pest library — paper wasps and yellowjackets, Polistes spp. / Vespula spp.
+ *
+ * THE ARGUMENT: urgency is a function of proximity and traffic, not of a nest
+ * existing. AgriLife says so in its own words and the page is built on it:
+ *  - "If not too close to areas of human activity, yellowjacket nests should
+ *    be left alone." (AgriLife leaflet)
+ *  - School IPM objective: "reduce human encounters with the wasps, but not to
+ *    eliminate them from the entire area since they are beneficial predators."
+ *  - Paper wasps "feed on insects, including caterpillar pests, and thus are
+ *    considered to be beneficial insects by many gardeners."
+ *
+ * VERIFIED:
+ *  - Paper wasp: 3/4 to 1 inch, slender, narrow-waisted, smoky black wings
+ *    folded lengthwise at rest; "reddish-orange to dark brown", often yellow
+ *    markings. Texas species include P. exclamans and P. carolina.
+ *  - Yellowjacket (V. squamosa): workers ~1/2 inch, clear wings, black with
+ *    yellow markings on head/thorax/abdomen; "The body is not hairy."
+ *  - TAIS honey-bee separator: yellowjackets are "hairless and won't be seen
+ *    carrying pollen". TAIS also: baldfaced hornet is "a type of yellowjacket
+ *    and not a hornet".
+ *  - NEST SHAPE is the fastest call. Paper wasp: "a single paper-like comb of
+ *    hexagonal cells", "suspended by a single filament", open from below.
+ *    Yellowjacket: enclosed, entrance hole only; "spherical… a number of round
+ *    combs, attached one below another, and surrounded by a many-layered outer
+ *    cover".
+ *  - GROUND NESTING: four separate Texas A&M sources. "Yellowjackets are
+ *    primarily ground nesters, but they also construct aerial nests."
+ *  - QUEEN CYCLE: fertilised queens overwinter in cracks/crevices/under bark,
+ *    "frequently enter homes and offices, especially during warmer periods".
+ *    "In late summer, queens stop laying eggs and the colony soon begins to
+ *    decline." Max colony size Aug–Sep; males and next year's queens Oct–Nov.
+ *  - NEST REUSE: "New nests are constructed every year, often in the same
+ *    general location…" and for yellowjackets "Abandoned nests rapidly
+ *    decompose and are not reused the next year… so-called perennial colonies
+ *    may be maintained" in sheltered sites or mild winters.
+ *  - Paper wasp colony: "20 to 30 adults and rarely more than 200 cells".
+ *  - TIMING: "Treat in the late evening when most wasps have returned."
+ *  - PROHIBITION, verbatim: "Gasoline should never be poured into underground
+ *    nest holes. This dangerous practice creates a fire hazard, contaminates
+ *    the soil."
+ *  - AAAAI 2016: systemic reactions 3% of adults, 0.4–0.8% of children; large
+ *    local ~10% (range 2.4–26.4%); "at least 40 deaths each year" from insect
+ *    sting anaphylaxis; ~50% (25–75%) recurrence after a prior systemic
+ *    reaction; after a cutaneous-only systemic reaction ~10% chance of a
+ *    future systemic reaction, <3% chance of a more severe one.
+ *  - CDC/NCHS 2011–2021: 788 deaths from hornet, wasp and bee stings, average
+ *    72/year, range 59 (2012) to 89 (2017), 84% male.
+ *
+ * ⚠️ FOUR HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. SPECIES. Which Vespula predominates in the Llano Estacado / Permian
+ *     Basin is NOT VERIFIED. AgriLife's Texas species page covers the southern
+ *     yellowjacket; BugGuide's western yellowjacket range includes Texas
+ *     without specifying where. State ground-nesting behaviour (well
+ *     supported, species-independent). DO NOT name a regional species.
+ *  2. COLONY SIZE CONFLICT. "Up to 4,000 workers" (texasinsects) vs "up to 45
+ *     levels of combs and 20,000 adult workers" (AgriLife leaflet). Fivefold
+ *     apart. Almost certainly typical-annual vs exceptional-perennial. Cite
+ *     the RANGE with the perennial caveat. Do not blend or average them.
+ *  3. TWO DIFFERENT DEATH FIGURES. CDC ~72/year counts all hornet/wasp/bee
+ *     sting deaths; AAAAI "at least 40 each year" counts insect sting
+ *     anaphylaxis. Different definitions and ascertainment. Never present as
+ *     the same statistic and never add them.
+ *  4. PESTICIDE ACTIVES. The AgriLife leaflet names carbaryl, esfenvalerate
+ *     and permethrin dusts for ground nests. Registrations and labels change
+ *     and that leaflet is dated. This page does NOT name actives. The label on
+ *     the product in hand governs, and that is a licensed applicator's call on
+ *     the day, not a website's.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Paper wasps and yellowjackets', path: '/pest-library/paper-wasp/' },
+];
+
+const quickAnswer =
+  'Texas A&M’s position is that a yellowjacket nest not close to human activity should be left alone, because these are beneficial predators. Urgency comes from where the nest is, not from the nest existing. Colonies peak in August and September and die out after the first hard freeze, and next year’s nest is built new — the location repeats, the nest does not.';
+
+const faqs = [
+  {
+    q: 'Is it a paper wasp or a yellowjacket?',
+    a: 'Look at the nest before you look at the insect. A paper wasp nest is a single open comb of hexagonal cells hanging from one filament — you can see the cells from underneath. A yellowjacket nest is enclosed, with a many-layered paper cover and one entrance hole, and it is usually in the ground. On the insects themselves: paper wasps are three-quarters of an inch to an inch, slender and narrow-waisted, with smoky black wings folded lengthwise at rest, reddish-orange to dark brown, often with yellow markings. Yellowjacket workers are about half an inch, black with sharp yellow markings on head, thorax and abdomen, and the body is not hairy.',
+  },
+  {
+    q: 'How do I tell a yellowjacket from a honey bee?',
+    a: 'Hair and pollen. The Texas Apiary Inspection Service gives the separator directly: yellowjackets are similar in size to honey bees, about half an inch, but they are hairless and will not be seen carrying pollen. A honey bee looks fuzzy and often has visible loads on its legs. This matters more than an identification quibble, because a honey bee colony is a beekeeper’s call and a removal, not a pest treatment. The same source also notes that the baldfaced hornet is a type of yellowjacket and not a hornet at all.',
+  },
+  {
+    q: 'Do yellowjackets really nest in the ground here?',
+    a: 'Yes, and it is the norm rather than the exception. AgriLife states that yellowjackets are primarily ground nesters but also construct aerial nests, and lists underground nests in gardens, flower beds, pastures and roadside embankments. Three other Texas A&M sources say the same. What we will not do is tell you which species it is — the question of which yellowjacket predominates on the Llano Estacado or in the Permian Basin is not something we could source, and the behaviour is what matters for what you do about it.',
+  },
+  {
+    q: 'When is a nest actually urgent?',
+    a: 'When it is close to where people go. AgriLife’s own words are that if not too close to areas of human activity, yellowjacket nests should be left alone. So: a nest at a doorway, walkway, play area, meter, HVAC unit or mailbox is urgent. A nest anywhere a mower or trimmer will pass is urgent, because that is how ground-nest stinging incidents usually happen. A nest inside a wall void or attic with interior access is urgent. A sting-allergic person on the property makes anything close urgent. A small paper wasp comb high under an eave at the back of the house, away from traffic, is not.',
+  },
+  {
+    q: 'Can I just wait it out?',
+    a: 'Often, yes, and knowing the calendar is what makes that a decision rather than a gamble. Colonies reach maximum size in August or September, then produce males and next year’s queens in October and November, and after the first hard frost most yellowjacket nests die. If it is late in the season and the nest is not in your way, waiting is a real option that AgriLife supports. If it is June and the nest is over the back door, waiting means living with a colony that has not peaked yet.',
+  },
+  {
+    q: 'Should I knock down last year’s nest?',
+    a: 'It will not prevent anything, but it is not pointless either. AgriLife states that abandoned yellowjacket nests rapidly decompose and are not reused the next year, and that new paper wasp nests are constructed every year — often in the same general location as last season’s. So removing an empty winter nest is cosmetic. The useful part is the location: that spot told you where next spring’s queen is likely to build, which makes it the place to watch in April and the place to seal if it is a void or a gap.',
+  },
+  {
+    q: 'How bad is a sting, really?',
+    a: 'Painful, usually local, occasionally serious, rarely fatal — and it is worth having the actual numbers rather than a vague warning. Allergy specialists put potentially life-threatening systemic reactions at about three percent of adults and under one percent of children, with large local reactions around ten percent. Nationally, the CDC recorded 788 deaths from hornet, wasp and bee stings across 2011 to 2021, an average of seventy-two a year, and eighty-four percent of those were men. If you have had a systemic reaction before, the risk of another on a future sting is around half, which is the number that should send someone to an allergist rather than to a website.',
+  },
+  {
+    q: 'Is there anything I should definitely not do?',
+    a: 'Do not pour gasoline into a ground nest. AgriLife’s school IPM guidance says it in as many words: gasoline should never be poured into underground nest holes, because the practice creates a fire hazard and contaminates the soil. It is a persistent rural remedy out here and it is a genuinely dangerous one. The other thing not to do is treat an aerial nest in the middle of the day — AgriLife’s timing guidance is late evening, when most of the wasps have returned to the nest.',
+  },
+];
+---
+
+<BaseLayout
+  title="Paper Wasps & Yellowjackets | West Texas Pest Library"
+  description="Which nests are urgent and which can wait for the freeze, why yellowjackets nest in the ground, and the sting numbers as the allergy literature reports them."
+  path="/pest-library/paper-wasp/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Polistes</em> and <em>Vespula</em> spp.</p>
+      <h1>Paper wasps and yellowjackets</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Almost every page you will read about wasps starts from the assumption that a nest is a problem
+          to be removed. Texas A&amp;M AgriLife Extension does not start there, and neither will we. Its
+          leaflet states that if not too close to areas of human activity, yellowjacket nests should be
+          left alone. Its school pest management plan sets the objective as reducing human encounters with
+          the wasps rather than eliminating them from the area, on the explicit grounds that they are
+          beneficial predators. And its paper wasp material notes that wasps feed on insects including
+          caterpillar pests, which is why many gardeners count them as useful.
+        </p>
+        <p>
+          That is an extension service telling you that the default answer is not treatment. We are a pest
+          control company and we are still going to publish it, because the alternative — implying that
+          every nest on a property is a job — is the reason people do not trust pest control companies.
+        </p>
+        <p>
+          What the page is actually for is the decision underneath: this nest, in this spot, at this time
+          of year, with these people walking past it. That has a real answer, it changes month to month,
+          and it is worth getting right.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Identify the nest, not the insect</h2>
+      <div class="measure">
+        <p>
+          <strong>Paper wasp nest: open, one comb, one stalk.</strong> A single paper-like comb of
+          hexagonal cells, suspended by a single filament, with the cells visible from below. Under eaves,
+          in porch corners, inside the lip of a patio umbrella, in a grill you have not opened since May,
+          in a mailbox, under the rail of a deck. If you can see the cells and the developing larvae in
+          them, it is a paper wasp.
+        </p>
+        <p>
+          <strong>Yellowjacket nest: enclosed, one hole.</strong> AgriLife describes it as spherical,
+          made of a number of round combs attached one below another and surrounded by a many-layered
+          outer cover, with an entrance hole. You cannot see the combs. Most of the time you cannot see the
+          nest at all, because it is underground and the only visible sign is a stream of insects going in
+          and out of a hole in the dirt.
+        </p>
+        <p>
+          <strong>The insects, if you get a look.</strong> Paper wasps run three-quarters of an inch to an
+          inch, slender and distinctly narrow-waisted, with smoky black wings held folded lengthwise when
+          at rest — that folded-wing posture is a good tell at a distance. Colour is reddish-orange through
+          dark brown, often with yellow markings. Texas species include one that is brown with yellow
+          markings and one that is reddish-brown overall.
+        </p>
+        <p>
+          <strong>Yellowjacket workers</strong> are about half an inch with clear wings, black with
+          characteristic yellow markings on head, thorax and abdomen, and — the detail worth memorising —
+          the body is not hairy.
+        </p>
+        <p>
+          <strong>And the honey bee question, because it comes up every spring.</strong> The Texas Apiary
+          Inspection Service gives the cleanest separator: yellowjackets are similar in size to honey bees,
+          about half an inch, but they are hairless and will not be seen carrying pollen. A honey bee is
+          visibly fuzzy and often has pollen loads on its legs. This is not pedantry. A honey bee colony is
+          a live removal for a beekeeper, not something to spray, and mistaking one for the other has a
+          real cost. The same source also points out that the baldfaced hornet is a type of yellowjacket
+          rather than a hornet, which explains why its nest looks like a yellowjacket nest hung in a tree.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Ground nests, which is what makes this dangerous rather than annoying</h2>
+      <div class="measure">
+        <p>
+          <strong>Ground nesting is the norm, and four Texas A&amp;M sources say so.</strong> The AgriLife
+          leaflet states plainly that yellowjackets are primarily ground nesters but also construct aerial
+          nests. Its species page says nests are most often underground, occasionally in wall voids and
+          indoors. The apiary inspection service describes them as primarily terrestrial. The school IPM
+          plan lists the ground first among nest sites. Underground nests turn up in gardens, flower beds,
+          pastures and roadside embankments; aerial ones in trees, under eaves, in wall voids, in open
+          garages and sheds, on porches and in abandoned furniture.
+        </p>
+        <p>
+          <strong>One thing we are not going to tell you.</strong> Which yellowjacket species predominates
+          out here is not something we could establish from a source we trust. AgriLife's Texas species
+          page covers the southern yellowjacket; the western yellowjacket's published range includes Texas
+          without saying which part of it. Since the behaviour — ground nesting, defensive when disturbed,
+          annual colony cycle — is the same either way, naming a species would add confidence without
+          adding information.
+        </p>
+        <p>
+          <strong>Why the ground nest is the one that hurts people.</strong> An aerial nest announces
+          itself. A ground nest does not, and the way most people find one is with a mower, a string
+          trimmer, a shovel or a boot. That is a disturbance directly on top of a colony, which is exactly
+          the circumstance AgriLife describes when it notes that defending workers can inflict multiple
+          stings. The severity of a yellowjacket incident is usually about the number of stings, and the
+          number of stings is usually about not knowing the nest was there.
+        </p>
+        <p>
+          <strong>Which makes late-summer property walking genuinely worth doing.</strong> If you have
+          acreage, a caliche edge, a shelterbelt, an irrigated strip or an embankment, and you are about to
+          mow or clear in August or September, spend ten minutes watching the ground first. Traffic in and
+          out of a hole is obvious once you are looking for it, and it is a much better way to find a
+          colony than the alternative.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The calendar, which decides most of the answer</h2>
+      <div class="measure">
+        <p>
+          <strong>Spring: one queen, and a nest the size of a coin.</strong> Colonies are founded in spring
+          by queens that spent the winter in sheltered hiding places. A yellowjacket queen starts a nest of
+          twenty to forty-five cells on her own, and the first workers emerge in about thirty days. This is
+          the cheapest, safest, least eventful point in the whole year to deal with a nest in a bad
+          location, and almost nobody calls then, because there is nothing to see yet.
+        </p>
+        <p>
+          <strong>Summer: the colony builds.</strong> Workers take over the foraging and the queen switches
+          to laying. This is when the nest becomes noticeable and when the traffic at a ground hole becomes
+          obvious.
+        </p>
+        <p>
+          <strong>August and September: peak.</strong> AgriLife states that maximum colony size is attained
+          by August or September. This is the period when a nest near a doorway is at its most serious, and
+          it is also when the wasps become most interested in human food and rubbish, which is why the
+          school guidance sets an action threshold around wasps observed near food or picnic tables.
+        </p>
+        <p>
+          <strong>October and November: the succession.</strong> Peak is followed by the emergence of males
+          and next year's queens. In late summer the queen stops laying and the colony begins to decline.
+          The new queens mate and leave to overwinter under loose bark, in cracks and crevices, and
+          occasionally in attics and similar sheltered spots.
+        </p>
+        <p>
+          <strong>After the first hard freeze: it is over.</strong> Most yellowjacket nests die, and
+          AgriLife notes that abandoned nests can then be plugged up, with or without treatment. The
+          founding queen dies and the workers die with her.
+        </p>
+        <p>
+          <strong>The exception that keeps this honest.</strong> AgriLife is explicit that occasionally, in
+          sheltered sites or during mild winters, a nest may not be abandoned — and in those cases
+          so-called perennial colonies may be maintained. Mild winters are not unusual here. A nest that
+          was there last year and is active again in March is not necessarily a new nest in the same spot,
+          and it is worth treating as a bigger problem than a first-year colony.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How big does a colony get? The sources disagree, so here is the range</h2>
+      <div class="measure">
+        <p>
+          <strong>Paper wasps stay small.</strong> AgriLife gives the typical mature paper wasp nest as
+          twenty to thirty adults and rarely more than two hundred cells. That is a scale you can look at
+          and reason about, and it is part of why a paper wasp comb away from traffic is genuinely
+          leave-able.
+        </p>
+        <p>
+          <strong>Yellowjackets are where the numbers get strange.</strong> AgriLife's Texas species page
+          gives southern yellowjacket colonies of up to four thousand workers, with some southern colonies
+          reaching six feet across and surviving several years. The AgriLife leaflet describes nests
+          varying from a few inches to six feet or larger, containing up to forty-five levels of comb and
+          twenty thousand adult workers.
+        </p>
+        <p>
+          <strong>Those two figures are five times apart and we are not going to average them.</strong> The
+          most likely explanation is that they describe different things — a typical annual colony against
+          an exceptional perennial one that survived a mild winter and kept building. That reading fits the
+          perennial-colony note exactly. But it is our reading, and rather than pick a number and present
+          it as settled, the honest version is the range with the caveat attached: a normal season's colony
+          runs to the low thousands; a nest that has overwintered can be an order of magnitude worse; both
+          figures come from Texas A&amp;M and they do not agree.
+        </p>
+        <p>
+          <strong>What that means when you are standing in front of one.</strong> Do not estimate a ground
+          colony by the size of the hole. There is no reliable relationship, and the difference between the
+          two published figures is the difference between a nuisance and a genuine hazard. If it is
+          September, it is near a walkway, and the traffic in and out is heavy, treat it as the bad case.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Stings: the actual numbers, and what they should change</h2>
+      <div class="measure">
+        <p>
+          <strong>The normal case.</strong> AgriLife describes paper wasp stings as typically causing
+          localised pain and swelling, and the leaflet describes intense pain with swelling and redness at
+          the site. That is what most stings are, and most of them need ice and time.
+        </p>
+        <p>
+          <strong>The population figures, from the allergy literature.</strong> Potentially
+          life-threatening systemic reactions affect about three percent of adults and between four and
+          eight in a thousand children. Large local reactions — swelling well beyond the sting site, which
+          is alarming but not the same thing as anaphylaxis — run around ten percent, with published
+          estimates ranging widely, from about two percent to a quarter.
+        </p>
+        <p>
+          <strong>The number that should actually change behaviour.</strong> After a previous systemic
+          reaction, the risk of another one on a future sting is approximately fifty percent, with a
+          published range of a quarter to three-quarters. That is not a small number, and it is the reason
+          somebody with a history of a systemic reaction should be talking to an allergist about evaluation
+          and an emergency plan rather than reading a pest control page. There is also a more reassuring
+          figure alongside it: after a systemic reaction that was skin-only, the chance of a future
+          systemic reaction is about ten percent and the chance of a more severe one under three percent.
+        </p>
+        <p>
+          <strong>Deaths, with the two figures kept separate.</strong> The CDC recorded 788 deaths from
+          hornet, wasp and bee stings in the United States across 2011 to 2021 — an average of seventy-two
+          a year, ranging from fifty-nine in 2012 to eighty-nine in 2017 — and eighty-four percent of those
+          deaths were among men. The allergy practice parameter separately states at least forty deaths
+          each year from insect sting anaphylaxis. Those are different counts of different things: all
+          stinging-insect sting deaths versus deaths attributed to sting anaphylaxis, using different
+          methods. They are not contradictory and they must not be added together or used
+          interchangeably.
+        </p>
+        <p>
+          <strong>The honest summary.</strong> Stings are common and painful. Serious systemic allergy is
+          real and affects a small minority. Deaths are rare — dozens a year across a country of over three
+          hundred million — and heavily skewed towards men, which probably says more about who is on the
+          mower and up the ladder than about biology.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Urgent, or can it wait?</h2>
+      <div class="measure">
+        <p>
+          This is the section the page exists for. AgriLife's own line is the starting point: if not too
+          close to areas of human activity, yellowjacket nests should be left alone. Everything below is
+          our application of that to the situations people actually call about.
+        </p>
+        <p>
+          <strong>Deal with it now:</strong> a nest at or beside a doorway, on a walkway, near a play area,
+          at the meter, on or in the HVAC unit, in the mailbox. A ground nest anywhere you are about to mow
+          or trim. A nest in a wall void or attic where there is any interior access — those wasps can end
+          up inside the living space, and a void nest is not a wait-and-see. Anything close to human
+          activity where somebody on the property has a known sting allergy. A large, busy ground nest in
+          late summer beside anywhere people go.
+        </p>
+        <p>
+          <strong>It can probably wait:</strong> a small paper wasp comb high under an eave at the back of
+          a house, away from where people pass. A ground nest in a far corner of acreage that nothing will
+          disturb. Almost any nest after a hard freeze, since the colony is already finished. A nest in
+          October that is out of the way, because the calendar is about to solve it.
+        </p>
+        <p>
+          <strong>The threshold nobody expects from a pest control company.</strong> AgriLife's school plan
+          gives a numeric one — a single staff complaint, or five or more wasps observed near food or
+          picnic tables — as the trigger for action in a school. The reason we like it is that it is a
+          threshold at all. It concedes that a wasp in the area is not automatically an event. Most
+          properties would be better served by a threshold like that than by a standing instruction to
+          treat everything.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Doing something about it, including the thing never to do</h2>
+      <div class="measure">
+        <p>
+          <strong>Never put gasoline in a ground nest.</strong> AgriLife says it in as many words: gasoline
+          should never be poured into underground nest holes, because the practice creates a fire hazard
+          and contaminates the soil. It is a persistent remedy in rural West Texas, it is passed down as
+          folk knowledge, and it is dangerous in two directions at once. We are publishing the prohibition
+          verbatim because that is the fastest way for it to be believed.
+        </p>
+        <p>
+          <strong>Timing is late evening.</strong> AgriLife's guidance is to treat when most of the wasps
+          have returned to the nest. The school plan specifies evening or very early morning, when children
+          are absent and temperatures are cooler. Treating an active nest in the middle of a hot afternoon
+          means the foragers are out, will come back to a disturbed nest, and are defensive when they do.
+        </p>
+        <p>
+          <strong>Aerial paper wasp nests.</strong> AgriLife describes rapid knock-down aerosols applied so
+          the nest is thoroughly soaked. It also gives a non-chemical option that people are often
+          surprised by: nests can be dislodged from eaves with high-pressure water from a good distance,
+          and the wasps will eventually abandon the site. That works best early in the season on a small
+          comb and it is a genuinely reasonable homeowner move.
+        </p>
+        <p>
+          <strong>Ground nests are a dust job, not a spray job.</strong> The published method is an
+          insecticidal dust delivered into the entrance with a crank or power duster or a tube — the point
+          being to get material into the nest rather than around the hole. AgriLife's leaflet names
+          specific actives; we are deliberately not repeating them here, because that document is dated,
+          pesticide registrations and labels change, and the product label in the applicator's hand governs
+          on the day. That is a licensed applicator's decision, not a website's.
+        </p>
+        <p>
+          <strong>Prevention that actually does something.</strong> Screens on windows and exterior doors.
+          Tight-fitting lids on outdoor bins — late-season yellowjackets are scavengers and rubbish is what
+          brings them into the areas people use. Sealing the voids and gaps where last year's nest was,
+          since AgriLife notes new nests are built in the same general locations. And a look under eaves,
+          in grills, in mailboxes and in stored furniture in April, when a nest is a coin-sized comb and
+          one queen.
+        </p>
+        <p>
+          <strong>What we will tell you on the phone.</strong> If it is a small comb in a back corner in
+          May, we will say so. If it is a ground nest in September beside the front walk, that is worth
+          doing properly and it is worth doing in the evening. And if the nest is empty and it is January,
+          we will tell you that knocking it down is tidying rather than pest control — the useful bit is
+          remembering where it was.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="A nest somewhere it should not be?"
+    body="Tell us where it is, what the nest looks like and how close it is to where people walk. Those three things decide whether this is urgent or whether the freeze will handle it, and we will tell you which it is."
+  />
+</BaseLayout>

@@ -54,6 +54,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
+import Verified from '../../components/Verified.astro';
 import Cta from '../../components/Cta.astro';
 
 const crumbs = [
@@ -435,6 +436,8 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <Verified facts={['REG-03', 'REG-01']} />
 
   <Faq items={faqs} heading="Rental property pest control questions" />
   <Cta

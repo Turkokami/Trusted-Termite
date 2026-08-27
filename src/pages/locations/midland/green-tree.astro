@@ -1,0 +1,421 @@
+---
+/**
+ * T5 neighbourhood page — Green Tree, north-west Midland, Midland County.
+ *
+ * THE STORY IS THE IRRIGATION. Green Tree is not a neighbourhood that happens
+ * to have a golf course. It is a 320-acre irrigation project that a
+ * neighbourhood grew around, on ground its own founder described as "a sandy
+ * old farm with one sickly tree and tumbleweeds". Forty-five years of watering
+ * later it is the largest sustained moisture anomaly in north-west Midland,
+ * and that single fact explains nearly everything about pest pressure here.
+ *
+ * VERIFIED facts, from Green Tree Country Club's own published history:
+ *  - Club established 1980 under president John Wood. The concept came from
+ *    Jerry Mobley, then Head Golf Professional at Ranchland Hills Country
+ *    Club, who approached Wood in the summer of 1977. Hoyle McCright of First
+ *    National Bank provided the financing and Midland West Corp. was formed to
+ *    acquire the property.
+ *  - Built on 320 ACRES obtained from Button Estes, north of the originally
+ *    planned site. The GOLF COURSE ITSELF is 176 ACRES.
+ *  - Mobley's description of the property, VERBATIM and quoted as a quote:
+ *    "a sandy old farm with one sickly tree and tumbleweeds."
+ *  - The residential development's design elements, verbatim: "long
+ *    cul-de-sacs, no alleys, no curbs."
+ *  - At opening in 1980: a 36,000 sq ft clubhouse, tennis courts, swimming
+ *    pool and racquetball courts. A further nine holes opened in 1985. 225
+ *    members joined before the facilities were complete.
+ *  - Club address 4900 Green Tree Blvd (City of Midland address locator).
+ *  - Midland County IS on the imported fire ant regulated-areas list under
+ *    7 C.F.R. §301.81-3, adopted at 4 TAC §19.101.
+ *
+ * THE NO-ALLEYS POINT IS A DELIBERATE CONTRAST with Mission Estates in Odessa,
+ * which IS alley-served and whose page is built partly on that. Cross-link the
+ * two — a reader comparing them learns something real about how layout drives
+ * rodent behaviour. Do not let either page drift into generic copy that would
+ * work for both; the contrast IS the value.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - Lot counts, acreage of the residential portion as distinct from the 320,
+ *    number of homes, HOA existence or covenant content for the residential
+ *    neighbourhood. The 320 acres and 176-acre course are club figures.
+ *  - Which streets are the "long cul-de-sacs". No plat-level street data read.
+ *  - Attendance zones. Midland ISD publishes zones only via a JS tool.
+ *  - Floodplain or playa features. Not checked for Green Tree specifically;
+ *    say nothing. (Grassland Estates and Saddle Club were checked; this was
+ *    not.) Do NOT infer from the neighbouring pages.
+ *  - Any claim that homes back onto the course. Some plainly will and some
+ *    will not; we have no plat data, so the page frames it conditionally.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Midland', path: '/locations/midland/' },
+  { name: 'Green Tree', path: '/locations/midland/green-tree/' },
+];
+
+const quickAnswer =
+  'Green Tree was built from 1980 on 320 acres its founder called a sandy old farm with one sickly tree and tumbleweeds. Forty-five years of irrigating 176 acres of golf turf made it the wettest ground in north-west Midland, and that is what drives pest pressure here. The licence holder, Valentin Moriel, carries out the work himself under TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'Why does Green Tree have more pest pressure than the land around it?',
+    a: 'Because it has more water than the land around it, by a very wide margin, and in an arid environment water is the thing everything organises around. Green Tree Country Club was built in 1980 on 320 acres, of which the golf course itself is 176. Jerry Mobley, the professional whose idea it was, described the property before development as "a sandy old farm with one sickly tree and tumbleweeds". Everything green there now is green because it is watered. That is a manufactured oasis in a region that gets around fourteen inches of rain a year, and an oasis concentrates insects, birds and small mammals the way a stock tank concentrates cattle.',
+  },
+  {
+    q: 'Green Tree has no alleys. Does that help with rodents?',
+    a: 'It genuinely does, and it is one of the more useful design facts about the place. The development was laid out with "long cul-de-sacs, no alleys, no curbs". An alley is the ideal rodent corridor — a continuous fenced run the length of a block with refuse containers spaced along it — and Green Tree simply does not have that feature. Compare it with an alley-served neighbourhood like Mission Estates in Odessa, where rodent work is almost never a single-property job because the population lives in the shared corridor. Here, rodent problems are far more likely to be about your own structure and your own landscaping than about a route your neighbours share.',
+  },
+  {
+    q: 'What does "no curbs" mean for my property?',
+    a: 'Hydrologically, quite a lot. Curbs and gutters channel water: rain and irrigation runoff hit a hard edge, run along it and go into a storm drain. Without them water sheets across ground instead — spreading, slowing and soaking in where it lands rather than being carried away. On a golf-course development that is usually a deliberate choice and it looks better. For pest purposes it means runoff tends to soak into the soil near where it was applied, which keeps ground moisture higher and more even. Combined with irrigation, that is the condition subterranean termites want most.',
+  },
+  {
+    q: 'Do I have termites in Green Tree?',
+    a: 'We cannot tell you that without looking. What we can tell you is that the standard local reassurance — that West Texas is too dry for termites — applies here less than almost anywhere else in the region. Subterranean termites live below grade where the moisture is and are indifferent to how dry the air above them is. Green Tree has had irrigation running since 1980. Ground that has been watered for forty-five years, next to a 176-acre irrigated course, on former farmland, is not dry ground in any sense a termite cares about. Slab construction then hides the evidence rather than preventing the problem, so the first sign is usually mud tubes on a foundation wall, damaged trim, or a swarm on a warm spring day.',
+  },
+  {
+    q: 'Are fire ants a problem in Green Tree?',
+    a: 'It is one of the more likely places in the region to find them, for the same reason as everything else on this page. Midland County is on the federal imported fire ant regulated-areas list under 7 C.F.R. section 301.81-3, which Texas adopts at 4 TAC section 19.101 — we read that off the APHIS list ourselves. Imported fire ants exploit irrigated turf better than almost any other habitat available to them, so a large watered course and the watered lawns around it are close to ideal. That is a real difference from Gaines, Yoakum, Terry, Dawson and Andrews counties to the north and west, where the honest answer to a fire ant question is usually that it is a red harvester ant instead.',
+  },
+  {
+    q: 'The trees are mature now. Does that change anything?',
+    a: 'Yes, and it is a nice illustration of how a neighbourhood\'s pest profile ages with it. In 1980 this was open sandy ground with, by its founder\'s account, one sickly tree. Forty-five years of irrigation later there is an established canopy. Mature trees bring leaf litter, which is harbourage at ground level; they bring limbs that touch or overhang roofs, which are bridges for rodents and squirrels; they bring aphids and scale on ornamentals, whose honeydew recruits ants up into the canopy and then along whatever the branches touch. None of that is a reason to have fewer trees. It is a reason that pruning back from the roofline does more pest good than most people expect.',
+  },
+  {
+    q: '¿Atienden Green Tree, en Midland?',
+    a: 'Sí, y Midland forma parte de la ruta habitual. Valentin atiende en español y hace el trabajo personalmente. Lo importante de Green Tree: el club se construyó en 1980 sobre 320 acres que su fundador describió como una granja arenosa con un árbol enfermo y matorrales rodadores. Cuarenta y cinco años de riego después, es el terreno más húmedo del noroeste de Midland — y la humedad es lo que atrae termitas subterráneas y hormigas rojas importadas. El condado de Midland sí está en la cuarentena federal. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Green Tree, Midland TX"
+  description="Termite, fire ant, scorpion and rodent work in Green Tree, north-west Midland — 45 years of irrigation makes this the wettest ground around. TPCL 0918482."
+  path="/locations/midland/green-tree/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Green Tree, Midland',
+    description: 'Termite, fire ant, scorpion, spider and rodent control for homes in the Green Tree area of north-west Midland, Midland County.',
+    areaServed: ['Midland', 'Midland County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Midland · Midland County · built from 1980 on 320 acres</p>
+      <h1>Pest Control in Green Tree, Midland</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          The single most useful thing to know about pest pressure in Green Tree comes from the man whose
+          idea the place was. Jerry Mobley, then the head golf professional at Ranchland Hills, went to
+          John Wood in the summer of 1977 with a plan for a new club. The ground they eventually built it
+          on — 320 acres obtained from Button Estes — Mobley described as
+          <strong>"a sandy old farm with one sickly tree and tumbleweeds."</strong>
+        </p>
+        <p>
+          Look at Green Tree now. Every bit of that difference is water.
+        </p>
+        <p>
+          The club opened in 1980 with a 36,000 square foot clubhouse, tennis courts, a swimming pool and
+          racquetball courts, and 225 members had joined before the facilities were even finished. Another
+          nine holes followed in 1985. The course alone covers <strong>176 acres</strong>, and it has been
+          irrigated continuously for forty-five years, with a neighbourhood of watered lawns around it.
+        </p>
+        <p>
+          In a region that averages around fourteen inches of rain a year, that is not a neighbourhood with
+          nice landscaping. It is the largest sustained moisture anomaly for miles, and in an arid
+          environment moisture is the thing every living thing organises itself around. Nearly everything
+          on this page follows from that one fact.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>An oasis behaves like an oasis</h2>
+      <div class="measure">
+        <p>
+          <strong>Pests in dry country are not evenly distributed.</strong> This is the idea that makes
+          West Texas pest control make sense, and it is why a page about Green Tree should not read like a
+          page about anywhere else. In a wet climate, moisture is everywhere, pest pressure is diffuse, and
+          where you treat matters less. Here, water is scarce and concentrated, so populations concentrate
+          around it and will travel a long way to reach it.
+        </p>
+        <p>
+          A 176-acre irrigated course, plus decades of watered residential lawns, plus mature landscaping
+          that only exists because it is irrigated, adds up to a reliable water supply in a landscape that
+          has almost none. Insects find it. The birds and small mammals that eat those insects find it.
+          The predators that eat them follow. That is not a problem to be solved — it is what makes the
+          neighbourhood pleasant to live in — but it does mean pressure here is higher than on the caliche
+          half a mile away, and pretending otherwise would be useless to you.
+        </p>
+        <p>
+          <strong>Subterranean termites are where this matters most.</strong> People across this region are
+          routinely told the climate is too dry for termites, and in Green Tree that advice is close to
+          exactly backwards. Subterranean termites live below grade, in the soil, where the moisture is.
+          They are entirely indifferent to how dry the air above them is. What they need is consistently
+          damp soil in contact with a food source, and forty-five years of irrigation on former farmland
+          delivers that reliably, in a way that fourteen inches of annual rainfall never would.
+        </p>
+        <p>
+          Slab-on-grade construction, which is what nearly everything here sits on, then conceals the
+          evidence rather than preventing the problem. Termites enter through expansion joints, plumbing
+          penetrations and cracks that are invisible under the finished floor, and the first sign a
+          homeowner actually sees is usually mud tubes on a foundation wall, a bit of trim that gives when
+          pressed, or a swarm on a warm spring afternoon.
+        </p>
+        <p>
+          <strong>What we look for on an irrigated property.</strong> Where the sprinklers actually land —
+          heads that throw against the foundation rather than away from it are extraordinarily common and
+          easy to correct. Zones that run long because one corner browns first, soaking everything else.
+          Drip line in beds against the house. Mulch piled against siding. An air-conditioning condensate
+          line discharging into the same patch of soil every day of the summer. Each is a small permanent
+          wet spot, and in this climate a small permanent wet spot does a lot of recruiting.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Long cul-de-sacs, no alleys, no curbs</h2>
+      <div class="measure">
+        <p>
+          Green Tree's residential layout is described in the club's own history with three design
+          elements: <strong>"long cul-de-sacs, no alleys, no curbs."</strong> Those are aesthetic and
+          planning choices, made for reasons that had nothing to do with pest control. They have real
+          consequences anyway, and two of them are good news.
+        </p>
+        <p>
+          <strong>No alleys is genuinely helpful.</strong> An alley is the best rodent corridor a
+          neighbourhood can offer: a continuous run the length of a block, fenced on both sides, with
+          refuse containers spaced along it at intervals and very little foot traffic. Rats and mice travel
+          edges rather than open ground, and an alley is a purpose-built edge. In an alley-served
+          neighbourhood — <a href="/locations/odessa/mission-estates/">Mission Estates in Odessa</a> is the
+          example on this site — rodent work is rarely a single-property job, because the population lives
+          in a corridor everybody shares.
+        </p>
+        <p>
+          Green Tree does not have that. It does not mean there are no rodents; it means that when there
+          are, the problem is far more likely to be about your own structure, your own landscaping and your
+          own outbuildings than about a shared route running behind the fence. That makes rodent work here
+          more tractable and more likely to stay solved after one thorough visit.
+        </p>
+        <p>
+          <strong>No curbs cuts the other way.</strong> Curbs and gutters exist to channel water: rain and
+          irrigation runoff meet a hard edge, run along it and disappear into a storm drain. Without them,
+          water sheets — spreading out across ground, slowing, and soaking in near where it fell rather
+          than being carried off the property. On a golf-course development that is often deliberate and it
+          certainly looks better than concrete channels.
+        </p>
+        <p>
+          For our purposes it means runoff tends to infiltrate locally, which keeps soil moisture higher
+          and more evenly distributed than it would be in a kerbed street. Combined with irrigation, that
+          is the termite condition described above, and it is also why over-watering here produces a
+          soggy patch rather than a stream down the road. The water stays.
+        </p>
+        <p>
+          <strong>Long cul-de-sacs matter in a smaller way.</strong> They mean deep lots and less through
+          traffic, which is pleasant. They also mean the bulb at the end is frequently the low point of its
+          own little drainage area, so in the absence of curbs it is worth knowing whether water gathers
+          there after a heavy rain or a long irrigation run. If it does, that is a mosquito consideration
+          for the properties around it rather than a general neighbourhood one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>If your lot backs onto the course</h2>
+      <div class="measure">
+        <p>
+          Some Green Tree properties adjoin the golf course and some do not, and we have no plat-level data
+          telling us which is which — so rather than guess, here is the conditional version, which is the
+          part that would actually change what we do.
+        </p>
+        <p>
+          <strong>A boundary onto 176 acres of irrigated turf is not like your other three boundaries.</strong>
+          It is a permanent, professionally maintained water and habitat source, larger than the
+          neighbourhood it sits in. Pressure arrives from that side rather than arriving evenly, which
+          means perimeter work concentrated on that boundary is worth considerably more than the same
+          effort spread politely around the whole house.
+        </p>
+        <p>
+          <strong>What specifically comes from that direction.</strong> Fire ants, because maintained turf
+          is the habitat they exploit best and Midland County is quarantined. Crickets and other prey
+          insects in large numbers, particularly at night and particularly where course lighting or your own
+          exterior lighting draws them to a wall. Scorpions and spiders following that prey base to the
+          fence line — the food is the reason they are there, not the fence. And, after heavy rain or
+          irrigation, the general run of occasional invaders that a wet area produces and a dry one does not.
+        </p>
+        <p>
+          <strong>Exterior lighting is the lever most people have not thought about.</strong> On a boundary
+          with a large dark green space, a bright white porch or patio light is an insect magnet, and every
+          insect it attracts is a meal that brings something else to the wall to eat it. Warmer-toned
+          lighting, fixtures aimed down rather than out, and not lighting the fence line itself will reduce
+          what accumulates on that side of the house more reliably than most treatments will.
+        </p>
+        <p>
+          <strong>And a note on what we will not do.</strong> The course is not our property and its
+          management is not our business. Anything we do stops at your boundary, which is the honest limit
+          of what perimeter work can achieve next to a habitat that size — suppression at the edge, not
+          elimination of what is on the other side of it. Anyone promising otherwise is selling something.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Forty-five years of trees, where there was one</h2>
+      <div class="measure">
+        <p>
+          It is worth sitting with the founder's description a moment longer, because it explains something
+          people find counter-intuitive about established neighbourhoods. In 1977 this was
+          <em>"a sandy old farm with one sickly tree and tumbleweeds"</em>. The canopy that shades Green
+          Tree today is entirely the product of planting and irrigation since 1980.
+        </p>
+        <p>
+          <strong>A mature canopy changes a property's pest profile in three specific ways.</strong>
+        </p>
+        <p>
+          <strong>Leaf litter is ground-level harbourage.</strong> Accumulated litter in beds, against
+          foundations and in the corners nobody rakes holds moisture and shelters crickets, roaches of the
+          outdoor kind, spiders and scorpions. Clearing a band of it away from the foundation does more
+          than most people expect, and it costs nothing.
+        </p>
+        <p>
+          <strong>Limbs that touch or overhang a roof are bridges.</strong> Rodents and squirrels use them
+          to reach a roofline they could not otherwise climb to, and once on the roof they are working
+          along a soffit and a fascia looking for a gap. Pruning back from the roofline is the single most
+          effective structural pest measure available on a treed property, and it is a gardening job
+          rather than a pest control one.
+        </p>
+        <p>
+          <strong>Ornamentals recruit ants upward.</strong> Aphids and scale insects on trees and shrubs
+          excrete honeydew, ants farm and defend them for it, and the ant trail then runs up the trunk and
+          along whatever the branches touch. A persistent ant problem on an upper floor very often traces
+          back to a shrub against a wall rather than to anything happening in the kitchen.
+        </p>
+        <p>
+          None of that argues for fewer trees. It argues for a specific, cheap and slightly boring set of
+          habits: keep litter off the foundation, keep branches off the roof, keep shrubs from touching
+          walls, and treat the landscape as part of the structure rather than as scenery around it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What Green Tree property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> AgriLife entomology, the federal quarantine list, and the
+          documented characteristics of this ground — the 176 acres of irrigated turf, forty-five years of
+          watering, the mature canopy, and a layout with no alleys and no curbs. Nothing below is offered as a job we have personally done on a particular street here.
+        </p>
+        <p>
+          <strong>Subterranean termites.</strong> The headline risk here, for the reasons above, and the
+          one most often dismissed. Worth a proper inspection on any Green Tree property that has never had
+          one, and worth knowing the difference between a slab that was pre-treated in 1982 and one treated
+          since.
+        </p>
+        <p>
+          <strong>Fire ants.</strong> The county appears on the federal imported fire ant regulated-areas register at 7 C.F.R. §301.81-3, which Texas adopts at 4 TAC §19.101, and watered turf is the habitat these ants exploit better than any other available to them. Identification before treatment matters — a red harvester ant mound and
+          an imported fire ant nest need different products and different methods — and if you are moving
+          soil, sod, nursery stock, hay stored on the ground or used soil-moving equipment out of Midland
+          County into a county that is not quarantined, the movement rules apply to you.
+        </p>
+        <p>
+          <strong>Scorpions and spiders on the prey base.</strong> Striped bark scorpions are nocturnal,
+          climb well, and turn up in attics, shoes and along the top plate of a wall. In an irrigated
+          neighbourhood the driver is usually the abundance of prey insects rather than dryness alone —
+          which is why lighting and harbourage do more here than spraying does. Black widows favour meter
+          boxes, irrigation valve boxes and the space under a shed; brown recluse shelter in stored
+          cardboard, firewood and low-traffic crevices.
+        </p>
+        <p>
+          <strong>Ants of the ordinary, maddening kind.</strong> Reliable moisture supports far larger ant
+          populations than dry caliche does. The ones that come indoors are following a trail rather than
+          arriving at random, so finding where the colony actually is beats treating the trail.
+        </p>
+        <p>
+          <strong>Rodents, more tractably than elsewhere.</strong> No alleys means no shared corridor, so
+          rodent work here tends to be about your own structure — the garage door seal, the soffit return,
+          an unsealed utility penetration, a limb over the roof. October and November are when the first
+          cold nights push them to look for somewhere warmer.
+        </p>
+        <p>
+          <strong>Mosquitoes, following irrigation as much as rain.</strong> With no curbs, water soaks in
+          near where it lands rather than running off, so the local contributions matter: a low spot that
+          stays wet after a long zone, a saucer under a pot, a tarp, a clogged gutter, a pool cover.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we do in Green Tree</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Midland is a regular part of the route</strong>, so scheduling is straightforward.
+          Recurring service runs bi-monthly or quarterly, priced on the size of the property, the pressure
+          and the frequency, with a higher initial visit. <strong>No contracts</strong> — no term, no
+          cancellation fee. Termite, bed bug, mosquito, lawn, brush and junk work is individually quoted
+          after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          <strong>One thing we would say to almost any Green Tree homeowner.</strong> If the property has
+          never had a proper termite inspection, that is the thing worth doing first — ahead of a general
+          pest programme, ahead of anything seasonal. Not because we think you have termites, but because
+          this is ground where the usual local reassurance does not apply, the construction type hides the
+          evidence, and the cost of finding out late is in a different category from the cost of anything
+          else on this page.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are one man, based in Seminole, about eighty miles
+          north-west. Midland is on the regular route, so getting here is not the issue — but we are not the
+          closest company to Green Tree and we will not pretend to be. What we offer instead is that the
+          licence holder does the work himself, TPCL 0918482, verifiable against the Texas Department of
+          Agriculture's records in about two minutes; guarantee terms written out with a duration, a
+          covered scope and explicit exclusions; and no contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Green Tree pest control questions" />
+  <Cta
+    market="Green Tree"
+    line="Tell him whether your lot backs onto the course and roughly when the house was built. On irrigated ground those two answers decide where an inspection spends its time — and whether termites are the first conversation rather than the last."
+  />
+</BaseLayout>

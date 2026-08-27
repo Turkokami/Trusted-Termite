@@ -1,0 +1,420 @@
+---
+/**
+ * Pest library — Norway rat and roof rat, Rattus norvegicus / R. rattus.
+ *
+ * ⚠️ THE DISTRIBUTION CLAIM THIS PAGE REFUSES TO MAKE.
+ * Research found NO county-level record, survey or extension publication
+ * placing established ROOF RAT populations in Lubbock, Amarillo, Midland,
+ * Odessa or surrounding counties. Sources point east and coastal:
+ *  - ICWDM: "Most of the states in the US interior are free of roof rats, but
+ *    isolated infestations, probably stemming from infested cargo shipments,
+ *    can occur."
+ *  - AgriLife (Merchant/citybugs): roof rats are "quite common in our urban
+ *    communities in east Texas and throughout the south."
+ *  - Texas Tech Mammals of Texas is broader — "Common over most of Texas,
+ *    especially in towns" — but offers NO regional breakdown. ⚠ CONFLICT.
+ * EDITORIAL LINE: Norway rat is the DEFAULT commensal rat of this region. The
+ * roof rat is described as the East Texas / Gulf Coast / southern species that
+ * MAY turn up locally but is not documented as widely established here. Then
+ * let the evidence on the individual job decide. Never assert roof rats are
+ * established on the Llano Estacado.
+ *
+ * ⚠️ DO NOT PUBLISH THE DROPPINGS SHAPE RULE. The pest-industry claim that
+ * Norway droppings have blunt ends and roof rat droppings pointed ends does
+ * NOT appear in AgriLife, ICWDM or UC IPM. Every source found stating it was a
+ * commercial pest-control blog. NOT VERIFIED. What IS defensible is that
+ * dropping LOCATION discriminates species better than dropping shape.
+ *
+ * VERIFIED ID SPLIT (UC IPM, Texas Tech Mammals of Texas, AgriLife):
+ *   Norway: tail SHORTER than head+body; ears "don't reach eyes when folded
+ *     over"; blunt muzzle; large, robust; 7–18 oz; belly mostly grey.
+ *   Roof: tail "longer than the head and body combined"; ears "long enough to
+ *     reach eyes when folded over"; pointed muzzle; sleek, agile; 5–10 oz;
+ *     belly grey to white.
+ *   ⚠ Texas Tech qualifies the roof rat tail as "usually longer... but not
+ *     always so". Present tail as the best single character, not infallible.
+ *
+ * NESTING SPLIT — the reason placement differs:
+ *   Norway: burrows along building foundations, beneath rubbish or woodpiles;
+ *     basement and ground floor; feed stores, chicken houses, dumps. BUT still
+ *     climbs — Texas Tech notes they "traverse telephone wires between
+ *     buildings". Ground level is a preference, not a limit.
+ *   Roof: nests above ground in shrubs, trees, dense vegetation; attics, wall
+ *     voids, ceiling voids, cabinets; enters "mostly near the roof line".
+ *     Texas Tech notes cotton gins and associated grain warehouses — the one
+ *     genuinely Llano-relevant habitat note found in a priority source.
+ *
+ * BIOLOGY: Norway 4–6 litters/yr of 6–12 (avg 7–8), 20+ weaned annually,
+ *   gestation 21–23 days, maturity ~3 months, no delimited breeding season.
+ *   Roof 3–5 litters of 4–8, gestation ~21 days, maturity 2–3 months.
+ *   ⚠ LIFESPAN CONFLICT: AgriLife field figures are Norway 5–12 months, roof
+ *   5–18 months; Texas Tech says Norway 2–3 years. Reconcilable as field vs
+ *   maximum. Use the AgriLife field figures and say they are field figures.
+ *   Home range: Norway typically 100–150 ft, seldom beyond 300 ft. Roof
+ *   routinely 300 ft or more.
+ *
+ * CONTROL: seal everything over 1/4 inch (the stricter standard that also
+ *   excludes mice). Rats are "thigmophilic" (touch-loving) and "phototropic
+ *   negative" (light-avoiding) — hence traps against walls, trigger end
+ *   nearly touching, at right angles. Roof rat traps go BOTH at ground level
+ *   AND aloft. AgriLife: "triple the number of traps that you think you need,
+ *   and keep them freshly baited."
+ *   UC IPM: frightening devices including ultrasonic are "ineffective", and
+ *   "no repellents have been found to solve a rat problem for more than a very
+ *   short time."
+ *
+ * ⚠️ TWO DISEASE CORRECTIONS THE PAGE MUST CARRY:
+ *  1. MURINE TYPHUS IS NOT A WEST TEXAS DISEASE. Texas DSHS: over 8,600 cases
+ *     2008–2025, ~72% hospitalised, 17 fatalities — but "Most of the flea-borne
+ *     typhus cases in Texas occur in South Texas from Nueces County southward
+ *     to the Rio Grande Valley", with newer foci in DFW, Houston, Bexar and
+ *     Travis. West Texas is NOT identified as a focus. Say so.
+ *  2. RATS ARE NOT THE HPS HANTAVIRUS CARRIER — that is the deer mouse, as the
+ *     house mouse page already states. The rat-associated hantavirus is SEOUL
+ *     virus, carried by Norway rats, where "transmission to humans is rare".
+ *     The 2017 US pet-rat outbreak: 17 with evidence of recent infection, 8
+ *     febrile illness, 3 hospitalised, NO deaths.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Roof rat and Norway rat', path: '/pest-library/roof-rat-and-norway-rat/' },
+];
+
+const quickAnswer =
+  'Two rats with opposite habits: the Norway rat burrows at ground level and the roof rat nests overhead. Which one you have decides where traps go and where you seal — and out here the Norway rat is the documented species, with the roof rat associated with East Texas and the Gulf Coast rather than the Llano Estacado.';
+
+const faqs = [
+  {
+    q: 'How do I tell the two apart?',
+    a: 'The tail is the best single character. A Norway rat\'s tail is shorter than its head and body combined; a roof rat\'s is longer — though one Texas source qualifies that as usually rather than always. Beyond that: fold an ear forward, and a roof rat\'s reaches the eye while a Norway rat\'s does not. The Norway rat has a blunt muzzle and a heavy build at seven to eighteen ounces; the roof rat has a pointed muzzle and a sleek build at five to ten. But the most reliable clue is usually not the animal at all — it is where you found the evidence.',
+  },
+  {
+    q: 'Are roof rats even in West Texas?',
+    a: 'We are not going to tell you they are, because we could not find a source that says so. The national wildlife damage handbook states that most of the United States interior is free of roof rats, with isolated infestations usually traced to infested cargo. Texas A&M\'s own extension writing describes them as common in East Texas and throughout the south. One Texas mammal reference is broader and says they are common over most of Texas, but offers no regional breakdown, and we found no county-level record for Lubbock, Midland, Odessa or the surrounding area. So: the Norway rat is the documented commensal rat here, and if the evidence on your property says roof rat, we will work the job that way rather than argue with it.',
+  },
+  {
+    q: 'Why does it matter which one I have?',
+    a: 'Because they live at opposite ends of the building and the work goes in different places. Norway rats burrow — along foundations, under woodpiles and rubbish, in basements and at ground level — so traps go against walls at grade and sealing concentrates on foundation gaps, slab edges, utility penetrations and garage door corners. Roof rats nest in attics, wall and ceiling voids, cabinets, and in trees and dense vegetation, entering mostly near the roofline — so traps go aloft as well as at ground level, and sealing concentrates on the roofline, soffits, vents and flashing. Doing Norway rat work on a roof rat problem is a lot of effort in the wrong half of the building.',
+  },
+  {
+    q: 'Is the pointed-versus-blunt droppings rule real?',
+    a: 'We could not verify it, so we are not going to repeat it. The idea that Norway rat droppings have rounded ends and roof rat droppings pointed ones is everywhere in pest control marketing, but it does not appear in the AgriLife material, the national wildlife damage handbook or the university IPM guidance we checked — every source we found stating it was a commercial blog. What is documented is the size of Norway rat droppings, up to about three-quarters of an inch long. And what actually discriminates the species in practice is where the droppings are: along a foundation at floor level, or up on a rafter.',
+  },
+  {
+    q: 'Do rats carry hantavirus?',
+    a: 'Not the one people mean. The hantavirus that causes pulmonary syndrome in the United States is spread by the deer mouse, not by rats. There is a rat-associated hantavirus — Seoul virus, carried by Norway rats — but the CDC notes that transmission to people is rare. In a 2017 outbreak traced to pet rats, seventeen people showed evidence of recent infection, eight reported a febrile illness, three were hospitalised, and there were no deaths. Rats carry a genuine list of diseases, which we set out below. This particular one is not the reason to worry about them.',
+  },
+  {
+    q: 'What about typhus?',
+    a: 'Flea-borne typhus is a real rat-associated disease in Texas and it is worth knowing where it actually occurs. Texas DSHS records over 8,600 cases between 2008 and 2025, with roughly 72 percent of cases hospitalised and seventeen deaths across that whole period. But the distribution is specific: DSHS states most Texas cases occur in South Texas from Nueces County southward to the Rio Grande Valley, with newer endemic areas around Dallas-Fort Worth, Houston, Bexar and Travis counties. West Texas is not identified as a focus. So it is a genuine Texas disease and not, on the published evidence, a Permian Basin one.',
+  },
+  {
+    q: 'Do ultrasonic repellers work on rats?',
+    a: 'No. University IPM guidance states directly that frightening devices, including high frequency and ultrasonic sounds, are ineffective for controlling rats, and that no repellent has been found to solve a rat problem for more than a very short time. A rat that has established a burrow beside a reliable food source is not going to be argued out of it by a device in a socket.',
+  },
+  {
+    q: 'How many traps do I actually need?',
+    a: 'More than you think, and the extension guidance says so in as many words: triple the number of traps you think you need, and keep them freshly baited. Rats are neophobic — wary of new objects — so a thin trap line often produces nothing for several days and then, if the density is too low, never catches up with the breeding rate. A Norway rat female can wean twenty or more young in a year. Under-trapping is the most common reason a do-it-yourself rat job stalls.',
+  },
+];
+---
+
+<BaseLayout
+  title="Norway Rat and Roof Rat | West Texas Pest Library"
+  description="Two rats with opposite habits, why that decides where traps and sealing go, and an honest account of which species is actually documented in this region."
+  path="/pest-library/roof-rat-and-norway-rat/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Rattus norvegicus</em> and <em>Rattus rattus</em></p>
+      <h1>Norway rat and roof rat</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>These are two animals with opposite habits sharing one word</strong>, and getting them
+          confused puts the whole job in the wrong half of the building.
+        </p>
+        <p>
+          The <strong>Norway rat</strong> is a burrower. It works at ground level and below — foundations,
+          slab edges, woodpiles, rubbish, the base of outbuildings.
+        </p>
+        <p>
+          The <strong>roof rat</strong> works overhead. Attics, ceiling and wall voids, rafters, and the
+          trees and dense vegetation around a building, entering near the roofline.
+        </p>
+        <p>
+          <strong>And there is a distribution question we are going to answer honestly rather than
+          conveniently.</strong> We could not find a source placing established roof rat populations in
+          this part of Texas. The Norway rat is the documented commensal rat here. That does not mean a
+          roof rat never turns up — it means we are not going to tell you they are established when we
+          cannot cite it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Which species is actually here</h2>
+      <div class="measure">
+        <p>
+          <strong>The Norway rat is well documented across the state and the country.</strong> The national
+          wildlife damage handbook records it throughout the contiguous forty-eight states, generally at
+          lower elevations but occurring wherever people live. Texas sources describe it as widespread in
+          Texas. There is no ambiguity about whether it is here.
+        </p>
+        <p>
+          <strong>The roof rat is a different picture, and the sources disagree.</strong> The national
+          handbook is explicit that roof rats range along the lower East Coast, through the Gulf States up
+          into Arkansas and along the Pacific Coast, and states that most of the interior of the United
+          States is free of roof rats, with isolated infestations usually stemming from infested cargo
+          shipments. Texas A&amp;M's own extension writing describes them as quite common in urban
+          communities in East Texas and throughout the south.
+        </p>
+        <p>
+          <strong>One Texas reference is broader</strong> — a mammal survey describing the species as
+          common over most of Texas, especially in towns — but it gives no regional or county breakdown,
+          and we found no county-level record, survey or extension publication placing established
+          populations in Lubbock, Amarillo, Midland, Odessa or the counties around them.
+        </p>
+        <p>
+          <strong>So here is the editorial position, stated plainly.</strong> We treat the Norway rat as
+          the default commensal rat of this region. We describe the roof rat as the species associated with
+          East Texas, the Gulf Coast and the South, which may turn up locally in a structure but which we
+          cannot show is widely established here.
+        </p>
+        <p>
+          <strong>And then we let the property decide.</strong> Elevated droppings, runways along rafters,
+          gnawing high in the structure and entry near the roofline point to a roof rat regardless of what
+          a distribution map says. Burrows along foundations, activity at slab level and low-wall gnawing
+          point to a Norway rat. The evidence on the job outranks the general case, in both directions.
+        </p>
+        <p>
+          <strong>One local habitat note worth having.</strong> The Texas mammal literature associates roof
+          rats with cotton gins and the grain warehouses attached to them — which is the one genuinely
+          Llano Estacado-relevant mention we found in a priority source, and worth knowing if your problem
+          is in that kind of building rather than a house.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Telling them apart</h2>
+      <div class="measure">
+        <p>
+          <strong>The tail is the best single character.</strong> Lay the tail alongside the body: a Norway
+          rat's tail is shorter than its head and body combined, and a roof rat's is longer. One Texas
+          source qualifies that as usually rather than always, so treat it as strong evidence rather than
+          proof.
+        </p>
+        <p>
+          <strong>Then the ears.</strong> Fold an ear forward toward the eye. On a roof rat it is long
+          enough to reach; on a Norway rat it is not.
+        </p>
+        <p>
+          <strong>Then build and muzzle.</strong> The Norway rat is large and robust with a blunt muzzle,
+          seven to eighteen ounces, with a mostly grey belly. The roof rat is sleek and agile with a
+          pointed muzzle, five to ten ounces, with a belly ranging from grey to white.
+        </p>
+        <p>
+          <strong>And a rule we are declining to give you.</strong> You will read everywhere that Norway
+          rat droppings have blunt ends and roof rat droppings have pointed ends. We could not verify it in
+          any authoritative source — not in the AgriLife material, not in the national wildlife damage
+          handbook, not in the university IPM guidance. Every source we found asserting it was a commercial
+          pest control blog. What is documented is that Norway rat droppings run up to about three-quarters
+          of an inch long and a quarter inch across, and that fresh ones are soft.
+        </p>
+        <p>
+          <strong>What actually discriminates the species is location, not shape.</strong> Droppings along
+          a foundation, behind ground-level clutter, at the base of a wall — Norway rat. Droppings on a
+          rafter, on top of a beam, in an attic, on a shelf — roof rat. That distinction is free, reliable
+          and requires no expertise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Two nesting habits, two completely different jobs</h2>
+      <div class="measure">
+        <p>
+          <strong>Norway rats work at grade.</strong> They are burrowers, with burrows found along building
+          foundations, beneath rubbish and woodpiles. They dwell in basements and on ground floors, and the
+          Texas literature places them in feed stores, chicken houses and dumps, with burrows under
+          sidewalks and outbuildings. Nests are below-ground or at ground level, lined with shredded paper,
+          cloth or other fibrous material.
+        </p>
+        <p>
+          <strong>They do still climb, and this catches people out.</strong> The same source notes Norway
+          rats traversing telephone wires between buildings. Ground level is a strong preference, not a
+          limit — so an attic problem is not automatically a roof rat.
+        </p>
+        <p>
+          <strong>Roof rats work aloft.</strong> They live and nest above ground in shrubs, trees and dense
+          vegetation, and inside structures they favour enclosed elevated spaces — attics, wall voids,
+          ceiling voids and cabinets. They enter mostly near the roofline, and on farms the Texas
+          literature places them in attics, rafters and crossbeams.
+        </p>
+        <p>
+          <strong>Which means the trap placement rules are different.</strong> For Norway rats, traps go
+          against walls in dark corners where droppings are, positioned at right angles to the wall with
+          the trigger end nearly touching it. The reason is behavioural: AgriLife's rodent training
+          describes rats as <em>thigmophilic</em> — touch-loving, travelling in contact with a surface —
+          and <em>negatively phototropic</em>, avoiding light. A trap in the open middle of a floor is a
+          trap in a place a rat has no intention of going.
+        </p>
+        <p>
+          <strong>For roof rats, traps go at ground level and aloft.</strong> Ledges, shelves, branches,
+          fences, pipes and overhead beams. AgriLife's attic guidance is to place snap traps wherever you
+          find droppings, usually along rafters or next to stored boxes.
+        </p>
+        <p>
+          <strong>And the sealing follows the same split.</strong> Norway rats: seal at grade — foundation
+          gaps, slab edges, utility penetrations, door sweeps, garage door corners. Roof rats: seal at
+          height — roofline, soffit and fascia junctions, vent and flashing gaps — and treat overhanging
+          tree limbs as an access route to be cut back rather than as landscaping.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The numbers behind the frustration</h2>
+      <div class="measure">
+        <p>
+          <strong>Norway rats:</strong> four to six litters a year, six to twelve young per litter with
+          averages given around seven or eight, gestation of twenty-one to twenty-three days, and sexual
+          maturity at about three months. A female can successfully wean twenty or more offspring in a
+          year. There is no delimited breeding season, though reproduction slows in autumn and winter and
+          peaks in spring and autumn.
+        </p>
+        <p>
+          <strong>Roof rats:</strong> three to five litters, four to eight young, gestation around
+          twenty-one days, maturity at two to three months.
+        </p>
+        <p>
+          <strong>Lifespan is worth stating carefully, because sources differ.</strong> AgriLife's rodent
+          course gives field figures of five to twelve months for a Norway rat and five to eighteen months
+          for a roof rat. A Texas mammal reference reports two to three years for the Norway rat. Those
+          reconcile as field lifespan against maximum potential, and for a homeowner the field figures are
+          the honest ones — most wild rats do not live anything like their maximum.
+        </p>
+        <p>
+          <strong>Home range explains where to look.</strong> A Norway rat typically travels an area
+          roughly a hundred to a hundred and fifty feet across and seldom goes further than about three
+          hundred feet from its burrow. Roof rats routinely travel three hundred feet or more for food.
+          Either way, the source is closer than people assume.
+        </p>
+        <p>
+          <strong>Diet differs and it points at the harbourage.</strong> Norway rats prefer cereal grains,
+          meat, fish, nuts and some fruit. Roof rats prefer fruit, tree nuts, berries, slugs, snails, young
+          birds and eggs — which is why a roof rat problem so often traces back to a fruit tree, a nut
+          tree or a bird feeder rather than to anything in the kitchen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Disease, with two corrections</h2>
+      <div class="measure">
+        <p>
+          <strong>The documented list.</strong> The wildlife damage handbook names murine typhus,
+          leptospirosis, trichinosis, salmonellosis and rat-bite fever for the Norway rat, with plague
+          added for the roof rat. That is a real list and rats are worth keeping out of a building on those
+          grounds alone.
+        </p>
+        <p>
+          <strong>Correction one: typhus is not a West Texas disease on the published evidence.</strong>
+          Texas DSHS records more than 8,600 flea-borne typhus cases between 2008 and 2025, ranging from a
+          low of 135 in 2010 to a high of 1,110 in 2025, with roughly 72 percent of cases hospitalised and
+          seventeen deaths across the whole period. Those are serious numbers. But DSHS is specific about
+          where they occur: most Texas cases are in South Texas from Nueces County southward to the Rio
+          Grande Valley, with newer endemic areas around Dallas-Fort Worth, Houston, Bexar and Travis
+          counties. West Texas is not identified as a focus.
+        </p>
+        <p>
+          <strong>Correction two: rats are not the hantavirus animal people mean.</strong> The hantavirus
+          that causes pulmonary syndrome in the United States is spread by the deer mouse — we cover that
+          on the <a href="/pest-library/house-mouse/">house mouse page</a>, and it matters here because
+          this region carries a disproportionate share of Texas cases. There is a rat-associated
+          hantavirus, Seoul virus, carried by Norway rats, but the CDC notes transmission to humans is
+          rare. In a 2017 outbreak traced to pet rats, seventeen people showed evidence of recent
+          infection, eight had a febrile illness, three were hospitalised and there were no deaths.
+        </p>
+        <p>
+          <strong>The structural case is usually the stronger one anyway.</strong> Rats gnaw wiring, with
+          the potential to start a fire — that is stated plainly in the AgriLife material and it is the
+          risk most likely to actually cost somebody. On agricultural property the other figure worth
+          having is consumption and spoilage: each rat eats roughly twenty to forty pounds of feed a year
+          and probably contaminates around ten times that amount.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What works</h2>
+      <div class="measure">
+        <p>
+          <strong>Seal everything over a quarter of an inch.</strong> That is the stricter standard, and it
+          is the right one because it excludes mice as well. For scale on rats specifically: AgriLife notes
+          a roof rat can enter through a gap under a door as narrow as half an inch, or a hole the size of
+          a quarter.
+        </p>
+        <p>
+          <strong>The entry points that come up repeatedly</strong> are gaps around the garage door, roof
+          venting and flashing, and ground-level gaps under and around siding — which is a neat summary of
+          the two-species split in one sentence.
+        </p>
+        <p>
+          <strong>Materials matter.</strong> Cement, brass or stainless steel wool, and purpose-made
+          exclusion products. AgriLife does mention low-expansion foam with an explicit caution not to use
+          too much — and as the house mouse page sets out, foam alone is not a barrier for rodents. It
+          belongs behind metal, not instead of it.
+        </p>
+        <p>
+          <strong>Trap density, and the number nobody likes.</strong> AgriLife's guidance is to triple the
+          number of traps you think you need and keep them freshly baited. Rats are wary of new objects, so
+          a thin trap line produces nothing for several days and then never catches up with a breeding rate
+          of twenty or more weaned young a year. Under-trapping is the single most common reason a
+          do-it-yourself rat job stalls.
+        </p>
+        <p>
+          <strong>What does not work.</strong> University IPM guidance states that frightening devices,
+          including high frequency and ultrasonic sounds, are ineffective for controlling rats, and that no
+          repellent has been found to solve a rat problem for more than a very short time.
+        </p>
+        <p>
+          <strong>And the same principle as every other rodent on this site.</strong> Trapping and baiting
+          deal with the population present; only exclusion changes what the building can support. A rat
+          quote with no sealing work in it is a subscription, not a solution — and on this species, with
+          the wiring risk attached, that distinction is worth pressing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Rat questions" />
+  <Cta
+    line="Tell him whether the droppings are on the floor or up on a rafter. That single answer decides which species you are dealing with, where the traps go and which half of the building gets sealed."
+  />
+</BaseLayout>

@@ -1,0 +1,413 @@
+---
+/**
+ * Pest library — black widows in Texas, Latrodectus spp.
+ *
+ * VERIFIED (texasinsects.tamu.edu, Texas DSHS, TAMU "Spiders of Texas"
+ * checklist, Colorado State University Extension, UT Extension PB1193,
+ * StatPearls/NIH, Monte/Bucher-Bartelson/Heard 2011 Ann Pharmacother):
+ *  - FOUR Latrodectus on the Texas checklist: L. mactans (southern),
+ *    L. hesperus (WESTERN — the expected species on the Llano Estacado and in
+ *    the Permian Basin), L. variolus (northern), L. geometricus (brown widow,
+ *    introduced).
+ *    ⚠ L. bishopi (red widow) is NOT on the Texas list — Florida-restricted.
+ *    Do not include it.
+ *  - Female body ~3/8 in, male ~3/16 in. CSU on the western species: females
+ *    "rarely grow larger than 6.4-8.5 mm (1/4-1/3 inch)" body; hourglass
+ *    "varies considerably"; males 3.2–6.4 mm, "usually light brown or gray
+ *    with banded legs"; immatures grey/light brown with banding and red,
+ *    orange or yellow spots.
+ *  - MALES: "no reports of bites from the males have been recorded"
+ *    (UT Extension PB1193).
+ *  - Egg sacs "white to tan or gray, pear-shaped to almost globular of tough
+ *    papery texture, about 1/4 to 1/2-inch in diameter", 25 to 400+ eggs.
+ *    ⚠ Sources vary — UT gives 5–10 sacs of 150–250 eggs; CSU gives up to 200
+ *    eggs hatching within two weeks. PUBLISH A RANGE, not a single number.
+ *  - Females have lived three years in the lab; males up to one year.
+ *  - Western widows overwinter INDOORS: "Hardly any will be found outside
+ *    during the winter" (CSU).
+ *  - Temperament: "quite timid", attempts escape rather than attack.
+ *  - Venom mechanism: α-latrotoxin binds irreversibly to presynaptic receptors
+ *    creating calcium-permeable channels → massive neurotransmitter release →
+ *    latrodectism (diffuse muscle rigidity and cramping, spreading pain,
+ *    nausea, sweating, tachycardia, hypertension).
+ *  - "No pain is associated with the bite"; symptoms begin one to eight hours
+ *    later WITH NO SKIN LESIONS. ⚠ THIS IS DIAGNOSTICALLY IMPORTANT: a widow
+ *    bite does NOT produce a necrotic wound. A skin lesion argues AGAINST it.
+ *
+ * THE HEADLINE FIGURE — Monte et al. 2011, National Poison Data System:
+ *  2000–2006, 23,409 Latrodectus exposures across 47 states; 9,872 with at
+ *  least minor clinical effects. Outcomes: 65% minor, 33.5% moderate, 1.4%
+ *  major, and NO DEATHS. Conclusion: "most symptomatic Latrodectus spp.
+ *  exposures reported to the NPDS are minor."
+ *  Zero deaths in 23,409 exposures over seven years is the single best
+ *  non-alarmist fact available on this species. It leads the page.
+ *
+ * ⚠️ THE "15 TIMES MORE TOXIC THAN A RATTLESNAKE" CLAIM. Texas DSHS does
+ *   publish it — but qualifies IN THE SAME PASSAGE that only minute quantities
+ *   are injected per bite. It is a milligram-for-milligram laboratory
+ *   comparison that says nothing about clinical outcome. If the quote appears,
+ *   the qualifier MUST appear with it in the same breath, or the page has
+ *   become scaremongering with a state-agency citation attached.
+ *
+ * ⚠️ ANTIVENOM: sources disagree. DSHS: "generally not prescribed", reserved
+ *   for extreme cases due to anaphylaxis risk. StatPearls: "safe and highly
+ *   effective" for symptom relief but carries risk of severe allergic
+ *   reactions. Monte et al.: few patients receive it; it IS associated with
+ *   shorter symptom duration in moderate and major cases; and no evidence that
+ *   benzodiazepines or calcium shorten symptoms. Present as a physician's
+ *   decision, name the disagreement, do not adjudicate it.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Black widow', path: '/pest-library/black-widow/' },
+];
+
+const quickAnswer =
+  'Black widows are common in West Texas meter boxes, well houses and anything opened twice a year, and the western black widow overwinters indoors rather than outside. A national review of 23,409 reported exposures over seven years found 65 percent had only minor effects and there were no deaths. The bite causes cramping rather than a wound.';
+
+const faqs = [
+  {
+    q: 'How dangerous is a black widow bite?',
+    a: 'Less often serious than the reputation implies, and there is good data on this. A review of United States poison centre records covering 2000 to 2006 found 23,409 reported black widow exposures across 47 states. Of the cases with clinical effects, 65 percent were minor, 33.5 percent moderate, and 1.4 percent major — and there were no deaths at all across the whole seven years. The authors concluded that most symptomatic exposures reported to poison centres are minor. That is not a reason to be casual about it, but it is a very long way from the reputation.',
+  },
+  {
+    q: 'What does a bite actually feel like?',
+    a: 'Often nothing at first, which surprises people. Extension sources note that no pain is associated with the bite itself, and that symptoms begin one to eight hours later. What follows is not a wound but a set of body-wide effects: cramping and muscle rigidity that spreads, frequently severe abdominal cramping that has been mistaken for a surgical abdomen, along with sweating, nausea, a raised heart rate and raised blood pressure. Recovery is typically complete within 24 to 48 hours, though symptoms can decline more slowly over two or three days and occasionally linger.',
+  },
+  {
+    q: 'Does a widow bite leave a hole or an ulcer?',
+    a: 'No, and this is genuinely useful for telling one thing from another. Widow venom is a neurotoxin — it acts on nerve endings, not on tissue. Extension sources describe the bite as producing symptoms with no skin lesions. So if you have an ulcerating, necrotic wound, that is an argument against a widow bite rather than for one, and it is worth saying to whoever is treating it. Cramping without a wound points one way; a wound without cramping points another.',
+  },
+  {
+    q: 'How do I recognise one?',
+    a: 'A mature female is the familiar animal: glossy, globular abdomen, body around a quarter to three-eighths of an inch, with red markings and usually an hourglass on the underside — though on the western species the hourglass varies considerably and can be partial. She hangs upside down in a tangled, irregular web that is noticeably strong, usually low to the ground in a dark sheltered spot. Males and immatures look nothing like that: males are small, light brown or grey with banded legs, and immatures are pale with banding and red, orange or yellow spots. Males, incidentally, are not a bite risk — no bites from males have been recorded.',
+  },
+  {
+    q: 'I read the venom is fifteen times stronger than a rattlesnake.',
+    a: 'Texas DSHS does publish that comparison — and qualifies it in the very same passage by noting that only minute quantities are injected in a bite. It is a milligram-for-milligram laboratory comparison, and it tells you almost nothing about what happens to a person. The outcome data is what tells you that: 23,409 reported exposures over seven years with no deaths. Quoting the first half of that DSHS sentence without the second half is how a state agency citation gets turned into scaremongering, and it happens constantly.',
+  },
+  {
+    q: 'Where do I actually find them on a property?',
+    a: 'Meter boxes are the classic, and irrigation valve boxes, well houses and pump enclosures run close behind. The pattern is anything dark, sheltered, close to the ground and opened perhaps twice a year. Also: under stored material, in the underside of outdoor furniture and tables, behind stacked timber, in the space under a shed or deck, in garages and crawl spaces, in low shrubs, and around pipes and drains. If you are reaching into something you have not opened since last summer, look first or wear a glove.',
+  },
+  {
+    q: 'Why do I see them indoors in winter?',
+    a: 'Because out here they overwinter inside. Work on the western black widow — the species expected across this region — records that they can overwinter indoors as adults or immatures and that hardly any will be found outside during the winter. So a widow in a garage in January is normal behaviour rather than something unusual, and winter is a perfectly sensible time to deal with them because that is when they are concentrated in accessible places.',
+  },
+  {
+    q: 'What should I do if someone is bitten?',
+    a: 'Get medical advice, and be able to say what happened and when. Antivenom exists but its use is genuinely contested: Texas DSHS states it is generally not prescribed and is reserved for extreme cases because of the risk of allergic reaction, while other clinical sources describe it as effective for symptom relief in suitable patients. The poison centre review found few patients receive it, though it was associated with shorter symptom duration in the more serious cases. All of that is a physician\'s decision, not ours, and we are not going to pretend to weigh in on it.',
+  },
+];
+---
+
+<BaseLayout
+  title="Black Widow Spiders | West Texas Pest Library"
+  description="Identification, why they overwinter indoors here, where they actually live on a property, and what the outcome data says about how serious a bite is."
+  path="/pest-library/black-widow/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Latrodectus</em> spp.</p>
+      <h1>Black widow</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>Start with the outcome data, because it reframes everything else.</strong> A review of
+          United States poison centre records covering 2000 through 2006 found
+          <strong>23,409 reported black widow exposures</strong> across 47 states. Among the cases with
+          clinical effects, 65 percent were minor, a third were moderate, 1.4 percent were major — and
+          across all seven years there were <strong>no deaths</strong>.
+        </p>
+        <p>
+          That is the single most useful fact on this page. It does not mean a bite is trivial: the
+          moderate third involves genuinely unpleasant, occasionally severe symptoms. It means the animal's
+          reputation and the animal's record are a long way apart.
+        </p>
+        <p>
+          <strong>And they are common here.</strong> Meter boxes, well houses, irrigation valve boxes,
+          under stored material — anything dark, close to the ground and opened twice a year. The western
+          black widow, which is the species expected across this region, also overwinters indoors, which is
+          why people find them in garages in January.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Which widow, and what she looks like</h2>
+      <div class="measure">
+        <p>
+          <strong>Texas has four.</strong> The state checklist maintained at Texas A&amp;M records the
+          southern black widow, the <strong>western black widow</strong>, the northern black widow, and the
+          introduced brown widow. Across the Llano Estacado and the Permian Basin, the western is the one
+          to expect.
+        </p>
+        <p>
+          <strong>The mature female is the animal everybody pictures.</strong> A glossy, globular abdomen,
+          body length somewhere around a quarter to three-eighths of an inch, with red markings. The
+          hourglass is on the <em>underside</em>, which means seeing it properly requires the spider to be
+          hanging in her web rather than sitting on a surface — and on the western species, published
+          accounts note the hourglass varies considerably and may be split or reduced. A widow with an
+          imperfect hourglass is still a widow.
+        </p>
+        <p>
+          <strong>Males and juveniles look like completely different animals</strong>, and this is where
+          most misidentification happens in both directions. Males are much smaller, generally light brown
+          or grey with banded legs. Immatures are pale, banded, and marked with red, orange or yellow
+          spots. People kill these as unknown spiders and let females go for the same reason: neither looks
+          like the picture.
+        </p>
+        <p>
+          <strong>Males are not a bite risk.</strong> Extension sources record no reports of bites from
+          males at all.
+        </p>
+        <p>
+          <strong>The web is a better clue than the spider.</strong> Widow webs are irregular, tangled and
+          three-dimensional rather than the neat wheel of an orb weaver — and they are noticeably strong,
+          enough that you can feel it when you break one. They sit low to the ground in a dark sheltered
+          place, with the spider hanging inverted at the centre or tucked into a retreat at the edge.
+        </p>
+        <p>
+          <strong>One species not on the Texas list:</strong> the red widow, which is restricted to
+          Florida. If a source tells you it lives here, that source is not checking.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where they are on a West Texas property</h2>
+      <div class="measure">
+        <p>
+          The habitat description in the literature reads like a list of things people reach into without
+          looking, which is exactly why bites happen.
+        </p>
+        <p>
+          <strong>Meter boxes.</strong> Texas DSHS names them specifically, and they are the classic on
+          this route: dark, sheltered, at ground level, and opened by somebody's hand a couple of times a
+          year. Irrigation valve boxes, well houses and pump enclosures are the same proposition.
+        </p>
+        <p>
+          <strong>Stored material.</strong> Woodpiles, boxes, stacked timber, pallets, spare paving, tyres,
+          anything that has sat undisturbed against a wall or in a shed. The underside of an object resting
+          on the ground is prime.
+        </p>
+        <p>
+          <strong>Outbuildings and their contents.</strong> Garages, crawl spaces, sheds, barns, and the
+          underside of outdoor furniture and tables. Texas A&amp;M's own habitat list includes houses,
+          outhouses, cotton fields, trash and dumps — which covers a fair amount of Gaines County as it actually looks on the ground.
+        </p>
+        <p>
+          <strong>Low, always.</strong> Widow webs are near ground level far more often than at head
+          height, and low shrubs, pipes, drains and the gap beneath a step all appear in the published
+          habitat lists. That is why the risk sits with hands rather than faces: reaching under, reaching behind,
+          picking something up off the ground.
+        </p>
+        <p>
+          <strong>And indoors through the winter.</strong> Work on the western black widow records that
+          they overwinter indoors as adults or immatures, and that hardly any will be found outside during
+          the winter. For a semi-arid region this explains the seasonal pattern of calls precisely: widows
+          concentrate in garages, crawl spaces, meter enclosures and stored materials when the weather
+          turns, which is also when they are easiest to find and deal with.
+        </p>
+        <p>
+          <strong>A note for anyone with livestock or outbuildings.</strong> Feed rooms, tack rooms, water
+          heater closets and the underside of feeders and troughs are all good widow habitat for the same
+          reasons a meter box is — dark, sheltered, rarely disturbed, and with insect prey nearby. Those
+          are also places people reach into daily without looking. On a working property the routine of
+          looking first matters more than any treatment.
+        </p>
+        <p>
+          <strong>She is not looking for you.</strong> Texas A&amp;M describes them as quite timid,
+          attempting escape rather than attack when disturbed. Essentially every bite involves the spider
+          being pressed against skin — a hand into a box, a foot into a boot, a body against a web in a
+          confined space.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What the venom does, precisely</h2>
+      <div class="measure">
+        <p>
+          Widow venom works on nerves, not on tissue, and that single fact explains the whole clinical
+          picture — including how to tell a widow bite from something else.
+        </p>
+        <p>
+          <strong>The mechanism.</strong> The active component binds irreversibly to receptors on nerve
+          endings and opens calcium-permeable channels, causing a massive release of neurotransmitters.
+          The result is called latrodectism: diffuse muscle rigidity and cramping, pain that spreads from
+          the bite site rather than staying at it, nausea and vomiting, sweating, a raised heart rate and
+          raised blood pressure.
+        </p>
+        <p>
+          <strong>The timing is distinctive.</strong> No pain is associated with the bite itself — people
+          frequently do not know they have been bitten. Symptoms begin one to eight hours later. That delay
+          is why the history matters: what were you doing, and where were your hands, several hours before
+          the cramping started.
+        </p>
+        <p>
+          <strong>And there is no wound.</strong> This is the diagnostically useful part. A widow bite
+          produces symptoms with no skin lesion. Severe cramping with essentially nothing to see is the
+          picture. An ulcerating or necrotic wound is an argument <em>against</em> a widow and worth
+          raising with whoever is treating it — a great many wounds get attributed to spiders that no
+          spider caused, which we go into on the
+          <a href="/pest-library/brown-recluse/">recluse spider page</a>.
+        </p>
+        <p>
+          <strong>Recovery.</strong> Clinical sources describe complete recovery typically within 24 to 48
+          hours. Other accounts have symptoms declining over two or three days, occasionally lingering
+          longer. Higher risk sits with small children and older adults, which is the ordinary pattern for
+          anything of this kind.
+        </p>
+        <p>
+          <strong>Treatment is contested and it is a doctor's call.</strong> Texas DSHS states antivenom is
+          generally not prescribed for widow envenomation and is reserved for extreme cases because of the
+          risk of allergic reaction. Other clinical sources describe it as effective for symptom relief in
+          suitable patients while acknowledging that same risk. The poison centre review found few patients
+          receive it, though it was associated with shorter symptom duration in the more serious cases —
+          and found no evidence that benzodiazepines or calcium shorten symptoms. We report the
+          disagreement; we do not settle it, and neither should any pest control company.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The comparison that gets misused</h2>
+      <div class="measure">
+        <p>
+          You will read that black widow venom is fifteen times more toxic than the venom of a prairie
+          rattlesnake. Texas DSHS does publish that line, so it is not internet invention.
+        </p>
+        <p>
+          <strong>What is almost always left off is the rest of the same passage</strong>, where DSHS
+          immediately qualifies that only minute quantities are injected in a bite. It is a
+          milligram-for-milligram laboratory comparison. It says nothing whatever about what happens to a
+          person, because what happens to a person depends on dose, and the dose is tiny.
+        </p>
+        <p>
+          <strong>The figure that does describe outcomes</strong> is the one at the top of this page:
+          23,409 reported exposures across seven years, two-thirds with only minor effects, and no deaths.
+          For historical context, four deaths in the United States were officially attributed to widow
+          bites across the whole of the 1960s.
+        </p>
+        <p>
+          <strong>Why we bother making this point.</strong> Because quoting the first half of a state
+          agency's sentence and dropping the qualifier is a very effective way to frighten somebody into
+          booking a treatment, and it is the kind of thing that makes people distrust the whole trade. The
+          spider is worth taking seriously on its actual merits. It does not need help.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Reducing them, in order of what actually works</h2>
+      <div class="measure">
+        <p>
+          <strong>Mechanical removal first.</strong> Vacuuming and sweeping webs, spiders and egg sacs is
+          direct and immediate, and it takes the next generation with it. Egg sacs are white to tan or grey,
+          pear-shaped to almost globular, papery, and a quarter to half an inch across; a female may produce
+          several across a summer, with published egg counts per sac ranging widely between sources —
+          anywhere from a couple of dozen to a few hundred. Removing sacs is worth more than removing
+          adults.
+        </p>
+        <p>
+          <strong>Declutter the enclosed spaces.</strong> The habitat is undisturbed dark shelter close to
+          the ground, so removing that is the durable answer. Getting stored material off the floor and
+          away from walls changes a garage more than any spray does.
+        </p>
+        <p>
+          <strong>Sticky traps, which extension sources rate among the best tools</strong> for spiders that
+          have got into a structure. They also tell you where the activity actually is, which decides where
+          anything else goes.
+        </p>
+        <p>
+          <strong>Seal and screen.</strong> Gaps at doors, foundation penetrations, and vents. Extension
+          guidance specifically mentions steel wool or copper mesh for sealing penetrations, along with
+          tight-fitting screens and weather stripping.
+        </p>
+        <p>
+          <strong>Turn the lights down.</strong> Bright exterior lighting concentrates the flying insects
+          that spiders eat, and a reliable food supply against a wall is what keeps webs there. Warmer
+          lighting, aimed down rather than out, does quiet work.
+        </p>
+        <p>
+          <strong>Trim back and clear the perimeter.</strong> Weeds and low vegetation against a building
+          are both harbourage and prey habitat, and clearing that band does double duty — it is the same
+          work that reduces scorpion harbourage, for the same reason.
+        </p>
+        <p>
+          <strong>And the habit that prevents most bites.</strong> Shake out shoes, gloves, clothing,
+          towels and bedding that have been in a garage or outbuilding, and look before reaching into a
+          meter box, a valve box, a woodpile or anything else opened twice a year. That costs nothing and
+          addresses the actual mechanism by which people get bitten.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The life cycle, and why sacs matter more than spiders</h2>
+      <div class="measure">
+        <p>
+          <strong>A female is long-lived by spider standards.</strong> Laboratory females have lived three
+          years; males live up to about one. That longevity is part of why a meter box that had a widow in
+          it last year is likely to have one this year — it may well be the same animal, and if it is not,
+          it is because the site was good enough that something else took it.
+        </p>
+        <p>
+          <strong>The egg sacs are the part worth finding.</strong> White to tan or grey, pear-shaped to
+          nearly round, with a tough papery texture, a quarter to half an inch across, hung in the web
+          rather than sitting on a surface. A female produces several across a summer. Published counts per
+          sac vary a great deal between sources — from a couple of dozen up into the hundreds — which is
+          itself worth knowing, because a source quoting one precise number has probably not looked at more
+          than one source.
+        </p>
+        <p>
+          <strong>Spiderlings emerge in stages.</strong> Second-stage spiderlings come out roughly four
+          weeks after the sac is made, and they are orange and white — nothing like the adult female. A
+          scatter of small pale banded spiders around a garage in late summer is very often a hatched sac
+          rather than an unrelated species.
+        </p>
+        <p>
+          <strong>Which is why removal beats killing.</strong> Treating an adult and leaving three sacs in
+          the same enclosure solves the visible half of the problem and leaves the arithmetic intact. When
+          we work a garage or a run of meter and valve boxes, sacs are what we are actually looking for, and what we would tell you to look for yourself.
+        </p>
+        <p>
+          <strong>And they do not disperse far.</strong> Unlike many spiders, widows tend to establish
+          close to where they hatched if the conditions suit. A property with good habitat — stored
+          material, low sheltered voids, reliable insect prey around lighting — tends to keep a population
+          rather than acquire one each year, and that is genuinely fixable by changing the habitat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Black widow questions" />
+  <Cta
+    line="Winter is a sensible time for widow work here rather than a strange one — they overwinter indoors, which means they are concentrated in garages, meter boxes and stored material where they can actually be found."
+  />
+</BaseLayout>

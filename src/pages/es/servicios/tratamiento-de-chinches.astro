@@ -1,0 +1,420 @@
+---
+/**
+ * Página en español — Tratamiento de Chinches.
+ * Par en inglés: /services/bed-bug-treatment/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Vocabulario regional: CHINCHES (no "bichos de cama").
+ * Gates: NO tratamiento térmico — solo químico, y se dice primero. NO
+ * fumigación. Productos: Alpine WSG, Precor IGR, Transport. El trabajo de
+ * chinches NO lleva la garantía de 30 días. Nunca insinuar que tener chinches
+ * es cuestión de limpieza. Sin precios.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Tratamiento de Chinches', path: '/es/servicios/tratamiento-de-chinches/' },
+];
+
+const quickAnswer =
+  'Tratamiento químico convencional contra chinches, con inspección, preparación y visitas de seguimiento programadas. No hacemos tratamiento térmico y lo decimos antes de que usted pregunte. Valentin Moriel hace el trabajo personalmente bajo la licencia TPCL 0918482, en el condado de Gaines y la Cuenca Pérmica.';
+
+const faqs = [
+  {
+    q: '¿Hacen tratamiento con calor?',
+    a: 'No. El calor es un método legítimo que requiere equipo específico que no tenemos, y no vamos a insinuar lo contrario. Lo que ofrecemos es tratamiento químico convencional con un calendario de seguimiento. Cuando el calor es realmente la respuesta correcta para su situación — y a veces lo es — necesita a alguien que lo haga, y se lo diremos por teléfono en lugar de decírselo después de tomarle la cita.',
+  },
+  {
+    q: '¿Tener chinches significa que mi casa está sucia?',
+    a: 'No, y esto es lo más importante de toda la página. Las chinches son un problema de introducción, no de higiene. Llegan en maletas, en muebles de segunda mano, en una bolsa que se dejó en algún lado, en la ropa. Las casas impecables las tienen y siempre las han tenido. Lo único que cambia la limpieza es qué tan fácil es encontrarlas, porque el desorden les da más lugares dónde estar.',
+  },
+  {
+    q: '¿Cómo sé si de verdad son chinches?',
+    a: 'Busque la evidencia física en lugar de fijarse en los piquetes. Puntitos oscuros a lo largo de la costura del colchón, en el box o en las uniones del bastidor. Pieles mudadas. Insectos vivos más o menos del tamaño y la forma de una semilla de manzana, aplanados y de color café rojizo. Los piquetes solos no son confiables: la gente reacciona de manera muy distinta, algunos no reaccionan, y hay varias otras cosas que pican. Si puede fotografiar lo que encontró, mándelo antes de la visita.',
+  },
+  {
+    q: '¿Se resuelve en una sola visita?',
+    a: 'Honestamente, no. El trabajo de chinches es una secuencia y no un evento, porque los huevos no se ven afectados por el tratamiento igual que los insectos activos, y una segunda visita en el intervalo correcto es lo que atiende a lo que nace después. Quien le prometa resolverlo en una sola visita o está usando un método que no le explicó, o le está diciendo lo que usted quiere oír.',
+  },
+  {
+    q: '¿El trabajo de chinches lleva la garantía de 30 días?',
+    a: 'No. Lleva sus propios términos acordados antes de empezar. La razón es que el resultado depende mucho de que la preparación se complete, de que las visitas de seguimiento ocurran en su fecha, y de que la fuente de la introducción no siga activa — y nada de eso lo maneja con honestidad una promesa general de treinta días.',
+  },
+  {
+    q: '¿Qué productos usan?',
+    a: 'Alpine WSG, Precor IGR y Transport, seleccionados y colocados según la situación. El regulador de crecimiento importa tanto como el producto para adultos, porque atiende a la parte de la población que en este momento no es adulta. Dónde se coloca lo decide dónde está realmente el refugio, que es lo que establece la inspección.',
+  },
+  {
+    q: '¿Se van a enterar los vecinos?',
+    a: 'Por nosotros no. No hay rotulación en el vehículo anunciando qué se está tratando, y no comentamos su propiedad con nadie que no esté autorizado en el trabajo. Si la discreción le importa — y a bastante gente le importa — dígalo al agendar y se planea alrededor de eso.',
+  },
+  {
+    q: '¿Y si vivo en un departamento?',
+    a: 'Entonces el problema casi nunca es solo suyo, y conviene saberlo desde el principio. Las paredes compartidas tienen huecos, pasos de plomería y a veces ático continuo, y las chinches los usan para moverse entre unidades. Un departamento tratado impecablemente puede volver a infestarse desde el de al lado. Eso no significa que no valga la pena tratar, pero sí significa que la conversación útil normalmente incluye a la administración del edificio y no solo a usted.',
+  },
+];
+---
+
+<BaseLayout
+  title="Tratamiento de Chinches | Seminole, TX"
+  description="Tratamiento químico convencional con inspección, preparación y seguimiento programado en el condado de Gaines y la Cuenca Pérmica. Licencia TPCL 0918482."
+  path="/es/servicios/tratamiento-de-chinches/"
+  lang="es"
+  altLangPath="/services/bed-bug-treatment/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Tratamiento de Chinches',
+    description: 'Inspección, tratamiento químico convencional y visitas de seguimiento contra chinches en casas, departamentos y hospedaje del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Tratamiento de Chinches</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Antes que nada, lo que no ofrecemos.</strong> No hacemos tratamiento térmico. El calor es
+          un método real y a veces es el correcto, pero requiere equipo específico que no tenemos, y
+          preferimos decírselo en la primera línea de esta página que después de que usted ya apartó una
+          cita.
+        </p>
+        <p>
+          Lo que sí hacemos es tratamiento químico convencional, con inspección, preparación y un
+          calendario de seguimiento. Funciona, se hace desde hace mucho, y depende de hacerlo completo.
+        </p>
+        <p>
+          <strong>Y lo segundo, que importa más de lo que parece:</strong> tener chinches no dice nada
+          sobre su casa. Es un problema de introducción, no de higiene. Llegan en una maleta, en un mueble
+          de segunda mano, en una bolsa que se dejó en el lugar equivocado. Las casas más limpias que
+          atendemos las han tenido. Si usted está leyendo esto con vergüenza, esa parte puede soltarla:
+          no aplica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Saber si de verdad son chinches</h2>
+      <div class="measure">
+        <p>
+          Mucha gente nos llama por unos piquetes y resulta ser otra cosa; y otra tanta llama tarde porque
+          los piquetes no le salieron. Los piquetes son el peor indicador que existe.
+        </p>
+        <p>
+          <strong>Las reacciones varían enormemente.</strong> Dos personas durmiendo en la misma cama
+          pueden tener una llena de ronchas y la otra sin nada. Hay quien no reacciona en absoluto. Y hay
+          varias cosas que pican de noche — pulgas, ácaros, mosquitos que entraron — que producen algo
+          parecido.
+        </p>
+        <p>
+          <strong>Busque evidencia física.</strong> Puntitos oscuros a lo largo de la costura del colchón,
+          en el box, en las esquinas del bastidor y donde se unen las piezas de madera. Pieles mudadas, que
+          parecen cascarones translúcidos. Y el insecto mismo: aplanado, café rojizo, más o menos del
+          tamaño y la forma de una semilla de manzana.
+        </p>
+        <p>
+          <strong>Dónde mirar primero.</strong> A menos de un metro y medio de donde la persona duerme,
+          que es donde está la enorme mayoría. Costuras y etiquetas del colchón, el marco de la cama, la
+          cabecera por atrás, el buró, y la orilla de la alfombra pegada al zócalo. Con una linterna y sin
+          prisa.
+        </p>
+        <p>
+          <strong>Si encuentra algo, tómele foto y mándela antes de la visita.</strong> Una foto decente
+          ahorra tiempo y a veces evita una visita que no hacía falta — y si no son chinches, se lo
+          diremos, porque tratar por si acaso no es forma de trabajar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Por qué una visita no es el trabajo</h2>
+      <div class="measure">
+        <p>
+          Esta es la parte donde la gente se decepciona si nadie se la explicó antes, así que va aquí y no
+          en letra chica.
+        </p>
+        <p>
+          <strong>Los huevos no responden al tratamiento igual que los insectos activos.</strong> Un
+          tratamiento bien hecho reduce fuertemente la población presente, pero lo que está por nacer sale
+          después. Si nadie regresa en el intervalo correcto, esa segunda generación reconstruye el
+          problema y usted concluye razonablemente que el tratamiento no sirvió.
+        </p>
+        <p>
+          <strong>Por eso el seguimiento no es un extra.</strong> Es parte de la misma secuencia, y la
+          fecha no es arbitraria: está calculada para caer después de que lo que iba a nacer ya nació y
+          antes de que alcance a reproducirse. Mover esa visita dos semanas por conveniencia le quita
+          buena parte del sentido.
+        </p>
+        <p>
+          <strong>El regulador de crecimiento hace la mitad silenciosa del trabajo.</strong> Precor IGR no
+          mata adultos de golpe; interrumpe el desarrollo de lo que aún no lo es. En una plaga que se
+          reconstruye desde etapas inmaduras, eso importa tanto como el producto que sí mata adultos —
+          Alpine WSG y Transport en las colocaciones que decida la inspección.
+        </p>
+        <p>
+          <strong>Y por eso este servicio no lleva la garantía de 30 días.</strong> No es un tecnicismo
+          para escaparnos: es que el resultado depende de tres cosas que no controlamos por completo — que
+          la preparación se haga, que las visitas ocurran en su fecha, y que la fuente de la introducción
+          no siga metiendo chinches. Preferimos términos específicos acordados antes que una promesa
+          general que después habría que discutir.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La preparación, y por qué no es trámite</h2>
+      <div class="measure">
+        <p>
+          La lista de preparación es la parte que más se ignora y la que más decide el resultado. No la
+          pedimos para facilitarnos el día.
+        </p>
+        <p>
+          <strong>Ropa de cama y textiles a la secadora, en caliente.</strong> El ciclo de secado es lo que
+          mata, más que el lavado. Después, en bolsas cerradas hasta que el tratamiento esté hecho, para
+          que no se vuelvan a contaminar de camino al clóset.
+        </p>
+        <p>
+          <strong>Reducir el desorden, sobre todo alrededor de la cama.</strong> Cada objeto es un
+          escondite y cada escondite es un lugar donde el producto no llega. Esta es la única parte donde
+          el orden de la casa influye — no en tenerlas, sino en encontrarlas.
+        </p>
+        <p>
+          <strong>No mueva los muebles de cuarto.</strong> Es contraintuitivo y es importante: sacar un
+          colchón por el pasillo o llevar el sillón a otra habitación es la manera más eficaz de convertir
+          un problema de un cuarto en un problema de toda la casa. Si algo se va a desechar, se envuelve
+          antes de sacarlo.
+        </p>
+        <p>
+          <strong>No trate usted primero con productos de tienda.</strong> Los aerosoles repelentes
+          dispersan: las chinches se alejan de donde se aplicó y se instalan más lejos, muchas veces en
+          otro cuarto. Un problema disperso es considerablemente más difícil y más caro de resolver que uno
+          concentrado.
+        </p>
+        <p>
+          <strong>Y no tire la cama todavía.</strong> Mucha gente compra colchón nuevo de inmediato. Si la
+          habitación no está tratada, el colchón nuevo se infesta igual, y usted pagó dos veces. Primero el
+          tratamiento, después la decisión sobre los muebles.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Rentas, hospedaje y el patrón de la Cuenca</h2>
+      <div class="measure">
+        <p>
+          En esta región hay un factor que no existe en todos lados: mucha gente que viene a trabajar por
+          temporadas, se hospeda, se cambia de lugar y se vuelve a ir. Ese movimiento es exactamente cómo
+          se mueven las chinches.
+        </p>
+        <p>
+          <strong>Para un propietario de renta</strong>, el momento crítico es el cambio de inquilino. Una
+          unidad vacía se ve limpia y puede no estarlo: las chinches sobreviven bastante tiempo sin
+          alimentarse y esperan. Revisar entre inquilinos cuesta poco comparado con enterarse tres semanas
+          después de que alguien se mudó.
+        </p>
+        <p>
+          <strong>En edificios con unidades pegadas</strong>, el problema rara vez respeta el número de
+          puerta. Paredes compartidas, pasos de plomería y espacios de ático continuo son rutas. Tratar una
+          unidad y no las de al lado es la razón más común por la que un edificio nunca termina de
+          resolverlo.
+        </p>
+        <p>
+          <strong>Y hay una nota legal para propiedades de renta.</strong> El Código de Propiedad de Texas
+          establece un deber de reparación del arrendador y un procedimiento de aviso que el inquilino
+          debe seguir. Nosotros no damos asesoría legal y no somos abogados, así que le decimos que existe
+          y le señalamos dónde está, en lugar de opinar sobre su caso.
+        </p>
+        <p>
+          <strong>Para hospedaje</strong>, lo que suele importar es la discreción y la rapidez, y las dos
+          se planean por adelantado. No hay rotulación en el vehículo que anuncie qué se está tratando, y
+          no comentamos el trabajo con nadie que no esté autorizado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cómo es la visita, paso a paso</h2>
+      <div class="measure">
+        <p>
+          Saber qué va a pasar reduce bastante la ansiedad de un problema que ya de por sí quita el sueño,
+          literalmente. Así se ve el trabajo.
+        </p>
+        <p>
+          <strong>Primero se inspecciona, y toma tiempo.</strong> No es un recorrido rápido. Se revisa la
+          cama pieza por pieza — colchón, box, bastidor, cabecera por detrás —, después los muebles
+          cercanos, el zócalo, la orilla de la alfombra, los enchufes y cualquier cosa tapizada en la
+          habitación. En una casa con varias recámaras se revisa dónde duerme cada persona, porque el
+          problema suele estar concentrado alrededor de una sola.
+        </p>
+        <p>
+          <strong>Después se le explica lo que se encontró.</strong> Dónde está el refugio, qué tan
+          extendido parece, y qué habitaciones entran en el tratamiento. Esa conversación decide el
+          alcance, y es mejor tenerla viendo la evidencia que por teléfono.
+        </p>
+        <p>
+          <strong>Luego el tratamiento, que es de precisión y no de volumen.</strong> El producto va donde
+          está el refugio: costuras, uniones del bastidor, grietas y hendiduras, detrás de la cabecera, en
+          los bordes donde la alfombra se junta con la pared. No se rocía una habitación entera de forma
+          general — eso dispersa y no resuelve.
+        </p>
+        <p>
+          <strong>Se combinan dos cosas distintas.</strong> Producto para la población activa, y regulador
+          de crecimiento para la que todavía no lo es. Es la razón por la que un tratamiento de chinches
+          bien hecho no se parece a una fumigación general.
+        </p>
+        <p>
+          <strong>Antes de irse, se acuerda la fecha del seguimiento.</strong> No queda "para más
+          adelante": queda con fecha, porque el intervalo es la mitad del método.
+        </p>
+        <p>
+          <strong>Y se le dice qué esperar en los días siguientes</strong>, incluido algo que a la gente le
+          preocupa: es normal ver actividad después del tratamiento. Los insectos se mueven al ser
+          perturbados y algunos salen de donde estaban. Ver uno a los tres días no significa que falló;
+          significa que se movieron. Lo que importa es la tendencia entre la primera visita y la segunda.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que no hacemos, dicho claro</h2>
+      <div class="measure">
+        <p>
+          <strong>No hacemos tratamiento térmico.</strong> Ya lo dijimos arriba y lo repetimos aquí porque
+          es la limitación que más importa en este servicio en particular. Si su situación pide calor — a
+          veces la pide, por ejemplo cuando hay muchísimo mobiliario o una infestación muy extendida —
+          necesita a alguien con ese equipo, y se lo diremos.
+        </p>
+        <p>
+          <strong>No hacemos fumigación.</strong> De ningún tipo, para ninguna plaga.
+        </p>
+        <p>
+          <strong>No prometemos una sola visita.</strong> Ya explicamos por qué. Si alguien se la promete,
+          vale la pena preguntarle exactamente qué método va a usar y por qué no aplica lo de los huevos.
+        </p>
+        <p>
+          <strong>No inventamos plazos.</strong> Cuánto tarda depende de qué tan extendido esté, de si la
+          preparación se hizo, y de si la fuente de la introducción sigue activa. Preferimos decirle un
+          rango honesto después de la inspección que un número bonito por teléfono, aunque el número bonito
+          cierre más citas.
+        </p>
+        <p>
+          <strong>Y no somos un equipo.</strong> Es una sola persona: la que inspecciona es la que trata y
+          la que regresa al seguimiento. En un problema como este, donde la continuidad importa tanto, eso
+          es una ventaja real — nadie le va a dar información distinta la segunda vez. También significa
+          que la agenda tiene un límite, y eso también se lo decimos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>No traerlas a casa, que es la parte gratis</h2>
+      <div class="measure">
+        <p>
+          Como el problema es de introducción, casi todo lo preventivo tiene que ver con equipaje y con
+          muebles usados. Nada de esto cuesta dinero.
+        </p>
+        <p>
+          <strong>En un hotel o cualquier hospedaje</strong>, deje la maleta en el baño o sobre la base
+          metálica y no sobre la cama ni sobre el sillón, mientras revisa. Levante la ropa de cama en las
+          esquinas y vea la costura del colchón y la cabecera con la linterna del teléfono. Son dos
+          minutos.
+        </p>
+        <p>
+          <strong>Al volver a casa</strong>, no abra la maleta sobre la cama. La ropa que trae va directo a
+          la secadora en caliente, y la maleta se guarda lejos de la recámara — un garaje o un clóset de
+          pasillo es mejor que debajo de la cama.
+        </p>
+        <p>
+          <strong>Con muebles de segunda mano</strong>, revise antes de subirlos al vehículo, no después de
+          meterlos a la casa. Sillones, colchones y bases de cama son los de mayor riesgo, y un mueble
+          gratis en la banqueta es gratis por alguna razón.
+        </p>
+        <p>
+          <strong>Si alguien en la familia viaja por trabajo con frecuencia</strong>, vale la pena volver
+          rutina lo de la secadora. Es la medida individual más eficaz que existe y no requiere producto
+          alguno.
+        </p>
+        <p>
+          <strong>Y una recomendación para quien renta cuartos o recibe visitas seguido:</strong> las
+          fundas de colchón diseñadas para chinches sirven para dos cosas distintas. Encierran lo que ya
+          esté dentro del colchón, y hacen que la inspección futura sea mucho más rápida porque quitan los
+          escondites de la superficie donde normalmente hay que buscar con lupa. No resuelven una
+          infestación por sí solas y no las vendemos, pero en una casa con movimiento constante de gente
+          son de las pocas compras que realmente valen lo que cuestan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que las chinches sí hacen y lo que no</h2>
+      <div class="measure">
+        <p>
+          Hay bastante información suelta sobre chinches y no toda es buena. Estas son las cosas que más
+          seguido tenemos que aclarar en una cocina, con la persona todavía nerviosa.
+        </p>
+        <p>
+          <strong>No transmiten enfermedad de una persona a otra.</strong> Pican, la reacción puede ser
+          molesta y en algunas personas fuerte, y rascarse puede infectar la piel. Pero no son un vector
+          como el mosquito. Si tiene una preocupación médica por una reacción, eso es para un médico y no
+          para una empresa de control de plagas — nosotros no opinamos de salud.
+        </p>
+        <p>
+          <strong>No viven en el pelo ni en el cuerpo.</strong> No son piojos. Se alimentan y se retiran a
+          su escondite, que es por eso que la evidencia está en el mueble y no en la persona.
+        </p>
+        <p>
+          <strong>No es cuestión de qué tan seguido lava las sábanas.</strong> Lo repetimos porque es el
+          miedo más común y es el más injusto. Lo que la limpieza cambia es la facilidad para encontrarlas.
+        </p>
+        <p>
+          <strong>Sí aguantan mucho tiempo sin comer.</strong> Por eso una casa o un departamento
+          desocupado no se "limpia solo" con el tiempo, y por eso revisar entre inquilinos tiene sentido
+          aunque el lugar lleve semanas vacío.
+        </p>
+        <p>
+          <strong>Sí se mueven entre habitaciones y entre unidades</strong> cuando se les molesta, que es
+          exactamente lo que provoca un aerosol de tienda mal usado. Concentradas se resuelven; dispersas
+          cuestan el doble.
+        </p>
+        <p>
+          <strong>Y sí vuelven si la fuente sigue abierta.</strong> Si alguien de la casa viaja seguido, o
+          si entra y sale mobiliario usado, el tratamiento resuelve lo que hay pero no cierra la puerta. Esa
+          parte es de hábitos, y por eso la sección de prevención de esta página no es relleno.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre chinches" />
+  <Cta
+    line="Si encontró algo, mándele una foto antes de la visita — con eso muchas veces se sabe si son chinches o no. Y si vive en departamento, dígalo: eso cambia la conversación desde el principio."
+  />
+</BaseLayout>

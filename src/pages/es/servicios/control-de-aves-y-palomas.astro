@@ -1,0 +1,433 @@
+---
+/**
+ * Página en español — Control de Aves y Palomas.
+ * Par en inglés: /services/bird-and-pigeon-control/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Gates duros:
+ *  - Las aves NATIVAS están protegidas por la Ley del Tratado de Aves
+ *    Migratorias (aves, nidos activos y huevos). Paloma feral, estornino
+ *    pinto y gorrión común son NO nativos y por lo general quedan fuera.
+ *    La identificación es el primer paso SIEMPRE.
+ *  - Nido activo con huevos o crías = alto absoluto, sea cual sea la especie.
+ *  - NUNCA veneno ni disparos, para ninguna especie.
+ *  - Acumulación fuerte de excremento = trabajo de remediación, no control de
+ *    plagas. Decirlo.
+ *  - NO lleva la garantía de 30 días.
+ * Sin precios. Sin "nuestro equipo".
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Control de Aves y Palomas', path: '/es/servicios/control-de-aves-y-palomas/' },
+];
+
+const quickAnswer =
+  'Exclusión física y disuasión para palomas y aves que anidan o se posan en edificios: malla, cierre de huecos, sistemas de púas y protección de repisas. Nunca veneno ni disparos, y la identificación de la especie va primero porque las aves nativas tienen protección federal. Licencia TPCL 0918482.';
+
+const faqs = [
+  {
+    q: '¿Es legal quitar aves de mi edificio?',
+    a: 'Depende por completo de la especie, y eso no es un tecnicismo. Las aves nativas en Estados Unidos están protegidas por la Ley del Tratado de Aves Migratorias, que cubre en términos generales a las aves mismas junto con sus nidos activos y sus huevos. La paloma feral, el estornino pinto y el gorrión común no son nativos y por lo general quedan fuera de esa protección. Así que la identificación es el primer paso en absolutamente todos los trabajos, y cuando la respuesta es una especie nativa protegida el trabajo se limita a exclusión y disuasión.',
+  },
+  {
+    q: 'Hay un nido con huevos. ¿Lo pueden mover?',
+    a: 'No mientras esté activo, y eso es un alto absoluto y no una preferencia. Un nido activo con huevos o crías se deja en paz hasta que termina de forma natural, sea cual sea la especie — en las nativas protegidas es un asunto legal, y en todo lo demás es sencillamente la manera correcta de hacer el trabajo. Lo que sí podemos hacer mientras tanto es planear la exclusión para que, cuando el nido termine, el sitio quede cerrado y las aves no regresen la siguiente temporada.',
+  },
+  {
+    q: '¿Envenenan o disparan a las aves?',
+    a: 'No. Ninguna de las dos cosas, con ninguna especie. Este es trabajo de exclusión y disuasión: cerrar los sitios donde se posan y anidan, y volver inutilizables las superficies. Aparte de las cuestiones legales, un ave muerta dentro de una estructura o sobre un techo crea un problema peor que aquel por el que usted llamó.',
+  },
+  {
+    q: '¿Qué funciona de verdad para que las palomas dejen un edificio?',
+    a: 'La exclusión física funciona. Malla cruzando una abertura, cierre de un espacio hueco, sellado del hueco bajo el borde del techo, y sistemas de púas de acero inoxidable o de plástico sobre repisas y anuncios. Dispositivos de pendiente en repisas anchas. Eso es permanente, no genera acostumbramiento, y es de lo que se compone un trabajo serio. Lo que funciona mucho menos es cualquier cosa que dependa de asustar al ave, porque las aves se acostumbran a ruidos, movimiento y depredadores de imitación con una rapidez notable.',
+  },
+  {
+    q: '¿Por qué importa el excremento más allá de la suciedad?',
+    a: 'El excremento acumulado es corrosivo para ciertos materiales de construcción y para pintura y metal, vuelve genuinamente resbalosas las superficies de andadores y equipo, y las acumulaciones fuertes plantean consideraciones de salud que conviene que atienda gente equipada para ese trabajo específico. En un negocio, además, con frecuencia es un tema de inspección. Limpiar una cantidad pequeña es sencillo; una acumulación grande y de años es trabajo de remediación y no de control de plagas, y se lo diremos.',
+  },
+  {
+    q: '¿Las aves traen otras plagas?',
+    a: 'Sí, y es una de las partes menos apreciadas de todo esto. Los nidos y los sitios de descanso mantienen sus propias poblaciones — ácaros de las aves, escarabajos y otros insectos asociados — que después se mueven hacia el interior de la estructura cuando las aves se van o se excluyen. Por eso el trabajo de exclusión y el tratamiento que le sigue se planean con frecuencia juntos y no por separado.',
+  },
+  {
+    q: '¿Lleva la garantía de 30 días?',
+    a: 'No. Lleva sus propios términos acordados antes del trabajo. La exclusión y la disuasión se juzgan por si la instalación se sostiene y por si las aves se reubican fuera de las superficies tratadas, y esa es una evaluación distinta de la de un tratamiento de plagas.',
+  },
+  {
+    q: '¿Y si el problema es en una bodega o en un negocio?',
+    a: 'Es donde más común es y donde más consecuencias tiene. Naves con aleros abiertos, andenes de carga, letreros iluminados y estructura expuesta en el techo son sitios ideales para posarse. Y en un lugar donde se maneja alimento, el excremento sobre producto, sobre equipo o sobre superficies de trabajo es un tema de inspección antes que de estética. En esos casos lo que suele hacer falta es un plan por fases, porque cerrar una nave completa de una sola vez rara vez es posible sin parar la operación.',
+  },
+];
+---
+
+<BaseLayout
+  title="Control de Aves y Palomas | Seminole, TX"
+  description="Exclusión física y disuasión: malla, cierre de huecos y sistemas de púas para palomas en edificios y naves del oeste de Texas. Sin veneno. TPCL 0918482."
+  path="/es/servicios/control-de-aves-y-palomas/"
+  lang="es"
+  altLangPath="/services/bird-and-pigeon-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Control de Aves y Palomas',
+    description: 'Exclusión física, sistemas de púas y disuasión para palomas y aves plaga en edificios comerciales, naves y casas del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Control de Aves y Palomas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Este servicio empieza con una pregunta legal y no con una técnica:</strong> ¿qué especie
+          es?
+        </p>
+        <p>
+          Las aves nativas en Estados Unidos están protegidas por la Ley del Tratado de Aves Migratorias,
+          que cubre a las aves, sus nidos activos y sus huevos. La <strong>paloma feral</strong>, el
+          <strong>estornino pinto</strong> y el <strong>gorrión común</strong> no son nativos y por lo
+          general quedan fuera de esa protección.
+        </p>
+        <p>
+          <strong>Esa diferencia decide todo lo demás.</strong> Con una especie no nativa hay un abanico
+          amplio de opciones. Con una nativa protegida, el trabajo se limita a exclusión y disuasión — y
+          aun así hay momentos del año en los que no se toca nada.
+        </p>
+        <p>
+          <strong>Por eso identificamos antes de proponer.</strong> Cualquiera que le cotice por teléfono
+          "quitar las aves" sin haber visto de qué especie se trata le está cotizando algo que quizá no
+          puede hacer legalmente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>El nido activo es un alto absoluto</h2>
+      <div class="measure">
+        <p>
+          Si hay un nido con huevos o con crías, no se toca. Punto. Y conviene explicar por qué lo decimos
+          con esa firmeza.
+        </p>
+        <p>
+          <strong>En una especie nativa protegida es un asunto legal</strong>, y las consecuencias no son
+          para nosotros: son para el dueño del inmueble tanto como para quien hace el trabajo.
+        </p>
+        <p>
+          <strong>Y en todo lo demás sigue siendo la manera correcta de trabajar.</strong> Una paloma feral
+          no está protegida, pero destruir un nido con crías dentro no es control de plagas: es solo
+          crueldad con una factura.
+        </p>
+        <p>
+          <strong>Lo que sí se puede hacer mientras tanto</strong> es lo más útil de esta página: planear.
+          Se identifica cada sitio que están usando, se decide qué método corresponde a cada uno, se
+          preparan los materiales, y en cuanto el nido termina de forma natural se cierra el sitio para que
+          la siguiente temporada no vuelvan.
+        </p>
+        <p>
+          <strong>Porque las aves regresan al mismo lugar.</strong> Eso es exactamente lo que hace que este
+          trabajo funcione o no: si el sitio sigue disponible el año que viene, vuelven; si dejó de existir
+          como sitio, buscan otro edificio. La ventana entre una temporada y la siguiente es el momento
+          real de este trabajo, y llegar preparado a esa ventana es la diferencia entre resolverlo y
+          repetirlo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que funciona, y lo que se vende mucho y no funciona</h2>
+      <div class="measure">
+        <p>
+          Hay una diferencia muy clara entre los métodos que cambian la estructura y los que dependen de
+          asustar al animal. Los primeros duran; los segundos no.
+        </p>
+        <p>
+          <strong>Funciona: la malla.</strong> Cruzar una abertura, cerrar un espacio hueco, tapar el
+          acceso bajo un alero. Es la solución más definitiva que existe porque el sitio deja de ser un
+          sitio.
+        </p>
+        <p>
+          <strong>Funciona: los sistemas de púas</strong> de acero inoxidable o de plástico sobre repisas,
+          molduras, letreros y bordes. No lastiman al ave: hacen que la superficie no sea utilizable para
+          posarse. Bien instalados, duran años.
+        </p>
+        <p>
+          <strong>Funciona: los dispositivos de pendiente</strong> en repisas anchas, que convierten una
+          superficie plana en una inclinada donde el ave no puede quedarse.
+        </p>
+        <p>
+          <strong>Funciona: cerrar el hueco donde el techo se junta con el muro</strong>, que en naves
+          metálicas y en construcción comercial es el sitio favorito y el más ignorado.
+        </p>
+        <p>
+          <strong>No funciona, o funciona unos días: casi todo lo que asusta.</strong> Búhos de plástico,
+          serpientes de goma, cintas reflejantes, molinetes, ruidos, dispositivos ultrasónicos, siluetas de
+          halcón. Las aves son notablemente buenas para descubrir que algo que nunca les hace daño no
+          representa peligro. Al principio se van; en una o dos semanas se posan encima del búho.
+        </p>
+        <p>
+          <strong>Y no funciona quitar los nidos una y otra vez</strong> sin cerrar el sitio. Es trabajo
+          repetido para siempre, y en especies protegidas ni siquiera procede.
+        </p>
+        <p>
+          <strong>La prueba sencilla</strong> para evaluar cualquier propuesta: ¿esto cambia físicamente el
+          edificio o depende de que el ave se asuste? Si es lo segundo, pregunte qué pasa en un mes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>El excremento: por qué importa más que la suciedad</h2>
+      <div class="measure">
+        <p>
+          Casi todo el mundo llama por el excremento, y casi nadie sabe cuál de sus efectos es el que
+          realmente cuesta dinero.
+        </p>
+        <p>
+          <strong>Es corrosivo.</strong> Ataca ciertos materiales de construcción, la pintura y el metal.
+          Una acumulación sostenida sobre un techo metálico, sobre estructura pintada, sobre un anuncio o
+          sobre equipo exterior degrada el material debajo, y esa reparación cuesta mucho más que la
+          exclusión que la hubiera evitado.
+        </p>
+        <p>
+          <strong>Es resbaloso, y eso es un tema de seguridad.</strong> Sobre un andador, una escalera
+          exterior, una plataforma de mantenimiento o un andén de carga, una capa de excremento húmedo es
+          un riesgo real de caída. En un lugar de trabajo eso deja de ser estética.
+        </p>
+        <p>
+          <strong>Las acumulaciones fuertes plantean consideraciones de salud</strong> que conviene que
+          atienda gente equipada para ese trabajo específico. Aquí está nuestro límite honesto: limpiar una
+          cantidad pequeña es parte normal del trabajo; una acumulación grande y de años es
+          <strong>remediación</strong>, con su propio equipo y sus propios protocolos, y se lo decimos en
+          lugar de hacer una versión aproximada.
+        </p>
+        <p>
+          <strong>Y en un negocio suele ser tema de inspección.</strong> Excremento sobre producto, sobre
+          equipo o sobre superficies donde se maneja alimento es un hallazgo, no un detalle. Si su
+          operación se inspecciona, esa es normalmente la razón económica más fuerte para resolverlo bien y
+          no por partes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que las aves dejan cuando se van</h2>
+      <div class="measure">
+        <p>
+          Esta es la parte que sorprende a la gente y la razón por la que la exclusión y el tratamiento se
+          planean juntos.
+        </p>
+        <p>
+          <strong>Un nido no es solo un nido.</strong> Es material orgánico templado con residuos, y
+          sostiene su propia población de insectos: ácaros de las aves, escarabajos y otros organismos
+          asociados que viven de las plumas, del material del nido y de los propios ocupantes.
+        </p>
+        <p>
+          <strong>Mientras las aves están, esos insectos se quedan con las aves.</strong> Cuando las aves
+          se van — o se excluyen — su fuente de alimento desaparece y buscan otra. Lo más cercano es el
+          interior de la estructura.
+        </p>
+        <p>
+          <strong>De ahí sale una queja clásica:</strong> "sacamos las palomas y ahora hay bichitos por
+          todos lados". No es coincidencia ni mala suerte: es la consecuencia previsible de excluir sin
+          tratar.
+        </p>
+        <p>
+          <strong>Por eso el orden correcto es</strong> retirar el material del nido cuando ya es legal y
+          seguro hacerlo, tratar el sitio, y después cerrar el acceso. Hacerlo en ese orden evita el
+          problema; hacerlo en otro lo garantiza.
+        </p>
+        <p>
+          <strong>Y por eso este servicio suele cotizarse completo</strong> en lugar de por piezas. Vender
+          nada más la instalación de púas es barato de cotizar y deja al cliente con la mitad del problema.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Naves, negocios y estructuras de por aquí</h2>
+      <div class="measure">
+        <p>
+          En esta región el problema de aves es sobre todo comercial e industrial, y hay unos cuantos
+          lugares que se repiten.
+        </p>
+        <p>
+          <strong>Naves metálicas con estructura expuesta en el techo.</strong> Las vigas y largueros
+          interiores son repisas perfectas, y en una nave alta el excremento cae sobre producto, sobre
+          racks y sobre equipo. Aquí el trabajo casi siempre es malla en los accesos y no púas en cada viga.
+        </p>
+        <p>
+          <strong>Andenes de carga.</strong> Combinan techo, resguardo del viento y puertas abiertas buena
+          parte del día. Es el punto de entrada más común de una nave.
+        </p>
+        <p>
+          <strong>Aleros y bordes de techo en construcción comercial</strong>, especialmente donde el
+          material se separó con los años y dejó un hueco continuo a lo largo de la fachada.
+        </p>
+        <p>
+          <strong>Anuncios iluminados.</strong> Calor, resguardo y una repisa perfecta, todo junto. Y el
+          excremento que baja por la fachada del negocio es visible para cada cliente que entra.
+        </p>
+        <p>
+          <strong>Y estructura agrícola:</strong> graneros, cobertizos abiertos y almacenamiento de
+          alimento, donde además del excremento hay pérdida directa de grano y contaminación del alimento.
+        </p>
+        <p>
+          <strong>En un negocio en operación</strong>, lo realista casi siempre es un plan por fases:
+          cerrar primero los accesos principales, después las zonas de descanso, y trabajar en horarios que
+          no detengan la operación. Cerrar una nave completa de golpe rara vez se puede.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Las tres especies que casi siempre son</h2>
+      <div class="measure">
+        <p>
+          En edificios de esta región, tres especies explican la enorme mayoría de las llamadas — y las
+          tres son no nativas, que es lo que abre las opciones.
+        </p>
+        <p>
+          <strong>La paloma feral</strong> es la principal. Se posa en repisas, molduras, vigas y anuncios,
+          anida en huecos y espacios protegidos, y regresa al mismo sitio con mucha constancia. Es la
+          especie donde la exclusión física rinde mejor, precisamente porque es tan fiel al lugar: si el
+          lugar deja de servir, se va a otro edificio y no vuelve a intentarlo.
+        </p>
+        <p>
+          <strong>El estornino pinto</strong> anida en cavidades y por eso se mete en ventilaciones,
+          respiraderos de secadora, huecos de alero y cualquier abertura que dé a un espacio cerrado. Ahí
+          el trabajo es cerrar aberturas con malla del calibre correcto, y el problema típico es que la
+          gente tapa la ventilación en vez de ponerle malla, lo cual crea un problema de humedad nuevo.
+        </p>
+        <p>
+          <strong>El gorrión común</strong> es más pequeño, lo cual importa: pasa por huecos que se ven
+          demasiado chicos, y anida en espacios diminutos detrás de letreros, en marcos y en esquinas de
+          alero. Un trabajo diseñado para paloma no necesariamente lo excluye.
+        </p>
+        <p>
+          <strong>Y luego están las nativas</strong>, que aparecen menos en edificios comerciales pero sí
+          en casas: golondrinas bajo aleros, aves que ocupan una ventilación en primavera. Ahí cambia todo
+          y por eso identificamos antes de proponer.
+        </p>
+        <p>
+          <strong>Cómo se identifica sin ser biólogo.</strong> Una foto decente del ave, otra del nido o
+          del sitio, y saber el tamaño de la abertura por donde entran suele bastar. Si hay duda, se
+          resuelve con la duda a favor de la protección y se trabaja solo con exclusión, que es la opción
+          conservadora y siempre legal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cómo se planea un trabajo de aves</h2>
+      <div class="measure">
+        <p>
+          A diferencia de un tratamiento, esto se parece más a una obra pequeña, y se planea como tal.
+        </p>
+        <p>
+          <strong>Primero se mapea el edificio.</strong> Dónde duermen, dónde anidan y por dónde entran son
+          tres cosas distintas y con frecuencia son tres lugares distintos. Un trabajo que solo atiende uno
+          de los tres mueve el problema unos metros.
+        </p>
+        <p>
+          <strong>Después se decide método por sitio.</strong> Una abertura pide malla; una repisa estrecha
+          pide púas; una repisa ancha pide un dispositivo de pendiente; un hueco continuo bajo un alero
+          pide cierre. Usar púas donde hacía falta malla es el error más común, y se nota a los tres meses.
+        </p>
+        <p>
+          <strong>Luego el orden:</strong> retiro del material del nido cuando ya procede, tratamiento del
+          sitio por los insectos asociados, y al final el cierre. Ese orden no es negociable si no se
+          quiere el problema de los ácaros adentro.
+        </p>
+        <p>
+          <strong>Y por último la verificación.</strong> Un trabajo de aves se juzga a lo largo de
+          semanas: si la instalación se sostiene con viento y sol, y si las aves se reubicaron fuera de las
+          superficies tratadas. Por eso lleva términos propios y no una garantía de treinta días — el
+          plazo simplemente no corresponde a cómo se mide este trabajo.
+        </p>
+        <p>
+          <strong>Y el clima de aquí importa en la instalación.</strong> El viento constante y el sol son
+          duros con los adhesivos y con el plástico. Un sistema instalado con material barato se despega o
+          se cristaliza, y entonces usted pagó por algo que dura un año. Vale la pena preguntar, a
+          cualquiera que cotice, con qué se va a fijar y qué garantía tiene el material.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que no hacemos</h2>
+      <div class="measure">
+        <p>
+          <strong>Ni veneno ni disparos.</strong> Con ninguna especie, protegida o no. Un ave muerta dentro
+          de un muro, sobre un plafón o en un ducto es un problema mayor que el original, y hay además
+          cuestiones legales y de seguridad que no vale la pena tocar.
+        </p>
+        <p>
+          <strong>No tocamos nidos activos.</strong> Ya explicado arriba, y es innegociable.
+        </p>
+        <p>
+          <strong>No hacemos remediación de acumulaciones fuertes.</strong> Limpieza puntual sí; una
+          acumulación grande y de años necesita gente equipada para eso, y se lo decimos con claridad.
+        </p>
+        <p>
+          <strong>No prometemos que las aves desaparezcan del vecindario.</strong> Lo que hacemos es que
+          <em>su</em> edificio deje de ser un sitio utilizable. Las aves se van a otro lado, que es el
+          resultado real y honesto de este trabajo.
+        </p>
+        <p>
+          <strong>Y no alimentamos el miedo para vender.</strong> Se puede escribir mucho sobre lo que
+          transmiten las aves, y hay empresas que construyen toda su venta sobre eso. Las consideraciones
+          de salud son reales cuando hay acumulaciones fuertes, y por eso decimos que esa limpieza le
+          corresponde a gente equipada para ello. Más allá de ahí, las preguntas de salud son del
+          departamento de salud o de un médico, y no de una empresa de control de plagas que quiere
+          cerrarle una venta.
+        </p>
+        <p>
+          <strong>Tampoco somos un equipo.</strong> Es una sola persona, con licencia TPCL 0918482. En un
+          trabajo de aves eso significa que quien evalúa el edificio es quien instala y quien regresa a
+          verificar, y también significa que una nave grande se planea por fases y por fechas reales en
+          lugar de prometerse para la semana entrante.
+        </p>
+        <p>
+          <strong>Y no lleva la garantía de 30 días.</strong> Lleva términos propios, acordados antes,
+          porque lo que se evalúa aquí es si la instalación se sostiene y si las aves se reubicaron fuera
+          de las superficies tratadas — una valoración distinta de la de un tratamiento de plagas, y que
+          se mide en meses y no en semanas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre aves y palomas" />
+  <Cta
+    line="Mande fotos del edificio y de dónde se están posando, y diga si ha visto nidos. Con eso se identifica la especie y se sabe qué procede legalmente — que es lo primero que hay que resolver antes de hablar de métodos."
+  />
+</BaseLayout>

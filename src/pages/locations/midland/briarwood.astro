@@ -1,0 +1,403 @@
+---
+/**
+ * T5 neighbourhood page — Briarwood, north-west Midland, Midland County.
+ *
+ * TWO THINGS CARRY THIS PAGE:
+ *
+ * 1. THE SWIMMING POOLS. The Briarwood Homeowners Association operates TWO
+ *    pools and a playground, and its own records show that in early 2018 the
+ *    pools required major repairs for EQUIPMENT FAILURES and code violations,
+ *    funded by a three-year capital improvement assessment beginning 2019–20.
+ *    That is a documented, first-party fact about pool plant failing — and a
+ *    pool whose circulation stops becomes mosquito habitat within about a
+ *    week. No competitor page in this market is making that connection.
+ *
+ * 2. A DISCREPANCY WE DO NOT RESOLVE. The city plat record shows Briarwood
+ *    Section 1 recorded 1984-07-09 (Max W. Richardson, Cab D Pg 299) and the
+ *    series running to a 21st section in 2012 — eighteen sections in the
+ *    layer. The BWHA's own site says 259 homes and "The first homes were
+ *    built in 1988." 259 homes across 18 sections is implausibly few, which
+ *    suggests the association covers only PART of the platted Briarwood area.
+ *    We could not confirm that. The page FLAGS it and tells the reader to
+ *    check their own deed. Do not tidy this into a clean number.
+ *
+ * VERIFIED platting, City of Midland public ArcGIS Subdivision layer:
+ *   1st 1984-07-09 Max W. Richardson Cab D Pg 299 · 2nd 1986-09-04
+ *   3rd 1988-06-16 · 4th 1993-11-05 · 5th 1995-06-29 · 7th 1997-05-21
+ *   8th 1998-09-16 · 11th 2001-10-24 · 10th 2002-06-05 · 12th 2003-07-01
+ *   13th 2003-10-13 · 15th 2004-03-17 · 14th 2004-05-07 · 16th 2006-06-21
+ *   17th 2007-01-22 · 19th 2010-11-15 · 20th 2011-09-14 · 21st 2012-11-14
+ *   (Sections 6, 9 and 18 do not appear under this name. Documentary absence.)
+ *
+ *  - Covenants of record (Texas HOA registry management certificate for
+ *    BWHA, Inc. d/b/a Briarwood Homeowners Association, subdivision
+ *    "BRIARWOOD ADDITION", Midland County): Declaration of Covenants and
+ *    Restrictions Vol. 1191 Pg. 1; Supplemental Vol. 1191 Pg. 28; Amended
+ *    Dedication, Covenants and Restrictions Vol. 815 Pg. 152; Amended
+ *    Restrictions and Covenants Vol. 1459 Pg. 528; Notice of Filing
+ *    Dedicatory Instruments Doc. 2023-23964; certificate recorded as inst.
+ *    2023-24370 on 11 October 2023.
+ *  - Amenities: two pools and a playground. Pool access by keyed entry with a
+ *    deposit. 2018 major pool repairs for equipment failures and code
+ *    violations; playground mulch replaced for compliance; three-year capital
+ *    improvement assessment from 2019–2020.
+ *  - IDEA Henry school site: preliminary plat for 26.8621 acres at the
+ *    north-east corner of Briarwood Avenue and Navasota Drive, Midland P&Z,
+ *    1 March 2021, Council District 4.
+ *  - Briarwood and the Greathouse Addition DIRECTLY ABUT — their plat extents
+ *    meet. Greathouse Elementary is roughly 330 ft west of Briarwood's western
+ *    plat boundary. (Geometry against the city's own layers; adjacency is
+ *    reliable, exact distances are approximate.)
+ *  - Not in mapped 100-year floodplain; no mapped playa inside the plat extent.
+ *  - Midland County IS on the imported fire ant regulated-areas list.
+ *
+ * COVENANT LANGUAGE — HANDLE WITH CARE. A brokerage guide quotes Briarwood
+ * covenant material requiring trees and shrubs to be trimmed and grass kept
+ * healthy, and vehicles parked off the street overnight. That is an
+ * AGGREGATOR paraphrasing the association, NOT a first-party quote, and the
+ * recorded Declaration text itself was never read. So this page does NOT quote
+ * it verbatim and does NOT attribute words to the association. It describes
+ * the subject matter and sends the reader to the recorded volumes. Never
+ * upgrade this to a quotation.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - Acreage, lot sizes, alleys, curbs, cul-de-sacs, developer name.
+ *  - Attendance zones. Greathouse Elementary is 330 ft away; proximity is not
+ *    a zone assignment and Midland ISD publishes zones only via a JS tool.
+ *  - Whether the IDEA Henry campus was built. A preliminary plat was
+ *    considered in 2021; we do not know the outcome. Say only that.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Midland', path: '/locations/midland/' },
+  { name: 'Briarwood', path: '/locations/midland/briarwood/' },
+];
+
+const quickAnswer =
+  'Briarwood in north-west Midland was platted from 1984 and built out over nearly thirty years. Its association runs two swimming pools, which matters more than it sounds: pool equipment that stops circulating becomes mosquito habitat in about a week. Work here is carried out personally by the licence holder, Valentin Moriel, TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'How can a swimming pool cause a mosquito problem?',
+    a: 'By stopping. A pool that is circulating and chlorinated is not mosquito habitat — the water moves, the chemistry is hostile, and eggs do not survive it. A pool whose pump fails, or whose filtration is switched off, or that is covered and left over winter with rainwater on top of the cover, becomes still water within days. Mosquitoes need roughly a week of standing water to complete a generation, and a swimming pool holds tens of thousands of gallons of it. One neglected pool can out-produce every flowerpot saucer on a street combined. It is worth knowing that the Briarwood association itself had to carry out major pool repairs for equipment failures in 2018 — not as criticism, but because it shows that pool plant does fail, and when it does the clock starts.',
+  },
+  {
+    q: 'What should I do about my own pool?',
+    a: 'Keep it circulating, including through the shoulder seasons when it is tempting not to. If you cover it, make sure water does not pond on top of the cover — that layer is often the actual breeding site rather than the pool underneath. If the pump is going to be off for more than a few days in warm weather, that is the point at which it becomes a mosquito question rather than a maintenance one. And if a neighbouring property has a pool that has clearly stopped being maintained, it is worth a polite conversation, because no amount of treatment on your side of the fence competes with a breeding site that size next door.',
+  },
+  {
+    q: 'How old are the houses in Briarwood?',
+    a: 'It depends which part, and the range is nearly thirty years. The City of Midland recorded the first Briarwood section in July 1984, surveyed by Max W. Richardson, and further sections followed through 1986, 1988, the 1990s, a busy run in the early 2000s, and on to a twenty-first section in November 2012. So a house here might sit on a slab poured in the mid-1980s or one poured after 2010. That matters because older slabs have had decades of settling, plumbing repairs and re-landscaping around the perimeter, with any original termite pre-treatment long past being a factor, while newer ones sit on more recently disturbed fill with a much shorter history.',
+  },
+  {
+    q: 'Am I definitely in the Briarwood Homeowners Association?',
+    a: 'Worth checking rather than assuming, and there is a genuine puzzle here we could not resolve. The association states it covers 259 homes and that the first homes were built in 1988. The city\'s plat record, though, shows the first Briarwood section recorded in 1984 and eighteen sections in total running to 2012. Two hundred and fifty-nine homes across eighteen platted sections is a low number, which suggests the association may cover only part of the platted Briarwood area rather than all of it. We are flagging that rather than guessing at an answer. If it matters to you — and for pool access, assessments and covenant obligations it does — your deed and the recorded documents will say. The covenants are recorded in Midland County at Volume 1191, with amendments at Volume 815 and Volume 1459.',
+  },
+  {
+    q: 'Do the covenants say anything about my yard?',
+    a: 'The recorded documents do address landscaping and property condition, and we are going to be careful about how we put that. We have read the association\'s management certificate, which lists the recorded instruments, but we have not read the full Declaration text itself — and secondary summaries of covenants circulate widely and are not always accurate. So rather than quote you words we cannot stand behind, here is the honest version: yard condition is a covenant matter in Briarwood, unlike some Midland neighbourhoods where it is purely a city code question, and the actual wording is recorded at Volume 1191, Page 1, with amendments. Read your own copy, or ask the association for one, rather than trusting any website\'s paraphrase.',
+  },
+  {
+    q: 'Is Briarwood in a floodplain?',
+    a: 'Not according to the City of Midland\'s published mapping — the plat area centroid does not fall within the mapped 100-year floodplain, and no mapped playa lake sits inside the plat extent. That is a better answer than some north Midland neighbourhoods get; Saddle Club, for instance, has a named playa against its north-east corner and mapped floodplain across part of its Lakes section. Practically it means mosquito pressure in Briarwood is driven by water on properties — pools, irrigation, containers — rather than by a basin nearby that fills after every storm. As always, for anything that actually matters, check your own parcel with the city rather than with a pest control website.',
+  },
+  {
+    q: '¿Atienden Briarwood, en Midland?',
+    a: 'Sí, y Midland forma parte de la ruta habitual. Valentin atiende en español y hace el trabajo personalmente. Un dato local que vale la pena: la asociación de Briarwood mantiene dos albercas, y una alberca cuya bomba deja de funcionar se convierte en criadero de mosquitos en cerca de una semana — más que todas las macetas de la cuadra juntas. Si su alberca va a estar apagada varios días en calor, eso ya es un tema de plagas. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Briarwood, Midland TX"
+  description="Mosquito, termite, scorpion and rodent work in Briarwood, north-west Midland — pools, thirty years of build eras, and no mapped floodplain. TPCL 0918482."
+  path="/locations/midland/briarwood/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Briarwood, Midland',
+    description: 'Mosquito, termite, scorpion, spider and rodent control for homes in the Briarwood area of north-west Midland, Midland County.',
+    areaServed: ['Midland', 'Midland County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Midland · Midland County · platted 1984 to 2012</p>
+      <h1>Pest Control in Briarwood, Midland</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Briarwood is a well-run neighbourhood with an active association, two swimming pools and a
+          playground, and there is nothing wrong with it. So this page is not going to invent a problem.
+          Instead it is about three specific things that are true here and that change what we would look
+          at: the pools, the spread of build dates, and a question about who is actually in the
+          association that we could not answer and think you should know exists.
+        </p>
+        <p>
+          <strong>Start with the pools, because pools are the largest pieces of standing water any
+          residential neighbourhood contains.</strong> A working pool is not a mosquito problem — moving,
+          chlorinated water is hostile to larvae. A pool that stops working is a different object
+          entirely, and it becomes one within days rather than months.
+        </p>
+        <p>
+          That is not hypothetical here. The association's own records show that in early 2018 its pools
+          required major repairs after equipment failures and code violations, funded through a three-year
+          capital improvement assessment beginning in 2019 and 2020. We mention it not as criticism —
+          every pool plant in the world eventually fails, and Briarwood evidently dealt with it properly —
+          but because it is a documented reminder that pool equipment does fail, including on well-run
+          properties, and that the mosquito clock starts when it does.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The arithmetic of a stopped pool</h2>
+      <div class="measure">
+        <p>
+          It is worth being concrete about scale, because people underestimate this consistently and then
+          spend money in the wrong place.
+        </p>
+        <p>
+          <strong>A mosquito needs standing water for roughly a week</strong> to get from egg to flying
+          adult in warm weather. It does not need much — a bottle cap will do for a few individuals. What
+          it needs is for the water to be still and to stay there.
+        </p>
+        <p>
+          <strong>An average residential swimming pool holds somewhere in the tens of thousands of
+          gallons.</strong> When the pump stops in July, that entire volume becomes available habitat
+          within days, and unlike a flowerpot saucer it does not dry out. A single unmaintained pool can
+          produce more mosquitoes than every container on the surrounding streets combined, which is why
+          public health departments across the country treat abandoned pools as a specific category of
+          problem rather than as one more container.
+        </p>
+        <p>
+          <strong>The cover is often the actual breeding site.</strong> This is the part almost nobody
+          thinks about. A pool covered for the winter frequently collects rainwater and debris on top of
+          the cover — an inch or two of still, organically rich water spread over several hundred square
+          feet, warmed by sun, with no chlorine and no circulation whatsoever. The pool underneath may be
+          perfectly fine. The layer on top is close to an ideal nursery.
+        </p>
+        <p>
+          <strong>So the practical rules are short.</strong> Keep circulation running, including through
+          spring and autumn when it feels unnecessary. If the pump will be off for more than a few days in
+          warm weather, treat that as a pest decision rather than a maintenance one. Keep water pumped off
+          the cover. And if a nearby property has visibly stopped maintaining a pool, that is worth a
+          neighbourly word, because no treatment on your side of the fence competes with a breeding site
+          of that size fifty feet away.
+        </p>
+        <p>
+          <strong>What treatment can and cannot do about it.</strong> We can knock down adults and reduce
+          the harbourage they rest in during the day, and on a property with a controlled water situation
+          that makes a garden genuinely usable. What we cannot do is out-treat an active breeding site
+          nearby. Mosquito control is suppression, not eradication, and anyone promising otherwise near a
+          standing pool is selling something.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Thirty years of slabs on one set of streets</h2>
+      <div class="measure">
+        <p>
+          The City of Midland's plat records give Briarwood an unusually long build-out. The first section
+          was recorded on <strong>9 July 1984</strong>, surveyed by Max W. Richardson, and eighteen
+          sections appear in the city's layer under the Briarwood name — a second in 1986, a third in 1988,
+          a fourth in 1993, a fifth in 1995, then a steady run through the late 1990s, a busy cluster in
+          the early 2000s, and further sections in 2010, 2011 and a twenty-first in
+          <strong>November 2012</strong>.
+        </p>
+        <p>
+          <strong>Nearly three decades between the first slab and the last.</strong> For most purposes that
+          is invisible — the neighbourhood reads as one place. For termite and perimeter work it is the
+          most important thing about it.
+        </p>
+        <p>
+          <strong>On the 1980s ground</strong>, a slab has had forty years of settling. In that time the
+          property has very likely had plumbing repaired or replaced, a patio added, beds re-landscaped,
+          fences replaced, and irrigation installed or altered. Every one of those touches the perimeter
+          and every one is a potential route past whatever protection was originally there. Any
+          pre-construction termite treatment applied in 1985 has long since stopped being a factor in the
+          calculation.
+        </p>
+        <p>
+          <strong>On the 2000s and 2010s ground</strong>, the questions are different. The slab sits on
+          more recently graded and often imported fill, which settles on its own schedule and can open
+          small gaps at expansion joints and plumbing penetrations over the first several years. A
+          pre-treatment, if applied, is recent enough to be worth asking the builder about — and on a house
+          from 2010 or 2012 there is a reasonable chance somebody can still answer.
+        </p>
+        <p>
+          <strong>Why we ask which section you are in.</strong> It decides where an inspection spends its
+          time. On older ground we are looking hardest at the perimeter history — joints, penetrations,
+          soil contact, what has been added over four decades. On newer ground we are looking at fill
+          behaviour, at grade against the slab, and at what the builder did or did not do. Same
+          neighbourhood, different inspection.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A question we could not answer, and would rather flag</h2>
+      <div class="measure">
+        <p>
+          The Briarwood Homeowners Association states that it covers <strong>259 homes</strong> and that
+          <strong>the first homes were built in 1988</strong>. Both figures come from the association's own
+          material, so they are as first-party as it gets.
+        </p>
+        <p>
+          They also do not sit comfortably with the city's plat record, which shows the first Briarwood
+          section recorded in <strong>1984</strong> — four years before the association's stated first
+          houses — and eighteen sections platted in total across nearly thirty years. Two hundred and
+          fifty-nine homes is a modest number to spread across eighteen sections.
+        </p>
+        <p>
+          <strong>Our reading, offered as a reading and not a finding</strong>, is that the association
+          probably covers part of the platted Briarwood area rather than all of it — which would be
+          entirely ordinary, since sections platted decades apart are frequently governed separately. But
+          we could not confirm it, so we are not going to write it as though we had.
+        </p>
+        <p>
+          <strong>Why this is worth your two minutes rather than ours.</strong> Whether you are inside the
+          association determines whether you have pool access, whether you owe assessments, and whose rules
+          govern your yard, your fence and your roof. It also determines who to talk to if a treatment
+          would involve anything visible. Your deed answers it. So do the recorded documents: the
+          Declaration of Covenants and Restrictions is at <strong>Volume 1191, Page 1</strong> in Midland
+          County, with supplemental restrictions at Volume 1191, Page 28, and amendments at Volume 815,
+          Page 152 and Volume 1459, Page 528. The association's current management certificate was
+          recorded in October 2023.
+        </p>
+        <p>
+          <strong>On yard covenants specifically, a deliberate restraint.</strong> Briarwood's recorded
+          documents do address landscaping and property condition — which already distinguishes it from a
+          neighbourhood like <a href="/locations/midland/polo-park/">Polo Park</a>, whose 1982 covenants say
+          nothing about yards at all and where grass height is purely a
+          <a href="/compliance/weed-ordinances/">city ordinance</a> matter. But we have read the
+          management certificate rather than the full Declaration, and paraphrases of covenants circulate
+          widely and are not always accurate. So we are telling you the subject is covered and pointing you
+          at the recorded volumes, rather than quoting you words we have not verified. If a website quotes
+          your covenants at you, including this one, check the recording.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What Briarwood property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> AgriLife entomology, the federal quarantine list, and
+          this neighbourhood's documented characteristics — the pools, the 1984-to-2012 build range, the
+          absence of mapped floodplain, and the institutional development on its edges. This is what these
+          conditions produce, not a report on any particular address.
+        </p>
+        <p>
+          <strong>Mosquitoes, from containers rather than from a basin.</strong> The floodplain answer here
+          is clean, so what you get is largely produced nearby: pools and pool covers first, then
+          irrigation low spots, saucers, tarps, gutters, wheelbarrows and toys left out. That is good news,
+          because container sources are the ones you can actually eliminate.
+        </p>
+        <p>
+          <strong>Termites, and which decade your slab is from.</strong> Covered above, and the reason we
+          ask about sections. Slab construction hides evidence rather than preventing problems, so the
+          first sign is usually mud tubes on a foundation wall, trim that gives when pressed, or a swarm on
+          a warm spring day.
+        </p>
+        <p>
+          <strong>Fire ants.</strong> Midland County appears on the federal imported fire ant
+          regulated-areas register at 7 C.F.R. §301.81-3, adopted into Texas law at 4 TAC §19.101. Watered
+          residential turf suits them, and identification before treatment matters — a red harvester ant
+          mound and an imported fire ant nest need different products and different methods. Movement
+          rules apply to soil, sod, nursery stock, hay stored on the ground and used soil-moving equipment
+          leaving the county for one that is not quarantined.
+        </p>
+        <p>
+          <strong>Scorpions through the dry months.</strong> Striped bark scorpions are active after dark
+          and climb well, so they turn up high in a structure as often as low. AgriLife entomologists note
+          they move indoors when it becomes excessively dry outside. Harbourage removal and exclusion do
+          more than spraying — and in a neighbourhood with mature landscaping, harbourage means leaf
+          litter against foundations, stacked material along fences and the spaces under decking and sheds.
+        </p>
+        <p>
+          <strong>Rodents from October.</strong> The first properly cold nights move them toward the
+          nearest structure. Garage door seals, soffit returns, utility penetrations and any limb touching
+          a roof are the usual routes in.
+        </p>
+        <p>
+          <strong>A note on construction at the edges.</strong> A preliminary plat for a school site of
+          nearly twenty-seven acres at the north-east corner of Briarwood Avenue and Navasota Drive went
+          before Midland's planning commission in March 2021. We do not know what became of it, so we are
+          not going to write about a campus as though it exists. What we would say generally is that
+          earthmoving on adjacent ground displaces whatever was living in it toward the nearest cover, and
+          that is the moment perimeter work is worth doing rather than the following quarter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we do in Briarwood</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Midland is a regular part of the route</strong>, so scheduling is straightforward.
+          Recurring service runs bi-monthly or quarterly, priced on the size of the property, the pressure
+          and the frequency, with a higher initial visit. <strong>No contracts</strong> — no term, no
+          cancellation fee. Termite, bed bug, mosquito, lawn, brush and junk work is individually quoted
+          after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          <strong>One practical note for a covenanted neighbourhood.</strong> If a treatment would involve
+          anything visible from the street — a temporary sign, equipment left in place, a disturbed bed —
+          tell us and we will work around what your association expects. It is far easier to plan around
+          than to explain afterwards, and it costs nothing to ask.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are one man, based in Seminole, about eighty miles
+          north-west. Midland is on the regular route so getting here is not the issue, but we are not the
+          closest company to Briarwood and we will not pretend to be. What we offer instead is that the
+          licence holder does the work himself — TPCL 0918482, verifiable against the Texas Department of
+          Agriculture's records in about two minutes — guarantee terms written out with a duration, a
+          covered scope and explicit exclusions, and no contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Briarwood pest control questions" />
+  <Cta
+    market="Briarwood"
+    line="Tell him roughly when the house was built and whether there is a pool on the property or next door. Those two answers change the inspection more than anything else in this neighbourhood."
+  />
+</BaseLayout>

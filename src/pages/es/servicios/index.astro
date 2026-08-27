@@ -27,7 +27,25 @@ const crumbs = [
 ];
 
 /** Spanish pages that are actually written. Linked. */
-const WRITTEN = ['control-de-plagas', 'control-de-escorpiones', 'control-de-termitas'];
+/** El árbol en español está COMPLETO desde agosto de 2026 — los doce servicios
+ *  tienen página propia escrita al piso M1, con hreflang recíproco en ambos
+ *  lados. La lista se conserva porque el patrón sigue vigente: si algún día se
+ *  agrega un servicio nuevo, su página en español no existe hasta que se
+ *  escribe, y la tarjeta debe salir sin enlace hasta entonces. */
+const WRITTEN = [
+  'control-de-plagas',
+  'control-de-escorpiones',
+  'control-de-termitas',
+  'control-de-roedores',
+  'jardineria-y-control-de-maleza',
+  'limpieza-de-terrenos',
+  'retiro-de-escombros',
+  'tratamiento-de-chinches',
+  'control-de-mosquitos',
+  'pulgas-y-garrapatas',
+  'retiro-de-animales-silvestres',
+  'control-de-aves-y-palomas',
+];
 
 const grupos = [
   { key: 'pest', title: 'Control de plagas' },
@@ -40,6 +58,15 @@ const esBlurb: Record<string, string> = {
   'control-de-plagas': 'Servicio recurrente o tratamiento único, con inspección antes de aplicar nada.',
   'control-de-escorpiones': 'La plaga que define esta región. Sellado y exclusión más que rociar.',
   'control-de-termitas': 'Sí hay termitas aquí, y creer que no las hay es lo que causa el daño.',
+  'control-de-roedores': 'Casi todo el trabajo serio es sellar, no envenenar. Trampas, cebo profesional y exclusión.',
+  'jardineria-y-control-de-maleza': 'Corte, fertilización y herbicida con licencia estatal de Control de Maleza.',
+  'limpieza-de-terrenos': 'Desmonte, acarreo del material y herbicida residual. Si ya hay aviso, dígannos la fecha.',
+  'retiro-de-escombros': 'Cargamos y nos llevamos, y tratamos el suelo donde estaba la pila en la misma visita.',
+  'tratamiento-de-chinches': 'Tratamiento químico con seguimiento programado. No hacemos calor y lo decimos primero.',
+  'control-de-mosquitos': 'Aquí llegan por pulsos después de la lluvia. El momento vale más que la frecuencia.',
+  'pulgas-y-garrapatas': 'La propiedad es nuestra mitad; el animal es del veterinario. Las dos tienen que ir juntas.',
+  'retiro-de-animales-silvestres': 'Zorrillos, mapaches y tlacuaches bajo construcciones. Trampa y exclusión, nunca veneno.',
+  'control-de-aves-y-palomas': 'Exclusión física y púas. La identificación va primero: las aves nativas están protegidas.',
 };
 
 const quickAnswer =
@@ -64,8 +91,9 @@ const quickAnswer =
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <div class="measure">
         <p>
-          <a href="/services/">This page in English</a>. Las páginas marcadas abajo tienen versión completa
-          en español; las demás existen en inglés y se las explicamos por teléfono en español.
+          <a href="/services/">This page in English</a>. Los doce servicios tienen ya su página completa
+          en español — escritas en español, no traducidas, con las mismas cifras, los mismos límites y las
+          mismas cosas que no hacemos que en la versión en inglés.
         </p>
       </div>
 

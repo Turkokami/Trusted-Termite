@@ -55,20 +55,28 @@ const entries = [
     blurb: 'Why the dry-climate assumption is wrong, when they swarm here, and how to tell a desert termite from a structural threat.',
     written: true,
   },
-  { slug: 'red-harvester-ant', name: 'Red harvester ant', latin: 'Pogonomyrmex barbatus', blurb: 'The bare circular mound with foraging trails. Stings hard, does not come indoors.', written: false },
-  { slug: 'red-imported-fire-ant', name: 'Red imported fire ant', latin: 'Solenopsis invicta', blurb: 'At the western edge of its range here, and mostly a Basin problem rather than a Llano one.', written: false },
-  { slug: 'brown-recluse', name: 'Brown recluse', latin: 'Loxosceles reclusa', blurb: 'Present, worth respecting, and the most consistently over-reported spider in Texas.', written: false },
-  { slug: 'black-widow', name: 'Black widow', latin: 'Latrodectus spp.', blurb: 'Meter boxes, well houses and anything opened twice a year.', written: false },
-  { slug: 'house-mouse', name: 'House mouse', latin: 'Mus musculus', blurb: 'The autumn arrival, and the gap you never looked at.', written: false },
-  { slug: 'roof-rat-and-norway-rat', name: 'Roof rat and Norway rat', latin: 'Rattus rattus, R. norvegicus', blurb: 'Two animals with different habits, nesting in different parts of the same building.', written: false },
-  { slug: 'german-cockroach', name: 'German cockroach', latin: 'Blattella germanica', blurb: 'The one that is genuinely different, and the one where sanitation beats spraying.', written: false },
-  { slug: 'field-cricket', name: 'Field crickets', latin: 'Gryllus spp.', blurb: 'The West Texas autumn phenomenon, and the lights that cause it.', written: false },
-  { slug: 'paper-wasp', name: 'Paper wasps and yellowjackets', latin: 'Polistes spp., Vespula spp.', blurb: 'When a nest is genuinely urgent and when it can wait for winter.', written: false },
-  { slug: 'mosquito', name: 'Mosquitoes', latin: 'Culicidae', blurb: 'Floodwater breeders in a country with no permanent streams.', written: false },
+  { slug: 'red-harvester-ant', name: 'Red harvester ant', latin: 'Pogonomyrmex barbatus', blurb: 'The bare circular mound with foraging trails. Stings hard, does not come indoors — and Texas A&M says leave most of them alone.', written: true },
+  { slug: 'red-imported-fire-ant', name: 'Red imported fire ant', latin: 'Solenopsis invicta', blurb: 'At the western edge of its range here, and mostly a Basin problem rather than a Llano one. Two widely quoted risk numbers, both misread.', written: true },
+  { slug: 'brown-recluse', name: 'Recluse spiders', latin: 'Loxosceles spp.', blurb: 'Present, worth respecting, and the most over-diagnosed bite in American medicine — with the numbers.', written: true },
+  { slug: 'black-widow', name: 'Black widow', latin: 'Latrodectus spp.', blurb: 'Meter boxes, well houses and anything opened twice a year — and 23,409 reported exposures with no deaths.', written: true },
+  { slug: 'house-mouse', name: 'House mouse', latin: 'Mus musculus', blurb: 'A quarter-inch gap, a thirty-foot world — and why it is not the hantavirus mouse.', written: true },
+  { slug: 'roof-rat-and-norway-rat', name: 'Norway rat and roof rat', latin: 'Rattus norvegicus, R. rattus', blurb: 'One burrows, one nests overhead — and only one of them is documented in this region.', written: true },
+  { slug: 'german-cockroach', name: 'German cockroach', latin: 'Blattella germanica', blurb: 'The one where spraying makes it worse, with the extension evidence for why.', written: true },
+  { slug: 'field-cricket', name: 'Field crickets', latin: 'Gryllus spp.', blurb: 'The autumn flight lasts a fortnight — and Texas A&M says the lighting matters more than the insecticide.', written: true },
+  { slug: 'paper-wasp', name: 'Paper wasps and yellowjackets', latin: 'Polistes spp., Vespula spp.', blurb: 'When a nest is genuinely urgent and when it can wait for winter — and the one rural remedy that must never be used.', written: true },
+  { slug: 'mosquito', name: 'Mosquitoes', latin: 'Culicidae', blurb: 'Flight range decides whether your yard matters — from one mile to ten — and the West Nile numbers with the county detail attached.', written: true },
 ];
 
 const ready = entries.filter((e) => e.written);
+/* Every entry is now written. Kept as a guard: if a future entry ships with
+   written:false, this surfaces it rather than letting it vanish from the page. */
 const upcoming = entries.filter((e) => !e.written);
+if (upcoming.length) {
+  throw new Error(
+    `Pest library: ${upcoming.length} unwritten entr(y/ies) — ${upcoming.map((e) => e.slug).join(", ")}. ` +
+      "The index no longer renders a \"still to be written\" list. Either write the page or restore that section."
+  );
+}
 
 const quickAnswer =
   'A reference library for the pests that actually matter in West Texas, sourced to Texas A&M AgriLife Extension rather than to national pest control copy. Identification comes first, because several of the most common calls out here turn out to be an animal that does no harm — and because a treatment aimed at the wrong species is money spent on the wrong problem.';
@@ -392,28 +400,43 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <h2>Still to be written</h2>
+      <h2>The library is complete, which is not the same as finished</h2>
       <div class="measure">
         <p>
-          These pages are researched but not yet written to the depth that the rest of this site holds itself to, which is three thousand words of real local substance.
-          They are listed rather than linked, because a thin page under a heading that promises a reference
-          is worse than an honest gap. They ship as they are finished.
-        </p>
-        <ul class="tight">
-          {upcoming.map((e) => (
-            <li><strong>{e.name}</strong> <em>({e.latin})</em> — {e.blurb}</li>
-          ))}
-        </ul>
-        <p style="margin-top:1.4rem">
-          In the meantime, all of them are covered practically on the relevant
-          <a href="/services/">service pages</a>, and the ant identification question specifically is dealt
-          with at length on the <a href="/compliance/fire-ant-quarantine/">fire ant quarantine page</a>.
+          Every species we set out to cover now has a page, and each of those pages was written to the
+          same standard the rest of this site holds itself to — three thousand words of substance, sourced
+          to Texas A&amp;M AgriLife Extension and to state and federal health data, with the local
+          application argued rather than assumed. There is no placeholder list here any more, which we are
+          quietly pleased about, because a heading promising a reference over a set of stubs is worse than
+          an honest gap.
         </p>
         <p>
-          <strong>One structural note.</strong> There is no Texas A&amp;M AgriLife structural pest guide
-          for the High Plains or the Permian Basin as a distinct region — its regional publications here
-          are agricultural. So the statewide material has to be read against local conditions, and nobody
-          has published that reading. Doing it properly is why these pages take a while.
+          <strong>What complete does not mean.</strong> It does not mean these pages are done being
+          maintained. Several of them rest on figures that will move — quarantine boundaries, surveillance
+          case counts, pesticide registrations, the wording of a CDC risk statement. Those sit in a
+          register with a review interval attached to each one, and the build fails if a critical fact goes
+          unverified past its interval. A reference page that nobody re-reads becomes wrong quietly, and
+          quietly wrong is the worst way for a page like this to fail.
+        </p>
+        <p>
+          <strong>It also does not mean we covered everything that bites.</strong> There are plenty of
+          insects out here we have not written about, and we will add them where we can do it honestly. The
+          limiter has never been effort. It is whether there is real, checkable material about how a
+          species behaves in this specific landscape — and for some of them there simply is not, which is
+          itself worth saying out loud rather than papering over with generic content.
+        </p>
+        <p>
+          <strong>One structural note that shaped the whole library.</strong> There is no Texas A&amp;M
+          AgriLife structural pest guide for the High Plains or the Permian Basin as a distinct region —
+          its regional publications here are agricultural. So the statewide material has to be read against
+          local conditions, and nobody has published that reading. Doing it properly is why these pages
+          took as long as they did, and it is why several of them stop and tell you where the sourcing runs
+          out instead of continuing confidently past it.
+        </p>
+        <p>
+          Everything in the library is also covered practically on the relevant
+          <a href="/services/">service pages</a>, and the ant identification question specifically is dealt
+          with at length on the <a href="/compliance/fire-ant-quarantine/">fire ant quarantine page</a>.
         </p>
         <p style="color:var(--ink-3);font-size:.95rem">
           Biology, identification and management guidance throughout this library follow Texas A&amp;M

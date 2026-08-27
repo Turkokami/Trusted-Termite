@@ -1,0 +1,440 @@
+---
+/**
+ * Problem spoke — "something is scratching in my attic at night."
+ *
+ * THE ARGUMENT: time of day narrows the list, then droppings, hole size and an
+ * inspection settle it. Sound alone does not identify an animal, and the page
+ * says so on the authority of the wildlife damage literature itself.
+ *
+ * VERIFIED:
+ *  - ICWDM, verbatim and load-bearing: "Noises and sounds in wildlife damage
+ *    settings are not a very accurate way to determine the species causing a
+ *    problem." Its own noise table: scratching in wall → rats, mice, birds;
+ *    running in attic → squirrels; heavy walking → raccoon or opossum.
+ *  - UC IPM 74122: "Tree squirrels are active during the day"; most active
+ *    early morning and late afternoon; one or two litters a year. Newspaper
+ *    plug test, verbatim: "One way to test whether any squirrels are remaining
+ *    is to plug the entrance with a loose wad of newspaper; if any remain
+ *    inside they will remove the plug to get out."
+ *  - UC IPM 74106: "Rats are mostly active at night." Roof rats nest in
+ *    attics, wall voids, ceiling voids and cabinets.
+ *  - MU G9442: "Mice occasionally are seen during daylight hours, but they are
+ *    most active at night."; "House mice have a characteristic musky odor";
+ *    traps no more than about 10 feet apart.
+ *  - ICWDM raccoons: "Raccoons are nocturnal."; "Most litters are born in
+ *    April or May" with late litters into June–August; 3 to 5 young.
+ *  - ICWDM bats: droppings "segmented, elongated, and friable", powdery when
+ *    crushed with "shiny bits of undigested insect remains"; rodent droppings
+ *    "harder, and are more fibrous". Activity peaks "on hot days in attics,
+ *    before leaving the roost at dusk, and upon returning at dawn."
+ *  - ICWDM hole sizes: fox and gray squirrels "the size of a baseball"; red
+ *    squirrels "the size of a golf ball"; flying squirrels "the size of a
+ *    quarter".
+ *  - AgriLife Insects in the City, "Rodents in attics": roof rats enter
+ *    "through a gap under a door as narrow as 1/2 inch, or a hole the size of
+ *    a quarter"; entry points "gaps around the garage door, venting and
+ *    flashing on the roof, and ground-level gaps under and around siding";
+ *    squirrel damage "sometimes opening large holes in soffits and fascia, and
+ *    chewing on wires"; one-way door or repeater trap on the roof.
+ *  - UGA B1248: "Attic noise during the day could be gray squirrels."; fresh
+ *    droppings "black, shiny, and moist. Old droppings are dry and brown or
+ *    gray."; order of control: habitat modification → exclusion → removal →
+ *    lethal. Sparrows, starlings and pigeons unprotected; nearly all other
+ *    native birds protected under the MBTA.
+ *
+ * ⚠️ LEGAL SECTION — THE PART A PEST SITE MOST OFTEN GETS WRONG:
+ *  - BATS: the citation is TEXAS PARKS AND WILDLIFE CODE § 63.101, NOT the
+ *    Health & Safety Code. § 63.101(a) bars hunting, sale, purchase or
+ *    possession-after-purchase; (b) permits removal or hunting of bats inside
+ *    or on buildings occupied by people; (c) exempts animal control officers,
+ *    peace officers, health officials, persons transporting a bat for rabies
+ *    testing, and licensed pest control service providers. AgriLife: "It is a
+ *    federal violation to use chemicals—including insecticides, rodenticides,
+ *    disinfectants, and mothballs—to kill bats."
+ *  - BAT TIMING: AgriLife's Texas window is "between September and April,
+ *    depending on your location in the state"; "Evicting the adults during
+ *    maternity season will orphan and kill the babies inside the building."
+ *    One-way devices stay "at least 1 week during warm weather and 2 weeks in
+ *    cool weather (less than 50 degrees F)". DO NOT use Penn State's
+ *    month-precise dates — they are north-eastern. NOT VERIFIED for Texas.
+ *  - MIGRATORY BIRDS: 50 CFR 21.14 authorises "The prompt removal of migratory
+ *    birds, including nests, eggs, and nestlings, from the interior of
+ *    buildings" and explicitly "does not apply to birds or nests on building
+ *    exteriors."
+ *  - RELOCATION: raccoons, foxes, skunks and coyotes may not be transported at
+ *    all in Texas under the rabies-control rules (25 TAC ch. 169; Health &
+ *    Safety Code ch. 826) — a Class C misdemeanour. Other nuisance fur-bearers
+ *    need written TPWD Wildlife Division authorisation PLUS the receiving
+ *    landowner's permission. Exempt parties who do transport a rabies-vector
+ *    species must release within a ten-mile radius and within the county of
+ *    capture. The honest framing for this site is exclusion and on-site
+ *    resolution, NOT relocation.
+ *
+ * ⚠️ THREE HONESTY FLAGS:
+ *  1. NO TEXAS SQUIRREL LITTER MONTHS. Not found in any Texas source. The
+ *     Mississippi dates (Jan–Mar, Jun–Aug) are a regional analogue and must be
+ *     attributed to Mississippi if used at all. This page uses UC IPM's
+ *     season-level statement instead and names no months.
+ *  2. NO OPOSSUM SOUND PROFILE. Essentially nothing is sourced. ICWDM's "heavy
+ *     walking → raccoon or opossum" is the whole of it.
+ *  3. ROOF RATS ARE NOT DOCUMENTED IN THIS REGION. Consistent with
+ *     /pest-library/roof-rat-and-norway-rat/ — no source places established
+ *     roof rats here. The page describes overhead-nesting behaviour without
+ *     asserting the species is present, and lets the job evidence decide.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Rodent control', path: '/services/rodent-control/' },
+  { name: 'Noises in the attic', path: '/services/rodent-control/noises-in-the-attic/' },
+];
+
+const quickAnswer =
+  'Time of day narrows it fast — daytime running is usually squirrels, night-time scratching is usually rodents — but the wildlife damage literature is blunt that noise is not an accurate way to identify a species. Droppings, hole size and an inspection settle it. And what you are allowed to do next depends on the animal: bats and most birds are protected, and several Texas species cannot legally be relocated at all.';
+
+const faqs = [
+  {
+    q: 'Daytime or night-time — what does that actually tell me?',
+    a: 'It is the best free clue you have. Tree squirrels are active during the day and are most active in early morning and late afternoon, so running and rolling sounds at eight in the morning point that way. Rats are mostly active at night, and house mice occasionally appear in daylight but are most active after dark. Raccoons are nocturnal. So daytime activity moves squirrels to the top of the list and night-time activity moves rodents up. What it does not do is settle the question — the wildlife damage literature states outright that noises and sounds are not a very accurate way to determine the species causing a problem.',
+  },
+  {
+    q: 'Can you tell from the sound alone?',
+    a: 'No, and we would rather say so than guess confidently on the phone. The published noise-to-species table is coarse: scratching in a wall means rats, mice or birds; running in an attic means squirrels; heavy walking means a raccoon or an opossum. That is three broad buckets, not an identification. What actually settles it is droppings, the size and location of the entry hole, insulation disturbance, grease marks, chewing damage and — often — simply getting into the attic and looking.',
+  },
+  {
+    q: 'How do I tell the droppings apart?',
+    a: 'Bat droppings are the distinctive ones. They are segmented, elongated and friable, and when crushed they go powdery and reveal shiny bits of undigested insect remains — because bats eat insects and the wing cases catch the light. Rodent droppings are harder and more fibrous, and they do not crumble the same way. Age matters too: fresh droppings are black, shiny and moist, while old ones are dry and brown or grey. A pile of dry grey droppings and no fresh ones means a problem that has already ended, which is a different job.',
+  },
+  {
+    q: 'How big a hole does each animal need?',
+    a: 'Small enough to be discouraging. Fox and grey squirrels use holes about the size of a baseball, red squirrels about the size of a golf ball, and flying squirrels a hole the size of a quarter. AgriLife notes that a half-inch gap is enough for a squirrel to get started, and that rats can get through a gap under a door as narrow as half an inch or a hole the size of a quarter. The usual entry points it names are gaps around the garage door, venting and flashing on the roof, and ground-level gaps under and around siding.',
+  },
+  {
+    q: 'If it is bats, what are the rules?',
+    a: 'Strict ones, and they are worth knowing before anybody touches anything. Texas Parks and Wildlife Code section 63.101 makes it unlawful to hunt a bat or to sell, buy or possess one after purchase. It does allow bats to be removed or hunted inside or on buildings occupied by people, and it exempts several categories including licensed pest control service providers. Separately, AgriLife states that it is a federal violation to use chemicals — insecticides, rodenticides, disinfectants or mothballs — to kill bats. So a bat problem is an exclusion job with one-way devices, done in the right season, and never a chemical one.',
+  },
+  {
+    q: 'When can bats be excluded?',
+    a: 'AgriLife gives the Texas window as generally between September and April, depending on where you are in the state, and the reason for that window is stark: evicting the adults during maternity season will orphan and kill the babies inside the building. It also warns the other way — removing the one-way devices too early can permanently seal bats inside, which kills them and creates odour and sanitation problems. Its guidance is to leave the devices in place at least a week in warm weather and two weeks when it is under fifty degrees.',
+  },
+  {
+    q: 'Will you catch it and release it somewhere else?',
+    a: 'Usually not, and that is the law rather than a preference. In Texas, raccoons, foxes, skunks and coyotes may not be transported at all under the rabies control rules — doing so is a Class C misdemeanour. Other nuisance fur-bearers can only be relocated with written authorisation from Texas Parks and Wildlife plus the permission of the landowner receiving them. Even parties who are exempt and do move a rabies-vector species must release within a ten-mile radius and inside the county of capture. Our work is exclusion and resolving it on site, and any company promising to take your raccoon out to the country is describing something it should not be doing.',
+  },
+  {
+    q: 'Can I just seal the hole?',
+    a: 'Not until you know the animal is out, and there is a good field test for that. UC IPM suggests plugging the entrance with a loose wad of newspaper: if anything is still inside, it will push the plug out to get out. Sealing an animal in is worse in every direction — it kills the animal, it usually produces a new hole somewhere less convenient, and it leaves you with a carcass in a wall void. Get it out, confirm it is out, then seal. In that order, every time.',
+  },
+];
+---
+
+<BaseLayout
+  title="Noises in the Attic at Night | Trusted Termite"
+  description="Daytime or night-time narrows it, but sound alone does not identify an animal. Droppings, hole size, the Texas rules on bats and birds, and why sealing first fails."
+  path="/services/rodent-control/noises-in-the-attic/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Rodent control · problem page</p>
+      <h1>Something is moving in the attic</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Almost every page you will find on this subject offers a confident translation table: this sound
+          means that animal. We are going to start by undercutting that, because the wildlife damage
+          literature does it first. The Internet Center for Wildlife Damage Management — a university
+          consortium, not a company — states plainly that noises and sounds in wildlife damage settings are
+          not a very accurate way to determine the species causing a problem.
+        </p>
+        <p>
+          That does not make the sound useless. Time of day is a genuine filter and it costs nothing.
+          But a filter is not an identification, and the difference matters here more than usual, because
+          what you are legally allowed to do next depends entirely on which animal it is.
+        </p>
+        <p>
+          A rodent, a squirrel, a bat and a nesting bird are four completely different jobs with four
+          different bodies of law behind them. Getting the identification wrong does not just waste money.
+          With bats and with migratory birds it can put you on the wrong side of a federal statute.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What the time of day is worth</h2>
+      <div class="measure">
+        <p>
+          <strong>Daytime activity points at squirrels.</strong> UC IPM states that tree squirrels are
+          active during the day and are often seen in trees, and that they are most active in early morning
+          and late afternoon. Georgia's extension service says it even more directly: attic noise during
+          the day could be grey squirrels. If you hear rolling, running and something that sounds
+          purposeful at nine in the morning, that is the first place to look.
+        </p>
+        <p>
+          <strong>Night-time activity points at rodents.</strong> Rats are mostly active at night. House
+          mice are occasionally seen in daylight but are most active after dark. Scratching that starts
+          after the house goes quiet and stops before dawn fits that pattern.
+        </p>
+        <p>
+          <strong>Heavy, deliberate movement points at something larger.</strong> Raccoons are nocturnal,
+          and the published noise table puts heavy walking with raccoons or opossums. The distinguishing
+          impression people report is weight — you are not hearing scurrying, you are hearing something
+          moving one limb at a time.
+        </p>
+        <p>
+          <strong>Bats have their own signature.</strong> The sounds come from vocalisations, grooming,
+          scratching, crawling and climbing in attics, under eaves, behind walls and between floors, and
+          activity peaks in three specific windows: on hot days in the attic, just before leaving the roost
+          at dusk, and on returning at dawn. Noise that clusters tightly at dusk and dawn rather than
+          running all night is a real clue.
+        </p>
+        <p>
+          <strong>And then the caveat, restated because it matters.</strong> The published noise-to-species
+          table gives three buckets — scratching in a wall means rats, mice or birds; running in an attic
+          means squirrels; heavy walking means a raccoon or an opossum. That is a place to start. Anybody
+          who tells you over the phone exactly what animal you have, from a description of a sound, is
+          guessing with more confidence than the literature supports.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The evidence that actually settles it</h2>
+      <div class="measure">
+        <p>
+          <strong>Droppings, and specifically whether they crumble.</strong> Bat droppings are segmented,
+          elongated and friable — crush one and it goes to powder, showing shiny bits of undigested insect
+          remains, because a bat's diet is insects and the hard wing cases survive. Rodent droppings are
+          harder and more fibrous and do not do that. This one test separates the most legally complicated
+          animal from the most common one, and it takes about four seconds.
+        </p>
+        <p>
+          <strong>Fresh or old.</strong> Georgia's guidance gives the ageing test: fresh droppings are
+          black, shiny and moist, while old droppings are dry and brown or grey. A loft full of dry grey
+          droppings and nothing fresh is the aftermath of a problem rather than a live one, and the correct
+          job there is cleanup and sealing rather than trapping.
+        </p>
+        <p>
+          <strong>The size of the hole.</strong> This is a better discriminator than most people realise.
+          Fox and grey squirrels use holes the size of a baseball. Red squirrels use holes the size of a
+          golf ball. Flying squirrels get through a hole the size of a quarter. AgriLife notes a
+          half-inch gap is enough for a squirrel to work with, and that rats need only a gap under a door
+          as narrow as half an inch or a hole the size of a quarter.
+        </p>
+        <p>
+          <strong>Where the holes usually are, on the houses around here.</strong> AgriLife names gaps
+          around the garage door, venting and flashing on the roof, and ground-level gaps under and around
+          siding. On the housing stock in Seminole, Andrews, Denver City and the Basin towns, add the
+          places wind and sun work on: soffit and fascia joints that have opened up, ridge and turbine vent
+          flashing, gable vent screens that have rusted through, and the gap where an evaporative cooler or
+          a line set passes through the wall.
+        </p>
+        <p>
+          <strong>Damage tells you too.</strong> AgriLife describes squirrel damage as chewing that
+          sometimes opens large holes in soffits and fascia, and chewing on wires. Rodents leave grease
+          marks along runs and gnaw damage at gaps. Insulation compressed into tunnels, and a musky odour —
+          house mice are noted for a characteristic musky smell — both point at rodents.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The law, which is where most pest websites publish something false</h2>
+      <div class="measure">
+        <p>
+          <strong>Bats are protected under the Parks and Wildlife Code, not the health code.</strong> The
+          provision is Texas Parks and Wildlife Code section 63.101. It makes it unlawful to hunt a bat, or
+          to sell, offer for sale, purchase, offer to purchase, or possess after purchase a bat or any part
+          of one, dead or alive. It then permits bats to be removed or hunted inside or on buildings
+          occupied by people, and it exempts a defined list including animal control officers, peace
+          officers, health officials, anyone transporting a bat for rabies testing, and licensed pest
+          control service providers.
+        </p>
+        <p>
+          <strong>And no chemical, ever.</strong> AgriLife states it flatly: it is a federal violation to
+          use chemicals — including insecticides, rodenticides, disinfectants and mothballs — to kill bats.
+          Mothballs in an attic against bats is a thing people still do out here, and it is both illegal
+          and useless.
+        </p>
+        <p>
+          <strong>Timing on a bat exclusion.</strong> AgriLife gives the eviction window as generally
+          between September and April, depending on your location in the state, with maternity season
+          running from spring to late summer. Its reasoning is not sentimental: evicting the adults during
+          maternity season will orphan and kill the babies inside the building — and then you have dead
+          bats in a ceiling void. It also warns in the other direction, that removing one-way devices too
+          early can permanently seal bats inside, killing them and causing odour and sanitation problems.
+          Its stated durations are at least one week in warm weather and two weeks in cool weather, under
+          fifty degrees.
+        </p>
+        <p>
+          <strong>Birds.</strong> Nearly all native birds are protected under the Migratory Bird Treaty
+          Act. Federal regulation authorises the prompt removal of migratory birds, including nests, eggs
+          and nestlings, from the interior of buildings — and states explicitly that this does not apply to
+          birds or nests on building exteriors. So a bird in your attic and a bird nesting in your eave are
+          different legal situations. House sparrows, European starlings and pigeons are not protected.
+        </p>
+        <p>
+          <strong>Relocation, which is the promise to be suspicious of.</strong> In Texas, raccoons, foxes,
+          skunks and coyotes may not be transported at all under the rabies control rules, and doing so is
+          a Class C misdemeanour. Other nuisance fur-bearers may be relocated only with written
+          authorisation from the Texas Parks and Wildlife Department's Wildlife Division and the permission
+          of the landowner receiving the animal. Even the exempt parties who may transport a rabies-vector
+          species have to release it within a ten-mile radius and within the county of capture.
+        </p>
+        <p>
+          <strong>Which is why our answer is exclusion.</strong> Get the animal out, confirm it is out,
+          seal the building so it cannot come back. That is legal everywhere, it is the approach every
+          extension source recommends first, and it is the only one that fixes the problem rather than
+          moving it. If somebody offers to drive your raccoon into the country, they are describing
+          something Texas law does not permit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Get it out, confirm it, then seal — in that order</h2>
+      <div class="measure">
+        <p>
+          <strong>Every source puts the order the same way.</strong> Georgia's guidance is that you must
+          locate and seal all entry points and that both must be done to correct the problem. Its published
+          hierarchy is habitat modification first, then exclusion, then removal or repellents, and lethal
+          control last.
+        </p>
+        <p>
+          <strong>The confirmation step is the one people skip.</strong> UC IPM gives a test that costs
+          nothing and is difficult to argue with: plug the entrance with a loose wad of newspaper, and if
+          anything is still inside it will remove the plug to get out. Check it over a couple of days
+          before you close anything permanently.
+        </p>
+        <p>
+          <strong>What sealing an animal in actually costs you.</strong> The animal dies in the void. You
+          then have an odour problem for an unpredictable period, secondary insects feeding on the carcass,
+          and often a second hole where a trapped animal chewed its way out through something softer. It
+          converts a straightforward exclusion into two jobs and a wall repair.
+        </p>
+        <p>
+          <strong>One-way devices are the tool for this.</strong> AgriLife's recommendation for squirrels
+          is installing a one-way door or a repeater trap on the roof. The same principle drives bat
+          exclusion, with the durations noted above. The animal leaves under its own power to feed and
+          cannot get back in, which is why the device has to stay long enough for every individual to have
+          made that trip.
+        </p>
+        <p>
+          <strong>Then the sealing has to be real.</strong> Sheet metal, hardware cloth and proper closure
+          at soffit, fascia, vent and flashing. Expanding foam alone is not a rodent barrier and a squirrel
+          will chew through it in an afternoon. On the houses here, the recurring failures are the same few
+          places: the soffit return at a roof-wall junction, gable vent screen, garage door corner seals,
+          and the penetration where a line set or cooler duct goes through.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Season, and why the same house is quiet for months</h2>
+      <div class="measure">
+        <p>
+          <strong>Attic noise is rarely random and it is often annual.</strong> Two things drive it here:
+          weather pushing animals toward shelter, and breeding pushing them toward a safe, dry, defensible
+          space. An attic is the best of both, and on the Llano Estacado it is often the only one for a
+          long way in any direction.
+        </p>
+        <p>
+          <strong>Squirrels breed in the late winter or in the spring,</strong> and depending on the
+          species produce one or two litters a year. We are deliberately not printing month-by-month dates,
+          because we could not find a Texas source that gives them and we are not going to borrow another
+          state's calendar and present it as local. What the season-level statement supports is the pattern
+          people report: a house that is quiet for most of the year and loud for a stretch, then quiet
+          again once the young disperse.
+        </p>
+        <p>
+          <strong>Raccoons follow a tighter calendar.</strong> Most litters are born in April or May,
+          with some late-breeding females — typically those that lost a first litter — not giving birth
+          until June, July or August, and a litter runs three to five young. That late tail is why a
+          raccoon problem in an attic in July is entirely plausible rather than out of season.
+        </p>
+        <p>
+          <strong>Heat drives its own pattern.</strong> Bat activity in an attic peaks on hot days as well
+          as at dusk and dawn — an attic in a Permian Basin August is an extreme environment, and animals
+          in it move more, not less. Rodents move the other way in the same weather, coming down out of a
+          roasting attic into wall voids and cooler parts of the structure, which is why the noise
+          sometimes seems to relocate without anything having changed.
+        </p>
+        <p>
+          <strong>What the seasonality means practically.</strong> If the noise is new and it is spring,
+          you may be listening to something that arrived to give birth, and the job has a timing question
+          attached — exclusion carried out while flightless or immobile young are inside creates the exact
+          sealed-in problem the last section warned about. If the noise has been there for years and
+          returns every autumn, you have a structural gap that nothing has ever closed, and the useful work
+          is on the outside of the building rather than in the trap.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we will and will not tell you on the phone</h2>
+      <div class="measure">
+        <p>
+          <strong>We will ask what time of day you hear it,</strong> because that is the single most useful
+          thing you can tell us before anybody drives out.
+        </p>
+        <p>
+          <strong>We will ask what it sounds like</strong> — scratching, running, rolling, gnawing, heavy
+          steps, squeaking, chittering — and whether it is one animal or several, and whether it is
+          seasonal or new.
+        </p>
+        <p>
+          <strong>We will ask whether you have been in the attic</strong> and what is on the insulation. If
+          you have not, we will not push you up there. It is an unpleasant space, it is a bad place to fall
+          through a ceiling, and it is genuinely part of what you are paying us for.
+        </p>
+        <p>
+          <strong>What we will not do is name the animal down the phone.</strong> The literature does not
+          support that level of confidence from a sound, and a wrong identification here is expensive — it
+          can mean the wrong tool, the wrong season, or a legally protected animal handled the wrong way.
+        </p>
+        <p>
+          <strong>And one thing we will say straight.</strong> Rodents are treated on the
+          <a href="/services/rodent-control/">rodent control</a> side of this business, and larger animals
+          on the <a href="/services/wildlife-removal/">wildlife removal</a> side, with the honesty gates on
+          each of those pages. If what you have turns out to be a bat colony in maternity season, the
+          correct answer is that we come back in the autumn, and we will tell you that even though it is
+          not the answer that gets a job on the books this week.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Hearing something overhead?"
+    body="Tell us the time of day, the kind of sound, and how long it has been going on. Those three answers put us in the right part of the list before we ever open the hatch."
+  />
+</BaseLayout>

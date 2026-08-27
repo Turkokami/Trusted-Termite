@@ -1,0 +1,411 @@
+---
+/**
+ * Página en español — Control de Mosquitos.
+ * Par en inglés: /services/mosquito-control/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Gates: supresión y NO erradicación — decirlo explícito. Productos DeltaGard
+ * y Talstar a dosis de etiqueta, aplicados al refugio donde descansan y no
+ * rociados al voleo. ESTE servicio SÍ lleva la garantía de 30 días (a
+ * diferencia de roedores, chinches y jardín) — decirlo y explicar el matiz de
+ * una lluvia posterior. Programa de control de vectores de Lubbock; Denver
+ * City y Stanton regulan agua estancada. Sin precios.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Control de Mosquitos', path: '/es/servicios/control-de-mosquitos/' },
+];
+
+const quickAnswer =
+  'Aquí los mosquitos llegan por pulsos: suben una semana o diez días después de una lluvia de verdad y luego bajan. Por eso el momento del tratamiento vale más que la frecuencia. Tratamos el refugio donde descansan los adultos y atendemos los criaderos de su propio terreno. Valentin Moriel trabaja personalmente bajo la licencia TPCL 0918482.';
+
+const faqs = [
+  {
+    q: '¿Por qué los mosquitos aquí vienen por rachas?',
+    a: 'Porque casi no hay agua superficial permanente. Los condados de Gaines, Terry, Dawson y Yoakum no tienen ni un arroyo permanente — el terreno drena hacia lagunas playa y hondonadas que retienen agua después de la lluvia y están secas el resto del tiempo. Así que el criadero aparece, produce y desaparece. La presión normalmente sube alrededor de una semana o diez días después de una lluvia de verdad y luego se cae otra vez, que es completamente distinto de una región con agua estancada todo el año.',
+  },
+  {
+    q: '¿Cuándo conviene tratar?',
+    a: 'En respuesta al clima y no en una fecha fija. Un tratamiento aplicado por calendario en plena sequía se desperdicia en buena medida, y ese mismo tratamiento aplicado en la semana siguiente a una lluvia significativa hace la mayor parte del trabajo disponible. Si está en un programa recurrente, agendamos según lo que realmente cayó, y esa es una de las ventajas prácticas de una operación de una sola camioneta frente a una con rutas fijas.',
+  },
+  {
+    q: '¿Pueden eliminar los mosquitos por completo?',
+    a: 'No, y quien le diga lo contrario le está vendiendo algo. El control de mosquitos es supresión, no erradicación. Los adultos vuelan desde fuera de su propiedad y ningún tratamiento sostiene una frontera contra eso indefinidamente. Lo que sí hace el tratamiento es abatir a los adultos presentes, reducir el refugio donde descansan de día, y atender los criaderos de su propio terreno. En una propiedad típica esa es la diferencia entre un patio inutilizable y uno cómodo, y esa es la promesa honesta.',
+  },
+  {
+    q: '¿Qué productos usan?',
+    a: 'DeltaGard y Talstar, aplicados a dosis de etiqueta sobre el refugio donde descansan los adultos, no rociados al voleo sobre terreno abierto. La etiqueta es legalmente obligatoria en la aplicación de plaguicidas, no es una recomendación, y dónde y cuánto importa tanto como qué.',
+  },
+  {
+    q: '¿El trabajo de mosquitos sí lleva la garantía?',
+    a: 'Sí. El tratamiento de mosquitos lleva la garantía de servicio de 30 días, con el alcance y las exclusiones escritos completos en la página de garantía. En este caso vale la pena leerla, porque una lluvia tres semanas después de un tratamiento produce una generación nueva desde un criadero nuevo, y entender dónde queda la garantía frente a eso conviene hacerlo antes y no después.',
+  },
+  {
+    q: '¿Debería llamar mejor a la ciudad?',
+    a: 'A veces sí, y preferimos decírselo en lugar de tomarle la cita. Lubbock tiene su propio programa de control de vectores e investiga agua estancada y criaderos en propiedad pública. Denver City y Stanton tienen ordenanzas que regulan directamente el agua estancada. Si el problema es más grande que su lote — una propiedad vecina, un callejón que retiene agua, un drenaje público — la ciudad es la llamada más efectiva y no le cuesta nada.',
+  },
+  {
+    q: '¿Qué puedo hacer yo que realmente sirva?',
+    a: 'Eliminar el agua estancada de su propio terreno, que es lo más valioso que existe y no cuesta nada. Cualquier cosa que retenga agua alrededor de una semana puede producir una generación: cubetas, platos de macetas, carretillas, lonas, llantas, canaletas tapadas, platos de mascotas, bebederos de pájaros, una parte baja del jardín que se queda mojada por una cabeza de riego, o el derrame de un cooler de agua. Caminar la propiedad después de una lluvia y voltear cosas es genuinamente efectivo.',
+  },
+  {
+    q: '¿Y si vivo cerca de una laguna playa?',
+    a: 'Entonces el ciclo se nota más y el calendario importa aún más. Las playas son el rasgo de drenaje característico de esta región: se llenan después de una lluvia, retienen agua días o semanas y luego se secan por completo. Ecológicamente eso es un humedal temporal, que es exactamente lo que le conviene a un mosquito. La playa usted no la controla; lo que sí controla son las fuentes de su terreno, y en una propiedad así esas fuentes valen todavía más porque se suman a algo que ya está produciendo.',
+  },
+];
+---
+
+<BaseLayout
+  title="Control de Mosquitos | Seminole, TX"
+  description="Tratamiento según el clima y no por calendario, sobre el refugio donde descansan los adultos, en el condado de Gaines y la Cuenca Pérmica. TPCL 0918482."
+  path="/es/servicios/control-de-mosquitos/"
+  lang="es"
+  altLangPath="/services/mosquito-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Control de Mosquitos',
+    description: 'Abatimiento de adultos, reducción de refugio y manejo de criaderos en casas, acreajes y negocios del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Control de Mosquitos</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Aquí el mosquito no es constante: viene por pulsos.</strong> Y esa sola diferencia
+          cambia por completo cómo conviene gastar el dinero, porque la mayoría de los programas de
+          mosquitos que se venden están diseñados para una región donde hay agua todo el año.
+        </p>
+        <p>
+          Los condados de Gaines, Terry, Dawson y Yoakum <strong>no tienen un solo arroyo
+          permanente</strong>. El agua de aquí se va a lagunas playa y a hondonadas que se llenan después
+          de una tormenta y se secan otra vez. Es decir: el criadero aparece, produce una generación y
+          desaparece.
+        </p>
+        <p>
+          <strong>El patrón es bastante fijo.</strong> Llueve de verdad. Pasan unos siete a diez días en
+          que no ocurre gran cosa. Luego sube fuerte porque salió una generación completa. Y después baja
+          conforme se seca. Dos pulgadas en mayo y nada en junio le dan una quincena mala y un mes
+          tranquilo, en ese orden.
+        </p>
+        <p>
+          <strong>La consecuencia práctica es incómoda para vender y buena para usted:</strong> el momento
+          del tratamiento vale más que el número de tratamientos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>El calendario le gana al producto</h2>
+      <div class="measure">
+        <p>
+          Un programa mensual con fecha fija — el día 15 de cada mes, llueva o no — tiene una relación
+          esencialmente aleatoria con lo que de verdad gobierna la población.
+        </p>
+        <p>
+          <strong>A veces cae dentro de la ventana</strong>, y ese mes el cliente queda contento y supone
+          que el producto es bueno. <strong>La mayoría de las veces no</strong>: se trata en una racha seca
+          en la que no había casi nada que abatir, o se trata cuando la generación ya salió, ya picó y ya
+          se dispersó. El producto era el mismo las dos veces.
+        </p>
+        <p>
+          <strong>Lo que funciona mejor es tratar en respuesta al clima.</strong> Una lluvia significativa
+          arranca el reloj; el tratamiento se aplica cuando la generación está emergiendo, no tres semanas
+          después. Eso se puede hacer cuando quien agenda es la misma persona que maneja la camioneta y no
+          una ruta cerrada con quince paradas fijas ese día.
+        </p>
+        <p>
+          <strong>Y hay una segunda razón para no tratar de más.</strong> Aplicar producto cuando no hay
+          población que abatir no es neutro: cuesta dinero, pone producto en el ambiente sin necesidad y
+          no le compra nada. Preferimos decirle "esta semana no hace falta" y que nos crea la próxima vez
+          que digamos que sí.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>En qué consiste realmente un tratamiento</h2>
+      <div class="measure">
+        <p>
+          La imagen que tiene la gente es de alguien rociando una nube sobre el jardín. No es eso, y la
+          diferencia explica por qué unos tratamientos funcionan y otros no.
+        </p>
+        <p>
+          <strong>Los mosquitos adultos descansan de día, y descansan en lugares específicos.</strong>
+          Vegetación densa y sombreada, la parte baja de los arbustos, debajo de las hojas, contra muros a
+          la sombra, bajo terrazas y cubiertas, en el lado norte de las construcciones. No andan volando
+          todo el día; se esconden del calor y salen al atardecer.
+        </p>
+        <p>
+          <strong>Por eso el tratamiento va al refugio.</strong> DeltaGard y Talstar aplicados sobre esas
+          superficies, a dosis de etiqueta, para que el adulto que se posa ahí durante el día encuentre el
+          producto. Es una aplicación dirigida y no un rociado general del terreno.
+        </p>
+        <p>
+          <strong>La etiqueta es la ley, no una sugerencia.</strong> En Texas la aplicación de plaguicidas
+          se rige por la etiqueta del producto, y aplicar fuera de ella es una infracción. Si alguien le
+          ofrece "cargar un poco más para que dure", le está ofreciendo eso.
+        </p>
+        <p>
+          <strong>Después del refugio, los criaderos.</strong> Aquí es donde se acaba el pulso siguiente en
+          vez del actual. Se recorre la propiedad buscando lo que retiene agua, y normalmente hay más de lo
+          que el dueño creía.
+        </p>
+        <p>
+          <strong>Y una nota sobre polinizadores.</strong> Los productos que abaten mosquitos también
+          afectan a otros insectos. Aplicar en el momento del día correcto y no sobre plantas en floración
+          es parte de hacerlo bien, y es una conversación que vale la pena si usted tiene huerto, frutales
+          o colmenas cerca.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La mitad gratis del trabajo</h2>
+      <div class="measure">
+        <p>
+          Esta sección es la que preferiríamos que hiciera aunque no nos contrate, porque es la de mayor
+          rendimiento por peso gastado: cero.
+        </p>
+        <p>
+          <strong>Cualquier cosa que retenga agua alrededor de una semana puede producir una
+          generación.</strong> No hace falta un estanque. Con muy poca agua basta, siempre que esté quieta
+          y siga ahí.
+        </p>
+        <p>
+          <strong>La lista que encontramos una y otra vez:</strong> cubetas, platos debajo de las macetas,
+          carretillas, lonas con un pliegue, llantas, canaletas tapadas, platos de agua de las mascotas,
+          bebederos de pájaros, juguetes olvidados, una cubeta de albañil, la lona de una alberca con agua
+          encima, y una parte baja del jardín que se queda mojada porque una cabeza de riego apunta mal.
+        </p>
+        <p>
+          <strong>Y una muy de aquí: el derrame del cooler de agua.</strong> Un enfriador evaporativo que
+          escurre produce una zona permanentemente húmeda contra la casa. Es criadero, y además es
+          exactamente la condición que le gusta a las termitas subterráneas, así que arreglarlo resuelve
+          dos cosas.
+        </p>
+        <p>
+          <strong>El hábito que sirve:</strong> caminar la propiedad después de cada lluvia buena y voltear
+          todo lo que juntó agua. Diez minutos. Hecho de forma consistente rinde más que muchas
+          aplicaciones, y se lo decimos aunque signifique menos trabajo para nosotros.
+        </p>
+        <p>
+          <strong>Lo que no se puede voltear</strong> — un bebedero de ganado, una fuente ornamental, un
+          tanque — tiene otras soluciones: movimiento del agua, cambio frecuente o productos larvicidas
+          adecuados para el uso. Eso sí lo hablamos caso por caso, sobre todo donde hay animales bebiendo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cuando la respuesta es la ciudad y no nosotros</h2>
+      <div class="measure">
+        <p>
+          Si el criadero está fuera de su propiedad, ningún tratamiento en su jardín va a resolverlo, y
+          preferimos decírselo antes que cobrarle por intentarlo.
+        </p>
+        <p>
+          <strong>Lubbock tiene su propio programa de control de vectores</strong> e investiga agua
+          estancada y criaderos públicos. Si el problema viene de un terreno vecino, de un callejón que
+          retiene agua o de una estructura de drenaje pública, esa es la llamada correcta y no le cuesta
+          nada.
+        </p>
+        <p>
+          <strong>Denver City y Stanton regulan el agua estancada directamente</strong> en sus ordenanzas,
+          lo cual significa que una propiedad vecina que mantiene agua parada puede ser un asunto de código
+          municipal y no solamente una molestia.
+        </p>
+        <p>
+          <strong>Y si vive cerca de una laguna playa</strong> — hay neighborhoods enteros en Midland con
+          playas mapeadas junto a ellos — entienda que esa masa de agua temporal no es de nadie que usted
+          pueda llamar, y no se va a manejar. Lo que cambia entonces es la importancia relativa de las
+          fuentes de su terreno: se suman a algo que ya está produciendo, así que eliminarlas rinde más,
+          no menos.
+        </p>
+        <p>
+          <strong>Cuándo sí somos la llamada correcta.</strong> Cuando el problema está en su propiedad o
+          en su perímetro inmediato, cuando quiere usar el patio en las tardes de verano, cuando hay un
+          evento con fecha, o cuando ya eliminó lo obvio y aun así no puede estar afuera.
+        </p>
+        <p>
+          <strong>Y si hay un evento con fecha, dígalo al agendar.</strong> Una boda, una quinceañera, una
+          carne asada grande o una reunión familiar en el patio son de los pocos casos donde tratar por
+          calendario sí tiene sentido, porque la fecha no se mueve aunque el clima no coopere. Lo que
+          conviene entonces es tratar unos días antes y no la mañana del evento, para que el producto haya
+          asentado y para que quede margen si hace falta ajustar algo. Con una semana de aviso se planea
+          bien; con un día se hace lo que se puede.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La garantía, y el matiz que conviene entender antes</h2>
+      <div class="measure">
+        <p>
+          A diferencia del trabajo de roedores, de chinches y de jardín, el
+          <strong>tratamiento de mosquitos sí lleva la garantía de servicio de 30 días</strong>, con su
+          alcance y sus exclusiones escritos completos en la <a href="/our-guarantee/">página de
+          garantía</a>.
+        </p>
+        <p>
+          <strong>Y aquí va el matiz, dicho antes y no después.</strong> Si tratamos su propiedad y a las
+          tres semanas cae una tormenta, esa lluvia produce una generación nueva desde un criadero nuevo.
+          Ver mosquitos otra vez en esa situación no significa que el tratamiento haya fallado: significa
+          que llovió.
+        </p>
+        <p>
+          <strong>Por qué se lo decimos así.</strong> Porque la manera normal de manejar esto en esta
+          industria es no mencionarlo y discutirlo cuando el cliente reclama. Nosotros preferimos que
+          entienda el ciclo desde el principio, decida con esa información, y sepa que una lluvia
+          significativa es el momento de volver a llamar y no el momento de sentirse engañado.
+        </p>
+        <p>
+          <strong>Lo que sí cubre.</strong> Si hicimos un tratamiento y dentro de los treinta días sigue
+          habiendo actividad de lo que se trató, sin un evento nuevo de por medio, regresamos, revisamos y
+          volvemos a tratar el área sin costo adicional. Eso es lo que dice la garantía y eso es lo que
+          hacemos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Acreajes, animales y las propiedades más difíciles</h2>
+      <div class="measure">
+        <p>
+          No todas las propiedades se comportan igual, y en dos casos conviene ajustar expectativas antes
+          de cotizar.
+        </p>
+        <p>
+          <strong>Los acreajes son más difíciles por superficie.</strong> Tratar el refugio alrededor de una
+          casa en un lote urbano es una cosa; en cinco o veinte acres, el refugio está en todas partes y
+          tratar todo no es realista ni razonable. Lo que funciona es definir la zona que de verdad usa la
+          gente — la casa, el porche, el área de asador, el camino a la puerta — y trabajarla bien, en
+          lugar de repartir producto por toda la propiedad.
+        </p>
+        <p>
+          <strong>Donde hay animales, la conversación cambia.</strong> Bebederos, áreas de lavado y
+          escurrimientos son agua permanente, y no se pueden simplemente eliminar. Además, la presencia de
+          ganado o caballos cambia dónde conviene y dónde no conviene aplicar. Eso se planea antes, con
+          usted, y no se improvisa.
+        </p>
+        <p>
+          <strong>Un caso frecuente en el campo: la pila o el tanque de almacenamiento.</strong> Un
+          depósito abierto que se mantiene lleno todo el verano es agua permanente y quieta, y produce sin
+          parar. Taparlo o ponerle malla fina cambia más que cualquier aplicación, y en muchas propiedades
+          es la única fuente permanente que existe.
+        </p>
+        <p>
+          <strong>Y las propiedades con alberca merecen una nota.</strong> Una alberca en funcionamiento no
+          es criadero — el agua se mueve y está tratada. Una alberca cuya bomba dejó de funcionar sí lo es,
+          y en cuestión de días. La lona con agua encima también, y esa es la que más se pasa por alto. Si
+          una alberca cercana quedó abandonada, ese solo cuerpo de agua puede producir más mosquitos que
+          todos los platos de maceta de la cuadra juntos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Un año de mosquitos en el oeste de Texas</h2>
+      <div class="measure">
+        <p>
+          El calendario aquí no se parece al de un folleto nacional, porque depende de la lluvia y no del
+          mes.
+        </p>
+        <p>
+          <strong>Marzo y abril suelen estar tranquilos</strong>, salvo que caiga una tormenta temprana.
+          Si cae, el pulso llega igual que en junio: el reloj lo arranca el agua, no la temporada.
+        </p>
+        <p>
+          <strong>Mayo y junio son cuando normalmente empieza en serio</strong>, porque es cuando suelen
+          llegar las lluvias fuertes. Es también el mejor momento para recorrer la propiedad y eliminar
+          fuentes, antes de que el calor acelere todo.
+        </p>
+        <p>
+          <strong>Julio y agosto son de calor y evaporación.</strong> Suena a que debería ser peor y muchas
+          veces es lo contrario: sin lluvia, los criaderos temporales se secan y la presión baja. Lo que sí
+          se mantiene son las fuentes permanentes — bebederos, escurrimientos de riego, coolers que
+          gotean — y por eso en pleno verano seco la presión que queda casi siempre viene de la propia
+          propiedad.
+        </p>
+        <p>
+          <strong>Septiembre y principios de octubre pueden dar el peor pulso del año</strong> si cae una
+          lluvia tardía sobre suelo caliente. Mucha gente ya guardó el tema mentalmente y le agarra
+          desprevenida.
+        </p>
+        <p>
+          <strong>Y en invierno el problema desaparece de la vista pero no del terreno.</strong> Es la
+          mejor temporada para arreglar lo estructural: corregir la caída de un jardín que retiene agua,
+          reapuntar cabezas de riego, destapar canaletas, arreglar el escurrimiento del cooler. Trabajo
+          barato en enero que le ahorra tratamientos en junio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que no vamos a afirmar</h2>
+      <div class="measure">
+        <p>
+          <strong>No vamos a decirle que eliminamos los mosquitos.</strong> Es supresión. Los adultos
+          vuelan desde fuera de su terreno y ningún producto sostiene una frontera contra eso. Lo que sí
+          conseguimos es que un patio pase de inutilizable a cómodo, y esa es una promesa que sí podemos
+          cumplir.
+        </p>
+        <p>
+          <strong>No vamos a hablar de enfermedades para venderle un servicio.</strong> Los mosquitos
+          transmiten enfermedades y eso está bien documentado; las preguntas sobre riesgo, síntomas o
+          prevención médica son para el departamento de salud o para su médico. Una empresa de control de
+          plagas que usa el miedo a una enfermedad como argumento de venta está haciendo algo que nosotros
+          no queremos hacer.
+        </p>
+        <p>
+          <strong>No hacemos sistemas de nebulización automática instalados.</strong> Es un servicio
+          distinto, con su propio equipo y su propio mantenimiento, y no es lo que ofrecemos. Si alguien se
+          lo está proponiendo, valen dos preguntas: cada cuándo hay que rellenarlo y darle servicio, y qué
+          pasa con los polinizadores del jardín cuando el sistema dispara solo en un horario fijo.
+        </p>
+        <p>
+          <strong>Y no somos un equipo.</strong> Es una sola persona, con licencia TPCL 0918482, que además
+          es quien decide cuándo tratar según lo que llovió. Eso es precisamente lo que permite trabajar
+          por clima en vez de por ruta — y también significa que en la semana posterior a una tormenta
+          grande hay más demanda que horas del día. Llamar temprano en esa semana ayuda.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre mosquitos" />
+  <Cta
+    line="Llame después de una lluvia buena y no en una fecha del calendario — así es como este trabajo rinde de verdad aquí. Y dígale si hay bebederos, alberca o una parte del terreno que se queda mojada, que es donde suele estar la fuente."
+  />
+</BaseLayout>

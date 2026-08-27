@@ -1,0 +1,438 @@
+---
+/**
+ * T5 neighbourhood page — Saddle Club, north Midland, Midland County.
+ *
+ * The spine here is hydrology. Midland sits on the Llano Estacado, where playa
+ * lakes are the defining drainage feature, and the city publishes its own
+ * floodplain and playa mapping. Saddle Club is the one neighbourhood on this
+ * site with named playas against its edge and a section literally called
+ * "Lakes" inside mapped floodplain. That is a mosquito and occasional-invader
+ * story no competitor page in this market is telling.
+ *
+ * VERIFIED facts used here, from the City of Midland's public ArcGIS
+ * Subdivision layer (NAME, SURVEYOR, plat recording date, cabinet/page):
+ *   FIVE separate plat families under the Saddle Club name, 22 plats:
+ *    · Saddle Club "A"          1975-12-22  Kenneth E. Esmond   ← the oldest
+ *    · Saddle Club South   1st  1977-03-10
+ *                          2nd & 3rd 1978-11-14  Gary N. Haner
+ *                          4th 1981-02-25 · 5th 1981-06-26 · 6th 1981-09-24
+ *                          7th 1982-02-03 · 10th 1983-04-06 R. J. Eidson
+ *                          11th 1985-05-15 · 12th 1998-12-08 · 13th 2002-08-21
+ *                          (most surveyed by Max W. Richardson)
+ *    · Saddle Club Estates      1981-06-17  Gary N. Haner  Cab C Pg 44-46
+ *    · Saddle Club Lakes   2nd  1987-08-07 · 3rd 1994-05-19
+ *    · Saddle Club East    1st  1989-11-17 · 2nd 1994-01-24 · 3rd 2005-01-05
+ *                          4th 2007-07-23
+ *    · Saddle Club Townhouse Area B  2nd 1989-03-13 · 3rd 1996-04-02
+ *                          6th 2010-08-02   ← ATTACHED HOUSING EXISTS HERE
+ *
+ *  - Midland's public Drainage & Floodplain map service carries the 100-year
+ *    and 500-year floodplain and a PLAYA attribute naming individual playas.
+ *    Read Aug 2026: the centre of the Saddle Club LAKES plat area falls inside
+ *    BOTH the mapped 100-year and 500-year floodplain. Named playa MI38 (base
+ *    elevation 2,799 ft) has an extent overlapping the north-east corner of the
+ *    Saddle Club plat area, and the MI41/MI42/MI43 playa cluster lies
+ *    immediately north of its northern edge. The plat area CENTROID is not in
+ *    floodplain — so this is an edges-and-margins situation, not a
+ *    whole-neighbourhood one, and the page says exactly that.
+ *  - THREE separate homeowners associations exist, which follows from the
+ *    multiple plat families: Saddle Club South Homeowner's Association
+ *    (clubhouse, pool, tennis courts, playground, published restrictions,
+ *    bylaws and a violation-fines schedule); Saddle Club Owners Association,
+ *    Inc. (management certificate on file with the state); and a Saddle Club
+ *    Lake Addition association.
+ *  - Midland County IS on the imported fire ant regulated-areas list under
+ *    7 C.F.R. §301.81-3, adopted at 4 TAC §19.101.
+ *
+ * HOW TO PHRASE THE MAPPING — this matters:
+ *  The floodplain and playa layers are the CITY'S OWN authoritative mapping.
+ *  The statements about which plat areas they overlap are OUR reading of that
+ *  mapping, computed from published extents. That is a sound method and it is
+ *  still our reading, so the page tells people to check their own address
+ *  against the city's map rather than trusting a pest control website for a
+ *  floodplain determination. Never state a specific property is in floodplain.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - Developer names. The city records SURVEYORS, who are not developers.
+ *  - Acreage, lot counts, lot sizes, alleys, curbs, cul-de-sacs.
+ *  - Which school serves it. Emerson Elementary and Goddard Junior High are
+ *    roughly 0.8 miles south — that is proximity, not an attendance zone, and
+ *    Midland ISD publishes zones only through a JavaScript tool we could not
+ *    read. Say nothing about schools.
+ *  - The contents of the Saddle Club Owners Association certificate. Located,
+ *    not retrieved.
+ *  - An earlier version of neighborhoods.ts called this "larger properties and
+ *    more ground per home" with "outbuildings and equipment storage". No source
+ *    supports that, and the documented townhouse plats cut against it. Removed.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Midland', path: '/locations/midland/' },
+  { name: 'Saddle Club', path: '/locations/midland/saddle-club/' },
+];
+
+const quickAnswer =
+  'Saddle Club is not one Midland neighbourhood but five plat families, laid out between 1975 and 2010. The city maps a named playa lake against its north-east edge and floodplain across part of the Lakes section, which makes mosquito pressure here rainfall-driven rather than seasonal. Owner Valentin Moriel does the work personally, licensed by the state as TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'Is Saddle Club one neighbourhood?',
+    a: 'Not really, and it is worth knowing before you go looking for your covenants. The City of Midland\'s plat records carry five separate families under the Saddle Club name: Saddle Club "A", recorded in December 1975; Saddle Club South, which runs from 1977 to 2002 across at least eleven sections; Saddle Club Estates from 1981; Saddle Club Lakes from 1987 and 1994; Saddle Club East from 1989 to 2007; and a Saddle Club Townhouse Area platted between 1989 and 2010. There are three different homeowners associations across them. Which one governs your property depends on which plat you are in, not on the street sign.',
+  },
+  {
+    q: 'What is a playa lake and why does it matter here?',
+    a: 'A playa is a shallow, roughly circular depression that holds water after rain and then dries out again — the characteristic drainage feature of the Llano Estacado, and the reason this flat country does not need rivers. The City of Midland maps them individually and gives them identifiers. One named playa, MI38, sits against the north-east edge of the Saddle Club plat area on the city\'s mapping, and a cluster of three more lies immediately north. That matters because a playa is an ephemeral wetland: dry for long stretches, then holding standing water for days or weeks after a real rain. That cycle is a mosquito production cycle, and it runs on rainfall rather than on the calendar.',
+  },
+  {
+    q: 'Is my house in Saddle Club in a floodplain?',
+    a: 'We are not the right people to answer that about a specific address, and neither is any pest control website. What we can tell you is what the city\'s published mapping shows in general terms: the centre of the Saddle Club Lakes plat area falls within both the mapped 100-year and 500-year floodplain, while the centre of the wider Saddle Club area does not. So this is a margins situation — parts of some sections, not the whole neighbourhood. If it matters to you, and for insurance or a purchase it should, check your own parcel against the City of Midland\'s floodplain map or ask the city directly rather than relying on this page.',
+  },
+  {
+    q: 'Why is mosquito treatment here different?',
+    a: 'Because the pressure is episodic rather than steady. In a neighbourhood with playa features nearby, mosquito numbers climb roughly a week to ten days after a real rain event and fall away again as the water goes. A fixed-calendar treatment schedule — the same date every month regardless of weather — routinely misses that window at both ends: it treats when there is nothing to treat, and it has already been and gone when the population actually arrives. Weather-responsive timing is worth considerably more than treatment frequency here, and it is the main thing we would want to talk through before quoting.',
+  },
+  {
+    q: 'Does living in a townhouse change the approach?',
+    a: 'Yes, substantially, and Saddle Club has a platted townhouse area so this is a live question here rather than a general remark. Attached housing shares walls, and shared walls mean shared voids, shared plumbing chases and shared wiring runs. German cockroaches, bed bugs, mice and odour-following ants all use those routes between units. The practical consequence is that a treatment which stops at your interior walls can be undone by the unit next door, so the useful conversation in attached housing is always about the building rather than the residence — which sometimes means talking to a neighbour or the association rather than just to us.',
+  },
+  {
+    q: 'How old are the houses in Saddle Club?',
+    a: 'The range is wide, which is the practical point. Saddle Club "A" was platted in December 1975, making it some of the older stock in north Midland, and Saddle Club South was laid out across the late 1970s and early 1980s. Saddle Club East ran to 2007, and the townhouse area to 2010. So a fifty-year-old slab and a fifteen-year-old one exist under the same neighbourhood name. On the older ground, the termite conversation is about decades of settling, re-plumbing and re-landscaping around a perimeter, and about a pre-construction treatment that is now history. On the newer, it is about fill and about what the builder did.',
+  },
+  {
+    q: '¿Trabajan en Saddle Club, en Midland?',
+    a: 'Sí, y Midland es parte de la ruta habitual. Valentin atiende en español y hace el trabajo personalmente. Un detalle local importante: la ciudad tiene mapeada una laguna playa junto al borde noreste de Saddle Club y zona inundable en parte de la sección Lakes, así que los mosquitos aquí aumentan una semana o diez días después de una lluvia fuerte en vez de seguir el calendario. El condado de Midland sí está en la cuarentena federal de la hormiga roja importada. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Saddle Club, Midland TX"
+  description="Mosquito, scorpion, termite and rodent work in Saddle Club, north Midland — playa lakes on the edge make pressure rainfall-driven. Licensed TPCL 0918482."
+  path="/locations/midland/saddle-club/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Saddle Club, Midland',
+    description: 'Mosquito, scorpion, spider, termite and rodent control for homes and townhouses in the Saddle Club area of north Midland, Midland County.',
+    areaServed: ['Midland', 'Midland County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Midland · Midland County · five plat families, 1975 to 2010</p>
+      <h1>Pest Control in Saddle Club, Midland</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          There is one fact about Saddle Club that changes how we would treat a property here, and almost
+          nobody mentions it: <strong>the city maps a named playa lake against the north-east edge of this
+          neighbourhood</strong>, with a cluster of three more immediately to the north.
+        </p>
+        <p>
+          Midland publishes its own drainage and floodplain mapping, and that mapping identifies playas
+          individually. The one on Saddle Club's north-east corner is <strong>MI38</strong>, with a base
+          elevation of 2,799 feet. Separately, the centre of the plat area called
+          <strong>Saddle Club Lakes</strong> — a section that has been carrying that name since 1987 —
+          falls inside both the mapped 100-year and the 500-year floodplain.
+        </p>
+        <p>
+          That is not a warning. Most of Saddle Club is not in mapped floodplain, and a playa a few hundred
+          yards away is a normal feature of living on the Llano Estacado rather than a defect. But it does
+          mean that pest pressure here runs on a different clock than it does three miles away, and
+          treating it on the same schedule as everywhere else is how people end up disappointed with pest
+          control in general.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What a playa actually does</h2>
+      <div class="measure">
+        <p>
+          If you have not lived on the Llano Estacado, playas take some explaining. This is some of the
+          flattest country in North America, and it drains almost nowhere. Instead of rivers carrying water
+          away, thousands of shallow, roughly circular depressions catch it and hold it — filling after a
+          real rain, standing for days or weeks, and then drying out completely until the next one. They
+          are the reason the High Plains look empty of water most of the year and are briefly covered in
+          it after a storm.
+        </p>
+        <p>
+          <strong>Ecologically a playa is an ephemeral wetland</strong>, and ephemeral is the operative
+          word. It is not a pond with a stable population of fish and dragonfly larvae that eat mosquito
+          larvae. It is a basin that goes from bone dry to full in an afternoon and back again in a
+          fortnight — which suits mosquitoes precisely, because they need standing water for roughly a week
+          to complete a generation and they do not need anything else to be established there first.
+        </p>
+        <p>
+          <strong>So mosquito pressure near a playa is a rainfall function, not a calendar function.</strong>
+          The pattern is reliable: a real rain event, then roughly seven to ten days of very little, then a
+          sharp climb as a generation emerges, then a decline as the basin dries. Two inches in May and
+          nothing in June produces a bad fortnight and a quiet month, in that order.
+        </p>
+        <p>
+          <strong>Which is why fixed-schedule mosquito treatment underperforms here.</strong> A monthly
+          visit on the same date has no relationship to the cycle that actually governs the population. It
+          will sometimes land in the window and mostly not. What works better is treating in response to
+          weather — going in as a generation is emerging rather than after it has dispersed — combined with
+          reducing what your own property contributes, because the playa is not the only water in the
+          equation and it is the only part you cannot do anything about.
+        </p>
+        <p>
+          <strong>The part you can do something about is closer than the playa.</strong> A saucer under a
+          pot. A wheelbarrow. A tarp with a fold in it. A clogged gutter. A low spot in the yard that stays
+          wet after irrigation. A swimming pool cover. Each of those produces mosquitoes in the same week
+          the playa does, and unlike the playa they are yours. On a property near mapped water features we
+          spend real time on this, because the alternative is treating a symptom that is being resupplied
+          from your own back garden.
+        </p>
+        <p>
+          <strong>And a note on what standing water attracts besides mosquitoes.</strong> A wet basin
+          concentrates everything in a dry landscape — birds, small mammals, the snakes that follow them,
+          and the insects that support all of it. That is part of why properties near playa features report
+          more of the general run of occasional invaders after wet spells: crickets, beetles, spiders,
+          the odd scorpion. The water is not producing them so much as gathering them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Five neighbourhoods sharing one name</h2>
+      <div class="measure">
+        <p>
+          Saddle Club reads like a single subdivision and is not. The City of Midland's plat records carry
+          twenty-two separate platted additions under the name, in five distinct families laid out across
+          thirty-five years. Knowing which one you are in is genuinely useful — it tells you roughly how old
+          your slab is, and it tells you which homeowners association you actually belong to.
+        </p>
+        <p>
+          <strong>Saddle Club "A"</strong> was recorded on <strong>22 December 1975</strong>, surveyed by
+          Kenneth E. Esmond. That makes it some of the oldest platted ground of any neighbourhood we work in
+          north Midland.
+        </p>
+        <p>
+          <strong>Saddle Club South</strong> is the largest family and the long-running one. Its first
+          section was recorded in <strong>March 1977</strong>; the second and third both on the same day in
+          November 1978, surveyed by Gary N. Haner. Sections four through seven followed across 1981 and
+          early 1982, a tenth in 1983, an eleventh in 1985, and then a long pause before a twelfth in 1998
+          and a thirteenth in 2002. Most of the series was surveyed by Max W. Richardson.
+        </p>
+        <p>
+          <strong>Saddle Club Estates</strong> was recorded in <strong>June 1981</strong>, also by Gary N.
+          Haner. <strong>Saddle Club Lakes</strong> appears in <strong>1987</strong> and again in
+          <strong>1994</strong>. <strong>Saddle Club East</strong> runs from <strong>1989</strong> through
+          sections in 1994, 2005 and <strong>2007</strong>. And a <strong>Saddle Club Townhouse
+          Area</strong> was platted in sections between <strong>1989 and 2010</strong>.
+        </p>
+        <p>
+          <strong>Three separate homeowners associations exist across those families</strong>, which is
+          exactly what you would expect from five plat groups laid out decades apart. Saddle Club South has
+          its own association with a clubhouse, pool, tennis courts and playground, and it publishes its
+          restrictions, bylaws, pool and playground rules and a schedule of fines for violations. There is
+          a separate Saddle Club Owners Association registered with the state, and a further association
+          covering the Lake addition.
+        </p>
+        <p>
+          <strong>Why we care about which one you are in.</strong> Two reasons, both practical. The first
+          is the slab: a house on 1975 or 1977 ground has had close to fifty years of settling, plumbing
+          repairs, patio additions and re-landscaped beds around its perimeter, and any pre-construction
+          termite treatment is long past being a factor. A house on 2007 or 2010 ground sits on more
+          recently disturbed fill with a much shorter history. Those are different inspections. The second
+          is simply that if a treatment involves anything an association would notice, it is easier to
+          check the right set of rules than the wrong one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Townhouses share more than a wall</h2>
+      <div class="measure">
+        <p>
+          The platted townhouse sections make Saddle Club one of the few places on this site where we need
+          to talk about attached housing properly, because the pest logic is genuinely different and
+          getting it wrong wastes people's money.
+        </p>
+        <p>
+          <strong>A shared wall is a shared void.</strong> Where two units meet there is usually a cavity,
+          and running through or alongside it there are plumbing chases, electrical runs and sometimes a
+          continuous attic space above the ceiling line. Those are not sealed borders. They are corridors,
+          and several of the pests that matter most use them habitually.
+        </p>
+        <p>
+          <strong>German cockroaches</strong> move between units along plumbing and behind cabinetry, which
+          is why an apparently spotless kitchen can have a persistent problem originating two doors away.
+          <strong>Bed bugs</strong> travel along the same routes, and in attached housing a unit that keeps
+          re-infesting after competent treatment is usually being resupplied rather than badly treated.
+          <strong>Mice</strong> use wall voids as their primary highway and a shared attic as a motorway.
+          <strong>Ants</strong> follow moisture and food gradients without any regard for where one deed
+          ends and the next begins.
+        </p>
+        <p>
+          <strong>What that means for a quote.</strong> If you are in an attached unit and the problem is
+          one of those four, the honest answer is that treating your unit alone may buy relief rather than
+          resolution. Sometimes that is fine and it is what you want. But it is worth knowing up front,
+          because the alternative — talking to the neighbour, or getting the association involved so
+          adjoining units are done together — costs more in coordination and far less in repeat visits. We
+          would rather say that at the quote than after the third callback.
+        </p>
+        <p>
+          <strong>The flip side is that exclusion works very well in attached housing</strong>, because the
+          entry points are finite and repeatable. Sealing plumbing penetrations under sinks, at the water
+          heater and behind the washer, and closing gaps where a shared void opens into living space, does
+          more durable good than repeated interior spraying and it does not need the neighbour's permission.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What north Midland property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> Drawn from AgriLife entomology, the federal quarantine
+          list, and the documented characteristics of this particular ground — the mapped playa and
+          floodplain features, the build eras in the plat record, and the attached housing. Where we are
+          describing what a condition produces rather than a specific job on a specific street, we say so.
+        </p>
+        <p>
+          <strong>Mosquitoes, on the rainfall clock.</strong> Covered above, and the defining pest question
+          for this neighbourhood. Timing beats frequency.
+        </p>
+        <p>
+          <strong>Fire ants — Midland County is quarantined.</strong> Midland County sits inside the federal imported fire ant quarantine, listed at 7 C.F.R. §301.81-3 and adopted into Texas law by reference at 4 TAC §19.101. We read that off the APHIS list directly. That is a real difference from Gaines,
+          Yoakum, Terry, Dawson and Andrews to the north and west, where the counties are not listed and a
+          suspected fire ant mound is nearly always a red harvester ant. Two things follow. Identification
+          before treatment genuinely matters, because harvester ants and imported fire ants need different
+          products and different methods. And if you are moving soil, sod, nursery stock, hay stored on the
+          ground or used soil-moving equipment out of Midland County into a county that is not quarantined,
+          the movement rules apply to you.
+        </p>
+        <p>
+          <strong>Scorpions through the dry months.</strong> Striped bark scorpions hunt at night, are far better climbers than
+          their shape suggests, and are found in attics and wall cavities as often as at ground level. AgriLife entomologists note
+          that they move indoors when it becomes excessively dry outside — so in a neighbourhood whose
+          water features are episodic, the stretch after a playa dries out is exactly when they start
+          looking elsewhere. Harbourage removal and exclusion outperform spraying.
+        </p>
+        <p>
+          <strong>Rodents, from October.</strong> The first properly cold nights move rodents that spent a
+          comfortable summer outdoors toward the nearest structure. In attached sections, that becomes a
+          building-wide question quickly. In the older detached stock, the entry points are usually a
+          garage door seal that no longer seals, a gap at a soffit return, or an unsealed utility
+          penetration.
+        </p>
+        <p>
+          <strong>Termites, and the belief that gets in the way.</strong> People here are regularly told
+          West Texas is too dry for termites. Subterranean termites work below grade where the moisture is
+          and are indifferent to the humidity above them; irrigation against a slab supplies what they need
+          regardless of rainfall. On fifty-year-old ground with decades of plumbing and landscaping history
+          around the perimeter, that is worth a proper look rather than an assumption.
+        </p>
+        <p>
+          <strong>Occasional invaders after wet spells.</strong> Crickets, beetles, spiders and the
+          occasional scorpion arrive in numbers in the days after standing water appears nearby, then
+          subside. It is a pulse rather than a trend, and it is worth recognising as one before committing
+          to a treatment programme aimed at a problem that was always going to pass.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we do in Saddle Club</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Midland is a regular part of the route</strong>, so scheduling here is straightforward.
+          Recurring service runs bi-monthly or quarterly, priced on the size of the property, the pressure
+          and the frequency, with a higher initial visit. <strong>No contracts</strong> — no term, no
+          cancellation fee. Termite, bed bug, mosquito, lawn, brush and junk work is individually quoted
+          after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          <strong>On mosquito work specifically</strong>, we would rather set expectations than sell a
+          schedule. Suppression is what is achievable; eradication is not, because adults fly in from
+          beyond any boundary you can treat and a playa basin is well beyond it. What is genuinely worth
+          having is a knock-down timed to a generation emerging, harbourage reduced on your own ground,
+          and the breeding sites you actually control dealt with. That combination makes a garden usable.
+          A monthly visit on a fixed date, in this particular neighbourhood, often does not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Check the map yourself</h2>
+      <div class="measure">
+        <p>
+          Everything above about floodplain and playa features comes from the City of Midland's own
+          published drainage and floodplain mapping, which is the authoritative source and is public. What
+          we have added is the reading — matching those mapped features against the plat areas — and a
+          reading is not a determination about your address.
+        </p>
+        <p>
+          <strong>So do not take a floodplain answer from a pest control website, including this one.</strong>
+          If the question matters to you — and for insurance, for a purchase, or for a decision about
+          drainage work it certainly does — look your own parcel up on the city's map or ask the city
+          directly. We are confident enough in the general picture to build a treatment approach on it. We
+          are not confident enough in it to have you make a financial decision on our say-so, and the
+          difference between those two things is worth being explicit about.
+        </p>
+        <p>
+          <strong>What we will stand behind</strong> is the practical consequence, because it does not
+          depend on precise boundaries. Somewhere close to this neighbourhood, water stands after rain.
+          That makes mosquito pressure here episodic and weather-driven, it brings a pulse of occasional
+          invaders after wet spells, and it means that timing a treatment matters more than repeating one.
+          Whether the line on the map runs through your lot or two streets over does not change any of that.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are a one-man operation based in Seminole, about
+          eighty miles north-west. Midland is on the regular route so getting here is not the issue, but we
+          are not the closest company to Saddle Club and we are not going to pretend otherwise. What we
+          offer instead is that the licence holder does the work himself — TPCL 0918482, verifiable against
+          the Texas Department of Agriculture's records in about two minutes — guarantee terms written out
+          with a duration and explicit exclusions, and no contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Saddle Club pest control questions" />
+  <Cta
+    market="Saddle Club"
+    line="Tell him which part of Saddle Club you are in — the 1970s ground, one of the newer sections, or an attached unit — and whether you have noticed mosquitoes spiking after rain. Those two answers shape the whole approach."
+  />
+</BaseLayout>

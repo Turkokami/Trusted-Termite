@@ -1,0 +1,389 @@
+---
+/**
+ * Pest library — red imported fire ant, Solenopsis invicta.
+ *
+ * The counterpart to /pest-library/red-harvester-ant/. Cross-link both ways.
+ *
+ * VERIFIED (texasinsects.tamu.edu, fireant.tamu.edu, AgriLife ENTO-005 and
+ * ENTO-019, ant-pests.extension.org, Klotz et al. 2008 J Emerg Med):
+ *  - Workers roughly 1/16–1/4 in, dark brown. Sources give different ranges
+ *    (texasinsects 1/16–3/16; ant-pests 1/8–1/4) so the page uses the span.
+ *  - POLYMORPHIC — continuous size variation inside one mound. Diagnostic
+ *    against the monomorphic harvester ant.
+ *  - Antennae 10-segmented with a 2-segmented club; two petiole nodes; NO
+ *    propodeal spines.
+ *  - Eggs hatch in 8–10 days; four larval instars; development 22–37 days
+ *    depending on temperature; roughly 30 days egg to adult.
+ *  - Queen lays ~200 eggs daily; queens live 7+ years; workers ~5 weeks.
+ *  - Mature colony: well over 100,000 workers (texasinsects >200,000;
+ *    fireant.tamu.edu 100,000–500,000 — page uses the conservative phrasing).
+ *  - Mating flights in the afternoon soon after rain, most common spring and
+ *    autumn; mated females fly for miles.
+ *  - Monogyne: 40–150 mounds/acre. Polygyne: 200+ mounds/acre, ~40 million
+ *    ants/acre. ENTO-019 gives 200–800+ colonies/acre in multi-queen areas.
+ *  - Mound has NO central opening — they use tunnels radiating underground.
+ *    Up to 18 in tall.
+ *  - "Colonies occasionally occur indoors and in structures" (texasinsects).
+ *  - Omnivorous; primary diet insects and other invertebrates; suppress ticks,
+ *    chiggers and caterpillars; tend aphids for honeydew.
+ *  - Sting mechanism: bite to hold on, then sting. Site hurts a few minutes,
+ *    reddens, swells to a bump within 20 minutes; a white fluid-filled STERILE
+ *    pustule forms within several hours to a day. Sting sites "rarely become
+ *    infected and antibiotic prophylaxis is therefore not routinely required."
+ *
+ * ⚠️ ANAPHYLAXIS — AGRILIFE CONTRADICTS ITSELF AND THE PAGE MUST SAY SO.
+ *   ENTO-005 contains BOTH "Anaphylaxis occurs in 0.6 to 6 percent of people
+ *   who are stung" AND "Severe allergic reactions (anaphylaxis) occur in less
+ *   than 1 percent of the people stung". fireant.tamu.edu says "around 1%".
+ *   DO NOT pick a number and present it as settled. State the range and state
+ *   that the sources disagree.
+ *
+ * ⚠️ THE 80 DEATHS FIGURE IS CUMULATIVE AND UNDATED, NOT ANNUAL. Never write
+ *   it as a yearly rate. Context: Klotz et al. 2008 put ALL US Hymenoptera
+ *   deaths at 30–40 per year, dominated by wasps and bees.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Red imported fire ant', path: '/pest-library/red-imported-fire-ant/' },
+];
+
+const quickAnswer =
+  'The red imported fire ant builds a dome of fluffy soil with no visible entrance, and its workers vary in size within one mound — which is how you tell it from a harvester ant. It is on the federal quarantine in Midland, Ector, Howard, Martin and Winkler counties and part of Lubbock County, and absent from the counties north and west of there.';
+
+const faqs = [
+  {
+    q: 'Do I actually have fire ants, or is it a harvester ant?',
+    a: 'Two checks settle it. Look at the workers: fire ant workers within a single mound vary continuously from very small to noticeably larger, while every worker in a harvester ant colony is the same size. Then look at the mound: a fire ant mound is a dome of fluffy worked soil with no central opening, because the ants travel through tunnels that radiate underground and surface away from it. A harvester ant nest has an obvious hole in the middle of a bare circle, usually with small pebbles around it. And behaviour: disturb a fire ant mound and workers pour out within seconds, which harvester ants do not do.',
+  },
+  {
+    q: 'Which counties around here actually have them?',
+    a: 'Midland, Ector, Howard, Martin and Winkler counties are on the federal imported fire ant regulated-areas list under 7 C.F.R. section 301.81-3, which Texas adopts by reference at 4 TAC section 19.101. Part of Lubbock County is listed — specifically the portion of the city bounded by Highway 27 to the east, Ursuline Street to the north, Milwaukee Street to the west and 98th Street to the south. Gaines, Yoakum, Terry, Dawson and Andrews are not listed at all. So in Midland, Odessa, Big Spring, Stanton and Kermit fire ants are a genuine possibility, and in Seminole, Seagraves, Denver City, Brownfield and Lamesa the suspect is nearly always something else.',
+  },
+  {
+    q: 'How bad is a fire ant sting, really?',
+    a: 'For most people, unpleasant rather than dangerous. The ant bites first to anchor itself and then stings, which is why you often get several in a ring. AgriLife describes the sequence: the site hurts for a few minutes, then reddens, then swells into a bump within about twenty minutes, and within several hours to a day most people develop a white fluid-filled pustule that is characteristic of this ant. That pustule is sterile — AgriLife notes sting sites rarely become infected and that preventive antibiotics are not routinely required. Leaving it alone rather than opening it is the sensible course.',
+  },
+  {
+    q: 'What about severe allergic reactions?',
+    a: 'This is a case where we are going to tell you the sources disagree rather than pick the number that suits us. One AgriLife publication states in one place that anaphylaxis occurs in 0.6 to 6 percent of people who are stung, and in another place within the same document that severe allergic reactions occur in less than 1 percent. Texas A&M\'s fire ant site gives around 1 percent. So: severe reactions are uncommon, the published estimates run from under 1 percent to 6 percent, and the authorities are not consistent with each other. If you have had a serious reaction to any stinging insect before, that is a conversation with a doctor and not with us.',
+  },
+  {
+    q: 'I read fire ants kill dozens of people a year.',
+    a: 'That figure is being misread, and it is worth correcting. AgriLife records that anaphylactic reactions to fire ants have caused more than eighty deaths — but that is a cumulative national total with no date range attached, not an annual rate. For scale, published emergency medicine work puts all stinging insect deaths in the United States at roughly thirty to forty a year across every species, and that total is dominated by wasps and bees rather than ants. Fire ants deserve respect and sensible precautions. They do not deserve the number people think they have read.',
+  },
+  {
+    q: 'Why do they suddenly appear after rain?',
+    a: 'Because that is when they fly. Mating flights typically happen in the afternoon soon after a rainy period, most commonly in spring and autumn, and mated females can fly for miles before landing to start a colony. So a fresh crop of small mounds appearing across a property a week or two after a storm is the normal pattern rather than an invasion. It also means a property can be recolonised from well beyond its own boundary, which is why treating a single mound rarely settles anything for long.',
+  },
+  {
+    q: 'How many are in a mound?',
+    a: 'More than the mound suggests. A mature colony holds well over a hundred thousand workers, with a queen laying in the region of two hundred eggs a day. Development from egg to adult runs about thirty days depending on temperature. And there are two social forms: single-queen colonies, which are territorial and run roughly forty to a hundred and fifty mounds per acre, and multiple-queen colonies, which are not territorial and can reach two hundred or more mounds per acre. That second form is why some properties have a density that seems impossible.',
+  },
+  {
+    q: 'Do they come inside?',
+    a: 'Sometimes, and this is one of the practical differences from harvester ants. AgriLife notes that fire ant colonies occasionally occur indoors and in structures. So ants coming into a building in a quarantined county are worth identifying properly rather than assuming they are something ordinary.',
+  },
+];
+---
+
+<BaseLayout
+  title="Red Imported Fire Ant | West Texas Pest Library"
+  description="Identification against the harvester ant, which West Texas counties are quarantined, and what the sting actually does — with the disputed figures stated as disputed."
+  path="/pest-library/red-imported-fire-ant/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Solenopsis invicta</em></p>
+      <h1>Red imported fire ant</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>Out here, the first question about a fire ant is whether it is one.</strong> The
+          quarantine boundary runs straight through our service area, and it separates counties where this
+          ant is genuinely present from counties where the animal in the yard is almost certainly a
+          <a href="/pest-library/red-harvester-ant/">red harvester ant</a> instead.
+        </p>
+        <p>
+          Getting that wrong costs money in both directions. Treating harvester ants as fire ants removes
+          a native species that is not bothering anybody. Treating fire ants as harvester ants means using
+          the wrong method on an animal that will simply rebuild.
+        </p>
+        <p>
+          So this page starts with identification, then covers the biology that explains why they behave
+          as they do, and then handles the sting — including two widely repeated numbers that do not mean
+          what people think they mean.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Identification, in the order the checks are useful</h2>
+      <div class="measure">
+        <p>
+          <strong>Size variation within one mound is the giveaway.</strong> Fire ant workers are
+          polymorphic — in a single colony they range continuously from very small to noticeably larger.
+          Published sizes differ a little between sources, somewhere in the span of a sixteenth to a
+          quarter of an inch, dark brown. The point is not the absolute size but the variation. Harvester
+          ants are all one size, and that difference is visible without a lens.
+        </p>
+        <p>
+          <strong>The mound has no door.</strong> A fire ant mound is a dome of loose worked soil, in bad
+          cases up to eighteen inches tall, with no visible entrance anywhere on it. The ants leave and
+          return through tunnels that radiate outward underground and surface some distance away. If you
+          are looking at a crater with an obvious hole in the middle, you are not looking at a fire ant
+          mound.
+        </p>
+        <p>
+          <strong>Disturb it and see what happens — carefully, with shoes on.</strong> Fire ants respond to
+          a disturbed mound by pouring out within seconds and running up whatever is touching it. That
+          aggressive, immediate defence is characteristic and it is the reason most people get stung
+          several times at once rather than once.
+        </p>
+        <p>
+          <strong>Under a lens:</strong> ten antennal segments ending in a two-segmented club, and two
+          nodes on the petiole between thorax and abdomen. Fire ants lack the pair of spines on the rear of
+          the thorax that harvester ants carry, and they have nothing resembling the row of hairs beneath
+          the head that harvester ants use for carrying soil and seed.
+        </p>
+        <p>
+          <strong>And the timing tell.</strong> Harvester ants shut down foraging around the middle of a
+          summer day as humidity drops. Fire ants do not follow that pattern in the same way, so heavy
+          activity at noon in August points away from harvester ants.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The biology that explains the frustration</h2>
+      <div class="measure">
+        <p>
+          People find fire ants uniquely maddening to deal with, and the reasons are all in the life
+          cycle rather than in the products.
+        </p>
+        <p>
+          <strong>They rebuild fast because they develop fast.</strong> Eggs hatch in eight to ten days,
+          larvae pass through four stages, and development takes roughly twenty-two to thirty-seven days
+          depending on temperature — about a month from egg to adult. A queen lays in the region of two
+          hundred eggs a day. Workers live about five weeks; the queen can live seven years or more.
+        </p>
+        <p>
+          <strong>A mature colony is far larger than the mound implies.</strong> Well over a hundred
+          thousand workers is normal, and published figures run considerably higher. The visible dome is a
+          climate-control structure, not the colony.
+        </p>
+        <p>
+          <strong>There are two social forms, and they behave completely differently.</strong>
+          Single-queen colonies are territorial: workers from one mound fight workers from another, which
+          limits density to roughly forty to a hundred and fifty mounds per acre. Multiple-queen colonies
+          are not territorial, so mounds interconnect and density climbs to two hundred or more per acre —
+          extension figures for multi-queen areas run as high as two hundred to eight hundred colonies per
+          acre. If a property looks impossibly infested, that is usually the explanation.
+        </p>
+        <p>
+          <strong>They recolonise from beyond your fence.</strong> Mating flights happen in the afternoon
+          soon after rain, most commonly spring and autumn, and a mated female can fly for miles before
+          landing. This is why treating individual mounds one at a time is a treadmill: the property is
+          being reseeded from a catchment far larger than the property.
+        </p>
+        <p>
+          <strong>And they are not purely a nuisance.</strong> Fire ants are omnivorous, but their primary
+          diet is insects and other invertebrates, and they measurably suppress ticks, chiggers and
+          caterpillars. They also tend aphids for honeydew, which is one route by which an ant problem
+          becomes a plant problem. None of that argues against controlling them where they are a hazard —
+          it is just worth knowing that the picture is not entirely one-sided.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The sting, and two numbers that get misread</h2>
+      <div class="measure">
+        <p>
+          <strong>What actually happens.</strong> The ant bites first, holding on with its jaws, and then
+          stings — which is why the marks often come in a small ring. AgriLife describes the course
+          precisely: the site hurts for a few minutes and then reddens, swelling into a bump or hive within
+          about twenty minutes. Within several hours to a day, most people develop a white fluid-filled
+          pustule that is characteristic of this ant and of very little else.
+        </p>
+        <p>
+          <strong>That pustule is sterile.</strong> AgriLife notes that sting sites rarely become infected
+          and that preventive antibiotics are therefore not routinely required. Leaving it intact rather
+          than opening it is the sensible course; scratching it open is how the rare infection actually
+          happens.
+        </p>
+        <p>
+          <strong>Now the first misread number: anaphylaxis.</strong> We are going to report this the
+          honest way, which is to say the sources contradict each other. One AgriLife publication states
+          in one passage that anaphylaxis occurs in 0.6 to 6 percent of people who are stung, and in
+          another passage <em>within the same document</em> that severe allergic reactions occur in less
+          than 1 percent. Texas A&amp;M's dedicated fire ant site gives around 1 percent. The defensible
+          summary is that severe reactions are uncommon, published estimates span under 1 percent to 6
+          percent, and the authorities are not consistent. Anyone who has previously reacted badly to a
+          sting of any kind should be talking to a doctor rather than reading this.
+        </p>
+        <p>
+          <strong>And the second: the death toll.</strong> AgriLife records that anaphylactic reactions to
+          fire ants have caused more than eighty deaths. That is a cumulative national figure with no
+          period attached — not an annual rate — and it is regularly quoted as though it were yearly. For
+          scale, published emergency medicine work puts all stinging insect deaths in the United States at
+          roughly thirty to forty per year across every species, with wasps and bees accounting for most of
+          them.
+        </p>
+        <p>
+          <strong>Where genuine caution belongs.</strong> Infants and small children who cannot move away
+          from a disturbed mound, anyone with impaired mobility, sleeping or confined animals, and anyone
+          with a known sting allergy. A documented fatality involved a three-month-old infant who received
+          hundreds of stings. That is the shape of the real risk — mass stinging of someone who cannot get
+          clear — rather than a single sting in a healthy adult.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The quarantine, and what it means for you</h2>
+      <div class="measure">
+        <p>
+          The federal imported fire ant regulated-areas list, published under 7 C.F.R. §301.81-3 and
+          adopted into Texas law by reference at 4 TAC §19.101, is what actually settles whether your
+          county is inside the line. We read it directly rather than repeating a summary.
+        </p>
+        <p>
+          <strong>Inside, on our route:</strong> Midland, Ector, Howard, Martin and Winkler counties, in
+          full. Part of Lubbock County — and the listing draws the boundary street by street, covering the
+          portion of the city bounded by Highway 27 to the east, Ursuline Street to the north, Milwaukee
+          Street to the west and 98th Street to the south.
+        </p>
+        <p>
+          <strong>Outside:</strong> Gaines, Yoakum, Terry, Dawson and Andrews counties are not listed.
+        </p>
+        <p>
+          <strong>What the quarantine actually regulates is movement, not the ant.</strong> If you are
+          moving soil, sod, nursery stock, baled hay that has been stored on the ground, or used
+          soil-moving equipment out of a regulated county into one that is not regulated, the rules apply
+          to you. That is a live consideration in a region where a great deal of soil, sod and equipment
+          moves between counties — landscapers, contractors, anybody hauling fill north out of the Basin.
+        </p>
+        <p>
+          <strong>And the list is amended without announcement.</strong> The federal list changes county by
+          county, and Texas adopts whatever is current rather than naming counties in its own rule. So the
+          live list governs, not this page. We re-read it on a schedule and we say when we last did — but
+          for any decision that matters, check the current list yourself.
+        </p>
+        <p>
+          The full county-by-county position, with citations, is on the
+          <a href="/compliance/fire-ant-quarantine/">fire ant quarantine page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What actually works, and what does not</h2>
+      <div class="measure">
+        <p>
+          <strong>Identify first.</strong> It is the whole reason this page exists. Fire ant products
+          applied to harvester ants remove a native species that horned lizards depend on — and AgriLife
+          records that fire ant products frequently kill harvester ants more effectively than they kill
+          fire ants.
+        </p>
+        <p>
+          <strong>Individual mound treatment is a treadmill on its own.</strong> Because the property is
+          reseeded from mated queens flying in from well beyond the fence, killing the mounds you can see
+          buys weeks rather than seasons. It is worth doing where a specific mound is a hazard — beside a
+          door, in a play area, in a pen — and it is not a programme.
+        </p>
+        <p>
+          <strong>Baiting works with the biology rather than against it.</strong> Foragers carry bait back
+          and it reaches the queen, which is the only part of the colony whose loss actually matters.
+          Baits are slower than a drench and people frequently give up on them too early, which is worth
+          knowing before you start.
+        </p>
+        <p>
+          <strong>Timing matters more than product.</strong> Bait works when ants are actively foraging,
+          which in a West Texas summer means early morning or evening rather than the middle of a hot dry
+          afternoon. A simple test: put a small amount of something greasy on a card near a mound and see
+          whether they find it within half an hour. If they do not, it is the wrong time to bait.
+        </p>
+        <p>
+          <strong>What does not work.</strong> Pouring boiling water, petrol, bleach or various household
+          chemicals into a mound. These circulate perennially, they are dangerous, several are illegal, and
+          they generally relocate the colony a few metres rather than killing it. If a mound simply moves
+          after treatment, it usually was not killed.
+        </p>
+        <p>
+          <strong>And the honest limit.</strong> On acreage, eradication is not the goal and nobody
+          credible will promise it. Suppression around the areas people and animals actually use is
+          achievable and worth paying for. Beyond that boundary, the ants are part of the landscape.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where they cause trouble that is not about stings</h2>
+      <div class="measure">
+        <p>
+          Most people think of fire ants as a stinging problem in a lawn. In this region a good deal of the
+          actual damage happens elsewhere.
+        </p>
+        <p>
+          <strong>Electrical equipment.</strong> Fire ants are drawn to electrical fields and turn up
+          inside irrigation controllers, pump panels, air-conditioning units, well-house wiring, traffic
+          signal boxes and meter enclosures. They pack the housing with soil and debris, and the failure
+          usually presents as an electrical fault rather than as an ant problem. On a property with
+          irrigation and outbuildings, that is frequently the expensive part.
+        </p>
+        <p>
+          <strong>Livestock and young animals.</strong> Anything that cannot move away from a disturbed
+          mound is at real risk — newborn animals, penned animals, sitting poultry. This is the situation
+          where mass stinging genuinely matters, as opposed to a single sting on an adult.
+        </p>
+        <p>
+          <strong>Equipment and gardens.</strong> Mounds in a hay meadow damage cutting equipment. Mounds
+          in a garden make routine work unpleasant. And the aphid-tending habit means an ant problem in
+          ornamentals often shows up first as a plant problem.
+        </p>
+        <p>
+          <strong>New ground before established ground.</strong> Freshly graded, newly sodded and newly
+          irrigated land is easier for them to colonise than mature landscape, because there is no
+          incumbent ant population holding the territory. In a region with as much new construction as the
+          Permian Basin, that is why new subdivisions frequently have them before the older streets nearby
+          do.
+        </p>
+        <p>
+          <strong>And a note for anyone hauling.</strong> Because the quarantine regulates the movement of
+          soil, sod, nursery stock, hay stored on the ground and used soil-moving equipment, a contractor
+          working across county lines is inside the rules whether or not anybody mentioned it at the job.
+          It is worth knowing which side of the line each site is on.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Fire ant questions" />
+  <Cta
+    line="Send a photo of the mound and one of the ants themselves before booking. If the workers are all the same size and there is a hole in the middle of a bare circle, it is a harvester ant and the conversation is completely different."
+  />
+</BaseLayout>

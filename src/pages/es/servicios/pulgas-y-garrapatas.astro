@@ -1,0 +1,398 @@
+---
+/**
+ * Página en español — Pulgas y Garrapatas.
+ * Par en inglés: /services/flea-and-tick/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Gates: el lado animal es del VETERINARIO — no recomendamos, no vendemos y
+ * no dosificamos productos para animales. NO lleva la garantía de 30 días.
+ * Productos: Precor IGR, Talstar, DeltaGard. Retiro de garrapata según el
+ * método correcto, y todo lo médico se manda al médico. Sin precios.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Pulgas y Garrapatas', path: '/es/servicios/pulgas-y-garrapatas/' },
+];
+
+const quickAnswer =
+  'Tratamiento de pulgas y garrapatas en el terreno, coordinado con el tratamiento del animal que hace su veterinario — las dos mitades son un solo trabajo y ninguna funciona sola. Usamos regulador de crecimiento además del producto para adultos. Valentin Moriel trabaja personalmente bajo la licencia TPCL 0918482.';
+
+const faqs = [
+  {
+    q: '¿También hay que tratar a la mascota?',
+    a: 'Sí, y no es opcional. El tratamiento de la propiedad y el del animal son dos mitades de un mismo trabajo, y hacer solo una produce un ciclo que nunca cierra: la propiedad tratada se vuelve a sembrar desde el animal sin tratar, o el animal tratado se vuelve a infestar desde la propiedad sin tratar. El lado del animal le corresponde a su veterinario. Nosotros no recomendamos, no vendemos y no aplicamos productos para animales, porque eso es práctica veterinaria y no estamos calificados para hacerlo.',
+  },
+  {
+    q: '¿Por qué tengo pulgas si aquí es tan seco?',
+    a: 'Porque las pulgas no viven a campo abierto. Sobreviven en microclimas sombreados y húmedos: debajo de terrazas y porches, en espacios bajo la casa, bajo arbustos y cubresuelos densos, en un corral de perro, en la tierra fresca donde el animal se acuesta. En un clima semiárido esos rincones son una fracción pequeña de la propiedad, lo cual en realidad es buena noticia: el área que hay que tratar es mucho más chica y está mucho mejor definida que en una región húmeda.',
+  },
+  {
+    q: '¿De dónde salen las garrapatas aquí?',
+    a: 'De los animales silvestres y de la vegetación por donde se mueven. Conejos, roedores, venados y coyotes las llevan por la propiedad, y las garrapatas esperan sobre pasto alto y matorral a lo largo de las rutas que usan esos animales — líneas de cerca, orillas de monte, el límite entre lo que se corta y lo que no. Por eso el trabajo de garrapatas es sobre todo de bordes y no del centro del jardín.',
+  },
+  {
+    q: '¿Qué productos usan?',
+    a: 'Precor IGR, Talstar y DeltaGard, según la situación. El regulador de crecimiento importa tanto como cualquier otra cosa en un trabajo de pulgas, porque la gran mayoría de una población de pulgas en cualquier momento no es adulta — son huevos, larvas y pupas en la alfombra, en la cama del animal y en el suelo, y un producto para adultos por sí solo deja ese depósito intacto.',
+  },
+  {
+    q: '¿Por qué sigo viendo pulgas después del tratamiento?',
+    a: 'Porque las pupas están protegidas y emergen en su propio tiempo, a veces disparadas por la vibración y el calor. Ver adultos durante un tramo después del tratamiento es lo esperado y no una falla, y es la razón por la que aspirar diario después de tratar sí ayuda: la vibración provoca que emerjan hacia superficies ya tratadas. Lo que hay que medir es la tendencia a lo largo de un par de semanas, no el día tres.',
+  },
+  {
+    q: '¿Lleva la garantía de 30 días?',
+    a: 'No. Lleva sus propios términos acordados. La razón es sencilla y vale decirla: el resultado depende mucho de que el animal se trate en paralelo, lo cual está fuera de nuestro control y fuera de nuestra competencia. Prometer treinta días sobre un resultado que depende del plan veterinario de otra persona no sería honesto.',
+  },
+  {
+    q: '¿Cómo se quita una garrapata que ya está prendida?',
+    a: 'Con pinzas de punta fina, tomándola lo más cerca posible de la piel y jalando de forma constante hacia arriba, sin torcer ni aplastar el cuerpo. Después limpie la zona. No use calor, ni vaselina, ni esmalte de uñas — son métodos caseros que aumentan la probabilidad de que la garrapata regurgite. Si en las semanas siguientes le sale sarpullido, le da fiebre o se siente mal, vea a un médico y menciónele la picadura. Esa parte es médica y no de control de plagas, y no vamos a fingir lo contrario.',
+  },
+  {
+    q: '¿Y si el problema viene del terreno del vecino?',
+    a: 'Es posible y es común, sobre todo con garrapatas, porque los animales silvestres no respetan cercas. Lo que se puede hacer de su lado es trabajar el borde: cortar la vegetación alta a lo largo de la línea de cerca, crear una franja despejada entre lo silvestre y lo que usted usa, y tratar esa zona de transición. No elimina la fuente, pero cambia bastante cuánto llega hasta la casa.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pulgas y Garrapatas | Seminole, TX"
+  description="Tratamiento del terreno coordinado con el trabajo de su veterinario, con regulador de crecimiento y atención a los bordes de la propiedad. TPCL 0918482."
+  path="/es/servicios/pulgas-y-garrapatas/"
+  lang="es"
+  altLangPath="/services/flea-and-tick/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pulgas y Garrapatas',
+    description: 'Tratamiento de pulgas y garrapatas en jardines, perreras, espacios bajo terrazas y bordes de propiedad en el oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Pulgas y Garrapatas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Este trabajo tiene dos mitades y nosotros solo hacemos una.</strong> Lo decimos al
+          principio porque es la razón número uno por la que la gente gasta dinero dos veces en pulgas.
+        </p>
+        <p>
+          La propiedad es nuestra mitad. <strong>El animal es del veterinario.</strong> No recomendamos, no
+          vendemos y no aplicamos productos para mascotas — eso es práctica veterinaria y no estamos
+          calificados para hacerlo, y quien le diga que puede resolverle las dos cosas conviene que le
+          explique con qué credencial.
+        </p>
+        <p>
+          <strong>Y las dos tienen que pasar más o menos al mismo tiempo.</strong> Si se trata el terreno y
+          no al perro, el perro vuelve a sembrar el terreno. Si se trata al perro y no el terreno, el
+          terreno vuelve a infestar al perro. Es un ciclo que se puede repetir durante meses, y cada vuelta
+          se siente como que "no funcionó".
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Lo que usted ve es una fracción de lo que hay</h2>
+      <div class="measure">
+        <p>
+          Esta es la idea que cambia cómo se trata una infestación de pulgas, y es la que casi nadie
+          explica.
+        </p>
+        <p>
+          <strong>Las pulgas adultas que usted ve son la minoría de la población.</strong> La mayor parte
+          en cualquier momento está en otras etapas: huevos que caen del animal por donde camina, larvas en
+          la alfombra y en la tierra, y pupas — que son la etapa complicada.
+        </p>
+        <p>
+          <strong>La pupa está protegida dentro de un capullo</strong> y es notablemente resistente. No
+          emerge en una fecha fija: espera señales de que hay un huésped cerca, sobre todo vibración,
+          calor y dióxido de carbono. Por eso una casa que estuvo vacía puede llenarse de pulgas el día que
+          alguien entra, y por eso ver adultos después de un tratamiento no significa que el tratamiento
+          haya fallado.
+        </p>
+        <p>
+          <strong>De ahí sale el consejo más útil de esta página: aspire diario.</strong> Después del
+          tratamiento, aspirar produce exactamente la vibración que provoca que las pupas emerjan — hacia
+          superficies que ya están tratadas. Está acelerando el proceso a propósito. Aspire, saque la bolsa
+          o vacíe el depósito, y repita durante un par de semanas.
+        </p>
+        <p>
+          <strong>Y por eso usamos regulador de crecimiento</strong> — Precor IGR — junto con el producto
+          para adultos. El regulador atiende a la parte de la población que en este momento no es adulta.
+          Un tratamiento que solo mata adultos deja el depósito intacto y le devuelve el problema en tres
+          semanas.
+        </p>
+        <p>
+          <strong>Lo que hay que medir es la tendencia</strong>, no el día tres. Menos cada semana es
+          exactamente cómo se ve un trabajo que está funcionando.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Pulgas en clima semiárido</h2>
+      <div class="measure">
+        <p>
+          Mucha gente aquí se sorprende de tener pulgas porque asocia la pulga con humedad. La asociación
+          es correcta; la conclusión no.
+        </p>
+        <p>
+          <strong>Las pulgas no sobreviven a campo abierto en este clima.</strong> El sol directo y la
+          sequedad matan huevos y larvas. Lo que sí hay son bolsas de microclima: sombra permanente más
+          humedad relativa más suelo suave.
+        </p>
+        <p>
+          <strong>Dónde están esas bolsas, en orden de probabilidad.</strong> Debajo de una terraza o un
+          porche. En el espacio bajo la casa si lo hay. Bajo arbustos densos y cubresuelo. En un corral o
+          perrera, sobre todo si hay sombra. En la tierra fresca donde el animal se echa a dormir — que
+          casi siempre es el mismo lugar todos los días. Y bajo cualquier cosa apilada que lleve tiempo sin
+          moverse.
+        </p>
+        <p>
+          <strong>Eso es buena noticia y así lo decimos.</strong> En una región húmeda la pulga puede estar
+          en todo el jardín. Aquí está en una fracción pequeña y bien definida de la propiedad, lo que
+          significa que el tratamiento puede ser dirigido, más barato y más efectivo. Lo que hace la
+          inspección es encontrar esas bolsas.
+        </p>
+        <p>
+          <strong>Y hay una acción gratuita que rinde mucho:</strong> mover al animal de lugar de descanso,
+          lavar su cama en caliente, y despejar lo que crea sombra permanente contra el suelo. Reducir las
+          bolsas reduce el problema aunque no se aplique nada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La garrapata es un problema de bordes</h2>
+      <div class="measure">
+        <p>
+          Las garrapatas funcionan con una lógica distinta de las pulgas y hay que tratarlas distinto.
+        </p>
+        <p>
+          <strong>No vuelan ni saltan lejos: esperan.</strong> Se suben a pasto alto o a la punta de un
+          matorral y se quedan con las patas delanteras extendidas hasta que pasa algo con calor. Eso
+          significa que están donde pasa el tránsito de animales, no repartidas al azar.
+        </p>
+        <p>
+          <strong>Aquí el tránsito son conejos, roedores, venados y coyotes</strong>, y sus rutas son
+          bastante predecibles: líneas de cerca, la orilla del monte, el límite entre lo cortado y lo que
+          no, los caminos entre construcciones, y cualquier corredor de vegetación que cruce la propiedad.
+        </p>
+        <p>
+          <strong>Por eso tratar el centro del jardín rinde poco.</strong> El césped abierto y soleado es
+          mal hábitat de garrapata. Lo que hay que tratar es la zona de transición — esa franja de metro y
+          medio o dos donde lo cuidado se junta con lo silvestre.
+        </p>
+        <p>
+          <strong>Y por eso el corte importa tanto como el producto.</strong> Bajar la vegetación a lo
+          largo de la cerca, abrir una franja despejada entre lo silvestre y el área que usa la familia, y
+          quitar los montones de hojas y material donde se resguardan los roedores que las transportan.
+          Eso es trabajo de limpieza de terreno, y muchas veces se hace en la misma visita.
+        </p>
+        <p>
+          <strong>Si tiene perros que salen al campo</strong>, la revisión después de cada salida es la
+          medida que más sirve, y esa parte también es del veterinario en cuanto a qué producto usar.
+          Revise orejas, entre los dedos, el cuello y la zona de la ingle, que es donde se prenden con más
+          frecuencia y donde el pelo las esconde mejor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cómo quitar una garrapata, y qué no hacer</h2>
+      <div class="measure">
+        <p>
+          Circulan varios métodos caseros y todos son peores que el correcto. Vale la pena tenerlo claro
+          antes de necesitarlo.
+        </p>
+        <p>
+          Vale la pena tener unas pinzas de punta fina en el botiquín antes de necesitarlas, sobre todo si
+          hay niños o perros que salen al campo. Es de esas cosas que uno busca justo cuando no hay tiempo
+          de buscar nada.
+        </p>
+        <p>
+          <strong>Lo correcto:</strong> pinzas de punta fina. Tome la garrapata lo más cerca posible de la
+          piel — de la cabeza, no del cuerpo abultado. Jale de manera constante y firme hacia arriba, sin
+          torcer y sin apretar el cuerpo. Después limpie la zona y lávese las manos.
+        </p>
+        <p>
+          <strong>Lo que no debe hacer:</strong> quemarla con un cerillo, taparla con vaselina, ponerle
+          esmalte de uñas o alcohol para que "se salga sola". Todos esos métodos irritan al animal y
+          aumentan la probabilidad de que regurgite hacia la herida, que es justo lo que uno quiere evitar.
+          Y tampoco la aplaste con los dedos.
+        </p>
+        <p>
+          <strong>Guárdela si puede</strong>, en una bolsita cerrada, y anote la fecha en la bolsa. Si
+          después hace falta consulta médica, tener el ejemplar y la fecha exacta le ahorra al médico
+          bastantes preguntas y le da un dato que de otro modo se pierde en unos días.
+        </p>
+        <p>
+          <strong>Y la parte médica es médica.</strong> Si en las semanas siguientes aparece sarpullido,
+          fiebre, dolor de articulaciones o malestar general, vaya con un médico y mencione la picadura y
+          la fecha. Nosotros no diagnosticamos, no opinamos sobre riesgo de enfermedad y no vamos a fingir
+          que sabemos. Lo que sí hacemos es reducir cuántas garrapatas hay en el terreno donde vive su
+          familia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Acreajes, ganado y bodegas</h2>
+      <div class="measure">
+        <p>
+          En propiedad rural el problema tiene otra escala y conviene ser realista sobre lo que se puede
+          conseguir.
+        </p>
+        <p>
+          <strong>No se trata todo un acreaje.</strong> Ni tiene sentido ni sería responsable. Lo que se
+          hace es definir la zona de uso — la casa, el porche, el área donde juegan los niños, el camino a
+          la puerta, la perrera — y trabajarla bien, más la zona de transición que la rodea.
+        </p>
+        <p>
+          <strong>Donde hay ganado o caballos, la conversación cambia antes de aplicar nada.</strong> Hay
+          consideraciones de dónde comen y beben los animales, y hay productos y ubicaciones que
+          sencillamente no proceden. Eso se planea con usted, no se improvisa, y la parte que corresponde a
+          tratar a los animales es del veterinario.
+        </p>
+        <p>
+          <strong>Las bodegas y los graneros son un caso especial</strong> porque combinan sombra, tierra
+          suave y tránsito de roedores. Un granero con roedores es también un granero con garrapatas y
+          pulgas, y ahí las dos cosas se atienden juntas — el refugio, la población de roedores y el
+          tratamiento.
+        </p>
+        <p>
+          <strong>Y si hay gatos de granero o animales que entran y salen</strong>, dígalo. Cambia por
+          completo la expectativa realista, porque un animal sin tratar que recorre toda la propiedad es
+          una fuente móvil que ningún tratamiento del terreno va a superar.
+        </p>
+        <p>
+          <strong>Lo mismo pasa con la fauna silvestre debajo de una construcción.</strong> Un zorrillo,
+          un mapache o un tlacuache viviendo bajo una terraza o un cobertizo trae sus propias pulgas y
+          garrapatas, y las deja ahí. En esos casos el problema no se resuelve tratando: se resuelve
+          cerrando el acceso una vez que el animal salió, que es trabajo de retiro de fauna y exclusión.
+          Si sospecha que hay algo viviendo debajo de algo, dígalo al llamar, porque cambia el orden de las
+          cosas — primero se cierra la fuente y después se trata.
+        </p>
+        <p>
+          <strong>Y una nota sobre propiedades que se rentan.</strong> Entre inquilinos es el momento
+          natural para tratar pulgas, porque la casa está vacía y accesible. Vale la pena saber que una
+          casa desocupada puede parecer limpia y no estarlo: las pupas esperan a que alguien entre. Tratar
+          antes de que llegue el siguiente inquilino evita exactamente esa llamada incómoda a las dos
+          semanas de la mudanza.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que la gente intenta primero, y cuánto vale</h2>
+      <div class="measure">
+        <p>
+          Casi todos los que nos llaman por pulgas ya intentaron algo. Vale la pena decir con franqueza qué
+          rinde y qué no, incluso cuando la respuesta es "eso sí sirve y no nos necesita".
+        </p>
+        <p>
+          <strong>Aspirar: sirve mucho, y es gratis.</strong> Retira huevos y larvas y provoca la
+          emergencia de las pupas. Es probablemente la medida individual más útil que existe del lado del
+          dueño. Hágalo diario un par de semanas y saque la bolsa cada vez.
+        </p>
+        <p>
+          <strong>Lavar la cama del animal en caliente: sirve.</strong> Es donde se concentra la mayor
+          densidad de huevos de toda la casa.
+        </p>
+        <p>
+          <strong>Bombas de humo o "fogger" de tienda: sirven poco y a veces empeoran.</strong> El producto
+          cae sobre superficies expuestas y no llega a donde están las larvas — bajo muebles, en la base de
+          la alfombra, en las grietas. Y si es repelente, dispersa. El resultado típico es una casa con
+          olor, un gasto hecho, y las pulgas en otro cuarto.
+        </p>
+        <p>
+          <strong>Sal, bicarbonato o tierra de diatomeas en la alfombra:</strong> la tierra de diatomeas
+          tiene un mecanismo real pero requiere condiciones secas y contacto directo, y en una alfombra
+          rara vez alcanza a las larvas donde de verdad están. La sal y el bicarbonato son remedios de
+          internet. Ninguno reemplaza al regulador de crecimiento.
+        </p>
+        <p>
+          <strong>Collares y productos de mostrador para la mascota:</strong> eso no nos toca opinarlo, y
+          lo decimos en serio. Es del veterinario. Lo que sí le decimos es que la eficacia varía mucho
+          entre productos y que un producto que no funciona en el animal hace que todo lo demás falle.
+        </p>
+        <p>
+          <strong>Y quitar la sombra permanente contra el suelo: sirve más de lo que parece.</strong>
+          Levantar lo apilado, podar el cubresuelo denso, mover donde duerme el animal. Está eliminando el
+          hábitat, no matando individuos, y eso es lo que dura.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cómo es el trabajo y qué le toca a usted</h2>
+      <div class="measure">
+        <p>
+          <strong>Antes de la visita:</strong> aspire toda la casa, lave la cama del animal en caliente,
+          levante del piso lo que se pueda para que las superficies queden accesibles, y coordine con su
+          veterinario para que el tratamiento del animal caiga cerca de la misma fecha. Esa última parte no
+          es un detalle: es la mitad del trabajo.
+        </p>
+        <p>
+          <strong>La inspección busca las bolsas de microclima</strong> que describimos arriba, dentro y
+          fuera. Dónde duerme el animal, por dónde entra y sale, qué zonas de sombra tiene el terreno, y si
+          hay espacio bajo una terraza o bajo la casa.
+        </p>
+        <p>
+          <strong>El tratamiento va a esas zonas</strong>, no a la propiedad completa. Adentro, en el
+          perímetro de los cuartos, la base de la alfombra y bajo los muebles donde el animal se acuesta.
+          Afuera, las bolsas de sombra, el corral y la zona de transición si el problema incluye
+          garrapatas. Todo a dosis de etiqueta.
+        </p>
+        <p>
+          <strong>Después de la visita, lo suyo es aspirar diario.</strong> Suena a poca cosa y es lo que
+          decide cuántos adultos ve la segunda semana. También mantenga al animal con su producto
+          veterinario al día, porque un animal sin protección vuelve a sembrar la casa.
+        </p>
+        <p>
+          <strong>Y qué esperar:</strong> ver pulgas los primeros días es normal y esperado. Lo que hay que
+          vigilar es que sean menos cada semana. Si a las dos semanas no bajó, algo del sistema no está
+          cerrando — normalmente el lado del animal, o una bolsa exterior que no se encontró — y eso se
+          revisa.
+        </p>
+        <p>
+          <strong>Por eso este servicio lleva términos propios y no la garantía de 30 días.</strong> No es
+          para escaparnos: es que prometer un resultado que depende del plan veterinario de alguien más
+          sería vender algo que no controlamos. Los términos se acuerdan antes, con claridad sobre qué
+          incluye y qué se espera de cada lado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre pulgas y garrapatas" />
+  <Cta
+    line="Antes de agendar, hable con su veterinario sobre el producto para el animal — las dos mitades tienen que ir juntas o el ciclo no cierra. Y dígale dónde se echa a dormir la mascota; ahí es donde casi siempre está el foco."
+  />
+</BaseLayout>

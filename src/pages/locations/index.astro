@@ -18,13 +18,15 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
   <Crumbs items={crumbs} />
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{TOWNS.length} towns, one truck, based in Seminole</p>
+      <p class="eyebrow">
+        {TOWNS.filter((t) => !t.byRequest).length} towns on the route, {TOWNS.filter((t) => t.byRequest).length} more by request · one truck, based in Seminole
+      </p>
       <h1>Where we work</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <div class="grid c3" style="margin-top:1.8rem">
         {TOWNS.map(t => (
           <a class="card" href={`/locations/${t.slug}/`}>
-            <h3>{t.name}, TX</h3>
+            <h3>{t.name}, TX{t.byRequest ? ' — by request' : ''}</h3>
             <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
           </a>
         ))}
@@ -34,6 +36,14 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
           The furthest we normally drive is about a hundred miles, which puts Lubbock and Big Spring at
           the edge of the map. If you are outside that and it matters to you, call and ask — sometimes
           it works out.
+        </p>
+        <p>
+          <strong>Two of those towns are marked "by request", and the distinction is real.</strong> The
+          rest are places we actually run — there is a route, and it passes through. Stanton and Kermit
+          are not on it. We have no customers in either, and nothing takes us through them on a set day.
+          If somebody there calls with work that can be planned, we will drive it; that is a different
+          promise from the one the other nine towns carry, and labelling them the same would be the
+          easiest lie on this entire site to tell.
         </p>
 
         <h2 style="margin-top:2.6rem">The shape of the route</h2>
@@ -92,8 +102,9 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
           reaches properties there.
         </p>
         <p>
-          <strong>Martin County.</strong> Stanton, south-east, between Midland and Big Spring on the
-          interstate.
+          <strong>Martin County.</strong> <a href="/locations/stanton/">Stanton</a>, south-east, between
+          Midland and Big Spring on the interstate — by request rather than on the route, and the page
+          says so in the first paragraph.
         </p>
         <p>
           <strong>Midland and Ector Counties.</strong> Midland and Odessa — the two largest markets on

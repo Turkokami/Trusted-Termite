@@ -10,8 +10,14 @@
  * DATA DISCIPLINE: every height, notice period and citation on this page comes
  * from `TOWNS[].weedOrdinance` so that the town pages and this page can never
  * drift apart. A town whose ordinance we could not read renders as "not
- * verified" rather than being guessed at — Seminole (eCode360 blocks automated
- * access) and Big Spring (Municode is JavaScript-only) are both in that state.
+ * verified" rather than being guessed at — Big Spring (Municode is
+ * JavaScript-only) is the one town still in that state.
+ *
+ * Seminole is a third case and the table marks it as such. Its section number
+ * IS verified against the city's published table of contents, but eCode360
+ * blocks the section text, so the figures came from the city office (K-04,
+ * answered Aug 2026). `figuresFromCityOffice` on the town row drives the dagger
+ * and the footnote. Never let that marker be dropped to make the table tidier.
  *
  * State-law grounding, all verified Aug 2026:
  *  - Health & Safety Code §342.004 is the municipal weed power, and it pulls in
@@ -35,6 +41,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
+import Verified from '../../components/Verified.astro';
 import Cta from '../../components/Cta.astro';
 import { TOWNS } from '../../data/towns';
 
@@ -127,7 +134,7 @@ const faqs = [
         <table class="cmp">
           <thead>
             <tr>
-              <th>Town</th><th>Limit</th><th>Notice</th><th>No notice above</th><th>Citation</th>
+              <th>Town</th><th>Limit</th><th>Notice</th><th>Repeat window</th><th>No notice above</th><th>Citation</th>
             </tr>
           </thead>
           <tbody>
@@ -141,8 +148,15 @@ const faqs = [
                     : ''}
                 </td>
                 <td>{t.weedOrdinance!.noticeDays ? `${t.weedOrdinance!.noticeDays} days` : 'not verified'}</td>
+                <td>
+                  {t.weedOrdinance!.annualNotice
+                    ? `${t.weedOrdinance!.repeatWindowMonths ?? 12} months`
+                    : '—'}
+                </td>
                 <td>{t.weedOrdinance!.noNoticeAboveInches ? `${t.weedOrdinance!.noNoticeAboveInches}"` : '—'}</td>
-                <td class="cite">{t.weedOrdinance!.cite}</td>
+                <td class="cite">
+                  {t.weedOrdinance!.cite}{t.weedOrdinance!.figuresFromCityOffice ? ' †' : ''}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -150,13 +164,20 @@ const faqs = [
       </div>
       <div class="measure" style="margin-top:1.6rem">
         <p style="color:var(--ink-3);font-size:.95rem">
-          <strong>Not listed above:</strong> {withoutOrd.map((t) => t.name).join(', ')}. We could not read
-          those ordinances from an accessible published source, so we are not going to print a number for
-          them. Seminole's code is hosted behind a service that blocks automated access, and Big Spring
+          <strong>† Seminole.</strong> The section number above is verified against the city's own
+          published table of contents. The figures are not. Seminole's code is hosted behind a service
+          that serves the contents but blocks the section text, so the twelve inches, the ten days and the
+          annual rule came from the city office rather than from the ordinance as published. They are very
+          probably right — twelve inches is what most of this region uses — but they are second-hand, and
+          you should ring the city before you rely on them for anything that matters.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          <strong>Not listed above:</strong> {withoutOrd.map((t) => t.name).join(', ')}. Big Spring
           publishes its nuisance provisions in a JavaScript viewer plus a separate Structural Standards and
-          Nuisance Abatement Ordinance. For those towns, call city code enforcement and ask directly.
-          Every other page on this site quotes an exact figure because we could read the rule; here we
-          could not, and inventing one would be worse than admitting it.
+          Nuisance Abatement Ordinance, and we could not read a height out of either. For that town, call
+          city code enforcement and ask directly. Every other page on this site quotes an exact figure
+          because we could read the rule; here we could not, and inventing one would be worse than
+          admitting it.
         </p>
       </div>
     </div>
@@ -424,6 +445,8 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <Verified facts={['ORD-01', 'REG-04', 'ORD-02']} />
 
   <Faq items={faqs} heading="Weed ordinance questions" />
   <Cta

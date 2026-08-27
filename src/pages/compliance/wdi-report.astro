@@ -3,16 +3,23 @@
  * Compliance — the Texas Official Wood Destroying Insect Report (SPCS/T-5).
  *
  * ############################################################################
- * HELD AT NOINDEX UNTIL THE OWNER CONFIRMS THE WDI DECISION.
- * B-05 says he IS licensed in the Termite and Wood Destroying Insect Control
- * category, so he CAN lawfully perform and sign a WDIR. C-09 says he would
- * rather not. CONTENT_BRIEF section 11 holds the WDI / T-5 / realtor + lender
- * cluster until that is confirmed in writing.
+ * RELEASED August 2026, together with /services/termite-control/wdi-inspection/.
+ * B-05 said he IS licensed in the Termite and Wood Destroying Insect Control
+ * category, so he could always lawfully perform and sign a WDIR; C-09 initially
+ * had him preferring not to. He confirmed YES in August 2026, and the pages
+ * shipped once the operating limits arrived — three days' notice, 90-mile
+ * radius.
  *
- * This page and /services/termite-control/wdi-inspection/ are both gated on
- * BUSINESS.owner.wdiDecisionConfirmed. Flip that ONE flag in business.ts from
- * false to true and both pages ship. Strike the WDI row from the CONTENT_BRIEF
- * held table at the same time. Nothing else needs to change.
+ * The gate itself is worth preserving in the record: both pages were written to
+ * full depth months before either could ship, and sat at noindex behind a
+ * single boolean the whole time. That is the pattern this build uses for
+ * anything making a service promise, and `wdiDecisionConfirmed` still governs
+ * both pages — set it back to false and both leave the index together.
+ *
+ * NOTE: this page is the regulatory explainer and deliberately carries NO
+ * scheduling or radius language. The 90-mile figure lives on the service page,
+ * derived from BUSINESS.owner.wdiRadiusMi. Do not restate it here — one
+ * promise, one place.
  * ############################################################################
  *
  * Verified Aug 2026 against 4 TAC ch. 7 subchapter H div. 5 and the TDA form:
@@ -78,6 +85,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
+import Verified from '../../components/Verified.astro';
 import Cta from '../../components/Cta.astro';
 import { BUSINESS } from '../../data/business';
 
@@ -515,6 +523,8 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <Verified facts={['REG-02', 'LIC-01']} />
 
   <Faq items={faqs} heading="WDI report questions" />
   <Cta

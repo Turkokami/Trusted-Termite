@@ -19,6 +19,7 @@ import Trust from '../../components/Trust.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
+import SpokeLinks from '../../components/SpokeLinks.astro';
 import { serviceBySlug } from '../../data/services';
 import { TOWNS } from '../../data/towns';
 import { BUSINESS } from '../../data/business';
@@ -435,4 +436,6 @@ const faqs = [
 
 <Faq items={faqs} heading="Termite questions" />
   <Cta line="If you have found something and you are not sure what it is, send a photograph before you do anything else. Half the time the honest answer is that it is not what you think, and that conversation costs nothing." />
+  <SpokeLinks service="termite-control" />
+
 </BaseLayout>

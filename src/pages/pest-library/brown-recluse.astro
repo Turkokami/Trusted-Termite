@@ -1,0 +1,421 @@
+---
+/**
+ * Pest library — recluse spiders in Texas, Loxosceles spp.
+ *
+ * THE HARDEST PAGE ON THE SITE TO WRITE HONESTLY, because the honest version
+ * argues against the fear that sells the treatment.
+ *
+ * TWO TEXAS-SPECIFIC POINTS THAT MOST SITES GET WRONG:
+ *
+ * 1. THE SPECIES. texasinsects.tamu.edu records FOUR other Loxosceles in Texas
+ *    besides L. reclusa: the Big Bend recluse L. blanda (WEST TEXAS), the Texas
+ *    recluse L. devia (Central/South), L. apachea, and L. rufescens. It states
+ *    "The Texas recluse may be the most common species in Texas and is often
+ *    mistaken for L. reclusa." The TAMU spider checklist lists five Loxosceles
+ *    for Texas.
+ *    ⚠ SOURCE TENSION: Penn State lists Texas among states where L. reclusa is
+ *    "established" and Vetter's range description reaches "into Texas". The
+ *    honest resolution used here: L. reclusa reaches Texas but its core range
+ *    is east and north; across most of WEST Texas the native recluses are
+ *    L. blanda and L. apachea. So "brown recluse" as a blanket West Texas term
+ *    is imprecise. This page says that.
+ *
+ * 2. THE OVER-DIAGNOSIS PROBLEM IS DIFFERENT HERE. In Florida and California
+ *    the spider is essentially absent, so a diagnosis is almost always wrong.
+ *    In Texas the spider is genuinely present — so the page must NOT simply
+ *    import the "there are no recluses here" argument. The correct Texas
+ *    framing: the spider is real, and a suspected bite is STILL far more
+ *    likely to be something else.
+ *
+ * VERIFIED MEDICAL FIGURES:
+ *  - Penn State Extension: ~90% of bites produce no reaction or a small (~5mm)
+ *    red papule; ~10% result in dermonecrotic lesions; severe systemic effects
+ *    in "less than 1 percent of bites".
+ *  - Cacy & Mold (OKPRN, J Fam Pract 1999), 149 possible bites / 112 followed:
+ *    43% healed within two weeks; necrosis in 40% AVERAGING 0.48 cm diameter;
+ *    13% scarred; ONE hospitalisation; 27% systemic symptoms; NO deaths.
+ *    ⚠ SELECTED SAMPLE — these were people who sought care, and only 15% had a
+ *    spider identified; 54% merely "reported seeing a brown recluse in the
+ *    area". Do NOT average this against the Penn State figure. Present both
+ *    with their populations named, exactly as the page does.
+ *  - DSHS: "There is no effective antivenom available."
+ *  - JABFM 2004: systemic DAPSONE "associated with slower healing" and "an
+ *    increased probability of scarring"; systemic CORTICOSTEROIDS "associated
+ *    with slower healing". Both are commonly prescribed. Report it.
+ *
+ * OVER-REPORTING EVIDENCE (Vetter et al., Toxicon 2003; J Med Entomol 2004;
+ * J Med Entomol 2005):
+ *  - 216 physician diagnoses across CA/OR/WA/CO vs 35 verified specimens ever
+ *    recorded from those four states combined.
+ *  - Colorado spider survey: 26,000 spiders identified, TWO were Loxosceles.
+ *  - Los Angeles survey: 2,500 spiders submitted, NONE were Loxosceles.
+ *  - South Carolina: 478 physician reports in 1990 vs ONE authentic specimen.
+ *  - Florida: 124 diagnoses across 31 counties 1997–2002 vs 11 verified
+ *    specimens in 100 years of record.
+ *  - National: 1,773 arachnids from 49 states submitted as suspected recluses;
+ *    only 324 were L. reclusa, all but four from endemic areas; 23 of 26
+ *    non-endemic states yielded zero.
+ *  - THE KANSAS HOUSE: 2,055 brown recluses collected in six months, 400+ of
+ *    bite-capable size, with NO apparent loxoscelism in the occupants. This is
+ *    the single most powerful fact available on this species.
+ *
+ * ⚠️ DO NOT WRITE: any MRSA percentage. NOT VERIFIED. The page names MRSA as a
+ *   known impostor without attaching a figure.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Brown recluse', path: '/pest-library/brown-recluse/' },
+];
+
+const quickAnswer =
+  'Recluse spiders are genuinely present in Texas — several native species, and in West Texas usually not the true brown recluse at all. They are also the most over-diagnosed bite in American medicine. Around 90 percent of actual recluse bites produce nothing worse than a small red bump, and the reliable identification feature is six eyes in three pairs, not the violin.';
+
+const faqs = [
+  {
+    q: 'Do we actually have brown recluses in West Texas?',
+    a: 'We have recluse spiders, which is not quite the same sentence. Texas A&M records four Loxosceles species in Texas besides the true brown recluse — the Big Bend recluse from West Texas, the Texas recluse from central and south Texas, and two others — and notes that the Texas recluse may be the most common species in the state and is often mistaken for the brown recluse. The true brown recluse reaches into Texas but its core range is further east and north. So across most of our service area, a recluse spider is real and is probably one of the western natives rather than the animal people picture.',
+  },
+  {
+    q: 'How do I identify one properly?',
+    a: 'Count the eyes, not the violin. Recluse spiders have six eyes arranged in three pairs, in a broad U, where nearly every other spider you will encounter has eight. That is the diagnostic character and it holds up. The violin marking on the top of the carapace — base at the front, neck pointing backwards — is real but unreliable, because several harmless species carry markings that look similar to a worried person with a phone camera. The body is small: about three-eighths of an inch on a female, a little less on a male, with a carapace that looks quite flat from the side.',
+  },
+  {
+    q: 'What is it usually mistaken for?',
+    a: 'Cellar spiders, grass spiders, wolf spiders and the southern house spider are the regulars, and all of them have eight eyes. The southern house spider in particular is common around West Texas buildings, is roughly the right size and colour, and gets killed as a recluse constantly. If you can photograph the spider — top down, in focus, with a coin for scale — the identification is usually straightforward, and we would rather look at a photograph than have you handle it.',
+  },
+  {
+    q: 'How dangerous is a bite?',
+    a: 'Much less often serious than the reputation suggests, and the numbers are worth having. Penn State Extension puts it at roughly 90 percent of brown recluse bites producing no reaction at all or a small red bump around five millimetres across, with about 10 percent producing a dermonecrotic lesion and severe systemic effects in less than one percent. A primary care study in Oklahoma that followed 112 suspected bites found the average necrotic lesion measured under half a centimetre, 43 percent had healed within two weeks, only 13 percent scarred, there was a single hospitalisation and there were no deaths. That is not nothing. It is also not what people are afraid of.',
+  },
+  {
+    q: 'Why do you say the bite is over-diagnosed?',
+    a: 'Because it is the best documented misdiagnosis pattern in American medical entomology, and the figures are startling. Researchers compared 216 physician diagnoses of recluse bites across California, Oregon, Washington and Colorado against the total verified recluse specimens ever recorded from those four states — thirty-five. A Colorado spider survey identified 26,000 spiders and found two recluses. A Los Angeles survey of 2,500 submitted spiders found none. South Carolina physicians reported 478 bites in a single year against one authentic specimen in the state. And in a national study, of 1,773 arachnids sent in by the public as suspected brown recluses, only 324 actually were — and all but four of those came from areas where the spider is known to live.',
+  },
+  {
+    q: 'But Texas does have them, so does that argument apply here?',
+    a: 'Only partly, and it is important to be precise about that. In Florida and California the spider is essentially absent, so a diagnosis there is almost certainly wrong. Texas genuinely has recluse spiders, so the argument here is different and weaker — but it still holds in one specific way. The best evidence that a recluse in the house does not mean bites is a Kansas home where researchers collected 2,055 brown recluses in six months, more than 400 of them large enough to bite, with no sign of loxoscelism in the people living there. Presence and biting are not the same thing.',
+  },
+  {
+    q: 'What else produces a wound people think is a spider bite?',
+    a: 'A long list, and several of them are serious in their own right — which is the real reason this matters. Published work on misdiagnosis names Lyme disease, sporotrichosis, pyoderma gangrenosum, Stevens-Johnson syndrome, erythema multiforme, lymphomatoid papulosis and chemical burns among conditions mistaken for recluse bites, and later work specifically addressed telling recluse bites from skin cancer. MRSA is the other well-known impostor. The risk of assuming a spider is not that you worry unnecessarily; it is that something that needed treating gets treated as a spider bite instead.',
+  },
+  {
+    q: 'How do I know it was not a spider?',
+    a: 'Texas A&M gives one rule that settles a great many cases: spider bites are rare, and can therefore be ruled out in people with multiple lesions or multiple bites. A recluse bites once. If you have several marks, or marks appearing over several days, or marks in places a spider would have had no reason to be, look elsewhere — fleas, bed bugs, chiggers, mites, scabies and conenose bugs all produce multiple lesions, and non-arthropod causes include reactions to medications, detergents and a number of medical conditions. If you did not see a spider, the odds are it was not one.',
+  },
+];
+---
+
+<BaseLayout
+  title="Recluse Spiders in Texas | Pest Library"
+  description="Which recluse species actually occur in West Texas, why the eyes matter more than the violin, and the evidence that the bite is heavily over-diagnosed."
+  path="/pest-library/brown-recluse/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Loxosceles</em> spp.</p>
+      <h1>Recluse spiders in Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>This page argues against the thing that would sell you a treatment</strong>, and we want
+          to be upfront that we know how that reads coming from a pest control company.
+        </p>
+        <p>
+          Recluse spiders are real, they live in Texas, and they are worth respecting. They are also the
+          single most over-diagnosed bite in American medicine, by a margin that has been documented
+          repeatedly and is genuinely difficult to believe until you see the numbers.
+        </p>
+        <p>
+          <strong>And the reason to care is not reassurance.</strong> It is that when a wound gets
+          attributed to a spider, whatever actually caused it stops being investigated — and some of the
+          things on that list are considerably more dangerous than any spider in Texas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Which recluse you probably have, which is not the famous one</h2>
+      <div class="measure">
+        <p>
+          Almost everything written about this animal treats "brown recluse" as though it were the only
+          option. In Texas it is not.
+        </p>
+        <p>
+          <strong>Texas A&amp;M records four other <em>Loxosceles</em> species in the state</strong>
+          besides the true brown recluse: the <strong>Big Bend recluse</strong>, recorded from West Texas;
+          the <strong>Texas recluse</strong>, from central and south Texas; <em>L. apachea</em>; and
+          <em>L. rufescens</em> from scattered locations. The state spider checklist maintained at Texas
+          A&amp;M lists five <em>Loxosceles</em> for Texas in total.
+        </p>
+        <p>
+          <strong>And it says something more pointed:</strong> the Texas recluse may be the most common
+          species in Texas, and it is often mistaken for the brown recluse.
+        </p>
+        <p>
+          <strong>Where this leaves West Texas.</strong> The true brown recluse does reach into Texas, and
+          some sources list the state within its established range — but its core distribution runs east
+          and north of us. Across the Llano Estacado and the Permian Basin, a recluse spider is more likely
+          to be one of the western natives. Calling every recluse out here a brown recluse is imprecise,
+          and we would rather be accurate than familiar.
+        </p>
+        <p>
+          <strong>Does it change what you do?</strong> Not much practically — the species are similar in
+          habits and in the kind of bite they produce. It changes what you should believe about the animal
+          you are looking at, and it is a good early signal about whether a source knows this region or is
+          reprinting something written for Missouri.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Count the eyes. Ignore the violin.</h2>
+      <div class="measure">
+        <p>
+          <strong>Six eyes in three pairs.</strong> That is the identification. Recluse spiders have six
+          eyes arranged in three widely separated pairs forming a broad U across the front of the
+          carapace. The overwhelming majority of spiders you will ever meet have eight. It is visible with
+          a hand lens or on a decent phone photograph, and it does not lie.
+        </p>
+        <p>
+          <strong>The violin is a trap.</strong> Yes, there is a darker violin-shaped mark on top of the
+          carapace, with the base at the front and the neck running backwards. And yes, entomologists use
+          it. But researchers who deal with public submissions are blunt that the marking is easily
+          mistaken on other species, and it is the single most common reason a harmless spider gets
+          identified as a recluse by somebody frightened and looking hard.
+        </p>
+        <p>
+          <strong>Size and shape.</strong> Small — a female's body runs about three-eighths of an inch, a
+          male's a little over a quarter. Uniform light to medium brown with no banding on the legs and no
+          patterning on the abdomen. Seen from the side the carapace looks notably flat. Long, fine,
+          delicate legs.
+        </p>
+        <p>
+          <strong>The usual innocents.</strong> Cellar spiders, grass spiders, wolf spiders and the
+          southern house spider are what actually turn up. The southern house spider deserves particular
+          mention around here: it is common on West Texas buildings, roughly the right size and colour, and
+          it is killed as a recluse constantly. All of these have eight eyes. A banded leg, a patterned
+          abdomen or a spider noticeably larger than a small coin is not a recluse.
+        </p>
+        <p>
+          <strong>Photograph rather than handle.</strong> Top down, in focus, with something for scale. We
+          would far rather look at a picture than have somebody catch a spider in their hand to bring it to
+          us — and a photograph settles most of these in seconds.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What the bite actually does</h2>
+      <div class="measure">
+        <p>
+          The reputation is built on the worst case. Here is the distribution instead, with the source
+          populations named, because the two best-known figures describe different groups of people and
+          should not be blended.
+        </p>
+        <p>
+          <strong>Across recluse bites generally</strong>, Penn State Extension puts roughly
+          <strong>90 percent</strong> as producing no reaction at all or a small red bump about five
+          millimetres across. About <strong>10 percent</strong> produce a dermonecrotic lesion — the
+          ulcerating wound the spider is famous for. Severe systemic effects occur in
+          <strong>less than 1 percent</strong>.
+        </p>
+        <p>
+          <strong>Among people who went to a doctor about a suspected bite</strong>, an Oklahoma primary
+          care study followed 112 cases. Forty-three percent had healed within two weeks. Necrosis was
+          present in 40 percent — but the lesions averaged <strong>under half a centimetre</strong> across.
+          Thirteen percent scarred. There was <strong>one hospitalisation</strong> and there were
+          <strong>no deaths</strong>.
+        </p>
+        <p>
+          <strong>Why those two figures are not in conflict.</strong> The second group had already decided
+          the wound was serious enough to see a doctor about, so of course more of them had lesions. And
+          only 15 percent of them had a spider identified at all — more than half simply reported having
+          seen a recluse in the area. Averaging the two numbers would produce something meaningless.
+        </p>
+        <p>
+          <strong>Severe systemic loxoscelism is real and rare.</strong> Published work describes
+          haemolysis, rhabdomyolysis, haemoglobinuria and renal failure in a small number of cases. It is
+          not something to dismiss; it is something that happens to a very small fraction of a small
+          fraction.
+        </p>
+        <p>
+          <strong>Two things worth knowing about treatment</strong>, because they run against common
+          practice. There is no effective antivenom for recluse envenomation — Texas DSHS says so plainly.
+          And a published review found systemic dapsone associated with <em>slower</em> healing and an
+          increased probability of scarring, and systemic corticosteroids also associated with slower
+          healing. Both are commonly prescribed for suspected recluse bites. We are not doctors and this is
+          not medical advice — it is a reason to make sure the diagnosis is right before accepting the
+          treatment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The over-diagnosis evidence, with the numbers</h2>
+      <div class="measure">
+        <p>
+          This is the best-documented misdiagnosis pattern in American medical entomology, and the figures
+          are worth reading slowly.
+        </p>
+        <p>
+          <strong>Four western states.</strong> Over about three and a half years, physicians in
+          California, Oregon, Washington and Colorado made <strong>216 diagnoses</strong> of recluse
+          envenomation. The total number of verified recluse specimens ever recorded from those four states
+          combined is <strong>thirty-five</strong>.
+        </p>
+        <p>
+          <strong>Colorado.</strong> A spider survey identified <strong>26,000 spiders</strong>. Two were
+          <em>Loxosceles</em>.
+        </p>
+        <p>
+          <strong>Los Angeles.</strong> A survey of <strong>2,500 submitted spiders</strong> found
+          <strong>none</strong>.
+        </p>
+        <p>
+          <strong>South Carolina.</strong> Physicians reported <strong>478 recluse bites</strong> in a
+          single year. There was one authenticated specimen in the state.
+        </p>
+        <p>
+          <strong>Florida.</strong> One hundred and twenty-four medically diagnosed bites across
+          thirty-one counties over six years, against <strong>eleven verified specimens in a century</strong>
+          of arachnological record.
+        </p>
+        <p>
+          <strong>And nationally.</strong> Researchers examined <strong>1,773 arachnids</strong> submitted
+          from 49 states by people who believed they had found brown recluses. They spanned 38 families and
+          158 species. Only <strong>324</strong> were actually brown recluses — and all but four of those
+          came from areas where the spider is known to live. Twenty-three of twenty-six non-endemic states
+          produced none at all.
+        </p>
+        <p>
+          <strong>Now the fact that matters most for Texas.</strong> Everything above concerns places where
+          the spider is largely absent, and Texas is not one of those places — so that argument does not
+          transfer directly. What does transfer is this: in a single Kansas home, researchers collected
+          <strong>2,055 brown recluses in six months</strong>, more than four hundred of them large enough
+          to bite a person, and the people living in that house showed <strong>no sign of
+          loxoscelism</strong>.
+        </p>
+        <p>
+          Two thousand spiders in one house and nobody bitten. Presence and biting are simply not the same
+          thing, and the spiders are — in the words of the researchers who study them — reluctant to bite,
+          so that even in heavily infested homes confirmed bites are uncommon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>If it was not a spider, what was it?</h2>
+      <div class="measure">
+        <p>
+          This is the part with real consequences, and it is why we would rather write an honest page than
+          a frightening one.
+        </p>
+        <p>
+          <strong>Published work on misdiagnosis names a long list</strong> of conditions that have been
+          mistaken for recluse bites: Lyme disease, sporotrichosis, pyoderma gangrenosum, Stevens-Johnson
+          syndrome, erythema multiforme, lymphomatoid papulosis and chemical burns. Later research
+          specifically addressed distinguishing recluse bites from <strong>skin cancer</strong>. MRSA is the
+          other well-known impostor — we are not going to attach a percentage to it, because we could not
+          verify one.
+        </p>
+        <p>
+          <strong>Several of those need treating and none of them get better by being called a spider
+          bite.</strong> That is the actual risk, and it is not a risk about spiders.
+        </p>
+        <p>
+          <strong>Texas A&amp;M gives one rule that resolves a great many cases:</strong> spider bites are
+          rare, and can therefore be ruled out in people with multiple lesions or multiple bites. A recluse
+          bites once. If you have several marks, or new marks appearing over several days, look elsewhere.
+        </p>
+        <p>
+          <strong>What else produces multiple marks.</strong> Texas A&amp;M's own list for suspected bites
+          of unknown origin includes lice, scabies mites, fleas, bed bugs, chiggers, mosquitoes, conenose
+          bugs and bird or rodent mites — several of which are things we can actually help with. And it
+          extends past arthropods entirely, to medical conditions including diabetes, liver disease and
+          thyroid disorders, plus reactions to medications, detergents, fabric softeners, mould and dust
+          mite allergens.
+        </p>
+        <p>
+          <strong>The practical test we would offer over the phone.</strong> Did you see a spider? Was
+          there one mark or several? Did they appear at once or over days? Were they in places covered by
+          bedding or clothing? Those four answers point in a direction more reliably than any photograph of
+          a wound, and they usually point away from spiders.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where they live, and what actually reduces them</h2>
+      <div class="measure">
+        <p>
+          <strong>They are called recluses for a reason.</strong> Texas A&amp;M describes them under logs,
+          stones and other sheltered areas, preferring undisturbed habitat — and indoors, dark corners and
+          stored clothing. Texas DSHS notes basements and garages, hiding between boards, boxes and stored
+          items in dark areas.
+        </p>
+        <p>
+          <strong>In this region that means:</strong> a garage with boxes against the wall, a storage
+          building, a shed, the space behind stored lumber, cardboard that has not moved in a year, and
+          clothing or bedding kept in an outbuilding. Undisturbed is the key word. A cupboard opened weekly
+          is not recluse habitat; a stack of boxes untouched since a move is.
+        </p>
+        <p>
+          <strong>What reduces them, in order of effect.</strong> Removing clutter, particularly cardboard
+          and anything stacked against a wall. Storing clothing and bedding in sealed containers rather than
+          in cardboard. Vacuuming — mechanical removal genuinely works and takes egg sacs with it. Sticky
+          traps, which extension sources rate among the best tools available for spiders indoors and which
+          also tell you where they actually are. And sealing gaps at doors, foundations and utility
+          penetrations.
+        </p>
+        <p>
+          <strong>Shake things out.</strong> Shoes left in a garage, gloves in a shed, clothing off a
+          hanger in an outbuilding, a towel on a hook. Nearly every genuine recluse bite happens when the
+          spider is pressed against skin, which means inside clothing or bedding. That habit costs nothing
+          and prevents most of what there is to prevent.
+        </p>
+        <p>
+          <strong>What we would say about treatment.</strong> Sprays alone underperform on a spider that
+          spends its life in undisturbed voids and does not walk across treated open surfaces the way other
+          insects do. A serious job is inspection, mechanical removal, decluttering advice, monitoring with
+          traps and targeted application — and repeat monitoring, because these spiders favour small spaces
+          and a single pass finds a fraction of them.
+        </p>
+        <p>
+          <strong>And the honest scale.</strong> If you have found one spider in a garage, you have found a
+          spider in a garage. That is not an infestation and it does not warrant a treatment programme.
+          Say what you found and where, and we will tell you which of those two situations you are in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Recluse spider questions" />
+  <Cta
+    line="Photograph the spider rather than the wound — six eyes in three pairs is the answer, and a wound photograph tells nobody anything. And if there are several marks rather than one, it was almost certainly not a spider at all."
+  />
+</BaseLayout>

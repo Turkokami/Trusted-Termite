@@ -1,0 +1,396 @@
+---
+/**
+ * Pest library — red harvester ant, Pogonomyrmex barbatus.
+ *
+ * THE MOST IMPORTANT IDENTIFICATION PAGE ON THIS SITE. Across most of our
+ * route — Gaines, Yoakum, Terry, Dawson, Andrews — the counties are NOT on the
+ * fire ant quarantine, and the honest answer to "I have fire ants" is almost
+ * always that it is a harvester ant. This page has to make that distinction
+ * usable by somebody standing in their own yard.
+ *
+ * It also has to do something a pest control company is not expected to do:
+ * argue AGAINST treating. AgriLife E-402's FIRST recommendation is not to
+ * control them. That recommendation stays on the page, prominently, because
+ * it is what the extension service actually says.
+ *
+ * VERIFIED FACTS (Texas A&M AgriLife E-402, texasinsects.tamu.edu, TAMU Urban
+ * Entomology, TPWD, Caesar Kleberg Wildlife Research Institute at TAMUK,
+ * UNR Extension, Suni & Gordon Heredity 2010, UF Book of Insect Records):
+ *  - Workers 1/4–1/2 in, red to dark brown, "squarish heads".
+ *  - MONOMORPHIC — one size. This is THE field diagnostic against fire ants.
+ *  - Antennae 12-segmented WITHOUT a club. Fire ants: 10 segments, 2-seg club.
+ *  - Psammophore — a row of hairs ("beard") under the head. Fire ants lack it.
+ *    Best hand-lens character.
+ *  - Mound: circular crater, small pebbles on the surface, cleared disc
+ *    typically 3–6 ft (E-402, TPWD).
+ *  - Foraging trails may extend outward 200 ft.
+ *  - Food: seeds and dead insects — alfalfa, burr clover, Johnson grass, oats,
+ *    wheat, Bermuda grass, wild sunflower, mesquite, beans.
+ *  - Queens can live over 20 years; colonies do NOT adopt new queens, so when
+ *    the queen dies the colony ends.
+ *  - Mating flights follow rain, most commonly August and September.
+ *  - Summer foraging shuts down around mid-day as humidity drops.
+ *  - Sting: "painful"; ants "generally reluctant to attack"; effects "can
+ *    spread along lymph channels and can be medically serious" (E-402).
+ *  - Horned lizard: 69% of diet is harvester ants; eats 70–100 ants/day; does
+ *    NOT eat fire ants; IS resistant to harvester ant venom (CKWRI). State
+ *    THREATENED, permits required to handle (TPWD). Still found in West Texas
+ *    and the Panhandle.
+ *  - Fire ants "are believed to eliminate harvester ants and prevent new
+ *    colonies from forming by preying on mated queen harvester ants" (E-402),
+ *    and fire ant products often kill harvester ants better than fire ants.
+ *  - Eleven Pogonomyrmex species in Texas: ten statewide, seven confined to
+ *    far west Texas.
+ *
+ * ⚠️ DO NOT WRITE — researched and rejected:
+ *  - "No spines on the body." E-402 says it; TAMU Urban Entomology, NMSU and
+ *    AntWiki all say P. barbatus DOES bear propodeal spines. Sources conflict,
+ *    so the character is simply not used here. FIRE ANTS are the ones that
+ *    genuinely lack propodeal spines.
+ *  - "The most venomous insect in the world." That record belongs to
+ *    P. MARICOPA, a different species, on an intravenous mouse LD50 of
+ *    0.12 mg/kg — and the UF source that awards it explicitly cautions the
+ *    ranking applies to mice only. The page addresses the claim and corrects
+ *    it rather than repeating or ignoring it.
+ *  - Mature colony worker counts. NOT VERIFIED from any authoritative source.
+ *  - Any current pesticide rate. E-402's rates date from 2006 and labels
+ *    change; the page names no product rate at all.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Red harvester ant', path: '/pest-library/red-harvester-ant/' },
+];
+
+const quickAnswer =
+  'The red harvester ant is the large red ant with a bare circular mound and a column of foragers, and across most of our service area it is what people mean when they say they have fire ants. It does not come indoors, it is reluctant to sting, and Texas A&M AgriLife recommends not controlling it where horned lizards remain — because harvester ants are what horned lizards eat.';
+
+const faqs = [
+  {
+    q: 'How do I tell a harvester ant from a fire ant?',
+    a: 'Two things settle it from standing height. First, size: in a harvester ant colony every worker is the same size, roughly a quarter to half an inch, red to dark brown with a squarish head. In a fire ant mound the workers vary continuously from tiny to large in the same nest — that variation is diagnostic and it is easy to see. Second, the mound: a harvester ant nest is a crater with a clear central opening, usually with small pebbles on the surface and a bare circle around it. A fire ant mound is fluffy worked soil with no central opening at all, because they come and go through tunnels radiating underground. If you have a hand lens, the definitive character is a row of hairs under the head — a sort of beard — that harvester ants have and fire ants do not.',
+  },
+  {
+    q: 'Do harvester ants come into the house?',
+    a: 'No. This is one of the more useful facts on this page, because it settles a great many phone calls. Harvester ants are outdoor seed collectors; University of Nevada Reno Extension puts it directly, that they do not invade homes but can occasionally be pests in lawns, gardens and pet areas. Fire ants, by contrast, do occasionally establish colonies indoors and in structures. So if ants are coming inside, whatever they are, they are almost certainly not harvester ants.',
+  },
+  {
+    q: 'Should I get rid of the mound in my yard?',
+    a: 'Possibly not, and we are aware that is an unusual thing for a pest control company to write. AgriLife publication E-402 lists as its first option not controlling these ants, especially in areas inhabited by the few remaining horned lizards. Texas horned lizards are a state-threatened species that still occur in West Texas and the Panhandle, and research at the Caesar Kleberg Wildlife Research Institute puts harvester ants at about 69 percent of their diet — a lizard eats seventy to a hundred a day. Where a mound sits away from where people walk, leaving it is a legitimate and well-supported choice.',
+  },
+  {
+    q: 'When would you actually treat them?',
+    a: 'When the mound is genuinely in the way — beside a back door, in a play area, along a path children use barefoot, in a pen where animals are kept, or where someone in the household has a known sting allergy. Those are real reasons and we will do the work. What we will not do is treat every mound on a property as a matter of course, because in this part of Texas that is removing a native species that is not bothering anybody in order to bill for it.',
+  },
+  {
+    q: 'How badly do they sting?',
+    a: 'AgriLife describes it as a painful sting from an ant that is generally reluctant to attack — meaning you usually have to disturb the nest or stand on the trail. The sensation is often compared to a bee sting. AgriLife also notes the effects can spread along lymph channels and can be medically serious, and allergic reactions, while uncommon, are possible with any stinging insect. If you are stung repeatedly, if the reaction spreads well beyond the sting site, or if there is any breathing difficulty, that is a medical matter and not a pest control one.',
+  },
+  {
+    q: 'I read they are the most venomous insect in the world. Is that true?',
+    a: 'Not of this ant, and the claim is worth unpicking because it circulates constantly. The record belongs to a different species, Pogonomyrmex maricopa, on the basis of an intravenous LD50 in mice of 0.12 milligrams per kilogram — roughly twenty-three times more toxic than honey bee venom in the same test. But the source that awards that record cautions in the same passage that values obtained in mice give a relative toxicity scale for mice only and do not tell you how the same toxin would rank in another species. It is a laboratory ranking, not a human risk estimate, and it is not about the ant in your yard.',
+  },
+  {
+    q: 'Why are there fewer than there used to be?',
+    a: 'AgriLife records that harvester ants are not nearly as common today as they were during the earlier 1900s, and gives a specific mechanism: red imported fire ants are believed to eliminate harvester ants and prevent new colonies from forming by preying on mated harvester ant queens. There is a second mechanism that involves us more directly — fire ant control products frequently kill harvester ants more effectively than they kill the fire ants they were bought for. Which is one more reason to identify the ant before treating anything.',
+  },
+  {
+    q: '¿Es hormiga roja importada o hormiga cosechadora?',
+    a: 'Casi siempre es cosechadora en esta zona, y la diferencia importa. La cosechadora es grande, todas del mismo tamaño en un mismo hormiguero, y hace un cráter con abertura central y un círculo pelón alrededor. La hormiga roja importada varía de tamaño dentro del mismo montículo y su montículo no tiene abertura central. La cosechadora no entra a las casas; la importada sí puede. Y la cosechadora es el alimento principal del camaleón de Texas, una especie amenazada — por eso muchas veces la recomendación honesta es dejarla en paz.',
+  },
+];
+---
+
+<BaseLayout
+  title="Red Harvester Ant | West Texas Pest Library"
+  description="How to tell a red harvester ant from a fire ant, why it does not come indoors, and why Texas A&M recommends leaving most mounds alone."
+  path="/pest-library/red-harvester-ant/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Pogonomyrmex barbatus</em></p>
+      <h1>Red harvester ant</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>This is the page we would most like people in Gaines County to read.</strong> Across
+          most of our route — Gaines, Yoakum, Terry, Dawson and Andrews counties — the counties are not on
+          the federal fire ant quarantine, and when somebody rings us to say they have fire ants, the
+          animal in the yard is almost always this one instead.
+        </p>
+        <p>
+          <strong>That matters for three separate reasons.</strong> The two ants need different products
+          and different methods, so treating one as the other wastes money. Harvester ants do not come
+          indoors, so if something is getting into the kitchen it is not this. And this is a native species
+          in decline that a state-threatened lizard depends on for most of its diet — which is why
+          AgriLife's own publication lists <em>not</em> controlling them as its first option.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Telling them apart, standing in your own yard</h2>
+      <div class="measure">
+        <p>
+          You do not need a specimen or a microscope for this. Two characters settle it from a metre away.
+        </p>
+        <p>
+          <strong>One: are the workers all the same size?</strong> This is the single most useful field
+          test. Harvester ant workers are monomorphic — every ant in the colony is essentially the same
+          size, a quarter to half an inch, red to dark brown, with a noticeably squarish head. Red imported
+          fire ant workers are polymorphic, varying continuously from very small to considerably larger
+          within one mound. Watch a trail for thirty seconds. If they are all the same, it is a harvester
+          ant. If some are half the size of others, it is not.
+        </p>
+        <p>
+          <strong>Two: does the mound have a hole in it?</strong> A harvester ant nest is a crater with a
+          clear central opening, often with small pebbles brought up and left on the surface, sitting in
+          the middle of a bare circle of ground. A fire ant mound is a dome of fluffy worked soil with
+          <em>no</em> visible entrance, because the ants come and go through tunnels that radiate
+          underground and surface away from the mound. Fire ant mounds can reach eighteen inches tall.
+        </p>
+        <p>
+          <strong>Three, if you have a hand lens: look under the head.</strong> Harvester ants carry a
+          psammophore — a row of stiff hairs beneath the head, described in one extension source as a beard
+          of colourless hairs, used for carrying dry soil and seed. Fire ants have nothing of the kind.
+          This is the definitive character. Antennae work too: harvester ants have twelve segments with no
+          club, fire ants have ten with a two-segmented club at the tip.
+        </p>
+        <p>
+          <strong>And one behavioural tell.</strong> Disturb a fire ant mound and workers boil out
+          aggressively within seconds. Harvester ants are, in AgriLife's phrase, generally reluctant to
+          attack — they will sting if you stand on them or dig into the nest, but they do not swarm out to
+          meet you.
+        </p>
+        <p style="color:var(--ink-3);font-size:.95rem">
+          <strong>One character we are deliberately not giving you.</strong> Several sources say harvester
+          ants have "no spines on the body". Several other sources, including Texas A&amp;M's own urban
+          entomology material, say this species does bear a pair of spines on the rear of the thorax. Since
+          the authorities contradict each other, we are not asking you to rely on it. Fire ants are the
+          ones that genuinely lack those spines.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What they actually do all day</h2>
+      <div class="measure">
+        <p>
+          <strong>They collect seeds.</strong> That is the whole business, and it is where the name comes
+          from. Foragers gather seeds and dead insects and store them in the nest as the colony's food
+          supply. AgriLife lists what they take: alfalfa, burr clover, Johnson grass, oats, wheat, Bermuda
+          grass, wild sunflower, mesquite and beans.
+        </p>
+        <p>
+          <strong>They travel further than people expect.</strong> Foraging trails may extend outward as
+          much as two hundred feet from the nest. If you have ants crossing your patio in a neat column,
+          the mound may not be on your property at all.
+        </p>
+        <p>
+          <strong>The bare circle is deliberate.</strong> They clear vegetation around the nest opening —
+          typically a disc of roughly three to six feet across, though some sources report considerably
+          larger. That bare disc plus a central hole plus a scatter of small pebbles is the classic
+          signature, and once you have seen one you will recognise it from a moving vehicle.
+        </p>
+        <p>
+          <strong>They keep West Texas hours.</strong> Research on this species found foraging ends around
+          the middle of the day in summer, as temperature climbs and humidity falls, picking up again
+          later. Colonies get much of their water by metabolising fats from the seeds they eat, which is
+          part of how they manage in country this dry. Practically: expect activity in the morning and the
+          late afternoon and very little at noon in August — another difference from fire ants.
+        </p>
+        <p>
+          <strong>They swarm after rain.</strong> Winged males and females fly and mate following rains,
+          most commonly in August and September. A sudden appearance of winged ants after a summer storm
+          is normal and is not an infestation.
+        </p>
+        <p>
+          <strong>And the colony is probably older than you think.</strong> Queens can live over twenty
+          years, and — this is the striking part — these colonies do not adopt replacement queens. When the
+          queen dies, no more workers are produced and the colony ends. A mound in a pasture may well
+          predate the house next to it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The sting, described accurately</h2>
+      <div class="measure">
+        <p>
+          <strong>It hurts.</strong> AgriLife describes a painful sting, and it is often compared to a bee
+          sting. Extension sources note that allergic reactions, while possible, remain uncommon.
+        </p>
+        <p>
+          <strong>AgriLife also says something more serious that we are not going to leave out:</strong>
+          the effects can spread along lymph channels and can be medically serious. That is a real note of
+          caution and it belongs on the page alongside the reassurance.
+        </p>
+        <p>
+          <strong>But they are reluctant.</strong> The same source describes them as generally reluctant to
+          attack. In practice, stings happen when somebody stands on a trail barefoot, kneels in a bare
+          disc while gardening, or digs into a nest. They do not come after you.
+        </p>
+        <p>
+          <strong>When it is a medical question and not ours.</strong> Repeated stings, a reaction
+          spreading well beyond the sting site, swelling of the face or throat, or any difficulty
+          breathing — that is a doctor or an emergency service, immediately. We are not qualified to assess
+          any of that and will not pretend to be.
+        </p>
+        <p>
+          <strong>And about that internet claim.</strong> You will find harvester ants described as the
+          most venomous insect in the world. The record actually belongs to a different species,
+          <em>Pogonomyrmex maricopa</em>, measured as an intravenous LD50 in mice of 0.12 milligrams per
+          kilogram — about twenty-three times more toxic than honey bee venom on the same test. The
+          publication that awards the record cautions, in the same passage, that such values give a
+          relative toxicity scale <em>in mice only</em> and do not indicate how the toxin would rank in
+          another species. It is a laboratory ranking, it concerns a different ant, and it is not a
+          statement about human risk.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The horned lizard, and why we argue against treating</h2>
+      <div class="measure">
+        <p>
+          This is the section that costs us work, and it is the most important one on the page.
+        </p>
+        <p>
+          <strong>AgriLife's publication E-402 lists, as its first control option, not controlling these
+          ants</strong> — especially in areas inhabited by the few remaining horned lizards. That is the
+          extension service's own recommendation, not ours.
+        </p>
+        <p>
+          <strong>The reason is a food chain with almost no slack in it.</strong> Research at the Caesar
+          Kleberg Wildlife Research Institute puts harvester ants at about sixty-nine percent of the Texas
+          horned lizard's diet, with a lizard capable of eating seventy to a hundred ants a day. Critically,
+          the same work finds horned lizards do not actively eat fire ants — possibly because they cannot
+          neutralise fire ant venom — while they are resistant to harvester ant venom. So fire ants do not
+          substitute for what is lost.
+        </p>
+        <p>
+          <strong>Texas Parks and Wildlife lists the Texas horned lizard as threatened</strong>, requiring
+          scientific permits even to handle, and records that it has disappeared from many parts of its
+          former range over the past thirty years — attributing the decline to collection for the pet
+          trade, the spread of the red imported fire ant, land use change and environmental contaminants.
+        </p>
+        <p>
+          <strong>And they are still here.</strong> TPWD records the species persisting in West Texas, the
+          Rolling Plains and the Panhandle — which is precisely the country we work in. This is not a
+          hypothetical trade-off happening somewhere else.
+        </p>
+        <p>
+          <strong>What that means for a quote.</strong> If a mound is genuinely in the way — by a door, in
+          a play area, on a path used barefoot, in an animal pen, or where somebody has a known sting
+          allergy — we will treat it, and there is nothing wrong with that. What we will not do is walk a
+          property, count mounds and price them all. AgriLife's non-chemical note is worth knowing too:
+          regular discing and mowing may eliminate them without any insecticide, which on agricultural
+          ground is often the honest answer.
+        </p>
+        <p>
+          <strong>A related warning that costs people money.</strong> AgriLife records that fire ant
+          control products frequently kill harvester ants more effectively than they kill the fire ants
+          they were bought for. So a homeowner who broadcasts fire ant bait across a property that has
+          harvester ants and no fire ants has paid to remove a native species and a threatened lizard's
+          food supply, while solving nothing. Identify first.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where this sits on our route</h2>
+      <div class="measure">
+        <p>
+          The county line matters here more than almost anywhere else on this site, because it changes
+          which ant you are likely to be looking at.
+        </p>
+        <p>
+          <strong>Gaines, Yoakum, Terry, Dawson and Andrews counties are not on the federal imported fire
+          ant regulated-areas list.</strong> In Seminole, Seagraves, Denver City, Brownfield, Lamesa and
+          Andrews, the honest first answer to a fire ant question is usually that it is a harvester ant.
+        </p>
+        <p>
+          <strong>Martin, Howard, Midland, Ector and Winkler counties are on it</strong>, and part of
+          Lubbock County is. So in Midland, Odessa, Big Spring, Stanton and Kermit, a suspected fire ant
+          genuinely may be one, and identification stops being a formality. We keep the county-by-county
+          position, with the citation, on the
+          <a href="/compliance/fire-ant-quarantine/">fire ant quarantine page</a>.
+        </p>
+        <p>
+          <strong>One more local note.</strong> AgriLife records eleven <em>Pogonomyrmex</em> species in
+          Texas — ten statewide and seven confined to far west Texas — so more than one harvester ant
+          species is plausible on a given property out here. For treatment purposes they behave similarly
+          enough that it rarely changes the decision.
+        </p>
+        <p>
+          <strong>And the thing to take away.</strong> A bare disc with a hole in the middle and a neat
+          column of same-sized red ants is a harvester ant nest, it is not coming into your house, and in
+          most of our counties it is not a fire ant no matter what the internet said. If it is somewhere
+          harmless, the best available advice — from Texas A&amp;M rather than from us — is to leave it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Living alongside a mound</h2>
+      <div class="measure">
+        <p>
+          If you decide to leave one — and on most rural property that is the sensible call — a few things
+          make it easier.
+        </p>
+        <p>
+          <strong>Know where the trail runs.</strong> The bare disc is obvious; the foraging column is not,
+          and it can run two hundred feet. Most stings happen on the trail rather than at the nest, because
+          nobody notices they are standing on one. Watch for a few minutes in the morning and you will see
+          the route.
+        </p>
+        <p>
+          <strong>Shoes in the yard, especially for children.</strong> That single habit prevents the large
+          majority of harvester ant stings on a property, and it costs nothing.
+        </p>
+        <p>
+          <strong>Do not disturb the nest to see what happens.</strong> They will defend it, and a
+          disturbed nest is the one situation where several stings at once is realistic.
+        </p>
+        <p>
+          <strong>Mowing and discing changes them without chemicals.</strong> AgriLife notes that regular
+          destruction of nests and habitat through discing and mowing may eliminate them without resorting
+          to insecticide. On cropland that is usually already happening.
+        </p>
+        <p>
+          <strong>And if you have horned lizards, say so.</strong> People in this part of Texas often know
+          they have them and are glad of it. It changes what we would recommend on a property, and it is
+          exactly the kind of local knowledge we would rather have than not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Red harvester ant questions" />
+  <Cta
+    line="Send a photo of the mound and a photo of the ants before booking anything. Half the ant calls we get are harvester ants that do not need treating, and we would rather tell you that on the phone than after taking your money."
+  />
+</BaseLayout>

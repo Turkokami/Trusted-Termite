@@ -1,0 +1,413 @@
+---
+/**
+ * Problem spoke — "I found a scorpion in the bathtub."
+ *
+ * THE ARGUMENT: the two explanations everybody gives for this — it came up the
+ * drain, and it cannot climb out of porcelain — are both unsourced. The page is
+ * a myth audit that then gives the sourced mechanism (moisture around plumbing)
+ * and the sourced entry routes.
+ *
+ * VERIFIED:
+ *  - Oklahoma State, THE best-sourced explanation for bathroom encounters and
+ *    the reason this page exists: "Scorpions are dry-land creatures and are not
+ *    normally found in extremely damp areas. However, they do require some
+ *    moisture and are often attracted to the damp areas around plumbing,
+ *    condensers, and the evaporators of air conditioning units."
+ *  - OSU also: "Cracks and crevices around the outside of a structure can allow
+ *    scorpions easy access into buildings."; "When scorpions enter buildings,
+ *    it is often because their outdoor habitat has been disrupted in some
+ *    way."; "Scorpions do not usually enter houses in the winter because cold
+ *    weather makes them sluggish."; "Late spring and early summer rains often
+ *    cause scorpions to seek dryer habitats."; "For most people, a scorpion
+ *    sting is slightly more painful than a bee or wasp sting."
+ *  - AgriLife E-362: "It is common for this scorpion to climb trees and walls,
+ *    and they often are found in the attics of homes."; "During periods of hot
+ *    weather, scorpions may move into living areas to escape the high
+ *    temperatures in attics."; "Scorpions are nocturnal, hiding during the day
+ *    and becoming active at night."; "The stings from Texas scorpions produce
+ *    only moderate reactions in most people because the poison has little
+ *    effect on the nervous system."; "An ice pack applied to the affected area
+ *    will relieve some pain. If swelling and/or pain persists or if breathing
+ *    difficulties occur, immediate medical attention is necessary."
+ *  - Texas A&M School IPM: "Most scorpions gain access into schools through
+ *    gaps under exterior doors."; "Buildings and related structures provide
+ *    numerous hiding places (harborage) for scorpions."; "Scorpions are among
+ *    the few animals that fluoresce, or glow, under UVB black light."; and on
+ *    severity: "Although all bark scorpions can deliver a painful sting, only
+ *    one of the Centruroides species, the Arizona bark scorpion, is considered
+ *    potentially deadly."
+ *  - Univ. of Arizona: scorpions "can also be brought into your home hidden in
+ *    firewood and through poorly maintained door sweeps and window screens."
+ *  - AgriLife citybugs: "The most common Texas scorpion, the striped bark
+ *    scorpion (Centruroides vittatus), has a painful sting but is not deadly".
+ *
+ * ⚠️ FOUR HONESTY FLAGS — THE FIRST TWO ARE THE POINT OF THE PAGE:
+ *  1. "SCORPIONS CANNOT CLIMB SMOOTH SURFACES LIKE PORCELAIN" IS NOT VERIFIED.
+ *     Ten extension and agency sources were checked, including E-362, which
+ *     does not mention smooth surfaces, tubs, sinks or drains AT ALL. Every hit
+ *     was a commercial blog or hobbyist forum. The related documented fact —
+ *     that bark scorpions climb ROUGH vertical surfaces such as walls and trees
+ *     — does not establish the inverse. If the page mentions the smooth-surface
+ *     idea it must be labelled as common field observation, never as sourced.
+ *  2. "THEY COME UP THROUGH THE DRAIN" IS NOT VERIFIED AND IS EFFECTIVELY
+ *     CONTRADICTED. No extension or agency source says this. The nearest
+ *     sourced statement points the other way — scorpions are dry-land creatures
+ *     attracted to damp areas AROUND plumbing. Documented entry is door gaps,
+ *     cracks, weep holes and screens.
+ *  3. C. SCULPTURATUS IN TEXAS IS UNRESOLVED. No AgriLife or agency source
+ *     places the Arizona bark scorpion in Texas — and equally, do NOT
+ *     affirmatively state it is absent from far West Texas. The page says only
+ *     what the School IPM source says: of the Centruroides, only the Arizona
+ *     bark scorpion is considered potentially deadly.
+ *  4. NO TEXAS POISON CENTER SCORPION DATA IS USED. Forrester & Stanley 2004
+ *     was unobtainable and DSHS has no scorpion page. The national exposure
+ *     figures (185,402 exposures 2005–2015; AZ 68.2%, TX 10.3%; pain in 88.7%)
+ *     are deliberately left to /pest-library/striped-bark-scorpion/ rather than
+ *     repeated here.
+ *  Whether scorpions breed indoors: no source states it either way. Not
+ *  asserted. Full biology, UV survey detail and treatment sit on the library
+ *  and service pages; this page links rather than repeats.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Scorpion control', path: '/services/scorpion-control/' },
+  { name: 'Scorpion in the bathroom', path: '/services/scorpion-control/scorpion-in-the-bathroom/' },
+];
+
+const quickAnswer =
+  'The two explanations everybody gives for this are both unsourced. No extension service says scorpions come up through drains, and none says they cannot climb out of porcelain. What is documented, from Oklahoma State, is that scorpions require some moisture and are often attracted to the damp areas around plumbing and around air conditioning condensers and evaporators — which is a different explanation with different consequences.';
+
+const faqs = [
+  {
+    q: 'Did it come up the drain?',
+    a: 'Almost certainly not, and we could not find a single extension service or agency that says scorpions do. We looked at AgriLife’s scorpion publication specifically and it does not mention drains, tubs or sinks anywhere. Every source making that claim was a commercial pest control blog. What is documented points a different way: Oklahoma State describes scorpions as dry-land creatures not normally found in extremely damp areas, which do require some moisture and are often attracted to the damp areas around plumbing. Around it — not through it.',
+  },
+  {
+    q: 'Then why was it in the tub?',
+    a: 'The best-sourced answer is moisture. Oklahoma State’s statement covers the damp areas around plumbing, condensers and the evaporators of air conditioning units. A bathroom in a dry climate is the most reliably humid room in the house, and a bathtub is a low point in it. Add AgriLife’s observation that during hot weather scorpions may move into living areas to escape the high temperatures in attics, and you have a nocturnal animal coming down out of a 140-degree attic looking for somewhere cooler and damper. The bathroom is the obvious destination.',
+  },
+  {
+    q: 'Is it true they cannot climb out of a bath?',
+    a: 'We do not know, and we are going to be straight about that rather than repeat it. We checked ten extension and agency sources, including AgriLife’s own scorpion publication, and none of them addresses smooth surfaces, tubs or sinks. The claim appears only in commercial blogs and hobbyist forums. What is documented is the opposite side of the coin — AgriLife notes it is common for this scorpion to climb trees and walls, and that they are often found in attics — but that a scorpion climbs a rough wall does not establish that it cannot climb glazed porcelain. It might be true. It is not sourced, so we are not going to tell you it is.',
+  },
+  {
+    q: 'How did it get in the house at all?',
+    a: 'Through the places every source names, none of which is plumbing. Texas A&M’s school IPM guidance states that most scorpions gain access through gaps under exterior doors. Oklahoma State names cracks and crevices around the outside of a structure. The University of Arizona adds firewood carried indoors, poorly maintained door sweeps and window screens. AgriLife’s exclusion list points at the same set — weather stripping on loose-fitting doors and windows, weep holes in brick or stone veneer, and screens that fit tightly and are in good repair.',
+  },
+  {
+    q: 'Why now? It has been fine for months.',
+    a: 'Two documented patterns cover most of it. Oklahoma State notes that scorpions do not usually enter houses in winter because cold weather makes them sluggish, and that late spring and early summer rains often cause them to seek drier habitats. AgriLife adds the summer mechanism — that during hot weather scorpions may move into living areas to escape high attic temperatures. Oklahoma State also makes a point worth remembering here, where construction and clearing are constant: when scorpions enter buildings, it is often because their outdoor habitat has been disrupted in some way.',
+  },
+  {
+    q: 'How dangerous is this one?',
+    a: 'Not very, and the sources are consistent about it. AgriLife states that stings from Texas scorpions produce only moderate reactions in most people because the poison has little effect on the nervous system. Its urban entomology programme says the striped bark scorpion has a painful sting but is not deadly. Oklahoma State’s comparison is that for most people, a scorpion sting is slightly more painful than a bee or wasp sting. Texas A&M’s school guidance notes that of the Centruroides species, only the Arizona bark scorpion is considered potentially deadly.',
+  },
+  {
+    q: 'What do I do about a sting?',
+    a: 'AgriLife’s guidance is an ice pack applied to the affected area to relieve some of the pain, and then a clear condition for escalating: if swelling or pain persists, or if breathing difficulties occur, immediate medical attention is necessary. That is the line worth remembering — not the pain itself, which is expected, but persistence and any breathing difficulty. Small children, anybody with a known allergy history, and any sting that does not behave the way the sources describe all warrant a call to a doctor or to poison control rather than to us.',
+  },
+  {
+    q: 'How do I find out if there are more?',
+    a: 'Go looking at night with an ultraviolet light. Texas A&M’s school IPM guidance states that scorpions are among the few animals that fluoresce, or glow, under UVB black light, and the University of Arizona notes they can be located from several yards away. It is genuinely the most informative thing you can do for the price, and it turns an unanswerable question into a countable one. We have set out how to do it properly on the striped bark scorpion page in our library.',
+  },
+];
+---
+
+<BaseLayout
+  title="Scorpion in the Bathtub | Trusted Termite"
+  description="The drain story and the porcelain story are both unsourced. What extension services actually document about why scorpions turn up in bathrooms, and how they get in."
+  path="/services/scorpion-control/scorpion-in-the-bathroom/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Scorpion control · problem page</p>
+      <h1>A scorpion in the bathtub</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          There are two things everybody in West Texas knows about this. It came up the drain. And it is
+          stuck in the tub because it cannot climb the sides.
+        </p>
+        <p>
+          We went looking for the source of both. Neither has one. We checked AgriLife's scorpion
+          publication, Texas A&amp;M's school pest management guidance, the Texas insect field guide,
+          Oklahoma State, Utah State, the University of Arizona and the National Park Service. Not one of
+          them mentions drains, bathtubs, sinks or smooth surfaces. Every page making those claims was a
+          pest control company's blog or a hobbyist forum.
+        </p>
+        <p>
+          That is worth a page on its own, because this is exactly how a plausible story becomes a fact
+          that everybody repeats. And there is a properly sourced explanation sitting underneath, which
+          points at a different part of your house and suggests a different thing to do about it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What is actually documented</h2>
+      <div class="measure">
+        <p>
+          <strong>The sentence that does the work</strong> comes from Oklahoma State's extension service,
+          not from AgriLife: scorpions are dry-land creatures and are not normally found in extremely damp
+          areas, but they do require some moisture and are often attracted to the damp areas around
+          plumbing, condensers, and the evaporators of air conditioning units.
+        </p>
+        <p>
+          <strong>Read that carefully, because it says two things at once.</strong> They are not
+          water-loving animals — a wet environment is not what they are after. But they do need some
+          moisture, and in a landscape where the outdoor humidity spends much of the year in the teens, the
+          places that reliably have any are indoors and mechanical: around a plumbing penetration, at a
+          condensate line, under a cooler.
+        </p>
+        <p>
+          <strong>Now add the temperature mechanism from AgriLife.</strong> It notes that it is common for
+          this scorpion to climb trees and walls and that they are often found in the attics of homes — and
+          then, crucially, that during periods of hot weather scorpions may move into living areas to
+          escape the high temperatures in attics.
+        </p>
+        <p>
+          <strong>Put those together and the bathroom stops being mysterious.</strong> A nocturnal animal
+          already in the structure, coming down out of an attic that hit a hundred and forty degrees in the
+          afternoon, moving toward the coolest and dampest part of the interior. That is a bathroom in a
+          Permian Basin July, and a tub is the lowest surface in it.
+        </p>
+        <p>
+          <strong>Which changes what you would do about it.</strong> If the drain story were true, the
+          answer would be plumbing. Since the documented mechanism is moisture and heat, the answer is the
+          attic, the exterior gaps, the condensate and the plumbing penetrations — not the drain itself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The two claims, audited</h2>
+      <div class="measure">
+        <p>
+          <strong>Claim one: it came up through the drain.</strong> Not verified, and effectively
+          contradicted. No extension or agency source we could find says scorpions enter through plumbing
+          drains. AgriLife's scorpion publication does not mention drains at all. And the nearest sourced
+          statement runs the other way — dry-land creatures, not normally found in extremely damp areas,
+          attracted to the damp around plumbing rather than into it. Meanwhile every source that does
+          discuss entry names the same handful of routes, and plumbing is not among them.
+        </p>
+        <p>
+          <strong>Claim two: it cannot climb out of the tub.</strong> Not verified either way. Ten sources
+          checked, none addresses smooth or glazed surfaces. What is documented is the opposite face of the
+          question: AgriLife describes this species climbing trees and walls and turning up in attics, which
+          establishes that it climbs rough vertical surfaces well. That tells you nothing about porcelain.
+        </p>
+        <p>
+          <strong>Our honest position on claim two.</strong> It may well be true. It matches what people
+          report, it matches what we see, and there is a straightforward physical reason it could be. But
+          "everyone observes it" and "it is documented" are different standards, and this whole site runs
+          on keeping them apart. So: common field observation, not a sourced fact, and labelled that way.
+        </p>
+        <p>
+          <strong>Why bother auditing a harmless story?</strong> Because it is not harmless. A homeowner
+          who believes the drain story pours something down a drain, buys a stopper, calls a plumber — and
+          leaves the door sweep, the weep holes and the attic exactly as they were. A wrong mechanism sends
+          effort to the wrong place, which is the practical cost of an unexamined claim.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>How they actually get in</h2>
+      <div class="measure">
+        <p>
+          <strong>Under the door, first and most often.</strong> Texas A&amp;M's school pest management
+          guidance states that most scorpions gain access through gaps under exterior doors, and its first
+          recommendation is tight-fitting door sweeps and thresholds on all external doorways. On the
+          housing stock here, an old sweep that has curled up at the ends is close to a standing invitation.
+        </p>
+        <p>
+          <strong>Cracks and crevices in the exterior.</strong> Oklahoma State names them directly, and
+          adds the observation that when scorpions enter buildings it is often because their outdoor
+          habitat has been disrupted in some way. In a region with constant construction, clearing and
+          caliche work, that disruption is close to a permanent condition.
+        </p>
+        <p>
+          <strong>Weep holes.</strong> AgriLife's exclusion guidance names plugging weep holes in stone or
+          brick veneer with steel wool, copper mesh, pieces of nylon scouring pad or small squares of
+          screen wire. On brick-veneer houses this is one of the highest-value hours anybody can spend.
+        </p>
+        <p>
+          <strong>Windows and screens.</strong> AgriLife's list includes weather stripping around
+          loose-fitting doors and windows, and screens kept in good repair and fitting tightly in the
+          frame. The University of Arizona names poorly maintained door sweeps and window screens in the
+          same breath.
+        </p>
+        <p>
+          <strong>Carried in.</strong> Firewood is the one everybody underestimates. AgriLife's instruction
+          is blunt — never bring firewood inside the structure unless it is placed directly on the fire.
+          Arizona says the same thing about firewood as a vehicle.
+        </p>
+        <p>
+          <strong>And the harbourage that makes it worth their while.</strong> Texas A&amp;M notes that
+          buildings and related structures provide numerous hiding places for scorpions, and AgriLife's
+          habitat guidance is to remove trash, logs, boards, stones, bricks and other objects from around
+          the structure, keep grass closely mown near it and prune bushes and overhanging branches away.
+          Full detail on all of this is on the <a href="/services/scorpion-control/">scorpion control
+          page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What to do in the moment, and then afterwards</h2>
+      <div class="measure">
+        <p>
+          <strong>In the moment: a jar and a piece of card.</strong> Slide the card underneath, invert the
+          jar over it, and you have contained it without getting a hand near it. Then take it outside or
+          keep it if you want it identified. This is not brave or clever; it is just the least eventful way
+          to end the situation.
+        </p>
+        <p>
+          <strong>If somebody is stung.</strong> AgriLife's guidance is an ice pack to relieve some of the
+          pain. Its escalation condition is specific: if swelling or pain persists, or if breathing
+          difficulties occur, immediate medical attention is necessary. Oklahoma State's framing is that
+          for most people the sting is slightly more painful than a bee or wasp sting, and AgriLife's
+          overall assessment is that stings from Texas scorpions produce only moderate reactions in most
+          people because the poison has little effect on the nervous system. A child, a known allergy, or
+          anything not behaving the way those descriptions suggest is a call to a doctor or poison control
+          — not to a pest control company.
+        </p>
+        <p>
+          <strong>That night: find out whether there are more.</strong> Texas A&amp;M's school guidance
+          notes that scorpions are among the few animals that fluoresce, or glow, under UVB black light,
+          and the University of Arizona says they can be spotted from several yards away. Walk the
+          perimeter after dark with a UV light. One scorpion in a tub is an anecdote; six along the
+          foundation is a finding. We have written up how to do that survey properly on the
+          <a href="/pest-library/striped-bark-scorpion/">striped bark scorpion page</a>.
+        </p>
+        <p>
+          <strong>This week: the door sweep.</strong> If the sources name one entry route above all others
+          it is the gap under an exterior door, and a sweep is the cheapest correction in this entire
+          trade. Then the weep holes, then the screens.
+        </p>
+        <p>
+          <strong>And the seasonal expectation.</strong> Oklahoma State notes they do not usually enter
+          houses in winter because cold makes them sluggish, and that late spring and early summer rains
+          often push them to seek drier habitat. So the quiet months are real and they are not evidence
+          that anything was solved.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The rooms this happens in, and what they have in common</h2>
+      <div class="measure">
+        <p>
+          <strong>Bathrooms.</strong> The most reported room by a wide margin, and the one this page is
+          named after. Everything the sourced mechanism predicts is there at once: the dampest air in the
+          house, plumbing penetrations through the wall and floor, a tub or shower pan that stays cool, and
+          a room that is dark and undisturbed for most of the twenty-four hours.
+        </p>
+        <p>
+          <strong>Kitchens and utility rooms.</strong> Same reasons in a different arrangement. A sink
+          cabinet with a supply line coming through the wall, the back of a dishwasher, the pan under a
+          water heater, the drain line from a washing machine. Oklahoma State's list of attractive damp
+          places is essentially a description of the plumbing side of a house.
+        </p>
+        <p>
+          <strong>Around the cooler or the air handler.</strong> The same source names condensers and the
+          evaporators of air conditioning units directly. On the properties here, a great many of which run
+          evaporative coolers for part of the year, that is a genuinely damp piece of equipment sitting on
+          a roof or against a wall in an otherwise arid landscape, often with a supply line and a bleed-off
+          running from it.
+        </p>
+        <p>
+          <strong>Garages, sheds and mud rooms.</strong> These are the transitional spaces — an exterior
+          door with a tired sweep, boxes and stored material giving harbourage, and a connection to the
+          living space. AgriLife's point that buildings and related structures provide numerous hiding
+          places applies most strongly to the buildings nobody keeps tidy.
+        </p>
+        <p>
+          <strong>And the floor, generally, at night.</strong> AgriLife notes that scorpions are nocturnal,
+          hiding during the day and becoming active at night. The classic version of this call is somebody
+          crossing a dark hallway barefoot at two in the morning, which is a timing problem as much as a
+          pest problem — and shoes by the bed during a bad summer is advice that costs nothing.
+        </p>
+        <p>
+          <strong>What all of those have in common</strong> is moisture, darkness and a route in. None of
+          them is a drain. If you are trying to work out where to spend an afternoon on this, walk the
+          house looking for those three things together, and then walk the outside looking for the gaps
+          that connect them to the yard.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why we bothered to write this</h2>
+      <div class="measure">
+        <p>
+          <strong>Because it would have been easier not to.</strong> The drain story is a good story. It
+          creates urgency, it points at something a company can be called about, and no customer would ever
+          check it. Repeating it costs nothing and it would have made this a shorter, more confident page.
+        </p>
+        <p>
+          <strong>And because the alternative is a site that cannot be checked.</strong> Everything on this
+          site is written to be traceable to a source, and the honest consequence of that rule is that
+          sometimes the answer is "the thing everybody says is not written down anywhere". A page that only
+          reports the tidy findings is not actually applying the rule.
+        </p>
+        <p>
+          <strong>What you are left with is still useful.</strong> A sourced mechanism — moisture and heat,
+          not plumbing. A sourced list of entry routes, with the most common one named. A sourced severity
+          picture and a clear condition for seeking medical attention. A free survey method that gives you
+          a real answer tonight. That is more actionable than the story we did not repeat.
+        </p>
+        <p>
+          <strong>There is a wider version of this worth naming.</strong> A great deal of what circulates
+          about scorpions in this region has the same provenance as the drain story — repeated between
+          companies until it reads as established. We have run into it more than once building this site,
+          and where a claim turns out to have no source behind it, our practice is to say so on the page
+          rather than quietly omit it. Omission leaves the story intact everywhere else; saying so at least
+          gives a reader somewhere to check.
+        </p>
+        <p>
+          <strong>And where we do not know, you know that too.</strong> Whether a scorpion can climb out of
+          a bath is, as far as the published record goes, an open question. That is a small thing to be
+          uncertain about, and being visibly honest about the small things is how a reader decides whether
+          to trust the large ones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Finding them indoors?"
+    body="Tell us where in the house and what time of day, and whether anything has been cleared or built near you lately. Then take a UV light round the outside after dark — that one walk tells us more than anything you could describe."
+  />
+</BaseLayout>

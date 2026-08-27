@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/gen-static.mjs",
     "preview": "astro preview",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "cadence": "node scripts/cadence.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"

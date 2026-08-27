@@ -1,0 +1,404 @@
+---
+/**
+ * T5 neighbourhood page — Parks Bell Ranch, north Odessa, Ector County.
+ *
+ * THE NEW-BUILD CASE. This site now has three neighbourhood pages at three
+ * distinct ages, and they should read as three different arguments:
+ *   · Green Tree (Midland)      — 45 years of irrigation. Mature oasis.
+ *   · Mission Estates (Odessa)  — 40 years of building. Mixed slab ages.
+ *   · Parks Bell Ranch (Odessa) — a decade old and still under construction.
+ * Do not let them converge into the same page with the nouns swapped. The
+ * distinguishing argument here is DISTURBANCE: former rangeland, imported
+ * fill, active construction next door, and a pre-treat history that is still
+ * young enough to actually ask the builder about.
+ *
+ * VERIFIED facts, from the development's own published material:
+ *  - "a 1,700-acre master-planned community in north Odessa, TX", of which
+ *    nearly 900 acres is residential and roughly 200 acres commercial.
+ *  - The land originated as a 10,000-ACRE CATTLE RANCH; over 6,000 acres have
+ *    been annexed by the City of Odessa.
+ *  - Planning commenced 2015.
+ *  - D.R. Horton has developed 500 acres and sold over 3,000 homes through the
+ *    "Homestead at Parks Bell Ranch" neighbourhood.
+ *  - Weidner's "Latitude 31" carries capacity for over 750 apartment units.
+ *  - Over $180 MILLION invested in thoroughfares, utilities and related
+ *    infrastructure.
+ *  - The Bell family has been in Odessa five generations. In 2023 they donated
+ *    up to 100 acres to the City of Odessa for a $50 million sports complex —
+ *    an 80,000–100,000 sq ft facility with volleyball courts, basketball
+ *    courts, athletic fields and a track. Ground broken February 2024,
+ *    EXPECTED completion 2027. It is NOT open. Never write it as open.
+ *  - Ector County IS on the imported fire ant regulated-areas list under
+ *    7 C.F.R. §301.81-3, adopted at 4 TAC §19.101.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - Any HOA name or covenant content. None found.
+ *  - Plat dates, surveyors, filings. Odessa's Plats layer was queried for the
+ *    Mission Estates work; Parks Bell Ranch plats were NOT enumerated. Do not
+ *    invent a platting chronology to match the other Odessa page.
+ *  - Which builders besides D.R. Horton are active, or current lot counts.
+ *  - Whether the sports complex fields will be irrigated turf or synthetic.
+ *    The page frames that as a question to watch, not a fact.
+ *  - Floodplain or playa mapping. Odessa publishes no public layer at all.
+ *  - School attendance zones.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Odessa', path: '/locations/odessa/' },
+  { name: 'Parks Bell Ranch', path: '/locations/odessa/parks-bell-ranch/' },
+];
+
+const quickAnswer =
+  'Parks Bell Ranch is a 1,700-acre master-planned community in north Odessa, built since 2015 on what was a 10,000-acre cattle ranch. New slabs on imported fill, active construction and displaced rangeland wildlife make its pest profile completely unlike an established neighbourhood. Work here is done personally by owner Valentin Moriel, TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'Why does a brand-new house have pest problems at all?',
+    a: 'Because building a house does not remove what was living on the land — it evicts it. Parks Bell Ranch is being built on ground that was cattle ranch until recently, and rangeland carries a full complement of harvester ants, rodents, snakes, spiders and scorpions. When earthmoving equipment goes through a section, everything living in that soil and grass moves to the nearest undisturbed cover, and the nearest undisturbed cover is very often a finished house two streets away. New construction does not reduce pest pressure in the short term. It concentrates it.',
+  },
+  {
+    q: 'Should I ask my builder about termite treatment?',
+    a: 'Yes, and Parks Bell Ranch is one of the few places where you realistically can, because the houses are new enough that the paperwork still exists and the people involved are still contactable. Ask three things: whether a pre-construction termite treatment was applied, what product was used, and whether any warranty from it transferred to you. Pre-treatments are applied to the soil before the slab is poured and they do not last indefinitely — knowing what was done and when tells you whether you are inside that window or past it. On a forty-year-old house nobody can answer those questions. On yours, somebody can.',
+  },
+  {
+    q: 'What is different about a slab on imported fill?',
+    a: 'New development sites are graded, cut and filled to make buildable pads, so the soil under and around a new slab is often not the soil that was there — it has been moved, compacted and sometimes brought in. That matters in two ways. Fill settles differently from undisturbed ground, which over the first several years can open small gaps at expansion joints and around plumbing penetrations that a subterranean termite can use. And a fresh pad has no established root structure or organic layer, so drainage behaves differently until landscaping matures. Neither is a defect. Both are worth an eye during the first few years rather than an assumption that new means sealed.',
+  },
+  {
+    q: 'Are fire ants likely here?',
+    a: 'This is close to the ideal situation for them, which is worth knowing rather than worrying about. Ector County is on the federal imported fire ant regulated-areas list under 7 C.F.R. section 301.81-3, adopted into Texas law at 4 TAC section 19.101 — we read that off the APHIS list ourselves. Imported fire ants colonise disturbed, freshly graded, newly irrigated ground faster than they colonise established landscape, because there is no competing ant population holding the territory. A new subdivision with new turf is exactly that. It also means the movement rules matter here more than most places: soil, sod, nursery stock and used soil-moving equipment leaving a quarantined county are regulated, and this is a place where a great deal of soil and sod is being moved.',
+  },
+  {
+    q: 'My neighbourhood is still being built. Does that change the timing of treatment?',
+    a: 'It changes the logic of it. In a finished neighbourhood, pest pressure is reasonably steady and a regular schedule makes sense. Here, the biggest single events are earthmoving on adjacent sections, and they produce a wave of displaced insects and rodents that arrives within days. If you can see work starting on ground near you, that is the moment a perimeter treatment earns its money — not the following quarter. It is one of the few situations where we would rather you called us because of something you saw a bulldozer do than because of something you saw indoors.',
+  },
+  {
+    q: 'Will the new sports complex affect anything?',
+    a: 'Possibly, and it is worth watching rather than worrying about. The Bell family donated up to 100 acres for a City of Odessa sports complex — a $50 million project with volleyball and basketball courts, athletic fields and a track, broken ground in February 2024 and expected to be finished in 2027. If the athletic fields end up as irrigated natural turf rather than synthetic, that would add a substantial permanently watered area to a dry landscape, which in this region reliably concentrates fire ants and the insects that support scorpions and spiders. We do not know which way that goes yet and we are not going to guess. If you back onto it when it opens, that boundary will be worth treating differently from your others.',
+  },
+  {
+    q: '¿Atienden Parks Bell Ranch, en Odessa?',
+    a: 'Sí, y Odessa forma parte de la ruta habitual. Valentin atiende en español y hace el trabajo personalmente. Un punto importante para casa nueva: pregunte a su constructor si se aplicó tratamiento preventivo contra termitas antes de vaciar la losa, qué producto se usó, y si la garantía pasó a su nombre. En una casa nueva todavía se puede averiguar; en una de cuarenta años, ya no. El condado de Ector sí está en la cuarentena federal de la hormiga roja importada. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Parks Bell Ranch, Odessa TX"
+  description="New-build pest control in Parks Bell Ranch, north Odessa — displaced rangeland wildlife, imported fill and pre-treat questions worth asking. TPCL 0918482."
+  path="/locations/odessa/parks-bell-ranch/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Parks Bell Ranch, Odessa',
+    description: 'Fire ant, scorpion, spider, termite and rodent control for new-build homes in the Parks Bell Ranch master-planned community, north Odessa, Ector County.',
+    areaServed: ['Odessa', 'Ector County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Odessa · Ector County · 1,700 acres, planned from 2015, still building</p>
+      <h1>Pest Control in Parks Bell Ranch, Odessa</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>A new house is not a pest-free house, and the reason is not workmanship.</strong> It is
+          that building on open ground does not remove what was living there. It evicts it.
+        </p>
+        <p>
+          Parks Bell Ranch is a 1,700-acre master-planned community in north Odessa, planned from 2015 and
+          still under construction. Nearly 900 acres of it are residential and around 200 commercial. D.R.
+          Horton alone has developed 500 acres and sold more than three thousand homes here through the
+          Homestead neighbourhood, and Weidner's Latitude 31 adds capacity for over 750 apartments. More
+          than $180 million has gone into thoroughfares, utilities and infrastructure.
+        </p>
+        <p>
+          All of it sits on what was a <strong>10,000-acre cattle ranch</strong> — Bell family land, five
+          generations in Odessa — of which over 6,000 acres have now been annexed by the city.
+        </p>
+        <p>
+          That history is the whole point of this page. Rangeland in the Permian Basin carries harvester
+          ants, rodents, snakes, spiders and scorpions as a matter of course. Grading a section does not
+          eliminate them; it moves them, and the direction they move is toward whatever cover is left
+          standing. If your house is the finished thing next to the work, that is you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Construction next door is an event, not a background condition</h2>
+      <div class="measure">
+        <p>
+          In a finished neighbourhood, pest pressure is reasonably steady. It rises in summer, falls in
+          winter, spikes after rain. A regular service schedule matches that shape well, which is why
+          regular service is what most companies sell.
+        </p>
+        <p>
+          <strong>An actively building subdivision does not have that shape.</strong> Its dominant events
+          are discrete and visible: a section gets cleared, graded and utilities trenched, over a few weeks.
+          Everything living in that ground — and there is a great deal, because it was rangeland until
+          recently — is displaced at once, and it goes to the nearest available shelter.
+        </p>
+        <p>
+          <strong>What arrives, roughly in order.</strong> Ground-nesting ants first, because they are the
+          most abundant thing in the soil and the most immediately homeless. Spiders and crickets next,
+          following the disturbance and then the lighting. Rodents within days to weeks, because they need
+          shelter urgently and a garage or a soffit is far better than open ground. Snakes occasionally,
+          following the rodents rather than seeking you out. And scorpions, which are patient and turn up
+          in the weeks after, hunting the prey base that the disturbance concentrated.
+        </p>
+        <p>
+          <strong>Which means timing matters more here than frequency.</strong> A perimeter treatment
+          applied when you can see work starting on nearby ground is worth several applied on a routine
+          quarterly date, because it is in place before the wave rather than after it has already found the
+          gaps. This is one of the few situations where we would genuinely rather you rang us about
+          something you saw a machine do than about something you saw indoors.
+        </p>
+        <p>
+          <strong>And it means exclusion is the durable half of the answer.</strong> Displaced animals are
+          looking for a way in, not for a place to be sprayed. Weather stripping and garage door seals that
+          actually contact the ground, sealed utility penetrations where the new services enter the house,
+          screened weep holes, gaps at soffit returns closed. Those hold across every subsequent wave; a
+          treatment holds for one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The three questions to ask your builder</h2>
+      <div class="measure">
+        <p>
+          Here is the genuine advantage of owning a new house, and almost nobody uses it. On a forty-year-old
+          property, nobody alive can tell you what was done to the soil before the slab was poured. On
+          yours, somebody can — the paperwork exists, the builder is still trading, and the work happened
+          within the last decade.
+        </p>
+        <p>
+          <strong>One: was a pre-construction termite treatment applied?</strong> A pre-treat is a
+          termiticide applied to the soil and the pad before the concrete goes down, creating a treated
+          zone under the structure. It is common practice and often required, but "common" is not "certain"
+          and it is a yes-or-no question with a documented answer.
+        </p>
+        <p>
+          <strong>Two: what product, and on what date?</strong> This matters because pre-treatments do not
+          last forever. Soil-applied termiticides degrade, and construction activity after application —
+          trenching for utilities, landscaping, a patio poured later — can breach the treated zone. Knowing
+          the product and the date tells you roughly where you are in its useful life rather than assuming
+          you are covered indefinitely.
+        </p>
+        <p>
+          <strong>Three: did any warranty transfer to you?</strong> Builder termite warranties sometimes
+          transfer to subsequent owners and sometimes do not, and the answer is usually in paperwork you
+          already have from closing. If one transferred, you may have coverage you do not know about. If
+          not, you know that too.
+        </p>
+        <p>
+          <strong>Why we tell people to ask rather than quoting them a treatment.</strong> Because the
+          answer might be that you are fine for several more years, and that is a perfectly good outcome
+          for us to hand you. What we would not want is for you to buy a termite treatment from anybody —
+          us included — without knowing whether one was already applied under the slab you are standing on.
+        </p>
+        <p>
+          <strong>The related point about fill.</strong> A master-planned development on former ranchland
+          is graded, cut and filled to produce buildable pads, so the soil around a new slab has usually
+          been moved and compacted, and sometimes imported. Fill settles differently from undisturbed
+          ground. Over the first several years that can open small gaps at expansion joints and around
+          plumbing penetrations — not a defect, just a thing worth looking at rather than assuming a new
+          slab is a sealed one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Fire ants take new ground first</h2>
+      <div class="measure">
+        <p>
+          Ector County is on the federal imported fire ant regulated-areas list under 7 C.F.R. §301.81-3,
+          which Texas adopts by reference at 4 TAC §19.101. We read that directly off the APHIS list rather
+          than taking anybody's summary for it. North and west of here — Gaines, Yoakum, Terry, Dawson,
+          Andrews — the counties are not listed, and there the honest answer to a fire ant question is
+          usually that it is a red harvester ant instead. Here it may genuinely not be.
+        </p>
+        <p>
+          <strong>And a new subdivision is the best opportunity an imported fire ant gets.</strong>
+          Established landscape is contested: there are already ant colonies holding territory, and a
+          founding queen arriving in a mature lawn is competing against incumbents. Freshly graded ground
+          with new sod and new irrigation has none of that. It is open territory with water, which is why
+          new developments across the fire ant range tend to colonise faster than the older neighbourhoods
+          around them.
+        </p>
+        <p>
+          <strong>Identification genuinely matters before anything is applied.</strong> A red harvester ant
+          mound and an imported fire ant nest look different, behave differently and need different
+          products and methods. Harvester ants clear a bare circle around the nest and forage in visible
+          columns; they sting, but they do not swarm a disturbance the way imported fire ants do. Treating
+          one as the other wastes product and time, and harvester ants are a native species that is not
+          doing you any harm out in a field.
+        </p>
+        <p>
+          <strong>The quarantine has practical consequences in a place like this.</strong> Movement rules
+          apply to soil, sod, nursery stock, baled hay stored on the ground and used soil-moving equipment
+          leaving a quarantined county for one that is not. In a 1,700-acre development where soil, sod and
+          equipment are being moved constantly, that is not an abstraction — it applies to landscapers,
+          contractors and anybody hauling fill out toward the counties north of here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What Parks Bell Ranch property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> AgriLife entomology, the federal quarantine list, and the
+          documented characteristics of this development — former rangeland, ongoing construction, new
+          slabs on graded fill, and a mix of detached housing and multifamily. Where we describe what a
+          condition produces rather than a specific job on a specific street, we say so.
+        </p>
+        <p>
+          <strong>Harvester ants and the other rangeland holdovers.</strong> The species that were on this
+          land as a cattle ranch do not leave the district when it becomes a subdivision — they persist on
+          undeveloped sections and along margins, and they move as those sections get built. Harvester ant
+          mounds on open lots are normal and largely harmless where they are; they become a question when
+          the lot they are on gets developed.
+        </p>
+        <p>
+          <strong>Fire ants.</strong> Covered above. The likeliest ant problem to actually need treating.
+        </p>
+        <p>
+          <strong>Scorpions, June through September.</strong> Striped bark scorpions come out after dark, climb readily, and
+          are found high in a structure as often as low in one. AgriLife entomologists note
+          they move indoors when it becomes excessively dry outside. On a development with large areas of
+          bare graded ground and little established landscape, harbourage tends to be construction material
+          rather than leaf litter — stacked block, timber, pallets, spare pipe — which is easier to remove
+          than a mature garden and worth doing.
+        </p>
+        <p>
+          <strong>Rodents, on the construction calendar as well as the seasonal one.</strong> The usual
+          autumn move indoors still applies, but here it is joined by displacement events whenever nearby
+          ground is worked. New utility trenching also creates temporary voids and routes along which they
+          travel.
+        </p>
+        <p>
+          <strong>Spiders, in the enclosures a new house has plenty of.</strong> Meter boxes, irrigation
+          valve boxes, the gap behind a new fence panel, an unfinished space in a garage. Black widows
+          favour exactly that profile. Brown recluse occur across Texas and shelter in stored cardboard —
+          and a recently moved-into house typically has a great deal of stored cardboard.
+        </p>
+        <p>
+          <strong>In the apartments, a different set of problems.</strong> Latitude 31 carries capacity for
+          over 750 units, and multifamily housing has its own logic: shared walls mean shared voids,
+          plumbing chases and attic runs, and German cockroaches, bed bugs, mice and ants all use them
+          between units. A treatment that stops at one apartment's interior walls can be undone by the one
+          next door, so the useful conversation in multifamily is nearly always about the building rather
+          than the unit — which usually means the property manager rather than the resident.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What is coming, and what we will not guess about</h2>
+      <div class="measure">
+        <p>
+          The Bell family donated up to 100 acres to the City of Odessa for a sports complex — a $50
+          million facility of 80,000 to 100,000 square feet with volleyball courts, basketball courts,
+          athletic fields and a track. Ground was broken in February 2024 and it is expected to be finished
+          in 2027. It is not open yet, and we are not going to write about it as though it were.
+        </p>
+        <p>
+          <strong>The part worth watching is the fields.</strong> If they end up as irrigated natural turf
+          rather than synthetic, that adds a large, permanently watered area to a dry landscape — and in
+          this region a large permanently watered area reliably concentrates fire ants, supports a much
+          bigger prey-insect population, and draws the scorpions and spiders that hunt it toward whatever
+          boundary it shares. That is the same dynamic that shapes
+          <a href="/locations/midland/green-tree/">Green Tree in Midland</a>, where a 176-acre irrigated
+          golf course has been running since 1980.
+        </p>
+        <p>
+          Whether these fields are turf or synthetic we do not know, and it makes a real difference, so we
+          are recording it as a question rather than an answer. If you back onto that ground when it opens,
+          it will be worth treating that boundary differently from your other three. We would rather tell
+          you the question exists now than have you discover it in 2027.
+        </p>
+        <p>
+          <strong>The same applies to the rest of the build-out.</strong> With around 200 acres designated
+          commercial and residential sections still going in, the ground next to any given house may not
+          stay as it is. Commercial development brings its own pest profile — refuse handling at scale,
+          food premises, larger structures with more penetrations — and it arrives with the same
+          displacement wave as everything else.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we do in Parks Bell Ranch</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Odessa is a regular part of the route</strong>, so scheduling is straightforward.
+          Recurring service runs bi-monthly or quarterly, priced on the size of the property, the pressure
+          and the frequency, with a higher initial visit. <strong>No contracts</strong> — no term, no
+          cancellation fee. Termite, bed bug, mosquito, lawn, brush and junk work is individually quoted
+          after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          <strong>What we would actually suggest for a new-build owner here.</strong> Ask the builder the
+          three questions above before buying any termite work from anybody. Get the exclusion right early,
+          because it is far cheaper on a house whose gaps have not yet been found by anything. And treat
+          the perimeter reactively when ground near you gets worked, rather than paying for a fixed
+          schedule that has no relationship to when the pressure actually arrives.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are one man, based in Seminole, about an hour and
+          a half north of Odessa. Odessa is on the regular route so getting here is not the issue, but we
+          are not the closest company to Parks Bell Ranch and we will not pretend to be. What we offer
+          instead is that the person who quotes the job is the person who does it and the person who comes
+          back if it did not hold, a licence number published on every page here — TPCL 0918482,
+          verifiable against the Texas Department of Agriculture's records in about two minutes —
+          guarantee terms written out with a duration and explicit exclusions, and no contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Parks Bell Ranch pest control questions" />
+  <Cta
+    market="Parks Bell Ranch"
+    line="If the house is new, ask the builder about the pre-construction termite treatment before you buy anything from anybody — then tell him what the answer was. And if there is earthmoving going on near you, say so; that changes when a perimeter treatment is worth applying."
+  />
+</BaseLayout>

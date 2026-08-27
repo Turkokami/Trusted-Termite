@@ -16,6 +16,7 @@ import Trust from '../../components/Trust.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
+import SpokeLinks from '../../components/SpokeLinks.astro';
 import { serviceBySlug } from '../../data/services';
 import { TOWNS } from '../../data/towns';
 
@@ -440,4 +441,6 @@ const faqs = [
 
 <Faq items={faqs} heading="Scorpion questions" />
   <Cta line="If you are finding them indoors, say where and how many, and whether it has been dry. That usually tells us most of what we need before anybody drives out." />
+  <SpokeLinks service="scorpion-control" />
+
 </BaseLayout>

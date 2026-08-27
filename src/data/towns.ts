@@ -37,6 +37,12 @@ export interface Town {
   soil: string;
   /** 4 TAC §19.101 — TDA red imported fire ant quarantine. */
   fireAnt: FireAntStatus;
+  /** TRUE where the owner does NOT run the town on any route and would only
+   *  drive it if somebody called (D-07, answered Aug 2026). Every surface that
+   *  lists towns must label these differently from the ones he actually runs —
+   *  a grid that renders a by-request town identically to a served one is a
+   *  coverage claim made by omission. Absent means routine service. */
+  byRequest?: boolean;
   /** Local pest pressure notes, drawn from K-03 and AgriLife sources. */
   pestPressures: string[];
   /** Municipal weed / nuisance standard, where verified. Feeds the lawn and
@@ -49,9 +55,21 @@ export interface Town {
     /** Citation as it appears in the town's own code. */
     cite: string;
     /** Does one notice cover repeat violations for a year? Nearly all do. */
+    /** TRUE where one notice can cover a later violation of the same kind
+     *  without a fresh letter. Nearly universal on this route. */
     annualNotice: boolean;
+    /** How long that memory lasts. Absent means the ordinary twelve months.
+     *  Kermit runs TWENTY-FOUR (§ 7.02.009) — the only town on the route that
+     *  does, and the single most consequential ordinance difference we have
+     *  found. Do not fold it back into annualNotice to tidy the type. */
+    repeatWindowMonths?: number;
     /** Height above which the city may abate with no notice at all. */
     noNoticeAboveInches?: number;
+    /** TRUE when the height and notice figures came from the city office rather
+     *  than from the published ordinance text. The comparison table marks these
+     *  rows so a reader can tell which numbers we read ourselves and which were
+     *  relayed to us. Default (absent) means we read the published text. */
+    figuresFromCityOffice?: boolean;
     note: string;
   } | null;
   /** Population, US Census QuickFacts 2025 estimate. */
@@ -86,7 +104,22 @@ export const TOWNS: Town[] = [
       'Rodents moving indoors October through November',
       'Red harvester ants in open yards and play areas',
     ],
-    weedOrdinance: null, // eCode360 blocks automated access — one phone call to the city inspector
+    /** K-04 — RESOLVED Aug 2026. The section number is verified against the
+     *  city's own published code (ch. 6 Health and Sanitation, art. 6.400,
+     *  § 6.403 "Weeds and Other Unsightly Vegetation"); the FIGURES are not.
+     *  eCode360 serves Seminole's table of contents but blocks the section
+     *  text, so the height, notice period and annual rule below came from the
+     *  city office, relayed by the owner, rather than from the published text.
+     *  Copy must attribute them that way — see maintenance.ts ORD-03, which
+     *  carries a shorter interval than the other towns for exactly that reason. */
+    weedOrdinance: {
+      heightInches: 12,
+      noticeDays: 10,
+      cite: 'Code of Ordinances ch. 6 art. 6.400 § 6.403',
+      annualNotice: true,
+      figuresFromCityOffice: true,
+      note: 'Twelve inches with ten days to comply — a longer notice period than most of the route, and the same height Wolfforth and the majority of the region use. One notice covers repeat violations for a year. Figures confirmed with the city office; the published section text is not publicly accessible online.',
+    },
     population: 7730,
     character:
       'Open land, agricultural areas and homes close to fields, with the oilfield and the cotton and peanut country around it.',
@@ -300,6 +333,11 @@ export const TOWNS: Town[] = [
     housing:
       'A larger urban environment — older established neighbourhoods, apartment communities and commercial property, with surrounding agricultural land.',
     soil: 'Lubbock County soils with irrigation and landscaping influence.',
+    /** PARTIAL, and the APHIS list draws it street by street: "That portion of
+     *  the City of Lubbock located within Highway 27 to the East, Ursuline
+     *  Street to the North, Milwaukee Street to the West, and 98 Street to the
+     *  South." Retrieved cleanly Aug 2026 after two earlier failed attempts.
+     *  Everything else in Lubbock County is outside the quarantine. */
     fireAnt: 'partial',
     pestPressures: [
       'Fire ants — a portion of Lubbock County is quarantined',
@@ -322,29 +360,53 @@ export const TOWNS: Town[] = [
     name: 'Kermit',
     county: 'Winkler County',
     distanceMiApprox: 85,
-    direction: 'south',
-    tier: 'scaffold',
+    /** South to Andrews on US-385, then west on TX-115 — the same dogleg
+     *  through Andrews the Stanton route uses in the other direction. */
+    direction: 'south-west',
+    tier: 'single',
+    /** D-07 covered Kermit in the same breath as Stanton. Unlike Stanton the
+     *  page has not been written up to the by-request framing yet, so it stays
+     *  a noindex scaffold — but the flag is set so no town grid can render it
+     *  as routine coverage in the meantime. */
+    byRequest: true,
     neighborhoods: [],
     housing: 'Highest owner-occupancy in the region at 84.5% — a stable stock of family homes.',
     soil: 'Dry western-Basin caliche and sand.',
     fireAnt: 'quarantined',
-    pestPressures: ['Fire ants — Winkler County IS quarantined', 'Scorpions sheltering under caliche pads and equipment yards', 'Rodents in outbuildings'],
-    weedOrdinance: null,
+    pestPressures: ['Fire ants — Winkler County IS quarantined', 'Scorpions sheltering under caliche pads and equipment yards', 'Rodents in outbuildings and long-vacant houses'],
+    /** Kermit Code ch. 7 art. 7.02, "Weeds, Rubbish, Brush, and Other
+     *  Unsanitary Matter", §§ 7.02.001–7.02.013 (eCode360, read Aug 2026).
+     *  The strictest package on this route: tightest height bar Lubbock, the
+     *  only 24-month repeat window, and a no-advance-notice abatement power
+     *  over 48 inches at § 7.02.011. */
+    weedOrdinance: {
+      heightInches: 10,
+      noticeDays: 10,
+      cite: 'Code of Ordinances ch. 7 art. 7.02 §§ 7.02.004, .008–.011',
+      annualNotice: true,
+      repeatWindowMonths: 24,
+      noNoticeAboveInches: 48,
+      note: 'Ten inches is the tightest standard on this route after Lubbock, and it binds tenants and lessees as well as owners. Mailed notice is deemed received five days after posting, and notice may also be given by newspaper, by a posting on the door or by a stake driven into the lot. One notice covers a repeat violation for twenty-four months — twice every other town here. Over forty-eight inches the city may abate with no advance notice at all, telling you within ten days afterwards; you can request a hearing within thirty days of that letter. Lien at ten percent, and the cost is a personal liability as well as a charge on the property.',
+    },
     population: 6019,
-    character: 'The dry western edge of the Basin, where caliche pads and equipment yards collect the debris scorpions shelter under. No pest company is based in town.',
+    character: 'The driest county on the route at twelve inches of rain a year, with a belt of sand dunes across its middle and one in six houses standing empty. Winkler County seat since 1910. No pest company is based in town.',
   },
   {
     slug: 'stanton',
     name: 'Stanton',
     county: 'Martin County',
     distanceMiApprox: 90,
-    direction: 'east',
-    tier: 'scaffold',
+    direction: 'south-east',
+    tier: 'single',
+    /** D-07, Aug 2026: "Have not currently serviced yet but would if a call
+     *  came through." The page ships on exactly that claim and no more. */
+    byRequest: true,
     neighborhoods: [],
     housing: 'Small-town residential with surrounding farm and ranch property.',
     soil: 'Martin County farmed soils with caliche.',
-    // CORRECTED Aug 2026: Martin County IS quarantined on the APHIS regulated-areas
-    // list that 4 TAC §19.101 adopts by reference. An earlier draft said otherwise.
+    // CONFIRMED Aug 2026 against the APHIS regulated-areas list itself (7 C.F.R.
+    // §301.81-3, last updated 27 Oct 2022), which 4 TAC §19.101 adopts by
+    // reference. An early draft had this backwards; a later one hedged. Settled.
     fireAnt: 'quarantined',
     pestPressures: ['Fire ants — Martin County IS quarantined', 'Scorpions', 'Field-driven ants and rodents'],
     weedOrdinance: {

@@ -1,0 +1,437 @@
+---
+/**
+ * Página en español — Retiro de Animales Silvestres.
+ * Par en inglés: /services/wildlife-removal/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Gates duros:
+ *  - NUNCA veneno. Para ninguna especie. Y explicar por qué (muere dentro de
+ *    un muro y el problema empeora).
+ *  - Mordida o animal actuando raro = control animal + atención médica de
+ *    inmediato. Texas tiene especies vectoras de rabia. Eso NO es una llamada
+ *    de control de plagas y hay que mandarlo fuera en la primera sección.
+ *  - Murciélagos: situación especializada con protecciones legales y
+ *    restricciones de temporada por las crías. Se refiere, no se improvisa.
+ *  - La reubicación NO es el método por defecto: Texas regula por especie
+ *    (cinegética, peletera, no cinegética, protegida) y TPWD es la autoridad.
+ *  - Aves = otro servicio y otra ley.
+ * Sin precios. Sin "nuestro equipo".
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Retiro de Animales Silvestres', path: '/es/servicios/retiro-de-animales-silvestres/' },
+];
+
+const quickAnswer =
+  'Retiro con trampa y trabajo de exclusión para zorrillos, mapaches, tlacuaches, gatos ferales y zorros que se metieron bajo una construcción. Nunca usamos veneno. Y hay situaciones en las que la llamada correcta es control animal o un médico, no nosotros — eso se lo decimos de inmediato. Licencia TPCL 0918482.';
+
+const faqs = [
+  {
+    q: '¿Qué es lo que hay debajo de mi cobertizo?',
+    a: 'Por aquí lo más frecuente es un zorrillo, un mapache, un tlacuache o un gato feral, y de vez en cuando un zorro. La identificación importa más de lo que la gente supone, porque tanto lo que es legal como lo que es sensato dependen de la especie. El excremento, las huellas en tierra suave, el tamaño y la forma de la entrada, y la hora a la que hay actividad normalmente bastan para saberlo sin ver al animal.',
+  },
+  {
+    q: '¿No pueden simplemente llevárselo a otro lado?',
+    a: 'No como método por defecto, y quien lo promete a la ligera está pasando por alto la ley. Texas regula la fauna por especie — las cinegéticas, las peleteras, las no cinegéticas y las protegidas se tratan distinto, y las reglas sobre captura, transporte y liberación varían según la situación. Parte de lo que la gente supone que es práctica normal no es legal, y parte simplemente no funciona. Averiguamos qué procede para su animal en particular antes de proponer nada, y Texas Parks and Wildlife es la autoridad en el detalle.',
+  },
+  {
+    q: '¿Usan veneno con la fauna?',
+    a: 'No. Ni con zorrillos, ni mapaches, ni tlacuaches, ni zorros, ni gatos. Aparte de las cuestiones legales, un animal envenenado se muere en un lugar inaccesible — dentro de un muro, bajo la losa, en el espacio bajo la casa — y entonces usted tiene un problema considerablemente peor que aquel por el que llamó. El método es trampa y exclusión.',
+  },
+  {
+    q: 'Algo mordió a alguien, o el animal está actuando raro. ¿Qué hago?',
+    a: 'Esa no es una llamada de control de plagas. Comuníquese de inmediato con control animal de su localidad, y ante cualquier mordida o rasguño busque atención médica enseguida — Texas tiene especies vectoras de rabia y esa valoración les corresponde a profesionales médicos y de salud pública, no a nosotros. No intente atrapar ni manipular al animal, y no lo suelte. Preferimos mandarlo al lugar correcto en diez segundos que tomarle una cita.',
+  },
+  {
+    q: '¿Atienden murciélagos?',
+    a: 'Los murciélagos son una situación especializada, con protecciones legales propias, restricciones de temporada relacionadas con las crías y consideraciones de salud pública, y no son algo que se pueda tratar como una molestia común. Si tiene murciélagos en una construcción, dígalo por teléfono y le indicamos hacia qué tipo de ayuda ir, en lugar de improvisar.',
+  },
+  {
+    q: '¿Y las palomas y otras aves?',
+    a: 'Otro servicio y otra ley — vea nuestra página de aves y palomas. La versión corta es que las aves nativas tienen protección federal y las palomas ferales por lo general no, y eso cambia todo lo que se puede hacer.',
+  },
+  {
+    q: '¿Con atrapar al animal se resuelve para siempre?',
+    a: 'Solo si además se atiende la razón por la que el animal eligió su propiedad. Sacar al ocupante de una madriguera bajo un cobertizo y dejar la madriguera abierta produce una vacante que se vuelve a llenar, muchas veces en semanas. La parte duradera de este trabajo es la exclusión: cerrar el acceso, quitar el refugio y eliminar la comida. Por eso la cotización normalmente incluye las dos cosas.',
+  },
+  {
+    q: 'Huele a zorrillo pero no he visto nada. ¿Eso cuenta?',
+    a: 'Cuenta y conviene atenderlo antes de que se convierta en otra cosa. El olor persistente bajo una construcción normalmente significa que hay una madriguera activa ahí, y la temporada importa: si hay crías, el manejo cambia por completo y hay ventanas en las que sencillamente no se debe cerrar el acceso, porque encerraría a los pequeños adentro. Dígannos desde cuándo lo huele y a qué hora es más fuerte.',
+  },
+];
+---
+
+<BaseLayout
+  title="Retiro de Animales Silvestres | Seminole, TX"
+  description="Trampa y exclusión para zorrillos, mapaches, tlacuaches y gatos ferales bajo construcciones, sin veneno, en el condado de Gaines. TPCL 0918482."
+  path="/es/servicios/retiro-de-animales-silvestres/"
+  lang="es"
+  altLangPath="/services/wildlife-removal/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Retiro de Animales Silvestres',
+    description: 'Retiro con trampa y trabajo de exclusión para zorrillos, mapaches, tlacuaches, gatos ferales y zorros en construcciones y terrenos del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Retiro de Animales Silvestres</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Antes de cualquier otra cosa: hay situaciones en las que nosotros no somos la
+          llamada.</strong> Ponerlas al principio de la página es lo correcto aunque signifique que usted
+          deje de leer y marque otro número.
+        </p>
+        <p>
+          <strong>Si un animal mordió o rasguñó a alguien</strong>, o si una mascota tuvo contacto, busque
+          atención médica de inmediato y llame a control animal de su localidad. Texas tiene especies
+          vectoras de rabia, y esa valoración les toca a profesionales médicos y de salud pública. Nosotros
+          no.
+        </p>
+        <p>
+          <strong>Si el animal está actuando raro</strong> — activo de día cuando no debería, sin miedo a
+          la gente, tambaleándose, agresivo sin motivo — no se acerque, no intente atraparlo y no lo
+          suelte. Eso es control animal, hoy mismo.
+        </p>
+        <p>
+          <strong>Si hay murciélagos en la construcción</strong>, es una situación especializada con
+          protecciones legales, restricciones de temporada por las crías y consideraciones de salud
+          pública. Dígalo por teléfono y le indicamos hacia dónde ir, en lugar de improvisar.
+        </p>
+        <p>
+          Con eso dicho: si lo que tiene es un zorrillo bajo la terraza, un mapache en el ático o algo que
+          se metió bajo el cobertizo, eso sí es nuestro trabajo y así se hace.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Qué está viviendo ahí abajo</h2>
+      <div class="measure">
+        <p>
+          Identificar la especie no es curiosidad: decide qué es legal, qué es sensato y en qué temporada
+          se puede hacer.
+        </p>
+        <p>
+          <strong>El zorrillo</strong> es el más común bajo terrazas, escalones y pisos de cobertizo.
+          Cava una entrada limpia y redonda, es nocturno, y su presencia suele anunciarse por el olor antes
+          de que alguien lo vea. Es también la especie donde más importa la temporada, por las crías.
+        </p>
+        <p>
+          <strong>El mapache</strong> prefiere altura y espacios cerrados: áticos, chimeneas, bajo un
+          techo mal sellado. Es fuerte y hábil con las manos, así que abre lo que otros animales no
+          abrirían, y una hembra con crías en un ático es de los casos que más daño causan por el material
+          que rompen.
+        </p>
+        <p>
+          <strong>El tlacuache</strong> es el más tranquilo de los tres y el que menos daño estructural
+          hace. Ocupa espacios que ya estaban abiertos en lugar de crearlos, y muchas veces está de paso.
+        </p>
+        <p>
+          <strong>El gato feral</strong> es un caso aparte y no es fauna silvestre en el sentido legal.
+          Ahí las opciones y las consideraciones son distintas, y frecuentemente lo correcto pasa por
+          control animal o por un programa local, no por una trampa nuestra.
+        </p>
+        <p>
+          <strong>Y el zorro</strong> aparece de vez en cuando en propiedades con espacio abierto
+          alrededor, normalmente de paso más que instalado, y casi siempre lo delata el rastro y no el
+          avistamiento.
+        </p>
+        <p>
+          <strong>Cómo se identifica sin ver al animal.</strong> El excremento y dónde está. Las huellas en
+          tierra suave junto a la entrada. El tamaño y la forma del hueco — un zorrillo y un mapache no
+          entran por lo mismo. Pelo atrapado en la orilla de la abertura. Y la hora a la que se escucha
+          movimiento, que separa bastante bien entre especies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Por qué la trampa sola no termina el problema</h2>
+      <div class="measure">
+        <p>
+          Este es el mismo principio que rige el trabajo de roedores, y aquí se ve todavía más claro.
+        </p>
+        <p>
+          <strong>Un animal eligió su propiedad por razones concretas:</strong> un espacio protegido bajo
+          una construcción, comida disponible cerca, agua, y una entrada del tamaño correcto. Sacar al
+          ocupante no cambia ninguna de esas cuatro cosas.
+        </p>
+        <p>
+          <strong>Lo que queda es una vacante en buen estado.</strong> Una madriguera ya excavada, seca y
+          protegida, en una zona donde evidentemente se puede vivir — porque alguien vivía ahí. Se vuelve a
+          ocupar, muchas veces en semanas, y a veces por una especie distinta.
+        </p>
+        <p>
+          <strong>Por eso la parte duradera es la exclusión.</strong> Cerrar el acceso correctamente:
+          barrera enterrada donde el animal cava, malla de calibre adecuado y no tela mosquitera, sellado
+          de los puntos por donde algo trepó hasta un techo, y reparación de lo que ya estaba abierto.
+        </p>
+        <p>
+          <strong>Y quitar lo que atraía.</strong> Alimento de mascota afuera, botes de basura sin tapa
+          firme, fruta caída, alimento de aves derramado, un compostero abierto, agua fácil. Eso es gratis y
+          es la mitad del resultado.
+        </p>
+        <p>
+          <strong>Hay un orden que no se puede invertir</strong>, y es la razón por la que preguntamos
+          tanto antes de cerrar nada: primero hay que estar seguros de que el animal salió, y de que no
+          quedaron crías adentro. Sellar una entrada con un animal dentro es cruel y además le garantiza un
+          problema peor — un animal atrapado destruye para salir, o se muere donde no se puede llegar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>La temporada cambia lo que se puede hacer</h2>
+      <div class="measure">
+        <p>
+          Un problema de fauna en marzo y el mismo problema en octubre no se manejan igual, y la diferencia
+          son las crías.
+        </p>
+        <p>
+          <strong>En primavera y principios de verano</strong> hay una probabilidad real de que lo que está
+          bajo su terraza sea una hembra con crías. En ese caso cerrar el acceso es exactamente lo que no
+          se debe hacer, porque separa a la madre de los pequeños o los encierra. Lo correcto suele ser
+          esperar a que salgan por su cuenta y trabajar la exclusión después, con un seguimiento para
+          confirmar que ya no hay nadie.
+        </p>
+        <p>
+          <strong>Eso a veces significa que la respuesta honesta es "todavía no".</strong> Entendemos que
+          no es lo que alguien quiere oír cuando huele a zorrillo por debajo del piso, pero es la respuesta
+          correcta, y forzarla produce el escenario del animal muerto en un lugar inaccesible.
+        </p>
+        <p>
+          <strong>Otoño e invierno</strong> son la temporada natural de este trabajo. Además coincide con
+          cuando más animales buscan refugio por el frío, así que es también cuando aparecen los problemas
+          nuevos.
+        </p>
+        <p>
+          <strong>Y el mejor momento para la exclusión preventiva es antes de tener el problema.</strong>
+          Cerrar el espacio bajo una terraza, poner malla en la ventilación del piso, tapar el hueco donde
+          se junta el techo con el muro y reparar la puerta del cobertizo cuesta lo mismo en un mes
+          tranquilo y evita la conversación completa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Las construcciones que más les gustan por aquí</h2>
+      <div class="measure">
+        <p>
+          En esta región hay unas cuantas estructuras que aparecen una y otra vez en estas llamadas.
+        </p>
+        <p>
+          <strong>La terraza o el porche sobre pilotes</strong>, con el frente abierto o con celosía suelta.
+          Es el alojamiento perfecto: techo, laterales protegidos, tierra suave para cavar y nadie que
+          moleste.
+        </p>
+        <p>
+          <strong>El cobertizo sobre bloques.</strong> El espacio de veinte o treinta centímetros entre el
+          piso y el suelo es exactamente lo que buscan, y casi nunca está cerrado.
+        </p>
+        <p>
+          <strong>Casas móviles y modulares</strong>, donde el faldón se daña con el viento y con los años.
+          Un faldón roto es una puerta abierta a todo el espacio bajo la casa.
+        </p>
+        <p>
+          <strong>Graneros, talleres y bodegas de equipo</strong>, sobre todo donde el muro metálico no
+          cierra bien contra el piso de concreto. Y si además hay alimento almacenado, ya no es refugio: es
+          refugio con despensa.
+        </p>
+        <p>
+          <strong>Áticos con ventilación dañada</strong> o con una rama de árbol que llega al techo. La
+          rama es el detalle que la gente no relaciona: convierte un techo inaccesible en un camino.
+        </p>
+        <p>
+          <strong>Y la maquinaria guardada.</strong> Un tractor, una camioneta que no se mueve, un remolque
+          — todos ofrecen espacio protegido, y todos tienen cableado que a algunos animales les interesa
+          roer. Ese suele ser el costo real de dejarlo pasar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Lo que sí hacemos y lo que no</h2>
+      <div class="measure">
+        <p>
+          <strong>Sí:</strong> identificación de la especie, captura con trampa cuando corresponde y es
+          legal para ese animal, trabajo de exclusión para cerrar accesos, retiro del refugio y del
+          atrayente, y reparación de los puntos por donde entraron.
+        </p>
+        <p>
+          <strong>No usamos veneno.</strong> Nunca, con ninguna especie de fauna. Además de las cuestiones
+          legales, un animal envenenado muere donde no se puede llegar — dentro de un muro, bajo la losa,
+          en el espacio bajo el piso — y ese problema es peor, más caro y dura más que el original.
+        </p>
+        <p>
+          <strong>No reubicamos por costumbre.</strong> Texas regula por especie y las reglas de captura,
+          traslado y liberación cambian según el caso. Averiguamos qué procede para su animal antes de
+          proponer algo, y Texas Parks and Wildlife es la autoridad para el detalle. Cuando la respuesta
+          legal no coincide con lo que a usted le gustaría, se lo decimos igual.
+        </p>
+        <p>
+          <strong>No manejamos murciélagos</strong> ni situaciones de mordida ni animales que se comportan
+          de forma anormal. Esas van a control animal, a salud pública o a un especialista, y las mandamos
+          ahí sin cobrar por la llamada.
+        </p>
+        <p>
+          <strong>Y no somos un equipo.</strong> Es una sola persona, con licencia TPCL 0918482. Eso
+          significa que quien inspecciona es quien cierra el acceso y quien regresa a verificar que
+          funcionó — y también significa que un trabajo de fauna, que depende de esperar y volver, se
+          agenda con criterio y no en el mismo día.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Qué hacer mientras tanto</h2>
+      <div class="measure">
+        <p>
+          <strong>No tape el hueco todavía.</strong> Es el impulso natural y es el error más común. Si el
+          animal está adentro, lo encierra; si hay crías, las condena. Espere a saber qué hay.
+        </p>
+        <p>
+          <strong>Quite la comida.</strong> Alimento de mascota adentro por la noche, botes con tapa que
+          cierre, fruta caída recogida, alimento de aves levantado por un tiempo. Es lo que más rápido
+          cambia el interés del animal por su propiedad.
+        </p>
+        <p>
+          <strong>Mantenga a las mascotas lejos de la entrada.</strong> Un perro que hostiga a un zorrillo
+          bajo la terraza convierte un problema de olor en un problema de veterinario, y un encuentro con
+          un mapache acorralado es peor.
+        </p>
+        <p>
+          <strong>Anote horarios.</strong> A qué hora se escucha, dónde exactamente, si es un animal o
+          varios, si hay ruidos de crías. Esa información acorta muchísimo la inspección y a veces resuelve
+          la identificación por teléfono.
+        </p>
+        <p>
+          <strong>Y si puede tomar una foto de la entrada y del excremento</strong>, mándela. Se ve más de
+          lo que uno cree en una foto de un hueco con huellas alrededor.
+        </p>
+        <p>
+          <strong>Un truco sencillo para saber si sigue adentro:</strong> esparza una capa fina de harina o
+          de tierra suelta frente a la entrada al anochecer y revísela por la mañana. Las huellas le dicen
+          si salió, si entró, o si hubo movimiento en ambos sentidos. Es la misma información que
+          buscaríamos nosotros y usted la puede juntar sin costo mientras espera la visita.
+        </p>
+        <p>
+          <strong>Lo que no recomendamos intentar:</strong> comprar una trampa y hacerlo por cuenta propia.
+          No es un juicio sobre su capacidad — es que las reglas de captura, traslado y liberación varían
+          por especie en Texas, y un animal capturado por alguien sin saber qué procede se convierte en un
+          problema legal además del original. Y un zorrillo dentro de una trampa, en un patio, con un perro
+          cerca, es una tarde que nadie quiere tener.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>El zorrillo, en detalle, porque es el caso más común</h2>
+      <div class="measure">
+        <p>
+          De todas las llamadas de fauna que recibimos por aquí, el zorrillo bajo una construcción es de
+          lejos la más frecuente, así que vale la pena dedicarle su propia sección.
+        </p>
+        <p>
+          <strong>Casi siempre lo primero es el olor y no el animal.</strong> Un olor persistente y de
+          fondo, más fuerte en la noche y cerca de un punto concreto, normalmente significa madriguera
+          activa. Eso es distinto del olor fuerte y puntual de un rociado defensivo, que se disipa en unos
+          días.
+        </p>
+        <p>
+          <strong>La entrada es reconocible.</strong> Un hueco de unos diez a quince centímetros, redondo y
+          bien hecho, normalmente contra la base de una construcción, con tierra removida en abanico hacia
+          afuera. Suele haber huellas de cinco dedos con marcas de uñas largas en la tierra suave.
+        </p>
+        <p>
+          <strong>Rara vez es agresivo</strong> y prácticamente nunca busca conflicto. El problema real no
+          es el animal en sí: es la mascota que va a investigar, y es el daño acumulado de tener una
+          madriguera activa bajo una estructura — tierra removida bajo una losa o unos escalones, y en
+          ocasiones cableado o aislamiento afectados.
+        </p>
+        <p>
+          <strong>Y es la especie donde la temporada manda.</strong> Cerrar un acceso en la época de crías
+          es el peor resultado posible para todos: separa a la madre, deja a los pequeños adentro y
+          garantiza el escenario que nadie quiere. Por eso preguntamos desde cuándo lo huele y si ha
+          escuchado sonidos distintos del de un animal adulto.
+        </p>
+        <p>
+          <strong>Lo que no funciona</strong>, aunque circule mucho: bolas de naftalina, amoniaco en
+          trapos, radios encendidos, luces. Los animales se acostumbran rápido a lo que no representa un
+          riesgo real, y varias de esas cosas son sustancias que no deberían estar bajo una casa donde vive
+          gente. Lo que funciona es cerrar el acceso, en el momento correcto y con el material correcto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cómo se cotiza y qué esperar del tiempo</h2>
+      <div class="measure">
+        <p>
+          Un trabajo de fauna no es una visita: es una secuencia con esperas, y conviene saberlo antes de
+          agendar.
+        </p>
+        <p>
+          <strong>Primero la inspección e identificación</strong>, que define especie, accesos y si hay
+          indicios de crías. Muchas veces se resuelve bastante por teléfono con fotos y horarios, y eso
+          ahorra una visita.
+        </p>
+        <p>
+          <strong>Después el retiro</strong>, que según el caso es captura o es esperar a que el animal
+          salga por su cuenta con verificación. Esa parte no tiene fecha exacta y depende del animal, no de
+          nuestra agenda. Prometerle un día sería inventar.
+        </p>
+        <p>
+          <strong>Luego la exclusión</strong>, que es cuando el trabajo se vuelve permanente, y que solo se
+          hace con certeza de que no quedó nadie adentro.
+        </p>
+        <p>
+          <strong>Y una verificación posterior</strong>, porque un acceso mal cerrado se nota rápido si
+          alguien está viendo.
+        </p>
+        <p>
+          <strong>El precio depende</strong> del tamaño y tipo de la estructura, de cuántos accesos hay que
+          cerrar, del material que requiere la exclusión, y de si hace falta reparar algo que ya estaba
+          dañado. La captura y la exclusión se cotizan juntas porque separarlas es exactamente lo que hace
+          que el problema regrese, y no queremos vender la mitad que no dura.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre fauna silvestre" />
+  <Cta
+    line="Dígale a qué hora escucha movimiento, dónde está la entrada y desde cuándo — con eso muchas veces se identifica la especie por teléfono. Y si hay sospecha de crías, dígalo, porque cambia todo el plan y la temporada."
+  />
+</BaseLayout>

@@ -25,6 +25,7 @@ import Trust from '../../components/Trust.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
+import SpokeLinks from '../../components/SpokeLinks.astro';
 import { serviceBySlug } from '../../data/services';
 import { TOWNS } from '../../data/towns';
 
@@ -78,6 +79,7 @@ const faqs = [
   title={svc.titleShort}
   description={svc.metaDescription}
   path="/services/flea-and-tick/"
+  altLangPath="/es/servicios/pulgas-y-garrapatas/"
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}
   faqs={faqs}
@@ -94,6 +96,7 @@ const faqs = [
       <h1>Flea &amp; Tick Treatment</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <p class="measure" style="margin-top:1rem"><a href="/es/servicios/pulgas-y-garrapatas/" lang="es" hreflang="es">Esta página en español</a></p>
       <div class="measure">
         <p>
           The most useful thing we can tell you about this service is a limit on it:
@@ -428,4 +431,6 @@ const faqs = [
   <Cta
     line="Tell him what animals you have, where they sleep and where they lie outside during the day. That map is most of the diagnosis — and have a word with your vet before or alongside the visit."
   />
+  <SpokeLinks service="flea-and-tick" />
+
 </BaseLayout>

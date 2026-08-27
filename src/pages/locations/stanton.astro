@@ -4,12 +4,29 @@
  * Seminole, on Interstate 20 between Midland and Big Spring.
  *
  * ############################################################################
- * HELD AT NOINDEX. CONTENT_BRIEF section 11 holds the Kermit and Stanton city
- * pages because D-07 says the owner WANTS these towns but does not yet serve
- * them. Publishing a service-area claim he cannot honour is a coverage lie and
- * breaks doctrine 6, so this page is written, verified and parked. To ship it,
- * delete `noindex={true}` from the BaseLayout call below and strike the row
- * from the CONTENT_BRIEF held table. Nothing else needs to change.
+ * BY-REQUEST PAGE. SHIPPED Aug 2026. Read this before editing a word of it.
+ *
+ * This page was written as a normal city page, then held at noindex because
+ * D-07 said the owner WANTED Stanton but did not serve it. In August 2026 he
+ * answered the question directly: "Have not currently serviced yet but would
+ * if a call came through."
+ *
+ * That is not coverage, and it is not nothing. So the page was rewritten to
+ * claim exactly what is true — he does not run a Martin County route, and he
+ * will drive it if someone calls — and shipped on that basis.
+ *
+ * THE RULES THIS PAGE LIVES BY, all of which are easy to erode by accident:
+ *  - It must never imply routine service, a existing customer base, a Stanton
+ *    call history, or a schedule that already passes through the town.
+ *  - Pest-pressure copy describes what MARTIN COUNTY PROPERTY deals with,
+ *    sourced from entomology and the quarantine, NOT what he has been called
+ *    about here. He has not been called about anything here.
+ *  - The by-request framing appears above the fold, not buried in a closing
+ *    caveat. A disclaimer at the bottom of a page that reads as a coverage
+ *    claim at the top is a coverage claim.
+ *  - If he starts running Stanton properly, this page gets rewritten UP into a
+ *    normal city page. Until then it does not drift upward one sentence at a
+ *    time.
  * ############################################################################
  *
  * VERIFIED facts used here:
@@ -90,9 +107,13 @@ const crumbs = [
 ];
 
 const quickAnswer =
-  'Trusted Termite and Pest Solutions covers Stanton, Texas from a base in Seminole, about ninety miles away by road. Stanton sits south-east of Seminole on Interstate 20, between Midland and Big Spring. The licence holder, Valentin Moriel, does the work himself under TPCL 0918482 — scorpions, spiders, termites and rodents throughout Martin County. No pest control company is listed at a Stanton street address — the town is served entirely from elsewhere.';
+  'Trusted Termite and Pest Solutions is not based in Stanton and does not run a regular Martin County route. Stanton work happens by request: you call, and owner Valentin Moriel drives the ninety miles from Seminole and does the job himself under Texas licence TPCL 0918482.';
 
 const faqs = [
+  {
+    q: 'Do you actually service Stanton?',
+    a: 'By request, yes — and we are going to be precise about what that means, because the difference matters when you are the one waiting. We do not have a Stanton route. We are not in Martin County on a schedule, we have no existing customers there, and nobody drives past your house on a Tuesday. What we have is a licence, a truck and ninety miles of road. If you call and the work can be planned — a termite treatment, a recurring service you want started, a job between tenants, several properties grouped into one trip — then it gets booked as a planned day and it gets done properly. If you need somebody this afternoon, call a Midland company; they are twenty-five miles away and we are not.',
+  },
   {
     q: 'How tall can grass and weeds get in Stanton?',
     a: 'Twelve inches. Section 7.03.002 deems weeds or grass growing to a height of twelve inches or more to be unsanitary, and the same section covers stagnant water and the accumulation of carrion, filth or other impure or unwholesome matter. The article is headed "Stagnant Water, Filth and Tall Weeds and Grass," which tells you the city treats all three as one problem.',
@@ -115,30 +136,29 @@ const faqs = [
   },
   {
     q: 'Do I have fire ants in Stanton?',
-    a: 'Possibly — and Stanton is one of the few places on our route where the answer is not simply no. Martin County appears on the red imported fire ant quarantine in the readings we were able to obtain, as do Midland, Ector and Howard around it. We will be straight that our two independent checks were not perfectly consistent on Martin specifically, so verify it against the live APHIS list before relying on it for a movement decision. The quarantine is federal: 4 TAC §19.101 adopts the current APHIS regulated-areas list by reference rather than naming counties itself, so the live list is the one that governs. Practically it means two things. Fire ants are a genuine possibility here rather than a misidentification, and if you are moving soil, sod, nursery stock, baled hay stored on the ground or used soil-moving equipment out of Martin County into a non-quarantined area, the movement rules apply to you.',
+    a: 'Possibly — and Stanton is one of the few places on our route where the answer is not simply no. Martin County is on the red imported fire ant quarantine, as are Midland, Ector and Howard around it. We read that off the APHIS regulated-areas list ourselves in August 2026 rather than taking anybody\'s summary for it, after an earlier version of this page got it the wrong way round and a later one hedged. The quarantine is federal: 4 TAC §19.101 adopts the current APHIS regulated-areas list by reference rather than naming counties itself, so the live list is the one that governs. Practically it means two things. Fire ants are a genuine possibility here rather than a misidentification, and if you are moving soil, sod, nursery stock, baled hay stored on the ground or used soil-moving equipment out of Martin County into a non-quarantined area, the movement rules apply to you.',
   },
   {
     q: 'How far is Stanton from you?',
-    a: 'About ninety miles by road to the south-east — the straight line is shorter, but the route runs out through Andrews and back east. That puts it in the planned-day part of our route rather than the same-day part, so a call with a couple of days of notice gets a much better slot than a call on the morning you want somebody.',
+    a: 'About ninety miles by road to the south-east. The straight line is shorter, but the route runs out through Andrews and back east, so ninety is the honest number rather than the flattering one. At that distance Stanton is not somewhere we pass through — a job here is a day arranged around it, which is why notice matters more than it would in Seminole or Andrews.',
   },
   {
     q: '¿Ofrecen servicio en español en Stanton?',
-    a: 'Sí. Valentin habla español con fluidez y hace el trabajo él mismo. Stanton se atiende por día programado, así que unos días de aviso ayudan mucho. Llame o mande un texto al (432) 278-7294.',
+    a: 'Sí. Valentin habla español con fluidez y hace el trabajo él mismo. Para que quede claro: no tenemos ruta fija en Stanton ni clientes allí todavía. El trabajo en Stanton se hace por solicitud — usted llama y se programa un día completo para el viaje de noventa millas. Por eso unos días de aviso cambian mucho las cosas. Llame o mande un texto al (432) 278-7294.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Pest Control Stanton TX | Martin County"
-  description="Scorpion, termite and rodent work in Stanton, Martin County, from our Seminole base. Licensed TPCL 0918482, published terms, no contracts."
+  title="Pest Control in Stanton, Texas — By Request"
+  description="We are not based in Stanton and run no Martin County route. Call and we will drive the ninety miles — booked as a planned day, licensed TPCL 0918482."
   path="/locations/stanton/"
-  noindex={true}
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}
   faqs={faqs}
   service={{
-    name: 'Pest Control in Stanton, Texas',
-    description: 'Scorpion, spider, termite, rodent and general pest control for homes, acreage and businesses in Stanton and Martin County.',
+    name: 'Pest Control in Stanton, Texas — by request',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, acreage and businesses in Stanton and Martin County, provided by arrangement rather than on a scheduled route.',
     areaServed: ['Martin County'],
   }}
 >
@@ -146,19 +166,64 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Martin County · about 90 road miles from Seminole</p>
+      <p class="eyebrow">Martin County · about 90 road miles · by request, not on a route</p>
       <h1>Pest Control in Stanton, Texas</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <div class="measure">
         <p>
-          Stanton is a town of roughly twenty-six hundred people occupying about two square miles, sitting
-          on Interstate 20 between Midland and Big Spring. Almost eight in ten households own their home —
-          the highest rate of any town on this route by a clear margin.
+          <strong>Start with what this page is not.</strong> It is not a claim that we serve Stanton. We
+          have no customers here, no route through Martin County, and nobody who drives past your street
+          on a set day. Most pages like this one imply otherwise by saying nothing at all, and you find
+          out which kind you were reading when you ring the number.
         </p>
         <p>
-          Those three facts together describe a particular kind of place, and they explain most of what is
-          distinctive about pest work here.
+          What is true is narrower and, we think, more useful. Stanton is ninety road miles from where we
+          are. The licence covers Martin County the same as anywhere else in Texas. If somebody in Stanton
+          calls with work that can be planned, we will drive it and do it properly. That is the whole
+          offer, and everything below is written so you can decide whether it is worth a phone call before
+          you make one.
+        </p>
+        <p>
+          The rest of this page is the part we would want if the positions were reversed — the actual
+          ordinance numbers, what Martin County ground does to a building, and the one pest question here
+          that has a different answer than it does forty miles north.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How a Stanton job actually works</h2>
+      <div class="measure">
+        <p>
+          <strong>Nothing here is on a schedule, so notice does the work that a route would.</strong> In
+          Seminole a call on Tuesday morning can be a Tuesday afternoon visit, because we are already
+          there. Stanton is a day. Blocking a day for one job only makes sense if the job is worth a day,
+          which shapes what we are honestly good for here and what we are not.
+        </p>
+        <p>
+          <strong>What fits.</strong> Termite work, which is planned by nature — an inspection, then a
+          treatment, then a follow-up on an interval the biology decides. Starting a recurring service,
+          where the first visit is scheduled anyway and the ones after it can be grouped. A property
+          between tenants, where the date is already known weeks out. Several properties at once, whether
+          that is a landlord with four houses or three neighbours who talked to each other. Lot clearing
+          ahead of a notice deadline. Any of those turn ninety miles into a sensible drive.
+        </p>
+        <p>
+          <strong>What does not fit, and we will say so on the phone.</strong> A wasp nest by the front
+          door this afternoon. A single ant treatment on a small yard with no deadline attached. Anything
+          where the value of the job is smaller than the value of getting somebody there today — and
+          twenty-five miles away in Midland there are fifteen pest control companies who can be there
+          today. Telling you that costs us a job and saves you an afternoon.
+        </p>
+        <p>
+          <strong>The guarantee is the part distance really tests.</strong> A thirty-day guarantee means
+          nothing if the return visit gets attached to the next time somebody happens to be out that way.
+          If we treat a property in Stanton and something comes back inside the window, the callback is a
+          drive we have already agreed to make. That is worth asking every company you call, not just
+          this one: not whether there is a guarantee, but what happens to the guarantee at ninety miles.
         </p>
       </div>
     </div>
@@ -366,8 +431,17 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <h2>What we get called about in Stanton</h2>
+      <h2>What Martin County property deals with</h2>
       <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>A note on where this comes from.</strong> Everywhere else on this site, a section like
+          this one is written from what people actually ring us about in that town. We have not been rung
+          about anything in Stanton, so this is not that. It is what Martin County ground, climate and
+          construction produce, taken from AgriLife entomology, the quarantine list and the same soil and
+          building facts set out above — the things that would be true here whether we existed or not. If
+          that distinction seems pedantic, it is the difference between a page that tells you something
+          and a page that performs familiarity it has not earned.
+        </p>
         <p>
           <strong>Scorpions, June through September.</strong> Striped bark scorpions. AgriLife
           entomologists note they move indoors when it becomes excessively dry outside, so a long dry June
@@ -377,8 +451,9 @@ const faqs = [
         <p>
           <strong>Rodents on two calendars at once.</strong> The agricultural one — cotton, grain and corn
           coming off, displacing populations toward whatever structures are nearest — and the corridor one,
-          which runs year-round wherever commercial activity provides continuous food and warmth. The
-          first cold nights of autumn compound both.
+          which runs year-round wherever commercial activity along an interstate provides continuous food
+          and warmth. The first cold nights of autumn compound both. Stanton has an unusual amount of both
+          calendars running at the same time for a town of its size.
         </p>
         <p>
           <strong>Termites, and the assumption that hides them.</strong> Plenty of people out here have
@@ -392,12 +467,11 @@ const faqs = [
           bites are rare and accidental.
         </p>
         <p>
-          <strong>Fire ants, which most of this route does not have.</strong> Martin County appears on the
-          red imported fire ant quarantine in the readings we could obtain, as do Midland, Ector and Howard
-          around it — though our checks were not perfectly consistent on Martin itself, so treat it as a
-          county to verify rather than a settled fact. That is a real
-          difference from Gaines, Yoakum, Terry, Dawson and Andrews to the north and west, where the honest
-          answer to a fire ant question is almost always that it is a harvester ant instead. Here it may
+          <strong>Fire ants, which most of this route does not have.</strong> Martin County is on the red
+          imported fire ant quarantine, as are Midland, Ector and Howard around it — read directly off the
+          APHIS regulated-areas list rather than second-hand. That is a real difference from Gaines,
+          Yoakum, Terry, Dawson and Andrews to the north and west, where the honest answer to a fire ant
+          question is almost always that it is a harvester ant instead. Here it may
           not be. Getting the identification right before treating is not pedantry — a harvester ant mound
           and an imported fire ant nest need different products and different methods, and one of the two
           also carries movement restrictions on soil, sod and hay leaving the county.
@@ -413,7 +487,7 @@ const faqs = [
 
   <section class="band tint">
     <div class="wrap">
-      <h2>Services in Stanton</h2>
+      <h2>What we would take on in Stanton</h2>
       <div class="grid c3" style="margin-top:1.2rem">
         {SERVICES.filter((s) => s.priority <= 2).map((s) => (
           <a class="card" href={`/services/${s.slug}/`}>
@@ -422,6 +496,10 @@ const faqs = [
         ))}
       </div>
       <div class="measure" style="margin-top:2rem">
+        <p>
+          Every service below is one the licence covers and one we would drive for, given a date. None of
+          them are running in Stanton today, because nothing is.
+        </p>
         <p>
           <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the size
           of the property, the pressure and the frequency, with a higher initial visit. Termite, bed bug,
@@ -451,9 +529,17 @@ const faqs = [
           companies in it. Getting to Stanton is easy for a great many operators.
         </p>
         <p>
-          Which means the question here is not who is closest, because we are not, and it is not who is
-          able to reach you, because most of them are. It is who treats a two-thousand-person town on the
-          way to somewhere else as real work rather than as a stop to be fitted in.
+          Which means the question here is not who is closest, because we are not — we are the furthest
+          thing from it — and it is not who is able to reach you, because most of them are. It is who
+          treats a two-thousand-person town on the way to somewhere else as real work rather than as a
+          stop to be fitted in.
+        </p>
+        <p>
+          We come to that question from an odd position, and it is worth naming. A company with a Stanton
+          route can point at the route. We cannot. What we can point at is that a job here is never a stop
+          fitted into a full day, because there is no full day to fit it into — it is the day. That is a
+          worse answer if you need somebody quickly and a better one if you need somebody to actually
+          finish.
         </p>
         <p>
           <strong>What that looks like in practice.</strong> Whether the inspection gets the time it
@@ -472,11 +558,12 @@ const faqs = [
           person who quotes the job is the person who finds out whether the quote was right.
         </p>
         <p>
-          <strong>And the honest limitation.</strong> Ninety road miles puts Stanton in the planned-day
-          part of the route rather than the same-day part. If you need somebody within two hours, a Midland
-          company is the right call and we will say so. If the work can be scheduled — termite treatment,
-          a recurring service, a job between tenants, several properties grouped together — then a planned
-          day is exactly what a planned day is good at.
+          <strong>And the honest limitation, once more, because it is the whole shape of this.</strong>
+          Ninety road miles and no existing route means Stanton is a planned day or it is nothing. If you
+          need somebody within two hours, a Midland company is the right call and we will tell you so on
+          the phone rather than take the booking and disappoint you. If the work can be scheduled, a
+          planned day is exactly what a planned day is good at — and it is the reason to ring a company
+          ninety miles away instead of one twenty-five miles away in the first place.
         </p>
       </div>
     </div>
@@ -485,6 +572,6 @@ const faqs = [
   <Faq items={faqs} heading="Stanton pest control questions" />
   <Cta
     market="Stanton"
-    line="Ninety miles out, run as a planned day. Tell him what you are seeing and whether there is a deadline attached — a couple of days of notice gets a much better slot than a call the same morning."
+    line="No Stanton route, no Stanton customers, and ninety miles of road between us — so a job here is a day arranged around it. Tell him what you are seeing and whether there is a date attached, and he will tell you straight whether it is worth the drive or whether Midland is the better call."
   />
 </BaseLayout>

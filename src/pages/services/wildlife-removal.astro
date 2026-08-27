@@ -29,6 +29,7 @@ import Trust from '../../components/Trust.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
+import SpokeLinks from '../../components/SpokeLinks.astro';
 import { serviceBySlug } from '../../data/services';
 import { TOWNS } from '../../data/towns';
 
@@ -82,6 +83,7 @@ const faqs = [
   title={svc.titleShort}
   description={svc.metaDescription}
   path="/services/wildlife-removal/"
+  altLangPath="/es/servicios/retiro-de-animales-silvestres/"
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}
   faqs={faqs}
@@ -98,6 +100,7 @@ const faqs = [
       <h1>Wildlife Removal</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <p class="measure" style="margin-top:1rem"><a href="/es/servicios/retiro-de-animales-silvestres/" lang="es" hreflang="es">Esta página en español</a></p>
       <div class="measure">
         <p>
           Wildlife work is the service on this site with the most law attached to it and the least
@@ -470,4 +473,6 @@ const faqs = [
   <Cta
     line="Tell him what you are hearing or smelling, where, at what hour, and what the opening looks like. And if anything has bitten anybody or is behaving oddly, call animal control first — that one is not ours."
   />
+  <SpokeLinks service="wildlife-removal" />
+
 </BaseLayout>

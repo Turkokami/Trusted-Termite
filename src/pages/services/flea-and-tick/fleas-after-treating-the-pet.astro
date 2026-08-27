@@ -1,0 +1,424 @@
+---
+/**
+ * Problem spoke — "fleas are still here after I treated the pet."
+ *
+ * THE ARGUMENT: the pupal window. The cocoon is resistant to insecticide, the
+ * adult inside waits for a host cue, and so fleas keep appearing for weeks
+ * after a correct treatment. Kentucky supplies the expectation-setting line
+ * and the four-week retreatment threshold.
+ *
+ * VERIFIED — the pupal window (this is the core of the page):
+ *  - Univ. of Kentucky Entfact-602: "The cocoon is also impervious to
+ *    insecticides—another reason some fleas may persist for an extended
+ *    period."; "Even after treatment, expect to see some fleas for a few weeks
+ *    or longer. These are often newly emerged adults." Retreatment if fleas
+ *    continue "beyond 4 weeks".
+ *  - AgriLife citybugs ENT-3001: "The pupal stage normally lasts 7-14 days, but
+ *    can persist for much longer under certain conditions. The pupa is normally
+ *    well-protected from the effects of pesticide sprays and is very difficult
+ *    to kill with insecticides."; "Fleas that are in the pupal stage when
+ *    insecticides are applied, frequently survive treatment to emerge several
+ *    days later."
+ *  - UC IPM: "At cool temperatures, fully formed fleas can remain in their
+ *    cocoons for up to 12 months."; "warm temperatures and mechanical pressure
+ *    caused by walking on or vacuuming carpet stimulate emergence from the
+ *    cocoon."; "Vacuuming is very effective in killing larvae in the carpet,
+ *    picking up adults, and stimulating preemerged adults to leave their
+ *    cocoons."; "Flea larvae are unlikely to survive in areas with exposure to
+ *    sunlight or substantial foot traffic."
+ *  - CDC: "The cocoon protects pupa from environmental conditions and
+ *    insecticides/repellents for several days or weeks."; "Adult fleas will not
+ *    emerge from the cocoon until there is a clear presence of a host, such as
+ *    movement or body heat."
+ *  - Texas A&M Livestock Veterinary Entomology: pre-emergent adults "can remain
+ *    in an abandoned room, barn or facility for up to 5 months."; "The release
+ *    of CO2 by a host triggers the adults to emerge from the pupa cases."
+ *  - Ohio State: emergence signals "may include vibrations (pet and people
+ *    movement), pressure (host animal lying down on them), heat, noise, or
+ *    carbon dioxide."
+ *  - Species: cat flea Ctenocephalides felis is "the most common ectoparasite
+ *    on domestic cats and dogs" (UC IPM); AgriLife: "Adult cat fleas feed on
+ *    dogs, cats, and a variety of furred animals."; Texas A&M Livestock Vet
+ *    Entomology: it "will feed on cats, humans, domestic dogs, and several
+ *    livestock species, as well as opossums and raccoons."
+ *  - Egg output: Kentucky "40-50 per day" on the pet with "hundreds or
+ *    thousands of eggs, larvae, and pupae elsewhere in the home or yard."
+ *  - Vacuuming: Kentucky — "vacuuming stimulates pre-adult fleas to emerge
+ *    sooner from their insecticide-resistant cocoons, thus hastening their
+ *    contact with insecticide residues". AgriLife's own removal figure: "15-30%
+ *    of larvae and 30-60% of flea eggs from carpeting."
+ *  - Yard: OSU — "Open areas of the lawn exposed to continuous sunlight won't
+ *    support flea development, but shady, moist areas will."; UGA — "spraying
+ *    the entire yard is wasteful"; AgriLife — focus on "crawl spaces, bedding
+ *    areas, sites under decks and shrubbery, and shady areas wherever your pets
+ *    spend a lot of time."; UC IPM — treating the pet with a preferred product
+ *    "normally will prevent reinfestation."
+ *  - Typhus, DSHS: over 8,600 cases 2008–2025, max 1,110 (2025), min 135
+ *    (2010); "Approximately 72% of the cases were hospitalized and 17
+ *    fatalities were attributed to the disease."; concentrated "in South Texas
+ *    from Nueces County southward to the Rio Grande Valley" with new endemic
+ *    areas in DFW, Greater Houston, Bexar and Travis. Incubation 6–14 days.
+ *  - CDC on the mechanism: "Fleas poop when they feed. This poop (also called
+ *    flea dirt) contains the bacteria, which can be rubbed into the bite wound
+ *    or other wounds and cause an infection." — NOT the bite itself.
+ *
+ * ⚠️ FIVE HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. THE "5% ADULTS / 95% OTHER STAGES" FIGURE IS NOT VERIFIED. Checked in 11
+ *     extension and CDC sources; it appears in none of them. It likely comes
+ *     from confusion with OSU's DIFFERENT, spatial claim that 95% of the
+ *     infestation is in 5% of the house or yard. This page does not use either
+ *     number as a life-stage proportion.
+ *  2. PUPAL DORMANCY FIGURES RANGE ENORMOUSLY AND MUST NOT BE BLENDED: 7–14
+ *     days typical (AgriLife), 2–4 weeks (Kentucky PSEP), 5 days to 5 weeks
+ *     (UF), 140–170 days (OSU), up to 5 months (Texas A&M Livestock), up to 12
+ *     months at cool temperatures (UC IPM). Give the typical figure and the
+ *     documented extremes, attributed, and say the sources differ.
+ *  3. VACUUMING REMOVAL RATES CONFLICT THREE WAYS: 15–30% of larvae and 30–60%
+ *     of eggs (AgriLife), "very effective in killing larvae" (UC IPM), "up to
+ *     95 percent of the flea eggs" (Ohio State). Use AgriLife's figure with
+ *     attribution; do not present any of them as the settled number.
+ *  4. NO LOCAL TYPHUS RISK MAY BE IMPLIED. The DSHS 2008–2019 county table
+ *     shows El Paso as the ONLY West Texas county, with ONE case (2013). The
+ *     burden is South Texas — Hidalgo 1,053, Nueces 667, Bexar 425, Cameron
+ *     388. The page must state the disease exists and that this region is not
+ *     where it is happening.
+ *  5. CAT FLEAS TRANSMITTING PLAGUE IN WEST TEXAS IS NOT VERIFIED. DSHS
+ *     confirms plague in wild rodents across "the western two-thirds of Texas"
+ *     and that human plague is rare, with no Texas human case count on that
+ *     page. Plague is therefore NOT discussed on this page at all rather than
+ *     discussed speculatively.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Flea and tick', path: '/services/flea-and-tick/' },
+  { name: 'Still fleas after treating the pet', path: '/services/flea-and-tick/fleas-after-treating-the-pet/' },
+];
+
+const quickAnswer =
+  'The cocoon is the answer. Texas A&M states that the flea pupa is well protected from pesticide sprays and very difficult to kill, and that fleas in the pupal stage when insecticides are applied frequently survive to emerge days later. Kentucky’s extension service sets the expectation directly: after treatment, expect to see some fleas for a few weeks or longer. Past four weeks is when retreatment becomes the question.';
+
+const faqs = [
+  {
+    q: 'Why are there still fleas after a proper treatment?',
+    a: 'Because of the pupal stage, and this is the single fact that explains nearly every "it did not work" call. Texas A&M states that the pupa is normally well protected from the effects of pesticide sprays and is very difficult to kill with insecticides, and that fleas in the pupal stage when insecticides are applied frequently survive treatment to emerge several days later. Kentucky puts it even more plainly: the cocoon is impervious to insecticides, which is another reason some fleas may persist for an extended period. Nothing failed. There was a protected stage in the room that the treatment could not reach.',
+  },
+  {
+    q: 'How long should I expect to keep seeing them?',
+    a: 'Kentucky gives the number to plan around: after treatment, expect to see some fleas for a few weeks or longer, and these are often newly emerged adults. Its threshold for reconsidering is fleas continuing to appear beyond four weeks, at which point retreatment may be warranted. So a flea on day ten is normal and expected; a steady supply on day thirty-five is a different conversation.',
+  },
+  {
+    q: 'How long can they stay in the cocoon?',
+    a: 'The sources vary enormously and we are going to show you the spread rather than pick a number. Texas A&M gives the pupal stage as normally seven to fourteen days but says it can persist much longer under certain conditions. Kentucky gives two to four weeks, sometimes longer. Oklahoma State says pre-emerged adults can lie dormant for 140 to 170 days. Texas A&M’s livestock entomology group says they can remain in an abandoned room, barn or facility for up to five months. UC IPM says that at cool temperatures fully formed fleas can remain in their cocoons for up to twelve months. Typical is a fortnight. The extremes are months, and they are documented.',
+  },
+  {
+    q: 'What makes them come out?',
+    a: 'You do. The CDC states that adult fleas will not emerge from the cocoon until there is a clear presence of a host, such as movement or body heat. UC IPM names warm temperatures and mechanical pressure from walking on or vacuuming carpet. Ohio State lists vibrations from pets and people, pressure from an animal lying down, heat, noise and carbon dioxide. Texas A&M’s livestock group specifies that the release of carbon dioxide by a host triggers emergence. This is why an empty house or an unused room produces a wave of fleas the moment somebody walks in.',
+  },
+  {
+    q: 'Should I vacuum, or does that just spread them?',
+    a: 'Vacuum, and vacuum before the treatment as well as after. Kentucky explains the mechanism: vacuuming stimulates pre-adult fleas to emerge sooner from their insecticide-resistant cocoons, hastening their contact with insecticide residues. You are deliberately provoking the protected stage into the open where the treatment can reach it. On how much it removes outright, the sources disagree — AgriLife’s figure is 15 to 30 percent of larvae and 30 to 60 percent of eggs from carpeting, while others put it much higher — so we quote AgriLife’s and note that it is not the settled number.',
+  },
+  {
+    q: 'Do I need the yard treated?',
+    a: 'Usually far less of it than you would expect. Oklahoma State states that open areas of lawn exposed to continuous sunlight will not support flea development, but shady moist areas will. UC IPM says flea larvae are unlikely to survive where there is sun exposure or substantial foot traffic. Georgia is blunt about the consequence: since larvae prefer shaded areas with high humidity and limited air movement, spraying the entire yard is wasteful. AgriLife’s guidance is to focus on crawl spaces, bedding areas, under decks and shrubbery, and shady places where pets spend time. In a West Texas summer, the open sunlit part of a yard is close to lethal to a flea larva.',
+  },
+  {
+    q: 'Which flea is it?',
+    a: 'Almost certainly the cat flea, whatever animal you have. UC IPM describes Ctenocephalides felis as the most common ectoparasite on domestic cats and dogs. AgriLife notes adult cat fleas feed on dogs, cats and a variety of furred animals, and Texas A&M’s livestock entomology group lists cats, humans, domestic dogs, several livestock species, opossums and raccoons. So a dog-only household with fleas does not have a different insect, and that broad host range is also the reason a treated house can be re-seeded from outside.',
+  },
+  {
+    q: 'Can fleas make people ill here?',
+    a: 'There is a real flea-borne disease in Texas, and this region is not where it is happening — both halves of that matter. Flea-borne typhus is a genuine and increasing problem: DSHS reports over 8,600 cases between 2008 and 2025, with about 72 percent of cases hospitalised and 17 deaths attributed to it. But the burden is South Texas, from Nueces County down to the Rio Grande Valley, with newer endemic areas in the Dallas-Fort Worth metroplex, greater Houston, Bexar and Travis counties. In the DSHS county table covering 2008 to 2019, the only West Texas county appearing at all is El Paso, with a single case. Worth knowing about; not a reason for alarm here.',
+  },
+];
+---
+
+<BaseLayout
+  title="Still Fleas After Treating the Pet | Trusted Termite"
+  description="The cocoon resists insecticide and waits for a host cue, which is why fleas keep appearing after a correct treatment — and when four weeks becomes the threshold."
+  path="/services/flea-and-tick/fleas-after-treating-the-pet/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Flea and tick · problem page</p>
+      <h1>Still fleas, after the pet was treated</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          This is the call that makes people lose faith in pest control, and almost always for a reason
+          that has nothing to do with the quality of the work. The pet was treated. The house was treated.
+          Ten days later somebody gets bitten in the front room, and the obvious conclusion is that
+          somebody was sold something that did not work.
+        </p>
+        <p>
+          The actual explanation is a life stage. Texas A&amp;M states that the flea pupa is normally
+          well protected from the effects of pesticide sprays and is very difficult to kill with
+          insecticides, and that fleas in the pupal stage when insecticides are applied frequently survive
+          treatment to emerge several days later. Kentucky's extension service is even shorter about it:
+          the cocoon is impervious to insecticides.
+        </p>
+        <p>
+          So a correct treatment does not end the problem on the day it happens, and any company that lets
+          you believe otherwise has set you up to be disappointed. Kentucky publishes the expectation
+          instead: after treatment, expect to see some fleas for a few weeks or longer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The cocoon, which is the whole story</h2>
+      <div class="measure">
+        <p>
+          <strong>What the pupa actually is.</strong> A larva spins a cocoon and completes development
+          inside it. The adult flea forms within that case and then — this is the important part — waits.
+          It does not emerge on a timer. It emerges on a signal.
+        </p>
+        <p>
+          <strong>Why insecticide does not reach it.</strong> The cocoon is a physical barrier. The CDC
+          states that it protects the pupa from environmental conditions and from insecticides and
+          repellents for several days or weeks. Texas A&amp;M's own wording is that the pupa is normally
+          well protected from the effects of pesticide sprays and very difficult to kill. Kentucky's is
+          that the cocoon is impervious to them.
+        </p>
+        <p>
+          <strong>How long it can wait, with the sources disagreeing openly.</strong> Texas A&amp;M gives
+          the pupal stage as normally seven to fourteen days but able to persist much longer under certain
+          conditions. Kentucky's pesticide programme gives two to four weeks, sometimes longer. Florida
+          gives five days to five weeks in the absence of hosts. Oklahoma State says pre-emerged adults can
+          lie dormant for 140 to 170 days. Texas A&amp;M's livestock entomology group says they can remain
+          in an abandoned room, barn or facility for up to five months. UC IPM says that at cool
+          temperatures, fully formed fleas can remain in their cocoons for up to twelve months.
+        </p>
+        <p>
+          <strong>We are not going to average those.</strong> Two weeks is the typical figure and it is the
+          one to plan around. The long figures are real, they come from good sources, and they explain the
+          cases that otherwise look impossible — a house shut up for the summer, a rent house that stood
+          empty, a barn nobody has used since spring.
+        </p>
+        <p>
+          <strong>What triggers emergence.</strong> A host. The CDC states that adults will not emerge
+          until there is a clear presence of one, such as movement or body heat. UC IPM names warm
+          temperatures and the mechanical pressure of walking on or vacuuming carpet. Ohio State lists
+          vibrations from pets and people, pressure from an animal lying on them, heat, noise and carbon
+          dioxide. Texas A&amp;M's livestock group specifies carbon dioxide released by a host.
+        </p>
+        <p>
+          <strong>Which explains the most alarming version of this.</strong> A property that has been empty
+          — a rental between tenants, a house after a death in the family, a place shut up while somebody
+          worked away — can produce a wave of fleas within minutes of somebody walking in. Nothing hatched
+          because of the visit; a population of fully formed adults had been waiting for exactly that cue.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Where the population actually is</h2>
+      <div class="measure">
+        <p>
+          <strong>Not mostly on the animal.</strong> Kentucky describes adult fleas laying forty to fifty
+          eggs a day in the pet's fur, with hundreds or thousands of eggs, larvae and pupae elsewhere in
+          the home or yard. The eggs are not sticky and they fall off wherever the animal goes.
+        </p>
+        <p>
+          <strong>A note on a number you will see everywhere.</strong> There is a very widely quoted claim
+          that only five percent of a flea population is adults and ninety-five percent is other stages. We
+          went looking for it in eleven extension and public health sources and could not find it in any of
+          them. What does exist is a different, spatial statement — that ninety-five percent of an
+          infestation is in five percent of the house or yard — which we suspect is where the confusion
+          started. We are not going to repeat a statistic we cannot source, even a convenient one.
+        </p>
+        <p>
+          <strong>What is well supported is the concentration.</strong> The population is where the animal
+          rests, not where it walks. The dog's bed, the spot under the coffee table, the shaded patch by
+          the back step, the gap under the porch, the cat's chair. That is where eggs fall, where larvae
+          find the organic debris they need, and where cocoons end up.
+        </p>
+        <p>
+          <strong>The species, briefly.</strong> It is almost certainly the cat flea regardless of what
+          animal you own — UC IPM calls it the most common ectoparasite on domestic cats and dogs, and
+          Texas A&amp;M's livestock entomologists list its hosts as cats, humans, domestic dogs, several
+          livestock species, opossums and raccoons. That last part matters more than it looks: the same
+          insect on your dog is at home on the wildlife crossing your yard at night.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Vacuuming, which is a treatment step and not housework</h2>
+      <div class="measure">
+        <p>
+          <strong>It provokes the stage that cannot be sprayed.</strong> Kentucky states that vacuuming
+          stimulates pre-adult fleas to emerge sooner from their insecticide-resistant cocoons, hastening
+          their contact with insecticide residues. UC IPM says the same, describing vacuuming as effective
+          at killing larvae in carpet, picking up adults, and stimulating pre-emerged adults to leave their
+          cocoons.
+        </p>
+        <p>
+          <strong>So the timing is deliberate.</strong> Vacuum before the treatment, and keep vacuuming
+          afterwards. You are trying to bring the protected stage out into an environment that will kill
+          it. Utah State's guidance makes the same point — that the vibration triggers emergence and should
+          be done prior to insecticide application.
+        </p>
+        <p>
+          <strong>How much it removes on its own.</strong> The sources conflict. AgriLife gives 15 to 30
+          percent of larvae and 30 to 60 percent of flea eggs from carpeting with a good beater-type
+          vacuum. Ohio State says frequent vacuuming has been shown to remove up to 95 percent of flea
+          eggs, some larvae and adults. UC IPM calls it very effective without a number. We quote
+          AgriLife's figure because it is the most conservative and the most specific, and we are telling
+          you the others exist.
+        </p>
+        <p>
+          <strong>Do it where it counts.</strong> The resting places, under furniture, along edges and
+          skirting, and the pet's bedding — which is worth washing hot rather than vacuuming. A general
+          pass over the middle of open floor is the least productive version of this.
+        </p>
+        <p>
+          <strong>And keep doing it.</strong> Every day or two through the emergence window is the useful
+          cadence, not once on treatment day. The whole point is that the population is arriving in
+          instalments over several weeks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The yard, and why most of it does not need treating</h2>
+      <div class="measure">
+        <p>
+          <strong>Sunlight is lethal to the immature stages.</strong> Oklahoma State states that open areas
+          of lawn exposed to continuous sunlight will not support flea development, but shady moist areas
+          will. UC IPM says larvae are unlikely to survive where there is sun exposure or substantial foot
+          traffic.
+        </p>
+        <p>
+          <strong>Which makes blanket yard spraying poor value.</strong> Georgia's extension service says
+          it outright: since larvae prefer shaded areas with high humidity and limited air movement,
+          spraying the entire yard is wasteful. AgriLife's guidance is to focus outdoor treatment on crawl
+          spaces, bedding areas, sites under decks and shrubbery, and shady areas where pets spend a lot of
+          time.
+        </p>
+        <p>
+          <strong>In this climate that narrows things down sharply.</strong> An open West Texas lawn in
+          July, in full sun, with humidity in the teens, is about as hostile an environment as a flea larva
+          could be given. The habitat here is specific and small: under the porch, under the deck, the
+          shaded north side of the house, the crawl space, the dog run under a tree, the gap behind the
+          shed, the shaded patch where the animal actually lies down.
+        </p>
+        <p>
+          <strong>Sometimes no outdoor treatment is needed at all.</strong> UC IPM notes that treating the
+          pet with any of the preferred products normally will prevent reinfestation. That is worth knowing
+          before anybody quotes you a yard programme.
+        </p>
+        <p>
+          <strong>The reservoir question.</strong> UC IPM notes feral cats, opossums, squirrels and coyotes
+          can carry fleas and advises limiting food, water and shelter for them. Texas DSHS makes the same
+          point in the context of disease, advising that yards be kept so that rodents, opossums and stray
+          cats cannot live there. On acreage and on the edge of these towns, that outside reservoir is
+          often the reason a house keeps being re-seeded after everything indoors was done correctly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Disease, kept in proportion</h2>
+      <div class="measure">
+        <p>
+          <strong>Flea-borne typhus is real and it is increasing in Texas.</strong> DSHS reports over 8,600
+          cases between 2008 and 2025, with a low of 135 in 2010 and a high of 1,110 in 2025.
+          Approximately 72 percent of cases were hospitalised, and 17 deaths have been attributed to the
+          disease. Symptoms are fever, headache, chills, weakness, nausea and vomiting, body aches and
+          rash, with an incubation period of six to fourteen days.
+        </p>
+        <p>
+          <strong>And it is not happening here.</strong> DSHS describes most Texas cases occurring in South
+          Texas, from Nueces County southward to the Rio Grande Valley, with newer endemic areas emerging
+          in the Dallas–Fort Worth metroplex, greater Houston, Bexar and Travis counties. In the DSHS
+          county table covering 2008 to 2019, the only West Texas county appearing at all is El Paso, with
+          a single case in 2013. The highest-burden counties in that same table are Hidalgo with 1,053,
+          Nueces with 667, Bexar with 425 and Cameron with 388.
+        </p>
+        <p>
+          <strong>Why we are publishing both halves.</strong> A pest control company quoting the 8,600 and
+          stopping there would be doing something we think is dishonest. The disease is worth knowing about
+          — particularly if you travel to South Texas, or if somebody in the house has a fever and a rash
+          that nobody can place — and it is not a reason to be frightened of a flea on the Llano Estacado.
+        </p>
+        <p>
+          <strong>One mechanism worth understanding.</strong> The CDC explains that fleas defecate when
+          they feed, that this flea dirt contains the bacteria, and that it can be rubbed into the bite
+          wound or another wound and cause infection. So transmission is not really the bite — it is the
+          scratching afterwards. That is a genuinely useful thing to know and it is not what most people
+          assume.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we will tell you before we start</h2>
+      <div class="measure">
+        <p>
+          <strong>That you will still see fleas.</strong> Kentucky's expectation — a few weeks or longer —
+          is what we will say up front rather than after you ring back annoyed. Every one you see in that
+          window is a newly emerged adult from a cocoon that nothing could have reached.
+        </p>
+        <p>
+          <strong>That four weeks is the threshold.</strong> Kentucky puts retreatment on the table when
+          fleas continue appearing beyond four weeks. That is a specific, published line, and it is the one
+          we work to rather than an arbitrary schedule.
+        </p>
+        <p>
+          <strong>That the pet's treatment is your vet's business, not ours.</strong> The animal has to be
+          on something appropriate and it has to stay on it, and that conversation belongs to somebody
+          qualified to have it. A house treatment against an untreated animal is a losing arrangement and
+          we will say so rather than take the work.
+        </p>
+        <p>
+          <strong>That the vacuuming is genuinely part of the treatment.</strong> Not an afterthought and
+          not tidying — it is the step that brings the protected stage out where the treatment can act on
+          it.
+        </p>
+        <p>
+          <strong>And that we will not sell you a whole-yard programme</strong> when three extension
+          services say the sunlit part of a yard does not support flea development. The shaded resting
+          places are the target. The rest of the lawn is doing the work for us. More of that reasoning is
+          on the <a href="/services/flea-and-tick/">flea and tick page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Fleas that will not finish?"
+    body="Tell us when the pet was treated, when the house was treated, and whether the property stood empty at any point. Those three answers usually explain the timing before anybody drives out."
+  />
+</BaseLayout>

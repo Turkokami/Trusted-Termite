@@ -1,0 +1,429 @@
+---
+/**
+ * Problem spoke — "I found mud tubes on my foundation."
+ *
+ * THE ARGUMENT: a mud tube is evidence of activity at that structure, and
+ * breaking it or spraying it does nothing to the colony, which is in the
+ * ground. Bath traps get the attention they deserve because that is where the
+ * Texas-specific slab entry actually happens.
+ *
+ * VERIFIED:
+ *  - AgriLife E-368: "Worker termites that forage for food above ground protect
+ *    themselves with shelter tubes or mud tubes made from particles of soil or
+ *    wood and bits of debris held together by salivary and fecal secretions.";
+ *    "Some mud tubes are thinly constructed and some are large with thick walls
+ *    to accommodate termites moving vertically between the soil and their food
+ *    source."; "The presence of shelter tubes and mud within galleries
+ *    indicates an active infestation."; "Any mud tubes found should be broken
+ *    open to check for live termites."; "Termites enter buildings through wood
+ *    that is in direct contact with the soil and by building shelter tubes over
+ *    or through cracks in foundations."; examine "all cracks or expansion
+ *    joints in the foundation" and "where plumbing or utility pipes enter the
+ *    foundation or flooring."
+ *  - Univ. of Kentucky Entfact-604: tubes "are typically about the diameter of
+ *    a pencil, but sometimes can be thicker."; "'Do-it-yourself' products, sold
+ *    to homeowners at retail stores or bought over the internet, will seldom
+ *    eradicate an existing termite problem."
+ *  - Mississippi State, the load-bearing sentence: "Note that simply destroying
+ *    the tubes will not control the termites; they are still there in the
+ *    ground and will find other ways to get into the building."; "Carefully
+ *    break a 1-inch section of the tube and watch to see if you observe
+ *    termites or if they repair the tube over the next few days." — "Either of
+ *    these results lets you know the building has an active infestation.";
+ *    "If you find mud shelter tubes, it is a good idea to have the building
+ *    professionally inspected even if you do not see live termites or see that
+ *    the tube is repaired."
+ *  - Purdue E-4: on slabs, "infestation is through expansion joints, cracks,
+ *    and utility and sewer pipe openings".
+ *  - Texas A&M IPM House, "Understanding Bath Traps" — the Texas-specific
+ *    material: "Bath traps, a type of 'slab leave-out', are located under
+ *    bathtubs."; they "provide an excellent entry point for termites, ants,
+ *    millipedes and some cockroaches."; "wood or cardboard forms used to make
+ *    the trap are left in place after construction"; "Bath traps and other slab
+ *    leave-outs should be one of the first places inspected inside the home for
+ *    termite activity."; "termites may still find a crack in the joint large
+ *    enough to gain entry into the tub void area".
+ *  - 4 TAC §7.174: "Verbal estimates may be provided to customers to advise of
+ *    a general range of treatment costs, but a written estimate must be
+ *    provided before beginning a treatment." Disclosure documents must include
+ *    a diagram of active activity, areas to be treated and conducive
+ *    conditions; termiticide concentration or bait station count; warranty
+ *    details; definitions of partial, spot, baiting and barrier treatments; and
+ *    a consumer information sheet. Signed by a certified applicator or licensed
+ *    technician in the termite category.
+ *  - TDA SPCS Consumer Information Sheet: cancellation right within 72 hours on
+ *    a home solicitation; signs posted "at least 48 hours prior to treatment";
+ *    SPCS 866-918-4481; NPIC 1-800-858-7378.
+ *
+ * ⚠️ FIVE HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. THE FOUR-WAY TUBE TYPOLOGY IS UC IPM'S, NOT AGRILIFE'S. Working /
+ *     exploratory / drop / swarm tubes come from UC IPM. AgriLife E-368
+ *     distinguishes only thin-walled from thick-walled. Never attribute the
+ *     typology to AgriLife. And "swarm castle" appears in NO extension source —
+ *     it is not used on this page at all.
+ *  2. "SPRAYING A TUBE IS COUNTERPRODUCTIVE" IS NOT VERIFIED. The specific
+ *     mechanism — driving termites to relocate, destroying evidence, wrecking a
+ *     later bait programme — is commercial-blog only. What IS sourced is that
+ *     destroying tubes does not control termites and that they will find
+ *     another way in. Write the sourced version only.
+ *  3. "AN EMPTY TUBE MEANS THEY ARE GONE" IS UNSOURCED IN BOTH DIRECTIONS. No
+ *     extension source addresses abandoned tubes. The sourced framing is that a
+ *     tube is evidence of activity at that structure and that no live termites
+ *     in one broken section at one moment does not clear the building.
+ *  4. FORMOSAN STATUS IN WEST TEXAS IS UNKNOWN, NOT CONFIRMED ABSENT. Entered
+ *     at the Houston Ship Channel in 1956, "at least 30 Texas counties and all
+ *     major metropolitan areas", "spreading to more counties each year". No
+ *     county list was published in any page retrieved and the Forest Service
+ *     map was robots-blocked. Do NOT write that they are absent here.
+ *  5. THE §7.174 TEXT WAS READ VIA A SECONDARY MIRROR — the Texas
+ *     Administrative Code primary site timed out. The page describes the
+ *     requirements at the level of substance rather than quoting rule text
+ *     verbatim, and CADENCE row REG-* governs re-verification.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Termite control', path: '/services/termite-control/' },
+  { name: 'Mud tubes on the foundation', path: '/services/termite-control/mud-tubes-on-the-foundation/' },
+];
+
+const quickAnswer =
+  'A mud tube is a shelter tube built by foraging workers, and AgriLife says any tube found should be broken open to check for live termites. But breaking them achieves nothing else — Mississippi State puts it plainly: destroying the tubes will not control the termites, they are still there in the ground and will find other ways in. The colony is under the slab, not on the wall.';
+
+const faqs = [
+  {
+    q: 'What is a mud tube, exactly?',
+    a: 'A covered walkway. AgriLife describes worker termites foraging above ground protecting themselves with shelter tubes made from particles of soil or wood and bits of debris, held together by salivary and faecal secretions. The University of Kentucky gives the size: typically about the diameter of a pencil, sometimes thicker. The reason they build them is that subterranean termites dry out quickly in open air, so travelling between the soil and the wood means bringing the humid environment with them.',
+  },
+  {
+    q: 'Should I break it open?',
+    a: 'Yes, and AgriLife says so directly — any mud tubes found should be broken open to check for live termites. Mississippi State gives the method: carefully break a one-inch section of tube and then watch, either to see termites at the time or to see whether they repair it over the next few days. Either result tells you the building has an active infestation. Break one section, not all of them, so you leave yourself something to observe.',
+  },
+  {
+    q: 'The tube was empty. Am I in the clear?',
+    a: 'We are not going to give you a confident answer on that, because no extension source we could find addresses abandoned tubes in either direction. What is sourced is Mississippi State’s position that if you find mud shelter tubes it is a good idea to have the building professionally inspected even if you do not see live termites and even if the tube is not repaired. A tube is evidence that subterranean termites reached that structure. One section, opened at one moment, with nothing visible in it, does not clear the building.',
+  },
+  {
+    q: 'Can I just spray it?',
+    a: 'You can, and it will not do what you want. Mississippi State states that simply destroying the tubes will not control the termites — they are still there in the ground and will find other ways to get into the building. Kentucky adds that do-it-yourself products sold at retail or over the internet will seldom eradicate an existing termite problem. We are deliberately not repeating the claim you will read elsewhere that spraying makes things worse by scattering the colony; we could not source that, so we are not going to say it. The sourced objection is simpler — the colony is in the soil and a wall-surface spray does not reach it.',
+  },
+  {
+    q: 'How do they get through a concrete slab?',
+    a: 'They do not go through it. They go around it and up through it. AgriLife names cracks and expansion joints in the foundation, and the points where plumbing or utility pipes enter the foundation or flooring. Purdue’s account of slab houses is the same list: expansion joints, cracks, and utility and sewer pipe openings. A slab is not a barrier so much as a surface with a defined set of gaps in it, and termites are extremely good at finding them.',
+  },
+  {
+    q: 'What is a bath trap and why do you keep mentioning it?',
+    a: 'It is the Texas answer to the previous question. Texas A&M describes a bath trap as a type of slab leave-out located under a bathtub — an area the concrete was deliberately left out of so plumbing could be run — and states it provides an excellent entry point for termites, ants, millipedes and some cockroaches. Worse, the wood or cardboard forms used to make the trap are often left in place after construction, which means there is cellulose sitting in an opening in the slab. Texas A&M says bath traps and other slab leave-outs should be one of the first places inspected inside the home for termite activity. That is why we ask to look under your tub access panel.',
+  },
+  {
+    q: 'What should the company give me in writing before treating?',
+    a: 'A good deal more than a price, and it is set out in state rule. A written estimate must be provided before treatment begins — a verbal figure can be given as a general range but cannot stand in for the written one. The disclosure documents have to include a diagram showing where activity was found, what is being treated and what conditions are conducive to infestation; the termiticide concentration or the number of bait stations; the warranty; and definitions of what a partial, spot, baiting or barrier treatment actually means. They must be signed by a certified applicator or licensed technician in the termite category, and you get a consumer information sheet with them.',
+  },
+  {
+    q: 'Is this a Formosan termite?',
+    a: 'We do not know and we are not going to guess. What is documented is that Formosan termites entered Texas at the Houston Ship Channel in Harris County in 1956, that they have been detected in at least thirty Texas counties and all the major metropolitan areas, and that AgriLife says they are spreading to more counties each year. What is not published anywhere we could reach is the county list. So we cannot tell you they are absent from Gaines County or the Permian Basin — only that we have found no record placing them here, which is a weaker statement and the honest one.',
+  },
+];
+---
+
+<BaseLayout
+  title="Mud Tubes on the Foundation | Trusted Termite"
+  description="What a shelter tube is, why breaking it changes nothing about the colony, how termites get through a slab, and what state rule says you must be given in writing."
+  path="/services/termite-control/mud-tubes-on-the-foundation/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Termite control · problem page</p>
+      <h1>Mud tubes on the foundation</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          Somebody was moving a planter, or trimming along the base of a wall, and found a thin ribbon of
+          dried mud running up the concrete. It is one of the few pest findings that is genuinely
+          diagnostic — you have not found something that might be a problem, you have found a structure
+          built by an insect to reach your house.
+        </p>
+        <p>
+          What follows is usually one of two mistakes. Either the tube gets knocked off and the matter is
+          considered handled, or it gets sprayed with something from a hardware store. Both feel like
+          action and neither touches the colony, which is in the soil and unaffected by anything happening
+          on the surface of your wall.
+        </p>
+        <p>
+          Mississippi State's extension service says it in one sentence: simply destroying the tubes will
+          not control the termites; they are still there in the ground and will find other ways to get into
+          the building. That is the frame for this whole page.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What you are looking at</h2>
+      <div class="measure">
+        <p>
+          <strong>A shelter tube is transport infrastructure.</strong> AgriLife describes worker termites
+          foraging above ground protecting themselves with shelter tubes or mud tubes, made from particles
+          of soil or wood and bits of debris held together by salivary and faecal secretions. That is the
+          material: dirt, wood, spit and droppings.
+        </p>
+        <p>
+          <strong>Why they need it.</strong> Subterranean termites are soft-bodied and lose moisture fast.
+          Open air on a July afternoon in the Permian Basin would kill a worker in short order. The tube
+          carries the soil environment up the wall with them — humid, dark, protected from ants and from
+          the sun.
+        </p>
+        <p>
+          <strong>Size and shape.</strong> Kentucky gives the useful benchmark: typically about the
+          diameter of a pencil, sometimes thicker. AgriLife notes the two builds — some tubes thinly
+          constructed, some large with thick walls to accommodate termites moving vertically between the
+          soil and their food source. A thick, heavily built tube suggests sustained traffic rather than
+          a probe.
+        </p>
+        <p>
+          <strong>What it means on its own.</strong> AgriLife is explicit that the presence of shelter
+          tubes and mud within galleries indicates an active infestation. That sentence is worth
+          re-reading, because plenty of people talk themselves out of a tube on the basis that they have
+          not seen an insect.
+        </p>
+        <p>
+          <strong>One attribution note, because we care about this.</strong> You will find a tidy four-way
+          classification of mud tubes on the internet — working tubes, exploratory tubes, drop tubes and
+          swarm tubes. That typology is real and it comes from the University of California's IPM
+          programme. It is not AgriLife's; AgriLife distinguishes only thin-walled from thick-walled. We
+          mention the distinction because attributing California's categories to Texas A&amp;M is a small
+          dishonesty that is very widely committed.
+        </p>
+        <p>
+          <strong>Where a tube sits is worth noting.</strong> Tubes on the outside of a stem wall are the
+          common finding. Tubes higher up a building, on interior walls or ceilings, are treated by
+          Mississippi State as a signal pointing toward Formosan termites — which is a different and larger
+          problem, and one we address at the end of this page rather than assume.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Break one open — properly, and only one</h2>
+      <div class="measure">
+        <p>
+          <strong>AgriLife's instruction is direct:</strong> any mud tubes found should be broken open to
+          check for live termites. So the answer to "should I touch it" is yes, with a method.
+        </p>
+        <p>
+          <strong>The method, from Mississippi State.</strong> Carefully break a one-inch section of the
+          tube, then watch — either you see termites at the moment you open it, or you come back over the
+          next few days and find the section repaired. Either result tells you the building has an active
+          infestation. That repair test is the good part: it costs nothing, it takes a week, and a rebuilt
+          tube is unambiguous.
+        </p>
+        <p>
+          <strong>Break one, not all.</strong> If you knock every tube off the wall you have destroyed the
+          thing you would have watched, and you have made an inspection harder for whoever comes next.
+          Leave the rest in place and photograph them.
+        </p>
+        <p>
+          <strong>Now the part where we stop short of what other sites will tell you.</strong> We could not
+          find any extension source stating that a negative check clears a building. Nobody publishes an
+          interpretation of an abandoned tube in either direction. What Mississippi State does say is that
+          if you find mud shelter tubes it is a good idea to have the building professionally inspected
+          even if you do not see live termites and even if the tube is not repaired.
+        </p>
+        <p>
+          <strong>So the honest reading is this.</strong> A tube is evidence that subterranean termites
+          reached this structure. Live termites in the broken section confirm current activity. No termites
+          in one section at one moment confirms nothing much at all — you have sampled an inch of a system
+          you cannot see.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why the can of spray is the wrong tool</h2>
+      <div class="measure">
+        <p>
+          <strong>The colony is not on your wall.</strong> Everything visible is foraging infrastructure
+          reaching out from a nest in the soil. Treating the visible part is treating the corridor and
+          leaving the building.
+        </p>
+        <p>
+          <strong>What the sources actually say.</strong> Mississippi State: destroying the tubes will not
+          control the termites, they are still there in the ground and will find other ways to get into the
+          building. Kentucky: do-it-yourself products sold at retail stores or bought over the internet
+          will seldom eradicate an existing termite problem, and its answer on whether homeowners should
+          attempt it is that ridding a home of termites requires special skills. Purdue points at the
+          elaborate equipment required and the complicated nature of the process. The University of
+          California notes that applications of registered pesticides here are highly regulated and require
+          a licensed professional.
+        </p>
+        <p>
+          <strong>And one thing we are deliberately not telling you.</strong> There is a widely repeated
+          claim that spraying a tube makes matters actively worse — that it scatters the colony, or ruins a
+          later bait programme. We went looking for a source and could not find one outside commercial
+          marketing. So we are not going to say it. The sourced objection stands on its own without
+          embellishment: it does not reach the colony.
+        </p>
+        <p>
+          <strong>What actually reaches a colony</strong> is a properly applied liquid termiticide barrier
+          or a bait system, both of which are licensed work and both of which are covered on the
+          <a href="/services/termite-control/">termite control page</a> along with what we do and do not
+          offer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>How they get in through a slab, and the Texas-specific answer</h2>
+      <div class="measure">
+        <p>
+          <strong>The general route.</strong> AgriLife: termites enter buildings through wood in direct
+          contact with soil, and by building shelter tubes over or through cracks in foundations. Its
+          inspection instruction names all cracks and expansion joints in the foundation, and the points
+          where plumbing or utility pipes enter the foundation or flooring. Purdue's account of slab houses
+          is the same: expansion joints, cracks, and utility and sewer pipe openings.
+        </p>
+        <p>
+          <strong>Then the bath trap, which is the one worth knowing about here.</strong> Texas A&amp;M has
+          material on this specifically, and it is genuinely Texas-specific building practice. A bath trap
+          is a type of slab leave-out located under a bathtub — an area where concrete was deliberately
+          omitted so the tub drain could be plumbed. Texas A&amp;M's assessment is blunt: it provides an
+          excellent entry point for termites, ants, millipedes and some cockroaches.
+        </p>
+        <p>
+          <strong>And the detail that makes it worse.</strong> The wood or cardboard forms used to make the
+          trap are frequently left in place after construction. So there is cellulose sitting inside an
+          opening in the slab, in a damp location, out of sight. Texas A&amp;M's recommendation follows
+          directly: bath traps and other slab leave-outs should be one of the first places inspected inside
+          the home for termite activity.
+        </p>
+        <p>
+          <strong>Even a sealed trap is not a settled matter.</strong> Texas A&amp;M notes that termites may
+          still find a crack in the joint large enough to gain entry into the tub void. Post-construction
+          options it describes include filling the void with an insecticide, sometimes combined with sand
+          or soil, or filling it with termiticide foam so that the material contacts all surfaces.
+        </p>
+        <p>
+          <strong>One more slab detail people miss.</strong> Grade matters. Soil, mulch or a raised bed
+          piled against a stem wall can bring the ground above the level of the slab edge, which hides the
+          very surface a tube would have to cross to be seen. That is one of the few genuinely free
+          termite measures available: pull the dirt back and keep a band of the foundation visible, so
+          that the next tube announces itself rather than arriving unseen behind a flower bed.
+        </p>
+        <p>
+          <strong>Which is why the inside inspection is not a formality.</strong> A great deal of the
+          housing stock across Seminole, Denver City, Seagraves, Andrews and the Basin towns is slab on
+          grade, built exactly this way. Finding a tube outside and never opening the tub access panel is
+          half a job.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What state rule entitles you to before anybody treats</h2>
+      <div class="measure">
+        <p>
+          <strong>A written estimate, before the work.</strong> The rule allows a verbal estimate to
+          indicate a general range of treatment costs, but a written estimate must be provided before
+          beginning a treatment. A number said aloud on a driveway is not compliance.
+        </p>
+        <p>
+          <strong>Disclosure documents with real content in them.</strong> They must identify the business
+          and its licence number, describe the property and structure with perimeter measurements, and
+          include a diagram showing where activity was found, what is to be treated and what conditions are
+          conducive to infestation. They must give the termiticide concentration or the number of bait
+          stations, the warranty details, and definitions of what partial, spot, baiting and barrier
+          treatments mean — because those words are where most of the misunderstanding in this trade lives.
+        </p>
+        <p>
+          <strong>Signed by somebody licensed in the right category.</strong> The documents must carry the
+          signature of approval of a certified applicator or licensed technician in the termite category
+          employed by the company. A general pest licence is not that category — the same point that
+          governs <a href="/compliance/wdi-report/">WDI reports</a>.
+        </p>
+        <p>
+          <strong>And a consumer information sheet, which is worth reading.</strong> It sets out that
+          pesticides must be registered with the EPA and the Texas Department of Agriculture before use in
+          Texas, that health and safety information for a specific product is on the label or safety data
+          sheet and can be supplied on request, that signs are posted at least forty-eight hours before
+          treatment, and that on a home solicitation you have the right to cancel the contract within
+          seventy-two hours. It also gives you the Structural Pest Control Service complaint line and the
+          National Pesticide Information Center.
+        </p>
+        <p>
+          <strong>Why a pest control company is publishing the complaint line.</strong> Because a customer
+          who knows what the paperwork should contain is a customer who cannot be sold a spot treatment
+          described as a barrier. That is a good outcome for everybody doing this work honestly, and only a
+          bad outcome for the people who are not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The Formosan question, answered to the limit of what is published</h2>
+      <div class="measure">
+        <p>
+          <strong>What is documented.</strong> AgriLife names two major types in Texas — the native
+          subterranean termite and the Formosan subterranean termite. The first Texas infestations of
+          Formosan termites were discovered in 1956 near the Houston Ship Channel in Pasadena, Harris
+          County. They have since been found in at least thirty Texas counties and all major metropolitan
+          areas, and AgriLife notes they are spreading to more counties each year.
+        </p>
+        <p>
+          <strong>Why anybody cares.</strong> AgriLife states Formosan colonies are at least four times as
+          large as those of native subterranean termites, that they build a primary nest in the soil out of
+          faecal material and cellulose called carton, and — the part that changes an inspection — that
+          they regularly construct aerial nests within the structures they infest. An aerial nest does not
+          need soil contact, which breaks the assumption underneath most of this page.
+        </p>
+        <p>
+          <strong>And what we cannot tell you.</strong> No source we could reach publishes the county list.
+          The state forest service distribution map was not retrievable. So we are unable to say that
+          Formosan termites are absent from Gaines County or the Permian Basin. What we can say is that we
+          found no published record placing them here, that the documented concentration is metropolitan,
+          and that the spread is described as ongoing.
+        </p>
+        <p>
+          <strong>What that means practically.</strong> We treat the native subterranean termite as the
+          default here, because that is what the evidence supports, and we do not diagnose a Formosan
+          infestation from a photograph or a phone call. If tubes are appearing high on interior walls or
+          ceilings, or a nest appears without soil contact, that is worth taking seriously rather than
+          explaining away — and it is a finding, not an assumption.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Found a tube?"
+    body="Photograph it before anybody knocks it down, and tell us where on the building it is and how high. We will open a section properly, look at the bath trap and the penetrations, and put what we find in writing."
+  />
+</BaseLayout>

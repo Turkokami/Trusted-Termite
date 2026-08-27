@@ -4,20 +4,28 @@
  * WDI inspections for real estate transactions, under termite-control.
  *
  * ############################################################################
- * HELD AT NOINDEX UNTIL THE OWNER CONFIRMS THE WDI DECISION.
- * Gated on BUSINESS.owner.wdiDecisionConfirmed, the same single flag as
- * /compliance/wdi-report/. Flip it in business.ts and BOTH pages ship. Strike
- * the WDI row from the CONTENT_BRIEF held table at the same time.
+ * RELEASED August 2026. This page was held at noindex for the whole build and
+ * shipped only when the last operating limit arrived.
  *
  * B-05: he IS licensed in the Termite and Wood Destroying Insect Control
- * category, which is what 4 TAC §7.175(a) requires — so this is a commercial
- * decision, not a capability one. C-09: he would rather not perform them.
+ * category, which is what 4 TAC §7.175(a) requires — so the hold was never a
+ * capability question. C-09 initially had him preferring not to do this work;
+ * he confirmed YES in August 2026, and gave three days' notice as the figure he
+ * wants. The radius came separately, later: 90 miles.
  *
- * ⚠️ THIS PAGE MAKES A SERVICE PROMISE. Do not ship it until the owner has
- * confirmed in writing that he will take this work, AND has given the
- * operating limits the "How scheduling works" section needs. Placeholder
- * language there is deliberately conservative and should be replaced with his
- * actual answer, not shipped as written.
+ * ⚠️ THIS PAGE MAKES A DATED SERVICE PROMISE, which is why it was gated at all.
+ * Two rules survive the release:
+ *
+ *  1. THE RADIUS IS 90 MILES AND IT IS NOT THE TERRITORY. The general service
+ *     territory is 100 miles (D-03). These are different numbers describing
+ *     different commitments and must never be conflated. Every scheduling
+ *     statement on this page reads BUSINESS.owner.wdiRadiusMi rather than
+ *     restating a figure, so a revision in business.ts propagates here.
+ *  2. THE OUTSIDE-RADIUS LIST IS DERIVED, NOT WRITTEN. `beyondRadius` below is
+ *     computed from towns.ts distances. Big Spring falls out at ~95 miles while
+ *     remaining inside the general territory; Odessa and Stanton sit exactly on
+ *     the line. Do not hardcode that list — the whole point is that it cannot
+ *     drift away from the data the town pages use.
  * ############################################################################
  *
  * Rules used, all verified Aug 2026 — see /compliance/wdi-report/ for the full
@@ -42,11 +50,26 @@ import AnswerBox from '../../../components/AnswerBox.astro';
 import Trust from '../../../components/Trust.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import Faq from '../../../components/Faq.astro';
+import Verified from '../../../components/Verified.astro';
 import Cta from '../../../components/Cta.astro';
 import { BUSINESS } from '../../../data/business';
 import { TOWNS } from '../../../data/towns';
 
 const o = BUSINESS.owner;
+
+/** Derived, never written by hand — see rule 2 in the header. A town is only
+ *  "beyond" if we have a distance for it; distanceMiApprox is 0 for Seminole
+ *  itself, which is home rather than a far edge. */
+const beyondRadius = TOWNS.filter((t) => t.distanceMiApprox > o.wdiRadiusMi);
+const atTheLine = TOWNS.filter((t) => t.distanceMiApprox === o.wdiRadiusMi);
+const listNames = (xs: { name: string }[]) =>
+  xs.map((t) => t.name).join(xs.length > 2 ? ', ' : ' and ');
+
+/** Small numbers read as words in running prose. The notice period is derived
+ *  from business.ts rather than typed, so it has to survive being spelled. */
+const SMALL = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const spell = (n: number) => (n >= 0 && n <= 10 ? SMALL[n] : String(n));
+const noticeWord = spell(o.wdiNoticeDays);
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services/' },
@@ -68,7 +91,7 @@ const faqs = [
   },
   {
     q: 'How much notice do you need?',
-    a: 'As much as you can give, and more than you would need from a company inside your own town. This is a one-truck operation covering roughly a hundred miles, and closing dates do not move. Seminole and the towns nearest it are responsive; the further towns run as planned days. If you have a contract with a date on it, call when the contract is signed rather than when the option period is running out.',
+    a: `${spell(o.wdiNoticeDays).charAt(0).toUpperCase() + spell(o.wdiNoticeDays).slice(1)} days is the figure he asks for, and more is better. That is what he named rather than a number we invented, and it is a request rather than a guarantee — a one-truck operation and a closing date are an awkward combination, and closing dates do not move. Seminole and the towns nearest it are responsive and can often be fitted faster than that. The outer towns run as planned days. If you have a contract with a date on it, call when the contract is signed rather than when the option period is running out.`,
   },
   {
     q: 'What will you need from the property?',
@@ -362,14 +385,40 @@ const faqs = [
           what a one-truck operation can and cannot promise.
         </p>
         <p>
+          <strong>The WDI radius is {o.wdiRadiusMi} miles, and it is not the same as our service
+          territory.</strong> The general territory runs to about a hundred miles. Inspections for a real
+          estate transaction run to {o.wdiRadiusMi}, because a report tied to a closing date is a
+          different kind of promise from a pest call that can move to Thursday. We would rather publish two
+          numbers and have them both be true than publish one and stretch it.
+        </p>
+        {beyondRadius.length > 0 && (
+          <p>
+            <strong>Which puts {listNames(beyondRadius)} outside it.</strong> {beyondRadius.length === 1
+              ? `${beyondRadius[0].name} is about ${beyondRadius[0].distanceMiApprox} miles out — inside the ordinary service territory, past the WDI radius.`
+              : 'Those are inside the ordinary service territory and past the WDI radius.'} We still do
+            general pest work there. We are not going to take a dated inspection there and hope. If you are
+            buying or selling in {listNames(beyondRadius)}, call anyway — the honest answer may be a
+            recommendation to somebody closer, and that is a better outcome for you than a missed date.
+          </p>
+        )}
+        {atTheLine.length > 0 && (
+          <p>
+            <strong>{listNames(atTheLine)} {atTheLine.length === 1 ? 'sits' : 'sit'} exactly on the
+            line</strong> at {o.wdiRadiusMi} miles. Those are yes, and they are planned days rather than
+            same-week fits.
+          </p>
+        )}
+        <p>
           <strong>Closing dates do not move.</strong> Ours is not a business that can absorb a
-          same-afternoon request from the far end of a hundred-mile route, and pretending otherwise would
-          fail somebody at the worst possible moment in a transaction.
+          same-afternoon request from the far edge of a {o.wdiRadiusMi}-mile radius, and pretending
+          otherwise would fail somebody at the worst possible moment in a transaction.
         </p>
         <p>
           <strong>So call when the contract is signed</strong>, not when the option period is running out.
-          A week of notice is an easy booking. Two days is workable near Seminole. Same-day from Lubbock or
-          Big Spring is not a promise anybody should make you.
+          {' '}{noticeWord.charAt(0).toUpperCase() + noticeWord.slice(1)} days is the notice he asks for,
+          and a week is an easy booking. Two days is
+          workable near Seminole. Same-day from the far end of the radius is not a promise anybody should
+          make you.
         </p>
         <p>
           <strong>Seminole and the towns nearest it are responsive.</strong> Seagraves, Denver City,
@@ -429,6 +478,8 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <Verified facts={['REG-02', 'LIC-02']} />
 
   <Faq items={faqs} heading="WDI inspection questions" />
   <Cta

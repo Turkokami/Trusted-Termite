@@ -1,0 +1,405 @@
+---
+/**
+ * Pest library — mosquitoes, Culicidae.
+ *
+ * THE ARGUMENT: the value of yard source reduction is proportional to the
+ * target species' flight range. That framing is OUR synthesis, but every input
+ * is sourced, and the page labels it as reasoning built on cited figures.
+ *  - Cx. quinquefasciatus "Rarely flies more than a mile from its breeding
+ *    site" → yard and neighbourhood work genuinely reduces the WNV vector.
+ *  - Cx. tarsalis "May move as far as 2 to 10 miles"; Ps. columbiae "Commonly
+ *    disperse 6 to 10 miles or more"; Ae. vexans "may be found many miles from
+ *    its breeding site" → yard sanitation cannot control these.
+ *
+ * VERIFIED (Texas A&M Mosquito Safari / AgriLife unless noted):
+ *  - Cx. tarsalis: "the most important carrier of mosquito-borne viruses in
+ *    the western U.S."; pale median band on proboscis, pale bands over tarsal
+ *    joints, white stripes/spots on outer hind femur and hindtibia; WNV,
+ *    Western equine and St. Louis encephalitis; 2–10 mile range.
+ *  - Cx. quinquefasciatus, "Southern House Mosquito": "Delicate, dull-brown
+ *    mosquito lacking bands on tarsi and proboscis"; "Prefers polluted water
+ *    for breeding and will breed in containers"; evening/night/early morning,
+ *    AgriLife peak "9 p.m. to 2 a.m."; bird-preferring but "often enters homes
+ *    through unscreened windows or open doors"; WNV and SLE; "Rarely flies
+ *    more than a mile from its breeding site".
+ *  - Ae. vexans, "FLOODWATER MOSQUITO": temporary rain-filled pools, low
+ *    areas, roadside or irrigation ditches; "a strong flier"; "the number one
+ *    pest mosquito in many parts of the U.S."; "It may transmit dog heartworm
+ *    to dogs, but is otherwise not considered to be a serious disease threat
+ *    to humans".
+ *  - Ps. columbiae: large, dark, pale band on proboscis and mid hind tarsal
+ *    segment; "Breeding starts in just 3-4 days of standing water"; aggressive
+ *    day and night; 6–10+ miles.
+ *  - ENTO-077 framing: after a storm expect "two main types of mosquitoes:
+ *    floodwater mosquitoes… and container breeding mosquitoes".
+ *  - Floodwater eggs "can wait two to five years before hatching, depending on
+ *    the species" — the mechanism behind the boom-and-bust pattern here.
+ *  - Floodwater biters are "typically larger, more aggressive and more
+ *    persistent biters from dawn to dusk"; container Aedes are "daytime
+ *    feeders but can be opportunistic at nighttime".
+ *  - Swiger: "Personal protectants are the only certainty against bites."
+ *    Actives: DEET, picaridin, lemon eucalyptus oil, IR3535, 2-undecanone.
+ *    Repellent plants: repellency "limited just to the plants and rarely keeps
+ *    mosquitoes from biting humans". Homeowner sprays "only last 24-48 hours".
+ *    Area spraying is "temporary", residue "burns off in the sunlight after
+ *    dawn". Age limits: none under 2 months; no lemon eucalyptus oil on
+ *    children 3 and under. No human vaccine.
+ *  - CDC WNV: "Most people (80%)… do not develop symptoms"; "About 20%…
+ *    develop flu-like symptoms"; "Less than 1%… develop severe illness";
+ *    "About 10% of people who develop severe illness… die"; onset 2–6 days;
+ *    fatigue "can last for weeks or months"; CDC's ~2,000 annual figure "is an
+ *    underestimate".
+ *  - DSHS 2012: 1,868 human cases, 844 (45%) WNND, 1,024 (55%) WNF, 89 deaths;
+ *    Region 1 (Panhandle) 68 cases / 8.1 per 100,000; Region 9/10 (West Texas)
+ *    90 cases / 6.4 per 100,000; DFW 1,039 cases / 14.3 per 100,000.
+ *  - DSHS 2019: 32 cases statewide; Region 9/10 highest incidence in the state
+ *    at 1.2 per 100,000 (18 cases) — but El Paso 16 of those 18; Lubbock 1,
+ *    Midland 1, Tom Green 1. SLE-positive pools in El Paso and Lubbock.
+ *  - DSHS 2020: 122 cases, 101 (83%) WNND, 26 WNV-related deaths; Region 9/10
+ *    7 cases (all neuroinvasive), 0.81 per 100,000, second highest statewide.
+ *    SLE-positive pools again in El Paso and Lubbock.
+ *
+ * ⚠️ FOUR HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. REGION 9/10 IS EL PASO. In 2019, 16 of the region's 18 cases were El
+ *     Paso — Trans-Pecos and border, not the Llano Estacado. Never quote the
+ *     regional rate as if Midland, Odessa or Lubbock carried it. Give the
+ *     county detail every time the regional figure appears.
+ *  2. DSHS DOES NOT IDENTIFY POSITIVE POOLS TO SPECIES. Its reports say only
+ *     "primarily Culex species". The Cx. tarsalis attribution rests on Texas
+ *     A&M's western-US characterisation plus out-of-state studies. Cite DSHS
+ *     at GENUS level. Do not write "Culex tarsalis is the West Texas WNV
+ *     vector" as though it were a Texas surveillance finding.
+ *  3. CONTAINER AEDES ESTABLISHMENT NOT VERIFIED for Lubbock, Midland, Odessa
+ *     or Amarillo. No priority-source survey found. Describe the container
+ *     Aedes group generically; do not claim local establishment without a
+ *     county vector-control source.
+ *  4. THE "1 IN 150" FIGURE IS OUTDATED WORDING. AgriLife's 2024 article still
+ *     uses it; CDC's current page says "less than 1%". Broadly consistent
+ *     (1/150 ≈ 0.67%) but use CDC's current wording and attribute to CDC.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Mosquitoes', path: '/pest-library/mosquito/' },
+];
+
+const quickAnswer =
+  'How much your yard matters depends entirely on which mosquito is biting you. The urban Culex that carries West Nile rarely flies more than a mile from where it bred, so emptying containers genuinely helps. The floodwater mosquitoes that swarm days after a rain travel six to ten miles or more and are arriving from ditches, playas and irrigated ground — no amount of yard work controls those.';
+
+const faqs = [
+  {
+    q: 'Why are there suddenly thousands after one rain?',
+    a: 'Because they were already here, as eggs in dry dirt. Floodwater mosquito eggs are laid in low ground that is dry at the time, and AgriLife states they can wait two to five years before hatching depending on the species. When the ground finally floods, they hatch together. One species can start breeding in just three or four days of standing water. That is the whole boom-and-bust pattern out here in one mechanism — long stretches with almost nothing, then an overwhelming emergence within a week of a heavy rain or an irrigation event. Nothing flew in from anywhere.',
+  },
+  {
+    q: 'Does emptying buckets in my yard actually do anything?',
+    a: 'Sometimes a great deal and sometimes nothing, and the difference is which mosquito you are dealing with. The southern house mosquito — the urban West Nile carrier — rarely flies more than a mile from its breeding site, which means the containers, the clogged gutter, the neglected pool and the drainage on your street are genuinely where the ones biting you came from. Floodwater mosquitoes are a different story: one commonly disperses six to ten miles or more, another is described as a strong flier found many miles from its breeding site. Those are arriving from ditches, playas and irrigated fields, and your yard is not the source.',
+  },
+  {
+    q: 'Which mosquito carries West Nile here?',
+    a: 'Culex — and we are going to stop at the genus, deliberately. Texas DSHS reports positive mosquito pools every year but does not identify them to species, stating only that West Nile is maintained in a cycle between mosquitoes, primarily Culex species, and birds. Texas A&M describes Culex tarsalis as the most important carrier of mosquito-borne viruses in the western United States, and the southern house mosquito as the one transmitting West Nile across Texas. Both are plausible here. Which one is doing it in the Permian Basin is not a question Texas surveillance data answers, so we are not going to answer it for them.',
+  },
+  {
+    q: 'How much West Nile is actually in West Texas?',
+    a: 'Less than the regional headline suggests, and the detail matters. In 2019 the DSHS region covering West Texas had the highest incidence in the state at 1.2 cases per 100,000 — but sixteen of that region\'s eighteen cases were in El Paso County. Lubbock had one. Midland had one. Tom Green had one. In 2020 the same region had seven cases, all neuroinvasive. The honest reading is that West Nile is present, that it is a real and occasionally severe illness, and that the case counts in Midland, Odessa and Lubbock counties in a normal year are very small numbers.',
+  },
+  {
+    q: 'What happens if I do get West Nile?',
+    a: 'Most likely nothing you would notice. The CDC states that most people infected — about eighty percent — do not develop symptoms at all, and about twenty percent develop flu-like illness with fever, headache, body aches, joint pain, vomiting, diarrhoea or rash, usually starting two to six days after the bite. Less than one percent develop severe illness affecting the central nervous system, and about ten percent of those die. Risk rises with age, with certain chronic conditions and with a weakened immune system, and recovery from the milder illness can still leave fatigue and weakness lasting weeks or months.',
+  },
+  {
+    q: 'Do citronella plants work?',
+    a: 'No, and AgriLife is refreshingly blunt about it. Its guidance on citronella, geraniums, lemongrass, lavender, lantana, rosemary and petunias is that the repellency is limited just to the plants and rarely keeps mosquitoes from biting humans. Smoke-based repellents are put in a similar category. What is documented to work is repellent on skin — DEET, picaridin, oil of lemon eucalyptus, IR3535 or 2-undecanone — plus long sleeves and long trousers, and spatial repellent devices that create a treated envelope around where you are sitting. The extension line worth remembering is that personal protectants are the only certainty against bites.',
+  },
+  {
+    q: 'How long does a yard treatment last?',
+    a: 'Not as long as the marketing implies, and we would rather you hear the number from us. AgriLife states that homeowner spray products only last twenty-four to forty-eight hours, and that municipal or area-wide spraying is temporary — its residue burns off in the sunlight after dawn. A professional barrier treatment does more than a hardware-store spray because of where it is applied and what it is applied to, but it is still knocking down what is present and holding a resting surface, not sealing the property. Anyone promising to eliminate mosquitoes from a yard three days after a two-inch rain is selling you something that flight-range data says cannot work.',
+  },
+  {
+    q: 'What about the ones biting in the daytime?',
+    a: 'Timing is a genuine clue to what you are dealing with. The Culex that matter for West Nile are night biters — AgriLife puts peak activity between nine at night and two in the morning, with feeding through the night. Floodwater mosquitoes are described as typically larger, more aggressive and more persistent biters from dawn to dusk. Container Aedes are daytime feeders that can be opportunistic at night. So a mosquito biting your ankles at two in the afternoon is very unlikely to be the West Nile vector, and one waking you at midnight in an unscreened bedroom quite possibly is.',
+  },
+];
+---
+
+<BaseLayout
+  title="Mosquitoes | West Texas Pest Library"
+  description="Why flight range decides whether your yard matters, what the DSHS West Nile numbers really say about this region, and which measures do not work."
+  path="/pest-library/mosquito/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · Culicidae</p>
+      <h1>Mosquitoes</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          There is one number that reorganises this entire subject, and almost nobody publishes it: how
+          far the mosquito biting you can fly. Texas A&amp;M's mosquito references give it species by
+          species, and the spread is enormous. One rarely goes more than a mile from where it bred.
+          Another commonly disperses six to ten miles or more. A third is described as a strong flier that
+          may be found many miles from its breeding site, and that fact is given explicitly as the reason
+          it is difficult to control.
+        </p>
+        <p>
+          Line that up against the standard advice — tip out your containers, clean your gutters — and the
+          advice stops being universally true and becomes conditional. For the short-range urban species it
+          is close to the whole answer. For the long-range floodwater species it is nearly irrelevant,
+          because the source is a playa, a ditch or an irrigated section a few miles off.
+        </p>
+        <p>
+          That distinction is the honest frame for everything below. It is our synthesis rather than a
+          sentence lifted from any single publication, but every figure holding it up is Texas A&amp;M's,
+          and we would rather show you the reasoning than hand you a conclusion.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Two kinds of mosquito problem, which AgriLife separates by name</h2>
+      <div class="measure">
+        <p>
+          <strong>The framing is not ours.</strong> An AgriLife publication written for the aftermath of
+          major storms states that within days Texans should be prepared for two main types of mosquitoes:
+          floodwater mosquitoes, which can emerge in throngs in cities and rural areas, and container
+          breeding mosquitoes, which include species that can transmit human diseases. That single sentence
+          contains the whole taxonomy a homeowner needs.
+        </p>
+        <p>
+          <strong>Floodwater mosquitoes are the swarm.</strong> They develop in temporary rain-filled
+          pools, in low areas and in roadside or irrigation ditches. Their eggs are laid in ground that is
+          dry at the time and can wait two to five years before hatching depending on the species. They are
+          described as typically larger, more aggressive and more persistent biters, active from dawn to
+          dusk. One of them is called the number one pest mosquito in many parts of the United States. And
+          on the disease question, AgriLife is measured: it may transmit dog heartworm to dogs but is
+          otherwise not considered a serious disease threat to humans.
+        </p>
+        <p>
+          <strong>Container breeders are the small persistent problem.</strong> These are the ones laying
+          in anything holding water — tyres, buckets, wheelbarrows, gutters — where it takes only a matter
+          of days to go from egg to biter. They are daytime feeders that can be opportunistic at night when
+          large groups of people gather.
+        </p>
+        <p>
+          <strong>And then Culex, which is its own category.</strong> The southern house mosquito prefers
+          polluted or stagnant water with high bacterial content and will breed in containers, in storm
+          drains, in septic seepage, in a neglected pool. It is a night biter, favours birds as hosts, and
+          often enters homes through unscreened windows or open doors where it can bite sleeping people.
+          It is the group that matters for West Nile.
+        </p>
+        <p>
+          <strong>Why the two-to-five-year egg dormancy is the West Texas fact.</strong> It explains the
+          pattern everybody here recognises — months when a mosquito is a novelty, then a week after a
+          heavy rain when you cannot stand outside at dusk. The insects did not migrate in. They were
+          already in the ground, waiting for water, in some cases for years.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The four that matter here, and how far each one travels</h2>
+      <div class="measure">
+        <p>
+          <strong>Culex tarsalis — 2 to 10 miles.</strong> Texas A&amp;M calls it the most important
+          carrier of mosquito-borne viruses in the western United States, and lists West Nile, western
+          equine encephalitis and St. Louis encephalitis. It is a small brown mosquito with a pale band
+          across the middle of the proboscis, pale bands over the tarsal joints, and white stripes or spots
+          on the outer surface of the hind femur and tibia. It breeds in ditches and pastures and in any
+          sort of standing water, backyard containers included. Its association with irrigated agriculture
+          is what makes it interesting here — work elsewhere in its range has found that irrigation
+          practices likely provide the habitat that lets it persist through drought, which is a fair
+          description of what irrigation does in a semi-arid landscape.
+        </p>
+        <p>
+          <strong>Culex quinquefasciatus — rarely more than a mile.</strong> The southern house mosquito is
+          a delicate, dull-brown mosquito that notably lacks bands on the tarsi and proboscis, which is the
+          quickest separator from the species above. Active in the evening, at night and in the early
+          morning, with AgriLife giving peak activity from nine at night to two in the morning. It carries
+          West Nile and St. Louis encephalitis. And it is the one where your own property, and your
+          neighbours', is genuinely the source.
+        </p>
+        <p>
+          <strong>Aedes vexans — many miles.</strong> The floodwater mosquito proper. Temporary pools, low
+          areas, roadside and irrigation ditches; a strong flier; the number one pest mosquito in much of
+          the country; not considered a serious human disease threat, though it may transmit heartworm to
+          dogs. AgriLife names its flight range explicitly as the reason control is challenging.
+        </p>
+        <p>
+          <strong>Psorophora columbiae — 6 to 10 miles or more.</strong> Large and dark-bodied with a pale
+          band on the proboscis and on the middle of the hind tarsal segment. Breeding starts in just three
+          to four days of standing water. An aggressive biter day and night, associated with encephalitis
+          in some areas though not a primary human vector. This is very often the one making a September
+          evening unbearable after a wet August.
+        </p>
+        <p>
+          <strong>One group we are deliberately vague about.</strong> The container Aedes — the black and
+          white ones with striped legs — are a real category and worth knowing, but whether they are
+          established in Lubbock, Midland, Odessa or Amarillo is not something we could confirm from any
+          survey we would be willing to cite. We are not going to claim local establishment on the strength
+          of a range map.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>West Nile in this region, with the county detail attached</h2>
+      <div class="measure">
+        <p>
+          <strong>2012 is the year everyone remembers, and the numbers are worth seeing.</strong> Texas
+          recorded 1,868 human cases: 844 of them, forty-five percent, neuroinvasive, and 1,024 the milder
+          fever form. Eighty-nine people died. Dallas–Fort Worth carried it, with 1,039 cases at 14.3 per
+          100,000. The Panhandle region recorded 68 cases at 8.1 per 100,000 and the West Texas region 90
+          cases at 6.4 per 100,000. Statewide there were 1,403 West Nile-positive mosquito pools.
+        </p>
+        <p>
+          <strong>2019 is the year the headline is misleading.</strong> Statewide there were only 32 human
+          cases, and the DSHS region covering West Texas had the highest incidence in the state at 1.2 per
+          100,000. That sounds like a regional story until you open the county table: eighteen cases in the
+          region, sixteen of them in El Paso County. Lubbock had one. Midland had one. Tom Green had one.
+          El Paso is Trans-Pecos and border country, six hours from here, and it is doing essentially all
+          the work in that statistic.
+        </p>
+        <p>
+          <strong>We are pointing that out because most sites will not.</strong> A regional rate is an easy
+          number to quote and a misleading one to quote alone, and quoting it without the county breakdown
+          would let this page imply a level of local risk the data does not show.
+        </p>
+        <p>
+          <strong>2020, for a third data point.</strong> Statewide 122 cases, of which 101 — eighty-three
+          percent — were neuroinvasive, with 26 West Nile-related deaths among those. The West Texas region
+          had seven cases, all neuroinvasive, at 0.81 per 100,000, second highest in the state. The
+          Panhandle had two.
+        </p>
+        <p>
+          <strong>One regional detail almost nobody publishes.</strong> St. Louis encephalitis keeps
+          turning up in mosquito pools out here. In 2019 the positive pools were in El Paso and Lubbock
+          counties. In 2020, El Paso and Lubbock again. It is a small signal in a small dataset, but it is
+          a real one and it is local, and it is worth knowing that West Nile is not the only arbovirus in
+          the mosquitoes on the South Plains.
+        </p>
+        <p>
+          <strong>And the limit on all of it.</strong> DSHS does not identify its positive pools to
+          species. Its reports state that West Nile is maintained in a cycle between mosquitoes, primarily
+          Culex species, and birds — genus, not species. So when this page says Culex, that is DSHS. When
+          it says Culex tarsalis is the important western vector, that is Texas A&amp;M characterising a
+          species across the western United States, not a Texas surveillance finding about the Permian
+          Basin. Those are different strengths of evidence and we are keeping them apart.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What an infection actually looks like</h2>
+      <div class="measure">
+        <p>
+          <strong>The CDC's figures, which are the ones to use.</strong> Most people infected with West
+          Nile — about eighty percent — do not develop symptoms at all. About twenty percent develop
+          flu-like symptoms: fever with headache, body aches, joint pain, vomiting, diarrhoea or rash,
+          usually beginning two to six days after the bite. Less than one percent develop severe illness
+          affecting the central nervous system, requiring hospitalisation or resulting in death. About ten
+          percent of those who develop that severe form die.
+        </p>
+        <p>
+          <strong>A note on an older number still in circulation.</strong> You will still see West Nile
+          severe-illness risk quoted as one in a hundred and fifty, including in some recent extension
+          writing. That is the CDC's older phrasing; its current wording is less than one percent. The two
+          are broadly consistent — one in a hundred and fifty is about two-thirds of a percent — but where
+          they differ we will use the current CDC wording and say that is where it came from.
+        </p>
+        <p>
+          <strong>Who is at higher risk, and what recovery looks like.</strong> The CDC notes that risk of
+          severe illness increases with age, with certain chronic medical conditions and with a weakened
+          immune system. Recovery from severe illness is slow, and fatigue and weakness can last for weeks
+          or months. It also cautions that its national count of roughly two thousand diagnoses a year is
+          an underestimate, since most infected people never develop symptoms and mild cases get attributed
+          to something else.
+        </p>
+        <p>
+          <strong>There is no human vaccine.</strong> AgriLife states it directly: the only protection for
+          humans is to prevent mosquito bites. Which is why the next section matters more than any of the
+          statistics above.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What works, what barely works, and what does not</h2>
+      <div class="measure">
+        <p>
+          <strong>Repellent on skin is the thing that is certain.</strong> AgriLife's medical entomologist
+          puts it as plainly as an extension service ever does: personal protectants are the only certainty
+          against bites. The actives named are DEET, picaridin, oil of lemon eucalyptus, IR3535 and
+          2-undecanone. Long sleeves and long trousers alongside them. Spatial repellent devices, which
+          emit particles that create a treated envelope around a seating area, are also given as effective.
+        </p>
+        <p>
+          <strong>Two age limits worth knowing.</strong> No repellents at all on babies under two months
+          old, and no oil of lemon eucalyptus on children three and under.
+        </p>
+        <p>
+          <strong>Source reduction, where the species makes it worth doing.</strong> Empty water-filled
+          containers as often as you can. Clear gutters. Drain or cover an unused pool. Larvicide dunks for
+          water that cannot be emptied, like a stock trough or an ornamental feature. This is the work that
+          pays off against the short-range southern house mosquito, and it pays off across a
+          neighbourhood better than it does across one lot — a mile of flight range covers a lot of
+          neighbours' back gardens.
+        </p>
+        <p>
+          <strong>Repellent plants do not work.</strong> Citronella, geraniums, lemongrass, lavender,
+          lantana, rosemary, petunias: AgriLife's finding is that the repellency is limited just to the
+          plants and rarely keeps mosquitoes from biting humans. Smoke-based repellents are placed in a
+          similar category. This is one of those pieces of received wisdom that has never had much behind
+          it, and a citronella plant on a patio table is decoration.
+        </p>
+        <p>
+          <strong>Sprays are shorter-lived than people expect.</strong> Homeowner spray products last only
+          twenty-four to forty-eight hours, and municipal or area-wide spraying is temporary — its residue
+          burns off in the sunlight after dawn. That is not an argument against either. It is an argument
+          for knowing what you bought.
+        </p>
+        <p>
+          <strong>And the claim we will not make.</strong> If a heavy rain has just filled every low spot
+          within ten miles and Psorophora is emerging out of it, no yard treatment is going to eliminate
+          mosquitoes from your property, because the ones arriving tomorrow evening were never on your
+          property to begin with. What treatment and timing and screening can do is make the yard usable at
+          the hours you want to use it. That is a real service and it is worth paying for. It is not the
+          same as elimination, and the difference is exactly the flight-range figure at the top of this
+          page.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Mosquitoes making the yard unusable?"
+    body="Tell us when they are biting you and what happened with the weather in the fortnight before. Time of day and rainfall between them narrow it down to which mosquito you have, and that decides whether the answer is your property or your schedule."
+  />
+</BaseLayout>

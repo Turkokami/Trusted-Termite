@@ -1,0 +1,444 @@
+---
+/**
+ * Problem spoke — "I have bites but nobody can find a bed bug."
+ *
+ * THE ARGUMENT: bite reactions are evidence of nothing in particular, in both
+ * directions. The page refuses to diagnose from marks on skin and moves the
+ * customer to physical evidence and to interceptors.
+ *
+ * VERIFIED:
+ *  - EPA, verbatim: "Bites on the skin are a poor indicator of a bed bug
+ *    infestation." and "Some people do not react to bed bug bites at all."
+ *  - Wang, Singh, Zha & Cooper 2016, J. Med. Entomol. 53(3):639–646 — 2,372
+ *    low-income apartments, 43 buildings, four New Jersey cities. Overall
+ *    infestation rate 12.3%, building range 3.8–29.5%. "Only 68% of the
+ *    residents who experienced bed bug infestations reported symptoms after
+ *    being bitten (n = 475)." Of those reporting symptoms (n = 319): pain 90%,
+ *    itchiness 20%, welts 13%, insomnia 8%. "Women were more likely to report
+ *    bed bug bite symptoms than men."
+ *  - Same study, detection: "Climbup interceptors detected 89 ± 1% and brief
+ *    visual inspections detected 72 ± 3% of the infestations. Only two out of
+ *    291 infestations were not detected by brief visual inspection or
+ *    interceptors."
+ *  - Univ. of Kentucky EF-636 (Potter): "studies conducted in bed bug-infested
+ *    apartments suggest about 30 percent of people do not react even when
+ *    bitten repeatedly"; "Sometimes the reaction is delayed days or even
+ *    weeks"; nymphs and adults "can persist months without feeding", and
+ *    "potentially up to a year or longer at 55°F or less".
+ *  - Rutgers NJAES FS1117: pitfall traps "are the most cost-effective for
+ *    detecting bed bugs"; "Interceptors need to be in place for at least a
+ *    week or longer to detect bed bugs at very low numbers."
+ *  - AgriLife ENT-3006 (Merchant): "Arthropod bites are often hard to diagnose
+ *    without an examination or a good description of the bite(s)…";
+ *    "A variety of environmental factors, for example, can produce the false
+ *    perception of insect bites."; lists anemia, diabetes, liver disease,
+ *    lupus, uremia, hyperthyroidism, lymphoma as conditions producing
+ *    bite-like symptoms.
+ *  - AgriLife ENT-3009 (Merchant & Teel), biting mites: "Infestations are
+ *    sometimes first noticed following extermination, or after the natural
+ *    hosts have died or left the structure." and "It is therefore important to
+ *    collect mites prior to treatment."
+ *  - UC ANR (Sutherland): "successful rat control programs may result in
+ *    hundreds of starving rat mites wandering nearby areas in search of blood".
+ *  - CDC scabies: itching "especially at night"; first infestation symptoms
+ *    "can take up to three to six weeks to appear"; re-exposure one to four
+ *    days.
+ *  - AgriLife ENT-3013: in apartments "it is probably more common for bed bugs
+ *    to enter a home from a nearby infested apartment, during moving, or
+ *    through picking up used or recycled furniture or mattresses"; bed bugs
+ *    "are not known to carry any diseases to humans".
+ *
+ * ⚠️ FOUR HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. NO AGE CLAIM. The "up to 70% of elderly people do not react" figure is
+ *     NOT VERIFIED — the primary literature was unreachable and the trade-press
+ *     source is not citable. Use the ~30% general figure only.
+ *  2. DO NOT BLUR THE TWO NON-REACTOR FIGURES. ~30–32% is self-reported
+ *     symptoms in field surveys. A controlled-exposure study reporting 18 of 19
+ *     people reacting is measuring something else entirely. The field figure is
+ *     the one that belongs on a homeowner page; the other must not be averaged
+ *     in or quoted alongside as though comparable.
+ *  3. NO CANINE DETECTION, EVEN BY IMPLICATION. Site separation is absolute —
+ *     K9 detection belongs to other brands and must never appear here. The
+ *     Cooper 2014 canine accuracy data (handlers believed 95%; measured mean
+ *     44%, false positives 15%) is NOT on this page, because citing it invites
+ *     the inference that we offer or arrange it. We do not.
+ *  4. NO STARVATION FIGURE BEYOND KENTUCKY'S. The "400 days at 50°F" number is
+ *     NOT VERIFIED anywhere reachable. Kentucky's "months", and "a year or
+ *     longer at 55°F or less", are the only figures used.
+ *  Also: delusional infestation is a real clinical entity and AgriLife names
+ *  it. It is handled on this page with care and without diagnosing anybody —
+ *  we are a pest control company, not a clinician, and the page says so.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+  { name: 'Bed bug treatment', path: '/services/bed-bug-treatment/' },
+  { name: 'Bites with no bugs found', path: '/services/bed-bug-treatment/bites-but-no-bed-bugs/' },
+];
+
+const quickAnswer =
+  'Marks on skin cannot tell you what caused them. The EPA states plainly that bites are a poor indicator of a bed bug infestation, and a study of 2,372 apartments found that only 68 percent of residents with confirmed infestations reported any bite symptoms at all. The answer is physical evidence, not dermatology — and interceptor traps under the bed legs found 89 percent of infestations in that same study.';
+
+const faqs = [
+  {
+    q: 'Can you tell what bit me from a photo?',
+    a: 'No, and neither can anybody else, which is the single most useful thing on this page. AgriLife’s own guidance is that arthropod bites are often hard to diagnose without an examination, a good description of how and when they occurred, and ideally a specimen of the suspected pest. A photograph gives you the least useful of those three. We are happy to look, and we will tell you honestly that what we are looking at is a starting point for questions rather than an identification.',
+  },
+  {
+    q: 'I have no bites at all. Does that mean I do not have bed bugs?',
+    a: 'It means very little on its own. The EPA states that some people do not react to bed bug bites at all, and the University of Kentucky puts it at about thirty percent of people not reacting even when bitten repeatedly. In the New Jersey apartment study, of the residents whose homes were confirmed infested, only sixty-eight percent reported any symptoms after being bitten. So roughly a third of people living with an active infestation had nothing on their skin to show for it. Absence of bites is not absence of bed bugs.',
+  },
+  {
+    q: 'What actually counts as evidence, then?',
+    a: 'Things you can put in a bag. The EPA lists rusty or reddish stains on sheets or mattresses from crushed bugs; dark spots of excrement about the size of a full stop, which bleed into fabric the way a marker would; eggs and eggshells around a millimetre long; and the pale shed skins of nymphs. Live insects obviously count. The inspection zones are consistent across sources — the piping, seams and tags of the mattress and box spring, and the cracks of the bed frame and headboard.',
+  },
+  {
+    q: 'What is an interceptor and does it work?',
+    a: 'It is a shallow pitfall trap that sits under each leg of the bed or sofa, and it works better than most people expect. In the New Jersey study, interceptors detected eighty-nine percent of infestations against seventy-two percent for a brief visual inspection, and between the two methods only two of 291 infestations went undetected. Rutgers describes pitfall-style traps as the most cost-effective monitor available and specifies that they need to be in place at least a week, and longer, to pick up very low numbers. They are cheap, they are passive, and if you are in the genuinely uncertain situation this page is about, they are the right next step.',
+  },
+  {
+    q: 'What else produces bites when there are no bed bugs?',
+    a: 'Plenty, and some of it is not an insect at all. Extension sources list fleas, mosquitoes, biting flies, straw itch mites, and bird or rodent mites among the indoor biters. Scabies is a genuine possibility and is a medical rather than a pest matter — the CDC describes intense itching that is worse at night, a pimple-like rash and tiny crooked lines on the skin. And there is a long list of non-arthropod causes: reactions to detergents, soaps, cosmetics, dyes, fibreglass and fibres, plus medical conditions AgriLife names directly, including anaemia, diabetes, liver disease, lupus, uraemia, hyperthyroidism and lymphoma. We are not qualified to work through that list. Your doctor is.',
+  },
+  {
+    q: 'Why did the biting start right after I got rid of a rodent or a bird nest?',
+    a: 'That is a documented pattern and it is one of the few situations where the timing genuinely does tell you something. AgriLife states that mite infestations are sometimes first noticed following extermination, or after the natural hosts have died or left the structure — the mites lose their host and start looking for another one. A University of California source puts it more vividly, noting that successful rat control can leave hundreds of starving rat mites wandering in search of blood. If your biting started within days of a rodent job or a nest removal, say so when you call, because it changes what we look for entirely.',
+  },
+  {
+    q: 'Should I have the house sprayed just in case?',
+    a: 'No, and there is a specific reason beyond the usual one. AgriLife’s guidance on biting mites is that it is important to collect the mites before treatment — because once you have treated, the specimen is gone and you may have destroyed the only route to an actual identification while the biting continues. Treating an unidentified problem also costs money against a target nobody has confirmed. Put interceptors under the bed, collect anything you find, and let the evidence decide what gets treated.',
+  },
+  {
+    q: 'Do bed bugs make you ill?',
+    a: 'Not in the infectious sense. AgriLife states that bed bugs are not known to carry any diseases to humans, though some people experience irritation or allergic reactions to the bites. The real harm is sleep, stress and the cost of dealing with them, which is not nothing — insomnia showed up in the New Jersey symptom data, and anyone who has lain awake watching a headboard will tell you the psychological weight is the worst part of it.',
+  },
+];
+---
+
+<BaseLayout
+  title="Bites but No Bed Bugs Found | Trusted Termite"
+  description="Bite marks cannot identify what caused them. What the evidence actually says, what counts as proof of bed bugs, and the cheap trap that outperforms a visual sweep."
+  path="/services/bed-bug-treatment/bites-but-no-bed-bugs/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Bed bug treatment · problem page</p>
+      <h1>Bites, but nobody can find a bed bug</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          This is one of the most common calls in the trade and one of the worst-handled. Somebody has
+          marks on their arms, a company has been out, nothing was found, and the recommendation was a
+          treatment anyway — because a treatment is the thing a pest control company sells and an honest
+          "I do not know yet" is not.
+        </p>
+        <p>
+          We are going to do this differently, and the reason is that the marks on your skin are not
+          evidence. That is not our opinion. The EPA states it directly: bites on the skin are a poor
+          indicator of a bed bug infestation. It also states that some people do not react to bed bug bites
+          at all.
+        </p>
+        <p>
+          So the diagnostic runs on physical evidence instead — stains, shed skins, eggs, live insects,
+          and traps that catch what a walkthrough misses. That is a slower answer than a spray, and it is
+          the one that is actually true.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The number that reframes the whole problem</h2>
+      <div class="measure">
+        <p>
+          <strong>A field study of 2,372 apartments.</strong> Researchers surveyed low-income apartments
+          across forty-three buildings in four New Jersey cities, combining resident interviews, brief
+          visual inspections and interceptor traps. Infestation rates ran from 3.8 to 29.5 percent by
+          building, with an overall rate of 12.3 percent — so this was a large sample with a great many
+          genuinely infested homes in it.
+        </p>
+        <p>
+          <strong>Then the finding.</strong> Among residents whose apartments were confirmed infested, only
+          sixty-eight percent reported symptoms after being bitten. Roughly a third of people living with
+          an active bed bug population reported nothing at all on their skin.
+        </p>
+        <p>
+          <strong>That number cuts both ways and that is the point.</strong> If a third of infested people
+          show nothing, then having no bites tells you very little. And if a third of the population does
+          not react to a bed bug bite, then whatever is on your arm is being filtered through a personal
+          sensitivity that varies enormously between people — which is exactly why it cannot serve as an
+          identification.
+        </p>
+        <p>
+          <strong>The independent figure agrees.</strong> The University of Kentucky's extension guidance
+          says studies in infested apartments suggest about thirty percent of people do not react even when
+          bitten repeatedly. Two different sources, same magnitude.
+        </p>
+        <p>
+          <strong>And what people do report is not distinctive.</strong> Of the residents in that study who
+          did report symptoms, ninety percent reported pain, twenty percent itchiness, thirteen percent
+          welts and eight percent insomnia. Kentucky adds a complication on top: the reaction is sometimes
+          delayed days or even weeks, which makes it very difficult to work out where or when the bites
+          actually happened. A delayed reaction can point you at the wrong bed, the wrong room, or the
+          wrong week entirely.
+        </p>
+        <p>
+          <strong>One more from that data, worth knowing.</strong> Women were more likely to report bite
+          symptoms than men. In a household where one person is covered in marks and another sleeping in
+          the same bed has nothing, that difference is normal and it is not evidence about which room the
+          problem is in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What actually counts as evidence</h2>
+      <div class="measure">
+        <p>
+          Everything below can be photographed, bagged and shown to somebody. That is the standard we hold
+          ourselves to before saying the word.
+        </p>
+        <p>
+          <strong>Live insects, at any stage.</strong> The obvious one, and the least common thing to find
+          early.
+        </p>
+        <p>
+          <strong>Dark excrement spots.</strong> The EPA describes them as about the size of a full stop,
+          and notes the useful detail that they bleed into fabric the way a marker pen would. That
+          bleeding is what separates them from ordinary dirt.
+        </p>
+        <p>
+          <strong>Rusty or reddish stains</strong> on sheets or the mattress, from bugs being crushed.
+        </p>
+        <p>
+          <strong>Eggs and eggshells,</strong> tiny — about a millimetre — and pale.
+        </p>
+        <p>
+          <strong>Shed skins.</strong> Nymphs moult as they grow and the cast skins persist. They are often
+          the first thing found, because they accumulate where the insects harbour rather than where they
+          feed.
+        </p>
+        <p>
+          <strong>And where to look, which every source agrees on.</strong> The piping, seams and tags of
+          the mattress and box spring, and the cracks and joints of the bed frame and headboard. Not the
+          middle of the sheet. Not the carpet in the centre of the room. The tight, dark, seamed places
+          within a few feet of where somebody sleeps.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Interceptors, which beat a walkthrough and cost almost nothing</h2>
+      <div class="measure">
+        <p>
+          <strong>What they are.</strong> A shallow two-walled dish that sits under each leg of the bed or
+          the sofa. Insects trying to climb up, or dropping down and trying to leave, fall into the moat
+          and cannot climb the inner wall. No power, no chemical, no bait required.
+        </p>
+        <p>
+          <strong>What the data says.</strong> In the New Jersey study, interceptors detected eighty-nine
+          percent of infestations. A brief visual inspection detected seventy-two percent. Used together,
+          only two of 291 infestations were missed. Rutgers describes pitfall-style traps as the most
+          cost-effective monitors available and says plainly that studies have shown interceptors to be
+          much more effective than visual inspections and resident interviews.
+        </p>
+        <p>
+          <strong>The condition on that number.</strong> Rutgers is specific: interceptors need to be in
+          place at least a week, and longer, to detect bed bugs at very low numbers. A trap checked the
+          next morning has not had time to prove anything. This is a fortnight's patience, not an
+          afternoon's.
+        </p>
+        <p>
+          <strong>Why this is our recommendation rather than a treatment.</strong> Read the first figure
+          again: a single careful visual inspection misses roughly one infestation in four. That is not a
+          criticism of inspectors, ours included — it is the nature of a nocturnal insect the width of an
+          apple pip that hides in seams. When the visual result is negative and the biting continues, the
+          honest next step is the method with the higher detection rate, not a chemical applied to a
+          building where nobody has confirmed a target.
+        </p>
+        <p>
+          <strong>What we do with them.</strong> We will place them, tell you what to watch for, and come
+          back. If they catch something, we know what we are treating and where it is concentrated. If they
+          catch nothing over a proper interval while the biting continues, that is real information too,
+          and it points the investigation somewhere else entirely.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What else it might be</h2>
+      <div class="measure">
+        <p>
+          <strong>Other biting arthropods indoors.</strong> Extension sources list fleas, mosquitoes, black
+          flies, biting midges, straw itch mites, and bird or rodent mites. Fleas leave a fairly
+          characteristic mark — a small central red spot with a red halo around it, usually without much
+          swelling — and they concentrate on the lower legs and ankles for obvious reasons.
+        </p>
+        <p>
+          <strong>The mite-after-the-host case, which is the one worth knowing about.</strong> AgriLife
+          states that mite infestations are sometimes first noticed following extermination, or after the
+          natural hosts have died or left the structure. A bird nest is removed from a soffit, or a rodent
+          problem is successfully dealt with, and the mites that were living on that host go looking for
+          another blood meal — which is now you. A University of California source describes successful rat
+          control leaving hundreds of starving rat mites wandering nearby areas in search of blood. If your
+          biting started within a week or two of a nest coming out or a rodent job finishing, that sequence
+          is a genuine lead.
+        </p>
+        <p>
+          <strong>Scabies, which is medical.</strong> The CDC describes intense itching that is
+          characteristically worse at night, a pimple-like itchy rash, and tiny raised crooked lines on the
+          skin surface. The timing is also distinctive: on a first-ever infestation symptoms can take three
+          to six weeks to appear, while on re-exposure they show up in one to four days. That is a doctor's
+          territory and no amount of pest control will touch it.
+        </p>
+        <p>
+          <strong>Things that are not bites at all.</strong> Penn State's list of environmental causes of
+          bite-like symptoms includes chemicals, cosmetics, detergents, disinfectants, dyes, fibreglass,
+          carpet and clothing fibres, paper shards, perfumes, resins and static electricity. AgriLife adds
+          that a variety of environmental factors can produce the false perception of insect bites. New
+          carpet, a change of laundry detergent, a dusty attic job, insulation work — any of those can start
+          a skin reaction that arrives looking exactly like a bite.
+        </p>
+        <p>
+          <strong>And medical conditions that produce the same appearance.</strong> AgriLife names them
+          directly: anaemia, diabetes, liver disease, lupus, uraemia, hyperthyroidism, lymphoma. We list
+          them because AgriLife lists them, and because somebody reading this page needs to know that
+          "insects" is not the only branch of the tree. We are emphatically not suggesting any of these
+          apply to you. We are saying the question belongs to a doctor, and that a pest control company
+          telling you confidently what is on your skin has stepped outside what it knows.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The difficult part, handled carefully</h2>
+      <div class="measure">
+        <p>
+          AgriLife's fact sheet on diagnosing mysterious bites includes a recognised medical condition —
+          delusions of parasitosis, described as an unfounded yet unshakable belief that live insects are
+          present in or on the skin. It is real, it is documented in the clinical literature, and it is
+          genuinely distressing for the people who have it.
+        </p>
+        <p>
+          <strong>Here is our position on it, stated plainly.</strong> We will not diagnose it, we will not
+          hint at it, and we will not use it as a way of dismissing somebody who is uncomfortable in their
+          own home. We are not clinicians. What we can do is the part that is ours: inspect properly, place
+          monitors, collect and identify anything physical that turns up, and tell you truthfully what we
+          found and what we did not.
+        </p>
+        <p>
+          <strong>Why mentioning it at all is the honest choice.</strong> Because the alternative — quietly
+          selling treatment after treatment to somebody whose problem is not an insect — is worse. It is
+          also, unfortunately, common. A customer who is told repeatedly that something was found and
+          treated, while the symptoms continue, is being taken money from rather than helped.
+        </p>
+        <p>
+          <strong>What that means for you in practice.</strong> If we inspect and monitor properly and
+          nothing is there, we will say so and we will not charge you for treating a building that does not
+          need it. That may not be the answer you wanted. It is the one that leaves you free to look in the
+          right place.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>If it does turn out to be bed bugs</h2>
+      <div class="measure">
+        <p>
+          <strong>How they got in matters more than what you did wrong.</strong> AgriLife notes that in
+          apartment complexes it is probably more common for bed bugs to arrive from a nearby infested
+          unit, during a move, or on used or recycled furniture and mattresses. Nothing on that list is a
+          hygiene failure. This is a hitchhiking insect and it travels with belongings and with people.
+        </p>
+        <p>
+          <strong>In a multi-unit building the neighbours matter.</strong> AgriLife describes it as standard
+          practice in the industry to inspect all apartments surrounding an infested one. If you rent in
+          Seminole, Denver City, Andrews, Odessa or Midland and you have confirmed bed bugs, the unit next
+          door is a legitimate part of the problem and a treatment confined to your walls is fighting
+          uphill.
+        </p>
+        <p>
+          <strong>What we do and do not offer.</strong> Our bed bug work is conventional treatment, done
+          properly, with preparation instructions that matter and follow-up that is part of the job rather
+          than an upsell. We do not do heat treatment and we do not fumigate, and we will say so rather
+          than let you assume otherwise. Both of those are covered on the
+          <a href="/services/bed-bug-treatment/">bed bug treatment page</a>.
+        </p>
+        <p>
+          <strong>And one reassurance that is properly sourced.</strong> AgriLife states that bed bugs are
+          not known to carry any diseases to humans, although some people experience irritation or allergic
+          reactions to the bites. The damage from bed bugs is sleep, stress and money. That is bad enough
+          to take seriously and it is not a health emergency.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What to do this week</h2>
+      <div class="measure">
+        <p>
+          <strong>Stop trying to read the bites.</strong> They are not going to tell you, and the effort
+          spent comparing photographs on the internet is time not spent looking at the seam of a mattress.
+        </p>
+        <p>
+          <strong>Strip the bed and look properly, in good light.</strong> Piping, seams, tags, the underside
+          of the box spring, the joints of the frame, behind the headboard. You are looking for dark spots
+          that bleed into fabric, pale shed skins, and specks about a millimetre across.
+        </p>
+        <p>
+          <strong>Put interceptors under every leg of the bed and any upholstered furniture that gets
+          slept in,</strong> and leave them alone for at least a week.
+        </p>
+        <p>
+          <strong>Keep anything you find.</strong> A clear bag, a piece of tape on a card, a jar. A specimen
+          settles in thirty seconds what a fortnight of speculation will not.
+        </p>
+        <p>
+          <strong>Write down the timing.</strong> When the biting started, what changed in the house in the
+          fortnight before, whether anybody travelled, whether furniture came in, whether a nest or a
+          rodent problem was dealt with. That sequence is often more diagnostic than anything visible.
+        </p>
+        <p>
+          <strong>And see a doctor about your skin.</strong> Not instead of calling us — alongside. The two
+          questions are separate, and only one of them is ours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <Cta
+    heading="Bites with nothing found yet?"
+    body="Tell us when it started, what changed in the house beforehand, and whether anything physical has turned up. We will inspect, we will monitor properly, and if there is nothing there we will tell you that instead of selling you a treatment."
+  />
+</BaseLayout>

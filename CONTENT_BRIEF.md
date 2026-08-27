@@ -143,7 +143,10 @@ D-02 answered "By appointment only" at ~300 miles. B-12 and F-04 show he
   Briarwood, Polo Park (north and northwest Midland)
 - **Odessa:** Mission Estates, Parks Bell Ranch (north and northeast Odessa)
 - **Lubbock:** residential, apartment communities, commercial — *no named
-  neighbourhoods supplied yet.* `TODO(fact)` before the Lubbock page ships.
+  neighbourhoods supplied, and the neighbourhood tier for Lubbock was shelved in
+  August 2026 rather than answered.* The town page ships as it is; no
+  neighbourhood page is written for Lubbock without real place names, which has
+  not changed and is not negotiable.
 
 ### The fire ant line — the best uncontested fact we have
 
@@ -285,9 +288,19 @@ create a page; the hubs link only what exists and list the rest without links.
 of a pair, never one. The harness fails the build on a hreflang that points at
 a page which does not exist — verified by negative test.
 
-Written so far: `/es/`, `/es/servicios/`, `control-de-plagas`,
-`control-de-escorpiones`, `control-de-termitas`. The other nine services have
-slugs reserved in `services.ts` and no pages.
+**COMPLETE as of August 2026.** All twelve services now have a Spanish page at
+the full M1 floor, plus `/es/` and `/es/servicios/`. Every pair is reciprocal in
+`hreflang`, verified by the harness.
+
+**The maintenance rule this creates — read `I18N-01` in the decay registry.**
+The drift risk runs one way and is easy to miss: somebody edits an English page
+and the Spanish pair silently keeps the old claim. **Any change to a service
+fact goes on both pages in the same commit.** The pairs carrying hard refusals
+are the ones that must never diverge — chinches (no heat treatment), fauna (no
+poison; bats referred out; a bite goes to animal control and a doctor), aves (no
+poison or shooting; active nests untouched; native species protected), and the
+guarantee split: rodent, bed bug, flea and tick, lawn and bird work do **not**
+carry the 30-day guarantee, and mosquito work **does**.
 
 ---
 
@@ -295,11 +308,238 @@ slugs reserved in `services.ts` and no pages.
 
 | What | Why | Unblocks when |
 |---|---|---|
-| WDI / T-5 / realtor + lender cluster | B-05 says he's licensed; C-09 says he'd rather not do them | Owner confirms in writing. **BUILT AND PARKED** — `/compliance/wdi-report/` and `/services/termite-control/wdi-inspection/` are written to depth and held at noindex. Both gate on `BUSINESS.owner.wdiDecisionConfirmed`. Flip that ONE flag in `business.ts` to `true` and both ship. Verified: flag true → 46 indexable, both pass M1. ⚠️ Before shipping, replace the placeholder scheduling limits on the service page with his actual answer on radius and notice period. |
+| ~~WDI / T-5 / realtor + lender cluster~~ | ~~B-05 / C-09~~ | **RESOLVED Aug 2026 — SHIPPED.** He confirmed YES, gave three days as the notice he asks for, and then the last missing figure: a **90-mile WDI travel radius**. `BUSINESS.owner.wdiDecisionConfirmed` went `true` and both `/compliance/wdi-report/` and `/services/termite-control/wdi-inspection/` shipped on that one edit — 88 indexable, 0 held, both past M1. The 90-mile radius is stored as `owner.wdiRadiusMi` and is **not** the 100-mile general territory (D-03); the service page states both numbers and says why they differ, and derives the outside-radius town list from `towns.ts` so it cannot drift — Big Spring falls out at ~95 miles while staying inside the ordinary territory. Tracked as `BIZ-06`. |
 | Oilfield / man-camp vertical | C-07 shows no oilfield work done; C-12 says he wants it | There is a real job to point at |
-| Kermit, Stanton city pages | D-07 — wants them, doesn't serve them | He starts running them |
+| ~~Stanton city page~~ | ~~D-07~~ | **RESOLVED Aug 2026 — SHIPPED as a by-request page.** He answered "Have not currently serviced yet but would if a call came through," so the page was rewritten to claim exactly that and no more, and published. See §11b. |
+| ~~Kermit city page~~ | ~~D-07~~ | **RESOLVED Aug 2026 — SHIPPED as a by-request page**, 4,291 words. Winkler County is still outside the nine confirmed counties and the page says so twice, in the quick answer and in the first paragraph under the H1. See §11b. |
 | Community / sponsorship proof | F-12 — none yet | He joins something |
 | `aggregateRating` in schema | Owner-reported 12 @ 5.0 is not a verified read | We read the live GBP ourselves |
-| Any Lubbock neighbourhood claim | D-09 gave none for Lubbock | He names some |
+| Any Lubbock neighbourhood claim | D-09 gave none for Lubbock | **SHELVED Aug 2026, by the agency — no longer a pending owner question.** His answer was "Wolfforth area of Lubbock", and Wolfforth is not a Lubbock neighbourhood: it is a separate incorporated city in Lubbock County (pop. 5,521 at the 2020 census) with its own weed ordinance at 12 inches / 7 days. The tier is off the list rather than answered. The rule below is unchanged and still binding — nothing about Lubbock neighbourhoods gets written without real place names. Reopens only if those arrive unprompted. See `HELD-LUBBOCK-HOODS`. |
 | Caliche-and-termites causal claims | No extension-grade source found | A real source is located |
-| Seminole weed ordinance specifics | eCode360 blocks access | One call to the city inspector |
+| ~~Seminole weed ordinance specifics~~ | ~~eCode360 blocks access~~ | **RESOLVED Aug 2026 (K-04).** 12 inches, 10 days, annual rule; § 6.403 verified against the published contents, figures relayed from the city office. Both surfaces attribute them as second-hand and the comparison table daggers the row — `figuresFromCityOffice` on the town row drives it. Do not drop that marker. |
+
+---
+
+## 12 · Cadence — after the build
+
+The build ends; the site does not. `CADENCE.md` is the operating procedure and
+`src/data/maintenance.ts` is its machine-readable half — the decay registry, the
+held ledger and the publishing queue.
+
+**The rule this adds to §0.** §0 says a fact not in `src/data/` or this brief
+does not go on the site. §12 adds the second half: **a fact from an outside
+authority gets a row in `DECAYING_FACTS` in the same commit as the page that
+cites it.** A citation with no row is unmaintained by construction — which is
+exactly how the 48-hour sign at 4 TAC §7.146 came to run backwards on four
+pages before it was caught.
+
+`lastVerified` records a human reading the primary source. Not the date a page
+was edited, not the date somebody was fairly confident. Moving it without
+reading the source falsifies the one record that makes the rest trustworthy.
+
+Two commands:
+
+- `npm run verify` — build correctness, and now a hard failure on any critical
+  or high-severity fact past its interval.
+- `npm run cadence` — the full decay report, the held ledger reconciled against
+  `dist/`, and the queue. Run it on the first working day of each month.
+
+`Verified.astro` renders the stamp on the compliance and WDI pages, so the
+registry is visible to the reader rather than being an internal promise. Pass
+it the fact ids the page actually depends on; the oldest date wins, because a
+page is only as current as its stalest claim.
+
+**The queue, in order:** neighbourhood layer (13 pages, all data in hand) →
+Spanish service tree (9) → pest library (6–8) → service problem spokes (8–12) →
+held releases. See `CADENCE.md` §4.
+
+
+---
+
+## 11b · By-request towns — the rule
+
+A town where the owner does **not** run a route but **would** drive if somebody
+called is not a served town and is not nothing. `byRequest: true` on the town
+row in `towns.ts` marks it, and every surface that lists towns must render it
+differently from the ones he actually runs. A grid that shows a by-request town
+identically to a served one makes a coverage claim by omission.
+
+**Stanton is the exemplar — match it.** The rules a by-request page lives by:
+
+- **The framing goes above the fold.** First screen, in the quick answer and the
+  first paragraph under the H1. A disclaimer at the foot of a page that reads as
+  a coverage claim at the top *is* a coverage claim.
+- **Never imply a call history.** This is the trap. A normal city page writes
+  "what we get called about here" from real calls. In a by-request town there
+  are none, so the section becomes what that county's ground, climate and
+  construction produce — sourced from entomology and the quarantine — and the
+  page says out loud that this is what it is doing.
+- **No existing customers, no route, no schedule.** Say all three plainly once.
+- **Name what does not fit.** The page should send same-day work to a closer
+  company by name of city. That is the sentence that makes the rest credible.
+- **It does not drift upward.** If he starts running the town, the page gets
+  rewritten *up* into a normal city page and the flag comes off. It never gets
+  there one added sentence at a time. `BIZ-05` in the decay registry re-reads
+  the first screen of each by-request page twice a year for exactly this.
+
+**Kermit carries a second burden Stanton does not, and it is the harder one.**
+Winkler County is not in `COUNTIES_SERVED` — Kermit is outside the declared
+territory as well as off the route. A page existing is itself a kind of claim,
+so that page states the exclusion twice: once in the quick answer and once in
+the opening. If Winkler is ever added to the nine, the page gets rewritten
+rather than silently reclassified.
+
+Current by-request towns: **Stanton** (shipped, 4,211 words) and **Kermit**
+(shipped, 4,291 words). Both are watched by `BIZ-05` in the decay registry.
+
+
+---
+
+## 12b · Neighbourhood pages — what Wave 1 established
+
+Eight of the thirteen neighbourhood pages shipped in August 2026. The other
+five did not, and the reason is a rule rather than a shortfall.
+
+**The data splits by city, hard.**
+
+- **Midland** publishes a public ArcGIS Subdivision layer carrying, for every
+  platted addition, the `NAME`, the `SURVEYOR`, the plat recording date and the
+  cabinet/page instrument reference — plus a separate drainage service with the
+  100-year and 500-year floodplain and a `PLAYA` attribute naming individual
+  playa lakes. That is primary municipal record, and it is where the plat
+  chronologies, the Saddle Club floodplain material and the playa findings come
+  from.
+- **Odessa** publishes Plats and Subdivision feature services with per-filing
+  acreage and surveyor initials. Note its `Lots` field is aliased "Lots
+  Complete" with a Yes/No domain — it is **not** a lot count and must never be
+  reported as one.
+- **Seminole** publishes nothing comparable. Its five subdivisions return only
+  listing aggregators, and "Copper Ridge" mostly returns a different
+  subdivision near New Braunfels. Under §10, they do not ship — and they are
+  **not going to**. See §12c.
+
+**Each page must carry its own argument.** The eight that shipped are
+deliberately not variations on one template:
+
+| Page | The argument |
+|---|---|
+| Mission Estates, Odessa | An enforced "no weeds or dirt" covenant means irrigation; alleys are the rodent corridor |
+| Saddle Club, Midland | A named playa on the edge and floodplain across the Lakes section — mosquitoes run on rainfall, not the calendar |
+| Green Tree, Midland | 45 years irrigating 176 acres of golf turf on ground that was "a sandy old farm with one sickly tree" |
+| Parks Bell Ranch, Odessa | New build on former rangeland — construction displaces, and the builder can still answer the pre-treat question |
+| Polo Park, Midland | Stabled horses next door make flies the lead pest; 1982 covenants say nothing about yards |
+| Briarwood, Midland | Two association pools — pool plant that fails becomes mosquito habitat in a week |
+| Greathouse, Midland | A twelve-year platting gap makes it post-2004 stock; a school sits inside the plat |
+| Grassland Estates, Midland | Building continuously since 1984 and still going — every slab age on one street grid |
+
+**Three standing rules for this page type.**
+
+1. **Publish the provenance.** Where a section describes what conditions
+   produce rather than jobs actually done there, say so in the section. Every
+   one of these pages carries that note.
+2. **Never state a floodplain determination for an address.** The mapping is
+   the city's; the reading is ours. Each page tells the reader to check their
+   own parcel with the city. That sentence is what makes publishing the mapping
+   defensible — do not edit it out for flow.
+3. **Mark inference as inference.** Golf-course adjacency at Mission Estates,
+   detention use of Greathouse's common areas, and whether the Midland Polo
+   Club's turf is irrigated are all framed conditionally on purpose. So is the
+   Briarwood 259-homes-versus-18-sections discrepancy, which is flagged and
+   left unresolved rather than tidied.
+
+
+---
+
+## 12c · The Seminole subdivisions — resolved, not deferred
+
+Countryside Estates, Arrowhead Estates, Copper Ridge, Country View Estates and
+Diamond Hill Estates were scaffolded, held, researched and then **deliberately
+not built as pages**. The material lives in the "areas we work" section of
+`/locations/seminole/` instead, and that page states plainly why it is written
+that way rather than quietly presenting less.
+
+**The reasoning, so nobody reverses it by accident.** Five pages would have
+needed fifteen thousand words about five subdivisions in a small town on flat
+ground with one climate, one water table and one set of pests. Nothing about
+crossing from one into the next changes the biology, and no published source
+describes any of them. That is the exact shape of content this build exists to
+not produce.
+
+**What the town-page section does instead** is name the three things that
+genuinely do vary in Seminole, and it varies them property by property rather
+than subdivision by subdivision:
+
+1. **Build era** — decides whether the termite conversation is about imported
+   fill and a builder's pre-treat, or about four decades of perimeter history.
+2. **Distance to the field edge** — the single biggest driver here, and a fact
+   about a lot rather than about a development.
+3. **Landscaping maturity** — established planting and irrigation boxes as
+   harbourage, versus stacked construction material on newer ground.
+
+**Structural consequences already applied:**
+
+- The dynamic route `src/pages/locations/[town]/[hood].astro` has been
+  **deleted**. It was scaffolding; every neighbourhood page that ships is now
+  hand-written in its own file. Do not reintroduce a generated neighbourhood
+  route.
+- The five Seminole entries stay in `neighborhoods.ts` because the town page
+  renders their names and character lines. The file header now says so.
+- Cards for them render as `<div>`, not links. Nothing points at a page that
+  does not exist.
+
+**What would reopen this.** New, checkable local fact — the owner describing
+what he has actually seen in each, or Seminole publishing plat or GIS data of
+the kind Midland and Odessa do. Not a decision to try harder with the same
+material.
+
+---
+
+## 12d · Service problem spokes — what Wave 4 established
+
+**The rule for what earns a spoke.** A spoke is named after a sentence somebody
+actually says on the phone, not after a keyword. It ships only when it carries
+an argument its parent service page does not already make, at the M1 floor,
+from sources. Eight shipped in August 2026 — one per service that had real
+material. Eight was never the target; it is how many problems there was
+something honest to say about.
+
+| Parent service | Spoke | The argument |
+|---|---|---|
+| `bed-bug-treatment` | `bites-but-no-bed-bugs` | Bite marks identify nothing in either direction — ~32% of people in confirmed-infested homes reported no symptoms at all |
+| `rodent-control` | `noises-in-the-attic` | Time of day narrows it; sound does not identify a species; the legal position differs per animal |
+| `pest-control` | `roaches-in-a-clean-house` | Introduction is independent of housekeeping — but cleaning is still a control lever, and the page holds both |
+| `scorpion-control` | `scorpion-in-the-bathroom` | The drain story and the porcelain story have no source at all |
+| `wildlife-removal` | `dead-animal-in-the-wall` | No odour-duration figure exists anywhere; the mechanism is drying |
+| `termite-control` | `mud-tubes-on-the-foundation` | Breaking tubes does nothing to a colony in the soil; bath traps are the Texas-specific entry |
+| `lawn-care` | `grassburs` | A soil-temperature and seed-bank problem — 52°F, and at least three years |
+| `flea-and-tick` | `fleas-after-treating-the-pet` | The pupal window: the cocoon resists insecticide and waits for a host cue |
+
+**Four of the eight are built on refusing a claim the trade repeats.** That was
+not planned; it is what the research kept turning up. Specifically not
+published, and flagged in each file header:
+
+- no dead-animal odour-duration figure exists in any extension, public health
+  or peer-reviewed source — every version traces to marketing;
+- neither the scorpion drain story nor the smooth-surface story has any source,
+  and AgriLife's scorpion publication does not mention tubs, sinks or drains;
+- the "5% adults / 95% other stages" flea statistic is in none of eleven
+  extension and CDC sources checked — it is likely a garbling of a different,
+  spatial claim;
+- "spraying a mud tube is counterproductive" is commercial-blog only; the
+  sourced objection is simply that it does not reach the colony.
+
+**Registry, and why it is enforced.** `src/data/spokes.ts` is the single source
+of truth. `SpokeLinks.astro` renders each service's spokes on its parent page,
+so a spoke cannot ship orphaned. `scripts/verify.mjs` §7 reconciles the registry
+against the built routes **in both directions** — a page without a row fails the
+build, and a row without a page fails the build. `/services/termite-control/
+wdi-inspection/` is the one deliberate exemption, because it is a licensed
+category page linked from the compliance cluster rather than a problem spoke.
+
+**The lead-in copy is per spoke, not shared.** `Spoke.intro` exists because
+eight identical paragraphs across eight service pages is exactly the templating
+this build exists to avoid — and the duplicate-sentence scanner caught the first
+attempt, correctly.
+
+**What would add a ninth.** A problem with enough sourced material to sustain
+3,000 words that the parent page does not already cover. Not a keyword gap.

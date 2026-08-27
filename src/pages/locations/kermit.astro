@@ -1,0 +1,553 @@
+---
+/**
+ * T3 city page — Kermit, Winkler County. About 85 road miles from Seminole:
+ * south to Andrews on US-385, then west on TX-115. The same dogleg through
+ * Andrews that the Stanton route uses in the other direction.
+ *
+ * ############################################################################
+ * BY-REQUEST PAGE, AND THE WEAKER OF THE TWO. Read CONTENT_BRIEF §11b first.
+ *
+ * D-07 covered Kermit in the same breath as Stanton, and in August 2026 the
+ * owner answered: "Have not currently serviced yet but would if a call came
+ * through." So this page claims that and nothing more.
+ *
+ * KERMIT CARRIES A SECOND HONESTY BURDEN STANTON DOES NOT. Winkler County is
+ * NOT among the nine counties in COUNTIES_SERVED — it is outside the declared
+ * territory as well as off the route. The page must say so plainly rather than
+ * letting a reader infer normal coverage from the fact that a page exists.
+ *
+ * Same rules as Stanton: framing above the fold; never imply a call history or
+ * an existing customer; name what does not fit and who to ring instead; and if
+ * he ever runs Winkler County properly, this gets rewritten UP rather than
+ * drifting upward a sentence at a time.
+ * ############################################################################
+ *
+ * VERIFIED facts used here:
+ *  - Ordinance: Kermit Code of Ordinances ch. 7 (Health and Sanitation),
+ *    art. 7.02 "Weeds, Rubbish, Brush, and Other Unsanitary Matter"
+ *    (eCode360), §§ 7.02.001–7.02.013.
+ *      · 7.02.004 — TEN INCHES. Strictest on this route except Lubbock's
+ *        eight. Applies to owners, tenants, lessees, renters and agents.
+ *      · 7.02.008 — TEN DAYS to correct. Service by personal delivery, by
+ *        mail (DEEMED RECEIVED FIVE DAYS after mailing), by newspaper
+ *        publication twice within ten consecutive days, by posting on the
+ *        door, or by posting on a stake on the property. A repeat violator
+ *        cited within 24 months may be issued a citation with no new notice.
+ *      · 7.02.009 — subsequent violations of the same nature within a
+ *        TWENTY-FOUR MONTH period may be corrected without further notice.
+ *        Every other town on this route runs a TWELVE-month window.
+ *      · 7.02.010 — city does the work, costs are a charge AND a personal
+ *        liability; city manager assesses against the real estate and may
+ *        file a lien statement with the county clerk; privileged lien at
+ *        TEN PERCENT annual interest.
+ *      · 7.02.011 — vegetation over FORTY-EIGHT INCHES posing immediate
+ *        danger may be abated with NO ADVANCE NOTICE; notice follows within
+ *        ten days; owner may request an administrative hearing within 30
+ *        days, to be held within 20 days of the request.
+ *      · 7.02.012 injunctive relief and civil actions; 7.02.013 penalty.
+ *  - Winkler County IS on the imported fire ant regulated-areas list under
+ *    7 C.F.R. §301.81-3, which 4 TAC §19.101 adopts by reference. Read
+ *    directly off the APHIS list (last updated 27 October 2022) Aug 2026.
+ *    Gaines, Yoakum, Andrews, Dawson and Terry are NOT on it.
+ *  - Census: 2020 population 6,267; July 2025 estimate 6,019. Land area
+ *    2.52 sq mi. Housing units 2,609 and households 2,193 at the 2020
+ *    census. Owner-occupied rate 84.5% (ACS 2020–2024) — the HIGHEST of any
+ *    town on this route. Median owner-occupied value $151,600; median
+ *    household income $81,170; 2.66 persons per household.
+ *  - Winkler County (TSHA): 840 sq mi; elevation 2,671–3,193 ft; annual
+ *    precipitation averages TWELVE INCHES — the driest county on this route;
+ *    January lows around 28°F, July highs around 97°F; 220-day growing
+ *    season. Dark-brown to reddish-brown sands and sandy loams. A diagonal
+ *    SAND DUNE BELT crosses the central county, dunes 30–40 ft above the
+ *    surrounding terrain. Creosotebush, cacti, scrub, scattered willows and
+ *    wild plums.
+ *  - History (TSHA): supply centre for scattered ranches; named for Kermit
+ *    Roosevelt, son of Theodore Roosevelt, who hunted antelope at the T Bar
+ *    Ranch shortly before the naming. County seat since the county organised
+ *    in 1910; first school and post office the same year. Oil found in the
+ *    Hendrick field 16 July 1926 (Hendrick No. 1). Population 1,000 in 1927,
+ *    1,500 by 1929; Texas–New Mexico Railway arrived 4 March 1929; 2,700
+ *    residents and 180 businesses by the end of the 1930s. Incorporated
+ *    15 February 1938. Census: 1940 2,584 · 1950 6,912 · 1960 10,465 ·
+ *    1970 7,884 · 1980 8,015 · 1990 6,875 · 2000 5,714. County population
+ *    peaked at 13,652 in 1960. The last working wooden derrick in the
+ *    Permian Basin was moved to Pioneer Park in Kermit in 1966.
+ *  - NO pest control company holds a street address in Kermit. Directory
+ *    results are Odessa, Monahans, Pecos, Midland, and national chains
+ *    serving from elsewhere.
+ *
+ * NOT FOUND — MUST NOT BE STATED:
+ *  - Named neighbourhoods or subdivisions in Kermit. D-09 named none.
+ *  - Exact road mileage Kermit→Odessa or Kermit→Monahans.
+ *  - Median year structure built.
+ *  - Any named employer.
+ *  - Any claim about the aquifer or water quality. Out of scope and not ours.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Trust from '../../components/Trust.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICES } from '../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Kermit', path: '/locations/kermit/' },
+];
+
+const quickAnswer =
+  'Trusted Termite and Pest Solutions is not based in Kermit, runs no Winkler County route, and does not count Winkler among its nine service counties. Kermit work happens by request: you call, and owner Valentin Moriel drives the eighty-five miles from Seminole under Texas licence TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'Do you actually service Kermit?',
+    a: 'By request only, and Kermit is the furthest edge of what that means. We have no Winkler County route, no customers in Kermit, and Winkler is not one of the nine counties we list as our service area — it sits outside the territory as well as off the schedule. What is true is that the licence is a Texas licence and eighty-five miles is a drive we will make for work that can be planned. If you need somebody quickly, Odessa and Monahans both have companies far closer than us and we will tell you so.',
+  },
+  {
+    q: 'How tall can grass and weeds get in Kermit?',
+    a: 'Ten inches. Section 7.02.004 makes grass, weeds or brush over ten inches a prohibited nuisance, and it binds owners, tenants, lessees, renters and responsible agents alike — so renting does not move the problem to somebody else. Ten inches is the strictest standard of any town on our route except Lubbock, which runs eight. Most of the region sits at twelve.',
+  },
+  {
+    q: 'How long do I get after a notice in Kermit?',
+    a: 'Ten days, under section 7.02.008. Watch how the clock starts, because that section is unusually specific about service: notice can be delivered personally, mailed — and if it is mailed it is deemed received five days after it was posted, whether or not you actually opened it — published in a newspaper twice within ten consecutive days, posted on the door of a building, or posted on a stake driven into the property. Several of those can happen without you being handed anything.',
+  },
+  {
+    q: 'Does one notice in Kermit cover repeat violations?',
+    a: 'Yes, and for twice as long as anywhere else we work. Section 7.02.009 allows the notice to state that another violation of the same nature within twenty-four months may be corrected by the city without further notice. Every other town on our route runs a twelve-month window. Section 7.02.008 carries the same twenty-four-month period for issuing a citation to a previously cited violator. In practical terms, one letter about tall grass in a Kermit spring can still be live two summers later.',
+  },
+  {
+    q: 'What is the forty-eight inch rule in Kermit?',
+    a: 'Section 7.02.011 gives the city authority to abate dangerous weeds with no advance notice at all. Where vegetation is higher than forty-eight inches and poses an immediate danger, the city may enter and remove it, and then notify you within ten days of what it did. You can request an administrative hearing within thirty days of that notice, and it has to be held within twenty days of the request. It is worth knowing that the no-notice route exists, and worth knowing the hearing exists too — most people who receive that letter do not realise the second half is there.',
+  },
+  {
+    q: 'What happens if the city does the work in Kermit?',
+    a: 'Under 7.02.010 the cost becomes both a charge against the property and a personal liability of the owner — both, not either. The city manager assesses the expenses against the real estate and may file a lien statement with the county clerk, which creates a privileged lien carrying ten percent annual interest. Section 7.02.012 adds injunctive relief and civil actions, and 7.02.013 carries a penalty on top.',
+  },
+  {
+    q: 'Are fire ants a problem in Kermit?',
+    a: 'Winkler County is on the imported fire ant regulated-areas list under 7 C.F.R. section 301.81-3, which Texas adopts by reference at 4 TAC section 19.101. We read that directly off the APHIS list rather than taking it second-hand. That makes Kermit different from Seminole, Denver City, Andrews, Brownfield and Lamesa, where the counties are not listed and a suspected fire ant mound is almost always a red harvester ant instead. In Kermit the identification genuinely matters — the two need different products, and only one of them brings movement restrictions on soil, sod, hay stored on the ground and used soil-moving equipment leaving the county.',
+  },
+  {
+    q: 'How far is Kermit from you?',
+    a: 'About eighty-five miles by road. There is no direct route: it is south to Andrews on US-385, then west on TX-115, which is the same dogleg through Andrews that our Stanton route uses in the opposite direction. That distance and that shape are why Kermit is a planned day rather than somewhere we pass through.',
+  },
+  {
+    q: '¿Ofrecen servicio en español en Kermit?',
+    a: 'Sí. Valentin habla español con fluidez y hace el trabajo él mismo. Para ser claros: no tenemos ruta en el condado de Winkler ni clientes en Kermit, y Winkler no está entre los nueve condados que atendemos normalmente. El trabajo en Kermit se hace por solicitud, con un día programado para el viaje de ochenta y cinco millas. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Kermit, Texas — By Request"
+  description="No Winkler County route and Kermit sits outside our nine counties. Call and we will drive the eighty-five miles, booked as a planned day. TPCL 0918482."
+  path="/locations/kermit/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Kermit, Texas — by request',
+    description: 'Scorpion, spider, termite, rodent and general pest control for homes, acreage and businesses in Kermit and Winkler County, provided by arrangement rather than on a scheduled route.',
+    areaServed: ['Winkler County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Winkler County · about 85 road miles · by request, and outside our usual territory</p>
+      <h1>Pest Control in Kermit, Texas</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Two things to get out of the way, and the second one is unusual to admit.</strong> The
+          first is that we do not serve Kermit in any ordinary sense. No route runs through Winkler
+          County, we have no customers there, and nobody drives past your street on a set day.
+        </p>
+        <p>
+          The second is that Kermit sits outside the nine counties we list as our service area
+          altogether. Gaines, Yoakum, Andrews, Dawson, Terry, Howard, Midland, Ector and Lubbock — Winkler
+          is not among them. Most companies would simply publish a page and let you assume otherwise,
+          because a page existing is itself a kind of claim. We would rather say it: this is the furthest
+          edge of what we do, and it is a page about a drive we are willing to make rather than a territory
+          we cover.
+        </p>
+        <p>
+          So why write it at all? Because Kermit has the strictest property ordinance on our entire route,
+          because Winkler County is one of the few counties out here that is actually on the fire ant
+          quarantine, and because there is no pest control company based in the town — which means
+          everything anyone tells you about pest work in Kermit is being told to you by somebody driving
+          in from somewhere else. That being true of us as well seems like a reason to be precise about
+          it rather than a reason to keep quiet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Ten inches — the strictest standard on the route</h2>
+      <div class="measure">
+        <p>
+          Kermit's rules live in chapter 7 of the city code, article 7.02, headed <strong>"Weeds, Rubbish,
+          Brush, and Other Unsanitary Matter."</strong> It runs from 7.02.001 to 7.02.013, and it is
+          noticeably more developed than the equivalent article in most towns this size.
+        </p>
+        <p>
+          <strong>Ten inches.</strong> Section 7.02.004 makes grass, weeds or brush above ten inches a
+          prohibited nuisance. For comparison: Seminole, Seagraves, Denver City, Lamesa, Brownfield and
+          Stanton all run twelve, Andrews runs twelve with a separate figure for larger lots, Midland runs
+          eighteen, and only Lubbock is tighter at eight. Two inches sounds like nothing until you are the
+          one mowing to it in a wet June.
+        </p>
+        <p>
+          <strong>It binds tenants as well as owners.</strong> The section names owners, tenants, lessees,
+          renters and responsible agents. That is worth reading twice if you rent out property in Kermit
+          or if you rent in it, because it means the obligation does not automatically sit with whoever
+          you assume it sits with. The lien, when it comes, still attaches to the property.
+        </p>
+        <p>
+          <strong>Ten days to correct.</strong> Section 7.02.008. That is the same window Denver City and
+          Andrews give you and longer than the seven days at Seagraves, Brownfield, Lamesa and Stanton.
+        </p>
+        <p>
+          <strong>But read how the notice can reach you.</strong> This is the part that catches people.
+          Notice may be delivered personally, or mailed — and if it is mailed, it is
+          <strong>deemed received five days after posting</strong>, whether or not you opened it, and
+          whether or not you were in town. It may also be published in a newspaper twice within ten
+          consecutive days, posted on the door of a building on the property, or posted on a stake driven
+          into the ground there. Several of those routes involve nobody handing you anything at all. If
+          you own a lot in Kermit and live somewhere else, that combination is the one to plan around.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Twenty-four months, which is twice the usual memory</h2>
+      <div class="measure">
+        <p>
+          Every town on our route has some version of a repeat-violation provision, and it catches people
+          out in all of them. The idea is simple: the notice you receive can tell you that if the same
+          kind of violation happens again within a set period, the city can fix it at your expense without
+          sending a second letter.
+        </p>
+        <p>
+          In Seminole, Stanton, Seagraves, Denver City, Lamesa, Brownfield and the rest, that period is
+          <strong>twelve months</strong>. In Kermit, section 7.02.009 sets it at
+          <strong>twenty-four</strong>. Section 7.02.008 carries the same twenty-four-month period for the
+          separate question of issuing a citation to somebody already cited once.
+        </p>
+        <p>
+          Doubling that window changes the practical arithmetic more than it looks like it should. One
+          letter about tall grass in an April can still be governing what happens on the property two
+          summers later, by which point the tenant has changed, or the property has been sold, or the
+          person who received the letter has genuinely forgotten it existed. Nothing about that is hidden
+          — it is printed in the code — but almost nobody reads their city's code, which is roughly why
+          this page exists.
+        </p>
+        <p>
+          <strong>What the city can do at the end of it.</strong> Under 7.02.010 the city performs the
+          work and the cost becomes <em>both</em> a charge against the real estate <em>and</em> a personal
+          liability of the owner — both, not one or the other. The city manager assesses the expenses
+          against the property and may file a lien statement with the county clerk, creating a privileged
+          lien that accrues <strong>ten percent</strong> annual interest from filing. Section 7.02.012
+          adds injunctive relief and civil actions, and 7.02.013 carries a penalty on top of all of it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Forty-eight inches, no notice, and the hearing most people miss</h2>
+      <div class="measure">
+        <p>
+          Section 7.02.011 is the provision we would most want somebody in Kermit to know about, and it
+          is the one least likely to be known. It gives the city authority to abate
+          <strong>dangerous weeds</strong> — vegetation higher than forty-eight inches that poses an
+          immediate danger — by entering the property and removing it
+          <strong>with no advance notice whatsoever</strong>.
+        </p>
+        <p>
+          The notice comes afterwards. The city has ten days to tell you what it found and what it did.
+          Four feet is a lot of growth, so this is not a rule that ambushes somebody who mowed three weeks
+          ago; it is aimed at genuinely abandoned lots and properties nobody is watching. If you have
+          inherited a lot, or bought one at auction, or own something in Kermit you have not stood on this
+          year, that is the provision that applies to you rather than the ten-inch one.
+        </p>
+        <p>
+          <strong>And the half nobody mentions.</strong> If you receive one of those after-the-fact
+          notices, you may request an administrative hearing within thirty days, and the city has to hold
+          it within twenty days of your request. That is a real procedural right with a real clock on it,
+          and it appears in the same section as the power that upset you. We are not lawyers and this is
+          not legal advice — but we would rather a Kermit property owner learned the hearing exists from a
+          pest control website than found out it had expired.
+        </p>
+        <p>
+          The practical link to our actual trade is direct enough. Vegetation at four feet on a vacant lot
+          is not only a code problem. It is harbourage — for rodents that then move into the occupied
+          house next door when the first cold nights arrive, for snakes following those rodents, and for
+          the scorpions and spiders that shelter under whatever is lying underneath it. Lot clearing is
+          work we do, and getting ahead of a notice is cheaper than answering one every time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Twelve inches of rain, and a belt of sand dunes</h2>
+      <div class="measure">
+        <p>
+          Winkler County averages <strong>twelve inches of precipitation a year</strong>. That is the
+          driest figure on our whole route — Martin County, around Stanton, gets nearly sixteen. January
+          lows run around 28°F, July highs around 97°F, and the growing season stretches to 220 days.
+          Elevation across the county's 840 square miles runs from 2,671 to 3,193 feet.
+        </p>
+        <p>
+          <strong>Dryness is not the pest relief people assume it is.</strong> AgriLife entomologists note
+          that striped bark scorpions move indoors when conditions outside become excessively dry — they
+          are following moisture, and your house has some. A long rainless stretch in a county that only
+          gets twelve inches in a good year is therefore a reliable predictor of a difficult August
+          indoors, not an easy one. The same logic applies to a surprising number of the things people ring
+          about out here.
+        </p>
+        <p>
+          <strong>The dunes are a real geographic feature, not scenery.</strong> A diagonal belt of sand
+          dunes crosses the central part of Winkler County, with dunes standing thirty to forty feet above
+          the ground around them. County soils run to dark-brown and reddish-brown sands and sandy loams,
+          with creosotebush, cactus, scrub and the occasional willow and wild plum.
+        </p>
+        <p>
+          For a building, loose sand does three things. It moves, which is why perimeter treatments in
+          sandy ground behave differently than they do in the caliche further north and need thinking
+          about rather than repeating. It digs easily, which suits burrowing insects and the animals that
+          eat them. And it drains fast, which concentrates whatever moisture exists — irrigation, a
+          dripping tap, a condensate line, a leaking hose bib — into a small number of spots that then do
+          all the work of attracting everything for a considerable distance around.
+        </p>
+        <p>
+          That last point is the practical one. In wetter country, moisture is everywhere and pest pressure
+          is diffuse. In Winkler County it is concentrated, which means the survey matters more than the
+          spray. Finding the three places on a property where water actually is tells you most of what you
+          need to know before anything gets treated.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A town of owners, and a town with empty houses</h2>
+      <div class="measure">
+        <p>
+          Kermit had <strong>6,267 people at the 2020 census</strong> and an estimated 6,019 in mid-2025,
+          on 2.52 square miles. <strong>84.5% of occupied homes are owner-occupied</strong> — the highest
+          rate of any town on our route, ahead of Stanton's 78.4%. Median owner-occupied value is
+          $151,600, median household income $81,170, and households average 2.66 people.
+        </p>
+        <p>
+          High ownership changes who makes the call and what they are deciding. An owner is not
+          negotiating with a landlord about whether a problem is worth fixing; they are weighing a cost
+          against a house they intend to keep. In practice that produces better conversations and slower
+          ones. People want to understand what is actually happening before they agree to anything, which
+          suits how we work anyway.
+        </p>
+        <p>
+          <strong>The other number is the interesting one.</strong> At the 2020 census Kermit had
+          <strong>2,609 housing units and 2,193 households</strong>. The gap is roughly four hundred
+          units, about one in six, standing empty.
+        </p>
+        <p>
+          That is the fingerprint of the population curve. Kermit held 10,465 people in 1960 and 5,714 in
+          2000 — the town built for a peak it then spent forty years coming down from, and the houses
+          stayed after the people left. Vacant structures do not have pest problems, because nobody is
+          there to have one. They have pest <em>populations</em>, undisturbed, which then move when the
+          weather turns or when somebody finally starts work on the building. If your neighbour's house
+          has been empty three years, that is part of your situation whether or not anything is showing up
+          indoors yet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What Winkler County property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> On the towns we actually run, a section like this is
+          written from what people ring us about there. Nobody has rung us about anything in Kermit, so
+          this is not that. It is what Winkler County's climate, soil, building stock and quarantine
+          status produce — drawn from AgriLife entomology, the APHIS regulated-areas list and the census
+          and geography set out above. It would be true whether or not we existed, which is precisely why
+          we are willing to put our name on it.
+        </p>
+        <p>
+          <strong>Scorpions, and the dryness argument.</strong> Striped bark scorpions are the signature
+          pest of this whole region and Winkler County is the driest part of our map. They are nocturnal,
+          they climb better than people expect, they turn up in attics and in shoes and along the top
+          plate of a wall, and they follow moisture indoors when the outside has none. Harbourage removal
+          and exclusion do more here than spraying does — which is a harder sell than a treatment and a
+          more honest one.
+        </p>
+        <p>
+          <strong>Fire ants, which most of our route does not have.</strong> Winkler County is on the
+          federal imported fire ant regulated-areas list under 7 C.F.R. §301.81-3, adopted into Texas law
+          by reference at 4 TAC §19.101. We read that off the APHIS list ourselves rather than repeating
+          somebody's summary of it. Gaines, Yoakum, Andrews, Dawson and Terry are not on it, which means
+          the honest answer to a fire ant question in Seminole is usually "that is a red harvester ant".
+          In Kermit it may genuinely not be. The two need different products and different methods, and
+          the quarantine brings movement restrictions on soil, sod, nursery stock, hay stored on the
+          ground and used soil-moving equipment leaving the county.
+        </p>
+        <p>
+          <strong>Rodents, on the oilfield's calendar rather than the farm's.</strong> Winkler County
+          reported essentially no crops by 1959; this is oil and livestock country, not row-crop country.
+          So the autumn harvest surge that drives rodent pressure around Seminole and Lamesa is not the
+          local pattern. What is local is equipment yards, pipe racks, outbuildings, tank batteries and
+          vacant houses — continuous shelter and intermittent food, year-round rather than seasonal, with
+          the first cold nights concentrating it indoors.
+        </p>
+        <p>
+          <strong>Spiders in the enclosures nobody opens.</strong> Meter boxes, well houses, pump
+          enclosures, the space under a shed on blocks. Black widows favour exactly that profile — small,
+          dark, undisturbed, opened once or twice a season. Brown recluse occur across Texas and shelter
+          in firewood, stored boxes and low-traffic crevices; bites are rare and almost always accidental.
+        </p>
+        <p>
+          <strong>Termites, despite what people will tell you.</strong> The assumption that it is too dry
+          out here for termites is the single most expensive wrong belief in West Texas pest control.
+          Subterranean termites work below grade where the moisture is, and slab construction hides the
+          evidence rather than preventing the problem. Twelve inches of annual rainfall does not settle
+          the question; it just delays finding out.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>How a Kermit job actually works</h2>
+      <div class="measure">
+        <p>
+          <strong>Eighty-five miles, and no straight road.</strong> The route is south to Andrews on
+          US-385 and then west on TX-115 — the same dogleg through Andrews that our Stanton route uses in
+          the other direction. There is nothing on the far end of it for us except the job, so a Kermit
+          booking is a day arranged around a single property or it does not make sense for either of us.
+        </p>
+        <p>
+          <strong>What fits.</strong> Termite work, which is planned by its nature — inspection, then
+          treatment, then a follow-up on the interval the biology decides rather than the one the
+          schedule prefers. Starting a recurring service, where the first visit is a date anyway. Lot
+          clearing ahead of a notice deadline, which in Kermit can arrive with less warning than
+          elsewhere. A property between tenants. Several properties at once — a landlord with a few
+          houses, or neighbours who talked to each other. Any of those turn eighty-five miles into a
+          sensible drive.
+        </p>
+        <p>
+          <strong>What does not, and we will say so on the phone.</strong> Anything urgent. A wasp nest
+          today, a single small treatment with no deadline attached, anything where getting somebody there
+          this afternoon is worth more than anything else about the job. Odessa and Monahans both have
+          companies far closer to you than we are, and pointing that out costs us the work and saves you
+          the wait.
+        </p>
+        <p>
+          <strong>The guarantee is what distance really tests.</strong> A thirty-day guarantee is only
+          worth what the return trip is worth. Ask us — and ask everyone else you ring — not whether there
+          is a guarantee, but what happens to it at this distance. Our answer is that a callback inside
+          the window is a drive we have already agreed to make when we took the job, and that is why we
+          would rather turn down work that does not suit the arrangement than take it and disappoint you
+          in week three.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we would take on in Kermit</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          Every service below is covered by the licence and is one we would drive for, given a date. None
+          of them are running in Kermit today, because nothing is.
+        </p>
+        <p>
+          <strong>No contracts.</strong> Recurring service runs bi-monthly or quarterly, priced on the
+          size of the property, the pressure and the frequency, with a higher initial visit. Termite, bed
+          bug, mosquito, lawn, brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work
+          carrying its own one-year re-treatment warranty. Military discount. Cash, check, card in person
+          or online, Venmo, CashApp or Zelle, and financing available on larger jobs. Se habla español.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Nobody is based in Kermit either</h2>
+      <div class="measure">
+        <p>
+          No pest control company holds a street address in Kermit. Directory searches return Odessa,
+          Monahans, Pecos and Midland firms plus national chains operating from further afield. Every
+          company that works in Kermit drives there, which puts us in the same category as all of them —
+          just further out.
+        </p>
+        <p>
+          For a county seat of six thousand people that is a genuine gap rather than a slight. Kermit has
+          been the seat of Winkler County since the county organised in 1910, took its name from Kermit
+          Roosevelt after Theodore Roosevelt's son hunted antelope at the T Bar Ranch nearby, and grew
+          from a ranch supply point into an oil town after the Hendrick discovery on 16 July 1926. It
+          incorporated in 1938 and held over ten thousand people in 1960. The last working wooden derrick
+          in the Permian Basin stands in Pioneer Park in town. This is not a hamlet; it simply does not
+          have a pest control company in it.
+        </p>
+        <p>
+          <strong>So the honest comparison is not local versus distant.</strong> Everybody is distant.
+          The question is what each distant company's distance actually costs you — whether the inspection
+          gets its time or gets compressed because the route is full, whether the second visit that
+          termite and rodent work genuinely requires lands on the interval the biology needs, and whether
+          a guarantee callback happens promptly or waits until somebody is next out that way.
+        </p>
+        <p>
+          <strong>Where we stand on that, plainly.</strong> We are the furthest away and the least
+          convenient, and Kermit is outside the territory we normally claim. What we can offer against
+          that is a licence number published on every page here — TPCL 0918482 — verifiable against the
+          Texas Department of Agriculture's records in about two minutes, including whether the categories
+          cover the work being quoted. Guarantee terms written out with a duration, a scope, a remedy and
+          explicit exclusions. No contract, no term, no cancellation fee. And the licence holder doing the
+          work himself, which means the person who quotes the job is the person who finds out whether the
+          quote was right.
+        </p>
+        <p>
+          <strong>And the limitation, once more, because it is the whole shape of this page.</strong>
+          Eighty-five miles, no route, and a county we do not otherwise cover. That makes Kermit a planned
+          day or nothing at all. If that works for what you need doing, ring and we will talk about it
+          properly. If it does not, ring Odessa or Monahans with our blessing — you will get a better
+          answer faster, and we would rather tell you that now than discover it together in a fortnight.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Kermit pest control questions" />
+  <Cta
+    market="Kermit"
+    line="No Winkler County route, no Kermit customers, and eighty-five miles with a dogleg through Andrews — so a job here is a day arranged around it. Tell him what you are seeing and whether there is a date attached, and he will tell you straight whether it is worth the drive or whether Odessa is the better call."
+  />
+</BaseLayout>

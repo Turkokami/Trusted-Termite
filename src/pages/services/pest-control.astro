@@ -13,6 +13,7 @@ import Trust from '../../components/Trust.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
+import SpokeLinks from '../../components/SpokeLinks.astro';
 import { serviceBySlug } from '../../data/services';
 import { TOWNS } from '../../data/towns';
 
@@ -434,4 +435,6 @@ const faqs = [
 
   <Faq items={faqs} heading="Pest control questions" />
   <Cta line="He answers his own phone about nine times out of ten. Tell him what you are seeing, where you are seeing it, how long it has been going on and what you have already tried — that is genuinely most of the diagnosis, and it costs nothing to ask." />
+  <SpokeLinks service="pest-control" />
+
 </BaseLayout>

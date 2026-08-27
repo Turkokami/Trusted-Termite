@@ -1,0 +1,74 @@
+---
+/**
+ * Verified.astro — Phase 6.
+ *
+ * Stamps a page with the date a human last read the primary sources behind its
+ * legal claims, drawn from the decay registry in src/data/maintenance.ts. The
+ * registry is not documentation: it renders. That is deliberate. A maintenance
+ * schedule nobody can see is a promise; a date printed next to a statute
+ * citation is a commitment, and it is visibly wrong if it goes stale.
+ *
+ * Pass the fact ids the page actually depends on. The oldest verification date
+ * among them is the one shown — a page is only as current as its stalest claim.
+ */
+import { DECAYING_FACTS } from '../data/maintenance';
+
+interface Props {
+  /** Ids from DECAYING_FACTS. Unknown ids fail the build rather than render blank. */
+  facts: string[];
+}
+const { facts } = Astro.props;
+
+const rows = facts.map((id) => {
+  const f = DECAYING_FACTS.find((x) => x.id === id);
+  if (!f) throw new Error(`Verified.astro: unknown fact id "${id}" — add it to maintenance.ts`);
+  return f;
+});
+
+const oldest = rows.map((r) => r.lastVerified).sort()[0];
+const human = new Date(oldest + 'T00:00:00Z').toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+});
+const sources = [...new Set(rows.map((r) => r.source))];
+---
+
+<aside class="verified" data-boilerplate>
+  <p class="verified__stamp">Sources last read on <time datetime={oldest}>{human}</time></p>
+  <ul class="verified__list">
+    {sources.map((s) => <li>{s}</li>)}
+  </ul>
+  <p class="verified__note">
+    Rules and quarantine boundaries change without notice to anyone outside the agency that
+    changes them. Each source is named so you can read the current text yourself rather than
+    trust a summary on a pest control website — including this one.
+  </p>
+</aside>
+
+<style>
+  .verified {
+    border-top: 2px solid var(--rule-2);
+    margin-top: 2.25rem;
+    padding-top: 1rem;
+    max-width: var(--measure);
+  }
+  .verified__stamp {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 0 0 .6rem;
+  }
+  .verified__list {
+    margin: 0 0 .8rem;
+    padding-left: 1.1rem;
+    color: var(--ink-2);
+    font-size: .92rem;
+  }
+  .verified__list li { margin-bottom: .3rem; }
+  .verified__note {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: .88rem;
+  }
+</style>

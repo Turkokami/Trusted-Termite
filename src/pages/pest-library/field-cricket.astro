@@ -1,0 +1,422 @@
+---
+/**
+ * Pest library — field crickets, Gryllus spp.
+ *
+ * THE ARGUMENT: lighting, not insecticide. AgriLife's own wording is
+ * unusually blunt and the page is built on it:
+ *  - Outdoor lighting is "the most important single cause of severe cricket
+ *    infestations around homes and commercial buildings" (ENT-2003).
+ *  - "crickets will continue to cause problems, regardless of the amounts of
+ *    insecticides used" [where the lighting keeps attracting them].
+ *  - "Insecticides should only be considered as a last resort."
+ *  - "Low-pressure sodium vapor lamps and yellow incandescent 'bug lights' are
+ *    less attractive to crickets than standard incandescent, fluorescent,
+ *    mercury vapor or halogen lights."
+ *
+ * VERIFIED:
+ *  - "Field crickets are dark brown to black crickets, 9/16 to over 1 inch
+ *    long." AgriLife identifies the Texas outbreak insect as the Gryllus
+ *    assimilis complex.
+ *  - vs HOUSE CRICKET: ~3/4 inch, "yellowish-brown" with "three dark head
+ *    bands". The head bands are the cleanest separator.
+ *  - Female has "a sword-like egg laying structure (ovipositor)"; eggs in
+ *    moist soil or sand; nymphs hatch after 15–25 days; maturity ~12 weeks
+ *    (AgriLife's Brown: "mature in three months"); "As many as three
+ *    generations may be produced per year in southern areas"; winter passed as
+ *    eggs in cold climates and as nymphs in warmer ones; simple metamorphosis.
+ *  - OUTBREAK TRIGGER: peaks in "August and September when a summer drought is
+ *    broken by rainfall and cooler weather", and "the heaviest cricket mating
+ *    flights usually last only 1-2 weeks". The 1–2 week figure is the single
+ *    most useful expectation-setting fact for a customer.
+ *  - Brown: "The crickets don't sting or bite, so they're not doing anything
+ *    other than being annoying." Damage: garden plants outdoors; indoors
+ *    "natural and synthetic fabrics, furs and carpeting".
+ *  - Businesses: they congregate at front doors, gas stations and car
+ *    dealerships with bright all-night lighting.
+ *
+ * ⚠️ FOUR HONESTY FLAGS THAT MUST SURVIVE ANY EDIT:
+ *  1. NO West Texas-specific AgriLife cricket publication exists — the 2012
+ *     alert is explicitly titled for "east and central Texas". Present the
+ *     mechanism as AgriLife's STATEWIDE account, not as regional guidance.
+ *  2. LEDs: AgriLife's cricket lighting guidance names low-pressure sodium and
+ *     yellow incandescent. It does NOT address LED colour temperature or
+ *     spectra for crickets. DO NOT attribute LED advice to AgriLife. What CAN
+ *     be cited is Merchant's general principle that "nocturnal insects are
+ *     attracted most strongly to UV light (toward the blue end of the light
+ *     spectrum)".
+ *  3. The peer-reviewed spectral work (blue 447/478 nm most attractive;
+ *     4500K LEDs attracting 1.43× more insects than 3000K) is real BUT
+ *     Orthoptera were only 0.79% of that catch. So: warmer lighting attracts
+ *     fewer nocturnal insects GENERALLY; it is NOT established for crickets
+ *     specifically. The page must carry that caveat with the claim.
+ *  4. SCORPIONS. AgriLife E-362 says scorpions' "Chief foods are small
+ *     insects, spiders, centipedes, earthworms, and other scorpions" — but
+ *     E-362 makes NO prey-reduction and NO lighting recommendation, and names
+ *     no crickets. The SPIDER chain IS AgriLife-supported (Merchant explicitly
+ *     calls nocturnal insects "spider food" and lists Food first among causes
+ *     of heavy spider populations). So: state the spider link as sourced, and
+ *     state the scorpion link as reasoning clearly labelled as reasoning.
+ *     The claim "autumn cricket flights drive West Texas scorpion numbers" is
+ *     NOT stated by any extension source located. Do not assert it.
+ *  5. Dead crickets causing odour and attracting scavengers is an industry
+ *     commonplace and was NOT VERIFIED in the AgriLife sources. Not asserted.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'Field crickets', path: '/pest-library/field-cricket/' },
+];
+
+const quickAnswer =
+  'Texas A&M calls outdoor lighting the most important single cause of severe cricket infestations around homes and businesses, and states that crickets will keep causing problems regardless of how much insecticide is used. The heavy flights last one to two weeks, triggered when a summer drought breaks in August or September.';
+
+const faqs = [
+  {
+    q: 'How long does a cricket outbreak last?',
+    a: 'Not long, which is the most useful thing anybody can tell you while it is happening. AgriLife states that the heaviest cricket mating flights usually last only one to two weeks. The trigger is a summer drought breaking — rainfall plus cooler weather in August or September — and once the flight passes, the numbers collapse. Knowing that changes the sensible response, because paying for a treatment programme against something with a fortnight to run is rarely the best use of the money.',
+  },
+  {
+    q: 'What actually causes them to swarm a building?',
+    a: 'Lights, and AgriLife is unusually direct about it. Its publication states that outdoor lighting is the most important single cause of severe cricket infestations around homes and commercial buildings. It goes further and says that where the lighting continues to attract them, crickets will keep causing problems regardless of the amounts of insecticide used. That is Texas A&M telling you the spray is not the answer, which is not a thing extension services say lightly.',
+  },
+  {
+    q: 'So what do I change about the lights?',
+    a: 'Two things. Turn off what you do not need — AgriLife recommends switching lights off as early in the evening as practical, and specifically says floodlights illuminating a building that are not needed for security should be turned off. Then change what remains: AgriLife states that low-pressure sodium vapour lamps and yellow incandescent bug lights are less attractive to crickets than standard incandescent, fluorescent, mercury vapour or halogen lights. That is the guidance as published, and we are not going to dress it up with LED advice AgriLife does not give.',
+  },
+  {
+    q: 'What about LED colour temperature?',
+    a: 'We have to be careful here, and we would rather be careful than confident. AgriLife\'s cricket guidance names low-pressure sodium and yellow incandescent bulbs and does not address LED spectra at all, so we are not going to put words in its mouth. What is separately documented is the general principle — AgriLife states elsewhere that nocturnal insects are attracted most strongly to ultraviolet light, toward the blue end of the spectrum — and peer-reviewed work finds short-wave blue light most attractive to night-flying insects, with cooler 4,500 K lighting attracting more insects than warmer 3,000 K. The honest caveat: crickets made up under one percent of the insects in that study, so warmer lighting attracting fewer night insects overall is well supported, while the specific effect on crickets is not.',
+  },
+  {
+    q: 'Are crickets actually harmful?',
+    a: 'Barely, and AgriLife says so plainly: they do not sting or bite, so they are not doing anything other than being annoying. There is real but modest damage — high numbers can damage garden plants outdoors, and indoors crickets can damage natural and synthetic fabrics, furs and carpeting. The genuine cost for most people is nuisance, noise and the sheer number of them at a doorway. For a business with lit signage and glass doors, that nuisance is a customer-facing problem, which is a different calculation.',
+  },
+  {
+    q: 'Do crickets bring scorpions?',
+    a: 'We are going to separate what is sourced from what is reasoning, because this claim gets made confidently by a lot of people. What is documented: AgriLife states that scorpions feed chiefly on small insects, spiders, centipedes, earthworms and other scorpions. What is also documented, for spiders specifically, is that lights attract nocturnal insects, that those insects are spider food, and that reducing ultraviolet-rich lighting will reduce it. What is not stated in any extension source we could find is that autumn cricket flights drive scorpion numbers in West Texas. It is a reasonable inference and we think it is probably right — but it is our reasoning, not a cited fact, and we would rather label it that way.',
+  },
+  {
+    q: 'Is it a field cricket or a house cricket?',
+    a: 'Look at the head. Field crickets are dark brown to black and run from nine-sixteenths of an inch to over an inch. House crickets are smaller, around three-quarters of an inch, yellowish-brown, and carry three dark bands across the head — that head banding is the cleanest separator between them. The mass autumn flights around buildings in Texas are field crickets, which AgriLife places in a group of closely related species.',
+  },
+  {
+    q: 'Should I have the building sprayed?',
+    a: 'AgriLife\'s own position is that insecticides should only be considered as a last resort, after lighting and exclusion. We are not going to argue with that. What we would do is a sensible sequence: reduce and change the lighting, seal what is letting them indoors — door sweeps and sealing entry points give significant reduction — and then, if the situation genuinely warrants it, treat as a supplement rather than as the plan. If somebody quotes you a spray programme for a two-week flight without mentioning your lights, they have not read the guidance.',
+  },
+];
+---
+
+<BaseLayout
+  title="Field Crickets | West Texas Pest Library"
+  description="Why AgriLife calls outdoor lighting the single most important cause of cricket infestations, how long the autumn flights actually last, and what to change."
+  path="/pest-library/field-cricket/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Gryllus</em> spp.</p>
+      <h1>Field crickets</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>This is a lighting problem that people treat as an insect problem</strong>, and Texas
+          A&amp;M says so about as clearly as an extension service ever says anything.
+        </p>
+        <p>
+          Its publication states that outdoor lighting is <strong>the most important single cause of severe
+          cricket infestations around homes and commercial buildings</strong> — and that where the lighting
+          keeps drawing them in, <strong>crickets will continue to cause problems regardless of the amounts
+          of insecticide used</strong>.
+        </p>
+        <p>
+          <strong>And the second useful fact is about time.</strong> The heaviest cricket flights usually
+          last only one to two weeks. If you are standing in a doorway full of crickets, the honest first
+          answer is that this ends shortly, and the second is that changing a light bulb will do more next
+          year than anything in a spray tank will do this week.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What sets it off, and how long it runs</h2>
+      <div class="measure">
+        <p>
+          <strong>The trigger is a drought breaking.</strong> AgriLife describes outbreaks peaking in
+          August and September when a summer drought is broken by rainfall and cooler weather. The insects
+          have been developing through the heat; the rain and the first cool front bring the mature adults
+          out to fly and mate at once.
+        </p>
+        <p>
+          <strong>Which is a fair description of a West Texas late summer</strong> — a dry stretch, then
+          rain, then the first front. We should be straight that AgriLife's cricket material is written as
+          a statewide and central-and-east Texas account, and we could not find a publication addressing
+          the Llano Estacado or the Permian Basin specifically. The mechanism is theirs; the local
+          application is ours.
+        </p>
+        <p>
+          <strong>The flight is short.</strong> One to two weeks for the heaviest of it. That single figure
+          reframes the whole problem, because a fortnight is not long enough to justify most of what gets
+          sold against it — and it is exactly long enough to be miserable if you run a business with lit
+          signage and glass doors.
+        </p>
+        <p>
+          <strong>The life cycle behind it.</strong> Females lay with a sword-like ovipositor into moist
+          soil or sand. Nymphs hatch after fifteen to twenty-five days and take roughly twelve weeks —
+          about three months — to mature, faster in warmer conditions. As many as three generations may be
+          produced in a year in southern areas. Winter is passed as eggs in colder places and as nymphs in
+          warmer ones, and there is no pupal stage — a cricket nymph is a small cricket rather than
+          something else entirely.
+        </p>
+        <p>
+          <strong>Which means a warm winter can matter.</strong> AgriLife notes that warm winters can
+          increase the number of generations in a year, so the size of an autumn flight is not purely about
+          this summer's rain.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The lighting, in detail, because it is the whole answer</h2>
+      <div class="measure">
+        <p>
+          <strong>Start by turning things off.</strong> AgriLife's guidance is to switch lights off as
+          early in the evening as practical, and it names floodlights specifically — those illuminating a
+          home or building and not needed for security should be turned off. That costs nothing and it is
+          the single highest-return action available.
+        </p>
+        <p>
+          <strong>Then change what has to stay on.</strong> AgriLife states that low-pressure sodium vapour
+          lamps and yellow incandescent bug lights are less attractive to crickets than standard
+          incandescent, fluorescent, mercury vapour or halogen lighting. That is the published comparison,
+          and it is the one we will stand behind.
+        </p>
+        <p>
+          <strong>On LEDs, we are going to be honest about a gap.</strong> AgriLife's cricket guidance
+          predates the general switch to LED and does not address colour temperature or LED spectra at all.
+          We are not going to attribute LED advice to Texas A&amp;M that Texas A&amp;M has not given.
+        </p>
+        <p>
+          <strong>What can be said, properly attributed.</strong> AgriLife does state the underlying
+          principle in a related context — that nocturnal insects are attracted most strongly to
+          ultraviolet light, toward the blue end of the spectrum, and that changing to yellow bug bulbs or
+          low-pressure sodium will reduce the night insects drawn to a building. And peer-reviewed spectral
+          work points the same way: short-wave blue light was found most attractive to night-flying
+          insects, followed by green and then red, with cooler 4,500 K lighting attracting about 1.4 times
+          as many insects as warmer 3,000 K.
+        </p>
+        <p>
+          <strong>And the caveat that has to travel with that.</strong> In that study, crickets and their
+          relatives made up under one percent of the insects caught — it was dominated by flies, bugs,
+          beetles and moths. So the defensible statement is that warmer, longer-wavelength lighting draws
+          fewer night insects in general. Whether it specifically reduces crickets is not established, and
+          we are not going to claim it is.
+        </p>
+        <p>
+          <strong>Where this bites commercially.</strong> AgriLife notes crickets congregating at the front
+          doors of businesses, at petrol stations and car dealerships — the places with bright lighting
+          burning all night. If that is your building, the lighting audit is the job, and it is capital
+          spending rather than a service contract.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What they actually do, and what they do not</h2>
+      <div class="measure">
+        <p>
+          <strong>They do not sting or bite.</strong> AgriLife's entomologist puts it plainly: the crickets
+          are not doing anything other than being annoying. That is worth saying out loud, because the
+          volume of them makes people assume otherwise.
+        </p>
+        <p>
+          <strong>The real damage is modest and specific.</strong> Outdoors, high numbers can damage garden
+          plants. Indoors, crickets can damage natural and synthetic fabrics, furs and carpeting — which is
+          the one genuine reason to care about the ones that get inside rather than the thousands that do
+          not.
+        </p>
+        <p>
+          <strong>The noise is a legitimate complaint.</strong> A few crickets in a wall void at two in the
+          morning is a sleep problem, and we are not going to be dismissive about it just because the
+          insect is harmless.
+        </p>
+        <p>
+          <strong>And for a business, the nuisance is the damage.</strong> A doorway carpeted in crickets
+          at a restaurant, a shop or a fuel station is a customer-facing problem regardless of whether the
+          insect is dangerous. That is a fair reason to act — and it is still a lighting job first.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Telling them apart, and why it changes less than you would think</h2>
+      <div class="measure">
+        <p>
+          <strong>Look at the head, not the body.</strong> Field crickets are dark brown to black and run
+          from nine-sixteenths of an inch to over an inch, which is a wide enough range that size alone
+          will mislead you. House crickets sit at around three-quarters of an inch, are yellowish-brown
+          rather than dark, and carry three dark bands across the head. Those bands are the separator that
+          survives poor light and a squashed specimen.
+        </p>
+        <p>
+          <strong>What flies at buildings here is the field cricket.</strong> AgriLife places the Texas
+          outbreak insect in a group of closely related species rather than pinning it to one, which is
+          why you will see the name written with the genus and an abbreviation for several species after
+          it. For the purposes of a doorway covered in them in September, the group is the answer.
+        </p>
+        <p>
+          <strong>Why the identification matters less than usual.</strong> On most pest pages the species
+          determines the treatment. Here it mostly does not, because the recommendation that carries the
+          weight — reduce and change the exterior lighting, then seal the building — is the same for both.
+          Where it does matter is expectation: the mass autumn flight behaviour, and the one-to-two-week
+          window that comes with it, belongs to the field crickets. A steady low-level cricket presence
+          indoors through the winter is a different situation and worth looking at properly.
+        </p>
+        <p>
+          <strong>Nymphs look like the adults.</strong> There is no pupal stage and no grub-like phase, so
+          a small cricket found in a garage in July is a young cricket and not a different insect. That
+          also means the ones you find indoors in numbers are usually arrivals rather than a population
+          that has bred inside — crickets lay into moist soil or sand, which most interiors do not offer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Where they collect on a property, and what that tells you</h2>
+      <div class="measure">
+        <p>
+          <strong>They pile at the lit side.</strong> The single most diagnostic thing about a cricket
+          problem is that it is lopsided. One elevation of a building will be carpeted and the others
+          comparatively clear, and the busy one is almost always the one with a fixture burning above a
+          pale wall. Walking a property at night with the lights on tells you more in ten minutes than any
+          inspection during the day.
+        </p>
+        <p>
+          <strong>Then they wedge into whatever is nearest.</strong> Door thresholds, weep holes, garage
+          door corners, the gap behind a downspout, gaps around utility penetrations, stacked material
+          against a wall. That is why exclusion is the second step rather than the fifth — the crickets
+          arriving at the wall are a lighting problem, but the crickets getting past it are a gap problem,
+          and the second one is what causes fabric damage and two-in-the-morning noise.
+        </p>
+        <p>
+          <strong>Irrigated ground is where the next lot start.</strong> Eggs go into moist soil or sand,
+          which in this part of the world means the watered strip — turf, flower beds, the ground under a
+          drip line — rather than the caliche and dry native soil around it. That is not a reason to stop
+          watering, but it does explain why the neighbour with the green lawn and the porch light gets the
+          worst of it and the bare lot next door does not.
+        </p>
+        <p>
+          <strong>And it explains the commercial pattern.</strong> A fuel station or a dealership has the
+          exact combination — all-night lighting, a large pale lit surface, landscaping on a timer, and
+          glass doors people walk through. AgriLife names those business types specifically. If that is
+          your building, none of this is bad luck, and none of it is fixed with a spray.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The predator question, with the sourcing separated</h2>
+      <div class="measure">
+        <p>
+          People in this region routinely connect cricket years with scorpion years, and we get asked about
+          it. Here is what is documented and what is us reasoning, kept apart on purpose.
+        </p>
+        <p>
+          <strong>Documented, for spiders.</strong> AgriLife's own writing builds the chain explicitly:
+          exterior lights attract nocturnal insects, those insects are spider food, and reducing
+          ultraviolet-rich lighting will reduce the spider food being drawn to a house. Food is listed
+          first among the causes of heavy spider populations around structures. So the link from lighting
+          to insects to spiders is Texas A&amp;M's, not ours.
+        </p>
+        <p>
+          <strong>Documented, for scorpions, but only partly.</strong> AgriLife's scorpion publication
+          states that their chief foods are small insects, spiders, centipedes, earthworms and other
+          scorpions. So insects generally are documented prey. But that publication's control section is
+          entirely about habitat modification, exclusion and treatment — it makes no recommendation about
+          reducing prey and none about exterior lighting, and it does not name crickets.
+        </p>
+        <p>
+          <strong>Not documented: the specific claim.</strong> We could not find any extension source
+          stating that autumn cricket flights drive scorpion numbers in West Texas. We think it is a
+          reasonable inference — the same lighting and harbourage conditions that concentrate insects
+          around a building also support the things that eat them — but it is an inference, and labelling
+          it as one is the difference between a reference page and a sales page.
+        </p>
+        <p>
+          <strong>What that means practically.</strong> Reducing exterior lighting is well supported as a
+          way to cut the night insects around a building, and it is explicitly supported as a way to reduce
+          spiders. If it also helps with scorpions, that is a bonus rather than a promise — and given that
+          the lighting change is free or nearly free, the expected value is good either way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What to do, in AgriLife's own order</h2>
+      <div class="measure">
+        <p>
+          <strong>One: the lights.</strong> Covered above, and it is first for a reason. Anything else done
+          around a brightly lit building is working against the building.
+        </p>
+        <p>
+          <strong>Two: exclusion.</strong> AgriLife records that door sweeps and sealing entry points give
+          significant reduction — and this is the part that decides how many get <em>inside</em>, which is
+          where fabric damage and night noise come from. Door sweeps that actually contact the threshold,
+          weather stripping, screens that fit, gaps at garage doors and utility penetrations sealed.
+          AgriLife also mentions steel or brass wool as a temporary barrier where something needs blocking
+          quickly.
+        </p>
+        <p>
+          <strong>Three, and only three: treatment.</strong> AgriLife describes insecticidal baits and
+          sprays as partial supplementary measures, and states that insecticides should only be considered
+          as a last resort. A perimeter treatment can genuinely reduce what accumulates at a doorway during
+          a heavy flight. It will not fix a lit building, and the guidance says so.
+        </p>
+        <p>
+          <strong>What we would tell a homeowner.</strong> If the flight is on and it is miserable: turn
+          the porch light off, put a proper sweep on the door, sweep up what accumulates, and wait, because
+          you are one to two weeks from the end of it. Then change the bulbs before next August.
+        </p>
+        <p>
+          <strong>What we would tell a business.</strong> The lighting audit is the job — which lights are
+          genuinely required for security and which are habit, what type they are, and what they could be
+          changed to. That is a one-off cost against a problem that returns every year, and it beats an
+          annual treatment that the guidance says will not hold against the lighting anyway.
+        </p>
+        <p>
+          <strong>And the thing we will not do</strong> is sell a cricket programme to somebody with a
+          floodlit wall and no door sweep. It would work about as well as the guidance predicts, which is
+          to say not very.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Field cricket questions" />
+  <Cta
+    line="Before booking anything, count the exterior lights that stay on all night and check whether the doors have sweeps that touch the threshold. That is where the answer is, and both fixes outlast the two-week flight you are currently standing in."
+  />
+</BaseLayout>

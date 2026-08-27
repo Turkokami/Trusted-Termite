@@ -1,8 +1,8 @@
 # PHASE 0 — Defect Remediation Work Order
 
 **Target:** the live site at `trustedtermiteandpest.com` (Ailanding platform)
-**Runs:** immediately, independent of the domain transfer, the WDI decision and
-the budget conversation. None of the items below touch DNS.
+**Runs:** immediately, independent of the domain transfer and the WDI decision.
+None of the items below touch DNS.
 **Rule:** nothing new is built on top of a broken foundation.
 
 Work top to bottom. Each item states what to do, why, and how to prove it landed.

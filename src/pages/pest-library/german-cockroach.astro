@@ -1,0 +1,473 @@
+---
+/**
+ * Pest library — German cockroach, Blattella germanica.
+ *
+ * THE ARGUMENT OF THIS PAGE: spraying is actively counterproductive on this
+ * species, and the extension evidence for that is unusually strong and
+ * unusually quotable. It is the one pest where the honest advice is "stop
+ * buying the thing in the supermarket aisle".
+ *
+ * VERIFIED (AgriLife ENTO-037, texasinsects.tamu.edu, Texas A&M School IPM,
+ * Texas A&M citybugs, Penn State Extension, NC State Extension, Illinois
+ * Extension, Wada-Katsumata/Silverman/Schal Science 2013):
+ *  - Adults ½–⅝ in, light brown, TWO DARK STRIPES on the pronotum. Wings reach
+ *    the end of the abdomen "but they do not fly."
+ *  - Nymphs: wing pads, two dark stripes down thorax and abdomen; a pale
+ *    stripe lengthwise down the middle of the darker body.
+ *  - ⚠ THE LOOKALIKE TEST IS BEHAVIOURAL AND IT MATTERS COMMERCIALLY. Asian
+ *    cockroach (B. asahinai) and field cockroach (B. vaga) "look very similar"
+ *    but occur OUTDOORS, whereas "German cockroaches remain strictly indoor
+ *    pests in Texas". The field cockroach "prefers outdoors and is more active
+ *    during daylight". An outdoor, dusk-flying, light-attracted striped roach
+ *    is NOT German — and a German protocol will not fix it.
+ *  - Brownbanded cockroach: pale bands across the wings, NO pronotal stripes.
+ *  - Ootheca ~5/16 in, 30–40 eggs (Penn State: up to 48, usually 30–48),
+ *    hatching 2–4 days after being deposited. Females produce 4–8 capsules in
+ *    a lifetime. Penn State: "In one year over 10,000 descendants can be
+ *    produced".
+ *  - ⚠ DEVELOPMENT TIME — sources genuinely differ. ENTO-037: 50–60 days
+ *    nymph to adult at average indoor temperatures, a generation in ~100 days.
+ *    texasinsects: 6–7 instars over 74–85 days, up to four generations a year.
+ *    Penn State: 6–31 weeks. School IPM: 3–6 generations per year. PUBLISH A
+ *    RANGE and note temperature drives it.
+ *  - Adult female lifespan 20–30 weeks (Penn State).
+ *  - Spend "about 75 percent of its life in narrow cracks and crevices, from
+ *    1/32 to 3/16 inch wide."
+ *  - "Live exclusively indoors and spread only through human transport"
+ *    (School IPM). An infestation ARRIVED in something.
+ *  - Health: "transport germs and are associated with allergies and asthma";
+ *    NC State: faeces, shed exoskeletons and saliva contain multiple
+ *    allergens; "one of the leading causes of asthma in young children".
+ *  - citybugs on an intervention study: baited homes 0% infestation vs 20%
+ *    untreated; children in treated homes had "47 fewer days a year with
+ *    asthma symptoms" and significantly fewer doctor visits.
+ *    ⚠ Do NOT attribute specific figures to NEJM/Rosenstreich — NOT VERIFIED.
+ *    Cite these as AgriLife's own summary, which is what they are.
+ *
+ * WHY SPRAYING FAILS — all quotable, all extension-sourced:
+ *  - ENTO-037: "Pyrethroid insecticides are highly repellent to German
+ *    cockroaches." Roaches avoid treated areas rather than dying.
+ *  - School IPM: liquid residuals "can contaminate baits, rendering them
+ *    ineffective through repellent action." SPRAYING NEAR BAIT SABOTAGES BAIT.
+ *  - NC State: sprays and aerosols "do not provide long-term control and may
+ *    even make the problem worse by repelling and dispersing cockroaches."
+ *    ⚠ Use NC State's statement. A Purdue dissertation on dispersal exists but
+ *    its figures were NOT VERIFIED — invent no percentages.
+ *  - ENTO-037: total-release aerosols "generally do not eliminate cockroaches
+ *    because they do not penetrate the cracks where most cockroaches hide";
+ *    sprays "are not nearly as effective as baits".
+ *  - NC State School IPM, reporting a BMC Public Health study: foggers can
+ *    raise household pesticide levels by as much as 600-fold (median 85-fold).
+ *  - RESISTANCE: NC State — resistance has developed to "every single class of
+ *    insecticides used for their control since the 1950's". A University of
+ *    Kentucky test limiting exposure to 30 minutes of direct contact found
+ *    "mortality of the wild German cockroach population was below 20% for all
+ *    treatments tested" across four consumer products.
+ *  - WHY BAITS WORK: coprophagy enables "secondary, or horizontal, transfer"
+ *    to roaches that never touched the bait. Sprays have no equivalent.
+ *  - GLUCOSE AVERSION (Science 2013): in averse roaches glucose "triggers the
+ *    bitter receptor neurons". It is a heritable GAIN of function. Practical:
+ *    a gel being ignored while the population persists means ROTATE THE BAIT
+ *    MATRIX, not switch to spray.
+ *  - SANITATION MECHANISM, and it is AgriLife's own causal argument:
+ *    "When food or water is scarce, cockroaches must search farther each night
+ *    to survive", which "puts stress on cockroach populations and increases
+ *    the effectiveness of baits and other insecticides."
+ *  - School IPM's governing rule: chemical options including baits "should NOT
+ *    be used on a routine or calendar-based schedule but only where cockroach
+ *    presence has been confirmed."
+ *  - Monitoring: "The number one monitoring tool for cockroaches is an
+ *    adhesive-coated, cardboard insect monitoring trap."
+ *  - Vacuums "should have a HEPA filter" because harbourages contain allergens.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'German cockroach', path: '/pest-library/german-cockroach/' },
+];
+
+const quickAnswer =
+  'The German cockroach is the one where the supermarket aisle actively makes things worse. Pyrethroid sprays are highly repellent to this species, so they avoid treated surfaces and disperse instead of dying, and foggers do not reach the cracks where they live. Baits and sanitation are what works, and the reason is in the biology.';
+
+const faqs = [
+  {
+    q: 'Why do sprays make a cockroach problem worse?',
+    a: 'Because this species avoids them rather than absorbing them. AgriLife states directly that pyrethroid insecticides — the active ingredient in essentially every consumer spray — are highly repellent to German cockroaches. NC State Extension puts the consequence just as plainly: insecticidal sprays and aerosols do not provide long-term control and may even make the problem worse by repelling and dispersing cockroaches. So the treatment that felt productive has pushed the population from one harbourage into several, often into adjoining rooms or, in an apartment, into the neighbouring unit.',
+  },
+  {
+    q: 'Do bug bombs work?',
+    a: 'No, and there is a specific reason beyond the repellency. AgriLife states total-release aerosols generally do not eliminate cockroaches because they do not penetrate the cracks where most cockroaches hide — and this species spends around three-quarters of its life in cracks between a thirty-second and three-sixteenths of an inch wide. A study reported by NC State found foggers can raise household pesticide levels by as much as 600-fold, with a median of 85-fold, while failing to reach the roaches. You end up with more pesticide in the home and the same population in the walls.',
+  },
+  {
+    q: 'Why do baits work when sprays do not?',
+    a: 'Because of a habit the roaches have that sprays cannot exploit. Cockroaches practise coprophagy — they feed on the droppings of other cockroaches — which produces what researchers call secondary or horizontal transfer: the active ingredient moves from a roach that ate the bait to roaches that never went near it, including nymphs deep in harbourage that never leave. A spray kills what it touches. A bait reaches the part of the population you cannot see, which is most of it. AgriLife describes baits as the most effective insecticides for controlling cockroaches in homes.',
+  },
+  {
+    q: 'I put down gel bait and they ignored it.',
+    a: 'That is a recognised phenomenon with a genuinely interesting cause, and the fix is not to reach for a spray. Some German cockroach populations have evolved glucose aversion: in these roaches, glucose triggers the bitter receptor neurons — the ones that would normally respond to something like caffeine — so a sugar-based bait literally tastes bitter and they back away from it. It is heritable and it is a gain of function rather than a loss. The practical response is to rotate to a bait with a different matrix, often protein-based, rather than concluding baits do not work.',
+  },
+  {
+    q: 'Are they resistant to insecticides?',
+    a: 'Extensively. NC State Extension records that German cockroach populations have developed resistance to every single class of insecticide used against them since the 1950s. A University of Kentucky test that limited exposure to thirty minutes of direct contact with four common consumer products found mortality in a wild population below 20 percent for every treatment tested. That is the honest context for a product that promises to kill on contact — it may well kill the ones you spray directly and do very little to the population.',
+  },
+  {
+    q: 'Does cleaning really make that much difference?',
+    a: 'Yes, and AgriLife gives the causal mechanism rather than just the instruction, which is what makes it convincing. When food or water is scarce, cockroaches must search farther each night to survive — and that, in AgriLife\'s words, puts stress on cockroach populations and increases the effectiveness of baits and other insecticides. Sanitation is not only about removing what they eat. It is about making the bait the most attractive thing in the room and forcing the roaches to travel to find it. A spotless kitchen makes a bait programme dramatically better.',
+  },
+  {
+    q: 'Where did they come from? My house is clean.',
+    a: 'They were carried in, and this is not a comment on your housekeeping. Texas A&M states that German cockroaches live exclusively indoors and spread only through human transport. In practice that means groceries, cardboard boxes, a second-hand appliance, used furniture, a delivery, a suitcase, or — in multifamily housing — movement from an adjoining unit through shared plumbing and wall voids. In a semi-arid climate like ours, where outdoor cockroach pressure is low, that is even more strictly true than elsewhere.',
+  },
+  {
+    q: 'I found a striped roach outside. Is that a German cockroach?',
+    a: 'Almost certainly not, and the distinction matters because it changes the whole approach. Texas has two very similar-looking relatives — the Asian cockroach and the field cockroach — that live outdoors, and the field cockroach is more active during daylight. German cockroaches remain strictly indoor pests in Texas. So a striped roach flying to a porch light at dusk, or found in the lawn, is one of the outdoor species. Treating that with a kitchen protocol for German cockroaches will not work, because the problem is not indoors and never was.',
+  },
+];
+---
+
+<BaseLayout
+  title="German Cockroach | West Texas Pest Library"
+  description="Why sprays and foggers make this species worse, why baits and sanitation work, and how to tell it from the outdoor lookalikes that need a different approach."
+  path="/pest-library/german-cockroach/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Blattella germanica</em></p>
+      <h1>German cockroach</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>This is the one pest where the ordinary consumer response makes things measurably
+          worse</strong>, and the evidence for that is unusually clear.
+        </p>
+        <p>
+          AgriLife states that pyrethroid insecticides — the active ingredient in essentially every spray
+          on a supermarket shelf — are <strong>highly repellent</strong> to German cockroaches. NC State
+          Extension states the consequence: sprays and aerosols do not provide long-term control and
+          <strong>may even make the problem worse by repelling and dispersing cockroaches</strong>.
+        </p>
+        <p>
+          So the can that felt like doing something took one concentrated population and turned it into
+          several scattered ones — often in adjoining rooms, and in an apartment, often in the neighbour's
+          unit.
+        </p>
+        <p>
+          <strong>The rest of this page is why that happens, what works instead, and how to tell this
+          animal from the outdoor lookalikes that need a completely different approach.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Identification, and the lookalike that changes everything</h2>
+      <div class="measure">
+        <p>
+          <strong>Adults</strong> run half to five-eighths of an inch, light brown, with
+          <strong>two dark stripes running lengthwise on the pronotum</strong> — the shield just behind the
+          head. They have full wings reaching the end of the abdomen and <em>they do not fly</em>.
+        </p>
+        <p>
+          <strong>Nymphs</strong> are darker brown with wing pads rather than wings, two dark stripes
+          running down the thorax and abdomen, and a pale stripe down the middle. They are much smaller and
+          are usually what people see first, because there are far more of them.
+        </p>
+        <p>
+          <strong>Now the important one.</strong> Texas has two close relatives — the Asian cockroach and
+          the field cockroach — that AgriLife describes as looking very similar to German cockroaches. The
+          separation is not anatomical for most people. It is behavioural, and it is decisive:
+        </p>
+        <p>
+          <strong>German cockroaches remain strictly indoor pests in Texas.</strong> The Asian and field
+          cockroaches live outdoors, and the field cockroach prefers outdoors and is more active during
+          daylight. The Asian cockroach flies readily to lights.
+        </p>
+        <p>
+          <strong>So: a striped roach flying to a porch light at dusk, or turning up in the lawn, is not a
+          German cockroach.</strong> That distinction has real money attached. An outdoor Asian cockroach
+          problem will not respond to a German cockroach kitchen protocol, because the population is not
+          indoors and never was — and somebody who treats it that way will keep treating it.
+        </p>
+        <p>
+          <strong>One more:</strong> the brownbanded cockroach carries pale bands across the wings and
+          lacks the two pronotal stripes entirely. Different animal, different habits, different placement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The biology that makes them hard</h2>
+      <div class="measure">
+        <p>
+          <strong>They breed faster than most people believe.</strong> An egg capsule is around
+          five-sixteenths of an inch and holds roughly thirty to forty eggs — some sources put it as high
+          as forty-eight — and, crucially, the female carries it until just before hatching, so the eggs
+          hatch within two to four days of being deposited. A female produces four to eight capsules in her
+          life, and she lives twenty to thirty weeks as an adult.
+        </p>
+        <p>
+          <strong>The compounding is the problem.</strong> Penn State Extension's figure is worth sitting
+          with: in one year, over ten thousand descendants can be produced. Texas A&amp;M describes the
+          German cockroach as the most prolific cockroach species, producing three to six generations a
+          year.
+        </p>
+        <p>
+          <strong>Development time varies with temperature</strong>, and the published figures differ
+          enough to be worth stating as a range rather than a number: roughly fifty to eighty-five days
+          from nymph to adult under normal indoor conditions, through six or seven moults, with some
+          sources spanning wider. Warm rooms accelerate it.
+        </p>
+        <p>
+          <strong>And they live inside the walls, not in the room.</strong> AgriLife records that this
+          species spends about <strong>seventy-five percent of its life in narrow cracks and crevices,
+          between a thirty-second and three-sixteenths of an inch wide</strong>. That single fact explains
+          why nearly every failed treatment fails: whatever you applied, most of the population was never
+          in the room to receive it.
+        </p>
+        <p>
+          <strong>What they want is warmth, moisture and food together.</strong> Kitchens and bathrooms —
+          behind and under appliances, around the dishwasher and sink, in the motor housing of a fridge, in
+          cabinet voids, around a coffee station. In our climate, where outdoor pressure is essentially
+          nil, moisture is the thing that concentrates them: a slow leak under a sink is worth more to a
+          cockroach population than anything on a shelf.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Why spraying fails, in four separate ways</h2>
+      <div class="measure">
+        <p>
+          <strong>One: repellency.</strong> AgriLife states pyrethroid insecticides are highly repellent to
+          German cockroaches. The roach detects the treated surface and avoids it. You have not created a
+          lethal barrier; you have created a wall they walk around.
+        </p>
+        <p>
+          <strong>Two: dispersal.</strong> NC State Extension states that sprays and aerosols may even make
+          the problem worse by repelling and dispersing cockroaches. A population concentrated behind one
+          cabinet is a manageable job. The same population scattered across four rooms after somebody
+          sprayed is not.
+        </p>
+        <p>
+          <strong>Three: reach.</strong> Total-release foggers, per AgriLife, generally do not eliminate
+          cockroaches because they do not penetrate the cracks where most cockroaches hide. Given that
+          three-quarters of the animal's life happens in those cracks, that is close to a complete
+          disqualification. And a study reported by NC State found foggers can raise household pesticide
+          levels by as much as six hundred-fold, median eighty-five-fold — more chemical in the house, same
+          roaches in the wall.
+        </p>
+        <p>
+          <strong>Four: resistance.</strong> NC State records resistance to every single class of
+          insecticide used against this species since the 1950s. A University of Kentucky test limiting
+          exposure to thirty minutes of direct contact with four common consumer products found mortality
+          in a wild population <strong>below twenty percent for every product tested</strong>.
+        </p>
+        <p>
+          <strong>And the trap that catches even professionals.</strong> Texas A&amp;M's school IPM
+          guidance notes that liquid residuals can contaminate baits, rendering them ineffective through
+          repellent action. Spraying near your own bait placements sabotages them. If somebody baits and
+          then sprays the same kitchen, they have paid for two treatments and cancelled one with the other.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What actually works</h2>
+      <div class="measure">
+        <p>
+          <strong>Monitoring first.</strong> Texas A&amp;M's guidance is blunt about the tool: the number
+          one monitoring tool for cockroaches is an adhesive-coated cardboard monitoring trap. Placed in
+          food preparation areas, storage and previous problem sites, they tell you whether there is a
+          population, where it actually is, and later whether the treatment is working. That is not
+          preamble — it decides where everything else goes.
+        </p>
+        <p>
+          <strong>Baits, placed on the evidence.</strong> AgriLife calls baits the most effective
+          insecticides for controlling cockroaches in homes, and the reason is coprophagy: roaches feed on
+          the droppings of other roaches, which moves the active ingredient horizontally to individuals
+          that never touched the bait — including nymphs that never leave harbourage. No spray has an
+          equivalent mechanism. Texas A&amp;M's own extension writing notes that modern baits work even in
+          cluttered and not-so-clean homes.
+        </p>
+        <p>
+          <strong>Rotate the bait if it is being ignored.</strong> Glucose aversion is real and documented:
+          in affected populations, glucose triggers the bitter receptor neurons, so a sugar-based gel
+          genuinely tastes bitter to them. Researchers describe it as roaches getting ahead of us in the
+          arms race. If a gel is untouched while the population persists, the answer is a different bait
+          matrix, not a spray.
+        </p>
+        <p>
+          <strong>Sanitation, for the reason AgriLife gives.</strong> When food or water is scarce,
+          cockroaches must search farther each night to survive — which puts stress on the population and
+          increases the effectiveness of baits and other insecticides. That is the causal argument, and it
+          reframes cleaning from a moral instruction into a technical one. Clean spills immediately, no
+          dishes overnight, dry goods in airtight containers, bins with tight lids emptied daily,
+          <strong>repair plumbing leaks</strong>, and remove cardboard storage.
+        </p>
+        <p>
+          <strong>Vacuum with a HEPA filter.</strong> AgriLife specifies it, because cockroach harbourages
+          contain allergens and an ordinary vacuum redistributes them.
+        </p>
+        <p>
+          <strong>Growth regulators alongside baits</strong>, to stop the population reproducing while the
+          bait works through it.
+        </p>
+        <p>
+          <strong>And the governing rule</strong>, quoted from Texas A&amp;M's school IPM programme:
+          chemical options, including baits, should <em>not</em> be used on a routine or calendar-based
+          schedule, but only where cockroach presence has been confirmed. Which is a direct argument
+          against the monthly-visit model that most of this industry sells.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The health case, and why it is not scaremongering</h2>
+      <div class="measure">
+        <p>
+          <strong>The allergen issue is the substantive one</strong>, and it is better documented than the
+          germ-transmission angle people usually lead with.
+        </p>
+        <p>
+          <strong>What produces it.</strong> NC State Extension records that cockroach faeces, shed
+          exoskeletons and saliva all contain multiple allergens, and describes cockroaches as one of the
+          leading causes of asthma in young children. AgriLife describes them as one of the most widespread
+          insect pests to public health in urban homes, apartments and restaurants, transporting germs and
+          associated with allergies and asthma.
+        </p>
+        <p>
+          <strong>And control measurably helps.</strong> Texas A&amp;M's extension writing reports an
+          intervention study in which baited homes ended at zero percent infestation against twenty percent
+          in untreated homes — and children in the treated homes experienced <strong>forty-seven fewer days
+          a year with asthma symptoms</strong>, along with significantly fewer doctor visits. The National
+          Asthma Education and Prevention Program treats reducing cockroach exposure as a critical step in
+          reducing asthma risk.
+        </p>
+        <p>
+          <strong>Why we are careful how we say that.</strong> The figures above are AgriLife's own summary
+          of the research, and we are citing them as that rather than dressing them up with a journal name
+          we have not read ourselves. Health claims are the easiest thing in this trade to inflate, and a
+          number with the wrong citation attached is worse than no number.
+        </p>
+        <p>
+          <strong>What it means practically.</strong> If somebody in the household has asthma — particularly
+          a child — a German cockroach infestation is worth treating properly and promptly rather than
+          living with, and the treatment should be baits and sanitation rather than repeated spraying,
+          because the spraying route adds pesticide exposure to a home that already has an allergen
+          problem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Apartments, restaurants and the unit next door</h2>
+      <div class="measure">
+        <p>
+          Because this species lives exclusively indoors and spreads only by human transport, the way it
+          moves between spaces is entirely structural — and that changes who needs to be in the
+          conversation.
+        </p>
+        <p>
+          <strong>In multifamily housing, the unit is the wrong boundary.</strong> Shared walls carry
+          plumbing chases, electrical runs and voids, and roaches use them. A perfectly treated apartment
+          adjacent to an untreated one gets reinfested, and the resident concludes the treatment failed.
+          The useful conversation is with the property manager about treating adjoining units together.
+        </p>
+        <p>
+          <strong>Which is exactly why spraying is so damaging here.</strong> Repellent products drive a
+          population out of the treated unit and into the neighbouring ones — turning one apartment's
+          problem into a building's problem, and usually into somebody else's.
+        </p>
+        <p>
+          <strong>In food premises, the entry route is deliveries.</strong> Cardboard is both a transport
+          vehicle and a harbourage, and cockroaches arrive in it. Breaking down and removing cardboard at
+          receipt rather than storing it is one of the highest-value habits available in a commercial
+          kitchen, and it costs nothing.
+        </p>
+        <p>
+          <strong>And in a rental between tenants</strong>, an empty unit is the best opportunity there
+          will ever be — accessible, no occupants to work around, and no reason to rush. Treating then is
+          considerably cheaper than treating around a family three weeks after they move in.
+        </p>
+        <p>
+          <strong>One last note for anyone buying a second-hand appliance.</strong> Fridges, microwaves,
+          washing machines and stoves are among the most reliable ways German cockroaches move between
+          homes, because the motor housing is warm, dark and exactly the right size. Look before it comes
+          through the door.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What to expect from a job that is being done properly</h2>
+      <div class="measure">
+        <p>
+          German cockroach work looks different from most pest treatments, and knowing what it should look
+          like is a reasonable defence against paying for the version that does not work.
+        </p>
+        <p>
+          <strong>It starts with looking, and the looking takes a while.</strong> Pulling the kick plate off
+          the base of cabinets, moving the fridge and the stove, opening the dishwasher panel, checking the
+          motor housing, looking behind and under the sink. The population is in cracks between a
+          thirty-second and three-sixteenths of an inch wide, so an inspection that stays at eye level has
+          not inspected anything.
+        </p>
+        <p>
+          <strong>Monitors go in and stay in.</strong> They confirm presence, map where it actually is, and
+          — the part people skip — measure whether the treatment worked. Without them, "it seems better" is
+          the only available evidence.
+        </p>
+        <p>
+          <strong>Bait goes in small placements, in many locations, close to harbourage.</strong> Not a
+          stripe along a skirting board. Roaches travel short distances within the structure, so the bait
+          has to be where they already are.
+        </p>
+        <p>
+          <strong>There is a follow-up, and it has a date.</strong> Because eggs are protected inside the
+          capsule and nymphs emerge afterwards, a single visit deals with the population present and not
+          the one arriving. Anybody promising a one-visit resolution on an established German cockroach
+          infestation is describing something other than what will happen.
+        </p>
+        <p>
+          <strong>And there is a conversation about the room</strong> — leaks, cardboard, bins, dishes,
+          storage — that is not a lecture but the mechanism described above. A bait programme in a kitchen
+          with a slow leak under the sink and a stack of cardboard is working against the property.
+        </p>
+        <p>
+          <strong>What should not happen:</strong> a general spray of the kitchen, a fogger, or a routine
+          monthly application with no monitoring behind it. All three are contradicted by the guidance the
+          extension services actually publish.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="German cockroach questions" />
+  <Cta
+    line="If you have already sprayed, say so — it changes the plan, because repellent product on the surfaces sabotages the baits that actually work. And if the roach was outdoors at a porch light, it is a different species and a different conversation entirely."
+  />
+</BaseLayout>

@@ -1,0 +1,413 @@
+---
+/**
+ * T5 neighbourhood page — Polo Park, north-west Midland, Midland County.
+ *
+ * TWO DISTINCTIVE FINDINGS, both documentary, and neither one obvious:
+ *
+ * 1. THE COVENANT SILENCE. The recorded Declaration of Covenants, Conditions
+ *    and Restrictions for Polo Park (original 16 April 1982, Supplement
+ *    26 January 1983) contains NO covenant on grass, lawns, weeds, vegetation,
+ *    landscaping, irrigation, trash, debris, unsightly conditions, nuisances,
+ *    vermin or leasing. Article VIII, "Use of Lots and Properties – Protective
+ *    Covenants", contains exactly two sections: 8.1 Residential Lots (a
+ *    single-family use restriction) and 8.2 Architectural Control Committee.
+ *    Maintenance obligations in the document attach to the COMMON AREAS, not
+ *    to individual tracts. This was established by pulling the full
+ *    article/section index, not by a search returning "not found".
+ *    CONSEQUENCE: yard condition in Polo Park is a City of Midland code
+ *    enforcement matter, not an HOA matter — which is the opposite of Mission
+ *    Estates ("no weeds or dirt") and Briarwood ("grass required to be kept
+ *    healthy"). Cross-link the weed ordinance page; Midland runs 18 inches.
+ *
+ * 2. THE HORSES. The Midland Polo Club, 1800 Mockingbird Lane, states on its
+ *    own site: "40 Acres of Beautiful Open Space and Fields", "3 Playing
+ *    Fields with Expansion of 2 New Fields Under Construction", and SIX BARNS
+ *    of 7–21 stalls each. The HOA's own text places the neighbourhood "in the
+ *    vicinity of the Midland polo grounds". Stabled horses at that scale are
+ *    a documented fly-breeding situation — this is the only page on the site
+ *    where filth flies are the lead pest, and it should stay that way.
+ *
+ * VERIFIED platting, City of Midland public ArcGIS Subdivision layer:
+ *  · POLO CLUB            1979-04-04  Max A Schumann Jr   Cab B Pg 362
+ *  · POLO PARK (original) 1982-05-10  Jack C Cook III     Cab C Pg 77
+ *  · 2nd 1983-02-09 G W Findley · 3rd 1983-12-14 Jack C Cook III
+ *  · 4th 1985-05-17 G W Findley · 6th 1986-04-17 Max W Richardson
+ *  · 7th 1987-05-07 · 8th 1987-08-19 · 10th 1988-07-25
+ *  · 11th 1992-03-02 Max A Schumann Jr · 13th 1995-06-21 Macon McDonald
+ *  · 12th 1996-04-02 · 14th 1997-10-08 · 15th 2008-12-29 S W Howell
+ *  · POLO ESTATES 1988-06-01, 2nd 1991-06-12, 3rd 1991-08-22
+ *  · POLO CLUB 2nd 1998 · 3rd 2004 · 6th 2015 · 7th 2019 · 8th 2019 · 9th 2020
+ *  · LAZY 3 AT MIDLAND POLO 2025-12-22
+ *  NOTE: no 5th or 9th Polo Park section appears in the layer. Documentary
+ *  absence, cause unknown. Do not speculate about why on the page.
+ *
+ *  - HOA: Polo Park Homeowners Association, Inc., "established in April of
+ *    1982" per its own About page — which independently corroborates the
+ *    1982 plat and Declaration dates. Tennis courts, a heated pool and a
+ *    rentable clubhouse; pool runs "from early May through late September".
+ *    Self-description: "Midland's Leave It To Beaver neighborhood", brick
+ *    homes, mature trees, "full sidewalks throughout".
+ *  - FLOODPLAIN: verified ABSENT. Zero intersecting features in both the
+ *    100-year and 500-year layers, confirmed against a control envelope that
+ *    returned 54 features including 18 named playas — so the zero is real and
+ *    not a silently-dropped spatial filter. Nearest NAMED playa is MI38, about
+ *    a mile to the north-east.
+ *  - Midland County IS on the imported fire ant regulated-areas list.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - Acreage, lot counts, cul-de-sacs, alleys, curbs. The HOA boundary map is
+ *    image-only. "Full sidewalks throughout" is the ONLY layout fact we have.
+ *  - Developer name (surveyors are recorded; a surveyor is not a developer).
+ *  - Any link between the platted POLO ESTATES additions and an apartment
+ *    complex marketed as "Polo Park Estates". Not established. Say nothing.
+ *  - School attendance zones.
+ *  - Whether the polo grounds are irrigated. The club site does not say.
+ *    Frame turf conditionally.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Midland', path: '/locations/midland/' },
+  { name: 'Polo Park', path: '/locations/midland/polo-park/' },
+];
+
+const quickAnswer =
+  'Polo Park was platted from 1982 next to the Midland Polo Club, which keeps six barns of stabled horses on forty acres. That makes flies a real local issue rather than a generic one. Its 1982 covenants say nothing about grass or weeds, so yard condition here is a city code matter. Owner-operated under Texas licence TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'Why are flies worse in Polo Park than in other Midland neighbourhoods?',
+    a: 'Because of the horses, and this is the one neighbourhood on our route where that is the honest lead answer. The Midland Polo Club describes its facility as forty acres of open space and fields with six barns holding between seven and twenty-one stalls each. Stabled horses produce manure and soiled bedding continuously, and that material is the preferred breeding medium for house flies and stable flies — a house fly can complete a generation in about a week in warm weather. This is not a criticism of the club; every stable everywhere has the same biology, and well-run ones manage it deliberately. It just means that if you live nearby, flies are a facility-adjacent problem rather than a household hygiene problem, and the treatment logic is different.',
+  },
+  {
+    q: 'What actually works against stable flies?',
+    a: 'Not what most people try. Stable flies bite, they are strong fliers, and they breed in the source material rather than in your kitchen bin — so indoor sprays and general perimeter treatment do very little. What works is a combination: exclusion, so screens and door seals that actually close; removing your own contributions, because damp grass clippings, a compost heap, wet pet bedding and a poorly sealed bin all breed the same flies; targeted treatment of the surfaces adults rest on, which are typically sunlit walls and fences facing the source; and traps sited between you and the source rather than next to the back door. Managing your expectations matters too — suppression near a large permanent breeding site is achievable, elimination is not.',
+  },
+  {
+    q: 'Does the Polo Park HOA require me to keep my lawn tidy?',
+    a: 'This surprised us, and it is worth knowing accurately. We read the recorded Declaration of Covenants, Conditions and Restrictions for Polo Park — the original dates from April 1982 with a supplement in January 1983 — and its protective covenants article contains only two sections: one restricting lots to single-family residential use, and one establishing an Architectural Control Committee. There is no covenant about grass, weeds, landscaping, irrigation, trash, debris or unsightly conditions. Maintenance obligations in the document attach to the common areas rather than to individual tracts. So yard condition in Polo Park is governed by City of Midland code enforcement, not by your neighbours.',
+  },
+  {
+    q: 'So what is the actual rule for grass height here?',
+    a: 'The city ordinance, which for Midland is eighteen inches — the most permissive standard of any town on our route, where most towns run twelve and Lubbock runs eight. We keep a comparison of every town we serve, with citations, on our weed ordinance page. The practical point for Polo Park is that if a neighbouring lot gets overgrown, the route to doing something about it runs through the city rather than through the association, and the city has its own notice period and lien process. That is a slower and more formal path than a letter from an HOA, which is worth knowing before you spend a season waiting for a letter that is never coming.',
+  },
+  {
+    q: 'Is Polo Park in a floodplain?',
+    a: 'Not according to the City of Midland\'s own published mapping. We queried both the 100-year and 500-year floodplain layers against the Polo Park plat area and got no intersecting features at all — and we checked that result against a wider control area that returned dozens of features including eighteen named playa lakes, so the zero is a real absence rather than a query that quietly failed. The nearest named playa is about a mile to the north-east. That is a genuinely good answer for a Midland neighbourhood, and it means mosquito pressure here is driven by what is on your own property rather than by a basin down the road. For any decision that actually matters, check your parcel with the city rather than with us.',
+  },
+  {
+    q: 'How old are Polo Park houses?',
+    a: 'The original Polo Park plat was recorded in May 1982 and the sections run through to a fifteenth in December 2008, so most of the neighbourhood is 1980s and 1990s construction. The adjoining Polo Club additions started earlier, in 1979, and have continued much more recently — sections were recorded in 2015, twice in 2019, in 2020, and a new plat as recently as December 2025. The homeowners association describes brick homes, mature trees and full sidewalks throughout. For pest purposes the 1980s core is the part to pay attention to: forty-odd years of settling, plumbing work and re-landscaping around a slab perimeter, with any original termite pre-treatment now well past being a factor.',
+  },
+  {
+    q: '¿Trabajan en Polo Park, en Midland?',
+    a: 'Sí, y Midland forma parte de la ruta habitual. Valentin atiende en español y hace el trabajo personalmente. Lo particular de Polo Park son las moscas: el club de polo vecino mantiene seis establos con caballos en cuarenta acres, y el estiércol es donde se reproducen la mosca doméstica y la mosca de establo. Eso se controla con exclusión, eliminando sus propias fuentes y tratando las superficies donde descansan los adultos — no con insecticida dentro de la casa. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Polo Park, Midland TX"
+  description="Fly, scorpion, termite and rodent work in Polo Park, Midland — next to stabled horses, with 1982 covenants that say nothing about yards. TPCL 0918482."
+  path="/locations/midland/polo-park/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Polo Park, Midland',
+    description: 'Fly, scorpion, spider, ant, termite and rodent control for homes in the Polo Park area of north-west Midland, Midland County.',
+    areaServed: ['Midland', 'Midland County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Midland · Midland County · platted 1982, next to the polo grounds</p>
+      <h1>Pest Control in Polo Park, Midland</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Two things about Polo Park are unusual enough to change what we would do on a property here, and
+          neither is what you would guess from a map.
+        </p>
+        <p>
+          <strong>The first is the horses.</strong> The neighbourhood takes its name from the Midland Polo
+          Club, and the club is not a name only — it describes its facility as forty acres of open
+          space and fields, three playing fields with two more under construction, and
+          <strong>six barns holding between seven and twenty-one stalls each</strong>. Stabled horses at
+          that scale are a permanent, well-managed and entirely legitimate fly-breeding site, because
+          manure and soiled bedding are what house flies and stable flies breed in. This is the only page
+          on this site where flies are the lead pest, and that is not padding.
+        </p>
+        <p>
+          <strong>The second is what the covenants do not say.</strong> We read the recorded Declaration of
+          Covenants, Conditions and Restrictions for Polo Park — April 1982, supplemented January 1983 —
+          and its protective covenants article has exactly two sections: one restricting lots to
+          single-family residential use, and one setting up an Architectural Control Committee. There is
+          <strong>no covenant about grass, weeds, landscaping, irrigation, trash or unsightly
+          conditions</strong>. That is genuinely unusual for a neighbourhood of this vintage, and it means
+          yard condition here is a city matter rather than a neighbourhood one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Flies, properly explained</h2>
+      <div class="measure">
+        <p>
+          Most pest advice about flies is written for a kitchen bin. That advice is useless next to a
+          stable, and giving it to somebody in Polo Park would waste their money, so here is the version
+          that actually applies.
+        </p>
+        <p>
+          <strong>Two different flies, two different problems.</strong> The house fly does not bite; it is a
+          nuisance and a contamination risk, and it breeds in decaying organic matter — manure, soiled
+          bedding, spoiled feed, wet grass clippings, compost. The stable fly does bite, painfully, usually
+          around the ankles and lower legs, and it breeds in much the same material, particularly where
+          manure is mixed with straw or spilled feed and kept damp. If you are being bitten outdoors in
+          daylight by something that looks like a house fly, it is very likely a stable fly and it did not
+          come from your kitchen.
+        </p>
+        <p>
+          <strong>The arithmetic is the problem.</strong> In warm weather a house fly can go from egg to
+          adult in around a week. That means a breeding site does not produce a fly population so much as a
+          continuous supply, and the supply resets faster than any treatment decays. Adults also fly
+          considerable distances, so a source need not be next door to reach you.
+        </p>
+        <p>
+          <strong>Which is why source reduction beats spraying, and why some of the source is yours.</strong>
+          The stable is not the only thing on this side of town breeding flies. Damp grass clippings piled
+          behind a shed, a compost heap that never heats up, pet waste left on the lawn, wet bedding in a
+          kennel or hutch, a bin whose lid does not seat, a drain that stays wet — every one of those
+          produces exactly the same species, right against your house, where the stable is at least a
+          distance away. Dealing with those is unglamorous and it is the single highest-value thing most
+          people can do.
+        </p>
+        <p>
+          <strong>Then exclusion, because flies get in through gaps rather than through walls.</strong>
+          Window screens that fit and are not torn. A door sweep that actually contacts the threshold.
+          Weather stripping on a garage side door. A screened kitchen window that gets opened in summer.
+          These are cheap, permanent, and they do not need reapplying every eight weeks.
+        </p>
+        <p>
+          <strong>Then targeted treatment of resting surfaces.</strong> Adult flies rest between feeds, and
+          they rest predictably — on sunlit vertical surfaces, on the side of a building or a fence facing
+          the direction they come from, on soffits and under eaves. Treating those surfaces reaches far
+          more flies than treating the air or the ground. Traps help, but they must go between you and the
+          source rather than next to the back door, or all they do is bring flies closer to the house.
+        </p>
+        <p>
+          <strong>And the honest expectation.</strong> Living near a stable means suppression, not
+          elimination. A property can be made comfortable and it cannot be made fly-free while a permanent
+          breeding site operates nearby. Anybody promising otherwise either does not know what is next door
+          or is hoping you do not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Horses bring more than flies</h2>
+      <div class="measure">
+        <p>
+          Six barns of stalls means feed, and feed means rodents. This is not a criticism of any stable —
+          it is simply what grain in quantity does anywhere in the world.
+        </p>
+        <p>
+          <strong>Feed stores are the most reliable rodent attractant in any rural or semi-rural
+          setting.</strong> Sacked grain, sweet feed, hay and bedding provide food and shelter in the same
+          place, and stable buildings are typically open at ground level in ways houses are not. A resident
+          rodent population near a feed source will expand to the limit of what the food supports, and the
+          surplus disperses outward — toward the nearest structures, which are houses.
+        </p>
+        <p>
+          <strong>That dispersal is seasonal and predictable.</strong> It happens most sharply with the
+          first properly cold nights in October and November, when outdoor shelter stops being adequate,
+          and again if a feed store is moved, sealed or cleaned out. If you live within a few hundred yards
+          of stabling, autumn exclusion work is worth more than it would be elsewhere in Midland.
+        </p>
+        <p>
+          <strong>What we would check on a Polo Park property in September.</strong> The garage door seal,
+          because it is the single most common rodent entry into a house and it fails invisibly as the
+          rubber hardens. Soffit returns at the corners, where a gap the width of a pencil is enough for a
+          mouse. Where utilities enter the wall — gas, water, electrical, air-conditioning line sets —
+          which are frequently sealed with foam that has degraded or was never sealed at all. Weep holes,
+          which should be screened rather than filled. And any tree limb touching the roof, which turns a
+          climbing problem into a walking one.
+        </p>
+        <p>
+          <strong>Horses also mean a standing water question.</strong> Water troughs, wash areas and
+          hose points are permanent water features in an arid landscape. What that means for you depends
+          on distance and on prevailing conditions, and it is worth mentioning when we look at mosquito
+          pressure on your own property, because it changes what your contribution is worth eliminating.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Nobody here can send you a letter about your lawn</h2>
+      <div class="measure">
+        <p>
+          The covenant finding is worth spelling out, because it cuts both ways and most people who live in
+          an HOA neighbourhood assume the opposite.
+        </p>
+        <p>
+          The Polo Park Homeowners Association was established in April 1982, the same month as the
+          recorded Declaration, and it is a real association with real amenities — tennis courts, a heated
+          pool that runs from early May to late September, and a clubhouse members can rent. It describes
+          the neighbourhood as brick homes with mature trees and full sidewalks throughout.
+        </p>
+        <p>
+          <strong>What the Declaration does not contain is any rule about the condition of your yard.</strong>
+          Article VIII, which is titled "Use of Lots and Properties – Protective Covenants" and is exactly
+          where such a rule would live, has two sections. Section 8.1 restricts lots to single-family
+          residential use and limits what structures may be built. Section 8.2 establishes the
+          Architectural Control Committee. Nothing about grass height, weeds, landscaping, irrigation,
+          trash, debris, unsightly conditions or vermin. The maintenance obligations that do appear in the
+          document attach to the common areas, not to individual tracts.
+        </p>
+        <p>
+          <strong>Compare that with the neighbourhoods either side of it on this site.</strong> In
+          <a href="/locations/odessa/mission-estates/">Mission Estates</a> in Odessa, the association tells
+          584 households their yards are to have "no weeds or dirt" and their trees and shrubs are to be
+          trimmed. In <a href="/locations/midland/briarwood/">Briarwood</a>, a few miles from here, the
+          covenants require grass to be kept healthy and trees and shrubs trimmed. Polo Park has neither.
+        </p>
+        <p>
+          <strong>The good half.</strong> Your landscaping choices are yours. Nobody is measuring your
+          grass, and if you want to xeriscape a front yard in a region with fourteen inches of annual
+          rainfall, no committee will write to you about it. Given what irrigation does to termite pressure
+          — see <a href="/locations/midland/green-tree/">Green Tree</a>, where forty-five years of watering
+          has made the ground permanently damp — that freedom is worth something practical, not just in
+          principle.
+        </p>
+        <p>
+          <strong>The other half.</strong> When a lot near you becomes genuinely overgrown, there is no
+          association to complain to. The route is City of Midland code enforcement, which runs on the
+          municipal ordinance — <strong>eighteen inches</strong>, the most permissive standard of any town
+          we serve, against twelve across most of the region and eight in Lubbock. We keep
+          <a href="/compliance/weed-ordinances/">a cited comparison of every town's ordinance</a> because
+          people are routinely surprised by their own. Eighteen inches is a lot of grass, and it is a lot
+          of harbourage for rodents, snakes and the insects that feed on both, sitting perfectly legally
+          next door.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What Polo Park property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> AgriLife entomology, the federal quarantine list, and the
+          documented characteristics of this ground — the adjacent stabling and playing fields, the 1982
+          to 2008 build era, the absence of yard covenants, and the city's floodplain mapping. What follows is what these conditions reliably produce, not a claim about any individual property.
+        </p>
+        <p>
+          <strong>Filth flies.</strong> The lead issue, covered above, and the reason this neighbourhood
+          needs a different conversation from the rest of Midland.
+        </p>
+        <p>
+          <strong>Rodents, on the feed store's schedule as well as the season's.</strong> Also covered
+          above. Autumn exclusion is worth more here than the regional average.
+        </p>
+        <p>
+          <strong>Fire ants, if the fields are watered.</strong> Midland County is on the federal imported
+          fire ant regulated-areas list under 7 C.F.R. §301.81-3, adopted at 4 TAC §19.101. Maintained
+          playing fields are the habitat imported fire ants exploit best — though the club does not publish
+          whether its turf is irrigated, so we are flagging this as likely rather than asserting it.
+          Identification before treatment matters either way: a red harvester ant mound and an imported
+          fire ant nest need different products and different methods, and only one carries movement
+          restrictions on soil, sod, hay and used equipment leaving the county.
+        </p>
+        <p>
+          <strong>Scorpions and spiders, on the prey base.</strong> Striped bark scorpions hunt at night and
+          climb far better than people expect. Near open fields and stabling the driver is usually
+          abundance of prey insects rather than dryness alone — which is why exterior lighting choices and
+          harbourage removal do more here than spraying. Black widows favour meter boxes, irrigation valve
+          boxes and the space under a shed; brown recluse shelter in stored cardboard and firewood.
+        </p>
+        <p>
+          <strong>Termites, on forty-year-old slabs.</strong> The 1980s core has had four decades of
+          settling, plumbing repairs, patio additions and re-landscaping around the perimeter, and any
+          original pre-construction treatment is long past being a factor. Slab construction hides the
+          evidence rather than preventing the problem, so the first sign is usually mud tubes on a
+          foundation wall, trim that gives when pressed, or a spring swarm.
+        </p>
+        <p>
+          <strong>Mosquitoes, from your own property rather than a basin.</strong> The floodplain answer
+          here is unusually clean — no mapped 100-year or 500-year floodplain across the plat area at all,
+          with the nearest named playa about a mile north-east. That is good news, and it means the
+          mosquitoes you get are being produced much closer to home: a saucer under a pot, a tarp, a
+          clogged gutter, a low spot that stays wet after irrigation, a pool cover.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we do in Polo Park</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Midland is a regular part of the route</strong>, so scheduling is straightforward.
+          Recurring service runs bi-monthly or quarterly, priced on the size of the property, the pressure
+          and the frequency, with a higher initial visit. <strong>No contracts</strong> — no term, no
+          cancellation fee. Termite, bed bug, mosquito, lawn, brush and junk work is individually quoted
+          after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          <strong>A note on the guarantee and flies specifically.</strong> Our thirty-day guarantee covers
+          pests included in the original treatment, and we want to be straight about how that interacts
+          with a permanent breeding site nearby. If we treat resting surfaces for flies and flies return
+          from the same source three weeks later, that is not a failed treatment — it is the situation
+          working as described. We would rather set that expectation in the quote and talk about what
+          combination of exclusion, source reduction and trapping actually gets you a usable garden, than
+          take the booking and argue about it later.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are one man, based in Seminole, about eighty miles
+          north-west. Midland is on the regular route so getting here is not the issue, but we are not the
+          closest company to Polo Park and we will not pretend to be. What we offer instead is that the
+          licence holder does the work himself — TPCL 0918482, verifiable against the Texas Department of
+          Agriculture's records in about two minutes — guarantee terms written out with a duration, a
+          covered scope and explicit exclusions, and no contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Polo Park pest control questions" />
+  <Cta
+    market="Polo Park"
+    line="If flies are the reason you are calling, say so and say roughly how close you are to the barns — that changes the whole approach, and half of what actually works costs nothing and does not involve us."
+  />
+</BaseLayout>

@@ -1,0 +1,415 @@
+---
+/**
+ * Pest library — house mouse, Mus musculus.
+ *
+ * ⚠️ THE MOST IMPORTANT THING ON THIS PAGE IS A CORRECTION.
+ * HOUSE MICE ARE NOT THE HANTAVIRUS RESERVOIR. The CDC lists the US carriers
+ * as the deer mouse, the white-footed mouse, the rice rat and the cotton rat.
+ * Mus musculus is not among them. Plenty of pest control marketing implies
+ * otherwise, and this page must not.
+ *
+ * What house mice DO carry is LCMV — CDC: "LCM is a disease caused by a virus
+ * and spread by the common house mouse, Mus musculus." Most people recover;
+ * under 1% die. The serious risk is in pregnancy: first-trimester infection
+ * may cause miscarriage, later infection can cause serious birth defects, and
+ * roughly 35% of infected newborns die. CDC notes it is underreported.
+ *
+ * AND THE REGIONAL FACT THAT MAKES THE DISTINCTION MATTER HERE: hantavirus in
+ * Texas is concentrated in OUR REGION. Of 45 HPS cases 1993–2016, 23 (51%)
+ * came from Health Services Region 1, Northwest Texas — the Panhandle and
+ * South Plains. Fourteen patients (31.1%) died; the last fatality was 2007.
+ * Most involved the DEER MOUSE as the source. Texas DSHS's own count is 41
+ * cases since 1993 with 14 deaths — ⚠ different cut-off dates, so cite the
+ * range rather than a single number.
+ * So: the risk is real and local, it comes from native deer mice in barns and
+ * outbuildings, and the species identification is the whole point.
+ *
+ * VERIFIED (AgriLife L-1916, Texas Tech NSRL Mammals of Texas, UC IPM, ICWDM,
+ * CDC, Texas DSHS):
+ *  - Adult ½–1 oz; total length 5–8 in including tail; greyish-brown. Distinct
+ *    notch in the cutting surface of the upper incisors.
+ *  - vs DEER MOUSE: house mouse has an "overall gray coat" and a nearly
+ *    hairless tail; deer mice have "larger eyes and a white underside with a
+ *    distinct line of demarcation" (UC IPM).
+ *  - Gestation 19–21 days; litters of 5–6.
+ *    ⚠ LITTERS PER YEAR — sources genuinely disagree. AgriLife L-1916 states
+ *    "Thirteen per year" flatly; Texas Tech says "as many as 13"; UC IPM and
+ *    ICWDM both give 5–10. Publish 5–10 as the practical figure with 13 as the
+ *    theoretical maximum. Do NOT present 13 as the ordinary rate.
+ *  - Weaning 3 weeks; maturity 6–10 weeks; lifespan about a year.
+ *  - GAP SIZE: UC IPM — "under gaps ¼ inch tall, and through openings 3/8 inch
+ *    wide". ICWDM — "Seal all openings larger than 1/4 inch". Quote ¼ inch,
+ *    NOT the popular "size of a dime/pencil" phrasings.
+ *  - HOME RANGE: "seldom venture more than 30 feet from their nest sites and
+ *    food supply" (UC IPM); 10–30 ft diameter (ICWDM).
+ *  - FEEDING: "consume food in about 200 small meals each night"; up to 20% of
+ *    body weight daily; ~3 g/day. This is the mechanistic reason bait and trap
+ *    DENSITY matters more than bait choice.
+ *  - "A house mouse produces about 36,000 droppings in a year's time" (ICWDM).
+ *  - Texas Tech: in irrigated agricultural regions they concentrate along
+ *    irrigation-ditch vegetation — so on the South Plains they are NOT purely
+ *    an indoor animal, and structural pressure is seasonal from outside cover.
+ *  - "Exclusion is the most successful and permanent form of house mouse
+ *    control" (UC IPM).
+ *  - MATERIALS THAT WORK: concrete mortar, galvanised sheet metal, heavy-gauge
+ *    hardware cloth, ¼-inch hardware cloth, steel wool, metal on edges subject
+ *    to gnawing.
+ *  - MATERIALS THAT DO NOT: UC IPM names "plastic screening, rubber, vinyl,
+ *    insulating (expanding) foam, wood, and other gnawable materials".
+ *    Expanding foam alone is a common and useless exclusion job — say so.
+ *  - ULTRASONIC DEVICES DO NOT WORK: UC IPM — "There is little evidence that
+ *    sound, or magnetic or vibrational devices of any kind will drive
+ *    established house mice or rats from buildings."
+ *  - CLEANUP (CDC/DSHS): "Do NOT sweep or vacuum". Ventilate 30 minutes; spray
+ *    disinfectant and let soak 5 minutes; wipe with paper towels; gloves; and
+ *    where dust will be raised, HEPA or N-95 plus goggles. Dampen first with a
+ *    1-to-10 bleach-water mixture or other effective disinfectant.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pest library', path: '/pest-library/' },
+  { name: 'House mouse', path: '/pest-library/house-mouse/' },
+];
+
+const quickAnswer =
+  'A house mouse gets under a quarter-inch gap, seldom travels more than thirty feet from its nest, and feeds in about two hundred small meals a night — which is why exclusion outperforms trapping and why bait density matters more than bait choice. It is also not the hantavirus carrier; that is the native deer mouse, and the distinction matters in this region.';
+
+const faqs = [
+  {
+    q: 'How small a gap can a mouse get through?',
+    a: 'A quarter of an inch. University extension guidance puts it precisely: house mice can squeeze under gaps a quarter-inch tall and through openings three-eighths of an inch wide, and the standard rodent-proofing instruction is to seal everything larger than a quarter inch. You will see this described as the size of a pencil or a dime, and those comparisons are roughly consistent, but the published figure is a quarter inch and it is worth using because it is small enough to be genuinely surprising when you go looking.',
+  },
+  {
+    q: 'Do house mice carry hantavirus?',
+    a: 'No, and this is worth correcting because a lot of pest control marketing implies otherwise. The CDC lists the United States hantavirus carriers as the deer mouse, the white-footed mouse, the rice rat and the cotton rat. The house mouse is not among them. What house mice do carry is LCMV — lymphocytic choriomeningitis — which the CDC describes as spread by the common house mouse. Most people who catch it recover, and under one percent of cases are fatal, but infection during pregnancy is genuinely serious: first-trimester infection may cause miscarriage and later infection can cause serious birth defects.',
+  },
+  {
+    q: 'So is hantavirus a real concern here or not?',
+    a: 'It is, and more so here than in most of Texas — which is exactly why the species identification matters. Of 45 hantavirus pulmonary syndrome cases recorded in Texas between 1993 and 2016, 23 of them — 51 percent — came from Northwest Texas, the health region covering the Panhandle and South Plains. Fourteen patients died, and most cases involved the deer mouse as the source. The practical translation for this region: the risk is not the mouse in your kitchen, it is the native mouse in the barn, the shed, the hunting blind or the outbuilding that has been shut up for a season. Same exclusion work protects against both; the disease conversation is different.',
+  },
+  {
+    q: 'How do I tell a house mouse from a deer mouse?',
+    a: 'The belly, and it is not subtle once you know. A house mouse is greyish-brown all over, including the underside, with a nearly hairless tail. A deer mouse has noticeably larger eyes, a white underside, and a distinct line where the brown back meets the white belly — the tail is usually two-toned to match. If you are cleaning up in an outbuilding and the droppings belong to something with a white belly and a sharp colour line, treat the cleanup with the full precautions rather than sweeping it out.',
+  },
+  {
+    q: 'What is the right way to clean up droppings?',
+    a: 'Do not sweep and do not vacuum — that is the specific instruction from the CDC and Texas DSHS, because both raise material into the air, which is the transmission route that matters. Ventilate the space for at least thirty minutes before you start. Wear gloves. Dampen the area first with a bleach-and-water mixture at about one to ten, or another effective disinfectant, and let it soak for five minutes. Then wipe up with paper towels and bag them. Where the work will genuinely raise dust, a properly fitted N-95 or HEPA respirator and goggles are the guidance rather than a courtesy.',
+  },
+  {
+    q: 'Why does trapping alone never seem to finish it?',
+    a: 'Because of the arithmetic. Gestation is about three weeks, a litter is five or six, a female reaches breeding age at six to ten weeks, and published figures give her five to ten litters a year — with some sources putting the theoretical maximum as high as thirteen. A trap line removes individuals from a population replacing itself faster than most people check the traps. And because mice seldom travel more than thirty feet from the nest, the pressure is continuous from immediately outside the wall. Extension guidance is unambiguous that exclusion is the most successful and permanent form of house mouse control.',
+  },
+  {
+    q: 'Does expanding foam work for sealing them out?',
+    a: 'No, and it is one of the most common wasted jobs we see. University extension guidance specifically names insulating foam, along with plastic screening, rubber, vinyl and wood, as materials to avoid for rodent exclusion, because mice gnaw straight through them. What works is metal and masonry: quarter-inch hardware cloth, galvanised sheet metal, concrete mortar, steel wool packed into a gap, and metal protection on any edge that will be chewed. Foam has a place as a filler behind those things. On its own it is a decorative gesture.',
+  },
+  {
+    q: 'What about ultrasonic repellers?',
+    a: 'There is little evidence they do anything. Extension sources state directly that sound, magnetic and vibrational devices of any kind have not been shown to drive established mice or rats out of buildings. If a device were going to work, the mouse living in your wall void thirty feet from a reliable food supply would be the hardest possible customer to convince.',
+  },
+];
+---
+
+<BaseLayout
+  title="House Mouse | West Texas Pest Library"
+  description="A quarter-inch gap, a thirty-foot home range and two hundred meals a night — plus the hantavirus correction that matters in this region."
+  path="/pest-library/house-mouse/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pest library · <em>Mus musculus</em></p>
+      <h1>House mouse</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <div class="measure">
+        <p>
+          <strong>Three numbers explain nearly everything about controlling this animal</strong>, and none
+          of them is about a product.
+        </p>
+        <p>
+          <strong>A quarter of an inch</strong> is the gap it gets under. <strong>Thirty feet</strong> is
+          how far it travels from the nest. And <strong>two hundred</strong> is roughly how many separate
+          small meals it takes in a night.
+        </p>
+        <p>
+          Between them those three facts explain why sealing beats trapping, why trap and bait
+          <em>density</em> matters far more than which bait you choose, and why a mouse problem in a
+          kitchen is a problem in a specific eight-metre circle rather than in a house.
+        </p>
+        <p>
+          <strong>There is also a correction on this page.</strong> House mice are not the hantavirus
+          carrier — that is the native deer mouse — and the difference matters here more than almost
+          anywhere in Texas, because this region carries most of the state's hantavirus cases.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The three numbers, and what follows from each</h2>
+      <div class="measure">
+        <p>
+          <strong>A quarter inch.</strong> Extension guidance puts it exactly: house mice can squeeze under
+          gaps a quarter-inch tall and through openings three-eighths of an inch wide, and rodent-proofing
+          instructions say to seal every opening larger than a quarter inch. That is smaller than most
+          people picture, and it means the survey looks for gaps a homeowner would never register as gaps —
+          under a garage door where the seal has hardened at the corner, where a utility line enters the
+          wall, a weep hole, the gap where a soffit returns at a corner, a dryer vent that no longer closes.
+        </p>
+        <p>
+          <strong>Thirty feet.</strong> Mice seldom venture more than about thirty feet from their nest and
+          food supply, with typical activity in a circle of roughly ten to thirty feet across. This is
+          genuinely useful. Droppings in a pantry mean a nest within a few metres, not somewhere in the
+          house. It tells you where to look, where to put traps, and how tightly to space them — because a
+          trap forty feet from the nest may as well be in another building.
+        </p>
+        <p>
+          <strong>Two hundred meals.</strong> A mouse feeds in about two hundred small nibbles across a
+          night, eating up to a fifth of its body weight in a day but taking only about three grams. It is
+          not visiting one station and eating a meal; it is sampling constantly across its little
+          territory. That is the mechanistic reason a single bait station or two traps by the fridge
+          underperforms, and why professional placements are dense and close together rather than spread
+          around a room for appearances.
+        </p>
+        <p>
+          <strong>And one more number for scale:</strong> a single house mouse produces around
+          thirty-six thousand droppings in a year — near enough a hundred a day. That is why contamination
+          rather than consumption is usually the real cost. Mice do not eat much. They spoil a great deal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Identification, and the one that matters for health</h2>
+      <div class="measure">
+        <p>
+          <strong>A house mouse</strong> weighs half an ounce to an ounce, runs five to eight inches
+          including the tail, and is greyish-brown — including underneath. The tail is nearly hairless and
+          scaly, the ears are noticeably large and bare, and there is a distinct notch in the cutting edge
+          of the upper incisors.
+        </p>
+        <p>
+          <strong>Confusion one: a young rat.</strong> Adult Norway rats are far larger, but juveniles
+          overlap with adult mice in size. The tell is proportion — a young rat has an oversized head and
+          conspicuously large feet for its body, where a mouse looks proportionate. Getting this wrong
+          matters because it changes the size of the exclusion work and where you look for harbourage.
+        </p>
+        <p>
+          <strong>Confusion two, and this is the important one: a deer mouse.</strong> A deer mouse has
+          noticeably larger eyes, a <strong>white underside</strong>, and a sharp line where the brown of
+          the back meets the white of the belly. The tail is usually two-toned to match. A house mouse has
+          none of that — it is grey-brown all the way round.
+        </p>
+        <p>
+          <strong>That single distinction is the hantavirus distinction</strong>, and it is the reason this
+          section is not cosmetic. The CDC lists the American hantavirus carriers as the deer mouse, the
+          white-footed mouse, the rice rat and the cotton rat. The house mouse is not on that list.
+        </p>
+        <p>
+          <strong>Where each animal turns up</strong> is usually the practical clue. House mice are
+          commensal — they live with people, in kitchens, pantries, wall voids, appliance housings and
+          stored goods. Deer mice are native animals of field and brush that move into structures that are
+          not continuously occupied: barns, sheds, hunting blinds, equipment stores, cabins, a house shut
+          up for a season. If you are cleaning out a building that has been closed for months, assume the
+          deer mouse conversation rather than the house mouse one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Disease, stated accurately</h2>
+      <div class="measure">
+        <p>
+          <strong>Hantavirus first, because the regional numbers are striking.</strong> Of forty-five
+          hantavirus pulmonary syndrome cases recorded in Texas between 1993 and 2016,
+          <strong>twenty-three — fifty-one percent — came from Northwest Texas</strong>, the health region
+          covering the Panhandle and South Plains. Fourteen of the forty-five patients died; the last
+          fatality was in 2007. Most cases involved the deer mouse as the source of exposure. Texas DSHS's
+          own count, with a different cut-off, is forty-one cases since 1993 with fourteen deaths — so the
+          honest way to state it is as a range rather than a single number.
+        </p>
+        <p>
+          <strong>Read that in the right direction.</strong> Forty-odd cases in three decades across the
+          whole state is a rare disease, and nobody should be frightened of their own pantry. But half of
+          them came from this part of Texas, and the exposures come from native mice in buildings people
+          only enter occasionally. That is a specific, local, actionable piece of knowledge, and it is why
+          we take a barn cleanout differently from a kitchen call.
+        </p>
+        <p>
+          <strong>What house mice actually carry.</strong> LCMV — lymphocytic choriomeningitis — which the
+          CDC describes as spread by the common house mouse, through fresh urine, droppings, saliva or
+          nesting material. Most people who become infected recover, and fewer than one percent of cases
+          are fatal. The serious exception is pregnancy: infection in the first trimester may result in
+          miscarriage, later infection can cause serious birth defects, and roughly a third of infected
+          newborns die. The CDC also notes the disease is underreported, so its true frequency is not well
+          established.
+        </p>
+        <p>
+          <strong>And the broader list.</strong> AgriLife's rodent publication names the diseases
+          associated with commensal rodents generally — typhus fever, trichinosis, plague, infectious
+          jaundice, salmonella and rat mite dermatitis. We list that because it is what the extension
+          service publishes, not because any of it is common here.
+        </p>
+        <p>
+          <strong>The cleanup protocol is where the risk actually lives</strong>, and it applies to any
+          rodent droppings regardless of species. Do not sweep and do not vacuum — both raise material into
+          the air, which is the route that matters. Ventilate the space at least thirty minutes first. Wear
+          gloves. Dampen the area with a one-to-ten bleach-and-water mixture or another effective
+          disinfectant and let it soak five minutes. Wipe up with paper towels and bag them. Where the work
+          will raise dust, guidance calls for a properly fitted N-95 or HEPA respirator and goggles.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Why they arrive in October, and where from</h2>
+      <div class="measure">
+        <p>
+          <strong>House mice on the South Plains are not purely an indoor animal</strong>, which surprises
+          people who think of them as a city problem. The Texas mammal literature records them widely
+          distributed across the state in close association with humans, but also in fields, along
+          watercourses and in dense vegetation — and specifically notes that in irrigated agricultural
+          regions they concentrate along the vegetation of irrigation ditches.
+        </p>
+        <p>
+          <strong>That is this region exactly.</strong> Irrigated cotton, peanut and grain ground with
+          ditch vegetation is a mouse reservoir, and the population living out there is the population that
+          moves when conditions change.
+        </p>
+        <p>
+          <strong>Two things change at once in the autumn.</strong> Crops come off, which removes cover and
+          food across an enormous area within days. And the first genuinely cold nights arrive. Buildings
+          with existing gaps take the pressure suddenly and simultaneously, which is why people describe a
+          mouse problem as appearing overnight. The problem did not appear overnight; the pressure did.
+        </p>
+        <p>
+          <strong>The practical consequence is about timing, not product.</strong> Sealing a structure in
+          August or early September is worth considerably more than trapping in December — in August you
+          are closing the door before anyone arrives, and in December you are evicting an established
+          population with cold weather outside giving them every reason to stay.
+        </p>
+        <p>
+          <strong>And on rural property, look at the outbuildings first.</strong> The house is where people
+          notice a mouse. The shop, barn, equipment shed and feed store are usually where the population
+          lives — and a sack of feed is a pantry, a stored tractor is a warm shelter, and a stack of
+          pallets is a housing development. Treating the house alone is why people call somebody a second
+          time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What works, what does not, and why</h2>
+      <div class="measure">
+        <p>
+          <strong>Exclusion is the answer, and extension sources say so plainly:</strong> it is the most
+          successful and permanent form of house mouse control. Everything else manages the population you
+          have. Only exclusion changes what the building can support.
+        </p>
+        <p>
+          <strong>Materials that work:</strong> quarter-inch hardware cloth, galvanised sheet metal,
+          concrete mortar, steel wool packed tight into a gap, and metal protection on any edge that will
+          be gnawed. Screen weep holes rather than filling them, or you trade a rodent problem for a
+          moisture problem.
+        </p>
+        <p>
+          <strong>Materials that do not work, named specifically by extension guidance:</strong> plastic
+          screening, rubber, vinyl, wood, and <strong>insulating expanding foam</strong>. Mice chew through
+          all of it. Foam alone is one of the most common wasted exclusion jobs there is — it looks sealed,
+          it feels productive, and it is a soft brown line the mouse reopens in an evening. Foam is fine as
+          a filler behind metal. It is not a barrier.
+        </p>
+        <p>
+          <strong>Ultrasonic and vibrational devices do not work.</strong> Extension sources state there is
+          little evidence that sound, magnetic or vibrational devices of any kind will drive established
+          mice or rats out of a building. Given that the animal lives thirty feet from a reliable food
+          supply inside a wall, that is not surprising.
+        </p>
+        <p>
+          <strong>Trapping, done properly.</strong> Dense placement in the actual thirty-foot activity
+          circle rather than spread evenly around a room. Traps set against walls, because mice travel
+          edges. Bait kept fresh and changed daily. And a variety of baits across successive traps rather
+          than the same thing everywhere — extension guidance suggests fruit, peanut butter and nuts among
+          others, and the two-hundred-meals habit means a mouse samples rather than commits.
+        </p>
+        <p>
+          <strong>Baiting has its place and it is not a substitute for the above.</strong> Professional
+          bait belongs in tamper-resistant stations, placed on the evidence rather than at even intervals
+          for appearance, and the conversation about children, pets and non-target animals happens before
+          anything goes down rather than after.
+        </p>
+        <p>
+          <strong>And the honest framing of the whole job.</strong> AgriLife's own position is an
+          integrated one — rodenticides, traps, removal of shelter, elimination of food and water, and
+          rodent-proofing, together. If somebody quotes you a rodent job that contains no sealing work at
+          all, they have quoted you a subscription rather than a solution.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Reading the evidence before anybody sets a trap</h2>
+      <div class="measure">
+        <p>
+          A mouse job is mostly reading, and most of what there is to read gets swept up before anybody
+          looks at it.
+        </p>
+        <p>
+          <strong>Droppings tell you where, not how many.</strong> Distribution is the information — where
+          they are concentrated marks the runway and the nest area, and that is what decides where traps
+          and stations go. Which is why we ask people not to clean everything before the visit. Clean what
+          is intolerable and leave the rest.
+        </p>
+        <p>
+          <strong>Rub marks along edges.</strong> Mice travel the same routes and leave greasy smudges
+          along skirting boards, joists, pipe runs and the edges of openings. Those marks are a map of the
+          thirty-foot circle, and they show up best with a torch held low and along the surface rather than
+          pointed at it.
+        </p>
+        <p>
+          <strong>Nests are small and neat.</strong> AgriLife describes mouse nests as smaller and tidier
+          than rat nests, and lists exactly the places they turn up: under a pile of paper sacks, in loose
+          or baled hay, inside upholstered furniture, and even in cabinet drawers. Shredded paper, fabric
+          or insulation gathered into a cup is what you are looking for.
+        </p>
+        <p>
+          <strong>Damage to stored goods.</strong> Gnawed corners on boxes, small holes in sacks, and
+          contamination well beyond what was actually eaten — a mouse takes about three grams a day, so the
+          loss is almost always spoilage rather than consumption.
+        </p>
+        <p>
+          <strong>And activity in daylight means numbers.</strong> Mice are nocturnal and secretive; a
+          mouse seen crossing a floor in the afternoon usually means the population is large enough that
+          competition is pushing individuals out into the open. It is the one observation that reliably
+          indicates scale rather than presence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="House mouse questions" />
+  <Cta
+    line="If the building has been shut up for a season, say so on the phone — that changes the cleanup precautions before anything else, because in this region the mouse in a closed-up barn is a different animal from the one in the kitchen."
+  />
+</BaseLayout>

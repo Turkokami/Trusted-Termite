@@ -1,0 +1,34 @@
+---
+/**
+ * Renders the problem spokes for one service. Nothing renders when a service
+ * has none, so this can be dropped into every service page unconditionally.
+ *
+ * Spokes are listed in src/data/spokes.ts, which the verification harness
+ * reconciles against the built routes in both directions.
+ */
+import { spokesFor } from '../data/spokes';
+
+interface Props {
+  service: string;
+}
+const { service } = Astro.props;
+const items = spokesFor(service);
+---
+
+{items.length > 0 && (
+  <section class="band">
+    <div class="wrap">
+      <h2>{items.length === 1 ? items[0].label : 'Questions people ask us about this'}</h2>
+      <div class="measure">
+        {items.map((s) => (
+          <>
+            <p>{s.intro}</p>
+            <p>
+              <a href={`/services/${s.service}/${s.slug}/`}><strong>{s.label}</strong></a> — {s.blurb}
+            </p>
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

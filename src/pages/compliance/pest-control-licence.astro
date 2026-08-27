@@ -48,6 +48,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
+import Verified from '../../components/Verified.astro';
 import Cta from '../../components/Cta.astro';
 import { BUSINESS } from '../../data/business';
 
@@ -460,6 +461,8 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <Verified facts={['LIC-01', 'LIC-02', 'LIC-03', 'INS-01', 'REG-01']} />
 
   <Faq items={faqs} heading="Licensing questions" />
   <Cta

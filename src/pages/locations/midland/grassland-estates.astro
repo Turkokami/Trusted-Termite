@@ -1,0 +1,392 @@
+---
+/**
+ * T5 neighbourhood page — Grassland Estates, north-west Midland, Midland Co.
+ *
+ * THE DISTINGUISHING FACT: this is the LONGEST CONTINUOUS BUILD of any
+ * neighbourhood on this site — twenty-seven sections from July 1984 to April
+ * 2026, plus thirteen more in Grassland Estates West from 2003 to 2024. It has
+ * never stopped. Sections were recorded in January and April of THIS YEAR.
+ *
+ * That gives it a property no other neighbourhood here has: every slab age
+ * from forty-two years to brand new, simultaneously, on one street grid. Your
+ * neighbour's foundation may be four decades older than yours. That is the
+ * argument the page is built on, and it is deliberately different from
+ * Greathouse (post-2004), Briarwood (1984–2012, evenly), Green Tree (45 years
+ * of irrigation) and Parks Bell Ranch (a decade old).
+ *
+ * VERIFIED platting, City of Midland public ArcGIS Subdivision layer:
+ *   Grassland Estates, 27 sections. Section 1 recorded 1984-07-18, Cab C
+ *   Pg 184, inst. 14576, surveyor J. STAN PIPER — who surveyed essentially
+ *   the entire series through Section 23. Then: 2nd 1986-01-27 · 3rd
+ *   1987-10-12 · 4th 1988-12-16 · 5th 1991-03-08 · 6th 1991-07-10 · 8th
+ *   1991-10-17 · 7th 1991-11-13 · 9th 1994-01-24 · 10th 1995-01-18 · 11th
+ *   1996-03-22 · 12th 1996-06-18 · 13th 1997-01-06 · 14th 1997-03-18 · 15th
+ *   1998-03-17 · 16th 1999-04-07 · 17th 2000-04-04 · 18th 2001-05-21 · 19th
+ *   2001-08-21 · 20th 2002-06-05 · 22nd 2002-12-19 · 21st 2003-07-11 · 23rd
+ *   2005-02-04 · 24th 2015-03-27 (RJ Daum) · 25th 2024-03-07 (Samuel Wyatt) ·
+ *   26th 2026-01-21 · 27th 2026-04-15.
+ *   Grassland Estates West, 13 sections: 1st 2003-09-26 (Max W. Richardson) ·
+ *   2nd 2004-02-20 · 3rd & 4th both 2005-06-15 · 5th 2007-08-30 · 6th
+ *   2008-02-07 · 8th 2009-01-22 · 7th 2012-01-19 · 9th 2014-03-24 · 10th
+ *   2018-05-24 · 11th 2019-11-08 · 12th 2024-03-08 · 13th 2024-11-15.
+ *
+ *  - HOA (management certificate, Texas registry): Restrictions and Covenants
+ *    Doc. 1988-4272; restated covenants Doc. 1988-22458; assessment notice
+ *    Doc. 1993-2635; and an ELECTION EXTENDING ANNEXATION RIGHTS, Doc.
+ *    1998-5890 — the instrument by which successive sections were pulled into
+ *    the same association. Managed by Vision Communities Management Inc.
+ *  - HOA clubhouse and pool at 5800 Crowley Blvd — inside the original 1984
+ *    Grassland Est plat.
+ *  - Grasslands Park, 2501 Crowley Blvd: FIVE ACRES, with pavilion, three
+ *    benches, three picnic tables, sidewalk and two trash receptacles. Inside
+ *    the Grassland Est 14th plat (recorded 1997-03-18).
+ *  - Abell Junior High, 3201 Heritage Blvd, falls inside the plat area;
+ *    Bush Elementary, 5001 Preston Dr, sits immediately east of it. Addresses
+ *    from the NCES directory; the positions are geometry against the city's
+ *    own layers. NOT attendance zones.
+ *  - Not in mapped 100-year floodplain; no mapped playa inside the extent.
+ *  - Midland County IS on the imported fire ant regulated-areas list.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - GOLF. At the 1 March 2021 Midland P&Z meeting, Midland-Odessa Golf Corp.
+ *    sought initial zoning for a 21.91-acre tract in Lot 1, Block 21,
+ *    Grassland Estates Section 16, near Homeland Dr and Homestead Blvd, in the
+ *    ETJ. We do NOT know what that is or became. Green Tree Country Club is
+ *    roughly a MILE north of the plat area's northern edge — NOT adjacent.
+ *    NEVER write that Grassland Estates adjoins a golf course.
+ *  - Developer name, acreage, lot counts, alleys, curbs, lot dimensions.
+ *  - Attendance zones for either school.
+ *  - Which sections are inside the HOA. The annexation-rights instrument
+ *    implies it varies; we did not establish the boundary. Tell readers to
+ *    check their deed.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Midland', path: '/locations/midland/' },
+  { name: 'Grassland Estates', path: '/locations/midland/grassland-estates/' },
+];
+
+const quickAnswer =
+  'Grassland Estates has been under construction since July 1984 and has never stopped — twenty-seven sections, the most recent recorded this year. That means every slab age from forty-two years to brand new sits on one street grid, and the right inspection depends entirely on which section you are in. The licence holder, Valentin Moriel, does the work himself under TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'How long has Grassland Estates been building?',
+    a: 'Longer than any other neighbourhood we work, and it has not finished. The City of Midland recorded Section 1 on 18 July 1984, surveyed by J. Stan Piper, who went on to survey essentially the whole series through Section 23. Sections followed through the late 1980s, a cluster in 1991, most years through the 1990s, a run through the early 2000s, then a twenty-fourth in 2015, a twenty-fifth in 2024, and a twenty-sixth and twenty-seventh recorded in January and April of this year. Alongside it, Grassland Estates West added thirteen more sections between 2003 and late 2024.',
+  },
+  {
+    q: 'Why does the section number matter for pest control?',
+    a: 'Because it tells us roughly how old your foundation is, and that decides where an inspection is worth spending its time. In most neighbourhoods everything was built within a decade or so, and a single approach fits the whole place. Here a house on Section 1 ground is forty-two years old and a house on Section 27 ground is new, and they need genuinely different attention. On the older slabs we are looking hardest at four decades of perimeter history — expansion joints, plumbing penetrations, added patios, re-landscaped beds, replaced fences. On the newest we are looking at fill behaviour, grade against the slab, and what the builder did.',
+  },
+  {
+    q: 'Am I in the homeowners association?',
+    a: 'Check your deed, because in a neighbourhood built across four decades the answer genuinely varies. The association\'s recorded documents include restrictions and covenants from 1988, restated covenants the same year, an assessment notice from 1993, and — the interesting one — an election extending annexation rights recorded in 1998. That last instrument is the mechanism by which later sections were brought into the same association. Its existence tells you that coverage was extended deliberately over time rather than applying automatically to everything named Grassland Estates, which is exactly why it is worth confirming rather than assuming.',
+  },
+  {
+    q: 'There is a park in the middle of the neighbourhood. Does that change anything?',
+    a: 'A little, and it is worth knowing which direction pressure comes from. Grasslands Park on Crowley Boulevard is five acres with a pavilion, benches, picnic tables and bins, sitting inside the platted area. Five acres of maintained, watered turf in a region averaging around fourteen inches of rain a year is a concentrator: it suits imported fire ants, it supports a much larger population of crickets and other prey insects than the ground around it, and that prey base draws scorpions and spiders toward whatever boundary the park shares. The bins add a small, steady refuse point that interests rodents. If your lot backs onto it, that is your active boundary and perimeter work there is worth more than the same effort spread evenly.',
+  },
+  {
+    q: 'Is Grassland Estates near a golf course?',
+    a: 'Not adjacent to one, and we want to be careful here because it would be an easy thing to imply. Green Tree Country Club is roughly a mile north of this neighbourhood\'s northern edge — near, but not a boundary you share. There is also a loose end we could not tie off: at a Midland planning meeting in March 2021, a golf corporation sought initial zoning for a twenty-two-acre tract within Grassland Estates Section 16, in the city\'s extraterritorial jurisdiction. We do not know what that tract is or what became of it, so we are not going to tell you there is a course there. If you back onto large irrigated turf of any kind, the practical advice on this page about active boundaries applies to you.',
+  },
+  {
+    q: 'Is Grassland Estates in a floodplain?',
+    a: 'Not according to the City of Midland\'s published mapping — neither the plat area centroid nor the park falls within the mapped 100-year floodplain, and no mapped playa lake sits inside the plat extent. That is a good answer for a north Midland neighbourhood, and it means mosquito pressure here comes from water on properties rather than from a basin nearby that fills after every storm: irrigation low spots, containers, gutters, pool covers. For any decision that actually matters, check your own parcel with the city rather than with a pest control website.',
+  },
+  {
+    q: '¿Atienden Grassland Estates, en Midland?',
+    a: 'Sí, y Midland forma parte de la ruta habitual. Valentin atiende en español y hace el trabajo personalmente. Lo importante aquí: el fraccionamiento lleva construyéndose desde 1984 y sigue — se registraron secciones nuevas este mismo año. Por eso conviene decirnos en qué sección está su casa. Una losa de cuarenta años y una nueva necesitan revisiones distintas, sobre todo cuando se trata de termitas. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Grassland Estates, Midland TX"
+  description="Termite, fire ant, scorpion and rodent work in Grassland Estates, Midland — building since 1984 and still going, so every slab age is here. TPCL 0918482."
+  path="/locations/midland/grassland-estates/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Grassland Estates, Midland',
+    description: 'Termite, fire ant, scorpion, spider and rodent control for homes in Grassland Estates and Grassland Estates West, north-west Midland, Midland County.',
+    areaServed: ['Midland', 'Midland County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Midland · Midland County · 27 sections, 1984 to this year</p>
+      <h1>Pest Control in Grassland Estates, Midland</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Grassland Estates has one characteristic that no other neighbourhood we work shares, and it is
+          the reason the first question we ask here is different from the first question we ask anywhere
+          else.
+        </p>
+        <p>
+          <strong>It has been building continuously since 1984 and it has not stopped.</strong> The City of
+          Midland recorded Section 1 on 18 July 1984. Sections followed through the late 1980s, a cluster
+          in 1991, most years through the 1990s, a steady run through the early 2000s — and then a
+          twenty-fourth section in 2015, a twenty-fifth in 2024, and a twenty-sixth and twenty-seventh
+          recorded in <strong>January and April of this year</strong>. Grassland Estates West added
+          thirteen more sections of its own between 2003 and late 2024.
+        </p>
+        <p>
+          Forty-two years, twenty-seven sections, and one surveyor — J. Stan Piper — carrying the series
+          from the first section through the twenty-third.
+        </p>
+        <p>
+          <strong>The consequence is that every slab age exists here at once.</strong> On the same street
+          grid, under the same neighbourhood name, there are foundations poured before the Berlin Wall came
+          down and foundations poured this year. That is unusual, and it means a treatment approach built
+          for "Grassland Estates" as a single place would be wrong for roughly half of it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Two houses, one street, forty years apart</h2>
+      <div class="measure">
+        <p>
+          It is worth spelling out what actually differs, because "older houses need more attention" is
+          both true and useless as advice.
+        </p>
+        <p>
+          <strong>On a slab from the mid-1980s</strong>, the story is accumulated history. Four decades is
+          long enough for the ground to settle, for plumbing to have been repaired or replaced at least
+          once, for a patio to have been added, for beds to have been dug out and re-landscaped, for fences
+          to have been replaced, and for irrigation to have been installed or altered. Every one of those
+          touches the perimeter, and each is a potential route past whatever protection was originally
+          there. Any pre-construction termite treatment applied in 1985 stopped being a factor a long time
+          ago. So the inspection concentrates on the perimeter itself: expansion joints, plumbing
+          penetrations, where soil or mulch has crept up against the slab edge, and where additions meet
+          the original structure.
+        </p>
+        <p>
+          <strong>On a slab from the last decade</strong>, the story is fill and paperwork. New pads are
+          graded, cut and filled, so the soil around the foundation has been moved and compacted and
+          sometimes imported. Fill settles on its own schedule, which over the first several years can open
+          small gaps at joints and penetrations. And a pre-construction treatment, if applied, is recent
+          enough that the builder can probably still tell you the product and the date — which is worth a
+          phone call before buying termite work from anybody, us included.
+        </p>
+        <p>
+          <strong>The middle is its own case.</strong> A house from 1996 or 2001 has had enough time for
+          the original treatment to have expired but not enough for wholesale changes to the perimeter. In
+          practice those are often the properties where a first proper inspection turns up something
+          straightforward that has been quietly developing.
+        </p>
+        <p>
+          <strong>Which is why we ask for the section rather than the street.</strong> It is not
+          bureaucratic curiosity. Knowing whether you are on 1984 ground, 2001 ground or 2026 ground
+          changes what we look at first, and on a large property that is the difference between a
+          thorough inspection and a long one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The annexation instrument, and why your deed matters</h2>
+      <div class="measure">
+        <p>
+          Here is a small piece of neighbourhood machinery that is worth understanding, because it affects
+          who governs your yard.
+        </p>
+        <p>
+          The Grassland Estates homeowners association has restrictions and covenants recorded in 1988,
+          restated covenants recorded the same year, and an assessment notice from 1993. It also has an
+          instrument recorded in 1998 described as an <strong>election extending annexation rights</strong>.
+        </p>
+        <p>
+          <strong>That is the mechanism by which later sections joined the association.</strong> When a
+          subdivision is built across decades, sections platted long after the original covenants were
+          recorded do not automatically fall under them. Annexation provisions let the developer or the
+          association bring subsequent sections in — and the fact that this one had to be extended by an
+          election tells you the coverage was deliberately managed over time rather than being universal
+          from the start.
+        </p>
+        <p>
+          <strong>So "am I in the HOA?" is a real question here rather than a formality.</strong> We could
+          not establish which sections are inside it and which are not, and we are not going to guess.
+          Your deed and the recorded documents will tell you, and it is worth ten minutes because the
+          answer determines whether you have access to the clubhouse and pool on Crowley Boulevard, whether
+          you owe assessments, and — the part relevant to us — whether your yard, your fence and your
+          landscaping are governed by covenants or purely by City of Midland code enforcement.
+        </p>
+        <p>
+          <strong>That distinction has practical consequences.</strong> Where covenants govern, an
+          overgrown lot next door is something an association can act on relatively quickly. Where they do
+          not, the route runs through the city ordinance — and Midland's grass and weed standard is
+          <strong>eighteen inches</strong>, the most permissive of any town we serve, against twelve across
+          most of the region and eight in Lubbock. We keep
+          <a href="/compliance/weed-ordinances/">a cited comparison of every town's ordinance</a> because
+          people are consistently surprised by their own. Eighteen inches is a great deal of grass, and a
+          great deal of harbourage for rodents, snakes and the insects that feed on both, sitting entirely
+          legally next door.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Five acres of watered turf in the middle</h2>
+      <div class="measure">
+        <p>
+          Grasslands Park sits on Crowley Boulevard inside the platted area — five acres with a pavilion,
+          three benches, three picnic tables, a sidewalk and two bins. The association's own clubhouse and
+          pool are further up the same street, on ground that falls inside the original 1984 plat.
+        </p>
+        <p>
+          <strong>Five acres does not sound like much until you consider the surroundings.</strong> This
+          region averages around fourteen inches of rain a year, and unirrigated ground here is caliche,
+          sand and whatever survives on that. A maintained, watered five-acre park is a reliable water and
+          food source in a landscape that has very little of either, and in dry country that concentrates
+          things rather than distributing them.
+        </p>
+        <p>
+          <strong>What it concentrates.</strong> Imported fire ants, which exploit maintained turf better
+          than nearly any other habitat available to them, and Midland County sits inside the federal
+          quarantine. Crickets and other prey insects in numbers the surrounding ground would not support.
+          And, following that prey base, the scorpions and spiders that hunt it — which is why properties
+          on a park boundary often report more of both than properties three streets in.
+        </p>
+        <p>
+          <strong>The bins are a smaller but real point.</strong> Two public refuse receptacles are a
+          modest, steady food source, and they interest rodents in the same way any refuse point does. Not
+          a problem in themselves; a reason that the park boundary is a slightly busier edge than a fence
+          shared with another garden.
+        </p>
+        <p>
+          <strong>If you back onto it, treat that boundary differently.</strong> Pressure arrives from one
+          side rather than evenly, so perimeter work concentrated there is worth more than the same effort
+          spread politely around the house. Exterior lighting is the lever most people have not considered:
+          on a boundary with a dark green space, a bright white porch light is an insect magnet, and every
+          insect it draws is a meal that brings something else to the wall. Warmer-toned lighting aimed
+          down rather than out reduces what accumulates on that side more reliably than most treatments do.
+        </p>
+        <p>
+          <strong>And what we will not claim.</strong> Green Tree Country Club is about a mile north of
+          this neighbourhood's edge — near, but not a boundary you share, and we are not going to blur that
+          into an adjacency because it would sound better. If you happen to back onto large irrigated turf
+          of any kind, the advice above is what applies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What Grassland Estates property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> AgriLife entomology, the federal quarantine list, and
+          this neighbourhood's documented characteristics — the forty-two-year build range, the five-acre
+          park, the absence of mapped floodplain, and the schools within and beside the plat area. This is
+          what these conditions reliably produce, not a report on any individual address.
+        </p>
+        <p>
+          <strong>Termites, and which decade you are in.</strong> The defining question here, covered
+          above. Because the slab conceals the working, the evidence surfaces late — tubing on a foundation wall, soft trim, or a spring swarm around a window. The standard local reassurance that West Texas is too dry does not hold on irrigated
+          residential ground — subterranean termites work below grade where the moisture is.
+        </p>
+        <p>
+          <strong>Fire ants, concentrated on watered ground.</strong> Midland County appears on the federal
+          imported fire ant register at 7 C.F.R. §301.81-3, adopted into Texas law at 4 TAC §19.101. The
+          park and the irrigated lawns around it are better habitat than the dry ground outside the
+          neighbourhood. Identification before treatment matters — a red harvester ant mound and an
+          imported fire ant nest need different products and different methods — and movement rules apply
+          to soil, sod, nursery stock, hay stored on the ground and used soil-moving equipment leaving the
+          county for one that is not quarantined.
+        </p>
+        <p>
+          <strong>Scorpions, following moisture and prey.</strong> Striped bark scorpions are active after
+          dark and climb far better than their shape suggests, so they turn up in attics and wall cavities
+          as often as at ground level. The AgriLife guidance is that a hard dry spell outdoors is what pushes them in. Harbourage removal and exclusion do more than spraying — and in a
+          neighbourhood with sections dating back forty years, harbourage means mature leaf litter against
+          foundations, stacked material along fences and the spaces under decking and sheds.
+        </p>
+        <p>
+          <strong>Rodents from October, plus construction displacement.</strong> The first cold nights move
+          them toward the nearest structure, by the usual routes: a garage door seal that no longer seals,
+          a gap at a soffit return, an unsealed utility penetration, a limb touching the roof. With
+          sections still being platted, earthmoving on nearby ground adds displacement events on top of the
+          seasonal pattern — and that is the moment perimeter work is worth applying rather than the
+          following quarter.
+        </p>
+        <p>
+          <strong>Mosquitoes, from properties rather than a basin.</strong> The floodplain answer here is
+          clean, so what you get is produced close to home: irrigation low spots, saucers, tarps, gutters,
+          wheelbarrows, pool covers. Those are the sources you can actually eliminate, which makes them
+          worth more attention than they usually get.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we do in Grassland Estates</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Midland is a regular part of the route</strong>, so scheduling is straightforward.
+          Recurring service runs bi-monthly or quarterly, priced on the size of the property, the pressure
+          and the frequency, with a higher initial visit. <strong>No contracts</strong> — no term, no
+          cancellation fee. Termite, bed bug, mosquito, lawn, brush and junk work is individually quoted
+          after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          <strong>The one thing worth doing before anything else.</strong> Find out roughly when your house
+          was built, and if it is recent, ring the builder about the termite pre-treatment — product, date,
+          and whether a warranty transferred. On a 2015 or 2024 house somebody can still answer that. On a
+          1986 house nobody can, and that is itself the answer: an inspection is worth having rather than
+          an assumption.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are one man, based in Seminole, about eighty miles
+          north-west. Midland is on the regular route so getting here is not the issue, but we are not the
+          closest company to Grassland Estates and we will not pretend to be. What we offer instead is that
+          the licence holder does the work himself — TPCL 0918482, verifiable against the Texas Department
+          of Agriculture's records in about two minutes — guarantee terms written out with a duration, a
+          covered scope and explicit exclusions, and no contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Grassland Estates pest control questions" />
+  <Cta
+    market="Grassland Estates"
+    line="Tell him which section you are in, or just roughly when the house was built. In a neighbourhood that has been building since 1984 and is still going, that one answer decides where the inspection starts."
+  />
+</BaseLayout>

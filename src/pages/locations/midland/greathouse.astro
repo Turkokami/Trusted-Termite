@@ -1,0 +1,385 @@
+---
+/**
+ * T5 neighbourhood page — Greathouse, north-west Midland, Midland County.
+ *
+ * THE DISTINGUISHING FACTS:
+ *
+ * 1. A TWELVE-YEAR GAP. Greathouse Addition Section 1 was recorded
+ *    1992-01-14 (Max W. Richardson, Cab F Pg 45) — and then nothing until the
+ *    2nd Section in June 2004. Sixteen further sections followed between 2004
+ *    and 2023. So this is overwhelmingly a POST-2004 neighbourhood with one
+ *    older pocket, which makes it the NEWEST housing stock of the Midland
+ *    neighbourhoods on this site and a different argument from Briarwood
+ *    (evenly spread 1984–2012) or Grassland Estates (continuous since 1984).
+ *
+ * 2. A SCHOOL INSIDE THE SUBDIVISION. Greathouse Elementary, 5107 Greathouse
+ *    Ave, Midland ISD, PK–6, roughly 750 students, mascot the Knights,
+ *    described by the district as "located in northwest Midland". Geometry
+ *    against the city's own layers puts the campus INSIDE the original 1992
+ *    Greathouse plat — within the subdivision, not merely near it.
+ *
+ * 3. LETTERED COMMON AREAS. Midland P&Z items in 2021 and 2023 concern
+ *    replats of "Common Area J, Block 20, Greathouse Addition, Section 7".
+ *    Platted, lettered common areas are ordinarily HOA-maintained shared
+ *    ground and are COMMONLY used for drainage detention. That last clause is
+ *    an INFERENCE FROM GENERAL PLATTING PRACTICE, not a documented fact about
+ *    Greathouse. The page frames it as a question to ask, never as a finding.
+ *
+ * VERIFIED platting (City of Midland public ArcGIS Subdivision layer), nearly
+ * all surveyed by J. Stan Piper:
+ *   1st 1992-01-14 Max W. Richardson · 2nd 2004-06-07 · 4th 2005-04-19
+ *   3rd 2005-06-24 · 5th 2005-10-10 · 6th 2007-10-08 · 8th 2008-02-07
+ *   9th 2012-12-19 · 11th 2013-03-11 · 7th 2014-01-23 · 12th 2014-01-31
+ *   13th 2015-02-23 · 14th 2017-09-28 · 15th 2018-08-08 · 16th 2020-03-17
+ *   19th 2022-07-19 · 10th 2023-03-07
+ *  - Street names from P&Z agendas: Portico Way, Mathis Street, Deep Run
+ *    Avenue, Dunraven Court. "Court" indicates cul-de-sacs.
+ *  - Spans Midland Council Districts 1 and 4.
+ *  - Greathouse and the Briarwood Addition DIRECTLY ABUT; Greathouse
+ *    Elementary is roughly 330 ft west of Briarwood's western plat boundary.
+ *  - Not in mapped 100-year floodplain; no mapped playa inside the extent.
+ *  - Midland County IS on the imported fire ant regulated-areas list.
+ *
+ * THE NAME — HANDLE PRECISELY. The school and subdivision take the name of
+ * Barney R. Greathouse (d. 1973), a Midland druggist and civic figure who,
+ * with George H. W. Bush and two others, chartered the Commercial Bank and
+ * Trust. His widow Helen Greathouse (1908–2001) created the Helen Greathouse
+ * Charitable Trust in 1997. CRITICAL: the Trust's own biography makes NO
+ * mention of land, ranching or real-estate development. DO NOT state or imply
+ * that the family owned or developed this land. The name connection is
+ * documented; a land connection is not.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - Any HOA. None was found on the first page of the Texas HOA registry for
+ *    Midland County, but that listing is paginated, so absence is NOT proven.
+ *    The page says we could not find one, not that there is none.
+ *  - Acreage, lot counts, alleys, curbs, developer name.
+ *  - Attendance zones. The campus is inside the plat; that is geography, not
+ *    a zone assignment.
+ *  - What Common Area J actually is or contains.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Midland', path: '/locations/midland/' },
+  { name: 'Greathouse', path: '/locations/midland/greathouse/' },
+];
+
+const quickAnswer =
+  'Greathouse is the newest of the north-west Midland neighbourhoods we work: one section platted in 1992, then a twelve-year pause, then sixteen more between 2004 and 2023. Newer slabs, an elementary school inside the subdivision and ongoing building shape what matters here. Owner-operated under Texas licence TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'How new are Greathouse houses?',
+    a: 'Newer than almost anywhere else we work in Midland, with one exception. The City of Midland recorded the first Greathouse Addition section in January 1992 — and then nothing at all under that name for twelve years. The second section came in June 2004, and sixteen further sections followed between then and March 2023. So unless you are in that original 1992 pocket, your house is very likely post-2004, which is recent enough that questions about builders, pre-construction termite treatment and warranties still have findable answers.',
+  },
+  {
+    q: 'Should I ask about a termite pre-treatment?',
+    a: 'Yes, and here you realistically can. A pre-construction treatment is termiticide applied to the soil and pad before the slab is poured. On a house from 2005 or 2015 the builder is usually still trading and the closing paperwork usually still exists, so three questions are worth asking: was a pre-treatment applied, what product and on what date, and did any warranty transfer to you. That matters because soil-applied termiticides degrade over time and later work — utility trenching, a patio poured afterwards, landscaping — can breach the treated zone. We would rather you found out you were still covered than bought a treatment from us that you did not need.',
+  },
+  {
+    q: 'There is a school in the middle of the neighbourhood. Does that matter?',
+    a: 'A little, and not in the way people expect. Greathouse Elementary sits inside the original platted area — it is within the subdivision rather than near it. A school campus is two things from our point of view: a large institutional building with food service and refuse handling on a commercial scale, and several acres of maintained grounds. The grounds are the relevant part for most residents. Maintained, irrigated turf in a dry region concentrates fire ants and supports a much larger prey-insect population, which in turn draws the scorpions and spiders that hunt it toward whatever boundary the grounds share. If your lot adjoins the campus, that is your active boundary.',
+  },
+  {
+    q: 'What are the common areas, and do they hold water?',
+    a: 'That is a genuinely good question to put to whoever maintains them, and we are not going to answer it for you. Greathouse\'s plats include lettered common areas — city planning records mention replats of Common Area J in Block 20 of Section 7, for instance. Platted common areas are usually shared ground maintained collectively, and in Texas subdivisions they are also frequently used for stormwater detention, which means a basin designed to hold water temporarily after a heavy rain. We could not establish what Greathouse\'s common areas actually are or whether any of them serve that function. If one near you does, it is worth knowing, because a detention basin that drains slowly can produce mosquitoes for a week or more after a storm.',
+  },
+  {
+    q: 'Is there a homeowners association in Greathouse?',
+    a: 'We could not find one, and we want to be precise about what that does and does not mean. We searched the Texas state registry of association management certificates for Midland County and found no Greathouse association on the pages we were able to check — but that listing is paginated and we did not exhaust it, so this is a failure to find rather than a demonstrated absence. If it matters to you, your deed and your closing documents will settle it. It is worth knowing either way, because if there is no association then yard condition here is governed by City of Midland code enforcement, which runs on an eighteen-inch grass ordinance — the most permissive of any town we serve.',
+  },
+  {
+    q: 'Is Greathouse in a floodplain?',
+    a: 'Not according to the City of Midland\'s own published mapping — the plat area does not fall within the mapped 100-year floodplain and no mapped playa lake sits inside its extent. That is a cleaner answer than some north Midland neighbourhoods get. It means the mosquitoes you deal with here are being produced close to home rather than by a basin down the road: containers, irrigation low spots, gutters, pool covers, and possibly a common-area detention feature if one exists nearby. For any decision that actually matters, check your own parcel with the city rather than with a pest control website.',
+  },
+  {
+    q: '¿Atienden Greathouse, en Midland?',
+    a: 'Sí, y Midland forma parte de la ruta habitual. Valentin atiende en español y hace el trabajo personalmente. Un consejo específico para casas nuevas como la mayoría de las de Greathouse: pregunte a su constructor si se aplicó tratamiento preventivo contra termitas antes de vaciar la losa, con qué producto y en qué fecha, y si la garantía pasó a su nombre. En una casa de 2005 o 2015 todavía se puede averiguar. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Greathouse, Midland TX"
+  description="Termite, fire ant, scorpion and rodent work in Greathouse, north-west Midland — newer slabs, a school inside the plat and ongoing building. TPCL 0918482."
+  path="/locations/midland/greathouse/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Greathouse, Midland',
+    description: 'Termite, fire ant, scorpion, spider and rodent control for homes in the Greathouse Addition of north-west Midland, Midland County.',
+    areaServed: ['Midland', 'Midland County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Midland · Midland County · one section in 1992, then sixteen after 2004</p>
+      <h1>Pest Control in Greathouse, Midland</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Greathouse has an unusual shape in the city's plat records, and the shape is the useful thing.
+          The first Greathouse Addition section was recorded in <strong>January 1992</strong>. Then nothing
+          at all under that name for <strong>twelve years</strong>. The second section appears in
+          <strong>June 2004</strong>, and sixteen more follow between then and
+          <strong>March 2023</strong>, nearly all surveyed by J. Stan Piper.
+        </p>
+        <p>
+          So this is not a 1990s neighbourhood with newer additions. It is essentially a
+          <strong>post-2004 neighbourhood with one older pocket</strong> — the newest housing stock of any
+          Midland area on this site, and a genuinely different situation from
+          <a href="/locations/midland/briarwood/">Briarwood</a> next door, which built steadily from 1984
+          to 2012.
+        </p>
+        <p>
+          That matters because new houses come with something old ones do not: findable answers. On a
+          forty-year-old slab, nobody alive can tell you what was applied to the soil before the concrete
+          went down. On a house from 2005 or 2015, the builder is usually still trading and the paperwork
+          usually still exists — which changes the first conversation we would have with you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Ask the builder before you buy anything from us</h2>
+      <div class="measure">
+        <p>
+          This is the single most useful thing on this page and it costs you a phone call rather than a
+          treatment.
+        </p>
+        <p>
+          <strong>A pre-construction termite treatment</strong> is termiticide applied to the soil and the
+          pad before a slab is poured, creating a treated zone under the structure. It is standard practice
+          on new construction and frequently required — but "standard" is not "certain", and it is a
+          yes-or-no question with a documented answer.
+        </p>
+        <p>
+          <strong>Three questions, in this order.</strong> Was a pre-construction treatment applied? What
+          product was used, and on what date? Did any warranty from it transfer to you when you bought?
+        </p>
+        <p>
+          <strong>Why the date matters as much as the answer.</strong> Soil-applied termiticides do not
+          last indefinitely — they degrade, and the rate depends on soil type, moisture and the product.
+          Just as importantly, work done after the pour can breach the treated zone: trenching for
+          utilities, a patio or slab extension poured later, a pool installed, landscaping that moves a
+          significant amount of soil against the foundation. A treatment applied in 2006 to a house that
+          has since had a patio and irrigation added is not the same protection it was on day one.
+        </p>
+        <p>
+          <strong>Why we tell people to ask rather than quoting them a job.</strong> Because a perfectly
+          good outcome of that phone call is that you are covered and you do not need us for termite work
+          this year. What we would not want is for you to buy a termite treatment from anybody — us
+          included — without first knowing whether one is already sitting under the slab you are standing
+          on. If a company will not tell you to check that, ask yourself why.
+        </p>
+        <p>
+          <strong>The related question about fill.</strong> New development is graded, cut and filled to
+          make buildable pads, so the soil around a newer slab has usually been moved and compacted and
+          sometimes brought in. Fill settles on its own schedule, and over the first several years that can
+          open small gaps at expansion joints and around plumbing penetrations. Not a defect — just a
+          reason to look rather than to assume that new means sealed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Still building, which changes the timing</h2>
+      <div class="measure">
+        <p>
+          Sections were recorded here in 2017, 2018, 2020, 2022 and 2023. Whatever the current state of
+          construction, the plat record makes clear that this neighbourhood has been extending
+          continuously and recently, and that changes how pest pressure arrives.
+        </p>
+        <p>
+          <strong>In a finished neighbourhood, pressure is a curve.</strong> It rises through summer, falls
+          in winter, spikes after rain. A regular service schedule maps onto that reasonably well.
+        </p>
+        <p>
+          <strong>Where ground is still being worked, the dominant events are discrete.</strong> A section
+          gets cleared, graded and trenched over a few weeks, and everything living in that soil is
+          displaced at once — toward the nearest cover, which is finished houses. Ground-nesting ants
+          arrive first because they are the most abundant thing in the soil. Spiders and crickets follow the
+          disturbance and then the lighting. Rodents come within days to weeks, because they need shelter
+          urgently and a garage is far better than open ground. Scorpions turn up in the weeks after,
+          hunting the prey the disturbance concentrated.
+        </p>
+        <p>
+          <strong>So timing beats frequency.</strong> A perimeter treatment applied when you can see work
+          starting nearby is worth several applied on a routine date, because it is in place before the
+          wave rather than after it has found the gaps. If you can see a machine working two streets over,
+          that is a better reason to ring us than anything you have seen indoors.
+        </p>
+        <p>
+          <strong>And exclusion is the half that keeps working.</strong> Displaced animals are looking for
+          a way in, not for somewhere to be sprayed. Garage door seals that actually contact the ground.
+          Sealed utility penetrations where services enter the wall — frequently foamed badly or not at
+          all on new construction. Screened weep holes rather than filled ones. Gaps at soffit returns
+          closed. Those hold across every subsequent wave; a treatment holds for one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The school, the common areas, and what we do not know</h2>
+      <div class="measure">
+        <p>
+          <strong>Greathouse Elementary sits inside the subdivision.</strong> Not adjacent to it — within
+          the original platted area, on Greathouse Avenue. It is a Midland ISD campus running
+          pre-kindergarten through sixth grade with roughly 750 students, and its teams are the Knights.
+        </p>
+        <p>
+          For a resident, the relevant part is the grounds rather than the building. Maintained school
+          grounds in a region averaging around fourteen inches of rain a year mean irrigated turf, and
+          irrigated turf in dry country is a concentrator. It suits imported fire ants better than almost
+          any other habitat available to them. It supports a far larger population of crickets and other
+          prey insects than the surrounding ground does. And that prey base is what draws scorpions and
+          spiders toward whatever boundary the grounds share. If your lot adjoins the campus, that is your
+          active boundary and perimeter work concentrated there is worth more than the same effort spread
+          evenly around the house.
+        </p>
+        <p>
+          <strong>The name, since people ask.</strong> Greathouse takes its name from Barney R. Greathouse,
+          a Midland druggist and civic figure who died in 1973 and who, with George H. W. Bush and two
+          others, chartered the Commercial Bank and Trust. His widow Helen Greathouse, who died in 2001,
+          established a charitable trust in his name in 1997. We will add the thing we could not find:
+          nothing in the published account of the family mentions land, ranching or property development,
+          so we are not going to tell you the Greathouses owned or developed this ground. The name is
+          documented. A land connection is not, and the difference is the sort of small invented detail
+          that erodes everything else on a website.
+        </p>
+        <p>
+          <strong>The common areas are a genuine open question.</strong> The plats include lettered common
+          areas — city planning records mention replats of Common Area J in Block 20 of Section 7. Platted
+          common areas are normally shared ground held and maintained collectively, and in Texas
+          subdivisions they are also frequently used for stormwater detention: a basin shaped to hold
+          runoff temporarily after a heavy rain and release it slowly.
+        </p>
+        <p>
+          <strong>We could not establish whether any of Greathouse's common areas serve that function.</strong>
+          So this is a thing to ask about rather than a finding we are reporting. It matters because a
+          detention basin holding water for several days after a storm is a mosquito production site on a
+          rainfall cycle, and a property backing onto one has a seasonal pattern its neighbours two streets
+          away do not. If you know your common area holds water after a real rain, tell us — it changes
+          when treatment is worth applying.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What Greathouse property deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> AgriLife entomology, the federal quarantine list, and
+          this neighbourhood's documented characteristics — the post-2004 build, ongoing platting, the
+          campus inside the plat, and the absence of mapped floodplain. This is what these conditions
+          reliably produce, not a report on any individual address.
+        </p>
+        <p>
+          <strong>Termites, on newer slabs, and the pre-treat question.</strong> The headline item, covered
+          above. A slab conceals the early stages rather than stopping them, so what a homeowner actually notices first is mud tubing up a foundation wall, a skirting board that gives under a thumb, or a swarm on the first warm afternoon of spring. On a newer house the useful move is paperwork before treatment.
+        </p>
+        <p>
+          <strong>Fire ants, favoured by new ground and irrigated turf.</strong> Midland County sits inside
+          the federal imported fire ant quarantine, listed at 7 C.F.R. §301.81-3 and adopted into Texas law
+          at 4 TAC §19.101. Freshly graded, newly sodded and newly irrigated ground is easier for them to
+          colonise than established landscape, because there is no incumbent ant population holding the
+          territory. Identification before treatment genuinely matters: a red harvester ant mound and an
+          imported fire ant nest need different products and different methods, and only one carries
+          movement restrictions on soil, sod, nursery stock, hay stored on the ground and used soil-moving
+          equipment leaving the county.
+        </p>
+        <p>
+          <strong>Scorpions, with construction-material harbourage.</strong> Striped bark scorpions hunt
+          after dark and climb well. In an area with recent building, the harbourage tends to be stacked
+          block, timber, pallets and spare pipe rather than mature leaf litter — which is a good thing,
+          because it is far easier to remove than an established garden.
+        </p>
+        <p>
+          <strong>Rodents, on both the seasonal and the construction calendar.</strong> The usual autumn
+          move indoors, plus displacement whenever nearby ground is worked. New utility trenching also
+          creates temporary voids and routes they travel along.
+        </p>
+        <p>
+          <strong>Mosquitoes, from close to home.</strong> With no mapped floodplain or playa in the plat
+          extent, what you get is produced nearby — containers, irrigation low spots, gutters, pool covers,
+          and possibly a common-area detention feature if one exists near you.
+        </p>
+        <p>
+          <strong>Cul-de-sacs, in a small way.</strong> Street names in the planning records include a
+          Court, which indicates cul-de-sacs. A cul-de-sac bulb is frequently the low point of its own
+          little drainage area, so if water gathers there after a heavy rain or a long irrigation run, that
+          is a consideration for the properties around it rather than for the neighbourhood generally.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>What we do in Greathouse</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Midland is a regular part of the route</strong>, so scheduling is straightforward.
+          Recurring service runs bi-monthly or quarterly, priced on the size of the property, the pressure
+          and the frequency, with a higher initial visit. <strong>No contracts</strong> — no term, no
+          cancellation fee. Termite, bed bug, mosquito, lawn, brush and junk work is individually quoted
+          after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          <strong>What we would suggest for most people here.</strong> Make the builder call first. Get
+          exclusion right early, because it is far cheaper on a house whose gaps have not yet been found by
+          anything. Treat the perimeter reactively when nearby ground is worked rather than on a fixed date
+          that has no relationship to when pressure actually arrives. That is less revenue for us than
+          selling a year of quarterly visits, and it is what we would do on our own house.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are one man, based in Seminole, about eighty miles
+          north-west. Midland is on the regular route so getting here is not the issue, but we are not the
+          closest company to Greathouse and we will not pretend to be. What we offer instead is that the
+          licence holder does the work himself — TPCL 0918482, verifiable against the Texas Department of
+          Agriculture's records in about two minutes — guarantee terms written out with a duration, a
+          covered scope and explicit exclusions, and no contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Greathouse pest control questions" />
+  <Cta
+    market="Greathouse"
+    line="If the house is post-2004, ring the builder about the termite pre-treatment before you buy anything from anybody — then tell him what they said. And if there is a common area near you that holds water after a storm, mention it."
+  />
+</BaseLayout>

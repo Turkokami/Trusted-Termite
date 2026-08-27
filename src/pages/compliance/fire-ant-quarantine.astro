@@ -19,7 +19,14 @@
  * regulated-areas PDFs (agreeing), document dated 27 October 2022:
  *   NOT quarantined: Gaines, Yoakum, Terry, Dawson, Andrews
  *   QUARANTINED:     Martin, Howard, Midland, Ector, Winkler
- *   PARTIAL:         Lubbock — boundary description was garbled in both fetches
+ *   PARTIAL:         Lubbock — RESOLVED Aug 2026. The APHIS list names the
+ *                    quarantined portion exactly: "That portion of the City of
+ *                    Lubbock located within Highway 27 to the East, Ursuline
+ *                    Street to the North, Milwaukee Street to the West, and
+ *                    98 Street to the South." Read off the APHIS regulated-
+ *                    areas PDF (7 C.F.R. §301.81-3, last updated 27 Oct 2022),
+ *                    which finally retrieved cleanly. Quote it verbatim — the
+ *                    four streets ARE the rule and paraphrasing them loses it.
  *                    and is NOT published here. "Partially quarantined, see the
  *                    APHIS list for the boundary" is the only safe statement.
  *
@@ -36,6 +43,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
+import Verified from '../../components/Verified.astro';
 import Cta from '../../components/Cta.astro';
 import { TOWNS } from '../../data/towns';
 
@@ -140,7 +148,9 @@ const faqs = [
           {quar.map((t) => t.name).join(', ')}.
         </p>
         <p>
-          <strong>Partially quarantined:</strong> Lubbock County, covering {part.map((t) => t.name).join(', ')}.
+          <strong>Partially quarantined:</strong> Lubbock County, covering {part.map((t) => t.name).join(', ')} —
+          and only the portion of the city bounded by Highway 27 east, Ursuline Street north, Milwaukee
+          Street west and 98th Street south.
           The list describes a portion of the county rather than the whole of it. We are not going to print
           a boundary description, because the descriptions we retrieved were garbled and a wrong boundary is
           worse than no boundary. Check the APHIS list directly for that one.
@@ -398,12 +408,14 @@ const faqs = [
           counties to the north and west engages the rules.
         </p>
         <p>
-          <strong>Stanton.</strong> Martin County appears inside the quarantine, which makes Stanton an
-          edge case: it sits on the boundary with free counties immediately to the north-west. It is also
-          the one county where our two independent readings were not perfectly consistent — one confirmed
-          it on re-check, the other flagged the source as inconsistent. We corrected an earlier draft that
-          had it the other way round, and we are flagging the residual uncertainty rather than hiding it.
-          Verify Martin against the live APHIS list before acting on it.
+          <strong>Stanton.</strong> Martin County is inside the quarantine, which makes Stanton an edge
+          case: it sits on the boundary with free counties immediately to the north-west. This one took us
+          three attempts to settle. An early draft of this site had it the wrong way round; a correction
+          confirmed it; a third check flagged the source as inconsistent, and for a while this page told
+          you we were not certain. In August 2026 we read the APHIS regulated-areas list itself rather
+          than anybody's summary of it, and Martin County is on it. That is now a settled fact and this
+          paragraph says so — but the list is amended county by county without announcement, so the live
+          list still governs, not this page.
         </p>
         <p>
           <strong>Kermit.</strong> Winkler County is inside the quarantine, and the caliche pads and
@@ -411,9 +423,13 @@ const faqs = [
           and electrical equipment meet.
         </p>
         <p>
-          <strong>Lubbock.</strong> Partially quarantined, and the boundary description is the one we could
-          not read cleanly. If you are moving regulated articles in or out of Lubbock County, that is a
-          call to make to the Department rather than a question to settle from a website.
+          <strong>Lubbock.</strong> Partially quarantined, and the boundary is far narrower than "part of
+          Lubbock County" suggests. The APHIS list names it street by street: <em>that portion of the City
+          of Lubbock located within Highway 27 to the East, Ursuline Street to the North, Milwaukee Street
+          to the West, and 98th Street to the South.</em> Those four streets are the rule, which is why we
+          quote them rather than paraphrase. Everything in Lubbock County outside that box is not
+          quarantined. If you are moving regulated articles across that line, check the live list — a
+          boundary drawn in street names is exactly the kind that gets redrawn.
         </p>
         <p style="color:var(--ink-3);font-size:.95rem">
           This is a plain-language summary of published state and federal rules, compiled for property
@@ -424,6 +440,8 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <Verified facts={['QUAR-01']} />
 
   <Faq items={faqs} heading="Fire ant quarantine questions" />
   <Cta

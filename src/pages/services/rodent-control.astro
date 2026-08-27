@@ -21,6 +21,7 @@ import Trust from '../../components/Trust.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
+import SpokeLinks from '../../components/SpokeLinks.astro';
 import { serviceBySlug } from '../../data/services';
 import { TOWNS } from '../../data/towns';
 import { BUSINESS } from '../../data/business';
@@ -75,6 +76,7 @@ const faqs = [
   title={svc.titleShort}
   description={svc.metaDescription}
   path="/services/rodent-control/"
+  altLangPath="/es/servicios/control-de-roedores/"
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}
   faqs={faqs}
@@ -91,6 +93,7 @@ const faqs = [
       <h1>Rodent Control &amp; Exclusion</h1>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
+      <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-roedores/" lang="es" hreflang="es">Esta página en español</a></p>
       <div class="measure">
         <p>
           There is one idea worth taking from this whole page, and it is the reason rodent work goes wrong
@@ -441,4 +444,6 @@ const faqs = [
   <Cta
     line="Tell him what you are hearing, where, at what time of day, and how many buildings are on the property. Those four things get you an accurate answer on the first call."
   />
+  <SpokeLinks service="rodent-control" />
+
 </BaseLayout>

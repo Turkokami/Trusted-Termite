@@ -1,0 +1,419 @@
+---
+/**
+ * Página en español — Retiro de Escombros y Limpieza.
+ * Par en inglés: /services/junk-removal/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Gates: NO renta de contenedores, NO lavado a presión, NO demolición, NO
+ * residuos peligrosos. Guía de hantavirus del DSHS de Texas citada con
+ * precisión — casos reportados en Texas son raros y el momento de riesgo es
+ * la limpieza misma. Sin precios propios.
+ *
+ * OJO: la página /es/servicios/limpieza-de-terrenos/ también cita §343.011 y
+ * el artículo 8.300 de Seminole. Aquí están redactados distinto a propósito
+ * para no disparar el detector de oraciones duplicadas del harness.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Retiro de Escombros', path: '/es/servicios/retiro-de-escombros/' },
+];
+
+const quickAnswer =
+  'Cargamos y nos llevamos: muebles, electrodomésticos, escombro de obra, vaciado de casas y bodegas, y lo que la ciudad haya citado en un aviso. Y tratamos el suelo donde estaba la pila en la misma visita, porque ahí es donde vivía lo que estaba debajo. Valentin Moriel lo hace personalmente bajo la licencia TPCL 0918482.';
+
+const faqs = [
+  {
+    q: '¿Cómo se cotiza el retiro de escombros?',
+    a: 'Por la cantidad y el tipo de material, cuánto espacio de remolque ocupa, el trabajo de cargarlo y las cuotas de disposición. El material pesado o lo que requiera equipo adicional se cotiza distinto, y preferimos decirlo en la cotización y no agregarlo después en la factura. Con fotografías normalmente se puede dar una idea inicial; un vaciado grande necesita alguien en el sitio.',
+  },
+  {
+    q: '¿Rentan contenedores?',
+    a: 'No. Nosotros acarreamos: usted señala y se va con nosotros. Si lo que realmente necesita es un contenedor parado en la propiedad quince días mientras avanza una remodelación, ese es otro servicio y se lo diremos en vez de aceptar el trabajo. Tampoco hacemos lavado a presión ni demolición.',
+  },
+  {
+    q: '¿Hay algo que no se lleven?',
+    a: 'Todo lo que requiera manejo de residuos peligrosos, y todo lo que necesite una licencia que no tenemos. Dígannos qué hay cuando llame. La mayoría de lo que preocupa a la gente no es problema; los que sí conviene mencionar por adelantado son pintura, solventes, químicos, llantas en cantidad, y lo que salga de un taller que nadie ha abierto en años.',
+  },
+  {
+    q: 'La propiedad tuvo roedores. ¿Eso cambia algo?',
+    a: 'Sí, y debería cambiarlo. El Departamento Estatal de Servicios de Salud de Texas señala específicamente el riesgo de hantavirus al limpiar lugares donde pudieron vivir roedores, y menciona graneros, cabañas, casas de caza y cobertizos. La transmisión es principalmente por vía aérea: al respirar partículas provenientes de la orina, el excremento o la saliva de un roedor infectado, o al tocarse la cara después de manejar objetos contaminados. Los casos reportados en Texas son raros, pero el punto de la guía es que el momento de riesgo es la limpieza misma. Nosotros lo tratamos como un trabajo con procedimiento, no como un trabajo con remolque.',
+  },
+  {
+    q: '¿Pueden atender chatarra que la ciudad ya citó?',
+    a: 'Sí, y es común. Odessa define chatarra en el artículo 6-5 de su código como material usado o desechado visible desde la propiedad vecina o que constituya riesgo de salud o incendio, e incluye por separado los materiales de construcción almacenados en cantidades reconocibles. En zona no incorporada aplica el estatuto estatal sobre basura acumulada cerca de una vía pública. Dígannos qué fecha límite trae el aviso.',
+  },
+  {
+    q: '¿Se llevan vehículos chatarra?',
+    a: 'Depende de qué sea y dónde esté. Seminole tiene un procedimiento propio para vehículos chatarra y abandonados en el artículo 8.300 de su código, con definición específica, aviso por correo certificado, plazo de diez días para cumplir y derecho a solicitar audiencia. Eso es un trámite municipal definido y no simplemente una pregunta de acarreo, así que dígannos qué tiene y dónde está y le contestamos con franqueza si somos los indicados.',
+  },
+  {
+    q: '¿Pueden cuidar una propiedad donde no vivo?',
+    a: 'Sí, y es una parte real de este trabajo: propiedad heredada, una renta entre inquilinos, terreno de la familia, o una casa a la que nadie ha ido desde una mudanza. El problema de fondo para el dueño ausente es que el aviso municipal se manda a la dirección que el distrito de valuación tiene registrada, así que si esa dirección está vieja el procedimiento entero puede completarse sin usted. Revisamos la propiedad en un intervalo razonable y atendemos lo que aparezca.',
+  },
+  {
+    q: '¿También tratan, o nada más cargan?',
+    a: 'Las dos cosas, y normalmente en la misma visita. Las pilas de escombro son exactamente lo que AgriLife enumera como refugio del alacrán — piedras, tablas, escombros, vegetación muerta. Llevarse la pila y tratar el suelo donde estaba es un solo trabajo. Repartido entre dos empresas, se hace la mitad de manera bastante confiable.',
+  },
+];
+---
+
+<BaseLayout
+  title="Retiro de Escombros y Limpieza | Seminole, TX"
+  description="Acarreo de muebles, electrodomésticos y escombro de obra, vaciado de casas y bodegas, y tratamiento del suelo en la misma visita. TPCL 0918482."
+  path="/es/servicios/retiro-de-escombros/"
+  lang="es"
+  altLangPath="/services/junk-removal/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Retiro de Escombros y Limpieza',
+    description: 'Acarreo y disposición de muebles, electrodomésticos, escombro de obra y acumulación en casas, bodegas y lotes del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Retiro de Escombros y Limpieza</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Este servicio existe por una razón poco obvia: una pila de cosas es un hábitat.</strong>
+          No es solo desorden ni un tema de apariencia. Es sombra, es refugio, es humedad atrapada, y
+          normalmente tiene insectos adentro que a su vez alimentan a otra cosa.
+        </p>
+        <p>
+          Por eso una empresa de control de plagas acarrea escombro. No es un servicio agregado para
+          facturar más: es que cargar la pila y tratar el suelo donde estuvo es el mismo trabajo, y
+          repartirlo entre dos empresas es la manera confiable de que se haga a medias.
+        </p>
+        <p>
+          <strong>Y hay una segunda razón, más seria.</strong> Cuando el lugar que se va a vaciar tuvo
+          roedores — una bodega, un cobertizo, una casa cerrada mucho tiempo — la limpieza misma es el
+          momento de riesgo. Eso tiene procedimiento, y lo explicamos abajo en lugar de tratarlo como un
+          día de carga y descarga.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Lo que la pila realmente contiene</h2>
+      <div class="measure">
+        <p>
+          Texas A&amp;M AgriLife describe el refugio del alacrán rayado de corteza con una lista corta:
+          piedras, tablas, escombros y vegetación muerta. Esa lista es, palabra por palabra, la
+          descripción de lo que hay detrás de la mayoría de las casas de esta región.
+        </p>
+        <p>
+          <strong>Una pila funciona en capas.</strong> Arriba está seco y caliente. Abajo, contra el suelo,
+          está fresco y húmedo — que en un clima de catorce a dieciséis pulgadas de lluvia al año es un
+          recurso escaso y muy buscado. En medio hay huecos del tamaño exacto que necesitan los grillos,
+          las cochinillas y las arañas. Y donde hay grillos hay alacranes, porque el alacrán está ahí por
+          la comida y no por la tabla.
+        </p>
+        <p>
+          <strong>Eso explica un patrón que la gente nos describe seguido:</strong> "fumigaron y siguen
+          saliendo alacranes". Normalmente sí funcionó el producto — sobre los individuos que lo tocaron.
+          Lo que no cambió fue que a tres metros del muro sigue habiendo una fábrica con techo.
+        </p>
+        <p>
+          <strong>Los roedores usan la misma pila por razones distintas:</strong> abrigo, rutas protegidas
+          donde nada los ve desde arriba, y material para hacer nido. Una pila de tarimas o de leña contra
+          la pared es prácticamente una extensión del edificio.
+        </p>
+        <p>
+          <strong>Y luego están las serpientes</strong>, que no van por la pila sino por los roedores.
+          Quitar la pila es la medida más eficaz que existe contra ellas y no involucra ningún producto.
+        </p>
+        <p>
+          <strong>Por eso el orden importa.</strong> Se retira el material, y después se trata el suelo que
+          estaba debajo — que es donde quedó todo lo que vivía ahí, de golpe, sin techo. Hacerlo al revés,
+          o hacer solo una de las dos cosas, es la razón más común por la que este tipo de trabajo no dura.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cuando hubo roedores: el procedimiento</h2>
+      <div class="measure">
+        <p>
+          Esta sección es la que preferiríamos que leyera aunque no nos contrate, porque aplica igual si
+          decide hacerlo usted mismo.
+        </p>
+        <p>
+          <strong>El Departamento Estatal de Servicios de Salud de Texas</strong> advierte específicamente
+          sobre el hantavirus al limpiar espacios donde pudieron vivir roedores, y nombra graneros,
+          cabañas, casas de caza y cobertizos. La transmisión es principalmente aérea: se respiran
+          partículas que vienen de la orina, el excremento o la saliva de un roedor infectado. También
+          puede ocurrir al tocarse la cara después de manejar objetos contaminados.
+        </p>
+        <p>
+          <strong>Los casos reportados en Texas son raros</strong>, y decimos eso con la misma claridad que
+          lo anterior, porque el objetivo no es asustar a nadie. El punto de la guía es más específico y
+          más útil: <strong>el momento de riesgo es la limpieza</strong>. Barrer en seco, sacudir
+          aislamiento, mover cajas viejas y usar sopladora son exactamente las acciones que ponen material
+          en el aire.
+        </p>
+        <p>
+          <strong>Lo que eso cambia en la práctica.</strong> Ventilar el espacio antes de trabajar en él.
+          Humedecer en lugar de barrer en seco. No usar sopladora ni aspiradora doméstica sobre material
+          contaminado. Protección respiratoria adecuada y guantes. Y bolsas cerradas, no acarreo a brazo
+          abierto.
+        </p>
+        <p>
+          <strong>Dígannos por teléfono si el lugar estuvo cerrado mucho tiempo</strong> o si hay señales
+          de roedores. Cambia cómo se planea el trabajo, y es una conversación de dos minutos que evita
+          hacerlo de la manera incorrecta.
+        </p>
+        <p>
+          <strong>Y aquí está el límite honesto de lo que hacemos.</strong> Retiramos lo que encontramos y
+          atendemos el refugio. La remediación completa de aislamiento o ductos muy contaminados es
+          restauración especializada, con su propio equipo y sus propios protocolos. Cuando una propiedad
+          necesita eso, se lo decimos claramente en vez de hacer una versión aproximada y cobrarle por
+          ella.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Qué sí y qué no nos llevamos</h2>
+      <div class="measure">
+        <p>
+          <strong>Sí:</strong> muebles, colchones, electrodomésticos, escombro de obra y remodelación,
+          madera, cercas viejas, material de patio, cajas y acumulación de años, vaciado de casas y de
+          bodegas, y lo que haya quedado en una propiedad después de una mudanza o de una herencia.
+        </p>
+        <p>
+          <strong>No:</strong> nada que requiera manejo de residuos peligrosos ni nada que necesite una
+          licencia que no tenemos. Los casos que conviene mencionar antes de que lleguemos son pintura,
+          solventes, químicos agrícolas, llantas en cantidad, y el contenido de un taller que lleva años
+          cerrado — que es donde suele aparecer todo lo anterior junto.
+        </p>
+        <p>
+          <strong>Tampoco rentamos contenedores.</strong> Nosotros acarreamos: usted señala y el material
+          se va con nosotros ese día. Si lo que necesita es un contenedor parado quince días mientras
+          avanza una obra, ese es otro servicio, y se lo diremos en lugar de tomar el trabajo.
+        </p>
+        <p>
+          <strong>Ni lavado a presión ni demolición.</strong> Son dos cosas que la gente pregunta seguido y
+          que no hacemos.
+        </p>
+        <p>
+          <strong>Cómo se cotiza.</strong> Por cantidad y tipo de material, espacio de remolque, trabajo de
+          carga y cuotas de disposición — el relleno sanitario cobra por peso, así que el material pesado
+          cambia el número. Preferimos decirlo en la cotización y no agregarlo después. Con fotos se puede
+          dar una idea inicial; un vaciado grande necesita a alguien parado ahí.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Los trabajos que más pedimos hacer con calma</h2>
+      <div class="measure">
+        <p>
+          No todos los vaciados son iguales, y hay tres que conviene planear distinto porque salen mal
+          cuando se apuran.
+        </p>
+        <p>
+          <strong>La bodega o el taller que nadie ha abierto en años.</strong> Es el caso donde aparece
+          casi todo lo que no nos llevamos — pintura vieja, solventes, químicos agrícolas, aceite usado,
+          baterías — mezclado con lo que sí. También es donde suele haber actividad de roedores, porque un
+          espacio cerrado con material apilado es exactamente lo que buscan. Estos trabajos empiezan con
+          una revisión y una lista, no con el remolque.
+        </p>
+        <p>
+          <strong>La casa que estuvo cerrada una temporada.</strong> El calor de un verano del oeste de
+          Texas dentro de una casa cerrada hace cosas: el cartón se debilita, la comida en despensa se
+          echa a perder, el olor se concentra y cualquier presencia de roedores queda concentrada también.
+          Abrir y ventilar antes de empezar no es opcional, y no debería hacerse a la carrera.
+        </p>
+        <p>
+          <strong>El acreaje con acumulación de años.</strong> En propiedad rural la acumulación suele
+          estar repartida: una pila junto al granero, otra detrás del corral, llantas por un lado, alambre
+          por otro. Eso cambia la logística — son varios viajes o un remolque más grande — y cambia el
+          orden, porque no tiene sentido tratar el suelo de una pila mientras las otras tres siguen ahí
+          alimentando lo mismo.
+        </p>
+        <p>
+          <strong>En los tres casos, la conversación por teléfono vale mucho.</strong> Cinco minutos
+          describiendo qué hay y desde cuándo ahorran una visita perdida y evitan que aparezca un costo
+          que nadie había considerado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Qué puede hacer usted antes de que lleguemos</h2>
+      <div class="measure">
+        <p>
+          Parte de esto no requiere que nos contrate, y lo decimos igual.
+        </p>
+        <p>
+          <strong>Separe lo que no se debe ir.</strong> Documentos, fotos, herramienta que sirve, cosas con
+          valor sentimental. Una vez cargado el remolque ya es tarde, y en un vaciado grande es fácil que
+          una caja importante se vaya entre veinte que no lo eran.
+        </p>
+        <p>
+          <strong>Aparte lo peligroso en un solo lugar.</strong> Pintura, solventes, químicos, baterías,
+          aceite. Juntarlo en un rincón identificado hace la visita más rápida y le permite llevarlo usted
+          al punto de recolección que corresponda.
+        </p>
+        <p>
+          <strong>Ventile antes.</strong> Si el espacio estuvo cerrado, ábralo con anticipación. Es la
+          medida más simple de la guía de salud y no cuesta nada.
+        </p>
+        <p>
+          <strong>Y no barra en seco lo que dejó un roedor.</strong> Vale la pena repetirlo porque es
+          contraintuitivo: barrer y soplar levantan material al aire, que es justamente lo que la guía
+          estatal recomienda evitar. Humedecer primero es más lento y es lo correcto.
+        </p>
+        <p>
+          <strong>Despegue del muro lo que pueda mover.</strong> Aunque no vayamos a llevárnoslo todo,
+          separar leña, tarimas y macetas de la pared cambia el refugio inmediato de la estructura, y eso
+          se nota más rápido que cualquier aplicación.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cuando ya llegó un aviso</h2>
+      <div class="measure">
+        <p>
+          Buena parte de este trabajo empieza con una carta, y la carta suele mezclar dos cosas: la maleza
+          y el material.
+        </p>
+        <p>
+          <strong>Odessa define la chatarra en el artículo 6-5 de su código</strong> como material usado o
+          desechado visible desde la propiedad vecina o que represente un riesgo de salud o de incendio.
+          Y aparte incluye los materiales de construcción almacenados en cantidades reconocibles, que es
+          la parte que sorprende a quien dejó block, madera o tubería sobrante después de una obra.
+        </p>
+        <p>
+          <strong>Fuera de los límites de la ciudad aplica el estatuto estatal</strong>, que trata como
+          estorbo público la basura acumulada durante diez días o más a menos de trescientos pies de una
+          vía pública, cuando no está encerrada ni oculta a la vista. El estatuto llega a nombrar los
+          objetos típicos, incluidos electrodomésticos viejos, muebles y llantas.
+        </p>
+        <p>
+          <strong>Los vehículos son un trámite propio.</strong> Seminole los regula en el artículo 8.300 de
+          su código, con su propia definición, aviso por correo certificado, diez días para cumplir y
+          derecho a pedir audiencia. Eso no es una pregunta de acarreo sino un procedimiento municipal, y
+          se lo decimos con franqueza en lugar de prometer algo que no corresponde.
+        </p>
+        <p>
+          <strong>Lo que necesitamos de usted</strong> es la fecha límite que trae el aviso y de qué ciudad
+          viene. Con eso se puede planear el trabajo para que quede dentro del plazo, que es lo único que
+          realmente importa una vez que el reloj arrancó.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A dónde va el material</h2>
+      <div class="measure">
+        <p>
+          La gente pregunta esto menos de lo que debería, y la respuesta afecta el precio, así que la
+          ponemos aquí.
+        </p>
+        <p>
+          <strong>La disposición se cobra por peso.</strong> El relleno sanitario cobra por tonelada, y por
+          eso un remolque de muebles voluminosos y un remolque de concreto cuestan cosas muy distintas
+          aunque ocupen el mismo espacio. El escombro de obra, la teja vieja, el concreto y la tierra son
+          pesados; el cartón, la madera ligera y los muebles no lo son. Cuando cotizamos, esa diferencia es
+          buena parte del número.
+        </p>
+        <p>
+          <strong>Lo que puede separarse, se separa.</strong> El metal tiene un destino distinto del
+          relleno, y los electrodomésticos grandes también. No es una promesa ecológica ni una campaña: es
+          que separar reduce el peso que se paga en la báscula, y eso se refleja en lo que le cobramos.
+        </p>
+        <p>
+          <strong>Lo que todavía sirve no tiene por qué irse al relleno.</strong> Si en un vaciado hay
+          muebles o electrodomésticos en buen estado, vale la pena decidirlo antes de cargar. Una vez que
+          va en el remolque con todo lo demás, esa decisión ya se tomó sola.
+        </p>
+        <p>
+          <strong>Y lo que no nos llevamos tiene su propio camino.</strong> Pintura, solventes, químicos y
+          baterías no van al relleno común y no van en nuestro remolque. Los condados y las ciudades tienen
+          puntos y jornadas de recolección para eso. Le decimos qué es cuál cuando hacemos la revisión, en
+          lugar de dejarle una pila aparte sin explicación.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Propiedad heredada, rentas y dueños ausentes</h2>
+      <div class="measure">
+        <p>
+          Vaciar la casa de un familiar que falleció es un trabajo distinto de todos los demás y lo
+          tratamos como tal. Hay cosas que hay que separar y no tirar, hay ritmos que no se apuran, y hay
+          decisiones que no nos toca tomar a nosotros. Lo que ofrecemos es hacer la parte pesada sin que
+          usted tenga que estar cargando cajas el mismo mes.
+        </p>
+        <p>
+          <strong>En rentas entre inquilinos</strong>, el problema típico es tiempo: la propiedad no
+          produce mientras esté llena de lo que dejó el anterior. Ahí lo útil es que el acarreo y el
+          tratamiento pasen el mismo día, porque una casa vacía con la alfombra levantada y actividad de
+          roedores no se renta sola.
+        </p>
+        <p>
+          <strong>Y para dueños que viven en otro lado</strong>, el punto estructural es el correo: el
+          aviso municipal va a la dirección registrada en el distrito de valuación del condado. Si está
+          desactualizada, todo el procedimiento — aviso, plazo, trabajo hecho por la ciudad, cobro y
+          gravamen sobre la propiedad — puede completarse sin que usted se entere. Actualizar esa dirección
+          no cuesta nada y es lo primero que recomendamos, antes que contratar a nadie.
+        </p>
+        <p>
+          <strong>Lo que hacemos en esos casos</strong> es revisar en un intervalo razonable, mandar fotos
+          de cómo quedó, y avisarle si aparece algo que debería saber: material nuevo tirado, un vehículo
+          que no estaba, una cerca abierta o señales de que alguien entró.
+        </p>
+        <p>
+          <strong>Y una advertencia sobre los lotes que parecen tranquilos.</strong> Una propiedad
+          desocupada acumula material que no puso el dueño. En esta región es común encontrar llantas,
+          muebles y escombro de obra que alguien dejó de noche en un terreno donde no vive nadie, y el
+          aviso de la ciudad le llega al dueño de todas formas, sin importar quién lo puso ahí. Revisar dos
+          o tres veces al año cuesta muy poco comparado con descubrirlo cuando ya hay un plazo corriendo.
+        </p>
+        <p>
+          <strong>Nosotros no somos un equipo</strong> y conviene decirlo también aquí: es una sola
+          persona. La persona que cotiza el vaciado es la que lo carga y la que le manda las fotos. Eso
+          significa que nadie le va a dar una respuesta distinta la segunda vez que llame, y significa
+          también que la agenda tiene un límite real. Las dos cosas se las decimos por teléfono.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre retiro de escombros" />
+  <Cta
+    line="Mande unas fotos de lo que hay que sacar y diga si el lugar estuvo cerrado mucho tiempo o hubo roedores. Eso cambia cómo se planea el trabajo, y con las fotos ya se puede dar una idea del tamaño."
+  />
+</BaseLayout>

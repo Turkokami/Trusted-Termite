@@ -1,0 +1,397 @@
+---
+/**
+ * Página en español — Jardinería y Control de Maleza.
+ * Par en inglés: /services/lawn-care/
+ *
+ * Escrita en español, no traducida. Usted en todo el texto.
+ * Gates: licencia Lawn & Ornamental y Weed Control son categorías SEPARADAS;
+ * productos reales (Ranger Pro, Prodiamine, Celsius XTRA); NO diseño de
+ * jardines, riego, sod ni hardscape; el trabajo de jardín NO lleva la garantía
+ * de 30 días; alturas por ciudad verificadas y citadas; el condado NO tiene
+ * cifra de altura — §343.011(c)(4) se define por proximidad (300 pies).
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Jardinería y Control de Maleza', path: '/es/servicios/jardineria-y-control-de-maleza/' },
+];
+
+const quickAnswer =
+  'Corte, orilladora, fertilización, poda de árboles y aplicación de herbicida en el condado de Gaines y la Cuenca Pérmica. Valentin Moriel tiene las categorías estatales de Jardín y Ornamental y de Control de Maleza, que son licencias aparte del control de plagas, y hace el trabajo personalmente bajo la licencia TPCL 0918482.';
+
+const faqs = [
+  {
+    q: '¿Por qué un servicio de jardín necesita licencia?',
+    a: 'Cortar el pasto no la necesita. Aplicar herbicida en la propiedad de otra persona a cambio de dinero, sí. Texas otorga las categorías de Jardín y Ornamental y de Control de Maleza por separado dentro del servicio estructural de control de plagas, con examen propio y mantenimiento propio cada una. Mucha gente que corta pasto por dinero en esta región no tiene licencia para aplicar químicos, y si el plan para su propiedad incluye cualquier producto, eso conviene verificarlo antes del trabajo y no después.',
+  },
+  {
+    q: '¿Qué tan alto puede estar mi pasto antes de que la ciudad actúe?',
+    a: 'Depende por completo de en qué pueblo esté, y el rango es más amplio de lo que la gente supone. Lubbock es el más estricto con ocho pulgadas. Kermit son diez. Seminole, Seagraves, Denver City, Lamesa, Brownfield, Stanton y Odessa son doce. Midland son dieciocho. Andrews son doce en lotes de menos de un acre y dieciocho en terrenos sin desarrollar de más de un acre. Y fuera de los límites de la ciudad no se mide en pulgadas: el Código de Salud y Seguridad §343.011(c)(4) define el estorbo público del condado por proximidad — maleza dentro de trescientos pies de otra residencia o negocio — sin ninguna cifra de altura en el texto. La gente se mueve entre estos pueblos constantemente y supone que la regla viaja con ella. No viaja.',
+  },
+  {
+    q: '¿Cuál es la regla de un año con la que cae todo el mundo?',
+    a: 'Casi todos los pueblos de esta ruta permiten que el aviso diga que otra violación del mismo tipo dentro de un año puede corregirse sin aviso adicional, a costa suya, y cargarse a la propiedad. Es decir: la primera carta puede cubrir doce meses. Kermit va más lejos que todos y usa veinticuatro meses. La gente supone que cada intervención trae su propia advertencia. Durante un año después de la primera, no tiene por qué traerla.',
+  },
+  {
+    q: '¿Qué usan para la maleza?',
+    a: 'Ranger Pro, Prodiamine y Celsius XTRA, según la situación. Prodiamine es preemergente: impide que germine, no mata lo que ya salió, así que es producto de febrero y marzo y no de junio. Celsius XTRA es selectivo y se usa donde hay pasto que vale la pena conservar. Ranger Pro no es selectivo y se usa donde no lo hay. Elegir bien entre esos tres es la mayor parte del trabajo.',
+  },
+  {
+    q: '¿Hacen diseño de jardines?',
+    a: 'No. Hacemos corte, orilladora, bordes, fertilización, poda de árboles y aplicación de herbicida — mantenimiento y trabajo químico. No hacemos diseño de paisaje, instalación, sistemas de riego, obra dura ni colocación de pasto en rollo. Cuando necesita eso, necesita un paisajista, y se lo diremos en vez de aprender en su propiedad.',
+  },
+  {
+    q: '¿Pueden mantener un lote en regla si yo vivo en otro lado?',
+    a: 'Sí, y es una parte importante de este trabajo. Un lote mantenido con calendario durante la temporada de crecimiento cuesta una fracción de lo que cuesta que la ciudad lo limpie y le cobre con intereses, y elimina por completo el tema de las multas. Si tiene varias propiedades en el mismo pueblo, se pueden atender en una sola visita y una sola factura.',
+  },
+  {
+    q: '¿El trabajo de jardín lleva la garantía de 30 días?',
+    a: 'No. La garantía de servicio de 30 días aplica a tratamientos de plagas, donde el resultado depende en gran medida del tratamiento. El trabajo de jardín y maleza depende de la lluvia, del riego, de la temporada y de lo que pase en la propiedad después de que nos vamos, así que lleva sus propios términos acordados. Preferimos definirlo desde el principio y no colgar una promesa que después habría que discutir.',
+  },
+  {
+    q: '¿Y si la maleza ya está muy alta?',
+    a: 'Entonces posiblemente ya no es trabajo de jardín sino de limpieza de terreno, que también hacemos y se cotiza distinto. Y hay un punto legal que conviene conocer: el Código de Salud y Seguridad §342.008 permite que una ciudad actúe sin aviso previo cuando la maleza pasa de cuarenta y ocho pulgadas y representa un peligro inmediato. A usted le notifican dentro de los diez días siguientes y puede pedir una audiencia, pero para entonces el trabajo ya se hizo y la cuenta ya existe.',
+  },
+];
+---
+
+<BaseLayout
+  title="Jardinería y Control de Maleza | Seminole, TX"
+  description="Corte, fertilización, poda y herbicida con licencia estatal de Control de Maleza, en el condado de Gaines y la Cuenca Pérmica. Sin contratos, TPCL 0918482."
+  path="/es/servicios/jardineria-y-control-de-maleza/"
+  lang="es"
+  altLangPath="/services/lawn-care/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Jardinería y Control de Maleza',
+    description: 'Corte, orilladora, bordes, fertilización, poda de árboles y aplicación de herbicida en casas, lotes y propiedades comerciales del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Jardinería y Control de Maleza</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Hay una diferencia legal entre cortar pasto y aplicar químico, y casi nadie se la
+          explica.</strong> Cortar no requiere licencia. Aplicar herbicida en la propiedad de otra persona
+          a cambio de dinero sí la requiere, y en Texas son categorías estatales separadas: Jardín y
+          Ornamental por un lado, Control de Maleza por otro, cada una con su propio examen.
+        </p>
+        <p>
+          Valentin tiene las dos, además de Control de Plagas y Control de Termitas, bajo la licencia
+          TPCL 0918482. Puede verificarlo usted mismo con el Departamento de Agricultura de Texas en un
+          par de minutos, y le recomendamos hacerlo con nosotros y con cualquier otra persona que le
+          ofrezca aplicar algo en su terreno.
+        </p>
+        <p>
+          El resto de esta página es lo que de verdad importa aquí: qué número aplica en su pueblo, por qué
+          el mismo producto funciona en marzo y no en junio, y cómo se ve un año de jardín cuando llueven
+          dieciséis pulgadas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cada pueblo de esta ruta tiene un número distinto</h2>
+      <div class="measure">
+        <p>
+          Esta es la parte donde más gente se equivoca, y se equivoca de buena fe: alguien se muda de
+          Seminole a Midland, o tiene un lote en Lubbock y vive en Odessa, y supone que la regla es la
+          misma. No lo es, ni de cerca.
+        </p>
+        <p>
+          <strong>Lubbock: ocho pulgadas</strong>, promediadas en todo el lote. Es el estándar más estricto
+          de la región por un margen claro.
+        </p>
+        <p>
+          <strong>Kermit: diez pulgadas</strong>, y además con el plazo de reincidencia más largo que hemos
+          encontrado — veinticuatro meses en vez de doce.
+        </p>
+        <p>
+          <strong>Seminole, Seagraves, Denver City, Lamesa, Brownfield, Stanton y Odessa: doce
+          pulgadas.</strong> Es el estándar ordinario de esta parte del oeste de Texas.
+        </p>
+        <p>
+          <strong>Midland: dieciocho pulgadas</strong>, el más permisivo de la ruta.
+        </p>
+        <p>
+          <strong>Andrews divide por tamaño de lote:</strong> doce pulgadas en lotes registrados de menos
+          de un acre, dieciocho en terrenos sin desarrollar de más de un acre.
+        </p>
+        <p>
+          <strong>Y fuera de los límites de la ciudad no hay pulgadas.</strong> Esto sorprende a mucha
+          gente. El Código de Salud y Seguridad §343.011(c)(4) define el estorbo público en el condado por
+          <em>proximidad</em>: maleza que crece dentro de trescientos pies de otra residencia o de un
+          negocio, en una zona habitada. No aparece ninguna cifra de altura en el texto. Si su propiedad
+          está aislada, la disposición sencillamente no se activa igual que si está junto a la casa del
+          vecino.
+        </p>
+        <p>
+          <strong>El plazo también cambia.</strong> Para ciudades, el §342.006 permite al municipio hacer el
+          trabajo y cobrárselo si usted no cumple dentro de los siete días del aviso. En zona no
+          incorporada del condado el §343 le da hasta el trigésimo día después del aviso antes de que
+          proceda la sanción penal. Son dos ritmos distintos y conviene saber en cuál está.
+        </p>
+        <p>
+          Tenemos las ordenanzas de todos los pueblos que atendemos comparadas y con su cita legal, para
+          que pueda leer la suya en vez de confiar en el resumen de una empresa de jardinería.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Los tres productos, y cuándo va cada uno</h2>
+      <div class="measure">
+        <p>
+          Casi todo el valor de contratar a alguien con licencia está aquí: no en tener acceso a productos
+          especiales, sino en saber cuál corresponde y en qué mes.
+        </p>
+        <p>
+          <strong>Prodiamine es preemergente.</strong> No mata nada de lo que usted ya ve. Lo que hace es
+          impedir que la semilla germine, formando una barrera en la superficie del suelo. Eso significa
+          que es un producto de <strong>febrero y marzo</strong>, aplicado antes de que la maleza de
+          temporada cálida arranque. Aplicarlo en junio, sobre maleza ya establecida, es dinero tirado — y
+          es uno de los errores más comunes cuando alguien compra producto sin saber qué compró.
+        </p>
+        <p>
+          <strong>Celsius XTRA es selectivo.</strong> Se usa donde hay pasto que vale la pena conservar:
+          mata la maleza de hoja ancha y ciertos pastos indeseados sin arrasar con el césped. Es el
+          producto de un jardín establecido, y tolera mejor el calor que muchos selectivos, lo cual
+          importa bastante en un verano de aquí.
+        </p>
+        <p>
+          <strong>Ranger Pro no es selectivo.</strong> Mata lo que toca. Se usa donde no hay nada que
+          conservar: un lote baldío, una grieta en el concreto, una cerca, una zona de grava. Usarlo en un
+          jardín es cómo la gente termina con manchas cafés permanentes.
+        </p>
+        <p>
+          <strong>Elegir mal entre esos tres es la mayor parte de los trabajos mal hechos que vemos.</strong>
+          Preemergente tarde, selectivo donde hacía falta no selectivo, no selectivo donde había césped.
+          Ninguno de esos errores es del producto.
+        </p>
+        <p>
+          <strong>Y una cosa que sí decimos siempre:</strong> los productos se aplican a la dosis de la
+          etiqueta. La etiqueta es la ley en Texas, no una sugerencia del fabricante. Si alguien le ofrece
+          "cargarle un poco más para que pegue mejor", esa persona le está ofreciendo una infracción.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Un año de jardín con dieciséis pulgadas de lluvia</h2>
+      <div class="measure">
+        <p>
+          Mantener pasto vivo aquí no se parece a mantenerlo vivo en el este de Texas, y los calendarios de
+          internet casi siempre están escritos para otro clima.
+        </p>
+        <p>
+          <strong>Febrero y marzo: preemergente.</strong> La ventana es corta y no se recupera. Si se pasa,
+          el año entero se vuelve reactivo en lugar de preventivo.
+        </p>
+        <p>
+          <strong>Abril y mayo: arranque y fertilización.</strong> El pasto sale del letargo y es cuando
+          responde mejor. También es cuando la maleza de hoja ancha se nota más, así que es temporada de
+          selectivo.
+        </p>
+        <p>
+          <strong>Junio a agosto: sobrevivir.</strong> Calor fuerte, viento y evaporación. El riego mal
+          apuntado en estos meses es la causa de la mitad de los problemas que vemos después — cabezas que
+          mojan la cimentación en lugar del pasto, zonas que corren de más porque una esquina se seca
+          primero. Regar profundo y con menos frecuencia le da raíz; regar poquito todos los días le da un
+          pasto superficial y humedad permanente pegada a la casa.
+        </p>
+        <p>
+          <strong>Y ahí está el cruce con el lado de plagas</strong>, que es la razón por la que hacemos
+          las dos cosas. Humedad constante contra la losa es exactamente lo que necesitan las termitas
+          subterráneas, y la creencia de que "aquí es muy seco para termitas" es de las que salen más
+          caras. Las termitas trabajan bajo tierra, donde está la humedad, sin importar qué tan seco esté
+          el aire arriba.
+        </p>
+        <p>
+          <strong>Septiembre y octubre: la segunda ventana.</strong> Buen momento para fertilizar y para
+          preemergente de temporada fría. También el momento de podar ramas que tocan el techo, antes de
+          que lleguen las primeras noches frías y los roedores empiecen a buscar cómo entrar.
+        </p>
+        <p>
+          <strong>Noviembre a enero: poda y limpieza.</strong> Poco crecimiento, así que es cuando se
+          arreglan las cosas estructurales — bordes, ramas, acumulación contra los muros. Es también
+          cuando un lote descuidado deja de crecer pero no deja de ser un problema: la maleza seca y alta
+          sigue siendo refugio y sigue siendo motivo de aviso.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Si es dueño aquí pero vive en otro lado</h2>
+      <div class="measure">
+        <p>
+          Una parte considerable de este trabajo es para gente que no está en el pueblo: propiedad
+          heredada, una casa de renta entre inquilinos, terreno de la familia, o una casa a la que nadie ha
+          ido desde que alguien se mudó.
+        </p>
+        <p>
+          <strong>El problema estructural para el dueño ausente es el correo.</strong> El aviso de la
+          ciudad se manda a la dirección que el distrito de valuación tiene registrada. Si esa dirección
+          está desactualizada, el procedimiento completo puede correr de principio a fin sin que usted se
+          entere: el aviso, el plazo, la limpieza hecha por la ciudad, el cobro y el gravamen sobre la
+          propiedad.
+        </p>
+        <p>
+          <strong>Y el gravamen es la parte que duele.</strong> El §342.007 es la autoridad estatal para
+          eso, y en la práctica significa que el costo se pega a la propiedad con intereses y no
+          desaparece porque usted no supiera. Es dinero considerablemente mayor que el de mantener el lote
+          cortado.
+        </p>
+        <p>
+          <strong>Qué hacemos en esos casos.</strong> Un calendario durante la temporada de crecimiento,
+          fotos de cómo quedó, y aviso si aparece algo que usted debería saber — un vehículo abandonado,
+          material tirado, daño en una cerca, señales de que alguien entró. Si tiene varias propiedades en
+          el mismo pueblo, se hacen en una visita.
+        </p>
+        <p>
+          <strong>Lo primero, sin embargo, no es contratarnos:</strong> es actualizar su dirección con el
+          distrito de valuación del condado. Eso es gratis y resuelve la parte del problema que ningún
+          servicio de jardinería puede resolver por usted.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Dónde esto se cruza con el control de plagas</h2>
+      <div class="measure">
+        <p>
+          La razón por la que una misma persona hace jardín y plagas no es comodidad comercial. Es que en
+          esta región las dos cosas son el mismo problema visto desde dos lados.
+        </p>
+        <p>
+          <strong>La maleza alta y el material acumulado son refugio.</strong> Texas A&amp;M AgriLife
+          enumera piedras, tablas, escombros, vegetación muerta y troncos caídos como aquello bajo lo que
+          se resguarda el alacrán rayado de corteza — la plaga más característica del oeste de Texas. Un
+          tratamiento perimetral no compite contra un refugio permanente con sombra y comida adentro. Se
+          quita el refugio y después se trata el suelo donde estaba: eso es una visita, no dos empresas.
+        </p>
+        <p>
+          <strong>La vegetación pegada al muro es un puente.</strong> Arbustos que tocan la pared, ramas
+          sobre el techo y setos contra la cimentación le dan a los insectos y a los roedores una ruta que
+          evita por completo cualquier barrera aplicada en el suelo. Separar la planta de la estructura
+          treinta centímetros hace más que muchas aplicaciones, y es trabajo de tijera.
+        </p>
+        <p>
+          <strong>El riego mal apuntado alimenta a las termitas.</strong> Ya lo mencionamos arriba y vale
+          repetirlo porque es caro: humedad constante contra la losa es la condición que necesitan las
+          termitas subterráneas, y la losa esconde la evidencia en lugar de impedir el problema. Ajustar
+          las cabezas de riego para que mojen el pasto y no el muro es una corrección de jardinería con
+          consecuencias de plagas.
+        </p>
+        <p>
+          <strong>Y las hormigas suben por los árboles antes de entrar a la casa.</strong> Los pulgones y
+          la escama en árboles y ornamentales sueltan una secreción azucarada que las hormigas cuidan y
+          defienden. El rastro sube por el tronco y sigue por donde la rama toque. Un problema persistente
+          de hormigas en la planta alta muchas veces empieza en un arbusto contra el muro y no en la
+          cocina.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Qué crece aquí de verdad</h2>
+      <div class="measure">
+        <p>
+          Los consejos genéricos de jardinería fallan aquí porque la lista de plantas problema es
+          particular de esta región. Estas son las que aparecen en casi todos los terrenos.
+        </p>
+        <p>
+          <strong>El torito o abrojo</strong> es probablemente la más odiada, y con razón: la semilla
+          espinosa perfora llantas de bicicleta, se clava en las patas de los perros y sobrevive años en el
+          suelo. Es exactamente el caso donde el preemergente de febrero vale más que cualquier cosa que
+          se haga en julio, porque una vez que la planta produjo semilla usted ya perdió el año.
+        </p>
+        <p>
+          <strong>El zacate Johnson</strong> se propaga por rizoma, lo cual significa que cortarlo lo
+          multiplica y arrancarlo deja pedazos que rebrotan. Necesita producto sistémico y paciencia, no
+          fuerza.
+        </p>
+        <p>
+          <strong>La correhuela</strong> tiene raíz profunda y vuelve. Cualquier promesa de eliminarla en
+          una sola aplicación conviene tomarla con calma.
+        </p>
+        <p>
+          <strong>La kochia y el cardo ruso</strong> — la planta rodadora — crecen rápido en terreno
+          alterado y en lotes baldíos, se secan y se acumulan contra cercas y muros. Ahí dejan de ser un
+          tema de estética: una acumulación seca contra una construcción es refugio y también riesgo de
+          incendio, y en algunas ciudades de la ruta es motivo de aviso por sí sola.
+        </p>
+        <p>
+          <strong>El bledo</strong> crece en suelo removido y en huertos, y llega a ponerse alto rápido
+          después de una lluvia buena — que es exactamente cuando un lote pasa de "un poco descuidado" a
+          "cincuenta centímetros por encima del límite" en dos semanas.
+        </p>
+        <p>
+          <strong>La lección práctica de toda esa lista</strong> es que en este clima el crecimiento no es
+          constante: es a pulsos, después de lluvia. Un lote que estuvo bien tres meses puede estar fuera
+          de norma quince días después de una tormenta, y los avisos de la ciudad llegan justo entonces.
+          Por eso el mantenimiento por calendario le sale más barato que reaccionar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Lo que no hacemos</h2>
+      <div class="measure">
+        <p>
+          <strong>No hacemos diseño ni instalación de paisaje.</strong> Ni sistemas de riego, ni obra dura,
+          ni colocación de pasto en rollo. Hacemos mantenimiento y trabajo químico: corte, orilladora,
+          bordes, fertilización, poda de árboles y herbicida. Cuando lo que usted necesita es un
+          paisajista, se lo decimos.
+        </p>
+        <p>
+          <strong>No rentamos contenedores</strong> ni hacemos lavado a presión ni demolición.
+        </p>
+        <p>
+          <strong>Y el trabajo de jardín no lleva la garantía de 30 días.</strong> Esa garantía es para
+          tratamientos de plagas, donde el resultado depende sobre todo del tratamiento. Un jardín depende
+          de la lluvia, del riego, de la temporada y de lo que pase en la propiedad después de que nos
+          vamos. Lleva sus propios términos, acordados antes, en lugar de una promesa que después habría
+          que discutir.
+        </p>
+        <p>
+          <strong>No somos un equipo.</strong> Es una sola persona, y la persona que cotiza es la que
+          trabaja. Eso tiene ventajas y tiene un límite de agenda, y las dos cosas se dicen por teléfono.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre jardín y maleza" />
+  <Cta
+    line="Dígale en qué pueblo está la propiedad y si ya recibió aviso de la ciudad, con la fecha de la carta. El número de pulgadas y el plazo cambian según el pueblo, y con esos dos datos ya sabe qué se puede hacer y para cuándo."
+  />
+</BaseLayout>

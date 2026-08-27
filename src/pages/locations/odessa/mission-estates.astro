@@ -1,0 +1,488 @@
+---
+/**
+ * T5 neighbourhood page — Mission Estates, north-east Odessa, Ector County.
+ *
+ * FIRST NEIGHBOURHOOD PAGE WRITTEN TO DEPTH. Pattern for the rest.
+ *
+ * The spine of this page is the property owners' association's OWN published
+ * maintenance language, which turns out to be a pest document in disguise:
+ * a 584-home neighbourhood under an enforced "no weeds or dirt" standard, an
+ * alley-to-curb responsibility rule, and a standing board complaint about
+ * over-watering runoff. In a city that averages well under fifteen inches of
+ * rain, an enforced landscape standard means irrigation, and irrigation is the
+ * moisture anomaly that drives nearly everything we get called about.
+ *
+ * VERIFIED facts used here:
+ *  - Platting, from the City of Odessa's own Plats feature service (surveyor
+ *    initials, legal date, cabinet/page, acreage per filing):
+ *      · 1983-05-19 road dedication plat, Faudree Rd & Dorado Dr, 37.037 ac
+ *      · 1983-05-20 2nd Filing, 50.098 ac · 7th Filing same day, 17.225 ac
+ *      · 1984-04-27 4th Filing corrected, 28.449 ac
+ *      · 1985 corrected replats of the 2nd, 4th and 6th Filings
+ *      · 1998-06-01 5th Filing replat, 25.374 ac
+ *      · 2001-06-18 10th Filing (replat of the 8th), 17.732 ac
+ *      · 2008-02-15 12th Filing, 1.000 ac · 2008-03-28 11th Filing, 52.873 ac
+ *      · 2011 corrected replat of the 11th · 2023-03-08 13th Filing
+ *    Surveyor initials as recorded: LCA, SWH, JRS, STA. The city stores
+ *    initials, not full names — do not expand them into names.
+ *  - Grouped subdivision record: "Mission Estates Addition", ACREAGE 296.80,
+ *    inside city limits.
+ *  - Mission Estates Property Owners' Association, PO Box 69263, Odessa
+ *    79769. Its own pages state "584 homes in Mission" and that the
+ *    association "has grown to almost 600 homes over the last several years";
+ *    a board of directors enforces the covenants and oversees common areas,
+ *    which are maintained despite "water shortages".
+ *  - VERBATIM association language, quoted on the page as quoted:
+ *      · "Everyone is responsible for maintaining everything from the alley
+ *        to the curb."
+ *      · yards to have "no weeds or dirt. All trees and shrubs should be
+ *        trimmed to enhance your landscape".
+ *      · "Excessive watering causes runoff into the streets and alleyways.
+ *        This can cause deterioration to the street and potholes in alleys."
+ *  - Streets named in association and city records: San Jose Drive, Augustine
+ *    Court, Cristobal, Mission Drive, San Gabriel, Dorado Drive, Faudree Road.
+ *    Board records a four-way stop at Cristobal, one planned at San Jose and
+ *    Augustine, and a "Your Speed Is" sign in place of striping.
+ *  - Alleys AND curbs both exist — established by the association's own
+ *    maintenance rule and its runoff complaint, not assumed from layout.
+ *  - Ector County IS on the imported fire ant regulated-areas list under
+ *    7 C.F.R. §301.81-3, adopted at 4 TAC §19.101. Read off the APHIS list.
+ *
+ * NOT ESTABLISHED — MUST NOT BE STATED:
+ *  - COUNTY. The city's own attribute table puts Mission Estates in MIDLAND
+ *    County on 20 of 21 plat records, which cannot be right for a subdivision
+ *    inside Odessa. It is a data-entry problem in the source, not a finding.
+ *    This page says Odessa and Ector County because that is where Odessa is,
+ *    and makes no claim off the plat attribute.
+ *  - GOLF COURSE ADJACENCY. The Club at Mission Dorado exists nearby and the
+ *    Mission Dorado plats interleave with these along the northern edge, but
+ *    the club is unplatted acreage and the boundary was never confirmed. The
+ *    page frames irrigated turf CONDITIONALLY — "if you back onto it" — and
+ *    never asserts that the subdivision adjoins a course.
+ *  - RENTAL CHARACTER. An earlier draft of neighborhoods.ts described this as
+ *    an area "with real rental turnover" and led on bed bugs. No source
+ *    supports that at neighbourhood level; the city-wide 2020 rental vacancy
+ *    figure is a CITY statistic and does not describe a 584-home covenanted
+ *    subdivision. Claim removed from the data file, not just from the page.
+ *  - Lot counts per filing. Odessa's Plats layer has a "Lots" field whose
+ *    alias is "Lots Complete" and whose domain is Yes/No. It is NOT a count.
+ *  - Floodplain, drainage or playa mapping. Odessa publishes no public
+ *    floodplain or playa layer. Unlike Midland, there is nothing to read.
+ *  - School attendance zones. No retrievable ECISD boundary source.
+ *  - Developer name. Only surveyor initials are recorded.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { SERVICES } from '../../../data/services';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Areas we serve', path: '/locations/' },
+  { name: 'Odessa', path: '/locations/odessa/' },
+  { name: 'Mission Estates', path: '/locations/odessa/mission-estates/' },
+];
+
+const quickAnswer =
+  'Mission Estates is a 296-acre, 584-home subdivision in north-east Odessa, platted from 1983 and still being added to. Its owners association enforces a no-weeds standard and alley-to-curb maintenance, which means irrigation — and irrigation is what drives pest pressure here. Valentin Moriel works it himself under Texas licence TPCL 0918482.';
+
+const faqs = [
+  {
+    q: 'Why does the Mission Estates landscaping rule matter for pests?',
+    a: 'Because keeping a West Texas yard to a "no weeds or dirt" standard means watering it, and water is the scarce thing that everything else organises itself around. In a city that averages well under fifteen inches of rain a year, a neighbourhood of 584 irrigated yards is a moisture island. Termites work below grade where the moisture is. Ants follow it. Mosquitoes breed in whatever holds it for a week. The covenant is not causing a pest problem — it is producing a green, well-kept neighbourhood, which is a nicer place to live and a more attractive place for insects than the caliche around it. Knowing that is most of knowing what to look for.',
+  },
+  {
+    q: 'What does "from the alley to the curb" mean for my property?',
+    a: 'It is the association\'s own phrase for the extent of an owner\'s maintenance responsibility, and it is worth reading literally. It means the strip behind your back fence is yours to keep up, not the city\'s and not nobody\'s. That strip is also, in practice, the busiest pest corridor on the property. Alleys carry refuse containers, they run continuously behind an entire block, and they are checked far less often than a front yard. If we are inspecting a Mission Estates property, the alley side gets as much attention as the house.',
+  },
+  {
+    q: 'Are alleys really a rodent problem?',
+    a: 'They are the single most useful thing to understand about rodents in an alley-served neighbourhood. A rat or mouse does not cross open ground if it can help it — it follows edges, and an alley is a continuous edge running the length of a block with food containers spaced along it. That is why rodent work here is rarely about one house. If activity shows up in your garage, the population is very likely using the alley, which means the neighbours either have it or are about to. Treating one property and ignoring the corridor behind it is how people end up calling somebody again in six weeks.',
+  },
+  {
+    q: 'The board complains about over-watering. Is that a pest issue too?',
+    a: 'Directly. The association has written that excessive watering causes runoff into the streets and alleyways and deteriorates the pavement. Everything in that sentence is also a pest description. Runoff means water standing somewhere it was not designed to stand, and standing water for about a week is all a mosquito needs. Chronically wet ground against a foundation is the condition subterranean termites want most. If you are already adjusting your sprinklers because the board asked you to, you are doing pest control without calling it that.',
+  },
+  {
+    q: 'Do I have fire ants in Mission Estates?',
+    a: 'Possibly, and Odessa is one of the places on our route where the answer is not automatically no. Ector County is on the federal imported fire ant regulated-areas list under 7 C.F.R. section 301.81-3, which Texas adopts by reference at 4 TAC section 19.101 — we read that off the APHIS list ourselves. North and west of here, in Gaines, Andrews, Yoakum, Terry and Dawson, the counties are not listed and a suspected fire ant mound is nearly always a red harvester ant. Here it may genuinely be a fire ant. The two need different products, and the quarantine brings movement restrictions on soil, sod, nursery stock, hay stored on the ground and used soil-moving equipment leaving the county.',
+  },
+  {
+    q: 'Does the age of my house in Mission Estates change anything?',
+    a: 'Quite a lot, and Mission Estates is unusual in how wide that range is. The core was platted in 1983 to 1985, there was a substantial second wave in 2008 when the 11th and 12th Filings added about fifty-four acres, and a 13th Filing was recorded as recently as March 2023. So one street can be forty years old and the next essentially new. Older slabs have had four decades of settling, plumbing work and landscaping changes around the perimeter — more penetrations, more history. Newer construction has disturbed fill around the foundation and a pre-treatment history worth asking about. They are different conversations.',
+  },
+  {
+    q: '¿Atienden Mission Estates en Odessa?',
+    a: 'Sí, y Odessa es parte de la ruta normal, no un pueblo por solicitud. Valentin atiende en español y hace el trabajo personalmente. Mission Estates es un fraccionamiento de unas 296 acres y 584 casas en el noreste de Odessa, con reglas de la asociación que exigen mantener el jardín sin maleza y los árboles y arbustos podados — lo cual significa riego, y el riego es lo que atrae la mayoría de las plagas aquí. El condado de Ector sí está en la cuarentena federal de la hormiga roja importada. Llame o mande un texto al (432) 278-7294.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pest Control in Mission Estates, Odessa TX"
+  description="Scorpion, termite, ant and rodent work in Mission Estates, north-east Odessa — an irrigated, alley-served subdivision of 584 homes. Licensed TPCL 0918482."
+  path="/locations/odessa/mission-estates/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Pest Control in Mission Estates, Odessa',
+    description: 'Scorpion, spider, ant, termite and rodent control for homes in the Mission Estates subdivision of north-east Odessa, Ector County.',
+    areaServed: ['Odessa', 'Ector County'],
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Odessa · Ector County · platted from 1983, still being added to</p>
+      <h1>Pest Control in Mission Estates, Odessa</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          Most pest control pages about a subdivision are the town page with the subdivision's name
+          dropped into it. This one is not, because Mission Estates has a specific and unusually
+          well-documented characteristic that changes what we would look at on your property.
+        </p>
+        <p>
+          The property owners' association publishes its maintenance expectations, and read with a pest
+          controller's eye they describe the neighbourhood's ecology almost exactly. Yards are to have
+          <strong>"no weeds or dirt"</strong>, with <strong>"all trees and shrubs&hellip; trimmed to
+          enhance your landscape"</strong>. Owners are responsible for maintaining
+          <strong>"everything from the alley to the curb"</strong>. And the board has had to write to
+          residents that <strong>"excessive watering causes runoff into the streets and alleyways"</strong>,
+          deteriorating pavement and putting potholes in the alleys.
+        </p>
+        <p>
+          Those three lines tell you that this is an irrigated neighbourhood, that it is alley-served, and
+          that there is enough watering going on for runoff to be a standing complaint. That is not a
+          criticism of anyone. It is a description of the most attractive habitat for several miles in
+          every direction, and it explains most of what gets called in from here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>A green island in a dry city</h2>
+      <div class="measure">
+        <p>
+          The Permian Basin is dry. Odessa's rainfall is low even by regional standards, and the
+          surrounding ground is caliche, sand and whatever will survive on twelve to fifteen inches of
+          rain a year. Against that background, <strong>584 homes maintained to a no-weeds standard</strong>
+          — watered, trimmed, kept green through a Texas August — is not a neighbourhood. It is a resource.
+        </p>
+        <p>
+          <strong>Every pest problem out here is a water problem first.</strong> That is the single most
+          useful idea we can hand you about this property. Insects and rodents in an arid environment are
+          not distributed evenly across the landscape; they concentrate wherever moisture is reliable, and
+          they will travel a long way to reach it. A covenanted, irrigated subdivision surrounded by dry
+          ground concentrates pressure in exactly the way a stock tank concentrates cattle.
+        </p>
+        <p>
+          <strong>What that means in practice.</strong> A survey of a Mission Estates property is largely a
+          survey of where the water actually is — which is not always where the homeowner thinks. Sprinkler
+          heads that throw against the foundation rather than away from it. A zone that runs long because
+          one corner of the lawn browns first. The drip line in a bed against the house. A hose bib with a
+          slow weep. An air-conditioning condensate line discharging into the same eighteen inches of soil
+          every single day of the summer. Each of those is a small permanent wet spot, and in this climate
+          a small permanent wet spot does an enormous amount of recruiting.
+        </p>
+        <p>
+          <strong>Subterranean termites are the reason this matters most.</strong> People out here are
+          regularly told the climate is too dry for termites, and it is one of the more expensive things
+          anybody gets told. Subterranean termites live below grade where the moisture is, and they are
+          entirely indifferent to how dry the air above them is. A slab with irrigation running against it
+          twice a week has the conditions they need whatever the rain gauge says. Slab construction then
+          hides the evidence rather than preventing the problem, so the first sign is often mud tubes on a
+          foundation wall, a bit of damaged trim, or a swarm on a warm spring day.
+        </p>
+        <p>
+          None of this argues for watering less than the association asks. It argues for watering
+          deliberately — away from the structure, on a schedule that lets the top few inches dry between
+          runs, with the sprinkler heads actually aimed. The board's own advice about inspecting sprinkler
+          systems and adjusting seasonally is, from where we sit, decent pest advice that happens to have
+          been written about potholes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The alley is the part nobody inspects</h2>
+      <div class="measure">
+        <p>
+          Mission Estates has alleys and it has curbs. We know that from the association rather than by
+          assumption — the maintenance rule runs <strong>"from the alley to the curb"</strong>, and the
+          runoff complaint names streets and alleyways separately. Alley-served layouts are common enough
+          in Odessa and Midland and much less common in the smaller towns north of here, and they change
+          the shape of a rodent problem completely.
+        </p>
+        <p>
+          <strong>Rodents travel edges, not open ground.</strong> A rat or a house mouse crossing the
+          middle of a lawn is exposed to owls, cats and everything else that eats rodents, so they do not
+          do it if there is an alternative. Fence lines, foundation walls, kerbs, pipe runs and walls are
+          the alternative. An alley is the best one available: a continuous corridor running the full
+          length of a block, bounded by fences on both sides, with refuse containers spaced along it at
+          regular intervals and very little foot traffic.
+        </p>
+        <p>
+          <strong>So rodent work in an alley neighbourhood is rarely a single-property job.</strong> If
+          droppings turn up in your garage, the population almost certainly lives in and moves along the
+          corridor behind the fence, which means your neighbours are either dealing with it too or about to
+          be. Treating one house and ignoring the alley behind it produces exactly the outcome people
+          complain about: it works for a month, and then it does not.
+        </p>
+        <p>
+          <strong>What we actually look at on the alley side.</strong> Where the fence meets the ground and
+          whether there is a gap under it. Whether refuse container lids seat properly. Stored material
+          along the back fence — timber, pallets, spare paving, anything stacked and undisturbed for
+          months, which is harbourage for rodents and for the scorpions and spiders that follow them.
+          Whether the alley grade holds water after the neighbourhood's irrigation runs. And whether there
+          is a way into the structure from that side: a gap at a soffit, an unsealed utility penetration,
+          a garage door seal that no longer seals.
+        </p>
+        <p>
+          <strong>October and November are when this stops being theoretical.</strong> The first properly
+          cold nights push rodents that have spent a comfortable summer in the corridor to look for
+          somewhere warmer, and the nearest structure wins. Exclusion work done in September is worth
+          several times the same work done in December, which is the sort of thing that is obvious in
+          hindsight and easy to leave until it is not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Forty years of building, on the same streets</h2>
+      <div class="measure">
+        <p>
+          Mission Estates is not one neighbourhood built at one time, and that matters more for termite
+          and ant work than almost anything else about it. The City of Odessa's own plat records show a
+          build-out running four decades.
+        </p>
+        <p>
+          <strong>The original ground went in between 1983 and 1985.</strong> A road dedication plat for
+          Faudree Road and Dorado Drive covering just over thirty-seven acres was recorded on 19 May 1983.
+          The 2nd Filing, at about fifty acres, and the 7th Filing, at just over seventeen, were both
+          recorded the following day. The 4th Filing, corrected, added another twenty-eight and a half
+          acres in April 1984, and corrected replats of the 2nd, 4th and 6th Filings followed through 1985.
+        </p>
+        <p>
+          <strong>The 1990s and 2000s were mostly infill and correction.</strong> A replat of the 5th
+          Filing added around twenty-five acres in 1998, and the 10th Filing — itself a replat of the 8th —
+          added about seventeen and a half in 2001, alongside a run of smaller lot-level replats.
+        </p>
+        <p>
+          <strong>Then a genuine second wave in 2008.</strong> The 12th Filing was recorded in February and
+          the 11th, at nearly fifty-three acres, in March. A corrected replat of part of the 11th followed
+          in 2011. Most recently the 13th Filing was recorded in March 2023, so the subdivision is still
+          being extended.
+        </p>
+        <p>
+          Altogether the city records the grouped Mission Estates Addition at
+          <strong>296.8 acres</strong> inside the city limits, and the association describes roughly
+          <strong>584 homes</strong> within it — generous lots by any modern standard.
+        </p>
+        <p>
+          <strong>Why the dates change the inspection.</strong> A slab poured in 1984 has had forty years
+          of ground movement, re-plumbing, added patios, replaced fences and re-landscaped beds around its
+          perimeter. Every one of those is a potential penetration or an expansion joint that has opened
+          slightly, and forty years is long enough for any pre-construction termite treatment to have
+          become historical rather than active. A slab poured in 2008 or later sits on more recently
+          disturbed and often imported fill, which behaves differently, and it is worth knowing whether a
+          builder's pre-treatment was done and what it was.
+        </p>
+        <p>
+          When somebody rings us from Mission Estates, roughly the second thing we want to know is which
+          part of it they are in. It is not idle curiosity — it decides where the inspection spends its
+          time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What this part of Odessa actually deals with</h2>
+      <div class="measure">
+        <p style="color:var(--ink-3)">
+          <strong>Where this comes from.</strong> The pressures below are drawn from AgriLife entomology,
+          the federal quarantine list, and the documented characteristics of this subdivision — its
+          irrigation, its alleys and its build era. Where we are describing what a condition produces
+          rather than what we have personally pulled out of a wall on San Jose Drive, we say so.
+        </p>
+        <p>
+          <strong>Fire ants, which are a real possibility here.</strong> Ector County is on the imported
+          fire ant regulated-areas list under 7 C.F.R. §301.81-3, adopted into Texas law at 4 TAC §19.101.
+          We read that off the APHIS list directly rather than repeating a summary. Irrigated turf is
+          precisely the habitat imported fire ants exploit best, which makes a covenanted, watered
+          subdivision a more likely place to find them than the dry ground outside it. Getting the
+          identification right before anything is applied is not pedantry: a red harvester ant mound and an
+          imported fire ant nest need different products and different methods, and only one of the two
+          brings movement restrictions with it.
+        </p>
+        <p>
+          <strong>Scorpions, June through September.</strong> Striped bark scorpions are the signature
+          West Texas pest and they are nocturnal, they climb better than people expect, and they turn up in
+          attics, in shoes and along the top plate of a wall. AgriLife entomologists note that they move
+          indoors when it becomes excessively dry outside — so the hot dry stretch that browns the lawn is
+          also the stretch that brings them in. Harbourage removal and exclusion do more than spraying
+          does, which is a harder thing to sell and a more honest one.
+        </p>
+        <p>
+          <strong>Ants of the ordinary, maddening kind.</strong> Irrigated ground with reliable moisture
+          supports far larger ant populations than dry caliche does, and the species that come indoors
+          come in following a moisture or food trail rather than at random. Treating the trail rarely
+          works for long; finding where the colony actually is does.
+        </p>
+        <p>
+          <strong>Mosquitoes, episodically.</strong> Odessa mosquito pressure climbs roughly a week to ten
+          days after a real rain event and falls away again, which is why fixed-calendar treatment tends to
+          miss the window. In a neighbourhood where the board is already worried about irrigation runoff,
+          the local additions are worth a walk: a low spot in an alley that stays wet, a saucer under a
+          pot, a tarp, a wheelbarrow, a clogged gutter, a swimming pool cover.
+        </p>
+        <p>
+          <strong>Spiders in the enclosures nobody opens.</strong> Meter boxes, irrigation valve boxes, the
+          space under a shed, a garage corner behind stored boxes. Black widows favour exactly that
+          profile. Brown recluse occur across Texas and shelter in firewood, stored cardboard and
+          low-traffic crevices; bites are rare and almost always accidental.
+        </p>
+        <p>
+          <strong>Rodents, on the alley's schedule.</strong> Covered above, and worth repeating for the one
+          reason that matters: the corridor is shared, so the problem is shared.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>If you back onto open ground or irrigated turf</h2>
+      <div class="measure">
+        <p>
+          Mission Estates sits in a cluster of similarly named additions on this side of Odessa — Mission
+          Dorado, Mission Pines, Mission Greens Estates, Mission East, The Haven at Mission, the Enclave at
+          Mission Ranch, and more recently the Shops at Mission. They were platted at different times and
+          they interleave rather than sitting in tidy blocks, so what is immediately behind a Mission
+          Estates fence varies a great deal depending on where in the subdivision you are.
+        </p>
+        <p>
+          <strong>We are going to be careful here rather than confident.</strong> There is a golf club in
+          the Mission Dorado area, and a golf course is unplatted acreage that does not appear in the
+          subdivision records, so we could not establish from the documents where its boundary sits
+          relative to any particular street. Rather than assert an adjacency we have not confirmed, here is
+          the conditional version, which is the useful part anyway.
+        </p>
+        <p>
+          <strong>If your property backs onto irrigated turf</strong> — a course, a park, a school field,
+          a large common area — treat it as a permanent moisture and habitat source on one boundary of your
+          lot. Large irrigated turf is the most reliable water for a considerable distance, so pressure
+          arrives from that side rather than evenly. It concentrates fire ant activity, it supports far
+          more crickets and other prey insects, and that prey base is what brings scorpions and spiders to
+          the fence line. Perimeter work on that boundary is worth more than the same effort spread
+          evenly around the house.
+        </p>
+        <p>
+          <strong>If your property backs onto undeveloped ground</strong> — and with a 13th Filing recorded
+          as recently as 2023, some properties here still do — the pressure is different in kind. Open
+          ground brings field-driven arrivals: harvester ants, spiders, the occasional snake following
+          rodents, and rodents themselves when whatever cover they were using gets cleared or cut. A lot
+          that is about to be built on is a short-term surge, because construction displaces everything
+          living in it into the nearest available shelter, which is you.
+        </p>
+        <p>
+          Either way, the practical response is the same shape: know which of your boundaries is the
+          active one, and spend the effort there rather than distributing it politely around the perimeter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What we do in Mission Estates</h2>
+      <div class="grid c3" style="margin-top:1.2rem">
+        {SERVICES.filter((s) => s.priority <= 2).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3><p>{s.summary}</p>
+          </a>
+        ))}
+      </div>
+      <div class="measure" style="margin-top:2rem">
+        <p>
+          <strong>Odessa is a regular part of the route</strong>, not a by-request town, so scheduling here
+          is straightforward. Recurring service runs bi-monthly or quarterly, priced on the size of the
+          property, the pressure and the frequency, with a higher initial visit.
+          <strong>No contracts</strong> — no term, no cancellation fee. Termite, bed bug, mosquito, lawn,
+          brush and junk work is individually quoted after an inspection.
+        </p>
+        <p>
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
+          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          Venmo, CashApp or Zelle, and financing on larger jobs. Se habla español.
+        </p>
+        <p>
+          One practical note specific to a covenanted neighbourhood: if a treatment would involve anything
+          visible from the street or the alley — a temporary sign, equipment left in place, a disturbed
+          bed — say so and we will work around what the association expects. It is easier to plan around
+          than to explain afterwards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>The neighbourhood is doing half the work already</h2>
+      <div class="measure">
+        <p>
+          There is a version of this page that would tell you a well-kept neighbourhood has a hidden pest
+          crisis. That version would be nonsense. A subdivision where the trees and shrubs are trimmed,
+          the yards have no weeds or bare dirt, refuse is contained, and a board actually notices when
+          something is not maintained is a <em>harder</em> place for pests to establish than an unmanaged
+          one, not an easier one. Most of what we would recommend on a first visit, this association has
+          already asked its residents to do.
+        </p>
+        <p>
+          <strong>What is left is the part covenants do not cover.</strong> Covenants govern what a
+          property looks like. Pests respond to what a property offers — moisture, harbourage and a way
+          in — and those three things are largely invisible from the street. A yard can be immaculate and
+          still have a sprinkler head soaking a foundation wall twice a week, a soffit gap at the corner of
+          the garage, and a stack of pavers behind the fence that has not moved in two years.
+        </p>
+        <p>
+          <strong>So the useful inspection here is the unglamorous one.</strong> Walk the irrigation.
+          Walk the alley side. Check where the structure can be entered rather than where insects have
+          already been seen. Look at the expansion joints and the plumbing penetrations on a forty-year-old
+          slab, or the fill and pre-treat history on a fifteen-year-old one. That is a slower conversation
+          than quoting a spray over the phone, and it is the one that determines whether you are ringing
+          somebody again next season.
+        </p>
+        <p>
+          <strong>And the honest limitation.</strong> We are a one-man business based in Seminole, about an
+          hour and a half north of Odessa, and we are not going to pretend to be the closest option to
+          Mission Estates. What we offer instead is that the person who quotes the job is the person who
+          does it and the person who comes back if it did not hold — a licence number published on every
+          page here, TPCL 0918482, verifiable against the Texas Department of Agriculture's records in
+          about two minutes, guarantee terms written out with a duration and explicit exclusions, and no
+          contract to leave.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Mission Estates pest control questions" />
+  <Cta
+    market="Mission Estates"
+    line="Tell him which filing you are in — the 1980s core or one of the newer sections — and whether your lot backs onto an alley, turf or open ground. Those two answers decide where the inspection spends its time."
+  />
+</BaseLayout>

@@ -8,11 +8,13 @@
  *   3 · Duplicate-sentence scan — any ≥10-word sentence appearing on ≥3 pages
  *   4 · Word-count auditor     — M1 floor, 3,000 words on every INDEXABLE page
  *   5 · Schema check           — one @graph, parses, node-complete, no @id collisions
+ *   6 · Decay check            — every cited outside fact read inside its interval
  *
  * Exit 1 on any hard failure. Drafts (noindex) are reported but do not fail the run.
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { loadTs } from './load-ts.mjs';
 
 const DIST = path.resolve('dist');
 const M1_FLOOR = 3000;
@@ -184,6 +186,101 @@ for (const p of pages) {
   if (JSON.stringify(graph).includes('aggregateRating')) {
     warns.push(`RATING     ${p.url} emits aggregateRating — confirm it came from a verified profile read`);
   }
+}
+
+/* ---------- 6 · decay (Phase 6) ---------- */
+/* A page can be perfectly built and still be publishing something that stopped
+   being true. The cadence registry is the record of when each outside fact was
+   last read against its source; anything past its interval is surfaced here so
+   it cannot be ignored on a build that otherwise passes. Full report: npm run cadence */
+try {
+  const { DECAYING_FACTS } = await loadTs('src/data/maintenance.ts');
+  const now = Date.now();
+  for (const f of DECAYING_FACTS) {
+    const due = new Date(f.lastVerified + 'T00:00:00Z');
+    due.setUTCDate(due.getUTCDate() + f.intervalDays);
+    const over = Math.round((now - due) / 86400000);
+    if (over <= 0) continue;
+    const msg = `DECAY      ${f.id} (${f.severity}) unverified ${over}d past interval — ${f.what.slice(0, 80)}…`;
+    if (f.severity === 'routine') warns.push(msg);
+    else errors.push(msg + ' [npm run cadence]');
+  }
+} catch (e) {
+  warns.push(`DECAY      cadence registry unreadable — ${e.message}`);
+}
+
+/* ---------- 7 · problem spokes (Wave 4) ---------- */
+/* Spokes live one level below a service and are only reachable because
+   SpokeLinks renders them from src/data/spokes.ts. If a page ships without a
+   row, nothing links to it and nobody finds it; if a row ships without a page,
+   the parent service page carries a dead link. Reconcile both directions. */
+try {
+  const { SPOKES } = await loadTs('src/data/spokes.ts');
+  const { SERVICES } = await loadTs('src/data/services.ts');
+  const serviceSlugs = new Set(SERVICES.map((x) => x.slug));
+  const declared = new Set(SPOKES.map((x) => `/services/${x.service}/${x.slug}/`));
+
+  for (const sp of SPOKES) {
+    if (!serviceSlugs.has(sp.service))
+      errors.push(`SPOKE      ${sp.slug} names service "${sp.service}", which is not in services.ts`);
+    const url = `/services/${sp.service}/${sp.slug}/`;
+    if (!built.has(url)) errors.push(`SPOKE      declared in spokes.ts but not built — ${url}`);
+  }
+
+  /* Any built page two levels under /services/ that nothing declares. */
+  for (const url of built) {
+    const m = url.match(/^\/services\/([^/]+)\/([^/]+)\/$/);
+    if (!m) continue;
+    if (declared.has(url)) continue;
+    if (url === '/services/termite-control/wdi-inspection/') continue; // licensed-category page, linked from the compliance cluster
+    errors.push(`SPOKE      built but absent from spokes.ts, so nothing links to it — ${url}`);
+  }
+} catch (e) {
+  warns.push(`SPOKE      spoke registry unreadable — ${e.message}`);
+}
+
+/* ---------- 8 · launch plumbing ---------- */
+/* A redirect that points at a 404 is worse than no redirect at all: it turns a
+   recoverable dead link into a confident one and reads as a soft 404. And a
+   sitemap that lists a held page publishes the thing we deliberately held.
+   Both are only checkable after a build, which is why this runs against dist/. */
+try {
+  const { REDIRECTS } = await loadTs('src/data/redirects.ts');
+  for (const r of REDIRECTS) {
+    if (!r.to.endsWith('/')) errors.push(`REDIRECT   ${r.from} → ${r.to} has no trailing slash (site is trailingSlash:'always')`);
+    if (r.from.endsWith('/')) errors.push(`REDIRECT   source ${r.from} must not end in a slash`);
+    if (!built.has(r.to)) errors.push(`REDIRECT   ${r.from} → ${r.to} — destination was not built (a 301 into a 404)`);
+    if (REDIRECTS.some((o) => o !== r && o.from === r.to)) errors.push(`REDIRECT   ${r.from} → ${r.to} starts a chain; point it at the final destination`);
+  }
+
+  const vj = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
+  const deployed = new Set((vj.redirects || []).map((x) => `${x.source}>${x.destination}`));
+  for (const r of REDIRECTS) {
+    if (!deployed.has(`${r.from}>${r.to}`))
+      errors.push(`REDIRECT   ${r.from} is documented but absent from vercel.json — run npm run build`);
+  }
+  for (const x of vj.redirects || []) {
+    if (!x.permanent) errors.push(`REDIRECT   ${x.source} is not permanent (must be 301, not 302)`);
+  }
+
+  const smPath = 'dist/sitemap.xml';
+  if (!fs.existsSync(smPath)) errors.push('SITEMAP    dist/sitemap.xml was not generated — is gen-static.mjs in the build script?');
+  else {
+    const sm = fs.readFileSync(smPath, 'utf8');
+    const listed = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+    for (const p of pages) {
+      const isNoindex = /<meta[^>]+name=["']robots["'][^>]*noindex/i.test(p.html);
+      const inSitemap = listed.includes(p.url);
+      if (isNoindex && inSitemap) errors.push(`SITEMAP    ${p.url} is noindex but listed in the sitemap`);
+      if (!isNoindex && !inSitemap) errors.push(`SITEMAP    ${p.url} is indexable but missing from the sitemap`);
+    }
+  }
+
+  if (!fs.existsSync('dist/robots.txt')) errors.push('ROBOTS     dist/robots.txt was not generated');
+  else if (!fs.readFileSync('dist/robots.txt', 'utf8').includes('sitemap.xml'))
+    warns.push('ROBOTS     robots.txt does not point at the sitemap');
+} catch (e) {
+  warns.push(`REDIRECT   launch plumbing unreadable — ${e.message}`);
 }
 
 /* ---------- report ---------- */

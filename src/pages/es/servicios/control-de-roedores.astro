@@ -1,0 +1,425 @@
+---
+/**
+ * Página en español — Control de Roedores y Exclusión.
+ * Par en inglés: /services/rodent-control/
+ *
+ * REGLA (CONTENT_BRIEF §10b): esta página se ESCRIBE en español, no se
+ * traduce. Español latinoamericano neutro, usted en todo el texto.
+ *
+ * Todas las restricciones de honestidad del sitio se aplican igual:
+ *  - NO fumigación (no la hace).
+ *  - El trabajo de roedores NO lleva la garantía de 30 días. Lleva sus
+ *    propios términos. La página lo dice de frente, igual que la inglesa.
+ *  - Cebo: FirstStrike, en estaciones profesionales a prueba de manipulación.
+ *  - Sin precios. Sin estadísticas inventadas. Sin "nuestro equipo".
+ *  - Remediación de aislamiento o ductos muy contaminados = trabajo
+ *    especializado de restauración, no control de plagas. Decirlo claro.
+ *  - Ordenanzas verificadas: Brownfield art. 6.600 (control de ratas);
+ *    Big Spring cap. 36 art. III (prohibición de refugio para ratas).
+ *
+ * hreflang recíproco: la página inglesa apunta aquí y esta apunta allá.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Trust from '../../../components/Trust.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import { BUSINESS } from '../../../data/business';
+
+const crumbs = [
+  { name: 'Inicio', path: '/es/' },
+  { name: 'Servicios', path: '/es/servicios/' },
+  { name: 'Control de Roedores', path: '/es/servicios/control-de-roedores/' },
+];
+
+const quickAnswer =
+  'El control de roedores combina trampas, estaciones de cebo profesionales y monitoreo con el trabajo de exclusión que realmente termina el problema: encontrar y sellar por dónde entran. Valentin Moriel lo hace personalmente, con licencia TPCL 0918482 del Departamento de Agricultura de Texas, en casas, bodegas y negocios del condado de Gaines y la Cuenca Pérmica.';
+
+const faqs = [
+  {
+    q: '¿Por qué el cebo solo no resuelve el problema?',
+    a: 'Porque el cebo elimina a los animales que están ahora y no cambia nada de lo que hizo que su propiedad los pudiera mantener. El edificio sigue teniendo las mismas aberturas y los mismos lugares donde resguardarse, así que el espacio se vuelve a llenar — muchas veces en cuestión de semanas, y más rápido en otoño. El cebo y las trampas sirven para la población que ya tiene. La exclusión es lo que hace que deje de tener una.',
+  },
+  {
+    q: '¿Cómo encuentran por dónde están entrando?',
+    a: 'Caminando toda la estructura buscando cosas concretas: el espacio debajo de las puertas exteriores y del umbral de la cochera, el hueco alrededor de donde entran los servicios — gas, agua, cableado, la línea del aire acondicionado — los mechinales sin malla, las rejillas de ventilación rotas o faltantes, y los huecos donde el techo se junta con el muro. Un ratón casero pasa por una abertura sorprendentemente pequeña, así que la inspección busca huecos que la mayoría de la gente pasaría de largo sin notar.',
+  },
+  {
+    q: '¿El trabajo de roedores lleva la garantía de 30 días?',
+    a: 'No, y preferimos decírselo directamente en vez de dejar que lo suponga. El trabajo de roedores lleva sus propios términos y no la garantía de servicio de 30 días, porque el resultado depende mucho de que la exclusión se termine y de que las condiciones de la propiedad no cambien demasiado. Los términos se acuerdan antes de empezar, por escrito cuando el trabajo lo amerita.',
+  },
+  {
+    q: '¿Qué cebo usan?',
+    a: 'FirstStrike, en estaciones profesionales a prueba de manipulación, nunca suelto. Dónde se colocan lo decide la actividad real que encontró la inspección, no un patrón parejo alrededor del edificio porque se ve más completo. Si hay niños, mascotas o fauna que no es el objetivo, eso cambia la colocación y a veces el método, y es una conversación que tenemos antes de poner nada.',
+  },
+  {
+    q: '¿Por qué de repente tengo ratones cada otoño?',
+    a: 'Pasan dos cosas al mismo tiempo aquí. Se levanta la cosecha — algodón, cacahuate, sorgo, granos — lo cual quita cobertura y comida de una superficie enorme en cuestión de días y desplaza a todo lo que vivía ahí. Y llegan las primeras noches de verdad frías, que empujan a los roedores hacia el calor. Los edificios que ya tenían huecos reciben el golpe fuerte y de golpe. Es el evento de plagas más predecible del calendario del oeste de Texas, y por eso sellar a finales del verano vale más que poner trampas en diciembre.',
+  },
+  {
+    q: '¿Atienden roedores en bodegas, talleres y graneros?',
+    a: 'Sí, y en propiedad rural ahí es donde normalmente está el trabajo de verdad. La casa es donde usted nota el problema; el taller, el granero, la bodega de equipo y donde se guarda el alimento es donde vive la población. Tratar únicamente la casa es la razón por la que la gente termina llamando a alguien por segunda vez.',
+  },
+  {
+    q: '¿Pueden quitar el olor o limpiar lo que dejaron?',
+    a: 'Retiramos lo que encontramos y atendemos los lugares donde se resguardaban. La remediación completa de aislamiento o ductos muy contaminados es trabajo especializado de restauración, no control de plagas, y cuando una propiedad necesita eso se lo decimos claramente en vez de hacer una aproximación.',
+  },
+  {
+    q: '¿Hacen fumigación para roedores?',
+    a: 'No hacemos fumigación de ningún tipo, ni para roedores ni para nada más. Es una limitación real de este negocio y preferimos nombrarla. Si alguna vez alguien necesita fumigación de verdad, se lo diremos y podrá buscar a quien la haga correctamente, en lugar de que nosotros aprendamos en su propiedad.',
+  },
+];
+---
+
+<BaseLayout
+  title="Control de Roedores | Seminole, TX"
+  description="Trampas, estaciones de cebo profesionales y el sellado que realmente termina el problema, en el condado de Gaines y la Cuenca Pérmica. Licencia TPCL 0918482."
+  path="/es/servicios/control-de-roedores/"
+  lang="es"
+  altLangPath="/services/rodent-control/"
+  quickAnswer={quickAnswer}
+  breadcrumbs={crumbs}
+  faqs={faqs}
+  service={{
+    name: 'Control de Roedores y Exclusión',
+    description: 'Trampeo, estaciones de cebo profesionales, monitoreo y trabajo de exclusión contra ratones y ratas en casas, graneros, talleres y negocios del oeste de Texas.',
+  }}
+>
+  <Crumbs items={crumbs} />
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Condado de Gaines y la Cuenca Pérmica</p>
+      <h1>Control de Roedores y Exclusión</h1>
+      <div class="measure"><AnswerBox text={quickAnswer} /></div>
+      <Trust />
+      <div class="measure">
+        <p>
+          <strong>Casi todo el trabajo serio de roedores es trabajo de carpintería, no de veneno.</strong>
+          Esa es la idea que ordena esta página entera, y es la que separa a una empresa que resuelve el
+          problema de una que lo administra.
+        </p>
+        <p>
+          El cebo y las trampas atienden a los animales que están hoy en su propiedad. No cambian nada del
+          hueco de dos centímetros bajo la puerta del taller, ni del mechinal sin malla, ni del sello
+          endurecido alrededor de la tubería. Mientras esas cosas sigan ahí, la propiedad sigue siendo
+          habitable para roedores, y lo que se desocupó se vuelve a ocupar.
+        </p>
+        <p>
+          <strong>Por eso este servicio se llama control y exclusión</strong>, y por eso lleva sus propios
+          términos en lugar de la garantía de 30 días — algo que explicamos más abajo en lugar de dejarlo
+          en letra chica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Cómo se hace el trabajo, en orden</h2>
+      <div class="measure">
+        <p>
+          <strong>Primero la inspección, y es la parte que decide todo lo demás.</strong> Se recorre la
+          estructura completa — no solo el cuarto donde usted vio algo — buscando tres cosas distintas:
+          dónde hay actividad, por dónde entran, y qué hay en la propiedad que los está manteniendo. Las
+          tres respuestas son diferentes y las tres importan.
+        </p>
+        <p>
+          <strong>La actividad se lee en rastros, no en avistamientos.</strong> Excremento y dónde está
+          concentrado, marcas de grasa a lo largo de rodapiés y vigas por donde pasan siempre, material de
+          nido, roeduras en madera, plástico o cableado, y el olor característico en un espacio cerrado.
+          Un roedor visto de día en una casa suele significar una población más grande de lo que la gente
+          supone, porque son animales que evitan exponerse.
+        </p>
+        <p>
+          <strong>Después el trampeo y el cebo, colocados donde está la actividad.</strong> Usamos
+          FirstStrike en estaciones profesionales a prueba de manipulación, nunca cebo suelto. La
+          colocación la decide lo que encontró la inspección — la ruta que ya están usando — y no un
+          patrón parejo alrededor del edificio porque se vea más completo. Un patrón parejo se ve bien y
+          rinde poco.
+        </p>
+        <p>
+          <strong>Si hay niños, mascotas o animales que no son el objetivo, esa conversación va antes.</strong>
+          Cambia la colocación y a veces cambia el método. No es un trámite: es la diferencia entre un
+          trabajo que usted puede supervisar tranquilo y uno que le preocupa cada vez que el perro sale al
+          patio.
+        </p>
+        <p>
+          <strong>Luego la exclusión, que es donde se decide si el problema termina.</strong> Sellar
+          entradas, poner malla donde hace falta, corregir sellos de puertas y umbrales. Es trabajo lento
+          y poco vistoso, y es lo único de esta lista que sigue funcionando el año que viene.
+        </p>
+        <p>
+          <strong>Y al final el monitoreo</strong>, porque una propiedad que tuvo un problema serio
+          conviene revisarla otra vez antes de darla por cerrada. Un hueco que se pasó por alto se nota
+          rápido si alguien está viendo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>El calendario del roedor en el oeste de Texas</h2>
+      <div class="measure">
+        <p>
+          Los roedores aquí no llegan al azar. Siguen un calendario bastante fijo, y saberlo cambia cuándo
+          conviene gastar dinero.
+        </p>
+        <p>
+          <strong>Octubre y noviembre son el evento del año.</strong> Ocurren dos cosas a la vez. La
+          primera es la cosecha: algodón, cacahuate, sorgo y granos salen del campo, y con eso desaparecen
+          en pocos días la cobertura y la comida de una superficie enorme. Todo lo que vivía ahí se mueve,
+          y se mueve hacia el refugio más cercano. La segunda son las primeras noches realmente frías, que
+          empujan a los roedores a buscar calor.
+        </p>
+        <p>
+          <strong>Las dos cosas apuntan a lo mismo: su edificio.</strong> Y llegan casi al mismo tiempo,
+          lo cual explica por qué la gente describe el problema como algo que apareció de un día para
+          otro. No apareció de un día para otro; la presión sí.
+        </p>
+        <p>
+          <strong>La consecuencia práctica es de calendario, no de producto.</strong> Sellar una
+          estructura en agosto o principios de septiembre vale considerablemente más que poner trampas en
+          diciembre, porque en agosto usted está cerrando la puerta antes de que llegue nadie. En
+          diciembre está sacando a quien ya se instaló, con frío afuera y con toda la razón del mundo para
+          quedarse.
+        </p>
+        <p>
+          <strong>El invierno es de mantenimiento.</strong> La población que logró entrar está adentro y
+          se reproduce en un ambiente cómodo. Es cuando más se ve y más se oye — ruido en el techo o en el
+          muro por la noche, excremento en la despensa — y también cuando la exclusión es más incómoda de
+          hacer, aunque siga siendo necesaria.
+        </p>
+        <p>
+          <strong>Primavera y verano son de oportunidad.</strong> La presión baja, la gente deja de pensar
+          en el tema, y ese es exactamente el momento en que conviene hacer el trabajo aburrido: revisar
+          sellos, poner malla en mechinales, arreglar el burlete de la cochera. Cuesta lo mismo en junio
+          que en noviembre y sirve muchísimo más.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>En el campo, el trabajo está en las bodegas</h2>
+      <div class="measure">
+        <p>
+          En propiedad rural — y buena parte del condado de Gaines es exactamente eso — la casa casi nunca
+          es donde vive la población. Es donde usted la nota.
+        </p>
+        <p>
+          <strong>Donde vive es en el taller, el granero, la bodega de equipo y donde se guarda el
+          alimento.</strong> Esos edificios tienen tres cosas que una casa no tiene: aberturas grandes que
+          se abren todos los días, material almacenado que nadie mueve en meses, y muchas veces comida en
+          cantidad. Un costal de alimento es una despensa. Un tractor guardado es un refugio con calor
+          residual. Una pila de tarimas es una ciudad.
+        </p>
+        <p>
+          <strong>Por eso tratar solo la casa falla.</strong> Se elimina a los individuos que cruzaron y se
+          deja intacta la fuente, así que la casa se vuelve a poblar desde el mismo lugar, y la persona
+          concluye razonablemente que el control de plagas no sirve. No es que no sirva: es que se trató
+          el síntoma que se veía.
+        </p>
+        <p>
+          <strong>Qué revisamos en una bodega.</strong> Dónde el muro metálico se junta con el piso de
+          concreto, que es la entrada clásica y casi siempre tiene luz. El sello de las puertas
+          corredizas. Los huecos donde entran cables y tuberías. El almacenamiento contra los muros, que
+          es refugio y hay que separarlo. Si hay alimento, cómo está guardado — un contenedor metálico con
+          tapa cambia más que cualquier producto que podamos aplicar. Y si hay cebo viejo de otra persona,
+          porque estaciones abandonadas sin dar servicio son un problema en sí mismas.
+        </p>
+        <p>
+          <strong>Y una nota sobre el equipo.</strong> Los roedores roen cableado, y el cableado de un
+          tractor, una camioneta guardada o un tablero eléctrico es caro y se descubre tarde. En una
+          propiedad con equipo guardado, eso suele ser la razón económica más fuerte para hacer el trabajo
+          bien, más que cualquier molestia dentro de la casa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>La exclusión, en concreto</h2>
+      <div class="measure">
+        <p>
+          "Sellar las entradas" suena obvio hasta que uno se pregunta cuáles son. Estas son las que
+          aparecen una y otra vez en esta región.
+        </p>
+        <p>
+          <strong>El sello de la puerta de la cochera.</strong> Es la entrada más común a una casa y falla
+          de manera invisible: el hule se endurece con el sol, se deforma en los extremos y deja de tocar
+          el piso en las esquinas. Un ratón no necesita más. Se revisa agachándose y viendo si entra luz.
+        </p>
+        <p>
+          <strong>Debajo de las puertas exteriores y en los umbrales.</strong> Lo mismo, y por lo mismo.
+        </p>
+        <p>
+          <strong>Donde entran los servicios al muro.</strong> Gas, agua, electricidad, la línea del aire
+          acondicionado. Frecuentemente están selladas con espuma que ya se degradó, o nunca se sellaron.
+          La espuma sola no es suficiente para roedores: se roe. Necesita material que no se pueda roer.
+        </p>
+        <p>
+          <strong>Los mechinales sin malla.</strong> Los orificios de drenaje en un muro de ladrillo son
+          necesarios y no se tapan — se les pone malla. Taparlos causa problemas de humedad y crea otra
+          cosa peor.
+        </p>
+        <p>
+          <strong>Rejillas de ventilación rotas o faltantes.</strong> Ventilación de ático, de cimentación,
+          de secadora. Una rejilla de secadora que ya no cierra es una puerta con calefacción.
+        </p>
+        <p>
+          <strong>Donde el techo se junta con el muro</strong>, sobre todo en las esquinas y donde termina
+          la fascia. Y cualquier rama que toque el techo, que convierte un problema de escalar en un
+          problema de caminar — podarla es trabajo de jardinería y rinde como trabajo de plagas.
+        </p>
+        <p>
+          <strong>Qué puede hacer usted mismo.</strong> Buena parte de esta lista no requiere licencia ni
+          producto. Un burlete nuevo en la cochera, malla en los mechinales, una rejilla reemplazada y una
+          rama podada resuelven más que muchas visitas de servicio, y se lo decimos aunque signifique
+          menos trabajo para nosotros.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Dos ciudades de la ruta lo tienen en su ordenanza</h2>
+      <div class="measure">
+        <p>
+          Vale la pena saber que en esta región el tema de los roedores no es solo suyo y de su vecino: en
+          dos de las ciudades donde trabajamos está escrito en el código municipal.
+        </p>
+        <p>
+          <strong>Brownfield</strong> tiene un artículo dedicado al control de ratas en su código de
+          ordenanzas, en el artículo 6.600. <strong>Big Spring</strong> va por otro camino y prohíbe el
+          refugio para ratas en el capítulo 36, artículo III — es decir, no regula al animal sino la
+          condición de la propiedad que lo permite.
+        </p>
+        <p>
+          <strong>Esa segunda idea es la interesante, y coincide exactamente con lo que hacemos.</strong>
+          Una ordenanza que prohíbe el refugio está diciendo, en lenguaje legal, que el problema no es la
+          rata sino la pila de material que lleva tres años sin moverse. Es el mismo argumento de esta
+          página escrito por un ayuntamiento.
+        </p>
+        <p>
+          <strong>Qué significa en la práctica.</strong> Si su propiedad está en una de esas dos ciudades
+          y el problema incluye acumulación de material, chatarra o almacenamiento al aire libre, ordenarlo
+          no es solo buena idea: puede ser una obligación. La limpieza de terrenos y el retiro de escombros
+          son trabajo que también hacemos, y muchas veces es lo que de verdad cambia la situación.
+        </p>
+        <p>
+          Cada ciudad de esta ruta tiene además sus propias reglas de maleza y altura de pasto, con plazos
+          y multas distintos, y las tenemos comparadas con su cita legal para que pueda leer la suya.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Por qué este servicio no lleva la garantía de 30 días</h2>
+      <div class="measure">
+        <p>
+          Nuestra <a href="/our-guarantee/">garantía de servicio de 30 días</a> cubre las plagas incluidas
+          en el tratamiento original: si sigue habiendo actividad dentro de los 30 días, regresamos,
+          inspeccionamos y volvemos a tratar el área sin costo adicional.
+        </p>
+        <p>
+          <strong>El trabajo de roedores está expresamente fuera de esa garantía y lleva sus propios
+          términos.</strong> Lo decimos aquí, en grande, en vez de esconderlo, porque enterarse después es
+          exactamente la clase de sorpresa que hace que la gente desconfíe de todo el oficio.
+        </p>
+        <p>
+          <strong>La razón es honesta y tiene que ver con quién controla el resultado.</strong> Un
+          tratamiento contra insectos depende casi por completo de lo que hacemos nosotros. Un resultado
+          con roedores depende de que la exclusión se termine — a veces con trabajo que hace otra persona
+          o el propietario — y de que las condiciones de la propiedad no cambien. Si se sella el edificio y
+          tres semanas después se abre una pared para una remodelación, o llega una carga de tarimas contra
+          el muro, o el vecino levanta la cosecha, la situación cambió y no fue por el trabajo.
+        </p>
+        <p>
+          <strong>Garantizar un resultado que no controlamos sería vender algo que no podemos
+          cumplir</strong>, y la manera en que normalmente se resuelve eso en esta industria es con letra
+          chica y discusiones. Preferimos términos específicos acordados antes de empezar, por escrito
+          cuando el trabajo lo amerita, donde quede claro qué incluye, qué se espera de su lado y qué
+          pasa si algo no funciona.
+        </p>
+        <p>
+          <strong>En la práctica, casi siempre volvemos.</strong> No porque un documento lo obligue, sino
+          porque un trabajo de roedores que no se sostiene es un trabajo mal hecho, y el que lo hizo y el
+          que regresa son la misma persona.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <h2>Lo que no hacemos, dicho claro</h2>
+      <div class="measure">
+        <p>
+          <strong>No hacemos fumigación.</strong> De ningún tipo, para ninguna plaga. Es una limitación
+          real de este negocio y preferimos nombrarla en vez de que usted la descubra a media conversación.
+        </p>
+        <p>
+          <strong>No hacemos remediación completa de contaminación.</strong> Retiramos lo que encontramos y
+          atendemos el refugio. Pero cuando el aislamiento del ático o los ductos quedaron muy
+          contaminados, eso es restauración especializada, con su propio equipo y sus propios protocolos.
+          Se lo diremos claramente en lugar de hacer una versión aproximada y cobrarle por ella.
+        </p>
+        <p>
+          <strong>No hacemos afirmaciones de salud que no nos toquen.</strong> Los roedores contaminan
+          alimento y superficies y eso está bien establecido. Más allá de eso, las preguntas médicas son
+          para un médico o para el departamento de salud, no para una empresa de control de plagas.
+        </p>
+        <p>
+          <strong>Y no somos un equipo.</strong> Es una sola persona: Valentin Moriel, con licencia
+          TPCL {BUSINESS.owner.tpcl} del Departamento de Agricultura de Texas. La persona que inspecciona
+          es la que trabaja y la que regresa. Eso tiene ventajas evidentes y una desventaja evidente — la
+          agenda — y ambas se las decimos por teléfono.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Qué conviene hacer antes de que lleguemos</h2>
+      <div class="measure">
+        <p>
+          <strong>Anote dónde y cuándo.</strong> En qué cuarto, a qué hora, qué ruido, dónde apareció el
+          excremento. Eso acorta la inspección y la hace más precisa, porque nos dice dónde mirar primero.
+        </p>
+        <p>
+          <strong>No limpie todo el excremento antes.</strong> Suena raro y es importante: la distribución
+          del rastro es información. Dónde está concentrado dice dónde pasan, y eso decide dónde va cada
+          estación y cada trampa. Limpie lo que le incomode y deje el resto para que lo veamos.
+        </p>
+        <p>
+          <strong>Guarde el alimento y la comida seca en recipientes con tapa firme.</strong> Alimento de
+          mascota, semilla para pájaros, granos, cualquier cosa en costal o caja de cartón. Es la medida
+          individual más eficaz que existe y no cuesta nada más que unos botes.
+        </p>
+        <p>
+          <strong>Despeje el perímetro si puede.</strong> Material apilado contra los muros, leña, tarimas,
+          llantas, macetas volteadas. Todo eso es refugio pegado a la estructura y separarlo del muro
+          cambia mucho.
+        </p>
+        <p>
+          <strong>Y dígannos si hay niños pequeños, mascotas o animales de trabajo</strong>, y dónde andan.
+          Eso cambia la colocación antes de que se ponga nada, no después.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqs} heading="Preguntas sobre control de roedores" />
+  <Cta
+    line="Dígale por dónde ha escuchado ruido y a qué hora, y si hay bodega, taller o granero en la propiedad. Con eso ya sabe dónde empezar a buscar, y le dirá por teléfono si lo que usted necesita es sellado más que producto."
+  />
+</BaseLayout>
