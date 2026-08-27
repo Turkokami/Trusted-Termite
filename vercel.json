@@ -7,87 +7,72 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/pest-control-seminole",
+      "source": "/pest-control-seminole/",
       "destination": "/locations/seminole/",
       "permanent": true
     },
     {
-      "source": "/pest-control-seagraves",
+      "source": "/pest-control-seagraves/",
       "destination": "/locations/seagraves/",
       "permanent": true
     },
     {
-      "source": "/pest-control-denver-city",
+      "source": "/pest-control-denver-city/",
       "destination": "/locations/denver-city/",
       "permanent": true
     },
     {
-      "source": "/pest-control-andrews",
+      "source": "/pest-control-andrews/",
       "destination": "/locations/andrews/",
       "permanent": true
     },
     {
-      "source": "/pest-control-lamesa",
+      "source": "/pest-control-lamesa/",
       "destination": "/locations/lamesa/",
       "permanent": true
     },
     {
-      "source": "/pest-control-big-spring",
+      "source": "/pest-control-big-spring/",
       "destination": "/locations/big-spring/",
       "permanent": true
     },
     {
-      "source": "/pest-control-midland",
+      "source": "/pest-control-midland/",
       "destination": "/locations/midland/",
       "permanent": true
     },
     {
-      "source": "/pest-control-odessa",
+      "source": "/pest-control-odessa/",
       "destination": "/locations/odessa/",
       "permanent": true
     },
     {
-      "source": "/pest-control-lubbock",
+      "source": "/pest-control-lubbock/",
       "destination": "/locations/lubbock/",
       "permanent": true
     },
     {
-      "source": "/pest-control-kermit",
+      "source": "/pest-control-kermit/",
       "destination": "/locations/kermit/",
       "permanent": true
     },
     {
-      "source": "/services",
-      "destination": "/services/",
-      "permanent": true
-    },
-    {
-      "source": "/lawn-care",
+      "source": "/lawn-care/",
       "destination": "/services/lawn-care/",
       "permanent": true
     },
     {
-      "source": "/about",
-      "destination": "/about/",
-      "permanent": true
-    },
-    {
-      "source": "/contact",
+      "source": "/schedule-service/",
       "destination": "/contact/",
       "permanent": true
     },
     {
-      "source": "/schedule-service",
-      "destination": "/contact/",
-      "permanent": true
-    },
-    {
-      "source": "/testimonials",
+      "source": "/testimonials/",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/faq",
+      "source": "/faq/",
       "destination": "/",
       "permanent": true
     }

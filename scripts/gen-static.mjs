@@ -87,7 +87,19 @@ fs.writeFileSync(
 
 /* ---------- vercel.json redirects ---------- */
 const cfg = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
-cfg.redirects = REDIRECTS.map((r) => ({ source: r.from, destination: r.to, permanent: true }));
+/* Sources are emitted WITH the trailing slash. Vercel applies the
+   trailingSlash:true normalisation BEFORE it evaluates these rules, so a source
+   written without the slash is never reached: a request for /faq is first 308'd
+   to /faq/, and /faq/ then matches nothing and 404s. Writing the slash into the
+   source matches the path as normalisation leaves it.
+
+   That turns the entries whose only job was to ADD the slash (/about -> /about/)
+   into a rule pointing a path at itself, which Vercel serves as a redirect loop.
+   Normalisation already does that job, so they are dropped here. */
+const source = (r) => `${r.from}/`;
+cfg.redirects = REDIRECTS
+  .filter((r) => source(r) !== r.to)
+  .map((r) => ({ source: source(r), destination: r.to, permanent: true }));
 fs.writeFileSync('vercel.json', JSON.stringify(cfg, null, 2) + '\n');
 
 console.log(

@@ -10,8 +10,10 @@
  * RULES (Keystone Part 18J):
  *  - Every entry points at its FINAL destination. No A→B→C chains.
  *  - 301, not 302. These are permanent moves and the equity should transfer.
- *  - Sources are written WITHOUT a trailing slash; the site is
- *    trailingSlash:'always', so Vercel's own normalisation handles the pair.
+ *  - Sources are written WITHOUT a trailing slash HERE, but gen-static.mjs
+ *    appends one before writing vercel.json. Vercel normalises the trailing
+ *    slash BEFORE it evaluates redirects, so a slashless source is unreachable
+ *    — /faq is 308'd to /faq/ first, and a rule keyed on /faq never fires.
  */
 export interface Redirect {
   /** Legacy path on the Ailanding site, no trailing slash. */

@@ -255,8 +255,16 @@ try {
 
   const vj = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
   const deployed = new Set((vj.redirects || []).map((x) => `${x.source}>${x.destination}`));
+  /* gen-static emits sources with the trailing slash, and drops the entries
+     whose source would then equal their destination — see the note there. */
   for (const r of REDIRECTS) {
-    if (!deployed.has(`${r.from}>${r.to}`))
+    const src = `${r.from}/`;
+    if (src === r.to) {
+      if (deployed.has(`${src}>${r.to}`))
+        errors.push(`REDIRECT   ${src} points at itself in vercel.json — a loop; normalisation already adds the slash`);
+      continue;
+    }
+    if (!deployed.has(`${src}>${r.to}`))
       errors.push(`REDIRECT   ${r.from} is documented but absent from vercel.json — run npm run build`);
   }
   for (const x of vj.redirects || []) {
