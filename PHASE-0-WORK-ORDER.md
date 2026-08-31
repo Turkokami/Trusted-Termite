@@ -170,12 +170,52 @@ Not a content fix, but it belongs in Phase 0 because it has the longest lead tim
 
 ---
 
+## P0-8 · The truck and the schema publish different licence numbers — **open**
+
+**What:** the vehicle livery, photographed 31 August 2026, reads `TPCL#0976265`.
+Every page of the new site publishes `TPCL 0918482`, and `buildGraph()` emits it
+as an `EducationalOccupationalCredential` named *Texas Department of Agriculture
+Structural Pest Control Licence*. Both numbers cannot be the structural pest
+control business licence.
+
+**Why it matters:** this is a licensure statement, which the cadence registry
+classes as critical — if it is wrong the site is publishing a false regulatory
+claim, and it is doing so on 87 pages and inside the JSON-LD that search engines
+read as a credential assertion. P0-4 published the number precisely because no
+competitor in this market does; publishing the wrong one is worse than not
+publishing at all.
+
+**The likely explanation, and it is UNCONFIRMED:** Texas requires the *business*
+licence number to be displayed on the service vehicle. That points to 0976265
+being the business licence and 0918482 being Valentin's individual certified
+applicator licence. B-01 recorded 0918482 as the business licence; B-03 records
+him as a Responsible Certified Applicator. If that split is real then
+`business.ts` needs two fields rather than one, and `schema.ts` must stop
+describing an applicator number as a business licence.
+
+**Do not** change any number until he confirms which is which. Guessing here
+replaces one false licensure statement with a different false licensure
+statement, and the schema makes it machine-readable either way.
+
+**Held pending this:** the truck-and-trailer photograph is the only supplied
+image in which a licence number is legible. It stays out of the build until the
+number is settled.
+
+**Proof it landed:** he states which number is which; `business.ts` carries each
+under its own field with the question code that authorised it; `schema.ts` names
+each correctly; a logged-out fetch shows the business licence number and no
+other number described as one.
+
+---
+
 ## Acceptance gate — Phase 1 does not begin until all of this is true
 
 - [ ] `/faq` is gone; a logged-out fetch of the site returns zero `STEPS` matches
 - [ ] Zero unsubstantiated superlatives sitewide
 - [ ] `/our-guarantee/` is live and every "guarantee" string links to it
 - [ ] TPCL 0918482 appears in the footer of every page
+- [ ] P0-8 resolved — the number on the truck and the number in the schema agree,
+      and each licence is described as the kind of licence it actually is
 - [ ] Zero El Paso references outside the About biography; 915 number unpublished
 - [ ] All ten legacy city pages are `noindex` and still resolve
 - [ ] WHOIS registrant confirmed, transfer started if needed
