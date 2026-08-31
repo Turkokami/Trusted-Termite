@@ -35,7 +35,7 @@ const crumbs = [
   { name: 'Areas we serve', path: '/locations/' },
   { name: town.name, path: `/locations/${town.slug}/` },
 ];
-const quickAnswer = `Trusted Termite and Pest Solutions covers ${town.name}, Texas from a base in Seminole, about ${town.distanceMiApprox} miles ${town.direction}. Valentin Moriel covers ${town.name} himself under Texas Department of Agriculture licence TPCL 0918482, treating scorpions, termites, rodents and general pests throughout ${town.county}.`;
+const quickAnswer = `Trusted Termite and Pest Solutions covers ${town.name}, Texas from a base in Seminole, about ${town.distanceMiApprox} miles ${town.direction}. Valentin Moriel covers ${town.name} himself under Texas Department of Agriculture licence TPCL 0976265, treating scorpions, termites, rodents and general pests throughout ${town.county}.`;
 const fireAntLine = {
   'not-quarantined': `${town.county} is not on the Texas Department of Agriculture red imported fire ant quarantine list. What most people find here is a red harvester ant mound, which is a different problem with a different treatment.`,
   quarantined: `${town.county} is on the Texas Department of Agriculture red imported fire ant quarantine list, so fire ants are a genuine consideration here in a way they are not further west.`,
@@ -45,7 +45,7 @@ const fireAntLine = {
 ---
 <BaseLayout
   title={`Pest Control ${town.name} TX | Scorpions &amp; Termites`}
-  description={`Scorpion, termite and rodent control for ${town.name} homes and businesses, from a Seminole-based owner-operator. Licensed TPCL 0918482. No contracts.`}
+  description={`Scorpion, termite and rodent control for ${town.name} homes and businesses, from a Seminole-based owner-operator. Licensed TPCL 0976265. No contracts.`}
   path={`/locations/${town.slug}/`}
   quickAnswer={quickAnswer}
   breadcrumbs={crumbs}

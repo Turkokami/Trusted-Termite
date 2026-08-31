@@ -31,9 +31,15 @@ import owner from '../../assets/photos/valentin-moriel-owner.jpg';
 Two supplied photographs are NOT in this folder and must not be added without
 resolving the reason first.
 
-**Truck and trailer.** The fender reads `TPCL#0976265`, which contradicts the
-`TPCL 0918482` this site publishes on every page and in its JSON-LD. That is
-open defect **P0-8**. It also shows the 915 number below.
+**Truck and trailer.** The fender reads `TPCL#0976265`. That was flagged as a
+contradiction with the site (**P0-8**) and it turned out the TRUCK was right —
+the number the site had been publishing did not exist. P0-8 is closed and the
+site now agrees with the fender, so the licence number is no longer a reason to
+hold this photograph.
+
+It is still held, for the other reason: the livery panel shows the 915 number.
+Crop that panel out and this one is publishable — it is the best image available
+for junk removal and brush clearing, being the only one showing the trailer.
 
 **Owner with the sprayer.** The livery panel legibly reads `915.474.1986`. That
 number is withheld on purpose — see `business.ts → secondPhoneUnpublished` and

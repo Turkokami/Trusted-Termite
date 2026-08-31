@@ -44,7 +44,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'pest-control',
     titleShort: 'Recurring Pest Control Seminole TX',
-    metaDescription: 'Bi-monthly and quarterly pest control across Gaines County and the Permian Basin. Licensed TPCL 0918482, no contracts, 30-day guarantee.',
+    metaDescription: 'Bi-monthly and quarterly pest control across Gaines County and the Permian Basin. Licensed TPCL 0976265, no contracts, 30-day guarantee.',
     name: 'Recurring Pest Control',
     short: 'Pest control',
     group: 'pest',
@@ -60,7 +60,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'scorpion-control',
     titleShort: 'Scorpion Control &amp; Exclusion West Texas',
-    metaDescription: 'Scorpion sealing and treatment for West Texas homes, aimed at weep holes and utility penetrations. Licensed TPCL 0918482. No contracts.',
+    metaDescription: 'Scorpion sealing and treatment for West Texas homes, aimed at weep holes and utility penetrations. Licensed TPCL 0976265. No contracts.',
     name: 'Scorpion Control & Exclusion',
     short: 'Scorpions',
     group: 'pest',
@@ -76,7 +76,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'termite-control',
     titleShort: 'Termite Treatment Seminole &amp; Permian Basin',
-    metaDescription: 'Liquid barrier, Trelona bait systems and new-construction pre-treats, quoted after inspection. One-year re-treatment warranty. TPCL 0918482.',
+    metaDescription: 'Liquid barrier, Trelona bait systems and new-construction pre-treats, quoted after inspection. One-year re-treatment warranty. TPCL 0976265.',
     name: 'Termite Treatment',
     short: 'Termites',
     group: 'termite',
@@ -108,7 +108,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'wildlife-removal',
     titleShort: 'Wildlife Removal Seminole &amp; Gaines County',
-    metaDescription: 'Evaluation, trapping and removal of skunks, raccoons and nuisance wildlife around West Texas properties. Licensed owner-operator, TPCL 0918482.',
+    metaDescription: 'Evaluation, trapping and removal of skunks, raccoons and nuisance wildlife around West Texas properties. Licensed owner-operator, TPCL 0976265.',
     name: 'Wildlife Removal',
     short: 'Wildlife',
     group: 'pest',
@@ -154,7 +154,7 @@ export const SERVICES: Service[] = [
   {
     slug: 'flea-and-tick',
     titleShort: 'Flea &amp; Tick Treatment West Texas',
-    metaDescription: 'Interior and exterior flea and tick treatment that targets where the activity is coming from, not just where you are seeing it. TPCL 0918482.',
+    metaDescription: 'Interior and exterior flea and tick treatment that targets where the activity is coming from, not just where you are seeing it. TPCL 0976265.',
     name: 'Flea & Tick Treatment',
     short: 'Fleas & ticks',
     group: 'pest',

@@ -52,14 +52,21 @@ export const DECAYING_FACTS: DecayingFact[] = [
   /* ---------------- licensure and insurance — critical ---------------- */
   {
     id: 'LIC-01',
-    what: 'TDA structural pest control business licence TPCL 0918482 is current, and Valentin Moriel is still its Responsible Certified Applicator.',
-    source: 'Texas Department of Agriculture licensee search (TDA is the licensing authority under 4 TAC §7.121).',
-    surfaces: ['every page footer', '/compliance/pest-control-licence/', 'LocalBusiness schema on every page', 'src/data/business.ts → owner.tpcl'],
-    lastVerified: '2026-08-23',
-    intervalDays: Q,
+    what: 'TDA structural pest control licence TPCL 0976265 is current. The certificate expires 30 November 2026, which is the hard deadline on this row.',
+    /* CAREFUL: this string RENDERS. Verified.astro prints the source list on
+       every compliance page, so it names the source and stops there. The
+       certificate's other figures — the applicator "License No" in particular,
+       which is deliberately unpublished — belong in onChange below, which does
+       not render. An earlier draft of this line put them here and shipped the
+       applicator number onto three live pages. */
+    source:
+      'The licence certificate itself, supplied by the owner and read on 31 August 2026, and the Texas Department of Agriculture licensee search — TDA is the licensing authority under 4 TAC §7.121.',
+    surfaces: ['every page footer', '/compliance/pest-control-licence/', 'LocalBusiness and Person schema on every page', 'src/data/business.ts → owner.tpcl'],
+    lastVerified: '2026-08-31',
+    intervalDays: 60,
     severity: 'critical',
     onChange:
-      'A lapsed or suspended licence invalidates the central claim of the site and every schema node that carries it. Pull the licence number and the category list the same day, take the site to a holding state, and tell the owner before anything else.',
+      'A lapsed or suspended licence invalidates the central claim of the site and every schema node that carries it. Pull the licence number and the category list the same day, take the site to a holding state, and tell the owner before anything else. TWO things this row learned the hard way in August 2026. FIRST, the number published until then — 0918482 — was owner-recalled and simply wrong; it was caught only because the truck disagreed with the website. Verify against the certificate or the TDA search, never against memory. SECOND, the interval is 60 days rather than a quarter so this falls due BEFORE the 30 November expiry rather than a month after it. If he renews, read the new certificate and move the expiry in business.ts; do not roll this date forward on the strength of him saying it is handled.',
   },
   {
     id: 'LIC-02',

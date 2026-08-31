@@ -22,10 +22,36 @@ export const BUSINESS = {
   owner: {
     name: 'Valentin Moriel',
     jobTitle: 'Owner',
-    /** TDA structural pest control business licence. B-01. Published with
-     *  explicit permission — B-10 answered "Yes". */
-    tpcl: '0918482',
-    licenceClass: 'Responsible Certified Applicator', // B-03
+    /** TDA structural pest control licence number. Published with explicit
+     *  permission — B-10 answered "Yes".
+     *
+     *  CORRECTED 31 August 2026. B-01 recorded 0918482. That number is wrong —
+     *  it appears nowhere on the licence and the owner has confirmed he gave it
+     *  mistakenly. The correction was caught because the vehicle livery reads
+     *  TPCL#0976265 and disagreed with the site, and it was then settled against
+     *  the licence document itself, which prints "TDA TPCL No: 0976265".
+     *
+     *  The lesson is worth keeping: an owner-recalled licence number is not a
+     *  source. Everything on this line now traces to the certificate. */
+    tpcl: '0976265',
+    /** The applicator licence number, printed on the same certificate as
+     *  "License No" and distinct from the TPCL above. HELD, NOT PUBLISHED — the
+     *  site makes one licensure claim and two numbers side by side invites a
+     *  reader to check the wrong one against TDA. It lives here so the record is
+     *  complete and so nobody mistakes it for the TPCL a second time. */
+    applicatorLicenceNo: '0946390',
+    /** The certificate is titled COMMERCIAL CERTIFIED APPLICATOR LICENSE and the
+     *  covering letter uses the same phrase. B-03 said "Responsible Certified
+     *  Applicator", which in Texas is a ROLE a licensed business designates,
+     *  not a licence class — he may well hold it, being the sole owner, but the
+     *  certificate does not evidence it and this site does not publish claims it
+     *  cannot show. Reinstate only against something that says so. */
+    licenceClass: 'Commercial Certified Applicator',
+    /** Issued 31 December 2025, expires 30 November 2026 — read off the
+     *  certificate. The whole site rests on this being current; see LIC-01,
+     *  which now falls due before the expiry rather than after it. */
+    licenceIssued: '2025-12-31',
+    licenceExpires: '2026-11-30',
     /** B-02. Weed Control and Lawn & Ornamental are SEPARATE categories from
      *  Pest Control. Do not imply a category not listed here. */
     categories: [
@@ -240,4 +266,4 @@ export const NAP_LINE = `${BUSINESS.address.locality}, ${BUSINESS.address.region
  *  reused three ways — meta description source, first FAQPage answer, and the
  *  SpeakableSpecification target. 47 words. */
 export const QUICK_ANSWER =
-  'Trusted Termite and Pest Solutions is a locally owned pest control, lawn and junk removal company based in Seminole, Texas, serving Gaines County and the Permian Basin. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0918482 in pest control, termite, lawn and weed categories.';
+  'Trusted Termite and Pest Solutions is a locally owned pest control, lawn and junk removal company based in Seminole, Texas, serving Gaines County and the Permian Basin. Owner Valentin Moriel holds Texas Department of Agriculture licence TPCL 0976265 in pest control, termite, lawn and weed categories.';

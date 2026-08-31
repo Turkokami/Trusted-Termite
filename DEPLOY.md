@@ -118,7 +118,7 @@ curl -sSI $BASE/es/servicios/control-de-plagas/ | head -1
 
 Then in a browser: the home page, one service page, one Spanish page, one
 neighbourhood page, one pest library page. Check the header logo renders, the
-phone number is right, and the footer carries **TPCL 0918482**.
+phone number is right, and the footer carries **TPCL 0976265**.
 
 > **Note on redirects:** they will NOT work on the `.vercel.app` URL in the way
 > you expect, because the sources are legacy Ailanding paths. Test them after

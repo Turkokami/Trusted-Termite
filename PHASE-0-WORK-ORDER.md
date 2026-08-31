@@ -50,7 +50,7 @@ Scorpion, termite & rodent exterminator.
 
 ```
 Seminole-based scorpion, termite and rodent control for Gaines County and the
-Permian Basin. Licensed TPCL 0918482. Free inspection — call (432) 278-7294.
+Permian Basin. Licensed TPCL 0976265. Free inspection — call (432) 278-7294.
 ```
 
 (147 characters, ends on punctuation, in the M5 band.)
@@ -90,8 +90,8 @@ page with the same text.
 
 ```
 Licensed and regulated by the Texas Department of Agriculture ·
-Structural Pest Control Licence TPCL 0918482 ·
-Valentin Moriel, Responsible Certified Applicator
+Structural Pest Control Licence TPCL 0976265 ·
+Valentin Moriel, Commercial Certified Applicator
 ```
 
 **Why:** 4 TAC §7.174 requires the TPCL number on the written estimate a customer
@@ -170,10 +170,10 @@ Not a content fix, but it belongs in Phase 0 because it has the longest lead tim
 
 ---
 
-## P0-8 · The truck and the schema publish different licence numbers — **open**
+## P0-8 · The truck and the schema published different licence numbers — **RESOLVED 31 Aug 2026**
 
 **What:** the vehicle livery, photographed 31 August 2026, reads `TPCL#0976265`.
-Every page of the new site publishes `TPCL 0918482`, and `buildGraph()` emits it
+Every page of the new site publishes `TPCL 0976265`, and `buildGraph()` emits it
 as an `EducationalOccupationalCredential` named *Texas Department of Agriculture
 Structural Pest Control Licence*. Both numbers cannot be the structural pest
 control business licence.
@@ -189,7 +189,7 @@ publishing at all.
 licence number to be displayed on the service vehicle. That points to 0976265
 being the business licence and 0918482 being Valentin's individual certified
 applicator licence. B-01 recorded 0918482 as the business licence; B-03 records
-him as a Responsible Certified Applicator. If that split is real then
+him as a Commercial Certified Applicator. If that split is real then
 `business.ts` needs two fields rather than one, and `schema.ts` must stop
 describing an applicator number as a business licence.
 
@@ -201,10 +201,37 @@ statement, and the schema makes it machine-readable either way.
 image in which a licence number is legible. It stays out of the build until the
 number is settled.
 
-**Proof it landed:** he states which number is which; `business.ts` carries each
-under its own field with the question code that authorised it; `schema.ts` names
-each correctly; a logged-out fetch shows the business licence number and no
-other number described as one.
+### Resolution
+
+The owner supplied the licence certificate on 31 August 2026 and confirmed that
+the number he gave at B-01 was mistaken. The certificate settles it:
+
+| Field on the certificate | Value |
+|---|---|
+| TDA TPCL No | **0976265** — the number now published |
+| License No (applicator) | 0946390 — held in `business.ts`, not published |
+| Licence title | **Commercial Certified Applicator** |
+| Issued / expires | 31 Dec 2025 / **30 Nov 2026** |
+
+**0918482 was not a mix-up between two real numbers.** It appears nowhere on the
+certificate. The site published a licence number that does not exist, on 87
+pages and inside a JSON-LD credential assertion, for the whole of Phase 0
+through Phase 5.
+
+**What changed:** 112 hardcoded occurrences of `TPCL 0976265` corrected across
+51 files, both languages. `licenceClass` moved from "Responsible Certified
+Applicator" to the phrase the certificate actually uses — the old wording named
+a role a business designates rather than a licence class, and nothing evidenced
+it. LIC-01 in the cadence registry now cites the certificate rather than an
+owner recollection, and its interval is cut to 60 days so it falls due before
+the 30 November expiry instead of a month after it.
+
+**What this cost, worth writing down:** the number was hardcoded 113 times in
+page bodies, in flat contradiction of the rule at the top of `business.ts` that
+nothing there may be hardcoded in a page body. Had it been read from
+`BUSINESS.owner.tpcl` throughout, this would have been a one-line fix. It is
+still hardcoded — correcting that is a separate task, and until it is done this
+defect can recur.
 
 ---
 
@@ -213,9 +240,9 @@ other number described as one.
 - [ ] `/faq` is gone; a logged-out fetch of the site returns zero `STEPS` matches
 - [ ] Zero unsubstantiated superlatives sitewide
 - [ ] `/our-guarantee/` is live and every "guarantee" string links to it
-- [ ] TPCL 0918482 appears in the footer of every page
-- [ ] P0-8 resolved — the number on the truck and the number in the schema agree,
-      and each licence is described as the kind of licence it actually is
+- [ ] TPCL 0976265 appears in the footer of every page
+- [x] P0-8 resolved — TPCL 0976265 published sitewide, matching the certificate
+      and the vehicle; the applicator number is held unpublished
 - [ ] Zero El Paso references outside the About biography; 915 number unpublished
 - [ ] All ten legacy city pages are `noindex` and still resolve
 - [ ] WHOIS registrant confirmed, transfer started if needed

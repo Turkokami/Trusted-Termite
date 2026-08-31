@@ -28,7 +28,7 @@ and flag it — a blank costs five minutes, a fabrication costs a client.
 |---|---|
 | Legal name | Trusted Termite and Pest Solutions LLC |
 | Owner | **Valentin Moriel**, Owner — the only person in the business (F-06: "Im solo") |
-| Licence | TDA **TPCL 0918482**, Responsible Certified Applicator (B-01, B-03) |
+| Licence | TDA **TPCL 0976265**, Commercial Certified Applicator (B-01, B-03) |
 | Categories | Pest Control · Termite Control · Lawn & Ornamental · Weed Control (B-02) |
 | Experience | **6 years in the trade** (B-11) — business founded **November 2025** (A-10). Never blend these. |
 | Trained | Pest Defense Solutions and a Terminix-Rentokil branch, El Paso — Operations Manager then Service Manager (B-12) |
