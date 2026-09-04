@@ -20,7 +20,24 @@ export const BUSINESS = {
 
   /* ---- the named expert (F-01, F-03, B-01, B-03, B-11) ---- */
   owner: {
+    /** What he goes by, and what this site calls him everywhere. Owner
+     *  instruction, 31 August 2026: use Valentin. */
     name: 'Valentin Moriel',
+    /** The name the TDA licence is issued in, read off the certificate on
+     *  31 August 2026. NOT PUBLISHED anywhere on the site — it is here so the
+     *  record is complete and so nobody re-verifying the licence concludes it
+     *  has been pulled.
+     *
+     *  Why it is worth a field of its own: /about/ tells the reader to look the
+     *  licence up by NUMBER and calls that check conclusive. They will find it,
+     *  and the record will name Jesus Moriel over Trusted Termite and Pest
+     *  Solutions LLC. The business name matches; the person's does not. Going
+     *  by a middle name is ordinary, but this site's whole argument is that its
+     *  claims are checkable, and a reader who checks deserves to not be
+     *  surprised. Whether to say so on /about/ is the owner's call and has not
+     *  been made — see P0-9. */
+    legalName: 'Jesus Moriel',
+    legalNamePublished: false,
     jobTitle: 'Owner',
     /** TDA structural pest control licence number. Published with explicit
      *  permission — B-10 answered "Yes".

@@ -235,6 +235,42 @@ defect can recur.
 
 ---
 
+## P0-9 · The licence is held in a different name to the one the site uses — **open, owner's call**
+
+**What:** the TDA certificate is issued to **JESUS MORIEL**. The site names
+**Valentin Moriel** on all 87 pages, in the Person node, and in the biography.
+The owner instructed on 31 August 2026 to use Valentin, and that instruction
+stands — this item is not about changing the name.
+
+**Why it is still open:** `/about/` carries a section headed *How to verify it
+yourself*. It tells the reader to look the licence up by number, and calls that
+check "the only piece of due diligence in this industry that is both free and
+conclusive". A reader who does it finds the licence, sees TRUSTED TERMITE AND
+PEST SOLUTIONS LLC — which matches — and sees a first name that does not. The
+page has invited a check and then surprised the person who took it up.
+
+The sharper version is the WDI channel. A Texas Official WDI Report (SPCS/T-5)
+is signed by the licensed applicator, in the licensed name. A realtor holding a
+report signed by one name and a website naming another is the exact reader this
+site is written for, and the exact moment it cannot afford to look evasive.
+
+**The fix is one clause, not a rename.** Something on `/about/` to the effect
+that the licence is held in his legal name and Valentin is what he goes by.
+Publishing a person's legal name is his decision and it has not been asked. It
+is already public — TDA's register is public and it appears on every WDI report
+he signs — so this is about presentation, not disclosure.
+
+**Meanwhile:** `business.ts → owner.legalName` carries it, unpublished, behind
+`legalNamePublished: false`. LIC-01 warns whoever next verifies the licence to
+search by NUMBER, because a search for "Valentin Moriel" returns nothing and
+looks precisely like a licence that has been revoked.
+
+**Proof it landed:** he says yes or no. If yes, one sentence on `/about/` and
+`legalNamePublished` goes true. If no, this item closes as a decision taken
+rather than a defect outstanding, and LIC-01's warning stays.
+
+---
+
 ## Acceptance gate — Phase 1 does not begin until all of this is true
 
 - [ ] `/faq` is gone; a logged-out fetch of the site returns zero `STEPS` matches
