@@ -57,7 +57,7 @@ resolves to Vercel. After cutover:
 
 ```bash
 for p in /pest-control-seminole /pest-control-kermit /services /faq; do
-  curl -sSI "https://www.trustedtermiteandpest.com$p" | head -2
+  curl -sSI "https://trustedtermite.com$p" | head -2
 done
 ```
 

@@ -9,7 +9,25 @@
  * RULE: if a fact is not in here, it does not go on the site.
  */
 
-export const SITE_URL = 'https://www.trustedtermiteandpest.com';
+/**
+ * The canonical origin. EVERYTHING derives from this one string — <link rel=canonical>,
+ * og:url, the JSON-LD @ids, sitemap.xml and robots.txt — so it is the only place a
+ * domain move has to happen.
+ *
+ * CHANGED 9 September 2026, trustedtermiteandpest.com → trustedtermite.com.
+ *
+ * APEX, NOT www. That is not a style preference and it must not be "tidied" to match
+ * the old domain: trustedtermite.com serves 200 at the apex and 308s www → apex, which
+ * is the opposite of the old host's convention. Pointing canonicals at www here would
+ * aim every one of them at a redirect.
+ *
+ * NOTE the old domain is a live SEPARATE site, not a redirect — see DEPLOY.md. Nothing
+ * in this repo can fix that; it is a DNS and hosting job.
+ *
+ * Careful with find-and-replace: BUSINESS.email is Trustedtermiteandpest@gmail.com and
+ * contains the old domain as a substring. It is a mailbox, not a host. Leave it.
+ */
+export const SITE_URL = 'https://trustedtermite.com';
 
 export const BUSINESS = {
   /* ---- identity (A-01, A-02) ---- */

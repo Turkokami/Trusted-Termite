@@ -126,25 +126,42 @@ phone number is right, and the footer carries **TPCL 0976265**.
 
 ---
 
-## 3 · STOP — the domain is not yours to point yet
+## 3 · The domain question — SETTLED 9 September 2026
 
-**Do not attach the custom domain until a human has confirmed all three of
-these.** They are not technical steps and you cannot do them yourself.
+This section used to be a stop sign: do not attach `trustedtermiteandpest.com`
+until somebody confirms the renewal, the DNS access and the Ailanding notice
+period. That gate was never cleared and no longer needs to be — **the site went
+live on a different domain instead.**
 
-1. **The domain renewal is covered.** `trustedtermiteandpest.com` expires
-   **29 October 2026**, registered through **Name.com**. As of 27 August 2026
-   that was roughly 63 days out and nobody had confirmed who is paying it.
-   Deploying onto a domain that lapses six weeks later wastes the whole cutover.
-2. **Somebody has access to change DNS.** The nameservers are
-   `ns1–ns4.landingsite.ai`, so Landingsite (Ailanding) currently answers all
-   DNS. Either the human can get into that panel, or into the Name.com account.
-3. **The notice period on the Ailanding agreement is known**, so the old service
-   is not switched off mid-cutover and nobody pays two vendors longer than
-   necessary.
+**Live domain: `trustedtermite.com`.** It is **apex-canonical**: the apex returns
+200 and `www.trustedtermite.com` 308s to it. `SITE_URL` in
+`src/data/business.ts` matches, and canonicals, og:url, the JSON-LD @ids,
+sitemap.xml and robots.txt all derive from that one string.
 
-If any of the three is unresolved, **stop here**. The site is deployed and
-working on its `.vercel.app` URL, which is a perfectly good place for it to sit
-for a week. Report status and wait.
+### ⚠ The old domain is still a live site, not a redirect
+
+`www.trustedtermiteandpest.com` returned **200 on 9 September 2026**, serving the
+**old Ailanding site**. Verified against this build: different title, no TPCL
+0976265, no map embeds, 78KB against our 36KB. It is a second live site for the
+same business.
+
+Three consequences, in order of how much they matter:
+
+1. **The Phase 0 defects are still published there.** P0-1 was the copied FAQ
+   using **STEPS® Total Protection System**, the registered service system of
+   Arrow Exterminators. If that page is still up, so is the trademark exposure —
+   and removing it from this repo did nothing about it.
+2. **Two sites compete for the same queries**, and whatever authority the old
+   domain holds is split rather than inherited.
+3. **Nothing in this repo can fix either.** The old domain does not point at
+   Vercel — its nameservers are `ns1–ns4.landingsite.ai`. Fixing it means
+   pointing that domain at Vercel so the redirect table in `vercel.json` catches
+   the legacy paths, or taking the Ailanding site down at the vendor.
+
+The old-domain facts are kept because they remain true of it: expires
+**29 October 2026**, registered through **Name.com**, nameservers at Landingsite.
+If it is allowed to lapse, let that be a decision rather than an oversight — a
+lapsed domain that still ranks is a gift to whoever registers it next.
 
 ---
 
@@ -153,9 +170,10 @@ for a week. Report status and wait.
 Follow `DNS-CUTOVER-GUIDE.pdf`. The short version, with the parts that matter:
 
 1. In Vercel: **Settings → Domains → Add**. Add **both**
-   `trustedtermiteandpest.com` and `www.trustedtermiteandpest.com`.
-   The site canonicalises to **www** (`SITE_URL` in `src/data/business.ts`), so
-   www must serve the site and the apex should redirect to it.
+   `trustedtermite.com` and `www.trustedtermite.com`.
+   The site canonicalises to the **apex** (`SITE_URL` in `src/data/business.ts`),
+   so the apex serves the site and www redirects to it. This is the OPPOSITE of
+   the old domain's convention — do not copy the old setup across.
 2. **Read the A record and CNAME values off your own Vercel domain card.** Do
    not use a value from memory or a blog post — Vercel's docs say the correct
    value "is whatever your domain card shows", and newer projects get different
@@ -173,7 +191,7 @@ Then verify:
 ```bash
 python3 - <<'PY'
 import socket
-for h in ['trustedtermiteandpest.com','www.trustedtermiteandpest.com']:
+for h in ['trustedtermite.com','www.trustedtermite.com']:
     try: print(h, socket.gethostbyname_ex(h))
     except Exception as e: print(h, 'ERR', e)
 PY
@@ -191,7 +209,7 @@ should issue without intervention.
 Redirects only become testable now.
 
 ```bash
-BASE=https://www.trustedtermiteandpest.com
+BASE=https://trustedtermite.com
 
 # every legacy URL must 301 to a live target
 for p in /pest-control-seminole /pest-control-seagraves /pest-control-denver-city \
@@ -210,9 +228,9 @@ returns `200`.
 
 ```bash
 curl -sSI $BASE/ | head -1                       # 200
-curl -sS  $BASE/sitemap.xml | grep -c "<loc>"    # 88
+curl -sS  $BASE/sitemap.xml | grep -c "<loc>"    # 87
 curl -sS  $BASE/robots.txt                       # sitemap line present
-curl -sSI http://trustedtermiteandpest.com/ | head -3   # apex → https + www
+curl -sSI https://www.trustedtermite.com/ | head -3     # www → apex
 ```
 
 **In a browser, on mobile data and in a private window** — not your normal
@@ -226,9 +244,15 @@ satisfied.
 
 ## 6 · Tell Google
 
-1. **Google Search Console** — the property should still be verified, because
-   the verification TXT record was preserved. Confirm it. Then submit
-   `https://www.trustedtermiteandpest.com/sitemap.xml`.
+1. **Google Search Console** — `trustedtermite.com` is a NEW property. The old
+   domain's verification does not carry across, so create and verify the new one,
+   then submit `https://trustedtermite.com/sitemap.xml`.
+
+   The 87 **"URL not allowed"** errors reported on 9 September 2026 were exactly
+   this mismatch and nothing worse: the sitemap listed `trustedtermiteandpest.com`
+   while the property covered `trustedtermite.com`, so every URL in it fell
+   outside the property. Google was right to refuse them. They clear once the
+   sitemap and the property name the same host — which they now do.
 2. **Google Business Profile** — update the website URL if it points anywhere
    else. This is also the moment to sort out profile access, which is a held
    item: `HELD-RATING` in `src/data/maintenance.ts`. Until somebody reads the
