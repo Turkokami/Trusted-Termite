@@ -1,0 +1,79 @@
+---
+/**
+ * /contact/thank-you/ — where api/inquiry.js sends somebody after the provider
+ * has ACCEPTED the message. Never reached on a failure; failures get a real
+ * error page from the endpoint naming what went wrong.
+ *
+ * noindex, and it has to be. It is a utility page with nothing to offer a
+ * searcher, it would sit under the M1 3,000-word floor the harness enforces on
+ * every indexable page, and a thank-you page in the index is a page that gets
+ * found by people who never sent anything.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BUSINESS } from '../../data/business';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Contact', path: '/contact/' },
+];
+---
+<BaseLayout
+  title="Message sent | Trusted Termite &amp; Pest Solutions"
+  description="Your message reached Valentin Moriel directly. He will come back to you with what he thinks the problem is and roughly what it will cost."
+  path="/contact/thank-you/"
+  breadcrumbs={crumbs}
+  noindex={true}
+>
+  <section class="band">
+    <div class="narrow">
+      <p class="eyebrow">Sent</p>
+      <h1>That reached him</h1>
+      <p>
+        Your message is in Valentin's inbox. Not a queue, not a dispatch system, not a lead broker
+        who will resell it — his inbox. He reads it himself and he replies himself.
+      </p>
+      <p>
+        Expect to hear back the same day in most cases. If he is under a house or in an attic when
+        it lands, it will be that evening. If you asked to be called rather than emailed, that is
+        what will happen.
+      </p>
+
+      <h2 style="margin-top:2.2rem">If it is urgent, call rather than wait</h2>
+      <p>
+        A form is a message; a phone call is a conversation, and for anything time-critical the
+        conversation is faster. Stinging insects where somebody in the house is allergic, an active
+        wasp presence at a door people have to use, a rodent problem that has reached wiring, or
+        anything with a hard date attached — a closing, an inspection, a lease turnover, a city
+        notice — is worth a call now rather than a reply later.
+      </p>
+      <div class="btn-row" style="margin:1.4rem 0">
+        <a class="btn btn-primary" href={`tel:${BUSINESS.phoneE164}`}>Call {BUSINESS.phone}</a>
+        <a class="btn btn-ghost" href={`sms:${BUSINESS.phoneE164}`}>Text {BUSINESS.phone}</a>
+      </div>
+
+      <h2 style="margin-top:2.2rem">One thing that will speed up the answer</h2>
+      <p>
+        Text a photograph to the number above. Phone camera, as close as it will focus, with
+        something for scale beside it — a coin, a pencil, a fingertip. A photograph settles in ten
+        seconds what five minutes of description cannot, and it is the single most useful thing you
+        can do before a visit.
+      </p>
+
+      <h2 style="margin-top:2.2rem">While you wait</h2>
+      <p>
+        Nothing needs doing. But if you want to know what happens next, the
+        <a href="/contact/">contact page</a> sets out how scheduling works, what the free inspection
+        does and does not cover, and what the first visit involves. The
+        <a href="/pest-library/">pest library</a> covers the species that actually turn up in this
+        part of West Texas, and the <a href="/our-guarantee/">guarantee page</a> gives the terms in
+        full rather than as a slogan.
+      </p>
+      <p>
+        One thing worth not doing: reaching for a store-bought spray before he has seen it. Some
+        products scatter a colony and make the professional treatment harder, and a few make an
+        indoor problem worse. If you have already applied something, that is fine and it is not a
+        judgement — just mention it when he calls, because it changes what he expects to find.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

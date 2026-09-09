@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import AnswerBox from '../components/AnswerBox.astro';
 import { BUSINESS, NAP_LINE } from '../data/business';
 import ServiceMap from '../components/ServiceMap.astro';
+import InquiryForm from '../components/InquiryForm.astro';
 const crumbs = [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }];
 const quickAnswer = 'Call or text Valentin Moriel at (432) 278-7294. He answers his own phone about nine times out of ten and will tell you what he thinks the problem is and what it costs before anything gets booked. Based in Seminole, Texas, covering Gaines County and the Permian Basin.';
 ---
@@ -30,6 +31,15 @@ const quickAnswer = 'Call or text Valentin Moriel at (432) 278-7294. He answers 
         caption="Service area map. Address withheld by request."
       />
       <p>Based in {NAP_LINE}. Se habla español.</p>
+
+      <h2 style="margin-top:2.6rem">Or send it in writing</h2>
+      <p>
+        Calling is faster and it is what most people here do. But if you are at work, if it is late, or
+        if you would rather write it down than describe it out loud, this reaches the same person and
+        the same inbox. <strong>Escríbalo en español si prefiere</strong> — Valentin lo lee y le
+        contesta en español.
+      </p>
+      <InquiryForm sourcePage="/contact/" />
 
       <h2 style="margin-top:2.6rem">What to have ready when you call</h2>
       <p>
@@ -320,20 +330,30 @@ const quickAnswer = 'Call or text Valentin Moriel at (432) 278-7294. He answers 
         than sold something adjacent that will not solve it.
       </p>
 
-      <h2 style="margin-top:2.6rem">There is no booking form here on purpose</h2>
+      <h2 style="margin-top:2.6rem">Why the form asks for so much</h2>
       <p>
-        Most pest control sites put a form in front of you. Fill in six fields, wait, and eventually
-        somebody calls back to ask the questions the form did not.
+        This page used to say there was no form here on purpose, and the objection behind that was a
+        fair one. Most pest control forms take six fields and a message, and then somebody calls back to
+        ask everything the form did not — which means the form cost you time instead of saving it.
       </p>
       <p>
-        A two-minute conversation replaces all of that and produces a better answer, because the useful
-        questions branch — what you say about the building changes what needs asking about the pest, and
-        what you say about the pest changes what needs asking about the property. No form handles that,
-        and every form ends in the phone call anyway.
+        The form above is longer than that on purpose, and it asks for the same things the section on
+        what to have ready asks for. Where the property is, what kind of building, how many buildings,
+        what you are seeing and for how long, what has already been applied, whether there is a deadline.
+        Those are the questions whose answers change the next question, and a form that skips them is a
+        form that ends in a phone call anyway.
       </p>
       <p>
-        So: call, or text if that suits you better. Both reach the same person and both usually end with
-        a price and a day rather than a promise to be in touch.
+        Five fields are required and the rest are not, because a half-filled form that arrives is worth
+        more than a complete one somebody abandoned. Nothing on it is a booking. It does not hold a slot
+        or reserve a day, and no automated sequence starts when you send it. It is a message that
+        arrives in one man's inbox and gets answered by him.
+      </p>
+      <p>
+        Calling is still faster, and that is worth saying plainly rather than burying under a form. A
+        conversation branches in a way that no set of fields can, and it usually ends with a price and a
+        day rather than a reply later. If the thing you have is urgent, use the phone. If it is not, or
+        if writing suits you better, the form is there and it goes to the same person.
       </p>
 
       <h2 style="margin-top:2.6rem">Who you are actually reaching</h2>

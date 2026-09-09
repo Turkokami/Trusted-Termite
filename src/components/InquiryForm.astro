@@ -1,0 +1,266 @@
+---
+/**
+ * InquiryForm.astro — the form on /contact/, posting to api/inquiry.js.
+ *
+ * WORKS WITHOUT JAVASCRIPT. It is a plain form with a real `action` and
+ * `method="post"`. The endpoint answers a native submit with a 303 to the
+ * thank-you page and a full HTML error page when something fails, so a visitor
+ * with JavaScript off gets the complete experience rather than a dead button.
+ * The script below only adds the timing stamp and inline errors on top.
+ *
+ * The fields are the six things /contact/ already tells people to have ready
+ * before they call. That is deliberate: this form is only worth having if it
+ * collects what the phone call would, and the page argues as much a few
+ * paragraphs below it.
+ *
+ * The action is the SLASHLESS /api/inquiry. vercel.json sets trailingSlash
+ * true, so it 308s to /api/inquiry/ — which preserves method and body — and
+ * this is the form that works whether or not that redirect applies.
+ */
+import { SERVICES } from '../data/services';
+
+interface Props {
+  /** Path of the page the form sits on, recorded in the email. */
+  sourcePage: string;
+}
+const { sourcePage } = Astro.props;
+
+const BUILDING_TYPES = [
+  'House',
+  'Mobile home',
+  'Duplex or multi-unit',
+  'Shop, barn or outbuilding',
+  'Commercial suite',
+  'Land or empty lot',
+];
+---
+
+<form class="iq" method="post" action="/api/inquiry" id="inquiry">
+  <p class="iq__lead">
+    Everything below is what he would ask on the phone anyway. Only five are required.
+  </p>
+
+  <!-- Spam gate. Hidden from people, offered to bots. Never remove the label:
+       a screen reader user needs to know to leave it alone. -->
+  <div class="iq__hp" aria-hidden="true">
+    <label for="iq-website">Leave this field empty</label>
+    <input type="text" id="iq-website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+  <input type="hidden" name="source_page" value={sourcePage} />
+  <input type="hidden" name="rendered_at" id="iq-rendered" value="" />
+
+  <div class="iq__err" id="iq-errors" hidden role="alert" tabindex="-1"></div>
+
+  <div class="iq__grid">
+    <p class="iq__field">
+      <label for="iq-name">Your name <span class="iq__req">required</span></label>
+      <input id="iq-name" name="name" type="text" required maxlength="200" autocomplete="name" />
+    </p>
+    <p class="iq__field">
+      <label for="iq-phone">Phone <span class="iq__req">required</span></label>
+      <input id="iq-phone" name="phone" type="tel" required maxlength="60" autocomplete="tel" />
+    </p>
+    <p class="iq__field">
+      <label for="iq-email">Email <span class="iq__opt">optional</span></label>
+      <input id="iq-email" name="email" type="email" maxlength="254" autocomplete="email" />
+      <span class="iq__hint">Leave it blank if you would rather just be called back.</span>
+    </p>
+    <p class="iq__field">
+      <label for="iq-pref">Best way to reach you</label>
+      <select id="iq-pref" name="contact_pref">
+        <option value="">No preference</option>
+        <option>Call</option>
+        <option>Text</option>
+        <option>Email</option>
+      </select>
+    </p>
+    <p class="iq__field">
+      <label for="iq-town">Town <span class="iq__req">required</span></label>
+      <input id="iq-town" name="town" type="text" required maxlength="200" />
+      <span class="iq__hint">And whether you are inside the city limits or out on county land.</span>
+    </p>
+    <p class="iq__field">
+      <label for="iq-type">Type of building <span class="iq__req">required</span></label>
+      <select id="iq-type" name="property_type" required>
+        <option value="">Choose one</option>
+        {BUILDING_TYPES.map((t) => <option>{t}</option>)}
+      </select>
+    </p>
+    <p class="iq__field">
+      <label for="iq-buildings">How many buildings</label>
+      <input id="iq-buildings" name="buildings" type="text" maxlength="120" />
+      <span class="iq__hint">
+        Count the shop, the barn, the well house and the equipment shed, not just the house. On
+        acreage this is the single biggest factor in the price.
+      </span>
+    </p>
+    <p class="iq__field">
+      <label for="iq-service">What you think you need</label>
+      <select id="iq-service" name="service">
+        <option value="">Not sure</option>
+        {SERVICES.map((s) => <option>{s.name}</option>)}
+      </select>
+      <span class="iq__hint">A guess is fine. Identification is his job, not yours.</span>
+    </p>
+  </div>
+
+  <p class="iq__field">
+    <label for="iq-seeing">What you are seeing, where, and for how long <span class="iq__req">required</span></label>
+    <textarea id="iq-seeing" name="seeing" rows="5" required maxlength="4000"></textarea>
+    <span class="iq__hint">
+      A description beats a species name. Size against something known, which room, what time of
+      day, and anything else there: droppings, shed skins, wings on a sill, mud tubes, a sound in
+      the ceiling.
+    </span>
+  </p>
+
+  <div class="iq__grid">
+    <p class="iq__field">
+      <label for="iq-applied">Anything already applied</label>
+      <input id="iq-applied" name="already_applied" type="text" maxlength="4000" />
+      <span class="iq__hint">Store spray, bait, a previous company. Not a judgement, just information.</span>
+    </p>
+    <p class="iq__field">
+      <label for="iq-deadline">Any deadline</label>
+      <input id="iq-deadline" name="deadline" type="text" maxlength="300" />
+      <span class="iq__hint">A closing, a lease turnover, an inspection, a city notice with a date on it.</span>
+    </p>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Send this to Valentin</button>
+  <p class="iq__foot">
+    It goes to his inbox. Nothing is passed to anybody else, and no part of this is a booking:
+    he will come back to you with what he thinks it is and what it costs.
+  </p>
+</form>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('inquiry');
+    if (!form) return;
+
+    var stamp = document.getElementById('iq-rendered');
+    if (stamp) stamp.value = String(Date.now());
+
+    var box = document.getElementById('iq-errors');
+    var button = form.querySelector('button[type=submit]');
+
+    form.addEventListener('submit', function (event) {
+      if (!window.fetch || !window.FormData) return; // native submit still works
+      event.preventDefault();
+      if (box) { box.hidden = true; box.textContent = ''; }
+      if (button) { button.disabled = true; button.textContent = 'Sending...'; }
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { accept: 'application/json' },
+      })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+        .then(function (res) {
+          if (res.ok && res.data && res.data.redirect) {
+            window.location.href = res.data.redirect;
+            return;
+          }
+          var msgs = (res.data && res.data.errors) || [];
+          var text = msgs.length ? msgs.join(' ') : (res.data && res.data.message) || 'Your message was not sent.';
+          if (box) { box.textContent = text; box.hidden = false; box.focus(); }
+          if (button) { button.disabled = false; button.textContent = 'Send this to Valentin'; }
+        })
+        .catch(function () {
+          // Never leave somebody believing a message was sent. Fall back to the
+          // native submit, which produces a real server response either way.
+          if (button) { button.disabled = false; button.textContent = 'Send this to Valentin'; }
+          form.submit();
+        });
+    });
+  })();
+</script>
+
+<style>
+  .iq {
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1.6rem 1.5rem 1.5rem;
+    margin: 1.6rem 0 0;
+  }
+  .iq__lead { margin: 0 0 1.2rem; color: var(--ink-2); }
+
+  /* Offered to bots, hidden from people. Not display:none — some bots skip
+     those; this is off-canvas but still in the accessibility tree, which is why
+     it keeps a real label telling a screen reader user to leave it. */
+  .iq__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .iq__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0 1.1rem;
+  }
+  .iq__field { margin: 0 0 1.1rem; display: flex; flex-direction: column; }
+  .iq__field label {
+    font-weight: 700;
+    font-size: .93rem;
+    margin-bottom: .35rem;
+    color: var(--ink);
+  }
+  .iq__req, .iq__opt {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: .68rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-left: .45rem;
+  }
+  .iq__req { color: var(--green); }
+  .iq__opt { color: var(--ink-3); }
+
+  .iq input, .iq select, .iq textarea {
+    font: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--ground);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 11px 12px;
+    width: 100%;
+    min-height: 48px;
+  }
+  .iq textarea { min-height: 130px; resize: vertical; }
+  .iq input:focus-visible, .iq select:focus-visible, .iq textarea:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 1px;
+    border-color: var(--green);
+  }
+  .iq__hint {
+    font-size: .86rem;
+    color: var(--ink-3);
+    margin-top: .35rem;
+    line-height: 1.5;
+  }
+
+  .iq__err {
+    border-left: 4px solid var(--alert);
+    background: var(--alert-bg);
+    color: var(--alert);
+    padding: .9rem 1rem;
+    margin: 0 0 1.2rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .iq__err:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  .iq button[type='submit'] { margin-top: .3rem; }
+  .iq button[disabled] { opacity: .65; cursor: progress; }
+  .iq__foot {
+    margin: 1rem 0 0;
+    font-size: .9rem;
+    color: var(--ink-3);
+    max-width: var(--measure);
+  }
+</style>
