@@ -253,7 +253,10 @@ export async function POST(request) {
   /* Configuration. Loud and honest: an unconfigured endpoint returns an error
      the visitor can act on, never a success page for a message nobody got. */
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.INQUIRY_TO;
+  // Owner-supplied 9 September 2026. Defaulted rather than left required so the
+  // form starts working the moment the API key is set, instead of failing on a
+  // second unset variable. Override with INQUIRY_TO if it ever moves.
+  const to = process.env.INQUIRY_TO || 'info@trustedtermite.com';
   const from = process.env.INQUIRY_FROM || 'website@trustedtermite.com';
 
   if (!apiKey || !to) {
