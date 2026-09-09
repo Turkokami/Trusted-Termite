@@ -1,0 +1,89 @@
+---
+/**
+ * Photo.astro — the only way a photograph is put on a page.
+ *
+ * Everything goes through astro:assets rather than a raw <img> to a file in
+ * public/. That is not ceremony: the header logo shipped as a 512px, 104 KB PNG
+ * to paint a 42px mark, and PageSpeed billed the site 103 KiB for it on every
+ * page. These are phone photographs several times that size. Astro emits width
+ * and height so nothing shifts as they load, generates the responsive srcset,
+ * and re-encodes to a modern format, which is the whole difference between a
+ * photograph helping the page and taxing it.
+ *
+ * ALT TEXT IS REQUIRED and the harness enforces it — verify.mjs §2 fails the
+ * build on any <img> without one. Describe what is actually in the frame; these
+ * are real photographs of real work, so there is something to describe.
+ *
+ * Marked data-boilerplate so the duplicate-sentence scanner reads captions as
+ * the design system rather than as body copy repeated across pages.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  /** What is in the frame. Not a slogan. */
+  alt: string;
+  /** Optional line under the image. Keep it under ten words — anything longer
+   *  that repeats across pages trips the duplicate-sentence scanner. */
+  caption?: string;
+  /** Rendered width in px. Drives the srcset Astro generates. */
+  width?: number;
+  /** Set on the one image above the fold; everything else stays lazy. */
+  eager?: boolean;
+  /** Float it beside the text on wide screens. Portraits mostly. */
+  side?: boolean;
+  /** Encoder quality. 72 is the house default — see the note above. */
+  quality?: number;
+}
+
+const { src, alt, caption, width = 900, eager = false, side = false, quality = 72 } = Astro.props;
+---
+
+<figure class={side ? 'photo photo--side' : 'photo'} data-boilerplate>
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    quality={quality}
+    densities={[1, 2]}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding={eager ? 'sync' : 'async'}
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .photo {
+    margin: 1.8rem 0 0;
+    max-width: var(--measure);
+  }
+  .photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+  .photo figcaption {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: .5rem 0 0;
+  }
+
+  /* Portraits beside the prose on a wide screen, above it on a narrow one. A
+     960x1280 frame at full measure width is most of a phone screen. */
+  .photo--side {
+    max-width: 300px;
+    float: right;
+    margin: .4rem 0 1.2rem 1.8rem;
+  }
+  @media (max-width: 720px) {
+    .photo--side { float: none; max-width: 100%; margin: 1.6rem 0 0; }
+  }
+</style>

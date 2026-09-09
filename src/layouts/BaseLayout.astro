@@ -9,6 +9,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CallBar from '../components/CallBar.astro';
 import '../styles/global.css';
+import ownerPhoto from '../assets/photos/valentin-moriel-portrait.jpg';
 
 interface Props {
   title: string;
@@ -45,7 +46,11 @@ const altHref = altLangPath ? new URL(altLangPath, SITE_URL).href : null;
 const enHref = lang === 'en' ? canonical : altHref;
 const esHref = lang === 'es' ? canonical : altHref;
 const ogImage = new URL('/brand/social.png', SITE_URL).href;
-const graph = buildGraph({ path, title, description, quickAnswer, breadcrumbs, faqs, service });
+/* ownerPhoto.src is the hashed, optimised path astro:assets emitted. Making it
+   absolute here keeps one photograph on disk doing both jobs — the one rendered
+   on /about/ and the one Person.image points at. */
+const personImage = new URL(ownerPhoto.src, SITE_URL).href;
+const graph = buildGraph({ path, title, description, quickAnswer, breadcrumbs, faqs, service, personImage });
 ---
 <!doctype html>
 <html lang={lang}>

@@ -23,6 +23,9 @@ import SpokeLinks from '../../components/SpokeLinks.astro';
 import { serviceBySlug } from '../../data/services';
 import { TOWNS } from '../../data/towns';
 import { BUSINESS } from '../../data/business';
+import Photo from '../../components/Photo.astro';
+import mudTube from '../../assets/photos/termite-mud-tube-pier.jpg';
+import baitStation from '../../assets/photos/termite-bait-station-install.jpg';
 
 const svc = serviceBySlug('termite-control')!;
 const t = BUSINESS.termiteWarranty;
@@ -90,6 +93,12 @@ const faqs = [
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-termitas/" lang="es" hreflang="es">Esta página en español</a></p>
       <Trust />
+      <Photo
+        src={mudTube}
+        alt="A termite mud tube running up the face of a concrete block pier to the wooden sill above it"
+        caption="A shelter tube on a pier, photographed on a local job."
+        width={780}
+      />
       <div class="measure">
         <p>
           Termite work is the easiest thing in this trade to sell dishonestly, because the fear does the

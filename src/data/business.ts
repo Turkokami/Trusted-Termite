@@ -122,7 +122,11 @@ export const BUSINESS = {
     trainedAt: 'Pest Defense Solutions and a Terminix-Rentokil branch, El Paso', // B-12
     homeTown: 'Seminole, Texas', // F-05 — graduated high school here
     languages: ['en', 'es'], // F-07 — fluent Spanish
-    photoPending: true, // F-10 — agreed to supply headshot + truck
+    /** F-10 CLOSED, 9 September 2026. He supplied ten frames; seven are in
+     *  src/assets/photos and three are held back because the 915 livery panel
+     *  is legible in them and the Phase 0 gate says that number stays
+     *  unpublished. The portrait now drives Person.image in the schema. */
+    photoPending: false,
   },
 
   /* ---- contact (A-06, A-08, I-06) ---- */

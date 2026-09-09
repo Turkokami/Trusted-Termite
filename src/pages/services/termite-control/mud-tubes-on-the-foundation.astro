@@ -85,6 +85,9 @@ import AnswerBox from '../../../components/AnswerBox.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import Faq from '../../../components/Faq.astro';
 import Cta from '../../../components/Cta.astro';
+import Photo from '../../../components/Photo.astro';
+import mudTube from '../../../assets/photos/termite-mud-tube-pier.jpg';
+import baitStation from '../../../assets/photos/termite-bait-station-install.jpg';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -172,6 +175,12 @@ const faqs = [
   <section class="band tint">
     <div class="wrap">
       <h2>What you are looking at</h2>
+      <Photo
+        src={mudTube}
+        alt="A termite mud tube climbing the joint of a concrete block pier to the timber sill in a crawl space"
+        caption="This is what one looks like on a block pier."
+        width={780}
+      />
       <div class="measure">
         <p>
           <strong>A shelter tube is transport infrastructure.</strong> AgriLife describes worker termites
@@ -256,6 +265,13 @@ const faqs = [
   <section class="band tint">
     <div class="wrap">
       <h2>Why the can of spray is the wrong tool</h2>
+      <Photo
+        src={baitStation}
+        alt="A freshly augered hole in caliche soil beside a slab, with a termite bait station ready to install"
+        caption="A station going into caliche beside a slab."
+        width={520}
+        quality={60}
+      />
       <div class="measure">
         <p>
           <strong>The colony is not on your wall.</strong> Everything visible is foraging infrastructure

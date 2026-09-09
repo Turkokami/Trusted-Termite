@@ -7,6 +7,8 @@ import Cta from '../components/Cta.astro';
 import { BUSINESS, QUICK_ANSWER } from '../data/business';
 import { SERVICES } from '../data/services';
 import { TOWNS } from '../data/towns';
+import Photo from '../components/Photo.astro';
+import gloves from '../assets/photos/valentin-moriel-gloves.jpg';
 
 const faqs = [
   { q: 'What areas do you cover?', a: 'Seminole and Gaines County first, then Seagraves, Denver City, Andrews, Brownfield, Lamesa, Big Spring, Midland, Odessa and Lubbock. Roughly a hundred miles from Seminole. There is no trip fee, though job minimums get discussed for out-of-town work.' },
@@ -50,6 +52,12 @@ const faqs = [
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/" lang="es" hreflang="es">Esta página en español</a></p>
       <div class="measure"><AnswerBox text={QUICK_ANSWER} /></div>
+      <Photo
+        src={gloves}
+        alt="Valentin Moriel putting on nitrile gloves beside the Trusted Termite and Pest Solutions truck"
+        caption="Valentin Moriel. One truck, one licence holder."
+        width={900}
+      />
     </div>
   </section>
 

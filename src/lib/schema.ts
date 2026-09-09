@@ -41,6 +41,10 @@ export interface GraphInput {
   /** Present on service spokes only. */
   service?: { name: string; description: string; areaServed?: string[] };
   image?: string;
+  /** Absolute URL of the owner's photograph, resolved by BaseLayout from the
+   *  astro:assets build output. Optional so nothing breaks if it is ever
+   *  removed; personNode simply omits the field. */
+  personImage?: string;
   datePublished?: string;
   dateModified?: string;
 }
@@ -69,13 +73,14 @@ function logoNode() {
 }
 
 /* ---------- the named expert · Person ---------- */
-function personNode() {
+function personNode(input: GraphInput) {
   const o = BUSINESS.owner;
   return {
     '@type': 'Person',
     '@id': ID.person,
     name: o.name,
     jobTitle: o.jobTitle,
+    ...(input.personImage ? { image: input.personImage } : {}),
     worksFor: { '@id': ID.business },
     knowsLanguage: ['en-US', 'es'],
     // hasCredential — the cheapest E-E-A-T win available, and published with
@@ -240,7 +245,7 @@ export function buildGraph(input: GraphInput) {
     webpageNode(input),
     logoNode(),
     businessNode(),
-    personNode(),
+    personNode(input),
     serviceNode(input),
     faqNode(input),
     breadcrumbNode(input),

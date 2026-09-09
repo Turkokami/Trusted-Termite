@@ -6,6 +6,9 @@ import AnswerBox from '../components/AnswerBox.astro';
 import Trust from '../components/Trust.astro';
 import Cta from '../components/Cta.astro';
 import { BUSINESS } from '../data/business';
+import Photo from '../components/Photo.astro';
+import portrait from '../assets/photos/valentin-moriel-portrait.jpg';
+import looking from '../assets/photos/valentin-moriel-looking.jpg';
 const o = BUSINESS.owner;
 const crumbs = [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }];
 const quickAnswer = 'Valentin Moriel owns and operates Trusted Termite and Pest Solutions in Seminole, Texas. He holds Texas Department of Agriculture licence TPCL 0976265 as a Commercial Certified Applicator in pest control, termite, lawn and weed categories, and has worked in the trade six years.';
@@ -24,6 +27,13 @@ const quickAnswer = 'Valentin Moriel owns and operates Trusted Termite and Pest 
       <AnswerBox text={quickAnswer} />
       <Trust />
 
+      <Photo
+        src={portrait}
+        alt="Valentin Moriel, owner of Trusted Termite and Pest Solutions, in a company shirt and cap"
+        caption="Valentin Moriel, owner."
+        width={620}
+      />
+
       <h2 style="margin-top:2.2rem">How he got into it</h2>
       <p>
         "About six years ago, I was recruited by my former district manager from a previous job to become
@@ -41,6 +51,11 @@ const quickAnswer = 'Valentin Moriel owns and operates Trusted Termite and Pest 
       </p>
 
       <h2 style="margin-top:2.2rem">Why Seminole</h2>
+      <Photo
+        src={looking}
+        alt="Valentin Moriel outdoors in Seminole, Texas, wearing a Trusted Termite and Pest Solutions shirt"
+        side
+      />
       <p>
         Because he is from here. He grew up in Seminole and graduated high school here, and has been in
         and out of Gaines County his whole life. Trusted Termite and Pest Solutions started in November
