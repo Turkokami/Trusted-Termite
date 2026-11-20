@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/gen-static.mjs",
+    "build": "astro build && node scripts/gen-static.mjs && node scripts/ai-files.mjs --mode static --out dist --robots",
     "preview": "astro preview",
     "verify": "node scripts/verify.mjs",
     "cadence": "node scripts/cadence.mjs"
