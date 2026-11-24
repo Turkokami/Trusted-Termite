@@ -3,6 +3,7 @@
  * BaseLayout — the only place <head>, meta, OG and JSON-LD are written.
  * Keystone M5 / M7 / Part 5 are enforced here so no page can ship without them.
  */
+import SpeedInsights from '@vercel/speed-insights/astro';
 import { BUSINESS, SITE_URL } from '../data/business';
 import { buildGraph, type Crumb, type Faq } from '../lib/schema';
 import Header from '../components/Header.astro';
@@ -84,6 +85,8 @@ const graph = buildGraph({ path, title, description, quickAnswer, breadcrumbs, f
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" />
 
   <script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />
+  {/* Vercel Speed Insights (free tier): first-party page-speed readings, cookieless. */}
+  <SpeedInsights />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
