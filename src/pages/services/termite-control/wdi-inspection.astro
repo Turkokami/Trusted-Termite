@@ -133,8 +133,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Termite &amp; Wood Destroying Insect Control · licensed category</p>
       <h1>WDI inspections for real estate</h1>
+      <p class="lede">This falls under his Termite &amp; Wood Destroying Insect Control licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <div class="measure">
@@ -206,8 +206,8 @@ const faqs = [
           frames and sills.</strong> <strong>Baseboards, flooring, walls and ceilings.</strong>
           <strong>Entrance steps and porches.</strong> <strong>The exterior of the slab or foundation
           wall.</strong> <strong>Crawl spaces</strong> including support piers and stiff legs, floor
-          joists, sub floors, sill plates and the foundation wall. <strong>The fireplace.</strong> And
-          <strong>weep holes.</strong>
+          joists, sub floors, sill plates and the foundation wall. <strong>The fireplace</strong> and the
+          <strong>weep holes</strong> are on the list too.
         </p>
         <p>
           <strong>Then the report is written on the department's form</strong>, which under §7.176(a) may
@@ -247,9 +247,9 @@ const faqs = [
         </p>
         <p>
           <strong>Rule 4 TAC §7.175(b) treats a long list of areas as inaccessible or obstructed</strong>,
-          and examinations of those are not required. Inaccessible attics. Hollow wall interiors. Areas
-          behind or beneath stoves, refrigerators, furniture, built-in cabinets, insulation and floor
-          coverings. And — the one that is entirely within your control — <strong>areas where storage
+          and examinations of those are not required. The list covers inaccessible attics, hollow wall
+          interiors, and areas behind or beneath stoves, refrigerators, furniture, built-in cabinets,
+          insulation and floor coverings. It also covers — the one that is entirely within your control — <strong>areas where storage
           conditions or locks make inspection impracticable.</strong>
         </p>
         <p>
@@ -386,8 +386,8 @@ const faqs = [
         </p>
         <p>
           <strong>The WDI radius is {o.wdiRadiusMi} miles, and it is not the same as our service
-          territory.</strong> The general territory runs to about a hundred miles. Inspections for a real
-          estate transaction run to {o.wdiRadiusMi}, because a report tied to a closing date is a
+          territory.</strong> The general territory runs to about a hundred miles. Inspections for a real-estate
+          transaction run to {o.wdiRadiusMi}, because a report tied to a closing date is a
           different kind of promise from a pest call that can move to Thursday. We would rather publish two
           numbers and have them both be true than publish one and stretch it.
         </p>
@@ -456,7 +456,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -464,7 +464,7 @@ const faqs = [
         <p>
           Individually quoted, because a small in-town house and a property with several outbuildings are
           not the same inspection. The report is on the department's prescribed form and is not altered.
-          Copies to whoever ordered it, retained here for a minimum of two years. Military discount. Cash,
+          Copies to whoever ordered it, retained here for a minimum of two years. There is a military discount. We take cash,
           check, card in person or online, Venmo, CashApp or Zelle. Se habla español — and on a WDI report
           that matters, because explaining what the inaccessible-areas section means is part of the job.
         </p>

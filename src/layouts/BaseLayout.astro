@@ -9,6 +9,16 @@ import { buildGraph, type Crumb, type Faq } from '../lib/schema';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CallBar from '../components/CallBar.astro';
+/* Self-hosted fonts — same families and weights the Google Fonts link loaded,
+   served from this site so no visitor request goes to fonts.googleapis.com. */
+import '@fontsource/barlow-condensed/600.css';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/400-italic.css';
+import '@fontsource/source-sans-3/600.css';
+import '@fontsource/source-sans-3/700.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
 import '../styles/global.css';
 import ownerPhoto from '../assets/photos/valentin-moriel-portrait.jpg';
 
@@ -80,9 +90,6 @@ const graph = buildGraph({ path, title, description, quickAnswer, breadcrumbs, f
   <meta name="theme-color" content="#12351a" />
 
   <link rel="icon" href="/brand/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" />
 
   <script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />
   {/* Vercel Speed Insights (free tier): first-party page-speed readings, cookieless. */}

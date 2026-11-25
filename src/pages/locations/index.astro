@@ -19,10 +19,8 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
   <Crumbs items={crumbs} />
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">
-        {TOWNS.filter((t) => !t.byRequest).length} towns on the route, {TOWNS.filter((t) => t.byRequest).length} more by request · one truck, based in Seminole
-      </p>
       <h1>Where we work</h1>
+      <p class="lede">{TOWNS.filter((t) => !t.byRequest).length} towns are on the route and {TOWNS.filter((t) => t.byRequest).length} more are served by request, all from one truck based in Seminole.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <ServiceMap
         query="Seminole, TX"
@@ -34,7 +32,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
         {TOWNS.map(t => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX{t.byRequest ? ' — by request' : ''}</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -45,7 +43,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
           it works out.
         </p>
         <p>
-          <strong>Two of those towns are marked "by request", and the distinction is real.</strong> The
+          <strong>Two of those towns are marked "by request", and the distinction matters.</strong> The
           rest are places we actually run — there is a route, and it passes through. Stanton and Kermit
           are not on it. We have no customers in either, and nothing takes us through them on a set day.
           If somebody there calls with work that can be planned, we will drive it; that is a different
@@ -87,43 +85,45 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
 
         <h2 style="margin-top:2.6rem">The counties</h2>
         <p>
-          <strong>Gaines County.</strong> Home county, Seminole the seat. The largest share of the work
-          and the shortest drives. Agricultural, with a substantial rural residential population on
+          <strong>Gaines County.</strong> This is the home county, with Seminole as the seat. It has the
+          largest share of the work and the shortest drives. It is agricultural, with a substantial rural residential population on
           acreage outside the city limits where county rules rather than city ordinances apply.
         </p>
         <p>
-          <strong>Yoakum County.</strong> Denver City and the country around it, north-west. Oil and
-          agriculture together, small population, and very little pest control based locally.
+          <strong>Yoakum County.</strong> Denver City and the country around it lie to the north-west. Oil
+          and agriculture sit together here, with a small population and very little pest control based
+          locally.
         </p>
         <p>
-          <strong>Terry County.</strong> Brownfield, north. Cotton country on the caprock, an older
-          housing stock in town, and the same harvest-driven rodent pattern as the rest of the Llano.
+          <strong>Terry County.</strong> Brownfield lies to the north. It is cotton country on the caprock,
+          with an older housing stock in town and the same harvest-driven rodent pattern as the rest of
+          the Llano.
         </p>
         <p>
-          <strong>Dawson County.</strong> Lamesa, east. Agricultural, with a town centre that predates
-          most of the region's oilfield build-out and a building stock that reflects it.
+          <strong>Dawson County.</strong> Lamesa lies to the east. It is agricultural, with a town centre
+          that predates most of the region's oilfield build-out and a building stock that reflects it.
         </p>
         <p>
-          <strong>Andrews County.</strong> Andrews, south. Notable on this route for having no
+          <strong>Andrews County.</strong> Andrews lies to the south. It is notable on this route for having no
           full-service pest control company physically based in it, which shapes how service actually
           reaches properties there.
         </p>
         <p>
-          <strong>Martin County.</strong> <a href="/locations/stanton/">Stanton</a>, south-east, between
-          Midland and Big Spring on the interstate — by request rather than on the route, and the page
+          <strong>Martin County.</strong> <a href="/locations/stanton/">Stanton</a> lies to the south-east,
+          between Midland and Big Spring on the interstate. We serve it by request rather than on the route, and the page
           says so in the first paragraph.
         </p>
         <p>
-          <strong>Midland and Ector Counties.</strong> Midland and Odessa — the two largest markets on
+          <strong>Midland and Ector Counties.</strong> Midland and Odessa are the two largest markets on
           the route, the most competitive, and the ones with the most developed municipal enforcement
           around weeds and property condition.
         </p>
         <p>
-          <strong>Howard County.</strong> Big Spring, at the south-eastern edge of the map.
+          <strong>Howard County.</strong> Big Spring sits at the south-eastern edge of the map.
         </p>
         <p>
-          <strong>Lubbock County.</strong> Lubbock, at the northern edge — the largest city on the route
-          and the furthest regular drive, run as planned days rather than on demand.
+          <strong>Lubbock County.</strong> Lubbock sits at the northern edge. It is the largest city on
+          the route and the furthest regular drive, run as planned days rather than on demand.
         </p>
 
         <h2 style="margin-top:2.6rem">City weed and property ordinances across the route</h2>
@@ -161,7 +161,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
         <p>
           It means you will not see a mileage line on your invoice, and it means the price you were quoted
           on the phone is the price. It does not mean distance is free — on a one-truck operation it is
-          one of the largest real costs in the business — and pretending otherwise would be the kind of
+          one of the largest costs in the business — and pretending otherwise would be the kind of
           claim this site exists to avoid. What it means is that distance is accounted for in how work is
           scheduled and, on larger jobs a long way out, in a job minimum discussed before you agree to
           anything.
@@ -232,7 +232,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
         <p>
           Where a town has less verified local detail behind it, its page is shorter and says less rather
           than being padded out with generic material to match the others. That is a decision with a
-          real cost in search terms and it is the right one, because a page that invents local specifics
+          cost in search terms and it is the right one, because a page that invents local specifics
           is worse than no page at all — it reads convincingly right up until a resident notices that the
           detail is wrong, and then everything else on the site is in question too.
         </p>
@@ -335,7 +335,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions works out of Seminole, T
           planned-day markets rather than same-day, and the work there is steady rather than occasional.
         </p>
         <p>
-          The two large cities and the far edges are real service areas, worked on scheduled runs, with
+          The two large cities and the far edges are full service areas, worked on scheduled runs, with
           the honest caveat that a one-truck operation covering a hundred-mile radius is not going to be
           the fastest option in a city that has a dozen companies inside its own limits. What it can be
           is the one where the owner answers the phone, the licence holder does the work, and nothing is

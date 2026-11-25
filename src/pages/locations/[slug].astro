@@ -59,8 +59,8 @@ const fireAntLine = {
   <Crumbs items={crumbs} />
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{town.county} · about {town.distanceMiApprox} miles {town.direction} of Seminole</p>
       <h1>Pest Control in {town.name}, Texas</h1>
+      <p class="lede">{town.name} is in {town.county}, about {town.distanceMiApprox} miles {town.direction} of Seminole.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <ServiceMap query={`${town.name}, TX`} label={`Map of ${town.name}, Texas`} zoom={12} caption="Service area map — call to confirm your address." />

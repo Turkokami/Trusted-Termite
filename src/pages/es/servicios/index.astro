@@ -86,8 +86,8 @@ const quickAnswer =
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Un operador con licencia · TPCL {o.tpcl}</p>
       <h1>Servicios</h1>
+      <p class="lede">Lo atiende un solo operador con licencia, TPCL {o.tpcl}.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <div class="measure">
         <p>
@@ -108,7 +108,7 @@ const quickAnswer =
                   <p>{esBlurb[s.esSlug]}</p>
                 </a>
               ) : (
-                <div class="card" style="opacity:.72">
+                <div class="item" style="opacity:.72">
                   <h3>{s.esName}</h3>
                   <p style="font-size:.92rem">Página en español en preparación — <a href={`/services/${s.slug}/`}>ver en inglés</a>.</p>
                 </div>
@@ -446,7 +446,7 @@ const quickAnswer =
         <p>
           <strong>Lo que sí determina el precio</strong>, y se lo decimos completo: el tamaño y tipo de
           construcción, cuántos edificios hay, cuál es la plaga, si es tratamiento único o programa
-          recurrente, y a qué distancia está de Seminole. Nada más. No hay precios de temporada alta, no
+          recurrente, y a qué distancia está de Seminole. No entra nada más. No hay precios de temporada alta, no
           aparecen cargos que no se hablaron, y no se convierte una llamada única en un contrato que usted
           no pidió.
         </p>

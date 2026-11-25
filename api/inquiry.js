@@ -82,6 +82,16 @@ const FIELDS = [
   { name: 'contact_pref', label: 'Best way to reach you', required: false, max: 40 },
 ];
 
+/** Fields that can legitimately hold line breaks. Everything else is a
+ *  single-line input, and a CR or LF in it is stripped — `name` and `town` go
+ *  into the email subject, where a line break is a header-injection attempt. */
+const MULTILINE = new Set(['seeing']);
+
+/** The honeypot. Hidden from people, offered to bots, cleared by the page's
+ *  script on submit so an over-eager autofill cannot trip it for anyone with
+ *  JavaScript on. */
+const HONEYPOT = 'secondary_ref';
+
 const NOT_DELIVERED =
   'Your message was not sent. Nothing reached us, so please call or text ' + PHONE + ' instead.';
 
@@ -130,12 +140,10 @@ function errorPage(status, heading, detail, problems) {
     '.inner{max-width:62ch;margin:0 auto}',
     'h1{margin:0;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.05;color:#fff;',
     'font-family:"Barlow Condensed","Arial Narrow",Impact,sans-serif;text-transform:uppercase}',
-    '.eyebrow{margin:0 0 .9rem;font-size:.78rem;font-weight:700;letter-spacing:.16em;',
-    'text-transform:uppercase;color:var(--lime);',
-    'font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}',
+    '.site{margin:.9rem 0 0;font-size:1rem;color:#cfdcc9}',
     'main{max-width:62ch;margin:0 auto;padding:2.4rem 20px 3rem}',
     'ul{padding-left:1.15em}li{margin-bottom:.45em}',
-    '.call{border-left:4px solid var(--lime);background:var(--surface);',
+    '.call{border:1px solid var(--rule);border-radius:6px;background:var(--surface);',
     'padding:1.2rem 1.4rem;margin:1.8rem 0}',
     '.call p{margin:0 0 .6em}.call p:last-child{margin-bottom:0}',
     'a{color:var(--green)}a:focus-visible{outline:3px solid var(--lime);outline-offset:2px}',
@@ -144,8 +152,8 @@ function errorPage(status, heading, detail, problems) {
     '</head>',
     '<body>',
     '<div class="band"><div class="inner">',
-    '<p class="eyebrow">Trusted Termite &amp; Pest Solutions</p>',
     '<h1>' + escapeHtml(heading) + '</h1>',
+    '<p class="site">Trusted Termite &amp; Pest Solutions</p>',
     '</div></div>',
     '<main>',
     '<p>' + escapeHtml(detail) + '</p>',
@@ -192,15 +200,25 @@ export async function POST(request) {
       : errorPage(400, 'Your message was not sent', 'The form data could not be read, so nothing was delivered.');
   }
 
+  /* Every value is trimmed. Single-line fields lose any CR/LF (collapsed to a
+     space) and other control characters; the one multi-line field keeps its
+     line breaks but loses the rest. The email address is lowercased after
+     trimming, so the reply_to is stored the way it will be compared. */
   const get = (k) => {
     const v = form.get(k);
-    return typeof v === 'string' ? v.trim() : '';
+    if (typeof v !== 'string') return '';
+    let out = v.trim();
+    out = MULTILINE.has(k)
+      ? out.replace(/\r\n?/g, '\n').replace(/[\u0000-\u0008\u000B-\u001F\u007F]/g, '')
+      : out.replace(/\s*[\r\n]+\s*/g, ' ').replace(/[\u0000-\u001F\u007F]/g, '').trim();
+    if (k === 'email') out = out.toLowerCase();
+    return out;
   };
 
   /* Spam gate 1 — the honeypot.
      A real person can trip this through an over-eager autofill, so the answer is
      a real message carrying the phone number, never a fake success page. */
-  if (get('website')) {
+  if (get(HONEYPOT)) {
     console.error('[inquiry] rejected: honeypot filled');
     const detail =
       'This was blocked as automated. If that is wrong, a browser has filled in a hidden field, and the quickest way through is to call rather than to fight the form.';

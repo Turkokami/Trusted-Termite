@@ -89,8 +89,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
       <h1>Rodent Control &amp; Exclusion</h1>
+      <p class="lede">This falls under his {svc.licenceCategory} licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-roedores/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -298,7 +298,7 @@ const faqs = [
         </p>
         <p>
           <strong>Manufactured and mobile homes get their own list.</strong> The void beneath the floor is
-          the real perimeter, the gap between the skirting and the ground is the primary entry, and the
+          the working perimeter, the gap between the skirting and the ground is the primary entry, and the
           utility penetrations come up through the floor into cabinets rather than through a wall. A mouse
           in the kitchen of a manufactured home is very often a mouse that never went outside.
         </p>
@@ -370,7 +370,7 @@ const faqs = [
           Attaching a blanket thirty-day promise to that would either be dishonest or so heavily qualified
           as to mean nothing. What we do instead is agree the terms for your specific job before the work
           starts, in writing where the job warrants it, including what the follow-up looks like and what
-          happens if activity continues. That is a narrower commitment and a real one.
+          happens if activity continues. That is a narrower commitment, and one we keep.
         </p>
         <p>
           <a href={BUSINESS.guarantee.termsPath}>The full guarantee terms are here</a>, including exactly
@@ -424,7 +424,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -433,7 +433,7 @@ const faqs = [
           Homes, acreage, barns, shops, rental property and commercial premises. Rodent work is priced on
           the property rather than at a flat residential rate, because the number of structures involved
           changes the job more than anything else. Terms are agreed after the inspection and before any
-          work is done. Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle.
+          work is done. There is a military discount. We take cash, check, card in person or online, Venmo, CashApp or Zelle.
           Se habla español.
         </p>
       </div>

@@ -99,8 +99,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
       <h1>Bird &amp; Pigeon Control</h1>
+      <p class="lede">This falls under his {svc.licenceCategory} licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-aves-y-palomas/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -111,7 +111,7 @@ const faqs = [
         </p>
         <p>
           Native birds in the United States are protected under the Migratory Bird Treaty Act, which
-          broadly covers the birds along with their active nests and eggs. That protection is real, it is
+          broadly covers the birds along with their active nests and eggs. That protection is binding, it is
           federal, and it is not something a pest control company gets to work around because a customer
           finds the birds inconvenient.
         </p>
@@ -192,8 +192,8 @@ const faqs = [
           owl frequently ends up with a pigeon sitting on it.
         </p>
         <p>
-          <strong>Reflective tape, spinners and hanging discs.</strong> Same pattern. Some initial
-          disruption, then habituation, and in the meantime they look like a building with a problem.
+          <strong>Reflective tape, spinners and hanging discs.</strong> These follow the same pattern: some
+          initial disruption, then habituation, and in the meantime they look like a building with a problem.
         </p>
         <p>
           <strong>Sound devices.</strong> Distress calls and predator sounds produce a response that
@@ -318,7 +318,7 @@ const faqs = [
           problem. Dealing with the birds is also dealing with that chain.
         </p>
         <p>
-          <strong>And droppings do real damage.</strong> They are corrosive to some materials, they
+          <strong>And droppings do lasting damage.</strong> They are corrosive to some materials, they
           discolour paint and stone, they make walkways and equipment slippery, and on commercial
           premises they are frequently an inspection matter. The cost of leaving a bird problem alone is
           rarely just aesthetic.
@@ -418,7 +418,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -428,7 +428,7 @@ const faqs = [
           and residential property. Quoted per installation after a survey, because the surfaces and the
           volume of exclusion required determine the job entirely. This service carries its own agreed
           terms rather than the standard 30-day pest guarantee. Certificates of insurance provided for
-          commercial work on request — ask before the day rather than on it. Military discount. Cash,
+          commercial work on request — ask before the day rather than on it. There is a military discount. We take cash,
           check, card in person or online, Venmo, CashApp or Zelle. Se habla español.
         </p>
       </div>

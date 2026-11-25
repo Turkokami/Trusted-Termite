@@ -320,7 +320,7 @@ export const TOWNS: Town[] = [
       note: 'The only town on the route that publishes itemised abatement costs: major equipment $56/hr, labour $21/hr, a $125 administration fee and landfill at $52.50/ton.',
     },
     population: 122707,
-    character: 'A renter-heavy market with real turnover, and the strongest junk and cleanout demand on the route.',
+    character: 'A renter-heavy market with high turnover, and the strongest junk and cleanout demand on the route.',
   },
   {
     slug: 'lubbock',

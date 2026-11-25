@@ -101,8 +101,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
       <h1>Lawn Care &amp; Weed Control</h1>
+      <p class="lede">This falls under his {svc.licenceCategory} licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/jardineria-y-control-de-maleza/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -171,7 +171,7 @@ const faqs = [
           at four feet as well.
         </p>
         <p>
-          <strong>And the lien mechanics are real.</strong> Ten percent per annum is the common figure —
+          <strong>And the lien mechanics are enforced.</strong> Ten percent per annum is the common figure —
           Seagraves, Brownfield and Stanton all use it — with the lien typically inferior only to tax
           liens. Lamesa allows thirty days before the lien attaches; Denver City allows five days from
           being billed. Lamesa's general penalty band reaches two thousand dollars for public health and
@@ -297,7 +297,7 @@ const faqs = [
           <strong>Spring.</strong> Green-up, first mowings, and the point at which weeds that escaped the
           pre-emergent become visible and treatable. City enforcement starts generating notices in this
           window, and a lot that looked acceptable in February stops looking acceptable within about three
-          weeks of the first real rain.
+          weeks of the first soaking rain.
         </p>
         <p>
           <strong>Early summer.</strong> Peak growth and peak mowing frequency. Mowing height matters most
@@ -305,7 +305,7 @@ const faqs = [
           damage their own turf.
         </p>
         <p>
-          <strong>High summer.</strong> Heat stress. Watering discipline is the whole game, and this is
+          <strong>High summer brings heat stress.</strong> Watering discipline is the whole game, and this is
           when the selective herbicide choice matters, because several products cannot be used safely at
           these temperatures.
         </p>
@@ -412,7 +412,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -421,7 +421,7 @@ const faqs = [
           Priced on the property rather than at a flat rate, because lot size, terrain, access and how far
           it has been allowed to go change the job more than anything else. One-off or on a schedule
           through the season, with no contract either way. This service carries its own agreed terms rather
-          than the standard 30-day pest guarantee. Military discount. Cash, check, card in person or
+          than the standard 30-day pest guarantee. There is a military discount. We take cash, check, card in person or
           online, Venmo, CashApp or Zelle. Se habla español.
         </p>
       </div>

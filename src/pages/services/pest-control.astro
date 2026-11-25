@@ -77,8 +77,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Pest Control · licensed category · TPCL 0976265</p>
       <h1>Recurring Pest Control</h1>
+      <p class="lede">This falls under the Pest Control category of licence TPCL 0976265.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-plagas/" lang="es" hreflang="es">Esta página en español</a></p>
       <Trust />
@@ -174,7 +174,7 @@ const faqs = [
     <div class="wrap">
       <h2>What we treat on a general plan</h2>
       <div class="grid c2" style="margin-top:1.4rem">
-        <div class="card">
+        <div class="item">
           <h3>Ants</h3>
           <p>
             The most common call, and the one most often handled badly. Spraying the trail kills the
@@ -183,7 +183,7 @@ const faqs = [
             than assuming it has.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Spiders</h3>
           <p>
             Brown recluse are found throughout Texas, indoors and out, and are active spring through
@@ -192,7 +192,7 @@ const faqs = [
             kind of places. Treatment is about the harbourage, not the web you can see.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Cockroaches</h3>
           <p>
             German cockroaches are a different job from the occasional large roach that wanders in from
@@ -200,13 +200,13 @@ const faqs = [
             regulators, the other is an exterior barrier problem. We will tell you which one you have.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Scorpions and occasional invaders</h3>
           <p>
             Covered on a general plan, though scorpions are enough of a specialty here that they have
             their own page. Crickets, silverfish, centipedes, earwigs and the rest of the occasional
             invaders come in for the same reason — a gap, and a reason to use it.
-            <a href="/services/scorpion-control/"> More on scorpion work →</a>
+            <a href="/services/scorpion-control/">More on scorpion work</a>
           </p>
         </div>
       </div>
@@ -281,7 +281,7 @@ const faqs = [
         {TOWNS.filter((t) => t.tier !== 'scaffold').map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction}` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction}` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -315,7 +315,7 @@ const faqs = [
           the road.
         </p>
         <p>
-          <strong>Odessa</strong> carries real rental turnover — the city ran a 21.3% rental vacancy rate
+          <strong>Odessa</strong> carries heavy rental turnover — the city ran a 21.3% rental vacancy rate
           at the 2020 census — and turnover is the classic driver of bed bug and roach problems moving
           between units. On a general plan there that often means paying closer attention to what is
           arriving with tenants rather than what is walking in from outside.
@@ -372,7 +372,7 @@ const faqs = [
           including a Terminix-Rentokil branch, before starting this company. He is direct about what
           that taught him:
         </p>
-        <blockquote style="border-left:4px solid var(--lime);padding-left:20px;margin:1.4rem 0;color:var(--ink-2)">
+        <blockquote class="quote">
           <p>
             "Big companies can make customers feel like just another number. You get passed around, put
             on hold, and rarely talk to the same person twice. That's actually the environment I came
@@ -388,7 +388,7 @@ const faqs = [
           to a treatment they do not understand.
         </p>
         <p>
-          <a href="/about/">More about Valentin →</a>
+          <a href="/about/">More about Valentin</a>
         </p>
       </div>
     </div>
@@ -426,7 +426,7 @@ const faqs = [
         </p>
         <p>
           <strong>Between visits.</strong> Recurring customers get re-services at no charge for covered
-          pests. Use them. Sitting with a problem until the next scheduled appointment helps nobody, and
+          pests, so use them. Sitting with a problem until the next scheduled appointment helps nobody, and
           it is the thing most people are too polite to do.
         </p>
       </div>

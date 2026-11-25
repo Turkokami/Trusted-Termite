@@ -92,8 +92,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
       <h1>Flea &amp; Tick Treatment</h1>
+      <p class="lede">This falls under his {svc.licenceCategory} licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/pulgas-y-garrapatas/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -231,8 +231,8 @@ const faqs = [
           tightly to two things: <strong>tall vegetation, and the routes animals use through it.</strong>
         </p>
         <p>
-          On a West Texas property those routes are predictable. Fence lines. The boundary between mown
-          ground and whatever is beyond it. Brush edges. Paths through tall grass. The gap under a fence
+          On a West Texas property those routes are predictable: fence lines, the boundary between mown
+          ground and whatever is beyond it, brush edges, and paths through tall grass. The gap under a fence
           where rabbits come and go. The line a dog runs along the perimeter every day.
         </p>
         <p>
@@ -256,7 +256,7 @@ const faqs = [
           application would, and we would rather do the thing that works.
         </p>
         <p>
-          <strong>On the health side</strong>, tick-borne illness is a real matter and it is a medical
+          <strong>On the health side</strong>, tick-borne illness is a serious matter and it is a medical
           one. If you develop a rash, a fever, or feel unwell in the weeks after a bite, see a doctor and
           tell them about it. We are not going to publish risk statistics we cannot stand behind, and we
           are not going to use fear to sell a treatment.
@@ -319,7 +319,7 @@ const faqs = [
         </p>
         <p>
           <strong>Vacuuming — the most underrated thing on the list.</strong> It physically removes eggs,
-          larvae and adults, and the vibration triggers pupal emergence. Done daily it is a real
+          larvae and adults, and the vibration triggers pupal emergence. Done daily it is a useful
           intervention rather than a token one. Do it before a treatment and keep doing it afterwards,
           and empty the bag outside rather than into the kitchen bin.
         </p>
@@ -336,7 +336,7 @@ const faqs = [
           say so.
         </p>
         <p>
-          <strong>Diatomaceous earth — some real effect, badly overstated.</strong> It works by abrasion
+          <strong>Diatomaceous earth has some effect, but it is badly overstated.</strong> It works by abrasion
           and desiccation, needs to stay dry, and needs the insect to contact it. In practice it does
           something in a dry, undisturbed void and very little in a carpet that gets walked on.
         </p>
@@ -411,7 +411,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -420,7 +420,7 @@ const faqs = [
           Homes, yards, kennels, rental property and acreage, priced on the property and the extent rather
           than at a flat rate. This service carries its own agreed terms rather than the standard 30-day
           pest guarantee, because the outcome depends on veterinary treatment running alongside it.
-          Military discount. Cash, check, card in person or online, Venmo, CashApp or Zelle. Se habla
+          There is a military discount. We take cash, check, card in person or online, Venmo, CashApp or Zelle. Se habla
           español.
         </p>
       </div>

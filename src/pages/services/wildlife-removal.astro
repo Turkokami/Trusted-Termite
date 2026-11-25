@@ -96,8 +96,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
       <h1>Wildlife Removal</h1>
+      <p class="lede">This falls under his {svc.licenceCategory} licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/retiro-de-animales-silvestres/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -186,7 +186,7 @@ const faqs = [
         </p>
         <p>
           <strong>Raccoons.</strong> Strong, dextrous and genuinely capable of making their own entry.
-          Attics, chimneys, soffits and outbuildings. They are also the animal most likely to cause real
+          Attics, chimneys, soffits and outbuildings. They are also the animal most likely to cause serious
           structural damage while getting in, and most likely to be a female with young at certain times
           of year — which changes the job completely and is one of the main reasons the timing question
           gets asked.
@@ -208,7 +208,7 @@ const faqs = [
           <strong>Reading the evidence.</strong> The size and shape of the entry hole. Tracks in soft dirt
           or dust — and there is no shortage of dust out here. Droppings, which are diagnostic and which
           should not be disturbed before an inspection. Hair caught at the edge of an opening. The hour
-          the noise happens. Damage patterns. Whether the opening was dug or forced.
+          the noise happens. The pattern of the damage, and whether the opening was dug or forced.
         </p>
         <p>
           <strong>Do not clear it up before we look.</strong> The instinct is to tidy. The evidence is the
@@ -245,7 +245,7 @@ const faqs = [
           <strong>Closing the property</strong> — and this is the part that determines whether you call
           again next spring. Screening or trenching the perimeter of decks, porches and sheds. Closing the
           gap between mobile-home skirting and the ground, which is the single most common wildlife entry
-          on this route. Capping chimneys. Screening gable and soffit vents. Repairing torn screen and
+          on this route. Capping chimneys, screening gable and soffit vents, and repairing torn screen and
           rotted soffit. Cutting back branches that reach a roofline, because raccoons in particular climb
           and a branch is a bridge.
         </p>
@@ -286,7 +286,7 @@ const faqs = [
           work and it usually ends the recurrence permanently.
         </p>
         <p>
-          <strong>Sheds and shops on blocks or slabs with an undercut.</strong> Same principle. Where a
+          <strong>Sheds and shops on blocks or slabs with an undercut.</strong> The same principle applies. Where a
           building sits slightly proud of the ground, the edge is where to look.
         </p>
         <p>
@@ -294,7 +294,7 @@ const faqs = [
           case and occasionally a larger-animal one too.
         </p>
         <p>
-          <strong>Attics and soffits.</strong> Raccoon country. Damaged soffit, a lifted shingle edge, a
+          <strong>Attics and soffits.</strong> This is where raccoons get in. Damaged soffit, a lifted shingle edge, a
           gable vent with a torn screen. On older housing — and the median construction year across most of
           this route is in the sixties and seventies — the soffit and fascia are frequently the softest
           part of the envelope.
@@ -345,8 +345,8 @@ const faqs = [
         </p>
         <p>
           <strong>We will not promise you what happens to an animal afterwards</strong> beyond what the
-          law and the situation actually permit. That is a question with real constraints on it, and it
-          gets a real answer for your specific case rather than a reassuring generality.
+          law and the situation actually permit. That is a question with legal constraints on it, and it
+          gets a straight answer for your specific case rather than a reassuring generality.
         </p>
         <p>
           <strong>We will not seal a structure at a time of year that risks trapping young inside it.</strong>
@@ -422,8 +422,8 @@ const faqs = [
           convincing the target that the area is dangerous — which makes the professional job harder.
         </p>
         <p>
-          <strong>Do remove the food.</strong> Bring pet food in. Secure bins. Deal with spilled feed and
-          grain. Pick up fallen fruit. Fix the tap that drips. These reduce the attraction immediately and
+          <strong>Do remove the food.</strong> Bring pet food in, secure the bins, and deal with spilled feed
+          and grain. Pick up fallen fruit and fix the tap that drips. These reduce the attraction immediately and
           cost nothing.
         </p>
         <p>
@@ -439,8 +439,8 @@ const faqs = [
           skunk that feels trapped behaves predictably in a way nobody wants.
         </p>
         <p>
-          <strong>And do photograph what you can safely photograph.</strong> The hole, the tracks, the
-          droppings, the damage. Text it. It shortens the diagnosis considerably.
+          <strong>And do photograph what you can safely photograph.</strong> Get the hole, the tracks, the
+          droppings and the damage, then text the photos. It shortens the diagnosis considerably.
         </p>
       </div>
     </div>
@@ -453,7 +453,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -462,7 +462,7 @@ const faqs = [
           Homes, mobile and manufactured homes, outbuildings, acreage and commercial property. Quoted
           individually after an evaluation, because the species, the structure and the exclusion work
           required change the job entirely. This service carries its own agreed terms rather than the
-          standard 30-day pest guarantee. Military discount. Cash, check, card in person or online, Venmo,
+          standard 30-day pest guarantee. There is a military discount. We take cash, check, card in person or online, Venmo,
           CashApp or Zelle. Se habla español.
         </p>
       </div>

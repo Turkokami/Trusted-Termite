@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: 'How do I know it is actually bed bugs?',
-    a: 'Look for the physical evidence rather than at the bites. Small dark spots along a mattress seam, on the box spring, or on the frame where the joints meet. Shed skins. Live insects roughly the size and shape of an apple seed, flattened and reddish-brown. Bites alone are unreliable — people react very differently, some not at all, and several other things bite. If you can photograph what you have found, text it before the visit.',
+    a: 'Look for the physical evidence rather than at the bites. Small dark spots along a mattress seam, on the box spring, or on the frame where the joints meet. Shed skins left behind as they grow. Live insects roughly the size and shape of an apple seed, flattened and reddish-brown. Bites alone are unreliable — people react very differently, some not at all, and several other things bite. If you can photograph what you have found, text it before the visit.',
   },
   {
     q: 'Can you treat it in one visit?',
@@ -94,8 +94,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
       <h1>Bed Bug Treatment</h1>
+      <p class="lede">This falls under his {svc.licenceCategory} licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/tratamiento-de-chinches/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -131,8 +131,8 @@ const faqs = [
         </p>
         <p>
           <strong>We do not do heat treatment.</strong> Whole-room or whole-structure thermal remediation
-          requires specific equipment and specific training, and we do not carry it. It is a real method
-          with real advantages — it reaches harbourage chemicals struggle with, and it has no residual
+          requires specific equipment and specific training, and we do not carry it. It is a proven method
+          with genuine advantages — it reaches harbourage chemicals struggle with, and it has no residual
           consideration — and where it is the right answer for a property, you need somebody who does it.
           We will tell you that on the phone.
         </p>
@@ -146,7 +146,7 @@ const faqs = [
         </p>
         <p>
           <strong>And we do not sell a bed bug scare.</strong> Bed bugs are a genuine misery — sleep loss,
-          stress, and a real financial cost — and they are not a health emergency in the way this industry
+          stress, and a financial cost — and they are not a health emergency in the way this industry
           sometimes implies. You have time to make a considered decision, get a second quote and choose the
           right method. Anyone pressuring you to sign today is selling, not diagnosing.
         </p>
@@ -187,8 +187,8 @@ const faqs = [
           picture frame, along the edge of carpet, in the joint of a baseboard.
         </p>
         <p>
-          <strong>Photograph what you find.</strong> Phone camera, as close as it will focus, with
-          something for scale. Text it. That resolves in ten seconds what five minutes of description
+          <strong>Photograph what you find.</strong> Use a phone camera, as close as it will focus, with
+          something for scale, and text the picture. That resolves in ten seconds what five minutes of description
           cannot, and it means the visit arrives already knowing what it is dealing with.
         </p>
         <p>
@@ -422,7 +422,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -432,7 +432,7 @@ const faqs = [
           whole-home infestation are not the same job and should not be priced as though they were. The
           scope, the follow-up schedule and the terms are agreed in writing before any work starts. This
           service carries its own terms rather than the standard 30-day pest guarantee. No heat treatment
-          and no fumigation. Discreet. Military discount. Cash, check, card in person or online, Venmo,
+          and no fumigation. The work is done discreetly. There is a military discount. We take cash, check, card in person or online, Venmo,
           CashApp or Zelle. Se habla español.
         </p>
       </div>

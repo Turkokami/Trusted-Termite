@@ -80,8 +80,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Pest Control · licensed category · TPCL 0976265</p>
       <h1>Scorpion Control &amp; Exclusion</h1>
+      <p class="lede">This falls under the Pest Control category of licence TPCL 0976265.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-escorpiones/" lang="es" hreflang="es">Esta página en español</a></p>
       <Trust />
@@ -157,8 +157,8 @@ const faqs = [
     <div class="wrap">
       <h2>The four ways they get into a West Texas house</h2>
       <div class="grid c2" style="margin-top:1.4rem">
-        <div class="card">
-          <h3>1 · Weep holes</h3>
+        <div class="item">
+          <h3>1. Weep holes</h3>
           <p>
             The gaps every brick veneer has at the base of the wall, there on purpose to let moisture
             out. They also let scorpions in, straight into the wall void. AgriLife's own recommendation
@@ -166,24 +166,24 @@ const faqs = [
             the drainage, which is why stuffing them with foam or caulk is the wrong fix.
           </p>
         </div>
-        <div class="card">
-          <h3>2 · Utility and plumbing penetrations</h3>
+        <div class="item">
+          <h3>2. Utility and plumbing penetrations</h3>
           <p>
             Every pipe, wire and conduit that passes through the envelope is a hole somebody drilled,
             and most were never sealed properly afterwards. On a slab home these run at the exact height
             a scorpion is already walking.
           </p>
         </div>
-        <div class="card">
-          <h3>3 · The water heater closet</h3>
+        <div class="item">
+          <h3>3. The water heater closet</h3>
           <p>
             An exterior-access closet with penetrations, often a gap at the base, and usually the least
             inspected part of the house. On a lot of homes here it is the single most productive place
             to look.
           </p>
         </div>
-        <div class="card">
-          <h3>4 · The irrigation valve box</h3>
+        <div class="item">
+          <h3>4. The irrigation valve box</h3>
           <p>
             Sunken, sheltered, damp and connected to the foundation by trenched pipe. It is close to
             ideal habitat, and it sits within a few feet of the wall on most properties with a system.
@@ -204,27 +204,27 @@ const faqs = [
     <div class="wrap">
       <h2>How we do the work</h2>
       <div class="measure">
-        <p><strong>1 · Inspect before anything gets sprayed.</strong> Walk the perimeter, find the entry
+        <p><strong>Step 1: inspect before anything gets sprayed.</strong> Walk the perimeter, find the entry
         points, find the harbourage. On a West Texas slab that means the weep holes, the water heater
         closet, the irrigation box and the utility penetrations, plus whatever is stacked against the
         house.</p>
 
-        <p><strong>2 · Seal what should not be open.</strong> Copper mesh into weep holes. Penetrations
-        sealed. Door sweeps and weather stripping flagged where they have failed. This is the part that
+        <p><strong>Step 2: seal what should not be open.</strong> Copper mesh goes into the weep holes,
+        penetrations get sealed, and failed door sweeps and weather stripping are flagged. This is the part that
         holds after the treatment has worn off, and it is the reason exclusion work is worth paying for.</p>
 
-        <p><strong>3 · Remove the harbourage.</strong> Debris piles, stacked boards, firewood against the
+        <p><strong>Step 3: remove the harbourage.</strong> Debris piles, stacked boards, firewood against the
         wall, dead vegetation. AgriLife lists these as exactly what scorpions shelter under. We do brush
         clearing and junk removal, so this can be the same visit and the same invoice rather than a
         conversation about who you need to call next.</p>
 
-        <p><strong>4 · Then treat.</strong> Residual product around the foundation and at the entry
+        <p><strong>Step 4: treat once the first three are done.</strong> Residual product around the foundation and at the entry
         points — <strong>Demand CS</strong> and <strong>Talstar</strong> for the perimeter, with
         <strong>DeltaDust</strong> into voids, weep holes and the places a liquid will not reach or will
         not last. Dust matters more than people expect on scorpion work, because so much of the
         harbourage is a void rather than a surface.</p>
 
-        <p><strong>5 · Come back.</strong> Scorpion work is not usually one visit. The bi-monthly or
+        <p><strong>Step 5: come back and check it.</strong> Scorpion work is not usually one visit. The bi-monthly or
         quarterly plan exists because the pressure is seasonal and the exclusion needs checking after the
         first summer has tested it.</p>
       </div>
@@ -264,13 +264,13 @@ const faqs = [
         {TOWNS.filter((t) => t.tier !== 'scaffold').map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction}` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction}` : ', home market'}</p>
           </a>
         ))}
       </div>
       <div class="measure" style="margin-top:1.8rem">
         <p>
-          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>. No contract. Priced on
+          Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, and there is no contract. It is priced on
           the property rather than a flat rate, because a house with an irrigation system, a firewood
           stack and open ground behind it is a different job from one without.
         </p>
@@ -303,7 +303,7 @@ const faqs = [
         </p>
         <p>
           There is a second reason this matters in some towns. Several cities on the route enforce weed
-          and nuisance standards with real deadlines and real fees — Lubbock at eight inches averaged
+          and nuisance standards with set deadlines and fees — Lubbock at eight inches averaged
           across the lot with a $175 administrative fee per occurrence, Odessa at twelve inches with
           equipment and labour billed by the hour, Midland at eighteen, Andrews at twelve on smaller
           lots. Outside city limits, Texas Health &amp; Safety Code §343.011 covers weeds over thirty-six
@@ -386,14 +386,14 @@ const faqs = [
         <ul class="tight">
           <li><strong>How much perimeter there is.</strong> A quarter-acre lot in town and a five-acre property with outbuildings are not the same treatment.</li>
           <li><strong>How much sealing is needed.</strong> A house with intact weather stripping and no weep-hole access is a short job. One with failed door sweeps, open penetrations and an accessible water heater closet is not.</li>
-          <li><strong>Whether there is harbourage to clear.</strong> If a brush pile or a stack of material has to move first, that is real work and it is quoted with the rest rather than discovered afterwards.</li>
+          <li><strong>Whether there is harbourage to clear.</strong> If a brush pile or a stack of material has to move first, that is extra work and it is quoted with the rest rather than discovered afterwards.</li>
           <li><strong>Whether there is an irrigation system.</strong> Valve boxes are reliable entry points and reliable shelter, and they take time to do properly.</li>
           <li><strong>Whether it is a one-off or a plan.</strong> A recurring plan carries the seasonal follow-up that scorpion work usually needs; a single visit does not, and it costs more per visit because of it.</li>
         </ul>
         <p>
           Recurring pest control here generally runs $140 to $160 or more per visit with a $200 to $250
           initial, and scorpion work sits inside that where it is a maintenance problem. Where it needs
-          real exclusion — sealing, mesh, clearing — that is quoted on the property after somebody has
+          exclusion itself — sealing, mesh, clearing — that is quoted on the property after somebody has
           walked it. There is no contract either way.
         </p>
       </div>

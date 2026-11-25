@@ -50,10 +50,12 @@ const top = SERVICES.filter(s => s.priority <= 2);
     </div>
     <div class="legal">
       <p>
-        {BUSINESS.legalName} · Based in {NAP_LINE} · Serving {COUNTIES_SERVED.slice(0, 4).join(', ')} and the Permian Basin.
+        {BUSINESS.legalName}, based in {NAP_LINE}, serving {COUNTIES_SERVED.slice(0, 4).join(', ')} and the Permian Basin.
       </p>
       <p class="lic">
-        Licensed and regulated by the Texas Department of Agriculture · Structural Pest Control Licence TPCL {BUSINESS.owner.tpcl} · {BUSINESS.owner.name}, {BUSINESS.owner.licenceClass}
+        Licensed and regulated by the Texas Department of Agriculture.<br />
+        Structural Pest Control Licence TPCL {BUSINESS.owner.tpcl}.<br />
+        {BUSINESS.owner.name}, {BUSINESS.owner.licenceClass}.
       </p>
       <p>© {year} {BUSINESS.legalName}. All rights reserved.</p>
     </div>

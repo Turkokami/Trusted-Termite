@@ -13,6 +13,10 @@
  * a neighbourhood — never on the business address. The assertion below turns
  * that from a habit somebody has to remember into a build failure.
  *
+ * CLICK TO LOAD. Nothing is requested from Google until the visitor presses
+ * "Show map". Until then the box shows the place name, the button, and a plain
+ * link that opens the same place in Google Maps in a new tab.
+ *
  * KEYLESS BY DESIGN. The ?output=embed endpoint needs no Maps API key, so
  * there is no key to leak, rotate, or wire into Vercel env vars, and no
  * billing account hanging off a static brochure site. The trade is that we
@@ -46,57 +50,101 @@ if (query.includes(BUSINESS.address.street)) {
 }
 
 const src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&z=${zoom}&output=embed`;
+const openHref = `https://www.google.com/maps?q=${encodeURIComponent(query)}`;
+const es = Astro.url.pathname.startsWith('/es/');
+const t = es
+  ? { show: 'Mostrar mapa', open: 'Abrir en Google Maps', note: 'El mapa carga desde Google solo si lo pide.' }
+  : { show: 'Show map', open: 'Open in Google Maps', note: 'The map loads from Google only if you ask for it.' };
+const place = query.replace(/, TX$/, ', Texas');
 ---
 
 <div class={compact ? 'smap smap--compact' : 'smap'} data-boilerplate>
-  <iframe
-    src={src}
-    title={label}
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    allowfullscreen
-  ></iframe>
+  <div class="smap__slot" data-map-src={src} data-map-title={label}>
+    <p class="smap__place">{place}</p>
+    <p class="smap__note">{t.note}</p>
+    <div class="smap__actions">
+      <button type="button" class="smap__btn">{t.show}</button>
+      <a href={openHref} target="_blank" rel="noopener">{t.open}</a>
+    </div>
+  </div>
   {caption && <p class="smap__cap">{caption}</p>}
 </div>
+
+<script>
+  /* Inject the Google iframe only after a click. One handler serves every map
+     on the page (a town page has its own map plus the footer map). */
+  document.querySelectorAll<HTMLElement>('.smap__slot').forEach((slot) => {
+    const btn = slot.querySelector<HTMLButtonElement>('.smap__btn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = slot.dataset.mapSrc || '';
+      frame.title = slot.dataset.mapTitle || 'Map';
+      frame.loading = 'lazy';
+      frame.referrerPolicy = 'no-referrer-when-downgrade';
+      frame.allowFullscreen = true;
+      slot.replaceWith(frame);
+      frame.focus();
+    });
+  });
+</script>
 
 <style>
   .smap {
     margin: 1.5rem 0 0;
     max-width: var(--measure);
   }
-  .smap iframe {
+  .smap iframe,
+  .smap__slot {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10;
     border: 1px solid var(--rule-2);
     border-radius: var(--radius);
-    /* The embed paints its own white chrome. On the dark theme that reads as a
-       lit panel rather than a hole punched in the page. */
     background: var(--surface-2);
   }
+  .smap iframe {
+    aspect-ratio: 16 / 10;
+  }
+  .smap__slot {
+    padding: 20px 22px;
+  }
+  .smap__place { font-weight: 700; margin: 0 0 .2rem; color: var(--ink); }
+  .smap__note { margin: 0 0 .9rem; font-size: .92rem; color: var(--ink-2); }
+  .smap__actions { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+  .smap__actions a { min-height: 44px; display: inline-flex; align-items: center; }
+  .smap__btn {
+    min-height: 44px; padding: 10px 18px; cursor: pointer;
+    font: 700 1rem var(--font-body);
+    background: transparent; color: var(--green);
+    border: 2px solid var(--rule-2); border-radius: var(--radius);
+  }
+  .smap__btn:hover { border-color: var(--green); }
   .smap__cap {
-    font-family: var(--font-mono);
-    font-size: .78rem;
-    letter-spacing: .02em;
-    text-transform: uppercase;
+    font-size: .88rem;
     color: var(--ink-3);
     margin: .5rem 0 0;
   }
 
-  /* Footer variant. Wider and shorter — it is orienting the reader, not
-     inviting them to explore. */
+  /* Footer variant. The footer is dark green in BOTH themes, so this variant
+     sets its own colours instead of inheriting the page tokens — which would
+     render near-black on near-black in the light theme. */
   .smap--compact { margin: 0; max-width: none; }
   .smap--compact iframe {
     aspect-ratio: 21 / 9;
     /* Bounded so a wide monitor does not turn the footer into a map with a
        business attached to it. */
     max-height: 380px;
-    /* The footer is dark green in BOTH themes, so this variant sets its own
-       rule and caption colours instead of inheriting the page tokens — which
-       would render near-black on near-black in the light theme. */
-    border-color: rgba(255, 255, 255, .18);
   }
+  .smap--compact iframe,
+  .smap--compact .smap__slot {
+    border-color: rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .04);
+  }
+  .smap--compact .smap__place { color: #fff; }
+  .smap--compact .smap__note,
   .smap--compact .smap__cap { color: #9db097; }
+  .smap--compact .smap__btn { color: #fff; border-color: rgba(255, 255, 255, .4); }
+  .smap--compact .smap__btn:hover { border-color: var(--lime); }
 
   @media (max-width: 640px) {
     .smap iframe { aspect-ratio: 4 / 3; }

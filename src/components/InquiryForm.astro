@@ -43,8 +43,8 @@ const BUILDING_TYPES = [
   <!-- Spam gate. Hidden from people, offered to bots. Never remove the label:
        a screen reader user needs to know to leave it alone. -->
   <div class="iq__hp" aria-hidden="true">
-    <label for="iq-website">Leave this field empty</label>
-    <input type="text" id="iq-website" name="website" tabindex="-1" autocomplete="off" />
+    <label for="iq-secondary-ref">Leave this field empty</label>
+    <input type="text" id="iq-secondary-ref" name="secondary_ref" tabindex="-1" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" />
   </div>
   <input type="hidden" name="source_page" value={sourcePage} />
   <input type="hidden" name="rendered_at" id="iq-rendered" value="" />
@@ -145,7 +145,12 @@ const BUILDING_TYPES = [
     var box = document.getElementById('iq-errors');
     var button = form.querySelector('button[type=submit]');
 
+    var trap = document.getElementById('iq-secondary-ref');
+
     form.addEventListener('submit', function (event) {
+      // A password manager or autofill can write into the hidden field. A person
+      // submitting the form never means to, so clear it before anything is sent.
+      if (trap) trap.value = '';
       if (!window.fetch || !window.FormData) return; // native submit still works
       event.preventDefault();
       if (box) { box.hidden = true; box.textContent = ''; }
@@ -246,12 +251,12 @@ const BUILDING_TYPES = [
   }
 
   .iq__err {
-    border-left: 4px solid var(--alert);
+    border: 1px solid var(--alert);
     background: var(--alert-bg);
     color: var(--alert);
     padding: .9rem 1rem;
     margin: 0 0 1.2rem;
-    border-radius: 0 var(--radius) var(--radius) 0;
+    border-radius: var(--radius);
   }
   .iq__err:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 

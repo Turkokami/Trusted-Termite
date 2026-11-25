@@ -68,7 +68,7 @@ const faqs = [
     a: 'A conventional liquid treatment on a residential slab is usually a day, sometimes less, depending on the linear footage and how much drilling is involved through patios, porches, sidewalks and attached slabs. Bait system installation is faster to place and slower to work, because the point is for the colony to find and share the material. We will tell you which one you are getting and roughly how long before you should expect to see a change.',
   },
   {
-    q: 'Does soil really change the answer?',
+    q: 'Does soil change the answer?',
     a: 'Yes, more than almost anything else. The soil across this service area runs from very loose sand to extremely hard caliche, sometimes on the same street, and new construction often has disturbed or imported fill packed around the foundation. Moisture retention, drainage, soil movement and how the structure meets the ground all affect both termite activity and how a treatment has to be applied. It is the main reason we do not treat termite protection as a one-size-fits-all service.',
   },
 ];
@@ -88,8 +88,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Termite Control · licensed category · TPCL 0976265</p>
       <h1>Termite Treatment</h1>
+      <p class="lede">This falls under the Termite Control category of licence TPCL 0976265.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-termitas/" lang="es" hreflang="es">Esta página en español</a></p>
       <Trust />
@@ -132,16 +132,16 @@ const faqs = [
         </p>
       </div>
       <div class="grid c2" style="margin-top:1.4rem">
-        <div class="card">
+        <div class="item">
           <h3>Arid-land subterranean termite</h3>
           <p>
             <em>Reticulitermes tibialis</em> — the subterranean species that actually lives out here,
-            adapted to deserts and arid locations with hard-packed or alkaline soil. It is a real
+            adapted to deserts and arid locations with hard-packed or alkaline soil. It is a genuine
             structural pest and it is the one worth inspecting for. It is also documented as doing
             relatively little damage to structures compared with its eastern cousins.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Desert termite</h3>
           <p>
             <em>Gnathamitermes tubiformans</em> — abundant here, and <strong>not a structural pest.</strong>
@@ -150,7 +150,7 @@ const faqs = [
             notes its abundance tracks range condition and early spring rainfall, so it comes and goes.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Formosan termite — not here</h3>
           <p>
             Detected in around thirty Texas counties, primarily the greater Houston-Galveston area and
@@ -159,7 +159,7 @@ const faqs = [
             else.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Drywood termite — not here</h3>
           <p>
             A coastal-counties problem with scattered spots into south-central Texas. Not a Permian Basin
@@ -261,7 +261,7 @@ const faqs = [
           That exclusion list is the part most companies keep vague, and it is worth being blunt about:
           <strong>a re-treatment warranty is not a damage warranty.</strong> If a company implies
           otherwise, ask them to put the damage cover in writing and watch what happens.
-          <a href="/our-guarantee/"> Full terms →</a>
+          <a href="/our-guarantee/">Full terms</a>
         </p>
       </div>
     </div>
@@ -290,7 +290,7 @@ const faqs = [
         {TOWNS.filter((t2) => t2.tier !== 'scaffold').map((t2) => (
           <a class="card" href={`/locations/${t2.slug}/`}>
             <h3>{t2.name}, TX</h3>
-            <p>{t2.county}{t2.distanceMiApprox > 0 ? ` · about ${t2.distanceMiApprox} miles ${t2.direction}` : ' · home market'}</p>
+            <p>{t2.county}{t2.distanceMiApprox > 0 ? `, about ${t2.distanceMiApprox} miles ${t2.direction}` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -397,8 +397,8 @@ const faqs = [
           just as true:
         </p>
         <p>
-          <strong>Carton sheeting on the lawn after a storm.</strong> Desert termite. Not structural.
-          Nothing to buy. It comes and goes with rainfall and range condition, and it will most likely
+          <strong>Carton sheeting on the lawn after a storm.</strong> That is the desert termite, which is
+          not structural, and there is nothing to buy. It comes and goes with rainfall and range condition, and it will most likely
           disappear on its own.
         </p>
         <p>
@@ -416,7 +416,7 @@ const faqs = [
           on a sensible interval. Not worth a full treatment because somebody knocked on the door.
         </p>
         <p>
-          The honest position on West Texas termite risk is that it is real, lower than most of the state,
+          The honest position on West Texas termite risk is that it exists, it is lower than most of the state,
           and highly property-specific. If the inspection says you do not need anything, that is what you
           will be told — and the inspection is where the value is either way.
         </p>

@@ -87,11 +87,11 @@ const quickAnswer =
 const faqs = [
   {
     q: 'Is Saddle Club one neighbourhood?',
-    a: 'Not really, and it is worth knowing before you go looking for your covenants. The City of Midland\'s plat records carry five separate families under the Saddle Club name: Saddle Club "A", recorded in December 1975; Saddle Club South, which runs from 1977 to 2002 across at least eleven sections; Saddle Club Estates from 1981; Saddle Club Lakes from 1987 and 1994; Saddle Club East from 1989 to 2007; and a Saddle Club Townhouse Area platted between 1989 and 2010. There are three different homeowners associations across them. Which one governs your property depends on which plat you are in, not on the street sign.',
+    a: 'Not quite, and it is worth knowing before you go looking for your covenants. The City of Midland\'s plat records carry five separate families under the Saddle Club name: Saddle Club "A", recorded in December 1975; Saddle Club South, which runs from 1977 to 2002 across at least eleven sections; Saddle Club Estates from 1981; Saddle Club Lakes from 1987 and 1994; Saddle Club East from 1989 to 2007; and a Saddle Club Townhouse Area platted between 1989 and 2010. There are three different homeowners associations across them. Which one governs your property depends on which plat you are in, not on the street sign.',
   },
   {
     q: 'What is a playa lake and why does it matter here?',
-    a: 'A playa is a shallow, roughly circular depression that holds water after rain and then dries out again — the characteristic drainage feature of the Llano Estacado, and the reason this flat country does not need rivers. The City of Midland maps them individually and gives them identifiers. One named playa, MI38, sits against the north-east edge of the Saddle Club plat area on the city\'s mapping, and a cluster of three more lies immediately north. That matters because a playa is an ephemeral wetland: dry for long stretches, then holding standing water for days or weeks after a real rain. That cycle is a mosquito production cycle, and it runs on rainfall rather than on the calendar.',
+    a: 'A playa is a shallow, roughly circular depression that holds water after rain and then dries out again — the characteristic drainage feature of the Llano Estacado, and the reason this flat country does not need rivers. The City of Midland maps them individually and gives them identifiers. One named playa, MI38, sits against the north-east edge of the Saddle Club plat area on the city\'s mapping, and a cluster of three more lies immediately north. That matters because a playa is an ephemeral wetland: dry for long stretches, then holding standing water for days or weeks after a soaking rain. That cycle is a mosquito production cycle, and it runs on rainfall rather than on the calendar.',
   },
   {
     q: 'Is my house in Saddle Club in a floodplain?',
@@ -99,7 +99,7 @@ const faqs = [
   },
   {
     q: 'Why is mosquito treatment here different?',
-    a: 'Because the pressure is episodic rather than steady. In a neighbourhood with playa features nearby, mosquito numbers climb roughly a week to ten days after a real rain event and fall away again as the water goes. A fixed-calendar treatment schedule — the same date every month regardless of weather — routinely misses that window at both ends: it treats when there is nothing to treat, and it has already been and gone when the population actually arrives. Weather-responsive timing is worth considerably more than treatment frequency here, and it is the main thing we would want to talk through before quoting.',
+    a: 'Because the pressure is episodic rather than steady. In a neighbourhood with playa features nearby, mosquito numbers climb roughly a week to ten days after a soaking rain and fall away again as the water goes. A fixed-calendar treatment schedule — the same date every month regardless of weather — routinely misses that window at both ends: it treats when there is nothing to treat, and it has already been and gone when the population actually arrives. Weather-responsive timing is worth considerably more than treatment frequency here, and it is the main thing we would want to talk through before quoting.',
   },
   {
     q: 'Does living in a townhouse change the approach?',
@@ -133,8 +133,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Midland · Midland County · five plat families, 1975 to 2010</p>
       <h1>Pest Control in Saddle Club, Midland</h1>
+      <p class="lede">Saddle Club is in Midland, Midland County, and spans five plat families from 1975 to 2010.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <ServiceMap query="Saddle Club, Midland, TX" label="Map of Saddle Club, Midland, Texas" zoom={14} caption="Service area map — call to confirm your address." />
@@ -170,7 +170,7 @@ const faqs = [
           If you have not lived on the Llano Estacado, playas take some explaining. This is some of the
           flattest country in North America, and it drains almost nowhere. Instead of rivers carrying water
           away, thousands of shallow, roughly circular depressions catch it and hold it — filling after a
-          real rain, standing for days or weeks, and then drying out completely until the next one. They
+          soaking rain, standing for days or weeks, and then drying out completely until the next one. They
           are the reason the High Plains look empty of water most of the year and are briefly covered in
           it after a storm.
         </p>
@@ -183,9 +183,9 @@ const faqs = [
         </p>
         <p>
           <strong>So mosquito pressure near a playa is a rainfall function, not a calendar function.</strong>
-          The pattern is reliable: a real rain event, then roughly seven to ten days of very little, then a
+          The pattern is reliable: a soaking rain, then roughly seven to ten days of very little, then a
           sharp climb as a generation emerges, then a decline as the basin dries. Two inches in May and
-          nothing in June produces a bad fortnight and a quiet month, in that order.
+          nothing in June produces a bad fortnight and a calm month, in that order.
         </p>
         <p>
           <strong>Which is why fixed-schedule mosquito treatment underperforms here.</strong> A monthly
@@ -197,10 +197,10 @@ const faqs = [
         </p>
         <p>
           <strong>The part you can do something about is closer than the playa.</strong> A saucer under a
-          pot. A wheelbarrow. A tarp with a fold in it. A clogged gutter. A low spot in the yard that stays
+          pot, a wheelbarrow, a tarp with a fold in it, a clogged gutter. A low spot in the yard that stays
           wet after irrigation. A swimming pool cover. Each of those produces mosquitoes in the same week
           the playa does, and unlike the playa they are yours. On a property near mapped water features we
-          spend real time on this, because the alternative is treating a symptom that is being resupplied
+          spend proper time on this, because the alternative is treating a symptom that is being resupplied
           from your own back garden.
         </p>
         <p>
@@ -321,7 +321,7 @@ const faqs = [
           for this neighbourhood. Timing beats frequency.
         </p>
         <p>
-          <strong>Fire ants — Midland County is quarantined.</strong> Midland County sits inside the federal imported fire ant quarantine, listed at 7 C.F.R. §301.81-3 and adopted into Texas law by reference at 4 TAC §19.101. We read that off the APHIS list directly. That is a real difference from Gaines,
+          <strong>Fire ants — Midland County is quarantined.</strong> Midland County sits inside the federal imported fire ant quarantine, listed at 7 C.F.R. §301.81-3 and adopted into Texas law by reference at 4 TAC §19.101. We read that off the APHIS list directly. That is a practical difference from Gaines,
           Yoakum, Terry, Dawson and Andrews to the north and west, where the counties are not listed and a
           suspected fire ant mound is nearly always a red harvester ant. Two things follow. Identification
           before treatment genuinely matters, because harvester ants and imported fire ants need different
@@ -380,7 +380,7 @@ const faqs = [
         </p>
         <p>
           Covered by the <a href="/our-guarantee/">30-day service guarantee</a>, with termite work carrying
-          its own one-year re-treatment warranty. Military discount. Cash, check, card in person or online,
+          its own one-year re-treatment warranty. There is a military discount. We take cash, check, card in person or online,
           Venmo, CashApp or Zelle. Se habla español.
         </p>
         <p>

@@ -15,7 +15,7 @@ const quickAnswer = 'Trusted Termite and Pest Solutions backs general pest contr
 
 const faqs = [
   { q: 'Does the guarantee need a contract?', a: 'No. There are no contracts on any service we offer. The 30-day service guarantee applies to the treatment you paid for, whether or not you are on a recurring plan.' },
-  { q: 'What if a different pest shows up?', a: 'The guarantee covers the pests and areas included in your original service agreement. A new or different pest problem is a separate job, and we will tell you that up front rather than quietly declining a callback. Call us anyway — often it is something simple.' },
+  { q: 'What if a different pest shows up?', a: 'The guarantee covers the pests and areas included in your original service agreement. A new or different pest problem is a separate job, and we will tell you that up front rather than declining a callback without explanation. Call us anyway — often it is something simple.' },
   { q: 'Does the termite warranty cover damage?', a: 'No, and this is the part most companies leave vague. The one-year termite warranty covers re-treatment only. It does not cover existing termite damage, repairs to the structure, or damage caused by future termite activity. Coverage is also subject to the original treatment agreement and to the property remaining reasonably unchanged.' },
   { q: 'What happens after the first year on termite work?', a: 'You can renew termite protection annually. Renewal includes an inspection and continued re-treatment coverage.' },
   { q: 'Does the guarantee end if I cancel my recurring plan?', a: 'No. The thirty-day guarantee attaches to the treatment you paid for, not to a subscription. Many recurring plans in this industry are written the other way around, so that coverage disappears the moment you cancel. Ours does not, and there is no cancellation fee or minimum term.' },
@@ -32,7 +32,6 @@ const faqs = [
 >
   <section class="band">
     <div class="narrow">
-      <p class="eyebrow">Terms, in plain language</p>
       <h1>Our guarantee</h1>
       <AnswerBox text={quickAnswer} />
 
@@ -220,7 +219,7 @@ const faqs = [
       <p>
         <strong>New openings.</strong> A door sweep that wore out, a screen that tore, a utility
         penetration cut for a new line and never sealed, a garage door that no longer seats. These arrive
-        quietly and they are the reason a house that was clear for a year suddenly is not.
+        unnoticed and they are the reason a house that was clear for a year suddenly is not.
       </p>
       <p>
         <strong>Somebody else's product over ours.</strong> A store-bought repellent sprayed on a treated
@@ -239,14 +238,14 @@ const faqs = [
       <p>
         Most pest control companies would rather you did not know this section exists. Publishing it is a
         deliberate choice, because a guarantee that only works when the company feels like honouring it
-        is not really a guarantee.
+        is not a guarantee at all.
       </p>
       <p>
         Structural pest control in Texas is regulated by the Texas Department of Agriculture, and the
         Department accepts and investigates consumer complaints about licensed businesses — the
         <a href="/compliance/">compliance reference</a> sets out the process and what to keep. That covers
         misapplication, failure to provide required documentation, unlicensed work, and misrepresentation.
-        It is a real process with real consequences for a licence, and it exists specifically because the
+        It is a formal process with serious consequences for a licence, and it exists specifically because the
         customer in this transaction usually cannot evaluate the work directly.
       </p>
       <p>
@@ -312,7 +311,7 @@ const faqs = [
       </p>
       <p>
         Longer windows exist in the market and they sound better, but on general pest work they are
-        usually attached to a recurring agreement, which means the window is really just the interval
+        usually attached to a recurring agreement, which means the window is just the interval
         between visits you are already paying for. A standalone thirty days on a one-time treatment,
         with no plan required, is a narrower promise and a more honest one, because it is the period over
         which the result is genuinely attributable to the work rather than to the passage of time.
@@ -335,7 +334,7 @@ const faqs = [
       </p>
 
       <p style="color:var(--ink-3);font-size:.95rem">
-        {BUSINESS.legalName} · Licensed and regulated by the Texas Department of Agriculture ·
+        {BUSINESS.legalName} is licensed and regulated by the Texas Department of Agriculture under
         Structural Pest Control Licence TPCL {BUSINESS.owner.tpcl}.
       </p>
     </div>

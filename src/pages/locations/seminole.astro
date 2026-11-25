@@ -55,7 +55,7 @@ const faqs = [
   },
   {
     q: 'Do I need termite treatment in Seminole, or is that a Houston problem?',
-    a: 'It is a real question and the honest answer has some nuance in it. AgriLife notes that subterranean termites decrease from the Gulf Coast inland and are noticed less often in the High Plains and far West Texas. Formosan and drywood termites do not occur here at all. What does occur is the arid-land subterranean termite and the desert termite, and the desert termite eats dead grass rather than structures — the white sheeting people find on their lawn after a summer storm is usually that. It still needs looking at properly, because soil, foundation type and moisture change the answer property to property. What it does not need is being sold a treatment out of fear.',
+    a: 'It is a fair question and the honest answer has some nuance in it. AgriLife notes that subterranean termites decrease from the Gulf Coast inland and are noticed less often in the High Plains and far West Texas. Formosan and drywood termites do not occur here at all. What does occur is the arid-land subterranean termite and the desert termite, and the desert termite eats dead grass rather than structures — the white sheeting people find on their lawn after a summer storm is usually that. It still needs looking at properly, because soil, foundation type and moisture change the answer property to property. What it does not need is being sold a treatment out of fear.',
   },
   {
     q: 'What does recurring pest control cost in Seminole?',
@@ -95,8 +95,8 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Gaines County · Our home market</p>
       <h1>Pest Control in Seminole, Texas</h1>
+      <p class="lede">Seminole is in Gaines County, and it is our home market.</p>
       <div class="measure">
         <AnswerBox text={quickAnswer} />
       </div>
@@ -174,7 +174,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
       <h2>What we actually get called about here</h2>
 
       <div class="grid c2" style="margin-top:1.5rem">
-        <div class="card">
+        <div class="item">
           <h3>Striped bark scorpions</h3>
           <p>
             The pest people here genuinely worry about, and the one worth building the service around.
@@ -186,7 +186,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
             the swelling can last days.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Red harvester ants — not fire ants</h3>
           <p>
             Gaines County is <strong>not</strong> on the Texas Department of Agriculture fire ant
@@ -197,18 +197,18 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
             and it gets treated as one.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Termites, honestly</h3>
           <p>
             AgriLife notes that subterranean termites thin out moving inland and are noticed less often
             in the High Plains and far West Texas. Formosan and drywood termites do not occur here.
             What is here is the arid-land subterranean termite and the desert termite — and the desert
             termite eats dead grass, not houses. The white carton sheeting that turns up on a lawn after
-            a summer storm is usually that, and it is not a structural emergency. Real termite risk here
+            a summer storm is usually that, and it is not a structural emergency. Termite risk here
             still exists and still needs inspecting properly. It just should not be sold out of fear.
           </p>
         </div>
-        <div class="card">
+        <div class="item">
           <h3>Rodents, October onward</h3>
           <p>
             As temperatures start dropping in October and November, rodents move toward buildings.
@@ -243,7 +243,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
       </div>
       <div class="grid c3" style="margin:1.4rem 0">
         {hoods.map((n) => (
-          <div class="card">
+          <div class="item">
             <h3>{n.name}</h3><p>{n.character}</p>
           </div>
         ))}
@@ -329,7 +329,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
           Valentin answers his own phone about nine times out of ten. In his own words, this is how a
           call usually goes:
         </p>
-        <blockquote style="border-left:4px solid var(--lime);padding-left:20px;margin:1.4rem 0;color:var(--ink-2)">
+        <blockquote class="quote">
           <p>
             "I usually start by listening and asking questions about exactly what they're dealing with
             instead of immediately trying to sell them something. I ask what pests they're seeing, how
@@ -339,7 +339,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
           </p>
         </blockquote>
         <p>
-          The products are real and we will name them. General pest work uses Alpine WSG, Onslaught
+          We will name the products. General pest work uses Alpine WSG, Onslaught
           FastCap, Suspend PolyZone, Demand CS, Scion, Transport, Bifen LP, Talstar, DeltaGard and
           DeltaDust, with Precor IGR, Niban, Advance 375A and professional baits where those are the
           right tool. Termite work uses Termidor HE and SC, Trelona bait stations and Bora-Care depending
@@ -407,7 +407,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
         <p>
           <strong>December</strong> shifts back indoors — rodents, cockroaches and interior pest issues,
           plus attic and shed cleanouts. Texas DSHS specifically flags cleaning areas where rodents have
-          been living as a real risk, which is why we treat a shed cleanout as a job with precautions
+          been living as a genuine risk, which is why we treat a shed cleanout as a job with precautions
           rather than a job with a trailer.
         </p>
         <p>
@@ -440,7 +440,7 @@ const localServices = SERVICES.filter((s) => s.priority <= 2);
           publishes its table of contents online but not the section text, so the section number above is
           verified and the three numbers are not — they came from the city office rather than from the
           code. We think they are right. We are telling you they are second-hand anyway, because you are
-          reading this on a page that asks you to trust the rest of it, and a figure quietly upgraded from
+          reading this on a page that asks you to trust the rest of it, and a figure silently upgraded from
           hearsay to fact is exactly the thing that would make that trust misplaced. If it matters to you,
           ring the city and ask; it takes about four minutes.
         </p>

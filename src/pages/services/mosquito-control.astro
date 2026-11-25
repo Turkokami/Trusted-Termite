@@ -44,7 +44,7 @@ const quickAnswer =
 const faqs = [
   {
     q: 'Why does mosquito pressure here come in bursts?',
-    a: 'Because there is almost no permanent surface water. Gaines, Terry, Dawson and Yoakum counties have no permanent streams at all — the country drains to playa basins and draws that hold water after rain and are dry the rest of the time. So breeding habitat appears, produces, and disappears. Pressure typically climbs about a week to ten days after a real rain and falls away again, which is completely different from a region with standing water year-round.',
+    a: 'Because there is almost no permanent surface water. Gaines, Terry, Dawson and Yoakum counties have no permanent streams at all — the country drains to playa basins and draws that hold water after rain and are dry the rest of the time. So breeding habitat appears, produces, and disappears. Pressure typically climbs about a week to ten days after a soaking rain and falls away again, which is completely different from a region with standing water year-round.',
   },
   {
     q: 'When is the right time to treat?',
@@ -94,8 +94,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">{svc.licenceCategory} · licensed category</p>
       <h1>Mosquito Control</h1>
+      <p class="lede">This falls under his {svc.licenceCategory} licence category.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/control-de-mosquitos/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -128,10 +128,10 @@ const faqs = [
           with.</strong>
         </p>
         <p>
-          Here is the cycle. Rain falls. Water collects in low ground, in playa basins, in draws, in
+          Here is the cycle. After rain falls, water collects in low ground, in playa basins, in draws, in
           containers, in the low corner of a lot, in an alley that does not drain. Eggs that have been
           sitting dry — some mosquito eggs tolerate drying for long periods and hatch when flooded — go
-          into water. Larvae develop. Adults emerge. Pressure climbs.
+          into water. The larvae develop, the adults emerge, and pressure climbs.
         </p>
         <p>
           In this climate that whole sequence typically plays out over roughly a week to ten days from the
@@ -141,7 +141,7 @@ const faqs = [
         <p>
           <strong>A treatment applied during a dry stretch does very little</strong>, because there is
           almost nothing to suppress and residual activity is being spent on empty ground. The same
-          treatment applied in the days after a real rain intercepts the emerging generation and does most
+          treatment applied in the days after a soaking rain intercepts the emerging generation and does most
           of the work available.
         </p>
         <p>
@@ -176,14 +176,14 @@ const faqs = [
         </p>
         <p>
           Neither series describes the ground under any particular address — both are typified elsewhere —
-          but the contrast is real and it maps onto something you can observe. Deeper basins hold water
+          but the contrast holds and it maps onto something you can observe. Deeper basins hold water
           longer. Longer holding means more time for a generation to complete. Lamesa also sits lower than
           the towns north and west of it, at about 2,992 feet against Seagraves at 3,353 and Brownfield at
           3,310, and receives somewhat more rain.
         </p>
         <p>
           <strong>Lubbock</strong> has genuine playa lakes within the city and runs a municipal vector
-          control programme in response, which tells you the pressure there is real enough to warrant
+          control programme in response, which tells you the pressure there is high enough to warrant
           public money.
         </p>
         <p>
@@ -334,7 +334,7 @@ const faqs = [
           <strong>Events on rural property.</strong> Weddings, reunions and gatherings held on acreage are
           the one case where the defended-envelope approach is worth pushing further, because the area in
           use is known in advance and the date is fixed. Give as much notice as you can. The useful window
-          is a few days ahead of the event rather than the morning of it, and on a property with real
+          is a few days ahead of the event rather than the morning of it, and on a property with heavy
           harbourage that difference is the whole result.
         </p>
       </div>
@@ -383,12 +383,12 @@ const faqs = [
       <h2>What we will not claim</h2>
       <div class="measure">
         <p>
-          <strong>We will not promise a mosquito-free yard.</strong> Adults fly. They arrive from beyond
+          <strong>We will not promise a mosquito-free yard.</strong> Adult mosquitoes fly in. They arrive from beyond
           any boundary you can treat. Suppression is what is achievable and it is worth having; eradication
           is not on offer from anybody honest.
         </p>
         <p>
-          <strong>We will not sell you a disease scare.</strong> Mosquito-borne illness is a real public
+          <strong>We will not sell you a disease scare.</strong> Mosquito-borne illness is a genuine public
           health matter, and it is also the standard lever this industry pulls to move a recurring plan.
           If you want current information about disease activity in your area, that belongs to public
           health authorities who actually monitor it, not to a pest control website quoting a number it
@@ -421,7 +421,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ' · home market'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, about ${t.distanceMiApprox} miles ${t.direction} of Seminole` : ', home market'}</p>
           </a>
         ))}
       </div>
@@ -430,7 +430,7 @@ const faqs = [
           One-off treatment or a recurring programme through the season, priced on property size,
           vegetation and harbourage rather than at a flat rate. Events, weddings and gatherings can be
           treated ahead of the date — give as much notice as you can, because the useful window is a few
-          days before rather than the morning of. Military discount. Cash, check, card in person or online,
+          days before rather than the morning of. There is a military discount. We take cash, check, card in person or online,
           Venmo, CashApp or Zelle. Se habla español.
         </p>
       </div>

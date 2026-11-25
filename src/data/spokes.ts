@@ -47,7 +47,7 @@ export const SPOKES: Spoke[] = [
     blurb:
       'Time of day narrows the list, but sound alone does not identify an animal — and what you may legally do next depends entirely on which one it is.',
     intro:
-      'Before any of the above applies, somebody has to work out what is up there. That question has a real method behind it, and a legal dimension most people are not expecting.',
+      'Before any of the above applies, somebody has to work out what is up there. That question has a method behind it, and a legal dimension most people are not expecting.',
   },
   {
     service: 'pest-control',

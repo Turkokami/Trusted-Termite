@@ -81,8 +81,8 @@ const faqs = [
 
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Weed Control · licensed category · TPCL 0976265</p>
       <h1>Brush &amp; Lot Clearing</h1>
+      <p class="lede">This falls under the Weed Control category of licence TPCL 0976265.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <p class="measure" style="margin-top:1rem"><a href="/es/servicios/limpieza-de-terrenos/" lang="es" hreflang="es">Esta página en español</a></p>
@@ -93,7 +93,7 @@ const faqs = [
           if the city does it instead of you.
         </p>
         <p>
-          The short version is that these standards are real, they differ substantially town to town, and
+          The short version is that these standards are enforced, they differ substantially town to town, and
           the costs attach to the property rather than to you personally — which means they follow the
           title rather than the person who let the grass grow.
         </p>
@@ -124,7 +124,7 @@ const faqs = [
             <tr><td>Lubbock</td><td>8 inches, averaged across the lot</td><td>7 days</td><td>$175 administrative fee per occurrence, plus the work. Lien at 10% interest, second only to tax liens.</td></tr>
             <tr><td>Odessa</td><td>12 inches</td><td>5 days to request a hearing, 7 to clear</td><td>Equipment $56/hr, labour $21/hr, $125 administration, landfill $52.50/ton, 10% late fee. Foreclosable lien at 10% annual interest.</td></tr>
             <tr><td>Midland</td><td>18 inches</td><td>Not published</td><td>Not published</td></tr>
-            <tr><td>Andrews</td><td>12 inches under an acre, 18 inches over</td><td>10 days · immediate above 4 feet</td><td>Court action, or a contractor remediation list billed to the owner.</td></tr>
+            <tr><td>Andrews</td><td>12 inches under an acre, 18 inches over</td><td>10 days; immediate above 4 feet</td><td>Court action, or a contractor remediation list billed to the owner.</td></tr>
             <tr><td>Unincorporated county</td><td>No height in the statute &mdash; nuisance defined by proximity, within 300 feet of a residence or business</td><td>30 days from notice</td><td>First offence $50–$200; repeats $200–$1,000, up to six months, or both. Each day is a separate offence.</td></tr>
           </tbody>
         </table>
@@ -149,23 +149,23 @@ const faqs = [
           not:
         </p>
         <p>
-          <strong>1 · Notice.</strong> §342.006 allows notice by personal written delivery, by letter to
+          <strong>Step 1: the city gives notice.</strong> §342.006 allows notice by personal written delivery, by letter to
           the owner's address as recorded with the appraisal district, or — if personal service fails —
           by publication, by posting on the building, or by placing a placard on the property itself.
           That middle option catches people out constantly: <strong>if the appraisal district has an old
           address for you, the first you may hear is the bill.</strong>
         </p>
         <p>
-          <strong>2 · The compliance window.</strong> Seven days under the state default, though cities
+          <strong>Step 2: you get a window to comply.</strong> Seven days under the state default, though cities
           set their own. Andrews gives ten. Odessa runs a five-day hearing request alongside a seven-day
           clearance window.
         </p>
         <p>
-          <strong>3 · The city does the work.</strong> If you have not complied, §342.006 lets the
+          <strong>Step 3: the city does the work.</strong> If you have not complied, §342.006 lets the
           municipality do it and bill you.
         </p>
         <p>
-          <strong>4 · The lien.</strong> §342.007 lets the city assess the expenses against the real
+          <strong>Step 4: the cost becomes a lien.</strong> §342.007 lets the city assess the expenses against the real
           estate itself, with a lien bearing 10 percent interest, subordinate only to tax liens and
           street improvement liens. That is the part worth understanding: it is not an invoice you can
           argue about later, it is an encumbrance on the property.
@@ -301,7 +301,7 @@ const faqs = [
         {TOWNS.filter((t) => t.tier !== 'scaffold').map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.weedOrdinance ? ` · ${t.weedOrdinance.heightInches}-inch standard` : ''}</p>
+            <p>{t.county}{t.weedOrdinance ? `, ${t.weedOrdinance.heightInches}-inch standard` : ''}</p>
           </a>
         ))}
       </div>
@@ -362,7 +362,7 @@ const faqs = [
       <h2>Selling, buying or inheriting a property</h2>
       <div class="measure">
         <p>
-          Three situations come up repeatedly, and in all three the clearing is not really about the
+          Three situations come up repeatedly, and in all three the clearing is not mainly about the
           grass.
         </p>
         <p>
@@ -373,7 +373,7 @@ const faqs = [
         </p>
         <p>
           <strong>Just bought something that has sat.</strong> The most useful order is clear, then look,
-          then decide. It is very difficult to assess a property's real condition through several feet of
+          then decide. It is very difficult to assess a property's actual condition through several feet of
           growth, and the pest and rodent picture only becomes visible once the cover is gone.
         </p>
         <p>

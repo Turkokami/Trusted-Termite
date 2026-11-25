@@ -62,7 +62,7 @@ const faqs = [
     a: 'Sí, y casi nadie se lo dice. El reglamento 4 TAC §7.147(f) exige que se use la hoja de información al consumidor del propio Departamento de Agricultura de Texas — una compañía no puede sustituirla por la suya — y establece que está disponible en inglés y en español. El §7.146(e) dice que el aviso de tratamiento también está disponible en español a solicitud. El Departamento las publica como "Hoja de Información al Consumidor" y "Aviso de Tratamiento de Exterminación". Pídalas.',
   },
   {
-    q: '¿Cómo verifico que la licencia es real?',
+    q: '¿Cómo verifico que la licencia es válida?',
     a: 'Busque el número TPCL ' + o.tpcl + ' en los registros de control de plagas estructural del Departamento de Agricultura de Texas. Revise tres cosas: que la licencia exista, que esté vigente y no vencida, y que las categorías cubran el trabajo que le están cotizando — si le cotizan termitas, la categoría de termitas tiene que aparecer. Toma unos dos minutos, es gratis, y es la única verificación en todo este oficio que resuelve el asunto de forma definitiva.',
   },
   {
@@ -79,7 +79,7 @@ const faqs = [
   },
   {
     q: '¿Cuánto cuesta?',
-    a: 'Depende de la propiedad, y no publicamos una lista de precios porque un número dado sin ver el lugar o cobra de más a la mayoría o no es el número que va a terminar pagando. Lo que sí le decimos es qué determina el precio: el tamaño y tipo de la construcción, cuántos edificios hay, cuál es la plaga, si es un tratamiento único o un programa, y a qué distancia está de Seminole. Nada más.',
+    a: 'Depende de la propiedad, y no publicamos una lista de precios porque un número dado sin ver el lugar o cobra de más a la mayoría o no es el número que va a terminar pagando. Lo que sí le decimos es qué determina el precio: el tamaño y tipo de la construcción, cuántos edificios hay, cuál es la plaga, si es un tratamiento único o un programa, y a qué distancia está de Seminole. No entra nada más.',
   },
   {
     q: '¿Qué NO hacen?',
@@ -99,8 +99,8 @@ const faqs = [
 >
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">Seminole, Texas · TPCL {o.tpcl}</p>
       <h1>Control de plagas en el oeste de Texas</h1>
+      <p class="lede">Con base en Seminole, Texas, y con licencia TPCL {o.tpcl}.</p>
       <div class="measure"><AnswerBox text={quickAnswer} /></div>
       <Trust />
       <div class="measure">
@@ -150,7 +150,7 @@ const faqs = [
           <strong>La hoja de información al consumidor.</strong> El reglamento 4 TAC §7.147(f) exige que se
           use la hoja del propio Departamento de Agricultura de Texas — una compañía no puede sustituirla
           por una versión suya — y establece que está disponible <em>en inglés y en español</em>. El
-          Departamento la publica como <em>Hoja de Información al Consumidor</em>. Pídala.
+          Departamento la publica como <em>Hoja de Información al Consumidor</em>, y usted puede pedirla.
         </p>
         <p>
           <strong>El aviso de tratamiento.</strong> El §7.146(e) establece que hay un aviso estándar en
@@ -271,7 +271,7 @@ const faqs = [
         {TOWNS.map((t) => (
           <a class="card" href={`/locations/${t.slug}/`}>
             <h3>{t.name}, TX</h3>
-            <p>{t.county}{t.distanceMiApprox > 0 ? ` · a unas ${t.distanceMiApprox} millas de Seminole` : ' · aquí mismo'}</p>
+            <p>{t.county}{t.distanceMiApprox > 0 ? `, a unas ${t.distanceMiApprox} millas de Seminole` : ', aquí mismo'}</p>
           </a>
         ))}
       </div>
@@ -413,7 +413,7 @@ const faqs = [
         </p>
         <p>
           <strong>Desconfíe de la presión.</strong> "Este precio nada más si contrata hoy" es una técnica
-          de venta, no una limitación real de agenda. Los problemas de plagas que de verdad son urgentes
+          de venta, no una limitación de agenda. Los problemas de plagas que de verdad son urgentes
           siguen siendo urgentes mañana.
         </p>
         <p>
@@ -452,12 +452,12 @@ const faqs = [
         <p>
           <strong>Formas de pago:</strong> efectivo, cheque, tarjeta en persona o en línea, Venmo, CashApp
           o Zelle. En trabajos grandes como los de termitas, pida el precio desde la primera llamada y no
-          al final, para que no haya sorpresas. <strong>Descuento militar.</strong>
+          al final, para que no haya sorpresas. <strong>Tenemos descuento militar.</strong>
         </p>
         <p>
           <strong>Un consejo sobre las aplicaciones de pago:</strong> confirme el usuario por teléfono con
           la persona con la que está tratando antes de mandar nada. La suplantación de contratistas locales
-          en aplicaciones de pago es un problema real, y la costumbre más segura es nunca pagar a un
+          en aplicaciones de pago es un problema serio, y la costumbre más segura es nunca pagar a un
           usuario que sólo recibió por escrito.
         </p>
         <p>
